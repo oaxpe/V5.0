@@ -19,11 +19,13 @@ import java.util.Date;
  * @version 2.0
  */
 public class Salmenta {
+    private static int salmZenb = 0;
     private Date data;
     private int kopurua;
     
     
     public Salmenta () {
+        this.salmZenb+=1;
         setData();
         setKopurua();
     }
@@ -32,6 +34,9 @@ public class Salmenta {
     public void printDatuak() {
         System.out.println("Data: "+data);
         System.out.println("Kopurua: "+kopurua);
+    }
+    public void printSalmenta() {
+        System.out.println("\t"+salmZenb+"\t\t"+data+"\t"+kopurua);
     }
     
     /* GETTER and SETTER */

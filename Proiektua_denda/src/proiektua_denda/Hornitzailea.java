@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
  * @version 2.0
  */
 public class Hornitzailea {
+    /* ATRIBUTOAK */
     private String kodHor;
     private String izena;
     private String herria;

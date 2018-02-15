@@ -5,11 +5,27 @@
  */
 package gestioa;
 
+import java.util.ArrayList;
+import proiektua_denda.Salmenta;
 /**
  *
  * @author Oihane Axpe
  * @version 2.0
  */
 public class SalmentaKudeatu {
-    // Momentuz ez da erabiltzen. Aurrerago erabiliko da.
-}
+    private static ArrayList<Salmenta> salmentaGuzt = new ArrayList<Salmenta>();
+    
+    /* Salmenta berri bat gehitu/gestionatu */
+    public static void eskaeraGehitu() {
+        Salmenta salmenta = new Salmenta();
+        salmenta.printDatuak();
+        salmentaGuzt.add(salmenta);
+    }
+    /* Eskaeren inguruko informazioa erakusten du. */
+    public static void salmentaGuztiakErakutsi() {
+        System.out.println("SALMENTAK: ");
+        System.out.println("\tSalmenta zenb\tData\tKopurua");
+        for (int i = 0; i < salmentaGuzt.size(); i++) {
+            salmentaGuzt.get(i).printSalmenta();
+        }
+    }}

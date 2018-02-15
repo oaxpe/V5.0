@@ -19,6 +19,7 @@ import java.util.Date;
  * @version 2.0
  */
 public class Eskaera {
+    private static int eskZenb=0; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
     private String hornitzailea;
     private Date data;
     private int kopurua;
@@ -28,13 +29,19 @@ public class Eskaera {
         setHornitzailea();
         setData();
         setKopurua();
+        this.eskZenb+=1;
     }
     
     /* METODOAK */
     public void printDatuak() {
+        System.out.println("Eskaera zenbakia: "+eskZenb);
         System.out.println("Hornitzailea: "+hornitzailea);
         System.out.println("Data: "+data);
         System.out.println("Kopurua: "+kopurua);
+    }
+
+    public void printEskaera() {
+        System.out.println("\t"+eskZenb+"\t\t"+hornitzailea+"\t"+kopurua+"\t"+data);
     }
     
     
@@ -87,5 +94,13 @@ public class Eskaera {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
     }
-    
+
+    public int getEskZenb() {
+        return eskZenb;
+    }
+
+    public void setEskZenb() {
+        this.eskZenb += 1;
+    }
+
 }
