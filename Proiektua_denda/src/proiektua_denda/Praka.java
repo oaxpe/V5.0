@@ -78,13 +78,14 @@ public class Praka extends Produktua {
                 System.out.print("Sartu taila (38,40,42,44,46): ");
                 this.taila = Integer.parseInt(br.readLine());
                 if (!Metodoak.tailaKontrolatu(taila))
-//                if (taila!=38 && taila != 40 && taila != 42 && taila != 44 && taila != 46)
                     System.out.println("\tGaizki sartu duzu taila. Saiatu berriz.");
             } while (!Metodoak.tailaKontrolatu(taila));
-//            } while (taila!=38 && taila != 40 && taila != 42 && taila != 44 && taila != 46);
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
+        }
+        catch (NumberFormatException datuOkerrak) {
+            System.out.println("Zenbaki bat sartu behar zenuen.");
         }
     }
 
