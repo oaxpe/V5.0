@@ -23,9 +23,15 @@ public class SalmentaKudeatu {
     }
     /* Eskaeren inguruko informazioa erakusten du. */
     public static void salmentaGuztiakErakutsi() {
-        System.out.println("SALMENTAK: ");
-        System.out.println("\tSalmenta zenb\tData\tKopurua");
-        for (int i = 0; i < salmentaGuzt.size(); i++) {
-            salmentaGuzt.get(i).printSalmenta();
+        if (salmentaGuzt.isEmpty()) {
+            System.out.println("Ez dago salmentarik erregistratuta.");
         }
-    }}
+        else {
+            System.out.println("SALMENTAK: ");
+            System.out.println("\tSalmenta zenb\tData\tKopurua");
+            for (int i = 0; i < salmentaGuzt.size(); i++) {
+                salmentaGuzt.get(i).printSalmenta();
+            }
+        }   
+    }
+}

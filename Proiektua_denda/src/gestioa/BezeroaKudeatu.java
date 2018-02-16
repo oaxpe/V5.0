@@ -39,15 +39,22 @@ public class BezeroaKudeatu {
             }  
         }
         setNanBezero.remove(nan); // ezabatu behar den bezeroaren NAN zenbakia ezabatu
+        System.out.println(nan+" zenbakidun bezeroa ezabatu da.");
     }
     
     /* Bezeroen inguruko informazioa erakusten du. */
     public static void bezeroGuztiakErakutsi() {
-        System.out.println("BEZEROAK: ");
-        System.out.println("\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa");
-        for (int i = 0; i < bezeroGuzt.size(); i++) {
-            bezeroGuzt.get(i).printPerts();
+        if (bezeroGuzt.isEmpty()) {
+            System.out.println("Ez dago bezerorik erregistratuta.");
         }
+        else {
+            System.out.println("BEZEROAK: ");
+            System.out.println("\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa");
+            for (int i = 0; i < bezeroGuzt.size(); i++) {
+                bezeroGuzt.get(i).printPerts();
+            }
+        }
+            
     }
     
     /* Bezeroaren datuak aldatu (erabiltzaileak bere dni-a sartu beharko du) */

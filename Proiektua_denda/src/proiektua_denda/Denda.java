@@ -25,11 +25,11 @@ public class Denda {
     
     /* ERAIKITZAILEAK */
     public Denda () {
-        izena="";
+        izena="Denda";
         helbidea="San Juan kalea, 3";
         herria="Eibar";
         kodPostala="20600";
-        email="";
+        email="denda@gmai.com";
         telefonoa="943201258";
     }
     

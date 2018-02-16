@@ -34,13 +34,19 @@ public class LangileaKudeatu {
                 iter.remove();
             }  
         }
+        System.out.println(nan+" zenbakidun langilea ezabatu da.");
     }
     /* Langileen inguruko informazioa erakusten du. */
     public static void langileGuztiakErakutsi() {
-        System.out.println("LANGILEAK: ");
-        System.out.println("\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa\tLan-eremua");
-        for (int i = 0; i < langGuzt.size(); i++) {
-            langGuzt.get(i).printPerts();
+        if (langGuzt.isEmpty()) {
+            System.out.println("\tEz dago langilerik erregistratuta.");
+        }
+        else {
+            System.out.println("LANGILEAK: ");
+            System.out.println("\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa\tLan-eremua");
+            for (int i = 0; i < langGuzt.size(); i++) {
+                langGuzt.get(i).printPerts();
+            }
         }
     }
     

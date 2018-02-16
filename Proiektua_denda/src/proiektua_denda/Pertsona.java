@@ -71,7 +71,7 @@ public abstract class Pertsona {
     }
     
     public void printPerts() {
-        System.out.println("\t"+izena.concat(" ").concat(abizena1).concat(" ").concat(abizena2)+"\t"+nan+"\t"+sexua+"\t"+herria+"\t"+telefonoa);
+        System.out.print("\t"+izena.concat(" ").concat(abizena1).concat(" ").concat(abizena2)+"\t"+nan+"\t"+sexua+"\t"+herria+"\t"+telefonoa);
     }
 
     
@@ -141,7 +141,7 @@ public abstract class Pertsona {
     public void setJaiotzeData() {
         try {
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            System.out.println("Sartu jaiotze data (ee/hh/uuuu): ");
+            System.out.print("Sartu jaiotze data (ee/hh/uuuu): ");
             Date fetx = df.parse(br.readLine());
             jaiotzeData=fetx;
         }
@@ -198,5 +198,4 @@ public abstract class Pertsona {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
     }
-
 }

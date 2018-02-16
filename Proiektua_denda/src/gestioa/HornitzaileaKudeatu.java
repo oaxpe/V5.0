@@ -34,14 +34,20 @@ public class HornitzaileaKudeatu {
                 iter.remove(); // ezabatu
             }  
         }
+        System.out.println("Hornitzailea ondo ezabatu da.");
     }
     
     /* Hornitzaileen inguruko informazioa erakusten du. */
     public static void hornitzaileGuztiakErakutsi() {
-        System.out.println("HORNITZAILEAK: ");
-        System.out.println("\tKodea\tIzena\tHerria\tTelefonoa\tEmail-a");
-        for (int i = 0; i < hornitzaileGuzt.size(); i++) {
-            hornitzaileGuzt.get(i).printHorn();
+        if (hornitzaileGuzt.isEmpty()) {
+            System.out.println("Ez dago hornitzailerik erregistratuta.");
         }
+        else {
+            System.out.println("HORNITZAILEAK: ");
+            System.out.println("\tKodea\tIzena\tHerria\tTelefonoa\tEmail-a");
+            for (int i = 0; i < hornitzaileGuzt.size(); i++) {
+                hornitzaileGuzt.get(i).printHorn();
+            }
+        }         
     }
 }

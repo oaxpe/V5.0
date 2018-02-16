@@ -25,11 +25,17 @@ public class EskaeraKudeatu {
     
     /* Eskaeren inguruko informazioa erakusten du. */
     public static void eskaeraGuztiakErakutsi() {
-        System.out.println("ESKAERAK: ");
-        System.out.println("\tEskaera zenb\tHornitzailea\tKopurua\tData");
-        for (int i = 0; i < eskaeraGuzt.size(); i++) {
-            eskaeraGuzt.get(i).printEskaera();
+        if (eskaeraGuzt.isEmpty()) {
+            System.out.println("Ez dago eskaerarik erregistratuta.");
         }
+        else {
+            System.out.println("ESKAERAK: ");
+            System.out.println("\tEskaera zenb\tHornitzailea\tKopurua\tData");
+            for (int i = 0; i < eskaeraGuzt.size(); i++) {
+                eskaeraGuzt.get(i).printEskaera();
+            }
+        }
+            
     }
     
 }

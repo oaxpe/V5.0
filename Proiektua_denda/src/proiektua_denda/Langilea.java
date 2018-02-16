@@ -54,7 +54,7 @@ public class Langilea extends Pertsona {
     @Override
     public void printPerts() {
         super.printPerts();
-        System.out.println("Eremua: "+eremua);
+        System.out.print("\t"+eremua);
     }
     
     /* GETTER and SETTER */
