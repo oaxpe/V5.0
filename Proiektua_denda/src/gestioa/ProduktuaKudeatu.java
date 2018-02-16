@@ -35,4 +35,13 @@ public class ProduktuaKudeatu {
         PrakaKudeatu.prakaEskatzeko();
     }
     
+    public static void prodErakutsi() {
+        System.out.println(""
+                + "------------------------------------------\n"
+                + "|        Dendako produktu guztiak        |\n"
+                + "------------------------------------------\n");
+        KamisetaKudeatu.kamisetaGutztErakutsi();
+        JertseaKudeatu.jertsGuztErakutsi();
+        PrakaKudeatu.prakaGutztErakutsi();
+    }
 }

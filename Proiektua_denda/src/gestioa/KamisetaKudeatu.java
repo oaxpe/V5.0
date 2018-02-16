@@ -23,7 +23,7 @@ public class KamisetaKudeatu {
         Kamiseta kami1 = new Kamiseta();
         alKami.add(kami1);
         System.out.println("Datu hauek dituen produktua gorde da."
-                + "Produktua: KAMISETA");
+                + "\nProduktua: KAMISETA");
         kami1.printDatuak();   
     }
     
@@ -36,15 +36,22 @@ public class KamisetaKudeatu {
                 iter.remove();
             }  
         }
+        System.out.println(kodea+" erreferentziadun jertsea ondo ezabatu da.");
     }
 
     /* ArrayList-eko Kamiseta guztien datuak erakusteko metodoa */
     public static void kamisetaGutztErakutsi() {
         System.out.println("KAMISETAK:");
-        System.out.println("\tKodea\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia");
-        for (int i = 0; i < alKami.size(); i++) {
-            alKami.get(i).printProd();
+        if (alKami.isEmpty()) {
+            System.out.println("\tEz dago kamisetarik erregistratuta.");
         }
+        else {
+            System.out.println("\tKodea\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia");
+            for (int i = 0; i < alKami.size(); i++) {
+                alKami.get(i).printProd();
+            }
+        }
+        System.out.println();
     }
     
     /* Kamiseta baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */
@@ -64,10 +71,15 @@ public class KamisetaKudeatu {
     /* Dauden kamiseta guztiak erakusteko metodoa */
     public static void kamisetaInbentarioa() {
         System.out.println("KAMISETAK:");
-        System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
-        for (int i = 0; i < alKami.size(); i++) {
-                alKami.get(i).prodInbentarioa();
-        }    
+        if (alKami.isEmpty()) {
+            System.out.println("\tEz dago kamisetarik.");
+        }
+        else {
+            System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
+            for (int i = 0; i < alKami.size(); i++) {
+                    alKami.get(i).prodInbentarioa();
+            }   
+        } 
     }
     
     /* kantitatea 5 baino gutxiago duten kamisetak erakusten ditu */

@@ -21,9 +21,11 @@ public class JertseaKudeatu {
     public static void jertsGehitu() {
         System.out.println("Jertse berriaren datuak sartu behar dituzu.");
         Jertsea jerts1 = new Jertsea();
-        System.out.println("Produktua: JERTSEA");
-        jerts1.printDatuak();               
         alJerts.add(jerts1); // arraylist-ean gehitu
+        System.out.println("Datu hauek dituen produktua gorde da."
+                + "\nProduktua: JERTSEA");
+        jerts1.printDatuak();               
+        
     }
     
     /* Jertse zehatz baten datu guztiak ezabatu */    
@@ -35,15 +37,22 @@ public class JertseaKudeatu {
                 iter.remove(); // ezabatu
             }  
         }
+        System.out.println(kodea+" erreferentziadun jertsea ondo ezabatu da.");
     }
     
     /* ArrayList-eko Jertse guztien datuak erakusteko metodoa */
     public static void jertsGuztErakutsi() {
-        System.out.println("\nJERTSEAK:");
-        System.out.println("\tKodea\t\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia");
-        for (int i = 0; i < alJerts.size(); i++) {
-            alJerts.get(i).printProd();
+        System.out.println("JERTSEAK:");
+        if (alJerts.isEmpty()) {
+            System.out.println("\tEz dago jertserik erregistratuta.");
         }
+        else {
+            System.out.println("\tKodea\t\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia");
+            for (int i = 0; i < alJerts.size(); i++) {
+                alJerts.get(i).printProd();
+            }
+        }
+        System.out.println();
     }
     
     /* Jertse baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */
@@ -63,10 +72,15 @@ public class JertseaKudeatu {
     /* Dauden jertse guztiak erakusteko metodoa */
     public static void jertseaInbentarioa() {
         System.out.println("\nJERTSEAK:");
-        System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
-        for (int i = 0; i < alJerts.size(); i++) {
-            alJerts.get(i).prodInbentarioa();
+        if (alJerts.isEmpty()) {
+            System.out.println("\tEz dago jertserik.");
         }
+        else {
+            System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
+            for (int i = 0; i < alJerts.size(); i++) {
+                alJerts.get(i).prodInbentarioa();
+            }
+        }    
     }
     
     /* kantitatea 5 baino gutxiago duten jertseak erakusten ditu */

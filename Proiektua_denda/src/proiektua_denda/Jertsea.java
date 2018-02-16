@@ -67,6 +67,9 @@ public class Jertsea extends Produktua {
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
+        catch (NumberFormatException datuOkerrak) {
+            System.out.println("Zenbaki dezimala bat sartu behar zenuen.");
+        }
     }
     
 }

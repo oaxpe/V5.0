@@ -20,10 +20,11 @@ public class PrakaKudeatu {
     /* Praka berri bat gehitu */
     public static void prakaGehitu() {
         System.out.println("Praka berriaren datuak sartu behar dituzu.");
-        Praka prak1 = new Praka();
-        System.out.println("Produktua: PRAKA");
-        prak1.printDatuak();               
+        Praka prak1 = new Praka();        
         alPrak.add(prak1);
+        System.out.println("Datu hauek dituen produktua gorde da."
+                + "\nProduktua: PRAKA");
+        prak1.printDatuak();
     }
     
     /* Praka zehatz baten datu guztiak ezabatu */    
@@ -35,15 +36,22 @@ public class PrakaKudeatu {
                 iter.remove();
             }  
         }
+        System.out.println(kodea+" erreferentziadun praka ondo ezabatu da.");
     }
     
     /* ArrayList-eko Praka guztien datuak erakusteko metodoa, dendan dagoen jakiteko. */
-    public static void prakaGutztErakutsi() {    
-        System.out.println("\nPRAKAK:");
-        System.out.println("\tKodea\t\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia\tLuzeera\tMota");
-        for (int i = 0; i < alPrak.size(); i++) {
-                alPrak.get(i).printProd();
+    public static void prakaGutztErakutsi() {
+        System.out.println("PRAKAK:");
+        if (alPrak.isEmpty()) {
+            System.out.println("\tEz dago prakarik erregistratuta.");
         }
+        else {
+            System.out.println("\tKodea\t\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia\tLuzeera\tMota");
+            for (int i = 0; i < alPrak.size(); i++) {
+                    alPrak.get(i).printProd();
+            }
+        }
+        System.out.println();
     }
     
     /* Praka baten kodea, ArrayList-ean dagoen kontsultatu */
@@ -63,9 +71,14 @@ public class PrakaKudeatu {
     /* Dauden praka guztiak erakusteko metodoa */
     public static void prakaInbentarioa() {
         System.out.println("\nPRAKAK:");
-        System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
-        for (int i = 0; i < alPrak.size(); i++) {
-            alPrak.get(i).prodInbentarioa();
+        if (alPrak.isEmpty()) {
+            System.out.println("\tEz dago prakarik.");
+        }
+        else {
+            System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
+            for (int i = 0; i < alPrak.size(); i++) {
+                alPrak.get(i).prodInbentarioa();
+            }
         }
     }
     
@@ -106,6 +119,4 @@ public class PrakaKudeatu {
         if (!bool)
             System.out.println("\tProduktu hori ez dago dendan.");  
     }
-    
-    
 }

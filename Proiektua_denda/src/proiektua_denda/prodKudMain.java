@@ -136,8 +136,8 @@ public class prodKudMain {
                         {
                             try {
                                 System.out.print("Sartu ezabatzea nahi duzun kamisetaren kodea: ");
-                            String kodea = br.readLine();
-                            PrakaKudeatu.prakaEzabatu(kodea);   
+                                String kodea = br.readLine();
+                                PrakaKudeatu.prakaEzabatu(kodea);   
                             }
                             catch (IOException gaizki) {
                                 System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -151,10 +151,7 @@ public class prodKudMain {
                     
                 // 3.- Produktuak kontsultatu.
                 case 3:
-                    System.out.print("Produktu guztiak ikusi behar dituzu.\n\n");
-                    KamisetaKudeatu.kamisetaGutztErakutsi();
-                    JertseaKudeatu.jertsGuztErakutsi();
-                    PrakaKudeatu.prakaGutztErakutsi();
+                    ProduktuaKudeatu.prodErakutsi();
                     pausa();
                     break;
                     
@@ -313,7 +310,7 @@ public class prodKudMain {
                                 String kodea = br.readLine();
                                 int taila;
                                 do {
-                                    System.out.print("Sartu taila (XS,S,M,L,XL,XXL): ");
+                                    System.out.print("Sartu taila (38,40,42,44,46): ");
                                     taila = Integer.parseInt(br.readLine());
                                     if (!Metodoak.tailaKontrolatu(taila))
                                         System.out.println("\tGaizki sartu duzu taila. Saiatu berriz.");
