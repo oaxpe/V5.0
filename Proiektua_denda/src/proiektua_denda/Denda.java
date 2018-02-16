@@ -25,12 +25,12 @@ public class Denda {
     
     /* ERAIKITZAILEAK */
     public Denda () {
-        izena="Denda";
-        helbidea="San Juan kalea, 3";
-        herria="Eibar";
-        kodPostala="20600";
-        email="denda@gmai.com";
-        telefonoa="943201258";
+        this.izena="Denda";
+        this.helbidea="San Juan kalea, 3";
+        this.herria="Eibar";
+        this.kodPostala="20600";
+        this.email="denda@gmai.com";
+        this.telefonoa="943201258";
     }
     
     public Denda (String izena, String helbidea, String herria, String kodPostala, String email, String tlf) {
@@ -45,12 +45,12 @@ public class Denda {
     /* METODOAK */
     public void printDatuak() {
         System.out.println("DENDAREN DATUAK:");
-        System.out.println("\tIzena: "+izena);
-        System.out.println("\tHelbidea: "+helbidea);
-        System.out.println("\tHerria: "+herria);
-        System.out.println("\tPosta kodea: "+kodPostala);
-        System.out.println("\tEmail-a: "+email);
-        System.out.println("\tTelefonoa: "+telefonoa);
+        System.out.println("\tIzena: "+this.izena);
+        System.out.println("\tHelbidea: "+this.helbidea);
+        System.out.println("\tHerria: "+this.herria);
+        System.out.println("\tPosta kodea: "+this.kodPostala);
+        System.out.println("\tEmail-a: "+this.email);
+        System.out.println("\tTelefonoa: "+this.telefonoa);
     }
      
     /* GETTER and SETTER */
@@ -59,10 +59,10 @@ public class Denda {
         return izena;
     }
 
-    public void setIzena() throws IOException {
+    public void setIzena() {
         try {
             System.out.print("Sartu izena: ");
-            izena=br.readLine();
+            this.izena=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -75,8 +75,8 @@ public class Denda {
 
     public void setHelbidea() {
         try {
-                System.out.print("Sartu helbidea: ");
-            helbidea=br.readLine();
+            System.out.print("Sartu helbidea: ");
+            this.helbidea=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -90,7 +90,7 @@ public class Denda {
     public void setHerria() {
         try {
             System.out.print("Sartu herria: ");
-            herria=br.readLine();
+            this.herria=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -104,7 +104,7 @@ public class Denda {
     public void setKodPostala() {
         try {
             System.out.print("Sartu posta kodea: ");
-            kodPostala=br.readLine();
+            this.kodPostala=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -118,7 +118,7 @@ public class Denda {
     public void setEmail() {
         try {
             System.out.print("Sartu email-a: ");
-            email=br.readLine();
+            this.email=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -132,7 +132,7 @@ public class Denda {
     public void setTelefonoa() {
         try {
             System.out.print("Sartu telefono zenbakia: ");
-            telefonoa=br.readLine();
+            this.telefonoa=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

@@ -32,11 +32,11 @@ public class Salmenta {
     
     /* METODOAK */
     public void printDatuak() {
-        System.out.println("Data: "+data);
-        System.out.println("Kopurua: "+kopurua);
+        System.out.println("Data: "+this.data);
+        System.out.println("Kopurua: "+this.kopurua);
     }
     public void printSalmenta() {
-        System.out.println("\t"+salmZenb+"\t\t"+data+"\t"+kopurua);
+        System.out.println("\t"+this.salmZenb+"\t\t"+this.data+"\t"+this.kopurua);
     }
     
     /* GETTER and SETTER */
@@ -72,6 +72,9 @@ public class Salmenta {
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
+        }
+        catch (NumberFormatException datuOkerrak) {
+            System.out.println("Zenbaki bat sartu behar zenuen.");
         }
     }
 }

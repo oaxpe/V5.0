@@ -49,7 +49,7 @@ public class Hornitzailea {
     }
     
     public void printHorn() {
-        System.out.println("\t"+kodHor+"\t"+izena+"\t"+herria+"\t"+telefonoa+"\t"+email);
+        System.out.println("\t"+this.kodHor+"\t"+this.izena+"\t"+this.herria+"\t"+this.telefonoa+"\t"+this.email);
     }
     
     
@@ -118,7 +118,7 @@ public class Hornitzailea {
 
     public void setEmail() {
         try {
-                System.out.print("Sartu email-a: ");
+            System.out.print("Sartu email-a: ");
             this.email = br.readLine();
         }
         catch (IOException gaizki) {

@@ -45,16 +45,16 @@ public class Langilea extends Pertsona {
     /* METODOAK */
     @Override
     public void printDatuak() {
-        System.out.println("Kodea: "+kodLan);
-        System.out.println("Lan eremua (saltzaile edo garbitzaile): "+eremua);
+        System.out.println("Kodea: "+this.kodLan);
+        System.out.println("Lan eremua (saltzaile edo garbitzaile): "+this.eremua);
         super.printDatuak();
-        System.out.println("Soldata: "+soldata+"€");
+        System.out.println("Soldata: "+this.soldata+"€");
     }  
     
     @Override
     public void printPerts() {
         super.printPerts();
-        System.out.print("\t"+eremua);
+        System.out.print("\t"+this.eremua);
     }
     
     /* GETTER and SETTER */
@@ -67,7 +67,7 @@ public class Langilea extends Pertsona {
     public void setSoldata() {
         try {
             System.out.print("Sartu soldata: ");
-            soldata=Double.parseDouble(br.readLine());
+            this.soldata=Double.parseDouble(br.readLine());
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -84,7 +84,7 @@ public class Langilea extends Pertsona {
     public void setKodLan() {
         try {
             System.out.print("Sartu langilearen kodea (XXX0000000): ");
-            kodLan=br.readLine();
+            this.kodLan=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

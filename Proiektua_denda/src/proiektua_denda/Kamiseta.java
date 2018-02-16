@@ -38,20 +38,20 @@ public class Kamiseta extends Produktua {
     @Override
     public void printDatuak() {
         super.printDatuak();
-        System.out.println("Taila: "+taila);
-        System.out.println("Sasoia: "+sasoia);
+        System.out.println("Taila: "+this.taila);
+        System.out.println("Sasoia: "+this.sasoia);
     }
     
     @Override
     public void printProd() {
         super.printProd();
-        System.out.println(taila+"\t"+sasoia);
+        System.out.println(this.taila+"\t"+this.sasoia);
     }
     
     @Override
     public void prodKontsultatu() {
         super.prodKontsultatu();    
-        System.out.println("\t"+taila+"\t"+getKantStock());
+        System.out.println("\t"+this.taila+"\t"+getKantStock());
     }
     
     
@@ -87,5 +87,4 @@ public class Kamiseta extends Produktua {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
     }
-    
 }

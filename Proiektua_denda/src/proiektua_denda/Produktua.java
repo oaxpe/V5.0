@@ -56,27 +56,27 @@ public abstract class Produktua {
     
     /* METODOAK */
     public void printDatuak() {
-        System.out.println("Kodea: "+kodPro);
-        System.out.println("Marka: "+marka);
-        System.out.println("Prezioa : "+prezioa+"€");
-        System.out.println("Kolorea: "+kolorea);
-        System.out.println("Sexua: "+sexua);
-        System.out.println("Stock-ean: "+kantStock);
+        System.out.println("Kodea: "+this.kodPro);
+        System.out.println("Marka: "+this.marka);
+        System.out.println("Prezioa : "+this.prezioa+"€");
+        System.out.println("Kolorea: "+this.kolorea);
+        System.out.println("Sexua: "+this.sexua);
+        System.out.println("Stock-ean: "+this.kantStock);
         if (deskontua>0) {
-            System.out.println("Deskontua: %"+deskontua);
+            System.out.println("Deskontua: %"+this.deskontua);
         }
     }
     
     public void printProd() {
-        System.out.print("\t"+kodPro+"\t"+marka+"\t"+kolorea+"\t"+sexua+"\t"+prezioa+"\t");
+        System.out.print("\t"+this.kodPro+"\t"+this.marka+"\t"+this.kolorea+"\t"+this.sexua+"\t"+this.prezioa+"\t");
     }
     
     public void prodKontsultatu() {
-        System.out.print(kodPro+"\t"+kolorea);
+        System.out.print(this.kodPro+"\t"+this.kolorea);
     }
     
     public void prodInbentarioa() {
-        System.out.println("\t"+kodPro+"\t"+marka+"\t"+sexua+"\t"+kantStock);
+        System.out.println("\t"+this.kodPro+"\t"+this.marka+"\t"+this.sexua+"\t"+this.kantStock);
     }
    
 
@@ -89,7 +89,7 @@ public abstract class Produktua {
 
     public void setKodPro() {
         try {
-                System.out.print("Sartu produktuaren kodea (erreferentzia): ");
+            System.out.print("Sartu produktuaren kodea (erreferentzia): ");
             this.kodPro=br.readLine();
         }
         catch (IOException gaizki) {
@@ -150,7 +150,7 @@ public abstract class Produktua {
         try {
             do {
                 System.out.print("Emakumea edo gizona?: ");
-                sexua=br.readLine(); // array-ean minuskulaz daudelako
+                this.sexua=br.readLine(); // array-ean minuskulaz daudelako
                 if (!Metodoak.sexuaKontrolatu(sexua))
                     System.out.println("\tGaizki idatzi duzu. Saiatu berriz.");
             } while (!Metodoak.sexuaKontrolatu(sexua));
@@ -211,13 +211,4 @@ public abstract class Produktua {
     public void setDeskontua(int deskontua) {
         this.deskontua = deskontua;
     }
-    
-    public int getTailaInt() {
-        return tailaInt;
-    }
-
-    public String getTailaString() {
-        return tailaString;
-    }
-
 }

@@ -48,22 +48,22 @@ public class Praka extends Produktua {
     public void printDatuak() {
         super.printDatuak();
         System.out.println(""
-                + "Taila: "+taila
-                + "\nLuzeera: "+luzeera
-                + "\nMota: "+mota);
+                + "Taila: "+this.taila
+                + "\nLuzeera: "+this.luzeera
+                + "\nMota: "+this.mota);
 //        System.out.println("Sasoia: "+sasoia);
     }
     
     @Override
     public void printProd() {
         super.printProd();
-        System.out.println(taila+"\t"+luzeera+"\t"+mota);
+        System.out.println(this.taila+"\t"+this.luzeera+"\t"+this.mota);
     }
     
     @Override
     public void prodKontsultatu() {
         super.prodKontsultatu();    
-        System.out.println("\t"+taila+"\t"+getKantStock());
+        System.out.println("\t"+this.taila+"\t"+getKantStock());
     }
     
     
@@ -109,8 +109,11 @@ public class Praka extends Produktua {
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
+        catch (NumberFormatException datuOkerrak) {
+            System.out.println("Zenbaki bat sartu behar zenuen.");
+        }
     }
-
+    
     public String getMota() {
         return mota;
     }
@@ -123,6 +126,5 @@ public class Praka extends Produktua {
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
-    }
-    
+    }  
 }

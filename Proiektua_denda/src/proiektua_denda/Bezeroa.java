@@ -30,7 +30,7 @@ public class Bezeroa extends Pertsona {
     /* METODOAK */
     @Override
     public void printDatuak() {
-        System.out.println("Kodea: "+kodBez);
+        System.out.println("Kodea: "+this.kodBez);
         super.printDatuak();
     }
     
@@ -48,7 +48,7 @@ public class Bezeroa extends Pertsona {
     public void setKodBez() {
         try {
             System.out.print("Sartu bezeroaren kodea (XXX0000000): ");
-            kodBez=br.readLine();
+            this.kodBez=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

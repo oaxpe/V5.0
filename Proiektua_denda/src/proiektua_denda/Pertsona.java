@@ -57,21 +57,21 @@ public abstract class Pertsona {
 //        this.jaiotzeData=jaiotzeData;
         this.sexua=sexua;
         this.herria=herria;
-        telefonoa=tlf;
+        this.telefonoa=tlf;
     }
     
     /* METODOAK */
     public void printDatuak() {
-        System.out.println("Izen abizenak: "+izena+" "+abizena1+" "+abizena2);
-        System.out.println("NAN: "+nan);
-        System.out.println("Jaiotze data: "+jaiotzeData);
-        System.out.println("Sexua: "+sexua);
-        System.out.println("Herria: "+herria);
-        System.out.println("Tlf: "+telefonoa);
+        System.out.println("Izen abizenak: "+this.izena+" "+this.abizena1+" "+this.abizena2);
+        System.out.println("NAN: "+this.nan);
+        System.out.println("Jaiotze data: "+this.jaiotzeData);
+        System.out.println("Sexua: "+this.sexua);
+        System.out.println("Herria: "+this.herria);
+        System.out.println("Tlf: "+this.telefonoa);
     }
     
     public void printPerts() {
-        System.out.print("\t"+izena.concat(" ").concat(abizena1).concat(" ").concat(abizena2)+"\t"+nan+"\t"+sexua+"\t"+herria+"\t"+telefonoa);
+        System.out.print("\t"+this.izena.concat(" ").concat(this.abizena1).concat(" ").concat(this.abizena2)+"\t"+this.nan+"\t"+this.sexua+"\t"+this.herria+"\t"+this.telefonoa);
     }
 
     
@@ -85,7 +85,7 @@ public abstract class Pertsona {
     public void setIzena() {
         try {
             System.out.print("Sartu izena: ");
-            izena=br.readLine();
+            this.izena=br.readLine();
         }
         catch (IOException gaizki) {
             
@@ -99,7 +99,7 @@ public abstract class Pertsona {
     public void setAbizena1() {
         try {
             System.out.print("Sartu lehenengo abizena: ");
-            abizena1=br.readLine();
+            this.abizena1=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -113,7 +113,7 @@ public abstract class Pertsona {
     public void setAbizena2() {
         try {
             System.out.print("Sartu bigarren abizena: ");
-            abizena2=br.readLine();
+            this.abizena2=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -127,7 +127,7 @@ public abstract class Pertsona {
     public void setNan() {
         try {
             System.out.print("Sartu NAN zenbakia: ");
-            nan=br.readLine().toUpperCase();
+            this.nan=br.readLine().toUpperCase();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -143,7 +143,7 @@ public abstract class Pertsona {
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             System.out.print("Sartu jaiotze data (ee/hh/uuuu): ");
             Date fetx = df.parse(br.readLine());
-            jaiotzeData=fetx;
+            this.jaiotzeData=fetx;
         }
         catch (ParseException gaizki) {
             System.out.println("Ez da kapaza sartutako datuak parseatzeko.");
@@ -161,7 +161,7 @@ public abstract class Pertsona {
         try {
             do {
                 System.out.print("Emakumea edo gizona?: ");
-                sexua=br.readLine(); // array-ean minuskulaz daudelako
+                this.sexua=br.readLine(); // array-ean minuskulaz daudelako
                 if (!Metodoak.sexuaKontrolatu(sexua))
                     System.out.println("\tGaizki idatzi duzu. Saiatu berriz.");
             } while (!Metodoak.sexuaKontrolatu(sexua));
@@ -178,7 +178,7 @@ public abstract class Pertsona {
     public void setHerria() {
         try {
             System.out.print("Sartu herria: ");
-            herria=br.readLine();
+            this.herria=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -192,7 +192,7 @@ public abstract class Pertsona {
     public void setTelefonoa() {
         try {
             System.out.print("Sartu telefono zenbakia: ");
-            telefonoa=br.readLine();
+            this.telefonoa=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

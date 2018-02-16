@@ -34,20 +34,20 @@ public class Jertsea extends Produktua {
     @Override
     public void printDatuak() {
         super.printDatuak();
-        System.out.println("Taila: "+taila);
+        System.out.println("Taila: "+this.taila);
         System.out.println();
     }
     
     @Override
     public void printProd() {
         super.printProd();
-        System.out.println(taila);
+        System.out.println(this.taila);
     }
     
     @Override
     public void prodKontsultatu() {
         super.prodKontsultatu();    
-        System.out.println("\t"+taila+"\t"+getKantStock());
+        System.out.println("\t"+this.taila+"\t"+getKantStock());
     }
     
     /* GETTER and SETTER */

@@ -34,14 +34,14 @@ public class Eskaera {
     
     /* METODOAK */
     public void printDatuak() {
-        System.out.println("Eskaera zenbakia: "+eskZenb);
-        System.out.println("Hornitzailea: "+hornitzailea);
-        System.out.println("Data: "+data);
-        System.out.println("Kopurua: "+kopurua);
+        System.out.println("Eskaera zenbakia: "+this.eskZenb);
+        System.out.println("Hornitzailea: "+this.hornitzailea);
+        System.out.println("Data: "+this.data);
+        System.out.println("Kopurua: "+this.kopurua);
     }
 
     public void printEskaera() {
-        System.out.println("\t"+eskZenb+"\t\t"+hornitzailea+"\t"+kopurua+"\t"+data);
+        System.out.println("\t"+this.eskZenb+"\t\t"+this.hornitzailea+"\t"+this.kopurua+"\t"+this.data);
     }
     
     
