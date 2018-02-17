@@ -6,6 +6,8 @@
 package gestioa;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -41,4 +43,18 @@ public class Metodoak {
         return aurkituta;
     }
 
+    public static boolean emailBalidazioa(String mail) {
+         // Email-a balidatzeko expresio erregularra
+        Pattern p = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*"
+                + "@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+
+        Matcher balidazioa = p.matcher(mail);
+        if (!balidazioa.find()) {// email-ak expresio erregularra betetzen duen konprobatzen du
+            System.out.println("\tSartutako email-a ez da egokia. Saiatu berriz.");
+            return false;
+        }
+        return true;
+
+    }
 }

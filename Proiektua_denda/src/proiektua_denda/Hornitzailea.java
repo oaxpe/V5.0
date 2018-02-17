@@ -5,6 +5,7 @@
  */
 package proiektua_denda;
 
+import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -118,11 +119,13 @@ public class Hornitzailea {
 
     public void setEmail() {
         try {
-            System.out.print("Sartu email-a: ");
-            this.email = br.readLine();
+            do {
+                System.out.print("Sartu email-a: ");
+                this.email=br.readLine().toLowerCase();
+            } while (!Metodoak.emailBalidazioa(email));
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
-        }
+        }    
     }
 }
