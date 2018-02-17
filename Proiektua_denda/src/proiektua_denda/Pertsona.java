@@ -126,8 +126,10 @@ public abstract class Pertsona {
 
     public void setNan() {
         try {
-            System.out.print("Sartu NAN zenbakia: ");
-            this.nan=br.readLine().toUpperCase();
+            do {
+                System.out.print("Sartu NAN zenbakia: ");
+                this.nan=br.readLine().toUpperCase();
+            } while (!Metodoak.nanBalidazioa(nan));                
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

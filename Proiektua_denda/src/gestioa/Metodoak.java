@@ -63,4 +63,35 @@ public class Metodoak {
         }
         return true;
     }
+    
+    public static boolean nanBalidazioa(String nan) {
+        if (nan.length() != 9) {
+            System.out.println("\tSartutako nan zenbakia ez da egokia.");
+            return false;
+        }
+        else {
+            String letra = nan.substring(8).toUpperCase(); // azkena hartzeko            
+            String zenb = "";
+            char[] nanLetrak = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',  'X',  'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+                    
+            // Compruebo que lo 8 primeros digitos sean numeros
+            for (int i=0; i<(nan.length()-1); i++) {   
+                if(!Character.isDigit(nan.charAt(i))){ // karaktereak banaka begiratu digitoak diren edo ez
+                    break;   
+                }
+                // si es numero, lo recojo en un String
+                zenb += nan.charAt(i); // digitoak direnak, zenb aldagaian gordetzen dira
+            }
+            
+            int zenbInt = Integer.parseInt(zenb); //String-a int bihurtu (zenbakiekin eragiketak egiteko)
+//            System.out.println(zenbInt+letra);
+            int hondarra = zenbInt%23; // zatiketaren hondarra kalkulatu
+//            System.out.println(hondarra);
+            if ((Character.toUpperCase(nan.charAt(8)))!=nanLetrak[hondarra]) {
+                System.out.println("Sartutako nan zenbakia ez da egokia.");
+                return false;
+            }
+            return true;
+        }
+    }
 }

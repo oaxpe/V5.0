@@ -5,6 +5,7 @@
  */
 package proiektua_denda;
 
+import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
