@@ -77,8 +77,6 @@ public class Praka extends Produktua {
             do {
                 System.out.print("Sartu taila (38,40,42,44,46): ");
                 this.taila = Integer.parseInt(br.readLine());
-                if (!Metodoak.tailaKontrolatu(taila))
-                    System.out.println("\tGaizki sartu duzu taila. Saiatu berriz.");
             } while (!Metodoak.tailaKontrolatu(taila));
         }
         catch (IOException gaizki) {

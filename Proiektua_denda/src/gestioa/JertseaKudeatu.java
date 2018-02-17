@@ -22,6 +22,7 @@ public class JertseaKudeatu {
         System.out.println("Jertse berriaren datuak sartu behar dituzu.");
         Jertsea jerts1 = new Jertsea();
         alJerts.add(jerts1); // arraylist-ean gehitu
+        System.out.println();
         System.out.println("Datu hauek dituen produktua gorde da."
                 + "\nProduktua: JERTSEA");
         jerts1.printDatuak();               

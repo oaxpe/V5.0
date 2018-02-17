@@ -162,8 +162,6 @@ public abstract class Pertsona {
             do {
                 System.out.print("Emakumea edo gizona?: ");
                 this.sexua=br.readLine(); // array-ean minuskulaz daudelako
-                if (!Metodoak.sexuaKontrolatu(sexua))
-                    System.out.println("\tGaizki idatzi duzu. Saiatu berriz.");
             } while (!Metodoak.sexuaKontrolatu(sexua));
         }
         catch (IOException gaizki) {

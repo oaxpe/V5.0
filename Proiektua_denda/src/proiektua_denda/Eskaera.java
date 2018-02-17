@@ -93,6 +93,9 @@ public class Eskaera {
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
+        catch (NumberFormatException datuOkerrak) {
+            System.out.println("Zenbaki bat sartu behar zenuen.");
+        }
     }
 
     public int getEskZenb() {
@@ -102,5 +105,4 @@ public class Eskaera {
     public void setEskZenb() {
         this.eskZenb += 1;
     }
-
 }

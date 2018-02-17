@@ -25,7 +25,7 @@ public class Proiektua_denda {
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
         int aukera = 0;
-
+        
         do {
             menuNagusia();
             try {

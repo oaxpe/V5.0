@@ -65,8 +65,6 @@ public class Kamiseta extends Produktua {
             do {
                 System.out.print("Sartu taila (XS,S,M,L,XL,XXL): ");
                 this.taila = br.readLine().toUpperCase();
-                if (!Metodoak.tailaKontrolatu(taila))
-                    System.out.println("\tGaizki sartu duzu taila. Saiatu berriz.");
             } while (!Metodoak.tailaKontrolatu(taila));
         }
         catch (IOException gaizki) {

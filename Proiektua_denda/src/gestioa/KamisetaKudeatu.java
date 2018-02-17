@@ -22,6 +22,7 @@ public class KamisetaKudeatu {
         System.out.println("Kamiseta berriaren datuak sartu behar dituzu.\n");
         Kamiseta kami1 = new Kamiseta();
         alKami.add(kami1);
+        System.out.println();
         System.out.println("Datu hauek dituen produktua gorde da."
                 + "\nProduktua: KAMISETA");
         kami1.printDatuak();   

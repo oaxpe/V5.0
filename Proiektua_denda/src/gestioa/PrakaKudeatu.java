@@ -22,6 +22,7 @@ public class PrakaKudeatu {
         System.out.println("Praka berriaren datuak sartu behar dituzu.");
         Praka prak1 = new Praka();        
         alPrak.add(prak1);
+        System.out.println();
         System.out.println("Datu hauek dituen produktua gorde da."
                 + "\nProduktua: PRAKA");
         prak1.printDatuak();
