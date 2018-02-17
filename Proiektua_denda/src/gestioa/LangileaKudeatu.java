@@ -27,6 +27,7 @@ public class LangileaKudeatu {
     
     /* Langile zehatz baten datu guztiak ezabatu */ 
     public static void langileaEzabatu(String nan) {
+        boolean ezabatuta = false;
         Iterator<Langilea> iter = langGuzt.iterator();
         while (iter.hasNext()) {
            Langilea lang = iter.next();
@@ -34,7 +35,10 @@ public class LangileaKudeatu {
                 iter.remove();
             }  
         }
-        System.out.println(nan+" zenbakidun langilea ezabatu da.");
+        if (ezabatuta)
+            System.out.println(nan+" zenbakidun bezeroa ezabatu da.");
+        else
+            System.out.println(nan+" zenbakia duen bezerorik ez dago erregistratuta.");
     }
     /* Langileen inguruko informazioa erakusten du. */
     public static void langileGuztiakErakutsi() {

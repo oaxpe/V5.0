@@ -32,14 +32,20 @@ public class BezeroaKudeatu {
     /* Bezero zehatz baten datu guztiak ezabatu */ 
     public static void bezeroaEzabatu(String nan) {
         Iterator<Bezeroa> iter = bezeroGuzt.iterator();
+        boolean ezabatuta = false;
         while (iter.hasNext()) {
             Bezeroa bez = iter.next();
             if (bez.getNan().equalsIgnoreCase(nan)) { // konparaketa
                 iter.remove(); // objektua ezabatu
+                ezabatuta = true;
             }  
         }
         setNanBezero.remove(nan); // ezabatu behar den bezeroaren NAN zenbakia ezabatu
-        System.out.println(nan+" zenbakidun bezeroa ezabatu da.");
+        
+        if (ezabatuta)
+            System.out.println(nan+" zenbakidun bezeroa ezabatu da.");
+        else
+            System.out.println(nan+" zenbakia duen bezerorik ez dago erregistratuta.");
     }
     
     /* Bezeroen inguruko informazioa erakusten du. */
