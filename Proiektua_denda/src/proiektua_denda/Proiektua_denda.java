@@ -5,7 +5,6 @@
  */
 package proiektua_denda;
 
-import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,10 +25,7 @@ public class Proiektua_denda {
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
         int aukera = 0;
-        Salmenta s1 = new Salmenta();
-        s1.printDatuak();
-        Salmenta s2 = new Salmenta();
-        s2.printDatuak();
+
         do {
             menuNagusia();
             try {

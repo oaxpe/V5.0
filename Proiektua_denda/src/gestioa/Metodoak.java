@@ -47,7 +47,7 @@ public class Metodoak {
             System.out.println("\tGaizki idatzi duzu. Saiatu berriz.");
         return aurkituta;
     }
-
+    
     /* Email-a ondo estrukturatuta dagoen konprobatzen duen metodoa.
      * Expresio erregularrak erabiltzen dira (adibidea@adibidea.com) */
     public static boolean emailBalidazioa(String mail) {

@@ -5,6 +5,7 @@
  */
 package proiektua_denda;
 
+import gestioa.LangileaKudeatu;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,7 +47,7 @@ public class Langilea extends Pertsona {
     @Override
     public void printDatuak() {
         System.out.println("Kodea: "+this.kodLan);
-        System.out.println("Lan eremua (saltzaile edo garbitzaile): "+this.eremua);
+        System.out.println("Lan eremua: "+this.eremua);
         super.printDatuak();
         System.out.println("Soldata: "+this.soldata+"€");
     }  
@@ -94,8 +95,10 @@ public class Langilea extends Pertsona {
 
     public void setEremua() {
         try {
-            System.out.print("Sartu langilearen eremua (saltzailea edo garbitzailea): ");
-            eremua=br.readLine();
+            do {
+                System.out.print("Sartu langilearen eremua (saltzailea edo garbitzailea): ");
+                this.eremua=br.readLine();
+            } while (!LangileaKudeatu.langileEremuaKontrolatu(this.eremua));
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

@@ -6,6 +6,7 @@
 package gestioa;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import proiektua_denda.Langilea;
 
@@ -17,6 +18,17 @@ import proiektua_denda.Langilea;
 public class LangileaKudeatu {
     private static ArrayList<Langilea> langGuzt = new ArrayList<Langilea>();
     
+    /* langileen lan eremua kontrolatzeko metodoa
+     * (saltzailea edo garbitzailea izan daitezke) 
+     * erabiltzaileak sartutako eremua array-ean dagoen konprobatzen du.
+     * Bueltatzen duena, booleano bat da. */
+    public static boolean langileEremuaKontrolatu(String eremua) {
+        String[] eremuaKontrolatu = { "saltzailea", "garbitzailea"};
+        boolean aurkituta = Arrays.asList(eremuaKontrolatu).contains(eremua.toLowerCase());
+        if (!aurkituta)
+            System.out.println("\tGaizki idatzi duzu. Saiatu berriz.");
+        return aurkituta;
+    }
     /* Langile berri bat gehitu */
     public static void langileaGehitu() {
         Langilea lang1 = new Langilea();         
