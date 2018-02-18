@@ -5,8 +5,6 @@
  */
 package proiektua_denda;
 
-import java.io.IOException;
-
 /**
  *
  * @author Oihane Axpe
@@ -14,7 +12,7 @@ import java.io.IOException;
  */
 public class Bezeroa extends Pertsona {
     /* ATRIBUTOAK */
-    private String kodBez;
+    private static String kodBez = "Bez0999";
     
     /* ERAIKITZAILEAK */
     public Bezeroa () {
@@ -22,9 +20,9 @@ public class Bezeroa extends Pertsona {
         setKodBez();
     }
     
-    public Bezeroa (String izena, String abizena1, String abizena2, String nan, String sexua, String herria, String tlf, String kodea) {
+    public Bezeroa (String izena, String abizena1, String abizena2, String nan, String sexua, String herria, String tlf) {
         super(izena, abizena1, abizena2, nan, sexua, herria, tlf);
-        this.kodBez=kodea;
+        setKodBez();
     }
     
     /* METODOAK */
@@ -46,13 +44,10 @@ public class Bezeroa extends Pertsona {
     }
 
     public void setKodBez() {
-        try {
-            System.out.print("Sartu bezeroaren kodea (XXX0000000): ");
-            this.kodBez=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
-        }
+        // Bezeroaren kode zenbakia automatikoki hartu
+        String zenb = String.valueOf(Integer.parseInt(this.kodBez.substring(3, this.kodBez.length()))+1);
+        this.kodBez = this.kodBez.substring(0, 3);
+        this.kodBez += zenb;
     }
     
 }

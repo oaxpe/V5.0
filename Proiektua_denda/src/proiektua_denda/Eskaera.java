@@ -19,7 +19,7 @@ import java.util.Date;
  * @version 2.0
  */
 public class Eskaera {
-    private static int eskZenb=0; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
+    private static String eskZenb="Eskaera#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
     private String hornitzailea;
     private Date data;
     private int kopurua;
@@ -29,7 +29,7 @@ public class Eskaera {
         setHornitzailea();
         setData();
         setKopurua();
-        this.eskZenb+=1;
+        setEskZenb();
     }
     
     /* METODOAK */
@@ -98,11 +98,14 @@ public class Eskaera {
         }
     }
 
-    public int getEskZenb() {
+    public String getEskZenb() {
         return eskZenb;
     }
 
     public void setEskZenb() {
-        this.eskZenb += 1;
+        // Eskaera zenbakia automatikoki hartu
+        String zenb = String.valueOf(Integer.parseInt(this.eskZenb.substring(8, this.eskZenb.length()))+1);
+        this.eskZenb = this.eskZenb.substring(0, 8);
+        this.eskZenb += zenb;
     }
 }

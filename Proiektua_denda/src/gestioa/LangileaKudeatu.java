@@ -47,7 +47,7 @@ public class LangileaKudeatu {
         }
         else {
             System.out.println("LANGILEAK: ");
-            System.out.println("\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa\tLan-eremua");
+            System.out.println("\tLan-eremua\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa");
             for (int i = 0; i < langGuzt.size(); i++) {
                 langGuzt.get(i).printPerts();
             }

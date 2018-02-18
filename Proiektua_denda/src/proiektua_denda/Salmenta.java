@@ -19,19 +19,20 @@ import java.util.Date;
  * @version 2.0
  */
 public class Salmenta {
-    private static int salmZenb = 0;
+    private static String salmZenb="Salmenta#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
     private Date data;
     private int kopurua;
     
     
     public Salmenta () {
-        this.salmZenb+=1;
+        setSalmZenb();
         setData();
         setKopurua();
     }
     
     /* METODOAK */
     public void printDatuak() {
+        System.out.println("Salmenta zenbakia: "+salmZenb);
         System.out.println("Data: "+this.data);
         System.out.println("Kopurua: "+this.kopurua);
     }
@@ -77,4 +78,16 @@ public class Salmenta {
             System.out.println("Zenbaki bat sartu behar zenuen.");
         }
     }
+
+    public static String getSalmZenb() {
+        return salmZenb;
+    }
+
+    public static void setSalmZenb() {
+        // Salmenta zenbakia automatikoki hartu
+        String zenb = String.valueOf(Integer.parseInt(salmZenb.substring(9, salmZenb.length()))+1);
+        salmZenb = salmZenb.substring(0, 9);
+        salmZenb += zenb;
+    }
+    
 }

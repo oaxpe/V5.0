@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
  */
 public class Langilea extends Pertsona {
     /* ATRIBUTOAK */
-    private String kodLan;
+    private static String kodLan = "Lan0999";
     private double soldata;
     private String eremua; // saltzailea edo garbitzailea den gordetzen du.
     
@@ -28,17 +28,17 @@ public class Langilea extends Pertsona {
         setEremua();
     }
     
-    public Langilea (String kodLan, String izena, String abizena1, String abizena2) {
+    public Langilea (String izena, String abizena1, String abizena2) {
         super(izena, abizena1, abizena2);
-        this.kodLan=kodLan;
+        setKodLan();
         this.soldata=1300;
         this.eremua="Saltzailea";
     }
     
-    public Langilea (String kodLan, String izena, String abizena1, String abizena2, String nan, /*Date jaiotzeData,*/ String sexua, String herria, String tlf, int soldata) {
+    public Langilea (String izena, String abizena1, String abizena2, String nan, /*Date jaiotzeData,*/ String sexua, String herria, String tlf, int soldata) {
         super(izena, abizena1, abizena2, nan, /*jaiotzeData,*/ sexua, herria, tlf);
         this.soldata=soldata;
-        this.kodLan=kodLan;
+        setKodLan();
         this.eremua="Saltzailea";
     }
     
@@ -53,8 +53,8 @@ public class Langilea extends Pertsona {
     
     @Override
     public void printPerts() {
-        super.printPerts();
         System.out.print("\t"+this.eremua);
+        super.printPerts();
     }
     
     /* GETTER and SETTER */
@@ -82,13 +82,10 @@ public class Langilea extends Pertsona {
     }
 
     public void setKodLan() {
-        try {
-            System.out.print("Sartu langilearen kodea (XXX0000000): ");
-            this.kodLan=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
-        }
+        // Langilearen kode zenbakia automatikoki hartu
+        String zenb = String.valueOf(Integer.parseInt(this.kodLan.substring(3, this.kodLan.length()))+1);
+        this.kodLan = this.kodLan.substring(0, 3);
+        this.kodLan += zenb;
     }
 
     public String getEremua() {

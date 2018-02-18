@@ -17,7 +17,7 @@ import java.io.InputStreamReader;
  */
 public class Hornitzailea {
     /* ATRIBUTOAK */
-    private String kodHor;
+    private static String kodHor = "Hor0999";
     private String izena;
     private String herria;
     private String telefonoa;
@@ -31,8 +31,8 @@ public class Hornitzailea {
         setEmail();
     }
     
-    public Hornitzailea (String kodHor, String izena, String herria, String tlf, String email) {
-        this.kodHor=kodHor;
+    public Hornitzailea (String izena, String herria, String tlf, String email) {
+        setKodHor();
         this.izena=izena;
         this.herria=herria;
         this.telefonoa=tlf;
@@ -62,13 +62,10 @@ public class Hornitzailea {
     }
 
     public void setKodHor() {
-        try {
-            System.out.print("Sartu hornitzailearen kodea: ");
-            this.kodHor = br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
-        }   
+        // Hornitzailearen kode zenbakia automatikoki hartu
+        String zenb = String.valueOf(Integer.parseInt(this.kodHor.substring(3, this.kodHor.length()))+1);
+        this.kodHor = this.kodHor.substring(0, 3);
+        this.kodHor += zenb;  
     }
     
     public String getIzena() {

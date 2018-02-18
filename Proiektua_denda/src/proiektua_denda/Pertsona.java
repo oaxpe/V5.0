@@ -71,7 +71,7 @@ public abstract class Pertsona {
     }
     
     public void printPerts() {
-        System.out.print("\t"+this.izena.concat(" ").concat(this.abizena1).concat(" ").concat(this.abizena2)+"\t"+this.nan+"\t"+this.sexua+"\t"+this.herria+"\t"+this.telefonoa);
+        System.out.println("\t"+this.izena.concat(" ").concat(this.abizena1).concat(" ").concat(this.abizena2)+"\t"+this.nan+"\t"+this.sexua+"\t"+this.herria+"\t"+this.telefonoa);
     }
 
     
