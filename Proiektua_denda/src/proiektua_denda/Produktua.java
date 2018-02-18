@@ -25,8 +25,6 @@ public abstract class Produktua {
     protected int kantStock;
     protected boolean eskuragai=false;
     protected int deskontua=0;
-    protected int tailaInt;
-    protected String tailaString;
 
     
     /* ERAIKITZAILEAK */

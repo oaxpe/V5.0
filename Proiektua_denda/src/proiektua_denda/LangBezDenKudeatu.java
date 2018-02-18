@@ -88,7 +88,9 @@ public class LangBezDenKudeatu {
                             try {
                                 System.out.print("Sartu datuak aldatu nahi dituzun bezeroaren NAN zenbakia: ");
                                 String nan = br.readLine().toUpperCase();
-                                BezeroaKudeatu.bezeroDatuakAldatu(nan);
+                                bezeroDatuakAldatu(); // bezeroaren datuak aukeratzeko menua
+                                int atrAuk = Integer.parseInt(br.readLine());
+                                BezeroaKudeatu.bezeroDatuakAldatu(nan, atrAuk);
                             }
                             catch (IOException gaizki) {
                                 System.out.println("Arazoak daude datuak sartzerakoan.");
@@ -291,6 +293,21 @@ public class LangBezDenKudeatu {
         
     }
     
+    /* Bezero baten datuak aldatzeko submenua */
+    public static void bezeroDatuakAldatu() {
+        System.out.print("\n"
+                    + "Zein datu aldatu nahi duzu?\n"
+                    + "\t1.- Izena.\n"
+                    + "\t2.- Lehenengo abizena.\n"
+                    + "\t3.- Bigarren abizena.\n"
+                    + "\t4.- NAN zenbakia.\n"
+                    + "\t5.- Jaiotze data.\n"
+                    + "\t6.- Sexua.\n"
+                    + "\t7.- Herria.\n"
+                    + "\t8.- Telefonoa.\n"
+                    + "Aukeratu:");
+    }
+    
     /* Langileak kudeatzeko menua */
     public static void langileMenua() {
         System.out.print("\n"
@@ -333,8 +350,4 @@ public class LangBezDenKudeatu {
                             + "(6) Telefonoa.\n"
                             + "Aukeratu: ");
     }
-    
 }
-
-
-

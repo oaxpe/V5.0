@@ -64,16 +64,31 @@ public class BezeroaKudeatu {
     }
     
     /* Bezeroaren datuak aldatu (erabiltzaileak bere dni-a sartu beharko du) */
-    public static void bezeroDatuakAldatu(String nan) {
+    public static void bezeroDatuakAldatu(String nan, int aukera) {
+        boolean aldatuta = true;
         for (Bezeroa bez : bezeroGuzt) {
             if (bez.getNan().equals(nan)) {
-                bez.setIzena();
-                bez.setAbizena1();
-                bez.setAbizena2();
-                bez.setHerria();
-                bez.setTelefonoa();
-            }
+                if (aukera==1)
+                    bez.setIzena();
+                else if (aukera == 2) 
+                    bez.setAbizena1();
+                else if (aukera == 3)
+                    bez.setAbizena2();
+                else if (aukera == 4)
+                    bez.setNan();
+                else if (aukera == 5)
+                    bez.setJaiotzeData();
+                else if (aukera == 6)
+                    bez.setSexua();
+                else if (aukera == 7)
+                    bez.setHerria();
+                else if (aukera == 8)
+                    bez.setTelefonoa();
+                else
+                    aldatuta = false;
+            } 
         }
+        if (aldatuta)
+            System.out.println("Aldatutako datua gorde da.");
     }
-    
 }

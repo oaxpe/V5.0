@@ -20,7 +20,7 @@ public class DendaKudeatu {
         denda1.printDatuak();
     }
     
-    public static void datuakAldatu(int datua) throws IOException {
+    public static void datuakAldatu(int datua) {
         if (datua==1)
             denda1.setIzena();
         else if (datua==2)

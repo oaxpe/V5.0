@@ -64,30 +64,28 @@ public class Metodoak {
         return true;
     }
     
+    /* NAN zenbakia egokia den edo ez konprobatzen duen metodoa.*/
     public static boolean nanBalidazioa(String nan) {
         if (nan.length() != 9) {
             System.out.println("\tSartutako nan zenbakia ez da egokia.");
             return false;
         }
         else {
-            String letra = nan.substring(8).toUpperCase(); // azkena hartzeko            
+            String letra = nan.substring(8).toUpperCase(); // azkenengo karakterea hartzeko            
             String zenb = "";
-            char[] nanLetrak = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',  'X',  'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'};
+            char[] nanLetrak = {'T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D',  'X',  'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E'}; // NAN-ak izan dezakeen letrak
                     
-            // Compruebo que lo 8 primeros digitos sean numeros
-            for (int i=0; i<(nan.length()-1); i++) {   
+            // Lehenengo 8 karaktereak zenbakiak diren konprobatu
+            for (int i=0; i<(nan.length()-1); i++) {
                 if(!Character.isDigit(nan.charAt(i))){ // karaktereak banaka begiratu digitoak diren edo ez
                     break;   
                 }
-                // si es numero, lo recojo en un String
                 zenb += nan.charAt(i); // digitoak direnak, zenb aldagaian gordetzen dira
             }
             
             int zenbInt = Integer.parseInt(zenb); //String-a int bihurtu (zenbakiekin eragiketak egiteko)
-//            System.out.println(zenbInt+letra);
             int hondarra = zenbInt%23; // zatiketaren hondarra kalkulatu
-//            System.out.println(hondarra);
-            if ((Character.toUpperCase(nan.charAt(8)))!=nanLetrak[hondarra]) {
+            if ((Character.toUpperCase(nan.charAt(8)))!=nanLetrak[hondarra]) { // azkenengo karakterea arry-ean dagoen konprobatu
                 System.out.println("Sartutako nan zenbakia ez da egokia.");
                 return false;
             }
