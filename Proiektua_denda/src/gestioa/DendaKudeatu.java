@@ -5,7 +5,6 @@
  */
 package gestioa;
 
-import java.io.IOException;
 import proiektua_denda.Denda;
 
 /**
@@ -21,17 +20,27 @@ public class DendaKudeatu {
     }
     
     public static void datuakAldatu(int datua) {
-        if (datua==1)
-            denda1.setIzena();
-        else if (datua==2)
-            denda1.setHelbidea();
-        else if (datua==3)
-            denda1.setHerria();
-        else if (datua==4)
-            denda1.setKodPostala();
-        else if (datua==5)
-            denda1.setEmail(); 
-        else if (datua==6)
-            denda1.setTelefonoa(); 
+        switch (datua) {
+            case 1:
+                denda1.setIzena();
+                break;
+            case 2:
+                denda1.setHelbidea();
+                break;
+            case 3:
+                denda1.setHerria();
+                break;
+            case 4:
+                denda1.setKodPostala(); 
+                break;
+            case 5:
+                denda1.setEmail();
+                break;
+            case 6:
+                denda1.setTelefonoa();
+                break;
+            default:
+                break;
+        }
     }
 }

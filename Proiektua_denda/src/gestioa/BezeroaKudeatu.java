@@ -68,24 +68,35 @@ public class BezeroaKudeatu {
         boolean aldatuta = true;
         for (Bezeroa bez : bezeroGuzt) {
             if (bez.getNan().equals(nan)) {
-                if (aukera==1)
-                    bez.setIzena();
-                else if (aukera == 2) 
-                    bez.setAbizena1();
-                else if (aukera == 3)
-                    bez.setAbizena2();
-                else if (aukera == 4)
-                    bez.setNan();
-                else if (aukera == 5)
-                    bez.setJaiotzeData();
-                else if (aukera == 6)
-                    bez.setSexua();
-                else if (aukera == 7)
-                    bez.setHerria();
-                else if (aukera == 8)
-                    bez.setTelefonoa();
-                else
-                    aldatuta = false;
+                switch (aukera) {
+                    case 1:
+                        bez.setIzena();
+                        break;
+                    case 2:
+                        bez.setAbizena1();
+                        break;
+                    case 3:
+                        bez.setAbizena2();
+                        break;
+                    case 4:
+                        bez.setNan();
+                        break;
+                    case 5:
+                        bez.setJaiotzeData();
+                        break;
+                    case 6:
+                        bez.setSexua();
+                        break;
+                    case 7:
+                        bez.setHerria();
+                        break;
+                    case 8:
+                        bez.setTelefonoa();
+                        break;
+                    default:
+                        aldatuta = false;
+                        break;
+                }
             } 
         }
         if (aldatuta)
