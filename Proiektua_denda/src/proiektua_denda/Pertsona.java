@@ -191,8 +191,10 @@ public abstract class Pertsona {
 
     public void setTelefonoa() {
         try {
-            System.out.print("Sartu telefono zenbakia: ");
-            this.telefonoa=br.readLine();
+            do {
+                System.out.print("Sartu telefono zenbakia: ");
+                this.telefonoa=br.readLine();
+            } while (!Metodoak.tlfBalidazioa(telefonoa));  
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

@@ -147,7 +147,7 @@ public abstract class Produktua {
     public void setSexua() {
         try {
             do {
-                System.out.print("Emakumea edo gizona?: ");
+                System.out.print("Emakumea, gizona edo unisex?: ");
                 this.sexua=br.readLine(); // array-ean minuskulaz daudelako
             } while (!Metodoak.sexuaKontrolatu(sexua));
         }

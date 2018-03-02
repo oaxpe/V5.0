@@ -41,7 +41,7 @@ public class Metodoak {
      * sexua, array-ean dagoen konprobatzen du. 
      * Bueltatzen duena booleano bat da.*/
     public static boolean sexuaKontrolatu(String sexua) {
-        String[] sexuaKontrolatu = { "emakumea", "gizona"};
+        String[] sexuaKontrolatu = { "emakumea", "gizona", "unisex"};
         boolean aurkituta = Arrays.asList(sexuaKontrolatu).contains(sexua.toLowerCase());
         if (!aurkituta)
             System.out.println("\tGaizki idatzi duzu. Saiatu berriz.");
@@ -57,7 +57,7 @@ public class Metodoak {
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
         
         Matcher balidazioa = p.matcher(mail);
-        if (!balidazioa.find()) {// email-ak expresio erregularra betetzen duen konprobatzen du
+        if (!balidazioa.find()) { // email-ak expresio erregularra betetzen duen konprobatzen du
             System.out.println("\tSartutako email-a ez da egokia. Saiatu berriz.");
             return false;
         }
@@ -91,5 +91,19 @@ public class Metodoak {
             }
             return true;
         }
+    }
+    
+    /* Telefonoa ondo estrukturatuta dagoen konprobatzen duen metodoa.
+     * Expresio erregularrak erabiltzen dira */
+    public static boolean tlfBalidazioa(String telefonoa) { // momentuz ez da erabiltzen main-ean
+        // Telefonoa balidatzeko expresio erregularra
+        Pattern p = Pattern.compile("(\\+34|0034|34)?[ -]*(6|7)[ -]*([0-9][ -]*){8}"); // +34|0034|34 opcional
+        
+        Matcher balidazioa = p.matcher(telefonoa);
+        if (!balidazioa.find()) {// email-ak expresio erregularra betetzen duen konprobatzen du
+            System.out.println("\tSartutako telefono zenbakia ez da egokia. Saiatu berriz.");
+            return false;
+        }
+        return true;
     }
 }
