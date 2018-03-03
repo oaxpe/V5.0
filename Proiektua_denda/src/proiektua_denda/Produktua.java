@@ -122,7 +122,8 @@ public abstract class Produktua {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("Zenbaki dezimala bat sartu behar zenuen.");
+            System.out.println("\tZenbaki dezimala bat sartu behar zenuen.");
+            setPrezioa();
         }
     }
 
@@ -169,7 +170,8 @@ public abstract class Produktua {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("Zenbaki bat sartu behar zenuen.");
+            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            setKantStock();
         }
     }
     
