@@ -5,6 +5,7 @@
  */
 package proiektua_denda;
 
+import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -55,10 +56,10 @@ public class Salmenta {
             this.data = fetx;
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (ParseException gaizki) {
-            System.out.println("Ez da kapaza sartutako datuak parseatzeko.");
+            System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
         }
     }
 
@@ -72,10 +73,10 @@ public class Salmenta {
             this.kopurua = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
             setKopurua();
         }
     }

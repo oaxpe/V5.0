@@ -68,7 +68,7 @@ public class Kamiseta extends Produktua {
             } while (!Metodoak.tailaKontrolatu(taila));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -82,7 +82,7 @@ public class Kamiseta extends Produktua {
             this.sasoia = br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 }

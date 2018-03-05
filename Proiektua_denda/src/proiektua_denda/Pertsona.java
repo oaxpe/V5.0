@@ -102,7 +102,7 @@ public abstract class Pertsona {
             this.abizena1=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }       
     }
     
@@ -116,7 +116,7 @@ public abstract class Pertsona {
             this.abizena2=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
     
@@ -132,7 +132,7 @@ public abstract class Pertsona {
             } while (!Metodoak.nanBalidazioa(nan));                
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }         
     }
 
@@ -148,10 +148,10 @@ public abstract class Pertsona {
             this.jaiotzeData=fetx;
         }
         catch (ParseException gaizki) {
-            System.out.println("Ez da kapaza sartutako datuak parseatzeko.");
+            System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }       
     }
 
@@ -163,11 +163,11 @@ public abstract class Pertsona {
         try {
             do {
                 System.out.print("Emakumea edo gizona?: ");
-                this.sexua=br.readLine(); // array-ean minuskulaz daudelako
+                this.sexua=br.readLine(); 
             } while (!Metodoak.sexuaKontrolatu(sexua));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -181,7 +181,7 @@ public abstract class Pertsona {
             this.herria=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }  
     }
 
@@ -197,7 +197,7 @@ public abstract class Pertsona {
             } while (!Metodoak.tlfBalidazioa(telefonoa));  
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 }

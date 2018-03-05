@@ -78,7 +78,7 @@ public class Hornitzailea {
             this.izena = br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -92,7 +92,7 @@ public class Hornitzailea {
             this.herria = br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -108,7 +108,7 @@ public class Hornitzailea {
             } while (!Metodoak.tlfBalidazioa(telefonoa));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -124,7 +124,7 @@ public class Hornitzailea {
             } while (!Metodoak.emailBalidazioa(email));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }    
     }
 }

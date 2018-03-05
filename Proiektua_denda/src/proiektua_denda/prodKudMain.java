@@ -33,10 +33,10 @@ public class prodKudMain {
                 aukera = Integer.parseInt(br.readLine());
             }
             catch (NumberFormatException datuOkerrak) {
-                System.out.println("Zenbaki bat sartu behar zenuen.");
+                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
             }
             catch (IOException gaizki) {
-                System.out.println("Arazoak daude datuak sartzerakoan.");
+                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
             }
             System.out.println();
             
@@ -55,10 +55,10 @@ public class prodKudMain {
                         prodMota = Integer.parseInt(br.readLine());
                     }
                     catch (NumberFormatException datuOkerrak) {
-                        System.out.println("Zenbaki bat sartu behar zenuen.");
+                        System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                     }
                     catch (IOException gaizki) {
-                        System.out.println("Arazoak daude datuak sartzerakoan.");
+                        System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                     }
                     System.out.println();
                     switch (prodMota) {
@@ -77,7 +77,7 @@ public class prodKudMain {
                             break;
                             
                         default:
-                            System.out.println("Zenbaki okerra sartu duzu. Saiatu berriro!");
+                            System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu. Saiatu berriro!"));
                     }
                     pausa();
                     break;
@@ -93,10 +93,10 @@ public class prodKudMain {
                         prodMota = Integer.parseInt(br.readLine());
                     }
                      catch (NumberFormatException datuOkerrak) {
-                        System.out.println("Zenbaki bat sartu behar zenuen.");
+                        System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                     }
                     catch (IOException gaizki) {
-                        System.out.println("Arazoak daude datuak sartzerakoan.");
+                        System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                     }
                     System.out.println();
                     switch (prodMota) {
@@ -112,7 +112,7 @@ public class prodKudMain {
                                 JertseaKudeatu.jertseaEzabatu(kodea);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             } 
                             break;
                         }
@@ -126,7 +126,7 @@ public class prodKudMain {
                                 KamisetaKudeatu.kamisetaEzabatu(kodea);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             break;
                         }
@@ -140,7 +140,7 @@ public class prodKudMain {
                                 PrakaKudeatu.prakaEzabatu(kodea);   
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             break;
                         }                          
@@ -165,10 +165,10 @@ public class prodKudMain {
                         prodMota = Integer.parseInt(br.readLine());
                     }
                     catch (NumberFormatException datuOkerrak) {
-                        System.out.println("Zenbaki bat sartu behar zenuen.");
+                        System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                     }
                     catch (IOException gaizki) {
-                        System.out.println("Arazoak daude datuak sartzerakoan.");
+                        System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                     }
                     System.out.println();
                     switch (prodMota) {
@@ -181,7 +181,7 @@ public class prodKudMain {
                                 JertseaKudeatu.jertseaKontsultatu(kodPro);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             pausa();
                             break;
@@ -196,7 +196,7 @@ public class prodKudMain {
                                 KamisetaKudeatu.kamisetaKontsultatu(kodPro);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             pausa();
                             break;
@@ -211,7 +211,7 @@ public class prodKudMain {
                                 PrakaKudeatu.prakaKontsultatu(kodPro);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             pausa();
                             break;
@@ -242,10 +242,10 @@ public class prodKudMain {
                         prodMota = Integer.parseInt(br.readLine());
                     }
                      catch (NumberFormatException datuOkerrak) {
-                        System.out.println("Zenbaki bat sartu behar zenuen.");
+                        System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                     }
                     catch (IOException gaizki) {
-                        System.out.println("Arazoak daude datuak sartzerakoan.");
+                        System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                     }
                     System.out.println();
                     switch (prodMota) {
@@ -265,10 +265,10 @@ public class prodKudMain {
                                 JertseaKudeatu.prodSaldu(kodea, kantitatea, taila);
                             }
                             catch (NumberFormatException datuOkerrak) {
-                                System.out.println("Zenbaki bat sartu behar zenuen.");
+                                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             pausa();
                             break;
@@ -285,7 +285,7 @@ public class prodKudMain {
                                     System.out.print("Sartu taila (XS,S,M,L,XL,XXL): ");
                                     taila = br.readLine().toUpperCase();
                                     if (!Metodoak.tailaKontrolatu(taila))
-                                        System.out.println("\tGaizki sartu duzu taila. Saiatu berriz.");
+                                        System.out.println(Metodoak.printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
                                 } while (!Metodoak.tailaKontrolatu(taila));                          
                                 System.out.print("Sartu kantitatea: ");
                                 int kantitatea = Integer.parseInt(br.readLine());
@@ -293,10 +293,10 @@ public class prodKudMain {
                                 KamisetaKudeatu.prodSaldu(kodea, taila, kantitatea);
                             }
                             catch (NumberFormatException datuOkerrak) {
-                                System.out.println("Zenbaki bat sartu behar zenuen.");
+                                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             pausa();
                             break;
@@ -313,7 +313,7 @@ public class prodKudMain {
                                     System.out.print("Sartu taila (38,40,42,44,46): ");
                                     taila = Integer.parseInt(br.readLine());
                                     if (!Metodoak.tailaKontrolatu(taila))
-                                        System.out.println("\tGaizki sartu duzu taila. Saiatu berriz.");
+                                        System.out.println(Metodoak.printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
                                 } while (!Metodoak.tailaKontrolatu(taila));
                                 System.out.print("Sartu kantitatea: ");
                                 int kantitatea = Integer.parseInt(br.readLine());
@@ -321,10 +321,10 @@ public class prodKudMain {
                                 PrakaKudeatu.prodSaldu(kodea, taila, kantitatea);
                             }
                             catch (NumberFormatException datuOkerrak) {
-                                System.out.println("Zenbaki bat sartu behar zenuen.");
+                                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }   
                             pausa();
                             break;
@@ -334,7 +334,7 @@ public class prodKudMain {
                 } 
           
                 default:
-                    System.out.println("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu.");
+                    System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                     pausa();
                     break;
             } 
@@ -382,10 +382,10 @@ public class prodKudMain {
             aukera = Integer.parseInt(br.readLine());
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("Zenbaki bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         System.out.println();
             
@@ -411,7 +411,7 @@ public class prodKudMain {
                     HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
                 }
                 catch (IOException gaizki) {
-                    System.out.println("Arazoak daude datuak sartzerakoan.");
+                    System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                 }
                 pausa();
                 break;
@@ -423,7 +423,7 @@ public class prodKudMain {
                 break;
                 
             default:
-                System.out.println("Zenbaki okerra sartu duzu. Saiatu berriro!");
+                System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu. Saiatu berriro!"));
         }
         
     }

@@ -5,6 +5,7 @@
  */
 package proiektua_denda;
 
+import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,17 +26,17 @@ public class Proiektua_denda {
     public static void main(String[] args) {
         BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
         int aukera = 0;
-
+        
         do {
             menuNagusia();
             try {
                 aukera = Integer.parseInt(br.readLine());
             }
             catch (NumberFormatException datuOkerrak) {
-                System.out.println("Zenbaki bat sartu behar zenuen.");
+                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
             }
             catch (IOException gaizki) {
-                System.out.println("Arazoak daude datuak sartzerakoan.");
+                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
             }
             System.out.println();
             
@@ -59,7 +60,7 @@ public class Proiektua_denda {
                     break;
                 
                 default:
-                    System.out.println("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu.");
+                    System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                     pausa();
                     break;
             }
@@ -74,7 +75,7 @@ public class Proiektua_denda {
             System.in.read();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         
     }

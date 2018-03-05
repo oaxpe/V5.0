@@ -63,10 +63,10 @@ public class Jertsea extends Produktua {
             } while (!Metodoak.tailaKontrolatu(taila));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("\tZenbaki dezimala bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("\tZenbaki dezimala bat sartu behar zenuen."));
             setTaila();
         }
     }

@@ -91,7 +91,7 @@ public abstract class Produktua {
             this.kodPro=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -105,7 +105,7 @@ public abstract class Produktua {
             this.marka=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }   
     }
 
@@ -119,10 +119,10 @@ public abstract class Produktua {
             this.prezioa = Double.parseDouble(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("\tZenbaki dezimala bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("\tZenbaki dezimala bat sartu behar zenuen."));
             setPrezioa();
         }
     }
@@ -137,7 +137,7 @@ public abstract class Produktua {
             this.kolorea = br.readLine(); 
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -149,11 +149,11 @@ public abstract class Produktua {
         try {
             do {
                 System.out.print("Emakumea, gizona edo unisex?: ");
-                this.sexua=br.readLine(); // array-ean minuskulaz daudelako
+                this.sexua=br.readLine(); 
             } while (!Metodoak.sexuaKontrolatu(sexua));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     } 
 
@@ -167,10 +167,10 @@ public abstract class Produktua {
             this.kantStock = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
             setKantStock();
         }
     }
@@ -199,11 +199,11 @@ public abstract class Produktua {
             this.deskontua = Integer.parseInt(br.readLine());
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
             setDeskontua();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 

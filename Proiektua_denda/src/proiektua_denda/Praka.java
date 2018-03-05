@@ -80,10 +80,10 @@ public class Praka extends Produktua {
             } while (!Metodoak.tailaKontrolatu(taila));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
             setTaila();
         }
     }
@@ -106,10 +106,10 @@ public class Praka extends Produktua {
             this.luzeera = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("Zenbaki bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
         }
     }
     
@@ -123,7 +123,7 @@ public class Praka extends Produktua {
             this.mota = br.readLine(); 
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }  
 }

@@ -8,6 +8,7 @@ package proiektua_denda;
 import gestioa.DendaKudeatu;
 import gestioa.BezeroaKudeatu;
 import gestioa.LangileaKudeatu;
+import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -32,10 +33,10 @@ public class LangBezDenKudeatu {
                 aukera = Integer.parseInt(br.readLine());
             }
             catch (NumberFormatException datuOkerrak) {
-                System.out.println("Zenbaki bat sartu behar zenuen.");
+                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
             }
             catch (IOException gaizki) {
-                System.out.println("Arazoak daude datuak sartzerakoan.");
+                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
             }
             System.out.println();
             
@@ -54,10 +55,10 @@ public class LangBezDenKudeatu {
                         aukera = Integer.parseInt(br.readLine());
                     }
                     catch (NumberFormatException datuOkerrak) {
-                        System.out.println("Zenbaki bat sartu behar zenuen.");
+                        System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                     }
                     catch (IOException gaizki) {
-                        System.out.println("Arazoak daude datuak sartzerakoan.");
+                        System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                     }
                     switch (aukera) {
                         // 0.- Irten
@@ -79,7 +80,7 @@ public class LangBezDenKudeatu {
                                 BezeroaKudeatu.bezeroaEzabatu(nan);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             break;
                             
@@ -93,7 +94,7 @@ public class LangBezDenKudeatu {
                                 BezeroaKudeatu.bezeroDatuakAldatu(nan, atrAuk);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             break;
                             
@@ -104,7 +105,7 @@ public class LangBezDenKudeatu {
                             break;
                             
                         default:
-                            System.out.println("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu.");
+                            System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                             pausa();
                             break;
                     }
@@ -119,10 +120,10 @@ public class LangBezDenKudeatu {
                         aukera = Integer.parseInt(br.readLine());
                     }
                     catch (NumberFormatException datuOkerrak) {
-                        System.out.println("Zenbaki bat sartu behar zenuen.");
+                        System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                     }
                     catch (IOException gaizki) {
-                        System.out.println("Arazoak daude datuak sartzerakoan.");
+                        System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                     }
                     switch (aukera) {
                         // 0.- Irten
@@ -145,7 +146,7 @@ public class LangBezDenKudeatu {
                                 LangileaKudeatu.langileaEzabatu(nan);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }    
                             break;
                             
@@ -157,7 +158,7 @@ public class LangBezDenKudeatu {
                                 LangileaKudeatu.langileaDatuakAldatu(nan);
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             break;
                             
@@ -167,7 +168,7 @@ public class LangBezDenKudeatu {
                             pausa();
                             break;
                         default:
-                            System.out.println("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu.");
+                            System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                             pausa();
                             break;
                     }
@@ -182,10 +183,10 @@ public class LangBezDenKudeatu {
                         aukera = Integer.parseInt(br.readLine());
                     }
                     catch (NumberFormatException datuOkerrak) {
-                        System.out.println("Zenbaki bat sartu behar zenuen.");
+                        System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                     }
                     catch (IOException gaizki) {
-                        System.out.println("Arazoak daude datuak sartzerakoan.");
+                        System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                     }
                     switch (aukera) {
                         // 0.- Irten
@@ -208,7 +209,7 @@ public class LangBezDenKudeatu {
                             
                                 switch (aldaketa) {
                                     case 0:
-                                        System.out.println("\nEz duzu aldaketarik egin.");
+                                        System.out.println(Metodoak.printGorriz("\nEz duzu aldaketarik egin."));
                                         break;
                                     case 1:
                                         DendaKudeatu.datuakAldatu(1); // Izena aldatu
@@ -229,16 +230,16 @@ public class LangBezDenKudeatu {
                                         DendaKudeatu.datuakAldatu(6); // Telefonoa aldatu
                                         break;
                                     default:
-                                        System.out.println("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu.");
+                                        System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                                         pausa();
                                         break;
                                 }
                             }
                             catch (NumberFormatException datuOkerrak) {
-                                System.out.println("Zenbaki bat sartu behar zenuen.");
+                                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
                             }
                             catch (IOException gaizki) {
-                                System.out.println("Arazoak daude datuak sartzerakoan.");
+                                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
                             
                             pausa();
@@ -253,7 +254,7 @@ public class LangBezDenKudeatu {
                 } // "Denda kudeatu" bukatu.
 
                 default:
-                    System.out.println("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu.");
+                    System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                     pausa();
                     break;
             } 

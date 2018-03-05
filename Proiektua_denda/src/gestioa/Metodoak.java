@@ -15,6 +15,12 @@ import java.util.regex.Pattern;
  * @version 2.0
  */
 public class Metodoak {
+    public static String printGorriz(String textua) {
+        String ANSI_RED = "\u001B[31m";
+        String ANSI_RESET = "\u001B[0m";
+        return (ANSI_RED+textua+ANSI_RESET);
+    }
+//    public static final String ANSI_RED = "\u001B[31m";
     /* produktuen taila kontrolatzeko metodoa. Taila, array-ean dagoen konprobatzen du. 
      * Bueltatzen duena booleano bat da.*/
     public static boolean tailaKontrolatu(String taila) {

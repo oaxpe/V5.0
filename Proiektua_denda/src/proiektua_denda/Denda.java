@@ -15,7 +15,7 @@ import java.io.InputStreamReader;
  * @author Oihane Axpe
  * @version 2.0
  */
-public class Denda {
+public class Denda { 
     /* ATRIBUTOAK */
     private String izena;
     private String helbidea;
@@ -66,7 +66,7 @@ public class Denda {
             this.izena=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }      
     }
 
@@ -80,7 +80,7 @@ public class Denda {
             this.helbidea=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -94,7 +94,7 @@ public class Denda {
             this.herria=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -108,10 +108,10 @@ public class Denda {
             this.kodPostala=Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
             setKodPostala();
         }
     }
@@ -128,7 +128,7 @@ public class Denda {
             } while (!Metodoak.emailBalidazioa(email));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }    
     }
 
@@ -144,7 +144,7 @@ public class Denda {
             } while (!Metodoak.tlfBalidazioa(telefonoa));
         }
         catch (IOException gaizki) {
-            System.out.println("Arazoak daude datuak sartzerakoan.");
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }     
     }
 }
