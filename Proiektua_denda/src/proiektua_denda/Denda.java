@@ -20,7 +20,7 @@ public class Denda {
     private String izena;
     private String helbidea;
     private String herria;
-    private String kodPostala;
+    private int kodPostala;
     private String email;
     private String telefonoa;
     
@@ -29,12 +29,12 @@ public class Denda {
         this.izena="Denda";
         this.helbidea="San Juan kalea, 3";
         this.herria="Eibar";
-        this.kodPostala="20600";
+        this.kodPostala=20600;
         this.email="denda@gmai.com";
         this.telefonoa="943201258";
     }
     
-    public Denda (String izena, String helbidea, String herria, String kodPostala, String email, String tlf) {
+    public Denda (String izena, String helbidea, String herria, int kodPostala, String email, String tlf) {
         this.izena=izena;
         this.helbidea=helbidea;
         this.herria=herria;
@@ -98,17 +98,21 @@ public class Denda {
         }
     }
 
-    public String getKodPostala() {
+    public int getKodPostala() {
         return kodPostala;
     }
 
     public void setKodPostala() {
         try {
             System.out.print("Sartu posta kodea: ");
-            this.kodPostala=br.readLine();
+            this.kodPostala=Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");
+        }
+        catch (NumberFormatException datuOkerrak) {
+            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            setKodPostala();
         }
     }
 
