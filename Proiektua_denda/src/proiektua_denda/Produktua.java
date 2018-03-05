@@ -199,7 +199,8 @@ public abstract class Produktua {
             this.deskontua = Integer.parseInt(br.readLine());
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("Zenbaki bat sartu behar zenuen.");
+            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            setDeskontua();
         }
         catch (IOException gaizki) {
             System.out.println("Arazoak daude datuak sartzerakoan.");

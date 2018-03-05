@@ -83,7 +83,8 @@ public class Praka extends Produktua {
             System.out.println("Arazoak daude datuak sartzerakoan.");
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println("Zenbaki bat sartu behar zenuen.");
+            System.out.println("\tZenbaki bat sartu behar zenuen.");
+            setTaila();
         }
     }
 
