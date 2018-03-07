@@ -19,8 +19,9 @@ public class EskaeraKudeatu {
     /* Eskaera berri bat gehitu/gestionatu */
     public static void eskaeraGehitu() {
         Eskaera eskaera = new Eskaera();
-        eskaera.printDatuak();
         eskaeraGuzt.add(eskaera);
+        System.out.println("\nDatu hauek dituen eskaera gorde da.");
+        eskaera.printDatuak();
     }
     
     /* Eskaeren inguruko informazioa erakusten du. */

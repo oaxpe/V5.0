@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import static proiektua_denda.LangBezDenKudeatu.langBezDenKudeatu;
+import static proiektua_denda.prodKudMain.eskaeraKudMain;
 import static proiektua_denda.prodKudMain.horniKudMain;
 import static proiektua_denda.prodKudMain.prodKudMain;
 
@@ -54,11 +55,17 @@ public class Proiektua_denda {
                 case 2:
                     prodKudMain();
                     break;
-                    
+
+                // 3.- Hornitzaileak kudeatu.
                 case 3:
                     horniKudMain();
                     break;
                 
+                // 4.- Eskaerak kudeatu.
+                case 4:
+                    eskaeraKudMain();
+                    break;
+                    
                 default:
                     System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                     pausa();
@@ -86,9 +93,11 @@ public class Proiektua_denda {
                     + "''                     MENU  NAGUSIA                     ''\n"
                     + "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''\n"
                     + "''  Zer egin nahi duzu?                                  ''\n"
+                    + "''    0.- Irten.                                         ''\n"
                     + "''    1.- Langileak, bezeroak eta denda kudeatu.         ''\n"
                     + "''    2.- Produktuak kudeatu.                            ''\n"
                     + "''    3.- Hornitzaileak kudeatu.                         ''\n"
+                    + "''    4.- Eskaerak kudeatu.                              ''\n"
                     + "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''\n\n"
                     + " Aukeratu: ");
     }

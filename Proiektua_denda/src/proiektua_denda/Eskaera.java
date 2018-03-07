@@ -12,7 +12,9 @@ import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -22,7 +24,7 @@ import java.util.Date;
 public class Eskaera {
     private static String eskZenb="Eskaera#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
     private String hornitzailea;
-    private Date data;
+    private String data;
     private int kopurua;
     
     
@@ -63,19 +65,21 @@ public class Eskaera {
         }
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
     public void setData() {
         try {
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            System.out.print("Sartu Data (ee/hh/uuuu): ");
-            Date fetx = df.parse(br.readLine());
-            this.data = fetx;
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            Calendar c1 = new GregorianCalendar();
+            String egun = Integer.toString(c1.get(Calendar.DATE)); // eguna gorde
+            String hilabete = Integer.toString(c1.get(Calendar.MONTH)+1); // hilabetea gorde
+            String urte = Integer.toString(c1.get(Calendar.YEAR)); // urtea gorde
+
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+            Date fetx = df.parse(egun+"/"+hilabete+"/"+urte); // data hori Date formatura parseatu
+            
+            this.data = new SimpleDateFormat("dd/MM/yyyy").format(fetx.getTime()); // formatu zehatz baten jarri
         }
         catch (ParseException e) {
             System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));

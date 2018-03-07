@@ -5,6 +5,7 @@
  */
 package proiektua_denda;
 
+import gestioa.EskaeraKudeatu;
 import gestioa.HornitzaileaKudeatu;
 import gestioa.Metodoak;
 import gestioa.ProduktuaKudeatu;
@@ -442,6 +443,59 @@ public class prodKudMain {
                     + "************************************************\n\n"
                     + "  Aukeratu: ");
     }
-    
-}
+      
+    /* Produktuen eskaerak kudeatzeko funtzioa*/
+    public static void eskaeraKudMain() {
+        BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+        
+        eskaeraKudeatuMenua();
+        int aukera = 0;
+        try {
+            aukera = Integer.parseInt(br.readLine());
+        }
+        catch (NumberFormatException datuOkerrak) {
+            System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
+        }
+        catch (IOException gaizki) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+        }
+        System.out.println();
+            
+        switch (aukera) {
+            //0.- Irten
+            case 0:
+                System.exit(0);
 
+            // 1.- Eskaera berri bat gehitu.    
+            case 1:
+            {
+                System.out.print("Eskaera berri bat gehitu behar duzu.\n\n");
+                EskaeraKudeatu.eskaeraGehitu();
+                pausa();
+                break;
+            } // case 1-en bukaera
+            
+            // 2.- Eskaera guztiak erakutsi.
+            case 2:
+                EskaeraKudeatu.eskaeraGuztiakErakutsi();
+                pausa();
+                break;
+                
+            default:
+                System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu. Saiatu berriro!"));
+        }
+    }
+    /* Eskaerak kudeatzeko menua */
+    public static void eskaeraKudeatuMenua() {
+        System.out.print("\n"
+                    + "************************************************\n"
+                    + "*                ESKAERA KUDEATU               *\n"
+                    + "************************************************\n"
+                    + "* Zer egin nahi duzu?                          *\n"
+                    + "*    0.- Irten                                 *\n"
+                    + "*    1.- Eskaera berri bat gehitu.             *\n"
+                    + "*    2.- Eskaera guztiak erakutsi.             *\n"
+                    + "************************************************\n\n"
+                    + "  Aukeratu: ");
+    }
+}
