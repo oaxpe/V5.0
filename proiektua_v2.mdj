@@ -5346,7 +5346,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-data: Date",
+											"text": "-data: String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -19269,7 +19269,7 @@
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": "Date",
+									"type": "String",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
