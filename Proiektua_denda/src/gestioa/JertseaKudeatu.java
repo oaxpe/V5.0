@@ -19,7 +19,7 @@ public class JertseaKudeatu {
     
     /* Jertse berri bat gehitu */
     public static void jertsGehitu() {
-        System.out.println("Jertse berriaren datuak sartu behar dituzu.");
+        System.out.println("Jertse berriaren datuak sartu behar dituzu.\n");
         Jertsea jerts1 = new Jertsea();
         alJerts.add(jerts1); // arraylist-ean gehitu
         System.out.println();

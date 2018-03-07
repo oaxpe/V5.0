@@ -22,11 +22,13 @@ public class BezeroaKudeatu {
     
     /* Bezero berri bat gehitu */
     public static void bezeroaGehitu() {
+        System.out.println("Bezero berriaren datuak sartu behar dituzu.\n");
         Bezeroa bez1 = new Bezeroa();         
-        System.out.println("\nEremua: Bezeroa");
-        bez1.printDatuak();
         bezeroGuzt.add(bez1);
         setNanBezero.add(bez1.getNan());
+        System.out.println("\nDatu hauek dituen bezeroa gorde da.");
+        System.out.println("\nEremua: Bezeroa");
+        bez1.printDatuak();
     }
     
     /* Bezero zehatz baten datu guztiak ezabatu */ 

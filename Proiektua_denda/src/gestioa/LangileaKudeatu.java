@@ -31,10 +31,12 @@ public class LangileaKudeatu {
     }
     /* Langile berri bat gehitu */
     public static void langileaGehitu() {
-        Langilea lang1 = new Langilea();         
+        System.out.println("Langile berriaren datuak sartu behar dituzu.\n");
+        Langilea lang1 = new Langilea();        
+        langGuzt.add(lang1);
+        System.out.println("\nDatu hauek dituen langilea gorde da.");
         System.out.println("\nEremua: Langilea");
         lang1.printDatuak();
-        langGuzt.add(lang1);
     }
     
     /* Langile zehatz baten datu guztiak ezabatu */ 

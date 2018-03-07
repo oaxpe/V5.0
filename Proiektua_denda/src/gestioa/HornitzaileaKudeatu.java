@@ -21,8 +21,9 @@ public class HornitzaileaKudeatu {
     public static void hornitzaileaGehitu() {
         System.out.println("Hornitzaile berriaren datuak sartu behar dituzu.");
         Hornitzailea horn1 = new Hornitzailea();         
-        horn1.printDatuak();
         hornitzaileGuzt.add(horn1);
+        System.out.println("\nDatu hauek dituen hornitzailea gorde da.");
+        horn1.printDatuak();
     }
     
     /* Hornitzaile zehatz bat ezabatu */
@@ -48,6 +49,6 @@ public class HornitzaileaKudeatu {
             for (int i = 0; i < hornitzaileGuzt.size(); i++) {
                 hornitzaileGuzt.get(i).printHorn();
             }
-        }         
+        }
     }
 }

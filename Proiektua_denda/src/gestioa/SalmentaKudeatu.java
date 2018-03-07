@@ -16,10 +16,12 @@ public class SalmentaKudeatu {
     private static ArrayList<Salmenta> salmentaGuzt = new ArrayList<Salmenta>();
     
     /* Salmenta berri bat gehitu/gestionatu */
-    public static void eskaeraGehitu() {
+    public static void salmentaGehitu() {
+        System.out.println("Salmenta berriaren datuak sartu behar dituzu.\n");
         Salmenta salmenta = new Salmenta();
-        salmenta.printDatuak();
         salmentaGuzt.add(salmenta);
+        System.out.println("\nDatu hauek dituen salmenta gorde da.");
+        salmenta.printDatuak();
     }
     /* Eskaeren inguruko informazioa erakusten du. */
     public static void salmentaGuztiakErakutsi() {

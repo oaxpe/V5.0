@@ -19,7 +19,7 @@ public class PrakaKudeatu {
 
     /* Praka berri bat gehitu */
     public static void prakaGehitu() {
-        System.out.println("Praka berriaren datuak sartu behar dituzu.");
+        System.out.println("Praka berriaren datuak sartu behar dituzu.\n");
         Praka prak1 = new Praka();        
         alPrak.add(prak1);
         System.out.println();
