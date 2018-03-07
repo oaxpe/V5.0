@@ -17,7 +17,7 @@ import java.util.Date;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class Salmenta {
     private static String salmZenb="Salmenta#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio

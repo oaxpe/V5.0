@@ -20,7 +20,7 @@ import static proiektua_denda.Proiektua_denda.pausa; // pausa funtzioa importatu
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class prodKudMain {
 

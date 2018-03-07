@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class Jertsea extends Produktua {
     private String taila;

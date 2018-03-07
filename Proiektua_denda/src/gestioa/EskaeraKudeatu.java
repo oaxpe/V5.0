@@ -11,7 +11,7 @@ import proiektua_denda.Eskaera;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class EskaeraKudeatu {
     private static ArrayList<Eskaera> eskaeraGuzt = new ArrayList<Eskaera>();

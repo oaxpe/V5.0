@@ -12,7 +12,7 @@ import proiektua_denda.Hornitzailea;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class HornitzaileaKudeatu {
     private static ArrayList<Hornitzailea> hornitzaileGuzt = new ArrayList<Hornitzailea>();

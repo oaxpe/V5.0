@@ -19,7 +19,7 @@ import java.util.GregorianCalendar;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class Eskaera {
     private static String eskZenb="Eskaera#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio

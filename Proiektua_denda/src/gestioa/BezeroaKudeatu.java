@@ -14,7 +14,7 @@ import proiektua_denda.Bezeroa;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class BezeroaKudeatu {
     private static ArrayList<Bezeroa> bezeroGuzt = new ArrayList<Bezeroa>();

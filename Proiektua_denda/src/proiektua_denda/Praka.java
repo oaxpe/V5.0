@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class Praka extends Produktua {
     private int taila; //38, 40, 42, 44...

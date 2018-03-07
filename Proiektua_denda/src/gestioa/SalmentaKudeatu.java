@@ -10,7 +10,7 @@ import proiektua_denda.Salmenta;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class SalmentaKudeatu {
     private static ArrayList<Salmenta> salmentaGuzt = new ArrayList<Salmenta>();

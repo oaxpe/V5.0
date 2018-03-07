@@ -10,7 +10,7 @@ import proiektua_denda.Denda;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class DendaKudeatu {
     static Denda denda1 = new Denda(); // Dendaren datuak sortu.

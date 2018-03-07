@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 /**
  *
  * @author Oihane Axpe
- * @version 2.0
+ * @version 3.0
  */
 public class Metodoak {
     public static String printGorriz(String textua) {
