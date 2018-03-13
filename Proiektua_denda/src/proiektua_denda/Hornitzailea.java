@@ -9,13 +9,14 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 3.0
  */
-public class Hornitzailea {
+public class Hornitzailea implements Serializable {
     /* ATRIBUTOAK */
     private static String kodHor = "Hor0999";
     private String izena;
@@ -55,7 +56,7 @@ public class Hornitzailea {
     
     
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
 
     public String getKodHor() {
         return kodHor;
