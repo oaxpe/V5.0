@@ -9,6 +9,7 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,12 +22,11 @@ import java.util.GregorianCalendar;
  * @author Oihane Axpe
  * @version 3.0
  */
-public class Eskaera {
+public class Eskaera implements Serializable {
     private static String eskZenb="Eskaera#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
     private String hornitzailea;
     private String data;
-    private int kopurua;
-    
+    private int kopurua;    
     
     public Eskaera () {
         setHornitzailea();
@@ -49,7 +49,7 @@ public class Eskaera {
     
     
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
 
     public String getHornitzailea() {
         return hornitzailea;
