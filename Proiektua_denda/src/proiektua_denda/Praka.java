@@ -7,13 +7,14 @@ package proiektua_denda;
 
 import gestioa.Metodoak;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 3.0
  */
-public class Praka extends Produktua {
+public class Praka extends Produktua implements Serializable {
     private int taila; //38, 40, 42, 44...
 //    private String sasoia; // uda, negua...
     private int luzeera;
