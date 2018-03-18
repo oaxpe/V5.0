@@ -7,13 +7,14 @@ package proiektua_denda;
 
 import gestioa.Metodoak;
 import java.io.IOException;
+import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 3.0
  */
-public class Jertsea extends Produktua {
+public class Jertsea extends Produktua implements Serializable {
     private String taila;
     
     public Jertsea () {

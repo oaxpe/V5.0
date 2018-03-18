@@ -5,9 +5,19 @@
  */
 package gestioa;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proiektua_denda.Jertsea;
+import proiektua_denda.Proiektua_denda;
 
 /**
  *
@@ -15,73 +25,142 @@ import proiektua_denda.Jertsea;
  * @version 3.0
  */
 public class JertseaKudeatu {
-    private static ArrayList<Jertsea> alJerts = new ArrayList<Jertsea>(); 
+    private static File d = new File("Objektuak");
+    private static File f = new File(d+"\\jertsea.obj");
+    private static File fTemp = new File(d+"\\jertsTemp.obj");
     
     /* Jertse berri bat gehitu */
     public static void jertsGehitu() {
-        System.out.println("Jertse berriaren datuak sartu behar dituzu.\n");
-        Jertsea jerts1 = new Jertsea();
-        alJerts.add(jerts1); // arraylist-ean gehitu
-        System.out.println();
-        System.out.println("Datu hauek dituen produktua gorde da."
+        if (!d.exists()) {
+            d.mkdir();
+        }
+        try {
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
+            System.out.println("Jertse berriaren datuak sartu behar dituzu.\n");
+            Jertsea jerts1 = new Jertsea();         
+            geoos.writeObject(jerts1); // objektua fitxategian idatzi
+            geoos.flush();
+            geoos.close();
+            System.out.println();
+            System.out.println("Datu hauek dituen produktua gorde da."
                 + "\nProduktua: JERTSEA");
-        jerts1.printDatuak();               
-        
+            jerts1.printDatuak();
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        }  
     }
     
     /* Jertse zehatz baten datu guztiak ezabatu */    
-    public static void jertseaEzabatu(String kodea) {
-        Iterator<Jertsea> iter = alJerts.iterator();
-        while (iter.hasNext()) {
-           Jertsea jerts = iter.next();
-            if (jerts.getKodPro().equalsIgnoreCase(kodea)) { // konparaketa
-                iter.remove(); // ezabatu
-            }  
+    public static void jertseaEzabatu(String kodea) throws IOException {
+        boolean ezabatuta = false;
+        try {    
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            
+            while (true) { // fitxategiko objektuak irakurri
+                Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri              
+                if (!jerts.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
+                    geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
+                    geoos.flush();
+                } 
+                else {
+                    ezabatuta = true;
+                }
+            } 
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, dena itxi eta fitxategiari izena aldatu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
-        System.out.println(kodea+" erreferentziadun jertsea ondo ezabatu da.");
+        System.gc();
+        Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        Proiektua_denda.pausa();
+        
+        if (ezabatuta)
+            System.out.println(kodea+" erreferentziadun jertsea ondo ezabatu da.");
+        else
+            System.out.println(kodea+" erreferentziadun jertserik ez dago erregistratuta.");
     }
     
     /* ArrayList-eko Jertse guztien datuak erakusteko metodoa */
-    public static void jertsGuztErakutsi() {
-        System.out.println("JERTSEAK:");
-        if (alJerts.isEmpty()) {
-            System.out.println("\tEz dago jertserik erregistratuta.");
-        }
-        else {
+    public static void jertsGuztErakutsi() throws IOException {
+        FileInputStream fis = null;
+        GoibururikEzObjectInputStream geois = null;
+        try {
+            fis = new FileInputStream(f);
+            geois = new GoibururikEzObjectInputStream(fis);
+            System.out.println("JERTSEAK:");
             System.out.println("\tKodea\t\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia");
-            for (int i = 0; i < alJerts.size(); i++) {
-                alJerts.get(i).printProd();
+            while (true) {
+                Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
+                jerts.printProd(); // objektuaren datuak erakutsi
             }
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        } 
+        finally {
+            fis.close();
+            geois.close();
         }
         System.out.println();
     }
     
     /* Jertse baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */
     public static void jertseaKontsultatu(String kodea) {
+        System.out.println();
         System.out.println("Kodea\tKolorea\tTaila\tKantitatea");
         boolean bool = false;
-        for (int i = 0; i < alJerts.size(); i++) {
-            if (alJerts.get(i).getKodPro().equals(kodea)) {
-                alJerts.get(i).prodKontsultatu();
-                bool = true;
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
+            while (true) {
+                Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
+                if (jerts.getKodPro().equals(kodea)) {
+                    jerts.prodKontsultatu(); // objektuaren datuak erakutsi
+                    bool = true;
+                }
             }
-        }
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        } 
         if (!bool)
             System.out.println("Ez dago kode hori duen produkturik.");
     }
     
     /* Dauden jertse guztiak erakusteko metodoa */
     public static void jertseaInbentarioa() {
+        boolean bool = false;
         System.out.println("\nJERTSEAK:");
-        if (alJerts.isEmpty()) {
-            System.out.println("\tEz dago jertserik.");
-        }
-        else {
-            System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
-            for (int i = 0; i < alJerts.size(); i++) {
-                alJerts.get(i).prodInbentarioa();
+        System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
+            while (true) {
+                Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
+                jerts.prodInbentarioa();// objektuaren datuak erakutsi
+                bool = true;
             }
-        }    
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        } 
+        if (!bool)
+            System.out.println("Ez dago jertserik.");   
     }
     
     /* kantitatea 5 baino gutxiago duten jertseak erakusten ditu */
@@ -89,10 +168,23 @@ public class JertseaKudeatu {
         System.out.println("\nJERTSEAK:");
         System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
         boolean bool = false;
-        for (int i = 0; i < alJerts.size(); i++) {
-            if (alJerts.get(i).getKantStock()<5)
-                alJerts.get(i).prodInbentarioa();
-        }
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
+            while (true) {
+                Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
+                if (jerts.getKantStock()<5) {
+                    jerts.prodInbentarioa();// objektuaren datuak erakutsi
+                    bool = true;
+                }
+            }
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        } 
         if (!bool)
             System.out.println("\tEz dago eskatzeko produkturik.");
     }
@@ -104,23 +196,54 @@ public class JertseaKudeatu {
                 + "-----------------------------------------\n"
                 + "|         Produktuaren salmenta         |\n"
                 + "-----------------------------------------");
-        for (int i = 0; i < alJerts.size(); i++) {
-            if (alJerts.get(i).isEskuragai()) { // gutxienez bat dagoela konprobatzen du
-                if (alJerts.get(i).getKodPro().equals(kodea) && alJerts.get(i).getKantStock()>=kantitatea  && alJerts.get(i).getTaila().equals(taila)) {
-                    alJerts.get(i).setKantStock(alJerts.get(i).getKantStock()-kantitatea); // salduko den prod kantitatea stock-etik kendu
-                    bool = true;
-                    System.out.println(""
-                        + "\tKodea\t-\tPrezioa \n\n"
-                        + "\t"+alJerts.get(i).getKodPro()+"\t-\t"+alJerts.get(i).getPrezioa()+"  (x"+kantitatea+")\n"
-                        + "  --------------------------------------\n"
-                        + "\tORDAINTZEKOA \n\tGUZTIRA: \t\t"+alJerts.get(i).getPrezioa()*kantitatea+"€");
-                    break;
+        try {
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            while (true) {
+                Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri  
+                if (!jerts.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
+                    geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
+                    geoos.flush();
+                } 
+                else {
+                    if (!jerts.getTaila().equals(taila.toUpperCase())) {
+                        geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
+                        geoos.flush();
+                    }
+                    else {
+                        if (jerts.isEskuragai()) {
+                            if (jerts.getKodPro().equals(kodea) && jerts.getKantStock()>=kantitatea) {
+                                int k = jerts.getKantStock()-kantitatea;
+                                jerts.setKantStock(k); // salduko den prod kantitatea stock-etik kendu
+                                geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
+                                geoos.flush();
+                                bool = true;
+                                System.out.println(""
+                                    + "\tKodea\t-\tPrezioa \n\n"
+                                    + "\t"+jerts.getKodPro()+"\t-\t"+jerts.getPrezioa()+"  (x"+kantitatea+")\n"
+                                    + "  --------------------------------------\n"
+                                    + "\tORDAINTZEKOA \n\tGUZTIRA: \t\t"+jerts.getPrezioa()*kantitatea+"€");
+                            }
+                            jerts.getPrezioa();
+                        }
+                    }
                 }
-                alJerts.get(i).getPrezioa();
-            }      
+            }
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        } 
+        System.gc();
+        try {
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         if (!bool)
-            System.out.println("\tProduktu hori ez dago dendan.");
+                System.out.println("\tProduktu hori ez dago dendan.");
     }
-
 }
