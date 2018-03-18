@@ -5,6 +5,8 @@
  */
 package gestioa;
 
+import java.io.IOException;
+
 /**
  *
  * @author Oihane Axpe
@@ -35,7 +37,7 @@ public class ProduktuaKudeatu {
         PrakaKudeatu.prakaEskatzeko();
     }
     
-    public static void prodErakutsi() {
+    public static void prodErakutsi() throws IOException {
         System.out.println(""
                 + "------------------------------------------\n"
                 + "|        Dendako produktu guztiak        |\n"

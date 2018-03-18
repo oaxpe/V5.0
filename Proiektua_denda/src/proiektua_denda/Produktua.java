@@ -9,13 +9,14 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 3.0
  */
-public abstract class Produktua {
+public abstract class Produktua implements Serializable {
     /* ATRIBUTOAK */
     protected String kodPro; // arropak daukan erreferentzia. Adib:  231532-499
     protected String marka;
@@ -79,7 +80,7 @@ public abstract class Produktua {
    
 
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
     
     public String getKodPro() {
         return kodPro;
