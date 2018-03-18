@@ -5,7 +5,12 @@
  */
 package gestioa;
 
-import java.util.ArrayList;
+import java.io.EOFException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import proiektua_denda.Salmenta;
 /**
  *
@@ -13,27 +18,47 @@ import proiektua_denda.Salmenta;
  * @version 3.0
  */
 public class SalmentaKudeatu {
-    private static ArrayList<Salmenta> salmentaGuzt = new ArrayList<Salmenta>();
+    private static File d = new File("Objektuak");
+    private static File f = new File(d+"\\salmenta.obj");
     
     /* Salmenta berri bat gehitu/gestionatu */
     public static void salmentaGehitu() {
-        System.out.println("Salmenta berriaren datuak sartu behar dituzu.\n");
-        Salmenta salmenta = new Salmenta();
-        salmentaGuzt.add(salmenta);
-        System.out.println("\nDatu hauek dituen salmenta gorde da.");
-        salmenta.printDatuak();
+        if (!d.exists()) {
+            d.mkdir();
+        }
+        try {
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
+            System.out.println("Salmenta berriaren datuak sartu behar dituzu.\n");
+            Salmenta salm1 = new Salmenta(); 
+            geoos.writeObject(salm1); // objektua fitxategian idatzi
+            geoos.flush();
+            geoos.close();
+            System.out.println("\nDatu hauek dituen salmenta gorde da.");
+            salm1.printDatuak();      
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+        } catch (IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        }   
     }
+    
     /* Eskaeren inguruko informazioa erakusten du. */
     public static void salmentaGuztiakErakutsi() {
-        if (salmentaGuzt.isEmpty()) {
-            System.out.println("Ez dago salmentarik erregistratuta.");
-        }
-        else {
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("SALMENTAK: ");
             System.out.println("\tSalmenta zenb\tData\tKopurua");
-            for (int i = 0; i < salmentaGuzt.size(); i++) {
-                salmentaGuzt.get(i).printSalmenta();
+            while (true) {
+                Salmenta salm = (Salmenta) geois.readObject(); // objektua irakurri              
+                salm.printSalmenta(); // objektuaren datuak erakutsi
             }
-        }   
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        }
     }
 }

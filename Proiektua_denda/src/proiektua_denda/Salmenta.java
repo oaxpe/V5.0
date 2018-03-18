@@ -9,6 +9,7 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +20,7 @@ import java.util.Date;
  * @author Oihane Axpe
  * @version 3.0
  */
-public class Salmenta {
+public class Salmenta implements Serializable {
     private static String salmZenb="Salmenta#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
     private Date data;
     private int kopurua;
