@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 public class Hornitzailea implements Serializable {
     /* ATRIBUTOAK */
-    private static String kodHor = "Hor0999";
+    private String kodHor;
     private String izena;
     private String herria;
     private String telefonoa;
@@ -63,10 +63,7 @@ public class Hornitzailea implements Serializable {
     }
 
     public void setKodHor() {
-        // Hornitzailearen kode zenbakia automatikoki hartu
-        String zenb = String.valueOf(Integer.parseInt(this.kodHor.substring(3, this.kodHor.length()))+1);
-        this.kodHor = this.kodHor.substring(0, 3);
-        this.kodHor += zenb;  
+        this.kodHor  = Metodoak.kodeakAldatuEtaGorde("Hornitzailea"); // Eskaera zenbakia automatikoki hartu kodeak.txt fitxategitik 
     }
     
     public String getIzena() {
