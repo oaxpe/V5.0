@@ -21,7 +21,7 @@ import java.util.Date;
  * @version 3.0
  */
 public class Salmenta implements Serializable {
-    private static String salmZenb="Salmenta#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
+    private String salmZenb; 
     private Date data;
     private int kopurua;
     
@@ -43,7 +43,7 @@ public class Salmenta implements Serializable {
     }
     
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
 
     public Date getData() {
         return data;
@@ -82,15 +82,12 @@ public class Salmenta implements Serializable {
         }
     }
 
-    public static String getSalmZenb() {
+    public String getSalmZenb() {
         return salmZenb;
     }
 
-    public static void setSalmZenb() {
-        // Salmenta zenbakia automatikoki hartu
-        String zenb = String.valueOf(Integer.parseInt(salmZenb.substring(9, salmZenb.length()))+1);
-        salmZenb = salmZenb.substring(0, 9);
-        salmZenb += zenb;
+    public void setSalmZenb() {
+        this.salmZenb = Metodoak.kodeakAldatuEtaGorde("Salmenta"); // Salmenta zenbakia automatikoki hartu kodeak.txt fitxategitik
     }
     
 }
