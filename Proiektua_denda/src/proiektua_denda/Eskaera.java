@@ -23,7 +23,7 @@ import java.util.GregorianCalendar;
  * @version 3.0
  */
 public class Eskaera implements Serializable {
-    private static String eskZenb="Eskaera#0999"; // eskaera zenbakia ezin da aldatu. Eskaera berri bakoitzari, aurrekoa +1 egiten zaio
+    private String eskZenb; 
     private String hornitzailea;
     private String data;
     private int kopurua;    
@@ -109,9 +109,6 @@ public class Eskaera implements Serializable {
     }
 
     public void setEskZenb() {
-        // Eskaera zenbakia automatikoki hartu
-        String zenb = String.valueOf(Integer.parseInt(this.eskZenb.substring(8, this.eskZenb.length()))+1);
-        this.eskZenb = this.eskZenb.substring(0, 8);
-        this.eskZenb += zenb;
+        this.eskZenb = Metodoak.kodeakAldatuEtaGorde("Eskaera"); // Eskaera zenbakia automatikoki hartu kodeak.txt fitxategitik
     }
 }

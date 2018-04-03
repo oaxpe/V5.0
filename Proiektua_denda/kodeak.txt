@@ -1,5 +1,5 @@
 bezeroa#1000
 langilea#1000
 hornitzailea#1000
-eskaera#1000
+eskaera#1004
 salmenta#1000
