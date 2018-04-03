@@ -5,7 +5,17 @@
  */
 package gestioa;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -111,5 +121,59 @@ public class Metodoak {
             return false;
         }
         return true;
+    }
+    
+    /* kodeak.txt fitxategian gordeta dauden objektuen kodeak aldatzeko metodoa 
+    *  Objektu berri bat sortzen denean, azkenengo sortutako objektuaren kodea gordeko da 
+    *  (aurrekoa +1 eginez) */
+    public static String kodeakAldatuEtaGorde(String hasiera) {
+        FileReader fr = null;
+        BufferedReader br = null;
+        FileWriter fw = null;
+        PrintWriter pw = null;
+        String kodea = null;
+        File f = new File("kodeak.txt"); // kodeak gordeta dauden fitxategia
+        hasiera = hasiera.toLowerCase(); // minuskulaz 
+        try {
+            ArrayList<String> kodGuztiak = new ArrayList<String>(); // fitxategiko kode guztiak arraylistean gordetzeko
+
+            fr = new FileReader(f);
+            br = new BufferedReader(fr);
+            String lerroa;
+
+            while((lerroa=br.readLine()) != null){
+                if (lerroa.contains(hasiera)) { //kodearen hasiera konprobatu
+                    kodea = String.valueOf(lerroa.substring(0, hasiera.length()+1) + (Integer.parseInt(lerroa.substring(hasiera.length()+1)) +1)); // kodearen balioari 1 gehitu
+                    lerroa = lerroa.replace(lerroa, kodea);
+                }
+                System.out.println(lerroa);
+                kodGuztiak.add(lerroa); // lerroa arraylistean gorde
+            }
+            
+            fw = new FileWriter(f);
+            pw = new PrintWriter(fw);
+            
+            for (int i = 0; i<kodGuztiak.size(); i++) {
+                pw.println(kodGuztiak.get(i)); // fitxategian kode guztiak berriz idatzi (aldaketa eginda)
+                pw.flush();
+            }
+            
+        } catch (FileNotFoundException ex) {
+            System.out.println("Fitxategia ez da existitzen."); 
+        } catch (IOException ex) {
+            Logger.getLogger(Metodoak.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally {
+            try {
+                fr.close();
+                br.close();
+                pw.flush();
+                fw.close();
+                pw.close();
+            } catch (IOException ex) {
+                Logger.getLogger(Metodoak.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return kodea; // kode zenbakia bueltatu, objektuan gordetzeko
     }
 }
