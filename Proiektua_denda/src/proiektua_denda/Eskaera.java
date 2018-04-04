@@ -70,20 +70,11 @@ public class Eskaera implements Serializable {
     }
 
     public void setData() {
-        try {
-            Calendar c1 = new GregorianCalendar();
-            String egun = Integer.toString(c1.get(Calendar.DATE)); // eguna gorde
-            String hilabete = Integer.toString(c1.get(Calendar.MONTH)+1); // hilabetea gorde
-            String urte = Integer.toString(c1.get(Calendar.YEAR)); // urtea gorde
-
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
-            Date fetx = df.parse(egun+"/"+hilabete+"/"+urte); // data hori Date formatura parseatu
-            
-            this.data = new SimpleDateFormat("dd/MM/yyyy").format(fetx.getTime()); // formatu zehatz baten jarri
-        }
-        catch (ParseException e) {
-            System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
-        }
+        Calendar c1 = new GregorianCalendar();
+        String egun = Integer.toString(c1.get(Calendar.DATE)); // eguna gorde
+        String hilabete = Integer.toString(c1.get(Calendar.MONTH)+1); // hilabetea gorde
+        String urte = Integer.toString(c1.get(Calendar.YEAR)); // urtea gorde
+        this.data = Metodoak.dataGorde(urte+"/"+hilabete+"/"+egun); // sartutako data, uuu/hh/ee formatuan bueltatuko du
     }
 
     public int getKopurua() {
