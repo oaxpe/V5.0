@@ -12,8 +12,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -174,5 +178,20 @@ public class Metodoak {
             }
         }
         return kodea; // kode zenbakia bueltatu, objektuan gordetzeko
+    }
+    
+    /* String-a data bezela kontrolatzeko metodoa. Data uuuu/hh/ee formatuan bueltatuko du. */
+    public static String dataGorde(String data) {
+        String dataFormatua = null;
+        try {
+            DateFormat df = new SimpleDateFormat("yyy/MM/dd");
+            Date fetx = df.parse(data); // data hori Date formatura parseatu
+            
+            dataFormatua = new SimpleDateFormat("yyy/MM/dd").format(fetx.getTime()); // formatu zehatz baten jarri            
+        } 
+        catch (ParseException gaizki) {
+            System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
+        }
+        return dataFormatua; 
     }
 }
