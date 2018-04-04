@@ -10,10 +10,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *
@@ -22,7 +18,7 @@ import java.util.Date;
  */
 public class Salmenta implements Serializable {
     private String salmZenb; 
-    private Date data;
+    private String data;
     private int kopurua;
     
     
@@ -45,22 +41,17 @@ public class Salmenta implements Serializable {
     /* GETTER and SETTER */
     transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
     public void setData() {
-        try {
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            System.out.print("Sartu Data (ee/hh/uuuu): ");
-            Date fetx = df.parse(br.readLine());
-            this.data = fetx;
+         try {
+            System.out.print("Sartu data (uuuu/hh/ee): ");
+            this.data = Metodoak.dataGorde(br.readLine()); // sartutako data, uuu/hh/ee formatuan bueltatuko du
         }
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (ParseException gaizki) {
-            System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
         }
     }
 
