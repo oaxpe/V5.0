@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public class Langilea extends Pertsona implements Serializable {
     /* ATRIBUTOAK */
-    private static String kodLan = "Lan0999";
+    private String kodLan;
     private double soldata;
     private String eremua; // saltzailea edo garbitzailea den gordetzen du.
     
@@ -87,10 +87,7 @@ public class Langilea extends Pertsona implements Serializable {
     }
 
     public void setKodLan() {
-        // Langilearen kode zenbakia automatikoki hartu
-        String zenb = String.valueOf(Integer.parseInt(this.kodLan.substring(3, this.kodLan.length()))+1);
-        this.kodLan = this.kodLan.substring(0, 3);
-        this.kodLan += zenb;
+        this.kodLan = Metodoak.kodeakAldatuEtaGorde("Langilea"); // Langilearen kodea automatikoki hartu kodeak.txt fitxategitik
     }
 
     public String getEremua() {
