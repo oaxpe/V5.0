@@ -146,7 +146,6 @@ public class Metodoak {
                     kodea = String.valueOf(lerroa.substring(0, hasiera.length()+1) + (Integer.parseInt(lerroa.substring(hasiera.length()+1)) +1)); // kodearen balioari 1 gehitu
                     lerroa = lerroa.replace(lerroa, kodea);
                 }
-                System.out.println(lerroa);
                 kodGuztiak.add(lerroa); // lerroa arraylistean gorde
             }
             
