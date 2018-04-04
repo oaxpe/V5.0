@@ -13,7 +13,11 @@ import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +30,7 @@ public abstract class Pertsona implements Serializable {
     protected String abizena1;
     protected String abizena2;
     protected String nan;
-    protected Date jaiotzeData;
+    protected String jaiotzeData;
     protected String sexua;
     protected String herria;
     protected String telefonoa;
@@ -50,7 +54,7 @@ public abstract class Pertsona implements Serializable {
         this.abizena2=abizena2;
     }
     
-    public Pertsona (String izena, String abizena1, String abizena2, String nan, Date jaiotzeData, String sexua, String herria, String tlf) {
+    public Pertsona (String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf) {
         this.izena=izena;
         this.abizena1=abizena1;
         this.abizena2=abizena2;
@@ -137,23 +141,18 @@ public abstract class Pertsona implements Serializable {
         }         
     }
 
-    public Date getJaiotzeData() {
+    public String getJaiotzeData() {
         return jaiotzeData;
     }
 
     public void setJaiotzeData() {
         try {
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            System.out.print("Sartu jaiotze data (ee/hh/uuuu): ");
-            Date fetx = df.parse(br.readLine());
-            this.jaiotzeData=fetx;
-        }
-        catch (ParseException gaizki) {
-            System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
+            System.out.print("Sartu jaiotze data (uuu/hh/ee): ");
+            this.jaiotzeData = Metodoak.dataGorde(br.readLine()); // sartutako data, uuu/hh/ee formatuan bueltatuko du
         }
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }       
+        }
     }
 
     public String getSexua() {

@@ -39,7 +39,7 @@ public class Langilea extends Pertsona implements Serializable {
         this.eremua="Saltzailea";
     }
     
-    public Langilea (String kodLan, String izena, String abizena1, String abizena2, String nan, Date jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua) {
+    public Langilea (String kodLan, String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua) {
         super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
         this.kodLan = kodLan;
         this.soldata = soldata;

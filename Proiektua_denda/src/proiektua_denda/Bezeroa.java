@@ -7,7 +7,6 @@ package proiektua_denda;
 
 import gestioa.Metodoak;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
@@ -24,7 +23,7 @@ public class Bezeroa extends Pertsona implements Serializable {
         setKodBez();
     }
     
-    public Bezeroa (String kodBez, String izena, String abizena1, String abizena2, String nan, Date jaiotzeData, String sexua, String herria, String tlf) {
+    public Bezeroa (String kodBez, String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf) {
         super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
         this.kodBez = kodBez;
     }
@@ -48,7 +47,7 @@ public class Bezeroa extends Pertsona implements Serializable {
     }
 
     public void setKodBez() {
-        this.kodBez = Metodoak.kodeakAldatuEtaGorde("Hornitzailea"); // Bezeroaren kodea automatikoki hartu kodeak.txt fitxategitik 
+        this.kodBez = Metodoak.kodeakAldatuEtaGorde("Bezeroa"); // Bezeroaren kodea automatikoki hartu kodeak.txt fitxategitik 
     }
     
 }
