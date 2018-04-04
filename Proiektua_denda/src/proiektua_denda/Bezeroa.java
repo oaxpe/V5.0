@@ -5,6 +5,7 @@
  */
 package proiektua_denda;
 
+import gestioa.Metodoak;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import java.util.Date;
  */
 public class Bezeroa extends Pertsona implements Serializable {
     /* ATRIBUTOAK */
-    private static String kodBez = "Bez0999";
+    private String kodBez;
     
     /* ERAIKITZAILEAK */
     public Bezeroa () {
@@ -47,10 +48,7 @@ public class Bezeroa extends Pertsona implements Serializable {
     }
 
     public void setKodBez() {
-        // Bezeroaren kode zenbakia automatikoki hartu
-        String zenb = String.valueOf(Integer.parseInt(this.kodBez.substring(3, this.kodBez.length()))+1);
-        this.kodBez = this.kodBez.substring(0, 3);
-        this.kodBez += zenb;
+        this.kodBez = Metodoak.kodeakAldatuEtaGorde("Hornitzailea"); // Bezeroaren kodea automatikoki hartu kodeak.txt fitxategitik 
     }
     
 }
