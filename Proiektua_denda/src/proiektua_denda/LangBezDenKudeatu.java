@@ -153,9 +153,11 @@ public class LangBezDenKudeatu {
                         // 3.- Langilearen datuak aldatu.
                         case 3:
                             try {
-                                System.out.print("\nSartu datuak aldatu nahi dituzun langilearen NAN zenbakia: ");
-                                String nan = br.readLine();
-                                LangileaKudeatu.langileaDatuakAldatu(nan);
+                                System.out.print("\nSartu datuak aldatu nahi dituzun bezeroaren NAN zenbakia: ");
+                                String nan = br.readLine().toUpperCase();
+                                langileDatuakAldatu(); // bezeroaren datuak aukeratzeko menua
+                                int atrAuk = Integer.parseInt(br.readLine());
+                                LangileaKudeatu.langileaDatuakAldatu(nan, atrAuk);
                             }
                             catch (IOException gaizki) {
                                 System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
@@ -323,6 +325,24 @@ public class LangBezDenKudeatu {
                     + "*    3.- Langileen datuak aldatu.      *\n"
                     + "*    4.- Langileak kontsultatu.        *\n"
                     + "*****************************************\n"
+                    + "Aukeratu: ");
+    }
+    
+    /* Langile baten datuak aldatzeko submenua */
+    public static void langileDatuakAldatu() {
+        System.out.print("\n"
+                    + "Zein datu aldatu nahi duzu?\n"
+                    + "\t1.- Izena.\n"
+                    + "\t2.- Lehenengo abizena.\n"
+                    + "\t3.- Bigarren abizena.\n"
+                    + "\t4.- NAN zenbakia.\n"
+                    + "\t5.- Jaiotze data.\n"
+                    + "\t6.- Sexua.\n"
+                    + "\t7.- Herria.\n"
+                    + "\t8.- Telefonoa.\n"
+                    + "\t9.- Soladata.\n"
+                    + "\t10.- Eremua (saltzaile/garbitzaile).\n"
+                    + "\tBeste EDOZEIN ZENBAKI ezer ez aldatzeko.\n"
                     + "Aukeratu: ");
     }
     

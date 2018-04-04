@@ -10,13 +10,15 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
+import java.util.Date;
 
 /**
  *
  * @author Oihane Axpe
  * @version 3.0
  */
-public class Langilea extends Pertsona {
+public class Langilea extends Pertsona implements Serializable {
     /* ATRIBUTOAK */
     private static String kodLan = "Lan0999";
     private double soldata;
@@ -37,11 +39,11 @@ public class Langilea extends Pertsona {
         this.eremua="Saltzailea";
     }
     
-    public Langilea (String izena, String abizena1, String abizena2, String nan, /*Date jaiotzeData,*/ String sexua, String herria, String tlf, int soldata) {
-        super(izena, abizena1, abizena2, nan, /*jaiotzeData,*/ sexua, herria, tlf);
-        this.soldata=soldata;
-        setKodLan();
-        this.eremua="Saltzailea";
+    public Langilea (String kodLan, String izena, String abizena1, String abizena2, String nan, Date jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua) {
+        super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
+        this.kodLan = kodLan;
+        this.soldata = soldata;
+        this.eremua = eremua;
     }
     
     /* METODOAK */
@@ -60,7 +62,7 @@ public class Langilea extends Pertsona {
     }
     
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
     
     public double getSoldata() {
         return soldata;
