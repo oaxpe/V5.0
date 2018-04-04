@@ -147,7 +147,7 @@ public abstract class Pertsona implements Serializable {
 
     public void setJaiotzeData() {
         try {
-            System.out.print("Sartu jaiotze data (uuu/hh/ee): ");
+            System.out.print("Sartu jaiotze data (uuuu/hh/ee): ");
             this.jaiotzeData = Metodoak.dataGorde(br.readLine()); // sartutako data, uuu/hh/ee formatuan bueltatuko du
         }
         catch (IOException gaizki) {
