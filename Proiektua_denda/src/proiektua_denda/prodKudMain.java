@@ -25,7 +25,7 @@ import static proiektua_denda.Proiektua_denda.pausa; // pausa funtzioa importatu
 public class prodKudMain {
 
     /* Main-etik deitzen da. Produktuak kudeatzeko funtzioa  */
-    public static void prodKudMain() {
+    public static void prodKudMain() throws IOException {
         BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
         int aukera = 0;    
         do {
