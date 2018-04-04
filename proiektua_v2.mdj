@@ -1835,7 +1835,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "#jaiotzeData: Date",
+											"text": "#jaiotzeData: String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -10662,7 +10662,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "-Temp: File",
+											"text": "-fTemp: File",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -19084,7 +19084,7 @@
 									"visibility": "protected",
 									"isStatic": false,
 									"isLeaf": false,
-									"type": "Date",
+									"type": "String",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
@@ -22426,7 +22426,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFhVnmv4PP2dnc="
 									},
-									"name": "Temp",
+									"name": "fTemp",
 									"visibility": "private",
 									"isStatic": true,
 									"isLeaf": false,
