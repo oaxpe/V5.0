@@ -9,6 +9,7 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -19,7 +20,7 @@ import java.util.Date;
  * @author Oihane Axpe
  * @version 3.0
  */
-public abstract class Pertsona {
+public abstract class Pertsona implements Serializable {
     /* ATRIBUTOAK */
     protected String izena;
     protected String abizena1;
@@ -49,12 +50,12 @@ public abstract class Pertsona {
         this.abizena2=abizena2;
     }
     
-    public Pertsona (String izena, String abizena1, String abizena2, String nan, String sexua, String herria, String tlf) {
+    public Pertsona (String izena, String abizena1, String abizena2, String nan, Date jaiotzeData, String sexua, String herria, String tlf) {
         this.izena=izena;
         this.abizena1=abizena1;
         this.abizena2=abizena2;
         this.nan=nan;
-//        this.jaiotzeData=jaiotzeData;
+        this.jaiotzeData=jaiotzeData;
         this.sexua=sexua;
         this.herria=herria;
         this.telefonoa=tlf;
@@ -76,7 +77,7 @@ public abstract class Pertsona {
 
     
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
     
     public String getIzena() {
         return izena;
@@ -88,7 +89,7 @@ public abstract class Pertsona {
             this.izena=br.readLine();
         }
         catch (IOException gaizki) {
-            
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }      
     }
 

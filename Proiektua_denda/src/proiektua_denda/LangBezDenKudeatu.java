@@ -22,7 +22,7 @@ import static proiektua_denda.Proiektua_denda.pausa;
 public class LangBezDenKudeatu {
 
     /* Main-etik deitzen da. Langileak, bezeroak eta denda kudeatzeko funtzioa  */
-    public static void langBezDenKudeatu() {
+    public static void langBezDenKudeatu() throws IOException {
         BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
         int aukera = 0;        
 
@@ -87,7 +87,7 @@ public class LangBezDenKudeatu {
                         // 3.- Bezeroen datuak aldatu.
                         case 3:
                             try {
-                                System.out.print("Sartu datuak aldatu nahi dituzun bezeroaren NAN zenbakia: ");
+                                System.out.print("\nSartu datuak aldatu nahi dituzun bezeroaren NAN zenbakia: ");
                                 String nan = br.readLine().toUpperCase();
                                 bezeroDatuakAldatu(); // bezeroaren datuak aukeratzeko menua
                                 int atrAuk = Integer.parseInt(br.readLine());
@@ -153,7 +153,7 @@ public class LangBezDenKudeatu {
                         // 3.- Langilearen datuak aldatu.
                         case 3:
                             try {
-                                System.out.print("Sartu datuak aldatu nahi dituzun langilearen NAN zenbakia: ");
+                                System.out.print("\nSartu datuak aldatu nahi dituzun langilearen NAN zenbakia: ");
                                 String nan = br.readLine();
                                 LangileaKudeatu.langileaDatuakAldatu(nan);
                             }
@@ -306,7 +306,8 @@ public class LangBezDenKudeatu {
                     + "\t6.- Sexua.\n"
                     + "\t7.- Herria.\n"
                     + "\t8.- Telefonoa.\n"
-                    + "Aukeratu:");
+                    + "\tBeste EDOZEIN ZENBAKI ezer ez aldatzeko.\n"
+                    + "Aukeratu: ");
     }
     
     /* Langileak kudeatzeko menua */

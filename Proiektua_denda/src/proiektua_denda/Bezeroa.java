@@ -5,12 +5,15 @@
  */
 package proiektua_denda;
 
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  *
  * @author Oihane Axpe
  * @version 3.0
  */
-public class Bezeroa extends Pertsona {
+public class Bezeroa extends Pertsona implements Serializable {
     /* ATRIBUTOAK */
     private static String kodBez = "Bez0999";
     
@@ -20,9 +23,9 @@ public class Bezeroa extends Pertsona {
         setKodBez();
     }
     
-    public Bezeroa (String izena, String abizena1, String abizena2, String nan, String sexua, String herria, String tlf) {
-        super(izena, abizena1, abizena2, nan, sexua, herria, tlf);
-        setKodBez();
+    public Bezeroa (String kodBez, String izena, String abizena1, String abizena2, String nan, Date jaiotzeData, String sexua, String herria, String tlf) {
+        super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
+        this.kodBez = kodBez;
     }
     
     /* METODOAK */
