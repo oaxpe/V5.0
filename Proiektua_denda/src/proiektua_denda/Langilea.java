@@ -52,7 +52,7 @@ public class Langilea extends Pertsona implements Serializable {
         System.out.println("Kodea: "+this.kodLan);
         System.out.println("Lan eremua: "+this.eremua);
         super.printDatuak();
-        System.out.println("Soldata: "+this.soldata+"€");
+        System.out.printf("Soldata: %.2f€\n", this.soldata); // bi dezimalekin erakusteko
     }  
     
     @Override

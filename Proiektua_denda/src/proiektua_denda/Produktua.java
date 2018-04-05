@@ -57,7 +57,7 @@ public abstract class Produktua implements Serializable {
     public void printDatuak() {
         System.out.println("Kodea: "+this.kodPro);
         System.out.println("Marka: "+this.marka);
-        System.out.println("Prezioa : "+this.prezioa+"€");
+        System.out.printf("Prezioa : %.2f€\n", this.prezioa); // bi dezimalekin erakusteko
         System.out.println("Kolorea: "+this.kolorea);
         System.out.println("Sexua: "+this.sexua);
         System.out.println("Stock-ean: "+this.kantStock);
@@ -67,7 +67,7 @@ public abstract class Produktua implements Serializable {
     }
     
     public void printProd() {
-        System.out.print("\t"+this.kodPro+"\t"+this.marka+"\t"+this.kolorea+"\t"+this.sexua+"\t"+this.prezioa+"\t");
+        System.out.printf("\t"+this.kodPro+"\t"+this.marka+"\t"+this.kolorea+"\t"+this.sexua+"\t%.2f\t",this.prezioa); // prezioa bi dezimalekin erakusteko
     }
     
     public void prodKontsultatu() {
