@@ -66,6 +66,7 @@ public class LangBezDenKudeatu {
                             pausa();
                             System.exit(0);
                             break;
+                            
                         // 1.- Bezero berri bat gehitu.      *\n"
                         case 1:
                             BezeroaKudeatu.bezeroaGehitu();
@@ -84,8 +85,14 @@ public class LangBezDenKudeatu {
                             }
                             break;
                             
-                        // 3.- Bezeroen datuak aldatu.
+                        // 3.- Bezeroak kontsultatu.
                         case 3:
+                            BezeroaKudeatu.bezeroGuztiakErakutsi();
+                            pausa();
+                            break;
+                            
+                        // 4.- Bezeroen datuak aldatu.
+                        case 4:
                             try {
                                 System.out.print("\nSartu datuak aldatu nahi dituzun bezeroaren NAN zenbakia: ");
                                 String nan = br.readLine().toUpperCase();
@@ -96,12 +103,6 @@ public class LangBezDenKudeatu {
                             catch (IOException gaizki) {
                                 System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
                             }
-                            break;
-                            
-                        // 4.- Bezeroak kontsultatu.
-                        case 4:
-                            BezeroaKudeatu.bezeroGuztiakErakutsi();
-                            pausa();
                             break;
                             
                         default:
@@ -150,8 +151,14 @@ public class LangBezDenKudeatu {
                             }    
                             break;
                             
-                        // 3.- Langilearen datuak aldatu.
+                        // 3.- Langileak kontsultatu.
                         case 3:
+                            LangileaKudeatu.langileGuztiakErakutsi();
+                            pausa();
+                            break;
+                            
+                        // 4.- Langilearen datuak aldatu.
+                        case 4:
                             try {
                                 System.out.print("\nSartu datuak aldatu nahi dituzun bezeroaren NAN zenbakia: ");
                                 String nan = br.readLine().toUpperCase();
@@ -164,11 +171,6 @@ public class LangBezDenKudeatu {
                             }
                             break;
                             
-                        // 4.- Langileak kontsultatu.
-                        case 4:
-                            LangileaKudeatu.langileGuztiakErakutsi();
-                            pausa();
-                            break;
                         default:
                             System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
                             pausa();
@@ -289,8 +291,8 @@ public class LangBezDenKudeatu {
                     + "*    0.- Irten.                        *\n"
                     + "*    1.- Bezero berri bat gehitu.      *\n"
                     + "*    2.- Bezero bat ezabatu.           *\n"
-                    + "*    3.- Bezeroen datuak aldatu.       *\n"
-                    + "*    4.- Bezeroak kontsultatu.         *\n"
+                    + "*    3.- Bezeroak kontsultatu.         *\n"
+                    + "*    4.- Bezeroen datuak aldatu.       *\n"
                     + "*****************************************\n"
                     + "Aukeratu: ");
         
@@ -322,8 +324,8 @@ public class LangBezDenKudeatu {
                     + "*    0.- Irten.                        *\n"
                     + "*    1.- Langile berri bat gehitu.     *\n"
                     + "*    2.- Langile bat ezabatu.          *\n"
-                    + "*    3.- Langileen datuak aldatu.      *\n"
-                    + "*    4.- Langileak kontsultatu.        *\n"
+                    + "*    3.- Langileak kontsultatu.        *\n"
+                    + "*    4.- Langileen datuak aldatu.      *\n"
                     + "*****************************************\n"
                     + "Aukeratu: ");
     }
