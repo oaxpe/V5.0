@@ -103,4 +103,62 @@ public class HornitzaileaKudeatu {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
     }
+    
+    /* Hornitzailearen datuak aldatu (erabiltzaileak hornitzailearen kodea sartu beharko du) */
+    public static void hornitzaileaDatuakAldatu(String kodea, int aukera) {
+        boolean aldatuta = true;
+        try {
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            while (true) {
+                Hornitzailea horni = (Hornitzailea) geois.readObject(); // objektua irakurri  
+                Hornitzailea h = new Hornitzailea(horni.getKodHor(), horni.getIzena(), horni.getHerria(), horni.getTelefonoa(), horni.getEmail());
+                if (!(h.getKodHor().equals(kodea.toLowerCase()))) { // kodea konparatu
+                    aldatuta=false;
+                }
+                else {
+                    switch (aukera) {
+                        case 1:
+                            h.setIzena();
+                            break;
+                        case 2:
+                            h.setHerria();
+                            break;
+                        case 3:
+                            h.setTelefonoa();
+                            break;
+                        case 4:
+                            h.setEmail();
+                            break;
+                        default:
+                            aldatuta = false;
+                            System.out.println("Ez da aldaketarik egingo.");
+                            break;
+                    }
+                }
+                geoos.writeObject(h); // objektua fitxategian idatzi
+                geoos.flush();
+                if (aldatuta) {                   
+                    System.out.println("\nAldatutako datua gorde da.");
+                    System.out.println("\nHornitzailearen datuak honako hauek dira: ");
+                    h.printDatuak();
+                }
+            }
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+            System.gc();
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        }
+        
+        try {
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            fTemp.delete();
+        }
+        Proiektua_denda.pausa();  
+    }
 }

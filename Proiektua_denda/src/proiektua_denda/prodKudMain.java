@@ -422,6 +422,20 @@ public class prodKudMain {
                 HornitzaileaKudeatu.hornitzaileGuztiakErakutsi();
                 pausa();
                 break;
+            
+            // 4.- Hornitzailearen datuak aldatu.
+            case 4:
+                try {
+                    System.out.print("\nSartu datuak aldatu nahi dituzun hornitzailearen kodea: ");
+                    String kodea = br.readLine().toLowerCase();
+                    hornitzaileaDatuakAldatuMenua(); // hornitzailearen datuak aukeratzeko menua
+                    int atrAuk = Integer.parseInt(br.readLine());
+                    HornitzaileaKudeatu.hornitzaileaDatuakAldatu(kodea, atrAuk);
+                }
+                catch (IOException gaizki) {
+                    System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+                }
+                break;
                 
             default:
                 System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu. Saiatu berriro!"));
@@ -440,8 +454,21 @@ public class prodKudMain {
                     + "*    1.- Hornitzailea gehitu.                  *\n"
                     + "*    2.- Hornitzailea ezabatu.                 *\n"
                     + "*    3.- Hornitzaile guztiak erakutsi.         *\n"
+                    + "*    4.- Hornitzailearen datuak aldatu.        *\n"
                     + "************************************************\n\n"
                     + "  Aukeratu: ");
+    }
+    
+    /* Hornitzailearen datuak aukeratzeko menua */
+    public static void hornitzaileaDatuakAldatuMenua() {
+        System.out.print("\n"
+                    + "Zein datu aldatu nahi duzu?\n"
+                    + "\t1.- Izena.\n"
+                    + "\t2.- Herria.\n"
+                    + "\t3.- Telefono zenbakia.\n"
+                    + "\t4.- Email-a.\n"
+                    + "\tBeste EDOZEIN ZENBAKI ezer ez aldatzeko.\n"
+                    + "Aukeratu: ");
     }
       
     /* Produktuen eskaerak kudeatzeko funtzioa*/
