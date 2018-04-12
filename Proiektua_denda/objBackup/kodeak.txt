@@ -1,0 +1,5 @@
+bezeroa#1003
+langilea#1001
+hornitzailea#1001
+eskaera#1006
+salmenta#1000
