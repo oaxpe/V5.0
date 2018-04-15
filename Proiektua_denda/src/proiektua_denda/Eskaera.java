@@ -40,9 +40,9 @@ public class Eskaera implements Serializable {
     }
 
     public void printEskaera() {
-        System.out.println("\t"+this.eskZenb+"\t\t"+this.hornitzailea+"\t"+this.kopurua+"\t"+this.data);
+        System.out.printf("\t%1$-15s    %2$-15s    %3$-10s    %4$-15s\n", this.eskZenb, this.hornitzailea, this.kopurua, this.data);
     }
-    
+
     
     /* GETTER and SETTER */
     transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));

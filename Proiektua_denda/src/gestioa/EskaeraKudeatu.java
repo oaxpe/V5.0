@@ -50,7 +50,7 @@ public class EskaeraKudeatu implements Serializable {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("ESKAERAK: ");
-            System.out.println("\tEskaera zenb\tHornitzailea\tKopurua\tData");
+            System.out.printf("\t%1$-15s    %2$-15s    %3$-10s    %4$-15s\n", "Eskaera zenb", "Hornitzailea", "Kopurua", "Data");
             while (true) {
                 Eskaera esk = (Eskaera) geois.readObject(); // objektua irakurri              
                 esk.printEskaera(); // objektuaren datuak erakutsi
