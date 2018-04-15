@@ -90,7 +90,7 @@ public class HornitzaileaKudeatu {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("HORNITZAILEAK: ");
-            System.out.println("\tKodea\tIzena\tHerria\tTelefonoa\tEmail-a");
+            System.out.printf("\t%1$-20s    %2$-10s    %3$-10s    %4$-15s    %5$-10s\n", "Kodea", "Izena", "Herria", "Telefonoa", "Email-a");
             while (true) {
                 Hornitzailea horn = (Hornitzailea) geois.readObject(); // objektua irakurri              
                 horn.printHorn(); // objektuaren datuak erakutsi

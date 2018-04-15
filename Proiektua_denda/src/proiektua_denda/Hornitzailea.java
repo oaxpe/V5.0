@@ -51,7 +51,7 @@ public class Hornitzailea implements Serializable {
     }
     
     public void printHorn() {
-        System.out.println("\t"+this.kodHor+"\t"+this.izena+"\t"+this.herria+"\t"+this.telefonoa+"\t"+this.email);
+         System.out.printf("\t%1$-20s    %2$-10s    %3$-10s    %4$-15s    %5$-10s\n", this.kodHor, this.izena, this.herria, this.telefonoa, this.email);
     }
     
     
