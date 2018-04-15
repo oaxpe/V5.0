@@ -67,15 +67,15 @@ public abstract class Produktua implements Serializable {
     }
     
     public void printProd() {
-        System.out.printf("\t"+this.kodPro+"\t"+this.marka+"\t"+this.kolorea+"\t"+this.sexua+"\t%.2f\t",this.prezioa); // prezioa bi dezimalekin erakusteko
+        System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s    %5$-10s", this.kodPro, this.marka, this.kolorea, this.sexua, this.prezioa); 
     }
     
     public void prodKontsultatu() {
-        System.out.print(this.kodPro+"\t"+this.kolorea);
+        System.out.printf("%1$-15s    %2$-10s", this.kodPro, this.kolorea);
     }
     
     public void prodInbentarioa() {
-        System.out.println("\t"+this.kodPro+"\t"+this.marka+"\t"+this.sexua+"\t"+this.kantStock);
+        System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", this.kodPro, this.marka, this.sexua, this.kantStock);
     }
    
 

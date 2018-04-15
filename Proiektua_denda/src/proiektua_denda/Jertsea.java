@@ -42,13 +42,13 @@ public class Jertsea extends Produktua implements Serializable {
     @Override
     public void printProd() {
         super.printProd();
-        System.out.println(this.taila);
+        System.out.printf("    %1$-10s\n", this.taila);
     }
     
     @Override
     public void prodKontsultatu() {
         super.prodKontsultatu();    
-        System.out.println("\t"+this.taila+"\t"+getKantStock());
+        System.out.printf("    %1$-10s    %2$-10s\n", this.taila, getKantStock());
     }
     
     /* GETTER and SETTER */

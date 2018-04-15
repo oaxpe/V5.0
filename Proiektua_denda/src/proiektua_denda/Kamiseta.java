@@ -46,13 +46,13 @@ public class Kamiseta extends Produktua implements Serializable {
     @Override
     public void printProd() {
         super.printProd();
-        System.out.println(this.taila+"\t"+this.sasoia);
+        System.out.printf("    %1$-10s    %2$-10s\n", this.taila, this.sasoia);
     }
     
     @Override
     public void prodKontsultatu() {
         super.prodKontsultatu();    
-        System.out.println("\t"+this.taila+"\t"+getKantStock());
+        System.out.printf("    %1$-10s    %2$-10s\n", this.taila, getKantStock());
     }
     
     

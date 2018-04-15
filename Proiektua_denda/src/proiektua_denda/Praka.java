@@ -58,13 +58,13 @@ public class Praka extends Produktua implements Serializable {
     @Override
     public void printProd() {
         super.printProd();
-        System.out.println(this.taila+"\t"+this.luzeera+"\t"+this.mota);
+        System.out.printf("    %1$-10s    %2$-10s    %3$-10s\n", this.taila, this.luzeera, this.mota);
     }
     
     @Override
     public void prodKontsultatu() {
         super.prodKontsultatu();    
-        System.out.println("\t"+this.taila+"\t"+getKantStock());
+        System.out.printf("    %1$-10s    %2$-10s\n",this.taila, getKantStock());
     }
     
     

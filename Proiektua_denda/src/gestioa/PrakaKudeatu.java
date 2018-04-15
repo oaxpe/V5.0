@@ -94,7 +94,7 @@ public class PrakaKudeatu {
             fis = new FileInputStream(f);
             geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("PRAKAK:");
-            System.out.println("\tKodea\t\tMarka\tKolorea\tSexua\tPrezioa\tTailak\tSasoia\tLuzeera\tMota");
+            System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s    %5$-10s    %6$-10s    %7$-10s    %8$-10s\n", "Kodea", "Marka", "Kolorea", "Sexua", "Prezioa", "Tailak", "Luzeera", "Mota");
             while (true) {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
                 prak.printProd(); // objektuaren datuak erakutsi
@@ -116,7 +116,7 @@ public class PrakaKudeatu {
     /* Praka baten kodea, ArrayList-ean dagoen kontsultatu */
     public static void prakaKontsultatu(String kodea) {
         System.out.println();
-        System.out.println("Kodea\tKolorea\tTaila\tKantitatea");
+        System.out.printf("%1$-15s    %2$-10s    %3$-10s    %4$-10s\n", "Kodea", "Kolorea", "Taila", "Kantitatea");
         boolean bool = false;
         try {
             FileInputStream fis = new FileInputStream(f);
@@ -143,7 +143,7 @@ public class PrakaKudeatu {
     public static void prakaInbentarioa() {
         boolean bool = false;
         System.out.println("\nPRAKAK:");
-        System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
+        System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         try {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
@@ -166,7 +166,7 @@ public class PrakaKudeatu {
     /* kantitatea 5 baino gutxiago duten prakak erakusten ditu */
     public static void prakaEskatzeko() {  
         System.out.println("\nPRAKAK:");
-        System.out.println("\tKodea\tMarka\tSexua\tKantitatea");
+        System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         boolean bool = false;
         try {
             FileInputStream fis = new FileInputStream(f);
