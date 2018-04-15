@@ -35,7 +35,7 @@ public class Salmenta implements Serializable {
         System.out.println("Kopurua: "+this.kopurua);
     }
     public void printSalmenta() {
-        System.out.println("\t"+this.salmZenb+"\t\t"+this.data+"\t"+this.kopurua);
+        System.out.printf("\t%1$-15s    %2$-15s    %3$-10s\n", this.salmZenb, this.data, this.kopurua);
     }
     
     /* GETTER and SETTER */

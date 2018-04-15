@@ -48,7 +48,7 @@ public class SalmentaKudeatu {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("SALMENTAK: ");
-            System.out.println("\tSalmenta zenb\tData\tKopurua");
+            System.out.printf("\t%1$-15s    %2$-15s    %3$-10s\n", "Salmenta zenb", "Data", "Kopurua");
             while (true) {
                 Salmenta salm = (Salmenta) geois.readObject(); // objektua irakurri              
                 salm.printSalmenta(); // objektuaren datuak erakutsi
