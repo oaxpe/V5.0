@@ -68,7 +68,7 @@ public abstract class Pertsona implements Serializable {
     }
     
     public void printPerts() {
-        System.out.println("\t"+this.izena.concat(" ").concat(this.abizena1).concat(" ").concat(this.abizena2)+"\t"+this.nan+"\t"+this.sexua+"\t"+this.herria+"\t"+this.telefonoa);
+        System.out.printf("%1$-10s    %2$-20s    %3$-10s    %4$-15s    %5$-10s    %6$-10s    %7$-10s", this.izena, this.abizena1.concat(" ").concat(this.abizena2), this.nan, this.jaiotzeData, this.sexua, this.herria, this.telefonoa); // inprimitzen den informazioari formatua emateko
     }
 
     

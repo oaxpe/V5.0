@@ -104,7 +104,8 @@ public class LangileaKudeatu {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("LANGILEAK: ");
-            System.out.println("\tLan-eremua\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa");
+//            System.out.println("\tLan-eremua\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa");
+            System.out.printf("\t%1$-10s    %2$-10s    %3$-20s    %4$-10s  %5$-15s    %6$-10s    %7$-10s    %8$-10s    %9$-10s\n", "Langile kodea", "Izena", "Abizenak", "NAN zenbakia", "Jaiotze data", "Sexua", "Herria", "Telefonoa", "Lan-eremua");  // inprimitzen den informazioari formatua emateko
             while (true) {
                 Langilea lang = (Langilea) geois.readObject(); // objektua irakurri   
                 lang.printPerts(); // objektuaren datuak erakutsi

@@ -57,8 +57,9 @@ public class Langilea extends Pertsona implements Serializable {
     
     @Override
     public void printPerts() {
-        System.out.print("\t"+this.eremua);
+        System.out.printf("\t%1$-10s    ", this.kodLan);
         super.printPerts();
+        System.out.printf("    %1$-10s\n", this.eremua);
     }
     
     /* GETTER and SETTER */

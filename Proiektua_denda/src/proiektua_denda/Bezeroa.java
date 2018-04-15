@@ -37,7 +37,9 @@ public class Bezeroa extends Pertsona implements Serializable {
     
     @Override
     public void printPerts() {
+        System.out.printf("\t%1$-10s    ", this.kodBez);  // inprimitzen den informazioari formatua emateko
         super.printPerts();
+        System.out.println();
     }
 
     
