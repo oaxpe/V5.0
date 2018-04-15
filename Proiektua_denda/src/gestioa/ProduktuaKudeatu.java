@@ -17,7 +17,7 @@ public class ProduktuaKudeatu {
 
     /* Dendan dauden produktuen inbentarioa */
     public static void inbentarioa() {
-        System.out.println(""
+        System.out.print(""
                 + "-------------------------------------------------------------\n"
                 + "|        Dendako produktuen inbentarioa (produktuka)        |\n"
                 + "-------------------------------------------------------------\n");
@@ -28,7 +28,7 @@ public class ProduktuaKudeatu {
     
     /* Dendan dauden produktu bakoitzaren kantitatea 5 baino txikiagoa bada, produktu hori eskatu egin behar da */
     public static void prodEskatzeko() {
-        System.out.println(""
+        System.out.print(""
                 + "--------------------------------------------\n"
                 + "|           Eskatzeko produktuak           |\n"
                 + "--------------------------------------------\n");
@@ -38,7 +38,7 @@ public class ProduktuaKudeatu {
     }
     
     public static void prodErakutsi() throws IOException {
-        System.out.println(""
+        System.out.print(""
                 + "------------------------------------------\n"
                 + "|        Dendako produktu guztiak        |\n"
                 + "------------------------------------------\n");
