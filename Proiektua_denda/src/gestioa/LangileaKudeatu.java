@@ -27,7 +27,6 @@ import proiektua_denda.Proiektua_denda;
  * @version 3.0
  */
 public class LangileaKudeatu {
-    private static ArrayList<Langilea> langGuzt = new ArrayList<Langilea>();
     private static File d = new File("Objektuak");
     private static File f = new File(d+"\\langilea.obj");
     private static File fTemp = new File(d+"\\langTemp.obj");

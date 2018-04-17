@@ -11,7 +11,8 @@ import java.io.OutputStream;
 
 /**
  *
- * @author DM3-1-05
+ * @author Oihane Axpe
+ * @version 3.0
  */
 public class GoibururikEzObjectOutputStream extends ObjectOutputStream{
 

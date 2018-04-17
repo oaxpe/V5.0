@@ -140,7 +140,6 @@ public class Metodoak {
         hasiera = hasiera.toLowerCase(); // minuskulaz 
         try {
             ArrayList<String> kodGuztiak = new ArrayList<String>(); // fitxategiko kode guztiak arraylistean gordetzeko
-
             fr = new FileReader(f);
             br = new BufferedReader(fr);
             String lerroa;
@@ -160,7 +159,6 @@ public class Metodoak {
                 pw.println(kodGuztiak.get(i)); // fitxategian kode guztiak berriz idatzi (aldaketa eginda)
                 pw.flush();
             }
-            
         } catch (FileNotFoundException ex) {
             System.out.println("Fitxategia ez da existitzen."); 
         } catch (IOException ex) {
@@ -184,10 +182,10 @@ public class Metodoak {
     public static String dataGorde(String data) {
         String dataFormatua = null;
         try {
-            DateFormat df = new SimpleDateFormat("yyy/MM/dd");
+            DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
             Date fetx = df.parse(data); // data hori Date formatura parseatu
             
-            dataFormatua = new SimpleDateFormat("yyy/MM/dd").format(fetx.getTime()); // formatu zehatz baten jarri            
+            dataFormatua = new SimpleDateFormat("yyyy/MM/dd").format(fetx.getTime()); // formatu zehatz baten jarri            
         } 
         catch (ParseException gaizki) {
             System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
