@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
-import proiektua_denda.Eskaera;
+import model.Eskaera;
 
 /**
  *

@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proiektua_denda.Praka;
+import model.Praka;
 import proiektua_denda.Proiektua_denda;
 
 /**

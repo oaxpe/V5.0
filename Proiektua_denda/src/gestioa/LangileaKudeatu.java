@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proiektua_denda.Langilea;
+import model.Langilea;
 import proiektua_denda.Proiektua_denda;
 
 /**
@@ -98,7 +98,8 @@ public class LangileaKudeatu {
             System.out.println(nan+" zenbakia duen bezerorik ez dago erregistratuta.");
     }
     /* Langileen inguruko informazioa erakusten du. */
-    public static void langileGuztiakErakutsi() {
+    public static ArrayList<Langilea> langileGuztiakErakutsi() {
+        ArrayList<Langilea> langGuzt = new ArrayList<Langilea>();
         try {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
@@ -116,6 +117,7 @@ public class LangileaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         } 
+        return langGuzt;
     }
     
     /* Langilearen datuak aldatu (erabiltzaileak bere dni-a sartu beharko du) */

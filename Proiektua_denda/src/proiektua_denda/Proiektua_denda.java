@@ -5,14 +5,11 @@
  */
 package proiektua_denda;
 
+import controller.Controller;
 import gestioa.Metodoak;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import static proiektua_denda.LangBezDenKudeatu.langBezDenKudeatu;
-import static proiektua_denda.prodKudMain.eskaeraKudMain;
-import static proiektua_denda.prodKudMain.horniKudMain;
-import static proiektua_denda.prodKudMain.prodKudMain;
+import view.*;
+import model.*;
 
 /**
  *
@@ -24,85 +21,51 @@ public class Proiektua_denda {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-        int aukera = 0;
-        
-        do {
-            menuNagusia();
-            try {
-                aukera = Integer.parseInt(br.readLine());
-            }
-            catch (NumberFormatException datuOkerrak) {
-                System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
-            }
-            catch (IOException gaizki) {
-                System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-            }
-            System.out.println();
-            
-            switch (aukera) {
-                //0.- Irten
-                case 0:
-                    System.exit(0);
+    public static void main(String[] args) {
+        /* MODEL */
+        Bezeroa bez = new Bezeroa();
+        Denda denda = new Denda();
+        Eskaera esk = new Eskaera();
+        Hornitzailea horn = new Hornitzailea();
+        Jertsea jerts = new Jertsea();
+        Kamiseta kami = new Kamiseta();
+        Langilea lang = new Langilea();
+        Praka prak = new Praka();
+        Salmenta salm = new Salmenta();
 
-                // 1.- Langileak, bezeroak eta denda kudeatu.
-                case 1:
-                    langBezDenKudeatu();
-                    break;
-                    
-                // 2.- Produktuak kudeatu.
-                case 2:
-                    prodKudMain();
-                    break;
+        /* VIEW */
+        menuNagusia viewMenuNag = new menuNagusia();
+        BezeroaInfo viewBezInfo = new BezeroaInfo();
+        BezeroaGehitu viewBezGehitu = new BezeroaGehitu();
+        LangileaInfo viewLangInfo = new LangileaInfo();
+        LangileaGehitu viewLangGehitu = new LangileaGehitu();
+        JertseaInfo viewJertsInfo = new JertseaInfo();
+        JertseaGehitu viewJertsGehitu = new JertseaGehitu();
+        KamisetaInfo viewKamInfo = new KamisetaInfo();
+        KamisetaGehitu viewKamGehitu = new KamisetaGehitu();
+        PrakaInfo viewPrakInfo = new PrakaInfo();
+        PrakaGehitu viewPrakGehitu = new PrakaGehitu();
+        HornitzaileaInfo viewHornInfo = new HornitzaileaInfo();
+        HornitzaileaGehitu viewHornGehitu = new HornitzaileaGehitu();
+        EskaeraInfo viewEskInfo = new EskaeraInfo();
+        EskaeraGehitu viewEskGehitu = new EskaeraGehitu();
 
-                // 3.- Hornitzaileak kudeatu.
-                case 3:
-                    horniKudMain();
-                    break;
-                
-                // 4.- Eskaerak kudeatu.
-                case 4:
-                    eskaeraKudMain();
-                    break;
-                    
-                default:
-                    System.out.println(Metodoak.printGorriz("Zenbaki okerra sartu duzu! Irakurri ondo aukerak eta aukeratu."));
-                    pausa();
-                    break;
-            }
-        } while (aukera!=0);
-        
+        /* CONTROLLER */
+        Controller ctrl = new Controller(bez, denda, esk, horn, jerts, kami, lang, prak, salm,
+                viewBezInfo, viewBezGehitu, viewLangInfo, viewLangGehitu, viewJertsInfo, viewJertsGehitu,
+                viewKamInfo, viewKamGehitu, viewPrakInfo, viewPrakGehitu, viewHornInfo, viewHornGehitu,
+                viewEskInfo, viewEskGehitu, viewMenuNag);
+
     }
-
     // PAUSA bat egiteko funtzioa
     public static void pausa() {
         try {
             System.out.println("\nSakatu 'Enter' jarraitzeko...");
             System.in.read();
-        }
+        } 
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
         }
-        
+
     }
-    
-    public static void menuNagusia() {
-        System.out.print(""
-                    + "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''\n"
-                    + "''                     MENU  NAGUSIA                     ''\n"
-                    + "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''\n"
-                    + "''  Zer egin nahi duzu?                                  ''\n"
-                    + "''    0.- Irten.                                         ''\n"
-                    + "''    1.- Langileak, bezeroak eta denda kudeatu.         ''\n"
-                    + "''    2.- Produktuak kudeatu.                            ''\n"
-                    + "''    3.- Hornitzaileak kudeatu.                         ''\n"
-                    + "''    4.- Eskaerak kudeatu.                              ''\n"
-                    + "'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''\n\n"
-                    + " Aukeratu: ");
-    }
-    
 }
-
-
-

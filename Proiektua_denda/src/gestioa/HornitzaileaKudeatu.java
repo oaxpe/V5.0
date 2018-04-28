@@ -14,7 +14,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import proiektua_denda.Hornitzailea;
+import java.util.ArrayList;
+import model.Hornitzailea;
 import proiektua_denda.Proiektua_denda;
 
 /**
@@ -27,14 +28,14 @@ public class HornitzaileaKudeatu {
     private static File f = new File(d+"\\hornitzailea.obj");
     private static File fTemp = new File(d+"\\hornTemp.obj");
     /* Hornitzaile berri bat gehitu */
-    public static void hornitzaileaGehitu() {
+    public static void hornitzaileaGehitu(Hornitzailea horn1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Hornitzaile berriaren datuak sartu behar dituzu.");
-            Hornitzailea horn1 = new Hornitzailea(); 
+//            System.out.println("Hornitzaile berriaren datuak sartu behar dituzu.");
+//            Hornitzailea horn1 = new Hornitzailea(); 
             geoos.writeObject(horn1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -85,7 +86,8 @@ public class HornitzaileaKudeatu {
     }
     
     /* Hornitzaileen inguruko informazioa erakusten du. */
-    public static void hornitzaileGuztiakErakutsi() {
+    public static ArrayList<Hornitzailea> hornitzaileGuztiakErakutsi() {
+        ArrayList<Hornitzailea> hornGuzt = new ArrayList<Hornitzailea>();
         try {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
@@ -102,6 +104,7 @@ public class HornitzaileaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
+        return hornGuzt;
     }
     
     /* Hornitzailearen datuak aldatu (erabiltzaileak hornitzailearen kodea sartu beharko du) */
@@ -160,5 +163,27 @@ public class HornitzaileaKudeatu {
             fTemp.delete();
         }
         Proiektua_denda.pausa();  
+    }
+    
+    public static ArrayList<String> hornitzaileIzenak() {
+        ArrayList<String> alHorniIzenGuzt = new ArrayList<String>();
+        try {
+            FileInputStream fis = new FileInputStream(f);
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
+//            System.out.println("HORNITZAILEAK: ");
+//            System.out.printf("\t%1$-20s    %2$-10s    %3$-10s    %4$-15s    %5$-10s\n", "Kodea", "Izena", "Herria", "Telefonoa", "Email-a");
+            while (true) {
+                Hornitzailea horn = (Hornitzailea) geois.readObject(); // objektua irakurri              
+                alHorniIzenGuzt.add(horn.getIzena());
+                System.out.println(horn.getIzena());
+            }
+        } catch (EOFException ex) { 
+            // fitxategiaren bukaerara heltzen denean, errorea omititu
+        } catch (FileNotFoundException ex) {
+            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+        } catch (ClassNotFoundException | IOException ex) {
+            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        }
+        return alHorniIzenGuzt;
     }
 }

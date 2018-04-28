@@ -5,7 +5,7 @@
  */
 package gestioa;
 
-import proiektua_denda.Denda;
+import model.Denda;
 
 /**
  *

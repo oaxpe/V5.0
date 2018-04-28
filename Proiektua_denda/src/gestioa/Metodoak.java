@@ -16,7 +16,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,35 +36,35 @@ public class Metodoak {
 //    public static final String ANSI_RED = "\u001B[31m";
     /* produktuen taila kontrolatzeko metodoa. Taila, array-ean dagoen konprobatzen du. 
      * Bueltatzen duena booleano bat da.*/
-    public static boolean tailaKontrolatu(String taila) {
-        String[] tailaKontrola = {"XS", "S", "M", "L", "XL", "XXL"}; // taila posibleak gordeko ditu
-        boolean aurkituta = Arrays.asList(tailaKontrola).contains(taila.toUpperCase()); // sartutako taila array-ean dagoen begiratzen du (true edo false bueltatzen du)
-        if (!aurkituta)
-            System.out.println(printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
-        return aurkituta;
+    public static String[] tailaKontrolatuString() {
+        String[] tailaString = {"XS", "S", "M", "L", "XL", "XXL"}; // taila posibleak gordeko ditu
+//        boolean aurkituta = Arrays.asList(tailaString).contains(taila.toUpperCase()); // sartutako taila array-ean dagoen begiratzen du (true edo false bueltatzen du)
+//        if (!aurkituta)
+//            System.out.println(printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
+        return tailaString;
     }
     
     /* int bat bilatu. adibidez taila*/
-    public static boolean tailaKontrolatu(int taila) {
+    public static int[] tailaKontrolatuZenb() {
         int[] arr = {38, 40, 42, 44, 46};
-        for (int elementua : arr) {
-            if (elementua == taila) {
-                return true;
-            }
-        }
-        System.out.println(printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
-        return false;
+//        for (int elementua : arr) {
+//            if (elementua == taila) {
+//                return true;
+//            }
+//        }
+//        System.out.println(printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
+        return arr;
     }
     
     /* produktuen edo pertsonan sexua (emakumea edo gizona) kontrolatzeko metodoa. 
      * sexua, array-ean dagoen konprobatzen du. 
      * Bueltatzen duena booleano bat da.*/
-    public static boolean sexuaKontrolatu(String sexua) {
+    public static String[] sexuaKontrolatu() {
         String[] sexuaKontrolatu = { "emakumea", "gizona", "unisex"};
-        boolean aurkituta = Arrays.asList(sexuaKontrolatu).contains(sexua.toLowerCase());
-        if (!aurkituta)
-            System.out.println(printGorriz("\tGaizki idatzi duzu. Saiatu berriz."));
-        return aurkituta;
+//        boolean aurkituta = Arrays.asList(sexuaKontrolatu).contains(sexua.toLowerCase());
+//        if (!aurkituta)
+//            System.out.println(printGorriz("\tGaizki idatzi duzu. Saiatu berriz."));
+        return sexuaKontrolatu;
     }
     
     /* Email-a ondo estrukturatuta dagoen konprobatzen duen metodoa.

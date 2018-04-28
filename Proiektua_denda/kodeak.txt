@@ -1,5 +1,5 @@
-bezeroa#1002
+bezeroa#1004
 langilea#1001
-hornitzailea#1001
+hornitzailea#1003
 eskaera#1007
 salmenta#1000

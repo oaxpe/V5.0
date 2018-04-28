@@ -14,9 +14,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import proiektua_denda.Bezeroa;
+import model.Bezeroa;
 import proiektua_denda.Proiektua_denda;
 
 /**
@@ -30,14 +31,14 @@ public class BezeroaKudeatu {
     private static File fTemp = new File(d+"\\bezTemp.obj");
     
     /* Bezero berri bat gehitu */
-    public static void bezeroaGehitu() {
+    public static void bezeroaGehitu(Bezeroa bez1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Bezero berriaren datuak sartu behar dituzu.\n");
-            Bezeroa bez1 = new Bezeroa();         
+//            System.out.println("Bezero berriaren datuak sartu behar dituzu.\n");
+//            Bezeroa bez1 = new Bezeroa();         
             geoos.writeObject(bez1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -88,7 +89,8 @@ public class BezeroaKudeatu {
     }
     
     /* Bezeroen inguruko informazioa erakusten du. */
-    public static void bezeroGuztiakErakutsi() {
+    public static ArrayList<Bezeroa> bezeroGuztiakErakutsi() {
+        ArrayList<Bezeroa> bezGuzt = new ArrayList<Bezeroa>();
         try {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
@@ -97,6 +99,7 @@ public class BezeroaKudeatu {
             while (true) {
                 Bezeroa bez = (Bezeroa) geois.readObject(); // objektua irakurri   
                 bez.printPerts(); // objektuaren datuak erakutsi
+                bezGuzt.add(bez);
             }
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
@@ -105,6 +108,7 @@ public class BezeroaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         } 
+        return bezGuzt;
     }
     
     /* Bezeroaren datuak aldatu (erabiltzaileak bere dni-a sartu beharko du) */
@@ -174,6 +178,5 @@ public class BezeroaKudeatu {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
             fTemp.delete();
         }
-        Proiektua_denda.pausa();  
     }
 }
