@@ -15,7 +15,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Langilea;
@@ -31,15 +30,10 @@ public class LangileaKudeatu {
     private static File f = new File(d+"\\langilea.obj");
     private static File fTemp = new File(d+"\\langTemp.obj");
     
-    /* langileen lan eremua kontrolatzeko metodoa (saltzailea edo garbitzailea izan daitezke) 
-     * erabiltzaileak sartutako eremua array-ean dagoen konprobatzen du.
-     * Bueltatzen duena, booleano bat da. */
-    public static boolean langileEremuaKontrolatu(String eremua) {
-        String[] eremuaKontrolatu = { "saltzailea", "garbitzailea"};
-        boolean aurkituta = Arrays.asList(eremuaKontrolatu).contains(eremua.toLowerCase());
-        if (!aurkituta)
-            System.out.println("\tGaizki idatzi duzu. Saiatu berriz.");
-        return aurkituta;
+    /* langileen lan eremua bistan ikusteko */
+    public static String[] langileEremuaKontrolatu() {
+        String[] eremua = { "Saltzailea", "Garbitzailea"};
+        return eremua;
     }
     
     /* Langile berri bat gehitu */
