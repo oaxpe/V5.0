@@ -456,17 +456,31 @@ public class Controller implements ActionListener, MouseListener/*, KeyListener*
         }
     }
     
-//    public void sasoiaKargatuKami() {
-//        String[] sasoia = Metodoak.();
-//        for (String i : sasoia) {
-//            viewKamisetaGehitu.jComboBoxSasoia.addItem(i);
-//        }
-//    }
-//    
-//    public void sasoiaKargatuPrak() {
-//        String[] sasoia = Metodoak.();
-//        for (String i : sasoia) {
-//            viewKamisetaGehitu.jComboBoxSasoia.addItem(i);
-//        }
-//    } 
+    public void sasoiaKargatuKami() {
+        String[] sasoia = ProduktuaKudeatu.sasoiaKontrolatu();
+        for (String i : sasoia) {
+            viewKamisetaGehitu.jComboBoxSasoia.addItem(i);
+        }
+    }
+    
+    public void sasoiaKargatuPrak() {
+        String[] sasoia = ProduktuaKudeatu.sasoiaKontrolatu();
+        for (String i : sasoia) {
+            viewKamisetaGehitu.jComboBoxSasoia.addItem(i);
+        }
+    }
+    
+    public void motaKargatu() {
+        String[] mota = ProduktuaKudeatu.motaKontrolatu();
+        for (String i : mota) {
+            viewPrakaGehitu.jComboBoxMota.addItem(i);
+        }
+    }
+    
+    public void langEremuaKargatu() {
+        String[] eremua = LangileaKudeatu.langileEremuaKontrolatu();
+        for (String i : eremua) {
+            viewLangileaGehitu.jComboBoxEremua.addItem(i);
+        }
+    }
 }

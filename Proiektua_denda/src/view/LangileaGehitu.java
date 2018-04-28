@@ -305,7 +305,7 @@ public class LangileaGehitu extends javax.swing.JFrame {
     public javax.swing.JButton jButtonGorde;
     public javax.swing.JButton jButtonIrten;
     public javax.swing.JButton jButtonReset;
-    private javax.swing.JComboBox<String> jComboBoxEremua;
+    public javax.swing.JComboBox<String> jComboBoxEremua;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabelAbizena1;
     private javax.swing.JLabel jLabelAbizena2;
