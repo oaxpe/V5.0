@@ -8,7 +8,7 @@ package controller;
 import gestioa.BezeroaKudeatu;
 import gestioa.HornitzaileaKudeatu;
 import gestioa.LangileaKudeatu;
-import gestioa.Metodoak;
+import gestioa.ProduktuaKudeatu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -416,41 +416,41 @@ public class Controller implements ActionListener, MouseListener/*, KeyListener*
     }
     
     public void tailaKargatuJerts() {
-        String[] taila = Metodoak.tailaKontrolatuString();
+        String[] taila = ProduktuaKudeatu.tailaKontrolatuString();
         for (String i : taila) {
             viewJertseaGehitu.jComboBoxTaila.addItem(i);
         }
     }
     
     public void tailaKargatuKam() {
-        String[] taila = Metodoak.tailaKontrolatuString();
+        String[] taila = ProduktuaKudeatu.tailaKontrolatuString();
         for (String i : taila) {
             viewKamisetaGehitu.jComboBoxTaila.addItem(i);
         }
     }
     
     public void tailaKargatuPrak() {
-        int[] taila = Metodoak.tailaKontrolatuZenb();
+        int[] taila = ProduktuaKudeatu.tailaKontrolatuZenb();
         for (int i : taila) {
             viewPrakaGehitu.jComboBoxTaila.addItem(String.valueOf(i));
         }
     }
     
     public void sexuaKargatuJerts() {
-        String[] sexua = Metodoak.sexuaKontrolatu();
+        String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
         for (String i : sexua) {
             viewJertseaGehitu.jComboBoxSexua.addItem(i);
         }
     }
     
     public void sexuaKargatuKami() {
-        String[] sexua = Metodoak.sexuaKontrolatu();
+        String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
         for (String i : sexua) {
             viewKamisetaGehitu.jComboBoxSexua.addItem(i);
         }
     }
     public void sexuaKargatuPrak() {
-        String[] sexua = Metodoak.sexuaKontrolatu();
+        String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
         for (String i : sexua) {
             viewPrakaGehitu.jComboBoxSexua.addItem(i);
         }

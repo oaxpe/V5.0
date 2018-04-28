@@ -34,39 +34,7 @@ public class Metodoak {
         return (ANSI_RED+textua+ANSI_RESET);
     }
 //    public static final String ANSI_RED = "\u001B[31m";
-    /* produktuen taila kontrolatzeko metodoa. Taila, array-ean dagoen konprobatzen du. 
-     * Bueltatzen duena booleano bat da.*/
-    public static String[] tailaKontrolatuString() {
-        String[] tailaString = {"XS", "S", "M", "L", "XL", "XXL"}; // taila posibleak gordeko ditu
-//        boolean aurkituta = Arrays.asList(tailaString).contains(taila.toUpperCase()); // sartutako taila array-ean dagoen begiratzen du (true edo false bueltatzen du)
-//        if (!aurkituta)
-//            System.out.println(printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
-        return tailaString;
-    }
-    
-    /* int bat bilatu. adibidez taila*/
-    public static int[] tailaKontrolatuZenb() {
-        int[] arr = {38, 40, 42, 44, 46};
-//        for (int elementua : arr) {
-//            if (elementua == taila) {
-//                return true;
-//            }
-//        }
-//        System.out.println(printGorriz("\tGaizki sartu duzu taila. Saiatu berriz."));
-        return arr;
-    }
-    
-    /* produktuen edo pertsonan sexua (emakumea edo gizona) kontrolatzeko metodoa. 
-     * sexua, array-ean dagoen konprobatzen du. 
-     * Bueltatzen duena booleano bat da.*/
-    public static String[] sexuaKontrolatu() {
-        String[] sexuaKontrolatu = { "emakumea", "gizona", "unisex"};
-//        boolean aurkituta = Arrays.asList(sexuaKontrolatu).contains(sexua.toLowerCase());
-//        if (!aurkituta)
-//            System.out.println(printGorriz("\tGaizki idatzi duzu. Saiatu berriz."));
-        return sexuaKontrolatu;
-    }
-    
+   
     /* Email-a ondo estrukturatuta dagoen konprobatzen duen metodoa.
      * Expresio erregularrak erabiltzen dira (adibidea@adibidea.com) */
     public static boolean emailBalidazioa(String mail) {
