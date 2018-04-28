@@ -9,7 +9,8 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Administrador
+ * @author Oihane Axpe
+ * @version 4.0
  */
 public class LangileaInfo extends javax.swing.JFrame {
     

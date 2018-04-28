@@ -16,7 +16,7 @@ import java.util.GregorianCalendar;
 /**
  *
  * @author Oihane Axpe
- * @version 3.0
+ * @version 4.0
  */
 public class Eskaera implements Serializable {
     private String eskZenb; 

@@ -12,7 +12,8 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author Administrador
+ * @author Oihane Axpe
+ * @version 4.0
  */
 public class ProduktuaSalmenta {
     /* ATRIBUTUAK */

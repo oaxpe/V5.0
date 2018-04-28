@@ -12,10 +12,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import model.Salmenta;
+
 /**
  *
  * @author Oihane Axpe
- * @version 3.0
+ * @version 4.0
  */
 public class SalmentaKudeatu {
     private static File d = new File("Objektuak");

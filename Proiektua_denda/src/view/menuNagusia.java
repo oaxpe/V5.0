@@ -7,7 +7,8 @@ package view;
 
 /**
  *
- * @author DM3-1-05
+ * @author Oihane Axpe
+ * @version 4.0
  */
 public class menuNagusia extends javax.swing.JFrame {
 

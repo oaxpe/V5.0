@@ -24,7 +24,7 @@ import proiektua_denda.Proiektua_denda;
 /**
  *
  * @author Oihane Axpe
- * @version 3.0
+ * @version 4.0
  */
 public class LangileaKudeatu {
     private static File d = new File("Objektuak");

@@ -22,7 +22,8 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
  *
- * @author Administrador
+ * @author Oihane Axpe
+ * @version 4.0
  */
 public class Controller implements ActionListener, MouseListener/*, KeyListener*/ {
     /* Model */

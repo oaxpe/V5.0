@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  *
  * @author Oihane Axpe
- * @version 3.0
+ * @version 4.0
  */
 public abstract class Pertsona implements Serializable {
     /* ATRIBUTOAK */

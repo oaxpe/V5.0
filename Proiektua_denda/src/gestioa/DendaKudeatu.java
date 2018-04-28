@@ -10,7 +10,7 @@ import model.Denda;
 /**
  *
  * @author Oihane Axpe
- * @version 3.0
+ * @version 4.0
  */
 public class DendaKudeatu {
     static Denda denda1 = new Denda(); // Dendaren datuak sortu.

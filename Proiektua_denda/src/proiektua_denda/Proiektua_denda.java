@@ -14,7 +14,7 @@ import model.*;
 /**
  *
  * @author Oihane Axpe
- * @version 3.0
+ * @version 4.0
  */
 public class Proiektua_denda {
 

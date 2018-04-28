@@ -7,7 +7,8 @@ package model;
 
 /**
  *
- * @author Administrador
+ * @author Oihane Axpe
+ * @version 4.0
  */
 public class ProduktuaEskaera {
     /* ATRIBUTUAK */

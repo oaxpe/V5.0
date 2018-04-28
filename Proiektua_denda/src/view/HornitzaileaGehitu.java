@@ -5,15 +5,10 @@
  */
 package view;
 
-
-import gestioa.HornitzaileaKudeatu;
-import model.Hornitzailea;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Oihane Axpe
- * @version 3.0
+ * @version 4.0
  */
 public class HornitzaileaGehitu extends javax.swing.JFrame {
 
