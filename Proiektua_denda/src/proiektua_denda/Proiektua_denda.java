@@ -34,7 +34,7 @@ public class Proiektua_denda {
         Salmenta salm = new Salmenta();
 
         /* VIEW */
-        menuNagusia viewMenuNag = new menuNagusia();
+        MenuNagusia viewMenuNag = new MenuNagusia();
         BezeroaInfo viewBezInfo = new BezeroaInfo();
         BezeroaGehitu viewBezGehitu = new BezeroaGehitu();
         LangileaInfo viewLangInfo = new LangileaInfo();

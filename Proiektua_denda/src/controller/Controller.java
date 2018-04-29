@@ -41,7 +41,7 @@ public class Controller implements ActionListener, MouseListener/*, KeyListener*
     
     
     /* Bistak */
-    private menuNagusia viewMenuNagusia; 
+    private MenuNagusia viewMenuNagusia; 
     private BezeroaInfo viewBezeroaInfo;
     private BezeroaGehitu viewBezeroaGehitu;
     private LangileaInfo viewLangileaInfo;
@@ -65,7 +65,7 @@ public class Controller implements ActionListener, MouseListener/*, KeyListener*
             BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu,
             JertseaInfo viewJertsInfo, JertseaGehitu viewJertsGehitu, KamisetaInfo viewKamInfo, KamisetaGehitu viewKamGehitu,
             PrakaInfo viewPrakInfo, PrakaGehitu viewPrakGehitu, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu,
-            EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu, menuNagusia viewMenuNag) {
+            EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag) {
         this.bezeroa = bez;
         this.denda = denda;
         this.eskaera = esk;
