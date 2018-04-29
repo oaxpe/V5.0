@@ -96,10 +96,8 @@ public class Langilea extends Pertsona implements Serializable {
 
     public void setEremua() {
         try {
-            do {
-                System.out.print("Sartu langilearen eremua (saltzailea edo garbitzailea): ");
-                this.eremua=br.readLine();
-            } while (!LangileaKudeatu.langileEremuaKontrolatu(this.eremua));
+            System.out.print("Sartu langilearen eremua (saltzailea edo garbitzailea): ");
+            this.eremua=br.readLine();
         }
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));

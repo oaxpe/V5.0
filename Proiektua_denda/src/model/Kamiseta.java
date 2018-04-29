@@ -63,10 +63,8 @@ public class Kamiseta extends Produktua implements Serializable {
 
     public void setTaila() {
         try {
-            do {
-                System.out.print("Sartu taila (XS,S,M,L,XL,XXL): ");
-                this.taila = br.readLine().toUpperCase();
-            } while (!Metodoak.tailaKontrolatu(taila));
+            System.out.print("Sartu taila (XS,S,M,L,XL,XXL): ");
+            this.taila = br.readLine().toUpperCase();
         }
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));

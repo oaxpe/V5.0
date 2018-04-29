@@ -153,10 +153,8 @@ public abstract class Pertsona implements Serializable {
 
     public void setSexua() {
         try {
-            do {
-                System.out.print("Emakumea edo gizona?: ");
-                this.sexua=br.readLine(); 
-            } while (!Metodoak.sexuaKontrolatu(sexua));
+            System.out.print("Emakumea edo gizona?: ");
+            this.sexua=br.readLine(); 
         }
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));

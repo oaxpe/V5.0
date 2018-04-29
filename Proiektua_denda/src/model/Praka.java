@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 public class Praka extends Produktua implements Serializable {
     private int taila; //38, 40, 42, 44...
-//    private String sasoia; // uda, negua...
+    private String sasoia; // uda, negua...
     private int luzeera;
     private String mota;
     
@@ -29,12 +29,12 @@ public class Praka extends Produktua implements Serializable {
 //        setMota();
     }
     
-    public Praka (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, int taila/*, String sasoia*/) {
+    public Praka (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, int taila, String sasoia) {
         super(kodea, marka, prezioa, kolorea, sexua, kantStock);
         this.taila=taila;
         this.luzeera=80;
         this.mota="Elastikoa";
-        //this.sasoia=sasoia;
+        this.sasoia=sasoia;
     }
     
     public Praka (String kodea, String sexua, double prezioa/*, String sasoia*/) {
@@ -75,10 +75,8 @@ public class Praka extends Produktua implements Serializable {
 
     public void setTaila() {
         try {
-            do {
-                System.out.print("Sartu taila (38,40,42,44,46): ");
-                this.taila = Integer.parseInt(br.readLine());
-            } while (!Metodoak.tailaKontrolatu(taila));
+            System.out.print("Sartu taila (38,40,42,44,46): ");
+            this.taila = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
@@ -89,13 +87,13 @@ public class Praka extends Produktua implements Serializable {
         }
     }
 
-//    public String getSasoia() {
-//        return sasoia;
-//    }
-//
-//    public void setSasoia(String sasoia) {
-//        this.sasoia = sasoia;
-//    }
+    public String getSasoia() {
+        return sasoia;
+    }
+
+    public void setSasoia(String sasoia) {
+        this.sasoia = sasoia;
+    }
 
     public int getLuzeera() {
         return luzeera;
