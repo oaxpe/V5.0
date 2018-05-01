@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Langilea;
-import proiektua_denda.Proiektua_denda;
 
 /**
  *
@@ -57,7 +56,7 @@ public class LangileaKudeatu {
     }
     
     /* Langile zehatz baten datu guztiak ezabatu */ 
-    public static void langileaEzabatu(String nan) throws IOException {
+    public static void langileaEzabatu(String nan) {
         boolean ezabatuta = false;
         try {    
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
@@ -81,8 +80,11 @@ public class LangileaKudeatu {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
         System.gc();
-        Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        Proiektua_denda.pausa();
+        try {
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(LangileaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         if (ezabatuta)
             System.out.println(nan+" zenbakidun bezeroa ezabatu da.");
@@ -185,6 +187,5 @@ public class LangileaKudeatu {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
             fTemp.delete();
         }
-        Proiektua_denda.pausa();  
     }
 }

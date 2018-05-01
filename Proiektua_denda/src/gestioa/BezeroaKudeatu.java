@@ -52,7 +52,7 @@ public class BezeroaKudeatu {
     }
     
     /* Bezero zehatz baten datu guztiak ezabatu */ 
-    public static void bezeroaEzabatu(String nan) throws IOException {
+    public static void bezeroaEzabatu(String nan) {
         boolean ezabatuta = false;
         GoibururikEzObjectOutputStream geoos = null;
         try {    
@@ -76,10 +76,13 @@ public class BezeroaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
-        geoos.close();
-        System.gc();
-        Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        Proiektua_denda.pausa();
+        try {
+            geoos.close();
+            System.gc();
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(BezeroaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         if (ezabatuta)
             System.out.println(nan+" zenbakidun bezeroa ezabatu da.");
         else

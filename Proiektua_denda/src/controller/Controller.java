@@ -5,6 +5,7 @@
  */
 package controller;
 
+import static com.sun.xml.internal.fastinfoset.alphabet.BuiltInRestrictedAlphabets.table;
 import gestioa.BezeroaKudeatu;
 import gestioa.EskaeraKudeatu;
 import gestioa.HornitzaileaKudeatu;
@@ -27,6 +28,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JTable;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
@@ -245,13 +247,10 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewHornitzaileaGehitu.setLocationRelativeTo(null);
         viewEskaeraInfo.setLocationRelativeTo(null);
         viewEskaeraGehitu.setLocationRelativeTo(null);
-        
-        
+
         
         viewBezeroaInfo.jButtonAldatu.setEnabled(false);
-        viewBezeroaInfo.jButtonEzabatu.setEnabled(false);
         viewLangileaInfo.jButtonAldatu.setEnabled(false);
-        viewLangileaInfo.jButtonEzabatu.setEnabled(false);
         viewProduktuaAukeratu.jButtonAldatuJerts.setEnabled(false);
         viewProduktuaAukeratu.jButtonEzabatuJerts.setEnabled(false);
         viewProduktuaAukeratu.jButtonAldatuKami.setEnabled(false);
@@ -314,6 +313,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewMenuNagusia.setEnabled(true);
 //            viewMenuNagusia.setAlwaysOnTop(true);
         }
+        else if (comando == viewBezeroaInfo.jButtonEzabatu) {
+            int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(); // aukeratutako lerroa
+            String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3); // aukeratutako bezeroaren nan zenbakia lortu
+            BezeroaKudeatu.bezeroaEzabatu(nan);
+            bezDatuakErakutsiTaula();
+        }
         
         /* BezeroaGehitu-ko aukerak */
         else if (comando == viewBezeroaGehitu.jButtonBerriaGehitu) {
@@ -355,6 +360,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewMenuNagusia.setEnabled(true);
 //            viewMenuNagusia.setAlwaysOnTop(true);
         }
+        else if (comando == viewLangileaInfo.jButtonEzabatu) {
+            int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); //get selected row
+            String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3); //get the primary key to fetch data.
+            LangileaKudeatu.langileaEzabatu(nan);
+            langDatuakErakutsiTaula();
+        }
         
         /* LangileaGehitu-ko aukerak */
         else if (comando == viewLangileaGehitu.jButtonBerriaGehitu) {
@@ -368,8 +379,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             else if (viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
                 sexuaRB = viewLangileaGehitu.jRadioButtonGiz.getText();
             }
-            
-            
+
             Langilea lang = new Langilea(viewLangileaGehitu.jTextFieldIzena.getText(), viewLangileaGehitu.jTextFieldAbizena1.getText(), 
                     viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(), viewLangileaGehitu.jTextFieldJaioData.getText(), 
                     sexuaRB, viewLangileaGehitu.jTextFieldHerria.getText(), viewLangileaGehitu.jTextFieldTlf.getText(), 
@@ -560,7 +570,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             eskDatuakErakutsiTaula();
         }
     }
-    
+
     
     @Override
     public void ancestorAdded(AncestorEvent event) {
