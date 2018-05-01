@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Praka;
@@ -30,14 +31,12 @@ public class PrakaKudeatu {
     private static File fTemp = new File(d+"\\prakTemp.obj");
 
     /* Praka berri bat gehitu */
-    public static void prakaGehitu() {
+    public static void prakaGehitu(Praka prak1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Praka berriaren datuak sartu behar dituzu.\n");
-            Praka prak1 = new Praka();     
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true)); 
             geoos.writeObject(prak1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -87,7 +86,8 @@ public class PrakaKudeatu {
     }
     
     /* ArrayList-eko Praka guztien datuak erakusteko metodoa, dendan dagoen jakiteko. */
-    public static void prakaGutztErakutsi() throws IOException {
+    public static ArrayList<Praka> prakaGutztErakutsi() {
+        ArrayList<Praka> prakGuzt = new ArrayList<Praka>();
         FileInputStream fis = null;
         GoibururikEzObjectInputStream geois = null;
         try {
@@ -98,6 +98,7 @@ public class PrakaKudeatu {
             while (true) {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
                 prak.printProd(); // objektuaren datuak erakutsi
+                prakGuzt.add(prak);
             }
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
@@ -107,10 +108,15 @@ public class PrakaKudeatu {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         } 
         finally {
-            fis.close();
-            geois.close();
+            try {
+                fis.close();
+                geois.close();
+            } catch (IOException ex) {
+                Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         System.out.println();
+        return prakGuzt;
     }
     
     /* Praka baten kodea, ArrayList-ean dagoen kontsultatu */

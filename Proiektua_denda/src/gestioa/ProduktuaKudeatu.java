@@ -42,7 +42,7 @@ public class ProduktuaKudeatu {
                 + "------------------------------------------\n"
                 + "|        Dendako produktu guztiak        |\n"
                 + "------------------------------------------\n");
-        KamisetaKudeatu.kamisetaGutztErakutsi();
+        KamisetaKudeatu.kamisetaGuztErakutsi();
         JertseaKudeatu.jertsGuztErakutsi();
         PrakaKudeatu.prakaGutztErakutsi();
     }

@@ -35,8 +35,8 @@ public class EskaeraInfo extends javax.swing.JFrame {
         buttonGroupEmGiz = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        bezeroInfoTable1 = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
+        jTableEskaeraInfo = new javax.swing.JTable();
+        jPanelEskDatuak = new javax.swing.JPanel();
         jLabelHornitzailea = new javax.swing.JLabel();
         jTextFieldHornitzailea = new javax.swing.JTextField();
         jLabelData = new javax.swing.JLabel();
@@ -48,7 +48,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jTextFieldBilatu = new javax.swing.JTextField();
         jLabelEskKud = new javax.swing.JLabel();
-        bilatuLabel2 = new javax.swing.JLabel();
+        jLabelBilatu = new javax.swing.JLabel();
         oinaPanel1 = new javax.swing.JPanel();
         jButtonIrten = new javax.swing.JButton();
         jButtonGehitu = new javax.swing.JButton();
@@ -69,11 +69,10 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bezeroa kudeatu");
 
-        bezeroInfoTable1.setAutoCreateRowSorter(true);
-        bezeroInfoTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        bezeroInfoTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableEskaeraInfo.setAutoCreateRowSorter(true);
+        jTableEskaeraInfo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTableEskaeraInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -81,10 +80,10 @@ public class EskaeraInfo extends javax.swing.JFrame {
 
             }
         ));
-        bezeroInfoTable1.setToolTipText("");
-        bezeroInfoTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        bezeroInfoTable1.setAutoscrolls(false);
-        jScrollPane3.setViewportView(bezeroInfoTable1);
+        jTableEskaeraInfo.setToolTipText("");
+        jTableEskaeraInfo.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTableEskaeraInfo.setAutoscrolls(false);
+        jScrollPane3.setViewportView(jTableEskaeraInfo);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,47 +114,47 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jLabelKodESk.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodESk.setText("Kodea:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelEskDatuakLayout = new javax.swing.GroupLayout(jPanelEskDatuak);
+        jPanelEskDatuak.setLayout(jPanelEskDatuakLayout);
+        jPanelEskDatuakLayout.setHorizontalGroup(
+            jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelHornitzailea)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelData)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelTlf)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                         .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelKodESk)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanelEskDatuakLayout.setVerticalGroup(
+            jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEskDatuakLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelKodESk)
                     .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelHornitzailea)
                     .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelData)
                     .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTlf)
                     .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -164,7 +163,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jLabelEskKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelEskKud.setText("ESKAERAK KUDEATU");
 
-        bilatuLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
+        jLabelBilatu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -174,7 +173,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabelEskKud, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bilatuLabel2)
+                .addComponent(jLabelBilatu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldBilatu, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
@@ -187,7 +186,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bilatuLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelBilatu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabelEskKud)
                         .addContainerGap())))
@@ -250,7 +249,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(oinaPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(25, 25, 25))
@@ -262,7 +261,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(oinaPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,24 +322,24 @@ public class EskaeraInfo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JTable bezeroInfoTable1;
-    private javax.swing.JLabel bilatuLabel2;
     private javax.swing.ButtonGroup buttonGroupEmGiz;
     public javax.swing.JButton jButtonAldatu;
     public javax.swing.JButton jButtonEzabatu;
     public javax.swing.JButton jButtonGehitu;
     public javax.swing.JButton jButtonIrten;
+    private javax.swing.JLabel jLabelBilatu;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelEskKud;
     private javax.swing.JLabel jLabelHornitzailea;
     private javax.swing.JLabel jLabelKodESk;
     private javax.swing.JLabel jLabelTlf;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    public javax.swing.JPanel jPanelEskDatuak;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTableEskaeraInfo;
     private javax.swing.JTextField jTextFieldBilatu;
     private javax.swing.JTextField jTextFieldData;
     public javax.swing.JTextField jTextFieldHornitzailea;
@@ -348,11 +347,4 @@ public class EskaeraInfo extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldKopurua;
     private javax.swing.JPanel oinaPanel1;
     // End of variables declaration//GEN-END:variables
-    
-//    public void setTextData(String text){
-//        jLabelData.setText(text);
-//    }
-    public static void setModel (DefaultTableModel model) {
-        bezeroInfoTable1.setModel(model);
-    }
 }

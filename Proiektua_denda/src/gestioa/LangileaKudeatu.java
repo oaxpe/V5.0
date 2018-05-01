@@ -37,14 +37,12 @@ public class LangileaKudeatu {
     }
     
     /* Langile berri bat gehitu */
-    public static void langileaGehitu() throws IOException {
+    public static void langileaGehitu(Langilea lang1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Langile berriaren datuak sartu behar dituzu.\n");
-            Langilea lang1 = new Langilea();         
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));        
             geoos.writeObject(lang1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -98,11 +96,11 @@ public class LangileaKudeatu {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("LANGILEAK: ");
-//            System.out.println("\tLan-eremua\tIzen-abizenak\t\tNAN zenbakia\tSexua\t\tHerria\tTelefonoa");
             System.out.printf("\t%1$-10s    %2$-10s    %3$-20s    %4$-10s  %5$-15s    %6$-10s    %7$-10s    %8$-10s    %9$-10s\n", "Langile kodea", "Izena", "Abizenak", "NAN zenbakia", "Jaiotze data", "Sexua", "Herria", "Telefonoa", "Lan-eremua");  // inprimitzen den informazioari formatua emateko
             while (true) {
                 Langilea lang = (Langilea) geois.readObject(); // objektua irakurri   
                 lang.printPerts(); // objektuaren datuak erakutsi
+                langGuzt.add(lang);
             }
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu

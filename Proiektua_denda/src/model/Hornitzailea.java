@@ -34,10 +34,18 @@ public class Hornitzailea implements Serializable {
     
     public Hornitzailea (String izena, String herria, String tlf, String email) {
         setKodHor();
-        this.izena=izena;
-        this.herria=herria;
-        this.telefonoa=tlf;
-        this.email=email;
+        this.izena = izena;
+        this.herria = herria;
+        this.telefonoa = tlf;
+        this.email = email;
+    }
+
+    public Hornitzailea(String kodHor, String izena, String herria, String telefonoa, String email) {
+        this.kodHor = kodHor;
+        this.izena = izena;
+        this.herria = herria;
+        this.telefonoa = telefonoa;
+        this.email = email;
     }
     
     /* METODOAK */

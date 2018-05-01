@@ -44,6 +44,13 @@ public class Langilea extends Pertsona implements Serializable {
         this.soldata = soldata;
         this.eremua = eremua;
     }
+
+    public Langilea (String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua) {
+        super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
+        setKodLan();
+        this.soldata = soldata;
+        this.eremua = eremua;
+    }
     
     /* METODOAK */
     @Override

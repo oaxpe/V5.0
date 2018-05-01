@@ -36,9 +36,7 @@ public class BezeroaKudeatu {
             d.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-//            System.out.println("Bezero berriaren datuak sartu behar dituzu.\n");
-//            Bezeroa bez1 = new Bezeroa();         
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true)); 
             geoos.writeObject(bez1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();

@@ -39,6 +39,7 @@ public class Proiektua_denda {
         BezeroaGehitu viewBezGehitu = new BezeroaGehitu();
         LangileaInfo viewLangInfo = new LangileaInfo();
         LangileaGehitu viewLangGehitu = new LangileaGehitu();
+        ProduktuaAukeratu viewProdAuk = new ProduktuaAukeratu();
         JertseaInfo viewJertsInfo = new JertseaInfo();
         JertseaGehitu viewJertsGehitu = new JertseaGehitu();
         KamisetaInfo viewKamInfo = new KamisetaInfo();
@@ -52,7 +53,7 @@ public class Proiektua_denda {
 
         /* CONTROLLER */
         Controller ctrl = new Controller(bez, denda, esk, horn, jerts, kami, lang, prak, salm,
-                viewBezInfo, viewBezGehitu, viewLangInfo, viewLangGehitu, viewJertsInfo, viewJertsGehitu,
+                viewBezInfo, viewBezGehitu, viewLangInfo, viewLangGehitu, viewProdAuk, viewJertsInfo, viewJertsGehitu,
                 viewKamInfo, viewKamGehitu, viewPrakInfo, viewPrakGehitu, viewHornInfo, viewHornGehitu,
                 viewEskInfo, viewEskGehitu, viewMenuNag);
 

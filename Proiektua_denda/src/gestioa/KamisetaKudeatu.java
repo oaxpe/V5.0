@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Kamiseta;
@@ -30,14 +31,12 @@ public class KamisetaKudeatu {
     private static File fTemp = new File(d+"\\kamiTemp.obj");
 
     /* Kamiseta berri bat gehitu */
-    public static void kamisetaGehitu() {
+    public static void kamisetaGehitu(Kamiseta kami1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Kamiseta berriaren datuak sartu behar dituzu.\n");
-            Kamiseta kami1 = new Kamiseta();         
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));  
             geoos.writeObject(kami1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -87,7 +86,8 @@ public class KamisetaKudeatu {
     }
 
     /* ArrayList-eko Kamiseta guztien datuak erakusteko metodoa */
-    public static void kamisetaGutztErakutsi() throws IOException {
+    public static ArrayList<Kamiseta> kamisetaGuztErakutsi() {
+        ArrayList<Kamiseta> kamiGuzt = new ArrayList<Kamiseta>();
         FileInputStream fis = null;
         GoibururikEzObjectInputStream geois = null;
         try {
@@ -98,6 +98,7 @@ public class KamisetaKudeatu {
             while (true) {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
                 kami.printProd(); // objektuaren datuak erakutsi
+                kamiGuzt.add(kami);
             }
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
@@ -107,9 +108,14 @@ public class KamisetaKudeatu {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         } 
         finally {
-            fis.close();
-            geois.close();
+            try {
+                fis.close();
+                geois.close();
+            } catch (IOException ex) {
+                Logger.getLogger(KamisetaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        return kamiGuzt;
     }
     
     /* Kamiseta baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */

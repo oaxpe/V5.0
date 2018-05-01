@@ -47,8 +47,8 @@ public class KamisetaInfo extends javax.swing.JFrame {
         jTextFieldStock = new javax.swing.JTextField();
         jLabelPrezioa = new javax.swing.JLabel();
         jTextFieldPrezioa = new javax.swing.JTextField();
-        jLabelKodJerts = new javax.swing.JLabel();
-        jTextFieldKodeJerts = new javax.swing.JTextField();
+        jLabelKodKami = new javax.swing.JLabel();
+        jTextFieldKodeKami = new javax.swing.JTextField();
         jComboBoxTaila = new javax.swing.JComboBox<>();
         jComboBoxSexua = new javax.swing.JComboBox<>();
         jLabelSasoia = new javax.swing.JLabel();
@@ -77,7 +77,6 @@ public class KamisetaInfo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bezeroa kudeatu");
 
         bezeroInfoTable1.setAutoCreateRowSorter(true);
         bezeroInfoTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -129,8 +128,8 @@ public class KamisetaInfo extends javax.swing.JFrame {
         jLabelPrezioa.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelPrezioa.setText("Prezioa:");
 
-        jLabelKodJerts.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
-        jLabelKodJerts.setText("Kodea:");
+        jLabelKodKami.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelKodKami.setText("Kodea:");
 
         jComboBoxTaila.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -161,9 +160,9 @@ public class KamisetaInfo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldPrezioa, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelKodJerts)
+                        .addComponent(jLabelKodKami)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldKodeJerts, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldKodeKami, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelJaioData)
@@ -182,8 +181,8 @@ public class KamisetaInfo extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelKodJerts)
-                    .addComponent(jTextFieldKodeJerts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelKodKami)
+                    .addComponent(jTextFieldKodeKami, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMarka)
@@ -405,7 +404,7 @@ public class KamisetaInfo extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboBoxTaila;
     private javax.swing.JLabel jLabelJaioData;
     private javax.swing.JLabel jLabelKamiKud;
-    private javax.swing.JLabel jLabelKodJerts;
+    private javax.swing.JLabel jLabelKodKami;
     private javax.swing.JLabel jLabelKolorea;
     private javax.swing.JLabel jLabelMarka;
     private javax.swing.JLabel jLabelPrezioa;
@@ -419,7 +418,7 @@ public class KamisetaInfo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldBilatu;
-    public javax.swing.JTextField jTextFieldKodeJerts;
+    public javax.swing.JTextField jTextFieldKodeKami;
     public javax.swing.JTextField jTextFieldKolorea;
     public javax.swing.JTextField jTextFieldMarka;
     public javax.swing.JTextField jTextFieldPrezioa;

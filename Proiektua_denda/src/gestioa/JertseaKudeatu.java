@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Jertsea;
@@ -30,14 +31,12 @@ public class JertseaKudeatu {
     private static File fTemp = new File(d+"\\jertsTemp.obj");
     
     /* Jertse berri bat gehitu */
-    public static void jertsGehitu() {
+    public static void jertsGehitu(Jertsea jerts1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Jertse berriaren datuak sartu behar dituzu.\n");
-            Jertsea jerts1 = new Jertsea();         
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));    
             geoos.writeObject(jerts1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -87,7 +86,8 @@ public class JertseaKudeatu {
     }
     
     /* ArrayList-eko Jertse guztien datuak erakusteko metodoa */
-    public static void jertsGuztErakutsi() throws IOException {
+    public static ArrayList<Jertsea> jertsGuztErakutsi() {
+        ArrayList<Jertsea> jertsGuzt = new ArrayList<Jertsea>();
         FileInputStream fis = null;
         GoibururikEzObjectInputStream geois = null;
         try {
@@ -98,6 +98,7 @@ public class JertseaKudeatu {
             while (true) {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
                 jerts.printProd(); // objektuaren datuak erakutsi
+                jertsGuzt.add(jerts);
             }
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
@@ -107,10 +108,15 @@ public class JertseaKudeatu {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         } 
         finally {
-            fis.close();
-            geois.close();
+            try {
+                fis.close();
+                geois.close();
+            } catch (IOException ex) {
+                Logger.getLogger(JertseaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         System.out.println();
+        return jertsGuzt;
     }
     
     /* Jertse baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */

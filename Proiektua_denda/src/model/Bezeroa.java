@@ -27,6 +27,11 @@ public class Bezeroa extends Pertsona implements Serializable {
         super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
         setKodBez();
     }
+
+    public Bezeroa(String kodBez, String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String telefonoa) {
+        super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, telefonoa);
+        this.kodBez = kodBez;
+    }
     
     /* METODOAK */
     @Override

@@ -30,6 +30,12 @@ public class Eskaera implements Serializable {
 //        setKopurua();
 //        setEskZenb();
     }
+    public Eskaera (String hornitzailea, int kopurua) {
+        this.hornitzailea = hornitzailea;
+        this.kopurua = kopurua;
+        setData();
+        setEskZenb();
+    }
     
     /* METODOAK */
     public void printDatuak() {

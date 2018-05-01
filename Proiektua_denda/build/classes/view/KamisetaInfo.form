@@ -28,7 +28,6 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Bezeroa kudeatu"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -167,9 +166,9 @@
                           <Component id="jTextFieldPrezioa" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelKodJerts" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelKodKami" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldKodeJerts" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldKodeKami" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -195,8 +194,8 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelKodJerts" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldKodeJerts" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelKodKami" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldKodeKami" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -307,7 +306,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelKodJerts">
+        <Component class="javax.swing.JLabel" name="jLabelKodKami">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Century Gothic" size="14" style="1"/>
@@ -315,7 +314,7 @@
             <Property name="text" type="java.lang.String" value="Kodea:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldKodeJerts">
+        <Component class="javax.swing.JTextField" name="jTextFieldKodeKami">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

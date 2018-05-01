@@ -75,7 +75,6 @@ public class JertseaInfo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Bezeroa kudeatu");
 
         bezeroInfoTable1.setAutoCreateRowSorter(true);
         bezeroInfoTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N

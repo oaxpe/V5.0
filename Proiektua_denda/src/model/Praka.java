@@ -29,6 +29,14 @@ public class Praka extends Produktua implements Serializable {
 //        setMota();
     }
     
+    public Praka (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, int taila, String sasoia, int luzeera, String mota) {
+        super(kodea, marka, prezioa, kolorea, sexua, kantStock);
+        this.taila=taila;
+        this.sasoia=sasoia;
+        this.luzeera=luzeera;
+        this.mota=mota;
+    }
+    
     public Praka (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, int taila, String sasoia) {
         super(kodea, marka, prezioa, kolorea, sexua, kantStock);
         this.taila=taila;

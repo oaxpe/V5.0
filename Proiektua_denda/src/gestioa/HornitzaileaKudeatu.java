@@ -34,8 +34,6 @@ public class HornitzaileaKudeatu {
         }
         try {
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-//            System.out.println("Hornitzaile berriaren datuak sartu behar dituzu.");
-//            Hornitzailea horn1 = new Hornitzailea(); 
             geoos.writeObject(horn1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -96,6 +94,7 @@ public class HornitzaileaKudeatu {
             while (true) {
                 Hornitzailea horn = (Hornitzailea) geois.readObject(); // objektua irakurri              
                 horn.printHorn(); // objektuaren datuak erakutsi
+                hornGuzt.add(horn);
             }
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
@@ -165,6 +164,7 @@ public class HornitzaileaKudeatu {
         Proiektua_denda.pausa();  
     }
     
+    /* hornitzaileen izenak bakarrik erakusten duen metodoa */
     public static ArrayList<String> hornitzaileIzenak() {
         ArrayList<String> alHorniIzenGuzt = new ArrayList<String>();
         try {

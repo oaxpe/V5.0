@@ -33,7 +33,6 @@ public class Metodoak {
         String ANSI_RESET = "\u001B[0m";
         return (ANSI_RED+textua+ANSI_RESET);
     }
-//    public static final String ANSI_RED = "\u001B[31m";
    
     /* Email-a ondo estrukturatuta dagoen konprobatzen duen metodoa.
      * Expresio erregularrak erabiltzen dira (adibidea@adibidea.com) */

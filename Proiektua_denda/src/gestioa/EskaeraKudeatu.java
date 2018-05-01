@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import model.Eskaera;
 
 /**
@@ -24,14 +25,12 @@ public class EskaeraKudeatu implements Serializable {
     private static File f = new File(d+"\\eskaera.obj");
     
     /* Eskaera berri bat gehitu/gestionatu */
-    public static void eskaeraGehitu() {
+    public static void eskaeraGehitu(Eskaera esk1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Eskaera berriaren datuak sartu behar dituzu.\n");
-            Eskaera esk1 = new Eskaera();
             geoos.writeObject(esk1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -45,7 +44,8 @@ public class EskaeraKudeatu implements Serializable {
     }
     
     /* Eskaeren inguruko informazioa erakusten du. */
-    public static void eskaeraGuztiakErakutsi() {
+    public static ArrayList<Eskaera> eskaeraGuztiakErakutsi() {
+        ArrayList<Eskaera> eskGuzt = new ArrayList<Eskaera>();
         try {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
@@ -54,6 +54,7 @@ public class EskaeraKudeatu implements Serializable {
             while (true) {
                 Eskaera esk = (Eskaera) geois.readObject(); // objektua irakurri              
                 esk.printEskaera(); // objektuaren datuak erakutsi
+                eskGuzt.add(esk);
             }
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
@@ -61,7 +62,8 @@ public class EskaeraKudeatu implements Serializable {
             System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
-        }           
+        }    
+        return eskGuzt;
     }
     
 }

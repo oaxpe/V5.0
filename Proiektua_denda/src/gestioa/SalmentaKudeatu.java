@@ -11,6 +11,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import model.Salmenta;
 
 /**
@@ -23,14 +24,12 @@ public class SalmentaKudeatu {
     private static File f = new File(d+"\\salmenta.obj");
     
     /* Salmenta berri bat gehitu/gestionatu */
-    public static void salmentaGehitu() {
+    public static void salmentaGehitu(Salmenta salm1) {
         if (!d.exists()) {
             d.mkdir();
         }
         try {
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
-            System.out.println("Salmenta berriaren datuak sartu behar dituzu.\n");
-            Salmenta salm1 = new Salmenta(); 
             geoos.writeObject(salm1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -44,7 +43,8 @@ public class SalmentaKudeatu {
     }
     
     /* Eskaeren inguruko informazioa erakusten du. */
-    public static void salmentaGuztiakErakutsi() {
+    public static ArrayList<Salmenta> salmentaGuztiakErakutsi() {
+        ArrayList<Salmenta> salmGuzt = new ArrayList<Salmenta>();
         try {
             FileInputStream fis = new FileInputStream(f);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
@@ -61,5 +61,6 @@ public class SalmentaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
+        return salmGuzt;
     }
 }
