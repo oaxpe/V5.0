@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Jertsea;
-import proiektua_denda.Proiektua_denda;
 
 /**
  *
@@ -52,7 +51,7 @@ public class JertseaKudeatu {
     }
     
     /* Jertse zehatz baten datu guztiak ezabatu */    
-    public static void jertseaEzabatu(String kodea) throws IOException {
+    public static void jertseaEzabatu(String kodea, String taila) {
         boolean ezabatuta = false;
         try {    
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
@@ -60,12 +59,12 @@ public class JertseaKudeatu {
             
             while (true) { // fitxategiko objektuak irakurri
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri              
-                if (!jerts.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
-                    geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
-                    geoos.flush();
+                if (jerts.getKodPro().toUpperCase().equals(kodea.toUpperCase()) && (jerts.getTaila().equals(taila.toUpperCase()))) { // kodea konparatu
+                    ezabatuta = true;
                 } 
                 else {
-                    ezabatuta = true;
+                    geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
+                    geoos.flush();
                 }
             } 
         } catch (EOFException ex) { 
@@ -75,9 +74,12 @@ public class JertseaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
-        System.gc();
-        Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        Proiektua_denda.pausa();
+        try {
+            System.gc();
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(JertseaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         if (ezabatuta)
             System.out.println(kodea+" erreferentziadun jertsea ondo ezabatu da.");

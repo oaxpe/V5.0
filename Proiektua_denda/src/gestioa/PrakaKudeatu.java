@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Praka;
-import proiektua_denda.Proiektua_denda;
 
 /**
  *
@@ -52,7 +51,7 @@ public class PrakaKudeatu {
     }
     
     /* Praka zehatz baten datu guztiak ezabatu */    
-    public static void prakaEzabatu(String kodea) throws IOException {
+    public static void prakaEzabatu(String kodea, int taila) {
         boolean ezabatuta = false;
         try {    
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
@@ -60,12 +59,12 @@ public class PrakaKudeatu {
             
             while (true) { // fitxategiko objektuak irakurri
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri              
-                if (!prak.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
-                    geoos.writeObject(prak); // objektua fitxategi berrian idatzi
-                    geoos.flush();
+                if (prak.getKodPro().toUpperCase().equals(kodea.toUpperCase()) && (prak.getTaila() == taila)) { // kodea eta taila konparatu
+                    ezabatuta = true;
                 } 
                 else {
-                    ezabatuta = true;
+                    geoos.writeObject(prak); // objektua fitxategi berrian idatzi
+                    geoos.flush();
                 }
             } 
         } catch (EOFException ex) { 
@@ -75,9 +74,12 @@ public class PrakaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
-        System.gc();
-        Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        Proiektua_denda.pausa();
+        try {
+            System.gc();
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         if (ezabatuta)
             System.out.println(kodea+" erreferentziadun praka ondo ezabatu da.");
@@ -247,7 +249,6 @@ public class PrakaKudeatu {
         } catch (IOException ex) {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Proiektua_denda.pausa();
         
         if (!bool)
                 System.out.println("\tProduktu hori ez dago dendan.");

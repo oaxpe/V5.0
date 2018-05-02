@@ -58,8 +58,9 @@ public class LangileaKudeatu {
     /* Langile zehatz baten datu guztiak ezabatu */ 
     public static void langileaEzabatu(String nan) {
         boolean ezabatuta = false;
+        GoibururikEzObjectOutputStream geoos = null;
         try {    
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
+            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
             
             while (true) { // fitxategiko objektuak irakurri
@@ -79,10 +80,12 @@ public class LangileaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
-        System.gc();
         try {
+            geoos.close();
+            System.gc();
             Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
+            System.out.println("a");
             Logger.getLogger(LangileaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
 

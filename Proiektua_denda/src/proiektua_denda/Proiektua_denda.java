@@ -59,14 +59,13 @@ public class Proiektua_denda {
 
     }
     // PAUSA bat egiteko funtzioa
-    public static void pausa() {
-        try {
-            System.out.println("\nSakatu 'Enter' jarraitzeko...");
-            System.in.read();
-        } 
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }
-
-    }
+//    public static void pausa() {
+//        try {
+//            System.out.println("\nSakatu 'Enter' jarraitzeko...");
+//            System.in.read();
+//        } 
+//        catch (IOException gaizki) {
+//            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+//        }
+//    }
 }

@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Kamiseta;
-import proiektua_denda.Proiektua_denda;
 
 /**
  *
@@ -52,7 +51,7 @@ public class KamisetaKudeatu {
     }
     
     /* Kamiseta zehatz baten datu guztiak ezabatu */    
-    public static void kamisetaEzabatu(String kodea) throws IOException {
+    public static void kamisetaEzabatu(String kodea, String taila) {
         boolean ezabatuta = false;
         try {    
             GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
@@ -60,12 +59,12 @@ public class KamisetaKudeatu {
             
             while (true) { // fitxategiko objektuak irakurri
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri              
-                if (!kami.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
-                    geoos.writeObject(kami); // objektua fitxategi berrian idatzi
-                    geoos.flush();
+                if (kami.getKodPro().toUpperCase().equals(kodea.toUpperCase()) && kami.getTaila().equals(taila.toUpperCase())) { // kodea konparatu
+                    ezabatuta = true;
                 } 
                 else {
-                    ezabatuta = true;
+                    geoos.writeObject(kami); // objektua fitxategi berrian idatzi
+                    geoos.flush();
                 }
             } 
         } catch (EOFException ex) { 
@@ -75,9 +74,12 @@ public class KamisetaKudeatu {
         } catch (ClassNotFoundException | IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         }
-        System.gc();
-        Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        Proiektua_denda.pausa();
+        try {
+            System.gc();
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(KamisetaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         if (ezabatuta)
             System.out.println(kodea+" erreferentziadun kamiseta ondo ezabatu da.");
@@ -248,7 +250,6 @@ public class KamisetaKudeatu {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
             fTemp.delete();
         }
-        Proiektua_denda.pausa();
         
         if (!bool)
                 System.out.println("\tProduktu hori ez dago dendan.");

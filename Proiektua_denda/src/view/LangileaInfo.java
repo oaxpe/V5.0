@@ -57,6 +57,7 @@ public class LangileaInfo extends javax.swing.JFrame {
         jLabelSoldata = new javax.swing.JLabel();
         jTextFieldSoldata = new javax.swing.JTextField();
         jLabelSoldata1 = new javax.swing.JLabel();
+        jTextFieldEremua = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jTextFieldBilatu = new javax.swing.JTextField();
         jLabelLangKud = new javax.swing.JLabel();
@@ -204,7 +205,9 @@ public class LangileaInfo extends javax.swing.JFrame {
                             .addComponent(jLabelSoldata)
                             .addComponent(jLabelSoldata1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldSoldata, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldSoldata, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldEremua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         jPanelLangDatuakLayout.setVerticalGroup(
             jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,8 +254,10 @@ public class LangileaInfo extends javax.swing.JFrame {
                     .addComponent(jLabelSoldata)
                     .addComponent(jTextFieldSoldata, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelSoldata1)
-                .addGap(6, 6, 6))
+                .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSoldata1)
+                    .addComponent(jTextFieldEremua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4))
         );
 
         jLabelLangKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -439,6 +444,7 @@ public class LangileaInfo extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldAbizena1;
     public javax.swing.JTextField jTextFieldAbizena2;
     private javax.swing.JTextField jTextFieldBilatu;
+    public javax.swing.JTextField jTextFieldEremua;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;
     public javax.swing.JTextField jTextFieldJaioData;

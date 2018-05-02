@@ -15,6 +15,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Hornitzailea;
 import proiektua_denda.Proiektua_denda;
 
@@ -47,7 +49,7 @@ public class HornitzaileaKudeatu {
     }
     
     /* Hornitzaile zehatz bat ezabatu */
-    public static void hornitzaileaEzabatu(String kodea) throws IOException {
+    public static void hornitzaileaEzabatu(String kodea) {
         boolean ezabatuta = false;
         GoibururikEzObjectOutputStream geoos = null;
         try {            
@@ -77,10 +79,13 @@ public class HornitzaileaKudeatu {
         }
         else
             System.out.println(kodea+" kodea duen hornitzailerik ez dago erregistratuta.");
-        geoos.close();
-        System.gc();
-        Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        Proiektua_denda.pausa();
+        try {
+            geoos.close();
+            System.gc();
+            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException ex) {
+            Logger.getLogger(HornitzaileaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
     /* Hornitzaileen inguruko informazioa erakusten du. */
@@ -161,7 +166,6 @@ public class HornitzaileaKudeatu {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
             fTemp.delete();
         }
-        Proiektua_denda.pausa();  
     }
     
     /* hornitzaileen izenak bakarrik erakusten duen metodoa */

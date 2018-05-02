@@ -8942,7 +8942,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+kaimsetaEzabatu(kodea: String): void",
+											"text": "+kaimsetaEzabatu(kodea: String, taila: String): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -9524,7 +9524,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+prakaEzabatu(kodea: String): void",
+											"text": "+prakaEzabatu(kodea: String, taila: int): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -10106,7 +10106,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+jertseaEzabatu(kodea: String): void",
+											"text": "+jertseaEzabatu(kodea: String, taila: String): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -21163,6 +21163,22 @@
 											"isOrdered": false,
 											"isUnique": false,
 											"direction": "in"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFjIk/wRZy7THM=",
+											"_parent": {
+												"$ref": "AAAAAAFhYxR6cCswlqk="
+											},
+											"name": "taila",
+											"visibility": "public",
+											"isStatic": false,
+											"isLeaf": false,
+											"type": "String",
+											"isReadOnly": false,
+											"isOrdered": false,
+											"isUnique": false,
+											"direction": "in"
 										}
 									],
 									"concurrency": "sequential",
@@ -21553,6 +21569,22 @@
 											"isStatic": false,
 											"isLeaf": false,
 											"type": "String",
+											"isReadOnly": false,
+											"isOrdered": false,
+											"isUnique": false,
+											"direction": "in"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFjIk93zprzZcI=",
+											"_parent": {
+												"$ref": "AAAAAAFhYxdv/i81d6g="
+											},
+											"name": "taila",
+											"visibility": "public",
+											"isStatic": false,
+											"isLeaf": false,
+											"type": "int",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -23184,6 +23216,22 @@
 												"$ref": "AAAAAAFhYw6zcSVaJ+A="
 											},
 											"name": "kodea",
+											"visibility": "public",
+											"isStatic": false,
+											"isLeaf": false,
+											"type": "String",
+											"isReadOnly": false,
+											"isOrdered": false,
+											"isUnique": false,
+											"direction": "in"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFjIk+tcJuqmyM=",
+											"_parent": {
+												"$ref": "AAAAAAFhYw6zcSVaJ+A="
+											},
+											"name": "taila",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
