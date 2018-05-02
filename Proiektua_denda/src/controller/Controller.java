@@ -8,6 +8,7 @@ package controller;
 import gestioa.*;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -17,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
@@ -311,9 +314,14 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewBezeroaInfo.jButtonEzabatu) {
             int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(); // aukeratutako lerroa
-            String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3); // aukeratutako bezeroaren nan zenbakia lortu
-            BezeroaKudeatu.bezeroaEzabatu(nan);
-            bezDatuakErakutsiTaula();
+            if (aukLerroa != -1) {
+                String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3); // aukeratutako bezeroaren nan zenbakia lortu
+                BezeroaKudeatu.bezeroaEzabatu(nan);
+                bezDatuakErakutsiTaula();
+            }
+            else {
+                JOptionPane.showMessageDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ez da bezerorik aukeratu"); // ventana emergente
+            }
         }
         
         /* BezeroaGehitu-ko aukerak */
@@ -358,9 +366,14 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewLangileaInfo.jButtonEzabatu) {
             int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
-            String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
-            LangileaKudeatu.langileaEzabatu(nan);
-            langDatuakErakutsiTaula();
+            if (aukLerroa != -1) {
+                String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
+                LangileaKudeatu.langileaEzabatu(nan);
+                langDatuakErakutsiTaula();
+            }
+            else {
+                JOptionPane.showMessageDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ez da langilerik aukeratu"); // ventana emergente
+            }
         }
         
         /* LangileaGehitu-ko aukerak */
@@ -402,10 +415,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts) {
             int aukLerroa = viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(); // aukeratutako lerroa
-            String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-            String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-            JertseaKudeatu.jertseaEzabatu(kodea, taila);
-            jertsDatuakErakutsiTaula();
+            if (aukLerroa != -1) {
+                String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                JertseaKudeatu.jertseaEzabatu(kodea, taila);
+                jertsDatuakErakutsiTaula();
+            }
+            else {
+                JOptionPane.showMessageDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ez da jertserik aukeratu"); // ventana emergente
+            }
         }
         else if (comando == viewProduktuaAukeratu.jButtonGehituKami) {
             viewKamisetaGehitu.setVisible(true);
@@ -414,10 +432,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami) {
             int aukLerroa = viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(); // aukeratutako lerroa
-            String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-            String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-            KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
-            kamiDatuakErakutsiTaula();
+            if (aukLerroa != -1) {
+                String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
+                kamiDatuakErakutsiTaula();
+            }
+            else {
+                JOptionPane.showMessageDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ez da kamisetarik aukeratu"); // ventana emergente
+            }
         }
         else if (comando == viewProduktuaAukeratu.jButtonGehituPrak) {
             viewPrakaGehitu.setVisible(true);
@@ -426,10 +449,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak) {
             int aukLerroa = viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(); // aukeratutako lerroa
-            String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-            int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-            PrakaKudeatu.prakaEzabatu(kodea, taila);
-            prakDatuakErakutsiTaula();
+            if (aukLerroa != -1) {
+                String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                PrakaKudeatu.prakaEzabatu(kodea, taila);
+                prakDatuakErakutsiTaula();
+            }
+            else {
+                JOptionPane.showMessageDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ez da prakarik aukeratu"); // ventana emergente
+            }
         }
         else if (comando == viewProduktuaAukeratu.jButtonIrten) {
             viewProduktuaAukeratu.setVisible(false);
@@ -518,9 +546,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         } 
         else if (comando == viewHornitzaileaInfo.jButtonEzabatu) {
             int aukLerroa = viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(); // aukeratutako lerroa
-            String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-            HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
-            hornDatuakErakutsiTaula();
+            System.out.println(aukLerroa);
+            if (aukLerroa != -1) {
+                String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
+                HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
+                hornDatuakErakutsiTaula();
+            }
+            else {
+                JOptionPane.showMessageDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ez da hornitzailerik aukeratu"); // ventana emergente
+            }
         }
         
         /* HornitzaileaGehituko aukerak */

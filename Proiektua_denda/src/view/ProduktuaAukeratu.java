@@ -27,6 +27,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialogEzabatuKonfirm = new javax.swing.JDialog();
         jTabbedPaneProd = new javax.swing.JTabbedPane();
         jPanelJerts = new javax.swing.JPanel();
         jPanelJertsKud = new javax.swing.JPanel();
@@ -121,6 +122,17 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonAldatuPrak = new javax.swing.JButton();
         jButtonEzabatuPrak = new javax.swing.JButton();
         jButtonIrten = new javax.swing.JButton();
+
+        javax.swing.GroupLayout jDialogEzabatuKonfirmLayout = new javax.swing.GroupLayout(jDialogEzabatuKonfirm.getContentPane());
+        jDialogEzabatuKonfirm.getContentPane().setLayout(jDialogEzabatuKonfirmLayout);
+        jDialogEzabatuKonfirmLayout.setHorizontalGroup(
+            jDialogEzabatuKonfirmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialogEzabatuKonfirmLayout.setVerticalGroup(
+            jDialogEzabatuKonfirmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -981,6 +993,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboBoxTaila;
     public javax.swing.JComboBox<String> jComboBoxTaila1;
     public javax.swing.JComboBox<String> jComboBoxTaila2;
+    public javax.swing.JDialog jDialogEzabatuKonfirm;
     private javax.swing.JLabel jLabelJaioData;
     private javax.swing.JLabel jLabelJaioData1;
     private javax.swing.JLabel jLabelJaioData2;

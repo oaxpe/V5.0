@@ -33,6 +33,7 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         buttonGroupEmGiz = new javax.swing.ButtonGroup();
+        jDialogEzabatuKonfirm = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableHornitzaileaInfo = new javax.swing.JTable();
@@ -69,6 +70,17 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jDialogEzabatuKonfirmLayout = new javax.swing.GroupLayout(jDialogEzabatuKonfirm.getContentPane());
+        jDialogEzabatuKonfirm.getContentPane().setLayout(jDialogEzabatuKonfirmLayout);
+        jDialogEzabatuKonfirmLayout.setHorizontalGroup(
+            jDialogEzabatuKonfirmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialogEzabatuKonfirmLayout.setVerticalGroup(
+            jDialogEzabatuKonfirmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -333,6 +345,7 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
     public javax.swing.JButton jButtonEzabatu;
     public javax.swing.JButton jButtonGehitu;
     public javax.swing.JButton jButtonIrten;
+    public javax.swing.JDialog jDialogEzabatuKonfirm;
     private javax.swing.JLabel jLabelEmail;
     private javax.swing.JLabel jLabelHerria;
     private javax.swing.JLabel jLabelHorKud;
