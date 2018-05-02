@@ -235,7 +235,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewHornitzaileaGehitu.setLocationRelativeTo(null);
         viewEskaeraInfo.setLocationRelativeTo(null);
         viewEskaeraGehitu.setLocationRelativeTo(null);
-
         
         viewBezeroaInfo.jButtonAldatu.setEnabled(false);
         viewLangileaInfo.jButtonAldatu.setEnabled(false);
@@ -243,8 +242,21 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jButtonAldatuKami.setEnabled(false);
         viewProduktuaAukeratu.jButtonAldatuPrak.setEnabled(false);
         viewHornitzaileaInfo.jButtonAldatu.setEnabled(false);
-        viewEskaeraInfo.jButtonAldatu.setEnabled(false);
+        viewEskaeraInfo.jButtonAldatu.setEnabled(false); // ez dago eskaerak aldatzeko aukerarik
         viewEskaeraInfo.jButtonEzabatu.setEnabled(false); // ez dago eskaerak ezabatzeko aukerarik
+        
+        // Bista guztietako ComboBox-ak kargatu.
+        langEremuaKargatu();
+        hornitzaileaKargatu();
+        sexuaKargatuJerts();
+        sexuaKargatuKami();
+        sexuaKargatuPrak();
+        tailaKargatuJerts();
+        tailaKargatuKami();
+        tailaKargatuPrak();
+        sasoiaKargatuKami();
+        sasoiaKargatuPrak();
+        motaKargatu();
     }
     
     @Override
@@ -327,6 +339,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetBezeroa();
         }
         else if (comando == viewBezeroaGehitu.jButtonIrten) {
+            resetBezeroa();
             viewBezeroaGehitu.setVisible(false);
             viewBezeroaInfo.setEnabled(true);
             bezDatuakErakutsiTaula();
@@ -336,7 +349,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewLangileaInfo.jButtonGehitu) {
             viewLangileaGehitu.setVisible(true);
             viewLangileaInfo.setEnabled(false);
-            langEremuaKargatu();
             enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
         }
         else if (comando == viewLangileaInfo.jButtonIrten) {
@@ -376,6 +388,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetLangilea();
         }
         else if (comando == viewLangileaGehitu.jButtonIrten) {
+            resetLangilea();
             viewLangileaGehitu.setVisible(false);
             viewLangileaInfo.setEnabled(true);
             langDatuakErakutsiTaula();
@@ -385,8 +398,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonGehituJerts) {
             viewJertseaGehitu.setVisible(true);
             viewProduktuaAukeratu.setEnabled(false);
-            sexuaKargatuJerts();
-            tailaKargatuJerts();
             enableComponets(viewJertseaGehitu.jPanelJertsDatuak, false);
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts) {
@@ -399,9 +410,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonGehituKami) {
             viewKamisetaGehitu.setVisible(true);
             viewProduktuaAukeratu.setEnabled(false);
-            sexuaKargatuKami();
-            tailaKargatuKami();
-            sasoiaKargatuKami();
             enableComponets(viewKamisetaGehitu.jPanelKamiDatuak, false);
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami) {
@@ -414,10 +422,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonGehituPrak) {
             viewPrakaGehitu.setVisible(true);
             viewProduktuaAukeratu.setEnabled(false);
-            sexuaKargatuPrak();
-            tailaKargatuPrak();
-            sasoiaKargatuPrak();
-            motaKargatu();
             enableComponets(viewPrakaGehitu.jPanelPrakDatuak, false);
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak) {
@@ -449,6 +453,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetJertsea();
         }
         else if (comando == viewJertseaGehitu.jButtonIrten) {
+            resetJertsea();
             viewJertseaGehitu.setVisible(false);
             viewProduktuaAukeratu.setEnabled(true);
             jertsDatuakErakutsiTaula();
@@ -471,6 +476,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetKamiseta();
         }
         else if (comando == viewKamisetaGehitu.jButtonIrten) {
+            resetKamiseta();
             viewKamisetaGehitu.setVisible(false);
             viewProduktuaAukeratu.setEnabled(true);
             kamiDatuakErakutsiTaula();
@@ -494,6 +500,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetPraka();
         }
         else if (comando == viewPrakaGehitu.jButtonIrten) {
+            resetPraka();
             viewPrakaGehitu.setVisible(false);
             viewProduktuaAukeratu.setEnabled(true);
             prakDatuakErakutsiTaula();
@@ -531,6 +538,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetHornitzailea();
         }
         else if (comando == viewHornitzaileaGehitu.jButtonIrten) {
+            resetHornitzailea();
             viewHornitzaileaGehitu.setVisible(false);
             viewHornitzaileaInfo.setEnabled(true);
             hornDatuakErakutsiTaula();
@@ -540,7 +548,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewEskaeraInfo.jButtonGehitu) {
             viewEskaeraGehitu.setVisible(true);
             viewEskaeraInfo.setEnabled(false);
-            hornitzaileaKargatu();
             enableComponets(viewEskaeraGehitu.jPanelEskDatuak, false);
         }
         else if (comando == viewEskaeraInfo.jButtonIrten) {
@@ -564,6 +571,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetEskaera();
         }
         else if (comando == viewEskaeraGehitu.jButtonIrten) {
+            resetEskaera();
             viewEskaeraGehitu.setVisible(false);
             viewEskaeraInfo.setEnabled(true);
             eskDatuakErakutsiTaula();
@@ -814,6 +822,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             model.setValueAt(esk.getKopurua(), i, 3);
         }
     }
+    
     public void hornitzaileaKargatu() {
         ArrayList<String> alHornitzaileGuzt = HornitzaileaKudeatu.hornitzaileIzenak();
         for (int i = 0; i < alHornitzaileGuzt.size(); i++) {
@@ -856,6 +865,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewKamisetaGehitu.jComboBoxSexua.addItem(i);
         }
     }
+    
     public void sexuaKargatuPrak() {
         String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
         for (String i : sexua) {

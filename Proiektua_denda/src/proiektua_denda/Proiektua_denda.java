@@ -6,8 +6,6 @@
 package proiektua_denda;
 
 import controller.Controller;
-import gestioa.Metodoak;
-import java.io.IOException;
 import view.*;
 import model.*;
 
