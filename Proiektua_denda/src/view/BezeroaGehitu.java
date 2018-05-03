@@ -68,7 +68,6 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
 
         jLabelIzena.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelIzena.setText("Izena:");
@@ -208,7 +207,6 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         jLabelBezGehitu.setText("BEZEROAREN DATUAK:");
 
         jButtonBerriaGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/berriaGehitu.png"))); // NOI18N
-        jButtonBerriaGehitu.setBorder(null);
         jButtonBerriaGehitu.setBorderPainted(false);
 
         jLabelBerriaGehitu.setText("Berria gehitu");

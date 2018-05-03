@@ -325,7 +325,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewBezeroaInfo.jButtonEzabatu) {
             int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
                 if (konf == 0) { // bai
                     String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
                     BezeroaKudeatu.bezeroaEzabatu(nan);
@@ -380,8 +380,11 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewLangileaInfo.jButtonEzabatu) {
             int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
-                LangileaKudeatu.langileaEzabatu(nan);
+                int konf = JOptionPane.showConfirmDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                if (konf == 0) { // bai
+                    String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
+                    LangileaKudeatu.langileaEzabatu(nan);
+                }
                 langDatuakErakutsiTaula();
             }
             else {
@@ -429,7 +432,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts) {
             int aukLerroa = viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
@@ -449,7 +452,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami) {
             int aukLerroa = viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
@@ -469,7 +472,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak) {
             int aukLerroa = viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu

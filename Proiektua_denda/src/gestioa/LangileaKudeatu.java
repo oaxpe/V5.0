@@ -65,7 +65,7 @@ public class LangileaKudeatu {
             
             while (true) { // fitxategiko objektuak irakurri
                 Langilea lang = (Langilea) geois.readObject(); // objektua irakurri              
-                if (!lang.getNan().equals(nan.toUpperCase())) { // kodea konparatu
+                if (!lang.getNan().toUpperCase().equals(nan.toUpperCase())) { // kodea konparatu
                     geoos.writeObject(lang); // objektua fitxategi berrian idatzi
                     geoos.flush();
                 } 
