@@ -8,7 +8,6 @@ package controller;
 import gestioa.*;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -18,7 +17,6 @@ import javax.swing.table.DefaultTableModel;
 import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import java.awt.event.MouseListener;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
@@ -202,6 +200,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jPanelJerts.addAncestorListener(this);
         viewProduktuaAukeratu.jPanelKami.addAncestorListener(this);
         viewProduktuaAukeratu.jPanelPrak.addAncestorListener(this);
+        
+        /* MouseListener */
+        viewBezeroaInfo.jTableBezeroaInfo.addMouseListener(this);
+        viewLangileaInfo.jTableLangileaInfo.addMouseListener(this);
+        viewProduktuaAukeratu.jTableJertsInfo.addMouseListener(this);
+        viewProduktuaAukeratu.jTableKamiInfo.addMouseListener(this);
+        viewProduktuaAukeratu.jTablePrakInfo.addMouseListener(this);
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.addMouseListener(this);
+        viewEskaeraInfo.jTableEskaeraInfo.addMouseListener(this);
     }
     
     public void hasieratu() {
@@ -279,13 +286,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewMenuNagusia.jButtonBezeroa) {
             viewBezeroaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
+//            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
+            enableComponets(viewBezeroaInfo.jPanelBezTextField, false);
             bezDatuakErakutsiTaula();
         }
         else if (comando == viewMenuNagusia.jButtonLangilea) {
             viewLangileaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
+//            enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
+            enableComponets(viewLangileaInfo.jPanelLangTextField, false);
             langDatuakErakutsiTaula();
         }
         else if (comando == viewMenuNagusia.jButtonHornitzailea) {
@@ -297,7 +306,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewMenuNagusia.jButtonEskaera) {
             viewEskaeraInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
+//            enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
+            enableComponets(viewEskaeraInfo.jPanelEskTextField, false);
             eskDatuakErakutsiTaula();
         }
         
@@ -315,8 +325,11 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewBezeroaInfo.jButtonEzabatu) {
             int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3); // aukeratutako bezeroaren nan zenbakia lortu
-                BezeroaKudeatu.bezeroaEzabatu(nan);
+                int konf = JOptionPane.showConfirmDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                if (konf == 0) { // bai
+                    String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
+                    BezeroaKudeatu.bezeroaEzabatu(nan);
+                }
                 bezDatuakErakutsiTaula();
             }
             else {
@@ -416,9 +429,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts) {
             int aukLerroa = viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-                String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                JertseaKudeatu.jertseaEzabatu(kodea, taila);
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                if (konf == 0) { // bai
+                    String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                    String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                    JertseaKudeatu.jertseaEzabatu(kodea, taila);
+                }
                 jertsDatuakErakutsiTaula();
             }
             else {
@@ -433,9 +449,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami) {
             int aukLerroa = viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-                String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                if (konf == 0) { // bai
+                    String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                    String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                    KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
+                }
                 kamiDatuakErakutsiTaula();
             }
             else {
@@ -450,9 +469,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak) {
             int aukLerroa = viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-                int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                PrakaKudeatu.prakaEzabatu(kodea, taila);
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                if (konf == 0) { // bai
+                    String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                    int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                    PrakaKudeatu.prakaEzabatu(kodea, taila);
+                }
                 prakDatuakErakutsiTaula();
             }
             else {
@@ -546,10 +568,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         } 
         else if (comando == viewHornitzaileaInfo.jButtonEzabatu) {
             int aukLerroa = viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(); // aukeratutako lerroa
-            System.out.println(aukLerroa);
             if (aukLerroa != -1) {
-                String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-                HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
+                int konf = JOptionPane.showConfirmDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                if (konf == 0) { // bai
+                    String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
+                    HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
+                }                
                 hornDatuakErakutsiTaula();
             }
             else {
@@ -617,15 +641,18 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public void ancestorAdded(AncestorEvent event) {
         Object comando = event.getSource();
         if (comando == viewProduktuaAukeratu.jPanelJerts) {
-            enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
+//            enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
+            enableComponets(viewProduktuaAukeratu.jPanelJertsTextField, false);
             jertsDatuakErakutsiTaula();
         }
         else if (comando == viewProduktuaAukeratu.jPanelKami) {
-            enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
+//            enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
+            enableComponets(viewProduktuaAukeratu.jPanelKamiTextField, false);
             kamiDatuakErakutsiTaula();
         }
         else if (comando == viewProduktuaAukeratu.jPanelPrak) {
-            enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
+//            enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
+            enableComponets(viewProduktuaAukeratu.jPanelPrakTextField, false);
             prakDatuakErakutsiTaula();
         }
     }
@@ -647,7 +674,27 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
 
     @Override
     public void mousePressed(MouseEvent e) {
-        
+        if (viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow() != -1) {
+            aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow());
+        }
+        if (viewLangileaInfo.jTableLangileaInfo.getSelectedRow() != -1) { // aukeratuta dagoela konprobatu
+            aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow());
+        }
+        if (viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow() != -1) {
+            aukJertsDatuakBete(viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow());
+        }
+        if (viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow() != -1) {
+            aukKamiDatuakBete(viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow());
+        }
+        if (viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow() != -1) {
+            aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow());
+        }
+        if (viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow() != -1) {
+            aukHornDatuakBete(viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow());
+        }
+        if (viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow() != -1) {
+            aukEskDatuakBete(viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow());
+        }
     }
 
     @Override
@@ -671,7 +718,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaInfo.jTableBezeroaInfo.setModel(model);
         model.addColumn("Kodea");
         model.addColumn("Izena");
-        model.addColumn("Abizenak");
+        model.addColumn("1.abizena");
+        model.addColumn("2.abizena");
         model.addColumn("NAN");
         model.addColumn("Jaiotze data");
         model.addColumn("Sexua");
@@ -685,12 +733,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             model.addRow(os);
             model.setValueAt(bez.getKodBez(), i, 0);
             model.setValueAt(bez.getIzena(), i, 1);
-            model.setValueAt(bez.getAbizena1().concat(" ").concat(bez.getAbizena2()), i, 2);
-            model.setValueAt(bez.getNan(), i, 3);
-            model.setValueAt(bez.getJaiotzeData(), i, 4);
-            model.setValueAt(bez.getSexua(), i, 5);
-            model.setValueAt(bez.getHerria(), i, 6);
-            model.setValueAt(bez.getTelefonoa(), i, 7);
+            model.setValueAt(bez.getAbizena1(), i, 2);
+            model.setValueAt(bez.getAbizena2(), i, 3);
+            model.setValueAt(bez.getNan(), i, 4);
+            model.setValueAt(bez.getJaiotzeData(), i, 5);
+            model.setValueAt(bez.getSexua(), i, 6);
+            model.setValueAt(bez.getHerria(), i, 7);
+            model.setValueAt(bez.getTelefonoa(), i, 8);
         }
     }
 
@@ -1014,9 +1063,25 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void a() {
-        int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
-        
+    public void aukBezDatuakBete(int aukLerroa) {        
+        viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewBezeroaInfo.jTextFieldJaioData.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5)));
+        String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
+        if (aukSexuaRB.equals("emakumea")) {
+            viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
+        }
+        else {
+            viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
+        }
+        viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
+        viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
+    }
+    
+    public void aukLangDatuakBete(int aukLerroa) {        
         viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
         viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
         viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
@@ -1034,8 +1099,55 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
         viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
         viewLangileaInfo.jTextFieldEremua.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
-//        viewLangileaInfo.jTextFieldTlf.setText(nan);
-//        viewLangileaInfo.jTextFieldSoldata.setText();
+    }
+    
+    public void aukJertsDatuakBete(int aukLerroa) {
+        viewProduktuaAukeratu.jTextFieldKodeJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewProduktuaAukeratu.jTextFieldSexuaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewProduktuaAukeratu.jTextFieldStockJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 5)));
+        viewProduktuaAukeratu.jTextFieldTailaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6)));
+    }
+    
+    public void aukKamiDatuakBete(int aukLerroa) {
+        viewProduktuaAukeratu.jTextFieldKodeKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewProduktuaAukeratu.jTextFieldMarkaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewProduktuaAukeratu.jTextFieldSexuaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewProduktuaAukeratu.jTextFieldStockKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 5)));
+        viewProduktuaAukeratu.jTextFieldTailaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6)));
+        viewProduktuaAukeratu.jTextFieldSasoiaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 7)));
+    }
+    
+    public void aukPrakDatuakBete(int aukLerroa) {
+        viewProduktuaAukeratu.jTextFieldKodePrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewProduktuaAukeratu.jTextFieldSexuaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewProduktuaAukeratu.jTextFieldStockPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 5)));
+        viewProduktuaAukeratu.jTextFieldTailaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6)));
+        viewProduktuaAukeratu.jTextFieldSasoiaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 7)));
+        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 8)));
+        viewProduktuaAukeratu.jTextFieldMotaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 9)));
+    }
+    
+    public void aukHornDatuakBete(int aukLerroa) {
+        viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
+    }
+    
+    public void aukEskDatuakBete(int aukLerroa) {
+        viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewEskaeraInfo.jTextFieldHornitzailea.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewEskaeraInfo.jTextFieldData.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
     }
     
 //    public static void dataErakutsi() {

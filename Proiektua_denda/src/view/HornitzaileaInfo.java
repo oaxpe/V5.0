@@ -360,11 +360,11 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     public javax.swing.JTable jTableHornitzaileaInfo;
     private javax.swing.JTextField jTextFieldBilatu;
-    private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldHerria;
+    public javax.swing.JTextField jTextFieldEmail;
+    public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;
     public javax.swing.JTextField jTextFieldKodeHor;
-    private javax.swing.JTextField jTextFieldTlf;
+    public javax.swing.JTextField jTextFieldTlf;
     private javax.swing.JPanel oinaPanel1;
     // End of variables declaration//GEN-END:variables
 }

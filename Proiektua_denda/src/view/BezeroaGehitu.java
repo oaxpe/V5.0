@@ -68,6 +68,7 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabelIzena.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelIzena.setText("Izena:");

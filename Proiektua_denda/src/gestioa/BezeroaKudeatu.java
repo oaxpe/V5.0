@@ -61,7 +61,7 @@ public class BezeroaKudeatu {
             
             while (true) { // fitxategiko objektuak irakurri
                 Bezeroa bez = (Bezeroa) geois.readObject(); // objektua irakurri              
-                if (!bez.getNan().equals(nan.toUpperCase())) { // kodea konparatu
+                if (!bez.getNan().toUpperCase().equals(nan.toUpperCase())) { // kodea konparatu
                     geoos.writeObject(bez); // objektua fitxategi berrian idatzi
                     geoos.flush();
                 } 

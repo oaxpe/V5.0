@@ -78,7 +78,7 @@
                           <Component id="oinaPanel1" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jPanelBezDatuak" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="32767" attributes="0"/>
                               <Component id="jPanelBezTaula" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -161,9 +161,6 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanelBezDatuak">
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -171,57 +168,19 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelIzena" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldIzena" min="-2" pref="164" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelAbizena2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldAbizena2" min="-2" pref="164" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelNan" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldNan" min="-2" pref="164" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelJaioData" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelSexua" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jRadioButtonEmak" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonGiz" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jTextFieldJaioData" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelAbizena1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="25" max="32767" attributes="0"/>
-                          <Component id="jTextFieldAbizena1" min="-2" pref="164" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelHerria" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldHerria" min="-2" pref="164" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelTlf" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldTlf" min="-2" pref="164" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelKodBez" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jTextFieldKodeBez" min="-2" pref="164" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabelKodBez" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelTlf" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelHerria" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAbizena1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelJaioData" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelSexua" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelNan" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelIzena" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAbizena2" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanelBezTextField" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -229,53 +188,26 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelKodBez" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldKodeBez" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelKodBez" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelIzena" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldIzena" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelIzena" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelAbizena1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAbizena1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelAbizena1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelAbizena2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldAbizena2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelAbizena2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelNan" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldNan" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelNan" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelJaioData" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldJaioData" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelJaioData" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jRadioButtonEmak" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jRadioButtonGiz" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelSexua" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelSexua" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelHerria" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldHerria" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabelHerria" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelTlf" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldTlf" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="20" max="32767" attributes="0"/>
+                  <Component id="jLabelTlf" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
               </Group>
+              <Component id="jPanelBezTextField" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -320,33 +252,6 @@
             <Property name="text" type="java.lang.String" value="Sexua:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldIzena">
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldAbizena2">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldNan">
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldJaioData">
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButtonEmak">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroupEmGiz"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Emakumea"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButtonGiz">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="buttonGroupEmGiz"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Gizona"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelAbizena1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -354,8 +259,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Lehenengo abizena:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldAbizena1">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelHerria">
           <Properties>
@@ -365,8 +268,6 @@
             <Property name="text" type="java.lang.String" value="Herria:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldHerria">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelTlf">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -374,8 +275,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Telefonoa:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldTlf">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelKodBez">
           <Properties>
@@ -385,11 +284,131 @@
             <Property name="text" type="java.lang.String" value="Kodea:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldKodeBez">
+        <Container class="javax.swing.JPanel" name="jPanelBezTextField">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
-        </Component>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTextFieldIzena" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldAbizena2" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldNan" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jRadioButtonEmak" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jRadioButtonGiz" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jTextFieldJaioData" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jTextFieldAbizena1" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldHerria" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldTlf" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldKodeBez" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jTextFieldKodeBez" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jTextFieldIzena" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jTextFieldAbizena1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jTextFieldAbizena2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jTextFieldNan" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jTextFieldJaioData" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jRadioButtonEmak" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jRadioButtonGiz" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jTextFieldHerria" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jTextFieldTlf" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JTextField" name="jTextFieldKodeBez">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldIzena">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldAbizena1">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldAbizena2">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldNan">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldJaioData">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButtonEmak">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupEmGiz"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Emakumea"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="jRadioButtonGiz">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroupEmGiz"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Gizona"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldHerria">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldTlf">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel3">
