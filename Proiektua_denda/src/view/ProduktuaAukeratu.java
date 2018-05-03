@@ -197,6 +197,20 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jLabelKodJerts.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodJerts.setText("Kodea:");
 
+        jTextFieldKodeJerts.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldMarkaJerts.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldPrezioaJerts.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldKoloreaJerts.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldStockJerts.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldSexuaJerts.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldTailaJerts.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanelJertsTextFieldLayout = new javax.swing.GroupLayout(jPanelJertsTextField);
         jPanelJertsTextField.setLayout(jPanelJertsTextFieldLayout);
         jPanelJertsTextFieldLayout.setHorizontalGroup(
@@ -444,6 +458,22 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
 
         jLabelSasoia.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSasoia.setText("Sasoia:");
+
+        jTextFieldKodeKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldMarkaKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldPrezioaKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldKoloreaKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldStockKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldSexuaKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldTailaKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldSasoiaKami.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanelKamiTextFieldLayout = new javax.swing.GroupLayout(jPanelKamiTextField);
         jPanelKamiTextField.setLayout(jPanelKamiTextFieldLayout);
@@ -704,6 +734,26 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
 
         jLabelMota.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelMota.setText("Mota:");
+
+        jTextFieldLuzeeraPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldPrezioaPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldStockPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldKodePrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldKoloreaPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldMarkaPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldMotaPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldTailaPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldSexuaPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldSasoiaPrak.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanelPrakTextFieldLayout = new javax.swing.GroupLayout(jPanelPrakTextField);
         jPanelPrakTextField.setLayout(jPanelPrakTextFieldLayout);

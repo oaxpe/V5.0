@@ -17,7 +17,10 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.ButtonGroup" name="emakumeGizonbuttonGroup1">
+    <Component class="javax.swing.ButtonGroup" name="jbuttonGroupEmakGiz">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -259,7 +262,7 @@
         <Component class="javax.swing.JRadioButton" name="jRadioButtonEmak">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="emakumeGizonbuttonGroup1"/>
+              <ComponentRef name="jbuttonGroupEmakGiz"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Emakumea"/>
           </Properties>
@@ -270,7 +273,7 @@
         <Component class="javax.swing.JRadioButton" name="jRadioButtonGiz">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="emakumeGizonbuttonGroup1"/>
+              <ComponentRef name="jbuttonGroupEmakGiz"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Gizona"/>
           </Properties>

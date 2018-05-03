@@ -113,6 +113,14 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jLabelKodESk.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodESk.setText("Kodea:");
 
+        jTextFieldHornitzailea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldData.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldKopurua.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldKodeEsk.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout jPanelEskTextFieldLayout = new javax.swing.GroupLayout(jPanelEskTextField);
         jPanelEskTextField.setLayout(jPanelEskTextFieldLayout);
         jPanelEskTextFieldLayout.setHorizontalGroup(

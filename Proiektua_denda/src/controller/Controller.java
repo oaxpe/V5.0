@@ -5,22 +5,25 @@
  */
 package controller;
 
+import model.*; // model-eko guztia importatu.
+import view.*; // bista guztiak importatu
 import gestioa.*;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import model.*; // model-eko guztia importatu.
-import view.*; // bista guztiak importatu
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+import javax.swing.plaf.FontUIResource;
 
 /**
  *
@@ -288,6 +291,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewMenuNagusia.setEnabled(false);
 //            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
             enableComponets(viewBezeroaInfo.jPanelBezTextField, false);
+//            viewBezeroaInfo.jTextFieldAbizena1.setEditable(false);
             bezDatuakErakutsiTaula();
         }
         else if (comando == viewMenuNagusia.jButtonLangilea) {
@@ -300,7 +304,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewMenuNagusia.jButtonHornitzailea) {
             viewHornitzaileaInfo.setVisible(true); 
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
+//            enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
+            enableComponets(viewHornitzaileaInfo.jPanelHornTextField, false);
             hornDatuakErakutsiTaula();
         }
         else if (comando == viewMenuNagusia.jButtonEskaera) {
@@ -1070,8 +1075,16 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             component.setEnabled(bool);
         }
     }
+    public void fontComponets (Container container, String mota, int tamaina) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            component.setFont(new Font(mota, Font.PLAIN, tamaina));
+//            component.setForeground(Color.black);
+        }
+    }
     
-    public void aukBezDatuakBete(int aukLerroa) {        
+    public void aukBezDatuakBete(int aukLerroa) {    
+        fontComponets(viewBezeroaInfo.jPanelBezTextField, "Calibri Light", 13);
         viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
         viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
         viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));

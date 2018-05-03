@@ -29,7 +29,7 @@ public class BezeroaGehitu extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        emakumeGizonbuttonGroup1 = new javax.swing.ButtonGroup();
+        jbuttonGroupEmakGiz = new javax.swing.ButtonGroup();
         jPanelBezDatuak = new javax.swing.JPanel();
         jLabelIzena = new javax.swing.JLabel();
         jLabelAbizena2 = new javax.swing.JLabel();
@@ -84,10 +84,10 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         jLabelSexua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSexua.setText("Sexua:");
 
-        emakumeGizonbuttonGroup1.add(jRadioButtonEmak);
+        jbuttonGroupEmakGiz.add(jRadioButtonEmak);
         jRadioButtonEmak.setText("Emakumea");
 
-        emakumeGizonbuttonGroup1.add(jRadioButtonGiz);
+        jbuttonGroupEmakGiz.add(jRadioButtonGiz);
         jRadioButtonGiz.setText("Gizona");
 
         jLabelAbizena1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -304,7 +304,6 @@ public class BezeroaGehitu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup emakumeGizonbuttonGroup1;
     public javax.swing.JButton jButtonBerriaGehitu;
     public javax.swing.JButton jButtonGorde;
     public javax.swing.JButton jButtonIrten;
@@ -331,5 +330,6 @@ public class BezeroaGehitu extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldJaioData;
     public javax.swing.JTextField jTextFieldNan;
     public javax.swing.JTextField jTextFieldTlf;
+    public javax.swing.ButtonGroup jbuttonGroupEmakGiz;
     // End of variables declaration//GEN-END:variables
 }
