@@ -57,7 +57,7 @@ public class HornitzaileaKudeatu {
             
             while (true) { // fitxategiko objektuak irakurri
                 Hornitzailea horn = (Hornitzailea) geois.readObject(); // objektua irakurri              
-                if (!horn.getKodHor().equals(kodea)) { // kodea konparatu
+                if (!horn.getKodHor().toUpperCase().equals(kodea.toUpperCase())) { // kodea konparatu
                     horn.printHorn(); // objektuaren datuak inprimatu
                     geoos.writeObject(horn); // objektua fitxategi berrian idatzi
                     geoos.flush();

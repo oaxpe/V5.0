@@ -572,10 +572,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewHornitzaileaInfo.jButtonEzabatu) {
             int aukLerroa = viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?"); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
                     HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
+                    viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
+                    hornitzaileaKargatu();
                 }                
                 hornDatuakErakutsiTaula();
             }
@@ -594,6 +596,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             HornitzaileaKudeatu.hornitzaileaGehitu(horn);
             resetHornitzailea();
             enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, false);
+            // Hornitzaileak aktualizatu
+            viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
+            hornitzaileaKargatu();
         }
         else if (comando == viewHornitzaileaGehitu.jButtonReset) {
             resetHornitzailea();
