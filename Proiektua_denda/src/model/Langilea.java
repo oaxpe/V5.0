@@ -5,7 +5,6 @@
  */
 package model;
 
-import gestioa.LangileaKudeatu;
 import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
