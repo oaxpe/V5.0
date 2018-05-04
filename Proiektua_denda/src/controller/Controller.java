@@ -8,7 +8,6 @@ package controller;
 import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -23,14 +22,13 @@ import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
-import javax.swing.plaf.FontUIResource;
 
 /**
  *
  * @author Oihane Axpe
  * @version 4.0
  */
-public class Controller implements ActionListener, MouseListener, AncestorListener/*, KeyListener*/ {
+public class Controller implements ActionListener, MouseListener, AncestorListener/*, FocusListener*//*, KeyListener*/ {
     /* Model */
     private Bezeroa bezeroa;
     private Denda denda;
@@ -258,6 +256,22 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jButtonAldatu.setEnabled(false); // ez dago eskaerak aldatzeko aukerarik
         viewEskaeraInfo.jButtonEzabatu.setEnabled(false); // ez dago eskaerak ezabatzeko aukerarik
         
+        // tauletako estiloa
+        viewBezeroaInfo.jTableBezeroaInfo.setRowMargin(5);//ShowGrid(false);
+        viewBezeroaInfo.jTableBezeroaInfo.setShowHorizontalLines(true);
+        viewLangileaInfo.jTableLangileaInfo.setShowGrid(false);
+        viewLangileaInfo.jTableLangileaInfo.setShowHorizontalLines(true);
+        viewProduktuaAukeratu.jTableJertsInfo.setShowGrid(false);
+        viewProduktuaAukeratu.jTableJertsInfo.setShowHorizontalLines(true);
+        viewProduktuaAukeratu.jTableKamiInfo.setShowGrid(false);
+        viewProduktuaAukeratu.jTableKamiInfo.setShowHorizontalLines(true);
+        viewProduktuaAukeratu.jTablePrakInfo.setShowGrid(false);
+        viewProduktuaAukeratu.jTablePrakInfo.setShowHorizontalLines(true);
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowGrid(false);
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowHorizontalLines(true);
+        viewEskaeraInfo.jTableEskaeraInfo.setShowGrid(false);
+        viewEskaeraInfo.jTableEskaeraInfo.setShowHorizontalLines(true);
+
         // Bista guztietako ComboBox-ak kargatu.
         langEremuaKargatu();
         hornitzaileaKargatu();
@@ -323,7 +337,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewBezeroaGehitu.jPanelBezDatuak, false);
         } 
         else if (comando == viewBezeroaInfo.jButtonIrten) {
-            viewBezeroaInfo.setVisible(false);
+            viewBezeroaInfo.dispose();
             viewMenuNagusia.setEnabled(true);
 //            viewMenuNagusia.setAlwaysOnTop(true);
         }
@@ -366,7 +380,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewBezeroaGehitu.jButtonIrten) {
             resetBezeroa();
-            viewBezeroaGehitu.setVisible(false);
+            viewBezeroaGehitu.dispose();
             viewBezeroaInfo.setEnabled(true);
             bezDatuakErakutsiTaula();
         }
@@ -378,7 +392,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
         }
         else if (comando == viewLangileaInfo.jButtonIrten) {
-            viewLangileaInfo.setVisible(false);
+            viewLangileaInfo.dispose();
             viewMenuNagusia.setEnabled(true);
 //            viewMenuNagusia.setAlwaysOnTop(true);
         }
@@ -423,7 +437,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewLangileaGehitu.jButtonIrten) {
             resetLangilea();
-            viewLangileaGehitu.setVisible(false);
+            viewLangileaGehitu.dispose();
             viewLangileaInfo.setEnabled(true);
             langDatuakErakutsiTaula();
         }
@@ -490,7 +504,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
         }
         else if (comando == viewProduktuaAukeratu.jButtonIrten) {
-            viewProduktuaAukeratu.setVisible(false);
+            viewProduktuaAukeratu.dispose();
             viewMenuNagusia.setEnabled(true);
         }
         
@@ -512,7 +526,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewJertseaGehitu.jButtonIrten) {
             resetJertsea();
-            viewJertseaGehitu.setVisible(false);
+            viewJertseaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
             jertsDatuakErakutsiTaula();
         }
@@ -535,7 +549,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewKamisetaGehitu.jButtonIrten) {
             resetKamiseta();
-            viewKamisetaGehitu.setVisible(false);
+            viewKamisetaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
             kamiDatuakErakutsiTaula();
         }
@@ -559,7 +573,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewPrakaGehitu.jButtonIrten) {
             resetPraka();
-            viewPrakaGehitu.setVisible(false);
+            viewPrakaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
             prakDatuakErakutsiTaula();
         }
@@ -571,7 +585,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, false);
         }
         else if (comando == viewHornitzaileaInfo.jButtonIrten) {
-            viewHornitzaileaInfo.setVisible(false);
+            viewHornitzaileaInfo.dispose();
             viewMenuNagusia.setEnabled(true);
         } 
         else if (comando == viewHornitzaileaInfo.jButtonEzabatu) {
@@ -610,7 +624,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewHornitzaileaGehitu.jButtonIrten) {
             resetHornitzailea();
-            viewHornitzaileaGehitu.setVisible(false);
+            viewHornitzaileaGehitu.dispose();
             viewHornitzaileaInfo.setEnabled(true);
             hornDatuakErakutsiTaula();
         }
@@ -622,7 +636,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewEskaeraGehitu.jPanelEskDatuak, false);
         }
         else if (comando == viewEskaeraInfo.jButtonIrten) {
-            viewEskaeraInfo.setVisible(false);
+            viewEskaeraInfo.dispose();
             viewMenuNagusia.setEnabled(true);
 //            viewMenuNagusia.setAlwaysOnTop(true);
         }
@@ -643,7 +657,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewEskaeraGehitu.jButtonIrten) {
             resetEskaera();
-            viewEskaeraGehitu.setVisible(false);
+            viewEskaeraGehitu.dispose();
             viewEskaeraInfo.setEnabled(true);
             eskDatuakErakutsiTaula();
         }
@@ -683,10 +697,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void mouseClicked(MouseEvent me) {
         Object mouseSource = me.getSource(); 
-    } 
-
-    @Override
-    public void mousePressed(MouseEvent e) {
         if (viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow() != -1) {
             aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow());
         }
@@ -708,6 +718,11 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         if (viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow() != -1) {
             aukEskDatuakBete(viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow());
         }
+    } 
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
     }
 
     @Override
@@ -722,8 +737,19 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
     }
+    
+//    @Override
+//    public void focusGained(FocusEvent focusEvent) {
+//
+//    }
+//
+//
+//    @Override
+//    public void focusLost(FocusEvent e) {
+//        
+//    }
 
     /* METODOAK */
     public void bezDatuakErakutsiTaula() {
