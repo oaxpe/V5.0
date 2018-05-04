@@ -10,8 +10,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -76,7 +82,14 @@ public class Eskaera implements Serializable {
         String egun = Integer.toString(c1.get(Calendar.DATE)); // eguna gorde
         String hilabete = Integer.toString(c1.get(Calendar.MONTH)+1); // hilabetea gorde
         String urte = Integer.toString(c1.get(Calendar.YEAR)); // urtea gorde
-        this.data = Metodoak.dataGorde(urte+"/"+hilabete+"/"+egun); // sartutako data, uuu/hh/ee formatuan bueltatuko du
+        DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+        Date fetx = null;
+        try {
+            fetx = df.parse(urte+"/"+hilabete+"/"+egun); // data hori Date formatura parseatu
+        } catch (ParseException ex) {
+            Logger.getLogger(Eskaera.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.data = Metodoak.dataGorde(fetx); // sartutako data, uuuu/hh/ee formatuan bueltatuko du
     }
 
     public int getKopurua() {

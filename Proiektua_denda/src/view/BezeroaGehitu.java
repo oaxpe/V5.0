@@ -30,6 +30,7 @@ public class BezeroaGehitu extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jbuttonGroupEmakGiz = new javax.swing.ButtonGroup();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jPanelBezDatuak = new javax.swing.JPanel();
         jLabelIzena = new javax.swing.JLabel();
         jLabelAbizena2 = new javax.swing.JLabel();
@@ -39,7 +40,6 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         jTextFieldIzena = new javax.swing.JTextField();
         jTextFieldAbizena2 = new javax.swing.JTextField();
         jTextFieldNan = new javax.swing.JTextField();
-        jTextFieldJaioData = new javax.swing.JTextField();
         jRadioButtonEmak = new javax.swing.JRadioButton();
         jRadioButtonGiz = new javax.swing.JRadioButton();
         jLabelAbizena1 = new javax.swing.JLabel();
@@ -50,6 +50,7 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         jTextFieldHerria = new javax.swing.JTextField();
         jLabelTlf = new javax.swing.JLabel();
         jTextFieldTlf = new javax.swing.JTextField();
+        jDateChooserJaioData = new com.toedter.calendar.JDateChooser();
         jButtonIrten = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabelBezGehitu = new javax.swing.JLabel();
@@ -105,6 +106,9 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         jLabelTlf.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelTlf.setText("Telefonoa:");
 
+        jDateChooserJaioData.setDateFormatString("yyyy-MM-dd");
+        jDateChooserJaioData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanelBezDatuakLayout = new javax.swing.GroupLayout(jPanelBezDatuak);
         jPanelBezDatuak.setLayout(jPanelBezDatuakLayout);
         jPanelBezDatuakLayout.setHorizontalGroup(
@@ -128,11 +132,16 @@ public class BezeroaGehitu extends javax.swing.JFrame {
                         .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelJaioData)
                             .addComponent(jLabelSexua))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButtonGiz)
-                            .addComponent(jRadioButtonEmak)
-                            .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jRadioButtonEmak)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButtonGiz)
+                                .addGap(28, 28, 28))
+                            .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
+                                .addGap(75, 75, 75)
+                                .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))))
                     .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelAbizena1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
@@ -171,19 +180,15 @@ public class BezeroaGehitu extends javax.swing.JFrame {
                     .addComponent(jLabelNan)
                     .addComponent(jTextFieldNan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelJaioData)
-                    .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
-                        .addComponent(jRadioButtonEmak)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButtonGiz))
-                    .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabelSexua)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSexua)
+                    .addComponent(jRadioButtonGiz)
+                    .addComponent(jRadioButtonEmak))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelHerria)
                     .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -308,6 +313,8 @@ public class BezeroaGehitu extends javax.swing.JFrame {
     public javax.swing.JButton jButtonGorde;
     public javax.swing.JButton jButtonIrten;
     public javax.swing.JButton jButtonReset;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    public com.toedter.calendar.JDateChooser jDateChooserJaioData;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabelAbizena1;
     private javax.swing.JLabel jLabelAbizena2;
@@ -327,7 +334,6 @@ public class BezeroaGehitu extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldAbizena2;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;
-    public javax.swing.JTextField jTextFieldJaioData;
     public javax.swing.JTextField jTextFieldNan;
     public javax.swing.JTextField jTextFieldTlf;
     public javax.swing.ButtonGroup jbuttonGroupEmakGiz;

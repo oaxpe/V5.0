@@ -39,7 +39,6 @@ public class LangileaGehitu extends javax.swing.JFrame {
         jTextFieldIzena = new javax.swing.JTextField();
         jTextFieldAbizena2 = new javax.swing.JTextField();
         jTextFieldNan = new javax.swing.JTextField();
-        jTextFieldJaioData = new javax.swing.JTextField();
         jRadioButtonEmak = new javax.swing.JRadioButton();
         jRadioButtonGiz = new javax.swing.JRadioButton();
         jLabelAbizena1 = new javax.swing.JLabel();
@@ -54,6 +53,7 @@ public class LangileaGehitu extends javax.swing.JFrame {
         jTextFieldSoldata = new javax.swing.JTextField();
         jLabelEremua = new javax.swing.JLabel();
         jComboBoxEremua = new javax.swing.JComboBox<>();
+        jDateChooserJaioData = new com.toedter.calendar.JDateChooser();
         jButtonIrten = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButtonBerriaGehitu = new javax.swing.JButton();
@@ -115,6 +115,9 @@ public class LangileaGehitu extends javax.swing.JFrame {
         jLabelEremua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelEremua.setText("Eremua:");
 
+        jDateChooserJaioData.setDateFormatString("yyyy-MM-dd");
+        jDateChooserJaioData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanelLangDatuakLayout = new javax.swing.GroupLayout(jPanelLangDatuak);
         jPanelLangDatuak.setLayout(jPanelLangDatuakLayout);
         jPanelLangDatuakLayout.setHorizontalGroup(
@@ -140,12 +143,14 @@ public class LangileaGehitu extends javax.swing.JFrame {
                             .addComponent(jLabelSexua))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButtonGiz)
-                            .addComponent(jRadioButtonEmak)
-                            .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
+                                .addComponent(jRadioButtonEmak)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButtonGiz))))
                     .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelAbizena1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
                         .addComponent(jButtonReset)
@@ -167,7 +172,7 @@ public class LangileaGehitu extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLangDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelEremua)
                         .addGap(107, 107, 107)
-                        .addComponent(jComboBoxEremua, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jComboBoxEremua, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         jPanelLangDatuakLayout.setVerticalGroup(
             jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,19 +194,15 @@ public class LangileaGehitu extends javax.swing.JFrame {
                     .addComponent(jLabelNan)
                     .addComponent(jTextFieldNan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelJaioData)
-                    .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
-                        .addComponent(jRadioButtonEmak)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButtonGiz))
-                    .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabelSexua)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabelJaioData)
+                    .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSexua)
+                    .addComponent(jRadioButtonGiz)
+                    .addComponent(jRadioButtonEmak))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelHerria)
                     .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -340,6 +341,7 @@ public class LangileaGehitu extends javax.swing.JFrame {
     public javax.swing.JButton jButtonIrten;
     public javax.swing.JButton jButtonReset;
     public javax.swing.JComboBox<String> jComboBoxEremua;
+    public com.toedter.calendar.JDateChooser jDateChooserJaioData;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabelAbizena1;
     private javax.swing.JLabel jLabelAbizena2;
@@ -361,7 +363,6 @@ public class LangileaGehitu extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldAbizena2;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;
-    public javax.swing.JTextField jTextFieldJaioData;
     public javax.swing.JTextField jTextFieldNan;
     public javax.swing.JTextField jTextFieldSoldata;
     public javax.swing.JTextField jTextFieldTlf;

@@ -145,17 +145,9 @@ public class Metodoak {
     }
     
     /* String-a data bezela kontrolatzeko metodoa. Data uuuu/hh/ee formatuan bueltatuko du. */
-    public static String dataGorde(String data) {
+    public static String dataGorde(Date data) {
         String dataFormatua = null;
-        try {
-            DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
-            Date fetx = df.parse(data); // data hori Date formatura parseatu
-            
-            dataFormatua = new SimpleDateFormat("yyyy/MM/dd").format(fetx.getTime()); // formatu zehatz baten jarri            
-        } 
-        catch (ParseException gaizki) {
-            System.out.println(Metodoak.printGorriz("Ez da kapaza sartutako datuak parseatzeko."));
-        }
+        dataFormatua = new SimpleDateFormat("yyyy/MM/dd").format(data.getTime()); // formatu zehatz baten jarri            
         return dataFormatua; 
     }
 }

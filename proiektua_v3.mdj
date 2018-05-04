@@ -8505,7 +8505,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+dataGorde(data: String): String",
+											"text": "+dataGorde(data: Date): String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -23741,7 +23741,7 @@
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "String",
+											"type": "Date",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,

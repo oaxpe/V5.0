@@ -104,7 +104,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     /* METODOAK */
-    public void botoiakEntzuten() {
+    public void botoiakEntzuten() {       
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(this);
         viewBezeroaInfo.jButtonIrten.addActionListener(this);
@@ -369,7 +369,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 sexuaRB = viewBezeroaGehitu.jRadioButtonGiz.getText();
             }
             Bezeroa bez = new Bezeroa(viewBezeroaGehitu.jTextFieldIzena.getText(), viewBezeroaGehitu.jTextFieldAbizena1.getText(), 
-                    viewBezeroaGehitu.jTextFieldAbizena2.getText(), viewBezeroaGehitu.jTextFieldNan.getText(), viewBezeroaGehitu.jTextFieldJaioData.getText(), 
+                    viewBezeroaGehitu.jTextFieldAbizena2.getText(), viewBezeroaGehitu.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaGehitu.jDateChooserJaioData.getDate()), 
                     sexuaRB, viewBezeroaGehitu.jTextFieldHerria.getText(), viewBezeroaGehitu.jTextFieldTlf.getText());
             BezeroaKudeatu.bezeroaGehitu(bez);
             resetBezeroa();
@@ -425,7 +425,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
 
             Langilea lang = new Langilea(viewLangileaGehitu.jTextFieldIzena.getText(), viewLangileaGehitu.jTextFieldAbizena1.getText(), 
-                    viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(), viewLangileaGehitu.jTextFieldJaioData.getText(), 
+                    viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(),  Metodoak.dataGorde(viewLangileaGehitu.jDateChooserJaioData.getDate()), 
                     sexuaRB, viewLangileaGehitu.jTextFieldHerria.getText(), viewLangileaGehitu.jTextFieldTlf.getText(), 
                     Double.parseDouble(viewLangileaGehitu.jTextFieldSoldata.getText()), viewLangileaGehitu.jComboBoxEremua.getSelectedItem().toString());
             LangileaKudeatu.langileaGehitu(lang);
@@ -1028,7 +1028,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
         viewBezeroaGehitu.jTextFieldAbizena2.setText(null);
         viewBezeroaGehitu.jTextFieldNan.setText(null);
-        viewBezeroaGehitu.jTextFieldJaioData.setText(null);
+        viewBezeroaGehitu.jDateChooserJaioData.setDate(null);
         viewBezeroaGehitu.jRadioButtonEmak.setSelected(false);
         viewBezeroaGehitu.jRadioButtonGiz.setSelected(false);
         viewBezeroaGehitu.jTextFieldHerria.setText(null);
@@ -1040,7 +1040,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaGehitu.jTextFieldAbizena1.setText(null);
         viewLangileaGehitu.jTextFieldAbizena2.setText(null);
         viewLangileaGehitu.jTextFieldNan.setText(null);
-        viewLangileaGehitu.jTextFieldJaioData.setText(null);
+        viewLangileaGehitu.jDateChooserJaioData.setDate(null);
         viewLangileaGehitu.jRadioButtonEmak.setSelected(false);
         viewLangileaGehitu.jRadioButtonGiz.setSelected(false);
         viewLangileaGehitu.jTextFieldHerria.setText(null);

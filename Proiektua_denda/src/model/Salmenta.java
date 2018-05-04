@@ -10,6 +10,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,10 +54,17 @@ public class Salmenta implements Serializable {
     public void setData() {
          try {
             System.out.print("Sartu data (uuuu/hh/ee): ");
-            this.data = Metodoak.dataGorde(br.readLine()); // sartutako data, uuu/hh/ee formatuan bueltatuko du
+            
+            DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+            Date fetx = null;
+            fetx = df.parse(br.readLine()); // data hori Date formatura parseatu
+            this.data = Metodoak.dataGorde(fetx); // sartutako data, uuuu/hh/ee formatuan bueltatuko du
         }
         catch (IOException gaizki) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+        }
+        catch (ParseException ex) {
+            Logger.getLogger(Eskaera.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
