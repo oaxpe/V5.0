@@ -19,16 +19,19 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 /**
  *
  * @author Oihane Axpe
  * @version 4.0
  */
-public class Controller implements ActionListener, MouseListener, AncestorListener/*, FocusListener*//*, KeyListener*/ {
+public class Controller implements ActionListener, MouseListener, AncestorListener, ListSelectionListener/*, FocusListener*//*, KeyListener*/ {
     /* Model */
     private Bezeroa bezeroa;
     private Denda denda;
@@ -104,7 +107,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     /* METODOAK */
-    public void botoiakEntzuten() {       
+    public void botoiakEntzuten() { 
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(this);
         viewBezeroaInfo.jButtonIrten.addActionListener(this);
@@ -210,6 +213,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTablePrakInfo.addMouseListener(this);
         viewHornitzaileaInfo.jTableHornitzaileaInfo.addMouseListener(this);
         viewEskaeraInfo.jTableEskaeraInfo.addMouseListener(this);
+        
+        /* ListSelectionListener */
+        viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel().addListSelectionListener(this);
+        viewLangileaInfo.jTableLangileaInfo.getSelectionModel().addListSelectionListener(this);
+        viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel().addListSelectionListener(this);
+        viewProduktuaAukeratu.jTableKamiInfo.getSelectionModel().addListSelectionListener(this);
+        viewProduktuaAukeratu.jTablePrakInfo.getSelectionModel().addListSelectionListener(this);
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectionModel().addListSelectionListener(this);
+        viewEskaeraInfo.jTableEskaeraInfo.getSelectionModel().addListSelectionListener(this);
     }
     
     public void hasieratu() {
@@ -696,28 +708,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     @Override
     public void mouseClicked(MouseEvent me) {
-        Object mouseSource = me.getSource(); 
-        if (viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow() != -1) {
-            aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow());
-        }
-        if (viewLangileaInfo.jTableLangileaInfo.getSelectedRow() != -1) { // aukeratuta dagoela konprobatu
-            aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow());
-        }
-        if (viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow() != -1) {
-            aukJertsDatuakBete(viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow());
-        }
-        if (viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow() != -1) {
-            aukKamiDatuakBete(viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow());
-        }
-        if (viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow() != -1) {
-            aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow());
-        }
-        if (viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow() != -1) {
-            aukHornDatuakBete(viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow());
-        }
-        if (viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow() != -1) {
-            aukEskDatuakBete(viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow());
-        }
+        
     } 
 
     @Override
@@ -1109,92 +1100,179 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void aukBezDatuakBete(int aukLerroa) {    
-        fontComponets(viewBezeroaInfo.jPanelBezTextField, "Calibri Light", 13);
-        viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewBezeroaInfo.jTextFieldJaioData.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5)));
-        String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-        if (aukSexuaRB.equals("emakumea")) {
-            viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
+    public void aukBezDatuakBete(int aukLerroa, boolean bool) {    
+        if (bool) {
+            fontComponets(viewBezeroaInfo.jPanelBezTextField, "Calibri Light", 13);
+            viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
+            viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
+            viewBezeroaInfo.jTextFieldJaioData.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5)));
+            String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
+            if (aukSexuaRB.equals("emakumea")) {
+                viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
+            }
+            else {
+                viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
+            }
+            viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
+            viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
         }
         else {
-            viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
+            viewBezeroaInfo.jTextFieldKodeBez.setText(null);
+            viewBezeroaInfo.jTextFieldIzena.setText(null);
+            viewBezeroaInfo.jTextFieldAbizena1.setText(null);
+            viewBezeroaInfo.jTextFieldAbizena2.setText(null);
+            viewBezeroaInfo.jTextFieldNan.setText(null);
+            viewBezeroaInfo.jTextFieldJaioData.setText(null);
+            viewBezeroaInfo.jRadioButtonEmak.setSelected(false);
+            viewBezeroaInfo.jRadioButtonGiz.setSelected(false);
+            viewBezeroaInfo.jTextFieldHerria.setText(null);
+            viewBezeroaInfo.jTextFieldTlf.setText(null);
         }
-        viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
+        
     }
     
-    public void aukLangDatuakBete(int aukLerroa) {        
-        viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewLangileaInfo.jTextFieldAbizena2.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewLangileaInfo.jTextFieldNan.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewLangileaInfo.jTextFieldJaioData.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5)));
-        String aukSexuaRB = String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-        if (aukSexuaRB.equals("emakumea")) {
-            viewLangileaInfo.jRadioButtonEmak.setSelected(true);
+    public void aukLangDatuakBete(int aukLerroa, boolean bool) { 
+        if (bool) {
+            viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewLangileaInfo.jTextFieldAbizena2.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3)));
+            viewLangileaInfo.jTextFieldNan.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4)));
+            viewLangileaInfo.jTextFieldJaioData.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5)));
+            String aukSexuaRB = String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
+            if (aukSexuaRB.equals("emakumea")) {
+                viewLangileaInfo.jRadioButtonEmak.setSelected(true);
+            }
+            else {
+                viewLangileaInfo.jRadioButtonGiz.setSelected(true);
+            }
+            viewLangileaInfo.jTextFieldHerria.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 7)));
+            viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
+            viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
+            viewLangileaInfo.jTextFieldEremua.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
         }
         else {
-            viewLangileaInfo.jRadioButtonGiz.setSelected(true);
+            viewLangileaInfo.jTextFieldKodeLang.setText(null);
+            viewLangileaInfo.jTextFieldIzena.setText(null);
+            viewLangileaInfo.jTextFieldAbizena1.setText(null);
+            viewLangileaInfo.jTextFieldAbizena2.setText(null);
+            viewLangileaInfo.jTextFieldNan.setText(null);
+            viewLangileaInfo.jTextFieldJaioData.setText(null);
+            viewLangileaInfo.jRadioButtonEmak.setSelected(false);
+            viewLangileaInfo.jRadioButtonGiz.setSelected(false);
+            viewLangileaInfo.jTextFieldHerria.setText(null);
+            viewLangileaInfo.jTextFieldTlf.setText(null);
+            viewLangileaInfo.jTextFieldSoldata.setText(null);
+            viewLangileaInfo.jTextFieldEremua.setText(null);
         }
-        viewLangileaInfo.jTextFieldHerria.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
-        viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
-        viewLangileaInfo.jTextFieldEremua.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
+            
     }
     
-    public void aukJertsDatuakBete(int aukLerroa) {
-        viewProduktuaAukeratu.jTextFieldKodeJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewProduktuaAukeratu.jTextFieldSexuaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewProduktuaAukeratu.jTextFieldStockJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewProduktuaAukeratu.jTextFieldTailaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6)));
+    public void aukJertsDatuakBete(int aukLerroa, boolean bool) {
+        if (bool) {
+            viewProduktuaAukeratu.jTextFieldKodeJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewProduktuaAukeratu.jTextFieldSexuaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 3)));
+            viewProduktuaAukeratu.jTextFieldStockJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 4)));
+            viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 5)));
+            viewProduktuaAukeratu.jTextFieldTailaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6)));
+        }
+        else {
+            viewProduktuaAukeratu.jTextFieldKodeJerts.setText(null);
+            viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(null);
+            viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(null);
+            viewProduktuaAukeratu.jTextFieldSexuaJerts.setText(null);
+            viewProduktuaAukeratu.jTextFieldStockJerts.setText(null);
+            viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(null);
+            viewProduktuaAukeratu.jTextFieldTailaJerts.setText(null);
+        }
+            
     }
     
-    public void aukKamiDatuakBete(int aukLerroa) {
-        viewProduktuaAukeratu.jTextFieldKodeKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewProduktuaAukeratu.jTextFieldMarkaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewProduktuaAukeratu.jTextFieldSexuaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewProduktuaAukeratu.jTextFieldStockKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewProduktuaAukeratu.jTextFieldTailaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6)));
-        viewProduktuaAukeratu.jTextFieldSasoiaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 7)));
+    public void aukKamiDatuakBete(int aukLerroa, boolean bool) {
+        if (bool) {
+            viewProduktuaAukeratu.jTextFieldKodeKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewProduktuaAukeratu.jTextFieldMarkaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewProduktuaAukeratu.jTextFieldSexuaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 3)));
+            viewProduktuaAukeratu.jTextFieldStockKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 4)));
+            viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 5)));
+            viewProduktuaAukeratu.jTextFieldTailaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6)));
+            viewProduktuaAukeratu.jTextFieldSasoiaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 7)));
+        }
+        else {
+            viewProduktuaAukeratu.jTextFieldKodeKami.setText(null);
+            viewProduktuaAukeratu.jTextFieldMarkaKami.setText(null);
+            viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(null);
+            viewProduktuaAukeratu.jTextFieldSexuaKami.setText(null);
+            viewProduktuaAukeratu.jTextFieldStockKami.setText(null);
+            viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(null);
+            viewProduktuaAukeratu.jTextFieldTailaKami.setText(null);
+            viewProduktuaAukeratu.jTextFieldSasoiaKami.setText(null);
+        }  
     }
     
-    public void aukPrakDatuakBete(int aukLerroa) {
-        viewProduktuaAukeratu.jTextFieldKodePrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewProduktuaAukeratu.jTextFieldSexuaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewProduktuaAukeratu.jTextFieldStockPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewProduktuaAukeratu.jTextFieldTailaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6)));
-        viewProduktuaAukeratu.jTextFieldSasoiaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 8)));
-        viewProduktuaAukeratu.jTextFieldMotaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 9)));
+    public void aukPrakDatuakBete(int aukLerroa, boolean bool) { 
+        if (bool) {
+            viewProduktuaAukeratu.jTextFieldKodePrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewProduktuaAukeratu.jTextFieldSexuaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 3)));
+            viewProduktuaAukeratu.jTextFieldStockPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 4)));
+            viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 5)));
+            viewProduktuaAukeratu.jTextFieldTailaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6)));
+            viewProduktuaAukeratu.jTextFieldSasoiaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 7)));
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 8)));
+            viewProduktuaAukeratu.jTextFieldMotaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 9)));
+        }
+        else {
+            viewProduktuaAukeratu.jTextFieldKodePrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldSexuaPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldStockPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldTailaPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldSasoiaPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(null);
+            viewProduktuaAukeratu.jTextFieldMotaPrak.setText(null);
+        }  
     }
     
-    public void aukHornDatuakBete(int aukLerroa) {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
+    public void aukHornDatuakBete(int aukLerroa, boolean bool) {
+        if (bool) {
+            viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
+            viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
+        }
+        else {
+            viewHornitzaileaInfo.jTextFieldKodeHor.setText(null);
+            viewHornitzaileaInfo.jTextFieldIzena.setText(null);
+            viewHornitzaileaInfo.jTextFieldHerria.setText(null);
+            viewHornitzaileaInfo.jTextFieldTlf.setText(null);
+            viewHornitzaileaInfo.jTextFieldEmail.setText(null);
+        }
     }
     
-    public void aukEskDatuakBete(int aukLerroa) {
-        viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewEskaeraInfo.jTextFieldHornitzailea.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewEskaeraInfo.jTextFieldData.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
+    public void aukEskDatuakBete(int aukLerroa, boolean bool) { 
+        if (bool) {
+            viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewEskaeraInfo.jTextFieldHornitzailea.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewEskaeraInfo.jTextFieldData.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
+        }
+        else {
+            viewEskaeraInfo.jTextFieldKodeEsk.setText(null);
+            viewEskaeraInfo.jTextFieldHornitzailea.setText(null);
+            viewEskaeraInfo.jTextFieldData.setText(null);
+            viewEskaeraInfo.jTextFieldKopurua.setText(null);
+        }   
     }
     
 //    public static void dataErakutsi() {
@@ -1204,4 +1282,66 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
 //        String urte = Integer.toString(c1.get(Calendar.YEAR)); // urtea gorde
 //        BezeroaInfo.setTextData(Metodoak.dataGorde(urte+"/"+hilabete+"/"+egun));
 //    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        /* Tauletako lerroak aukeratzerakoan */
+        ListSelectionModel lsm = (ListSelectionModel) e.getSource();
+        if (lsm == viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel()) {
+            if (lsm.isSelectionEmpty()) {
+                aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(), false);
+            }
+            else {
+                aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(), true);
+            }
+        }
+        else if (lsm == viewLangileaInfo.jTableLangileaInfo.getSelectionModel()) {
+            if (lsm.isSelectionEmpty()) {
+                aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow(), false);
+            }
+            else {
+                aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow(), true);
+            }
+        }
+        else if (lsm == viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel()) {
+            if (lsm.isSelectionEmpty()) {
+                aukJertsDatuakBete(viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(), false);
+            }
+            else {
+                aukJertsDatuakBete(viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(), true);
+            }
+        }
+        else if (lsm == viewProduktuaAukeratu.jTableKamiInfo.getSelectionModel()) {
+            if (lsm.isSelectionEmpty()) {
+                aukKamiDatuakBete(viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(), false);
+            }
+            else {
+                aukKamiDatuakBete(viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(), true);
+            }
+        }
+        else if (lsm == viewProduktuaAukeratu.jTablePrakInfo.getSelectionModel()) {
+            if (lsm.isSelectionEmpty()) {
+                aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(), false);
+            }
+            else {
+                aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(), true);
+            }
+        }
+        else if (lsm == viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectionModel()) {
+            if (lsm.isSelectionEmpty()) {
+                aukHornDatuakBete(viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(), false);
+            }
+            else {
+                aukHornDatuakBete(viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(), true);
+            }
+        }
+        else if (lsm == viewEskaeraInfo.jTableEskaeraInfo.getSelectionModel()) {
+            if (lsm.isSelectionEmpty()) {
+                aukEskDatuakBete(viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow(), false);
+            }
+            else {
+                aukEskDatuakBete(viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow(), true);
+            }
+        }
+    }
 }
