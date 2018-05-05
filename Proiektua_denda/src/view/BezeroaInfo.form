@@ -111,11 +111,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jScrollPane3" min="-2" pref="670" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <Component id="jScrollPane3" alignment="0" pref="690" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -302,14 +298,12 @@
                           <Component id="jTextFieldIzena" alignment="0" pref="164" max="32767" attributes="0"/>
                           <Component id="jTextFieldAbizena2" alignment="0" pref="164" max="32767" attributes="0"/>
                           <Component id="jTextFieldNan" alignment="0" pref="164" max="32767" attributes="0"/>
-                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jRadioButtonEmak" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jRadioButtonGiz" max="32767" attributes="0"/>
-                              </Group>
-                              <Component id="jTextFieldJaioData" alignment="0" pref="164" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jRadioButtonEmak" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="jRadioButtonGiz" max="32767" attributes="0"/>
                           </Group>
+                          <Component id="jTextFieldJaioData" alignment="0" pref="164" max="32767" attributes="0"/>
                           <Component id="jTextFieldAbizena1" alignment="0" pref="164" max="32767" attributes="0"/>
                           <Component id="jTextFieldHerria" alignment="0" pref="164" max="32767" attributes="0"/>
                           <Component id="jTextFieldTlf" alignment="0" pref="164" max="32767" attributes="0"/>
@@ -361,9 +355,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldIzena">
               <Properties>
-                <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -374,9 +365,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAbizena1">
               <Properties>
-                <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -387,9 +375,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldAbizena2">
               <Properties>
-                <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -400,9 +385,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldNan">
               <Properties>
-                <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -413,9 +395,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="jTextFieldJaioData">
               <Properties>
-                <Property name="caret" type="javax.swing.text.Caret" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="default"/>
-                </Property>
                 <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
@@ -481,8 +460,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="bilatuLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jTextFieldBilatu" min="-2" pref="145" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jTextFieldBilatu" min="-2" pref="155" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
