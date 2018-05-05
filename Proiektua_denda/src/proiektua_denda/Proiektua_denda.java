@@ -38,11 +38,8 @@ public class Proiektua_denda {
         LangileaInfo viewLangInfo = new LangileaInfo();
         LangileaGehitu viewLangGehitu = new LangileaGehitu();
         ProduktuaAukeratu viewProdAuk = new ProduktuaAukeratu();
-        JertseaInfo viewJertsInfo = new JertseaInfo();
         JertseaGehitu viewJertsGehitu = new JertseaGehitu();
-        KamisetaInfo viewKamInfo = new KamisetaInfo();
         KamisetaGehitu viewKamGehitu = new KamisetaGehitu();
-        PrakaInfo viewPrakInfo = new PrakaInfo();
         PrakaGehitu viewPrakGehitu = new PrakaGehitu();
         HornitzaileaInfo viewHornInfo = new HornitzaileaInfo();
         HornitzaileaGehitu viewHornGehitu = new HornitzaileaGehitu();
@@ -51,9 +48,9 @@ public class Proiektua_denda {
 
         /* CONTROLLER */
         Controller ctrl = new Controller(bez, denda, esk, horn, jerts, kami, lang, prak, salm,
-                viewBezInfo, viewBezGehitu, viewLangInfo, viewLangGehitu, viewProdAuk, viewJertsInfo, viewJertsGehitu,
-                viewKamInfo, viewKamGehitu, viewPrakInfo, viewPrakGehitu, viewHornInfo, viewHornGehitu,
-                viewEskInfo, viewEskGehitu, viewMenuNag);
+                viewBezInfo, viewBezGehitu, viewLangInfo, viewLangGehitu, viewProdAuk, viewJertsGehitu,
+                viewKamGehitu, viewPrakGehitu, viewHornInfo, viewHornGehitu, viewEskInfo, 
+                viewEskGehitu, viewMenuNag);
 
     }
     // PAUSA bat egiteko funtzioa

@@ -53,11 +53,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private LangileaInfo viewLangileaInfo;
     private LangileaGehitu viewLangileaGehitu;
     private ProduktuaAukeratu viewProduktuaAukeratu;
-    private JertseaInfo viewJertseaInfo;
     private JertseaGehitu viewJertseaGehitu;
-    private KamisetaInfo viewKamisetaInfo;
     private KamisetaGehitu viewKamisetaGehitu;
-    private PrakaInfo viewPrakaInfo;
     private PrakaGehitu viewPrakaGehitu;
     private HornitzaileaInfo viewHornitzaileaInfo;
     private HornitzaileaGehitu viewHornitzaileaGehitu;
@@ -70,10 +67,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public Controller(Bezeroa bez, Denda denda, Eskaera esk, Hornitzailea horn, Jertsea jerts,
             Kamiseta kami, Langilea lang, Praka prak, Salmenta salm,
             BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu,
-            ProduktuaAukeratu viewProdAuk,
-            JertseaInfo viewJertsInfo, JertseaGehitu viewJertsGehitu, KamisetaInfo viewKamInfo, KamisetaGehitu viewKamGehitu,
-            PrakaInfo viewPrakInfo, PrakaGehitu viewPrakGehitu, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu,
-            EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag) {
+            ProduktuaAukeratu viewProdAuk, JertseaGehitu viewJertsGehitu, KamisetaGehitu viewKamGehitu, PrakaGehitu viewPrakGehitu, 
+            HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraInfo viewEskInfo, 
+            EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag) {
         this.bezeroa = bez;
         this.denda = denda;
         this.eskaera = esk;
@@ -89,11 +85,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         this.viewLangileaInfo = viewLangInfo;
         this.viewLangileaGehitu = viewLangGehitu;
         this.viewProduktuaAukeratu = viewProdAuk;
-        this.viewJertseaInfo = viewJertsInfo;
         this.viewJertseaGehitu = viewJertsGehitu;
-        this.viewKamisetaInfo = viewKamInfo;
         this.viewKamisetaGehitu = viewKamGehitu;
-        this.viewPrakaInfo = viewPrakInfo;
         this.viewPrakaGehitu = viewPrakGehitu;
         this.viewHornitzaileaInfo = viewHornInfo;
         this.viewHornitzaileaGehitu = viewHornGehitu;
@@ -115,11 +108,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaInfo.jButtonIrten.addActionListener(this);
         viewLangileaGehitu.jButtonIrten.addActionListener(this);
         viewProduktuaAukeratu.jButtonIrten.addActionListener(this);
-//        viewJertseaInfo.jButtonIrten.addActionListener(this);
         viewJertseaGehitu.jButtonIrten.addActionListener(this);
-//        viewKamisetaInfo.jButtonIrten.addActionListener(this);
         viewKamisetaGehitu.jButtonIrten.addActionListener(this);
-//        viewPrakaInfo.jButtonIrten.addActionListener(this);
         viewPrakaGehitu.jButtonIrten.addActionListener(this);
         viewHornitzaileaInfo.jButtonIrten.addActionListener(this);
         viewHornitzaileaGehitu.jButtonIrten.addActionListener(this);
@@ -233,11 +223,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewLangileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewLangileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewJertseaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewJertseaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewKamisetaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewKamisetaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewPrakaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewPrakaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewHornitzaileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewHornitzaileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
