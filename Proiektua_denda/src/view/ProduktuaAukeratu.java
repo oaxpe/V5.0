@@ -28,9 +28,10 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialogEzabatuKonfirm = new javax.swing.JDialog();
+        jPanelOsoa = new javax.swing.JPanel();
         jTabbedPaneProd = new javax.swing.JTabbedPane();
         jPanelJerts = new javax.swing.JPanel();
-        jPanelJertsKud = new javax.swing.JPanel();
+        jPanelJertsGoiburua = new javax.swing.JPanel();
         jTextFieldBilatu2 = new javax.swing.JTextField();
         jLabelJertsKud2 = new javax.swing.JLabel();
         bilatuLabel4 = new javax.swing.JLabel();
@@ -59,7 +60,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonAldatuJerts = new javax.swing.JButton();
         jButtonEzabatuJerts = new javax.swing.JButton();
         jPanelKami = new javax.swing.JPanel();
-        jPanelKamiKud = new javax.swing.JPanel();
+        jPanelKamiGoiburua = new javax.swing.JPanel();
         jTextFieldBilatu3 = new javax.swing.JTextField();
         jLabelKamiKud = new javax.swing.JLabel();
         bilatuLabel5 = new javax.swing.JLabel();
@@ -85,12 +86,12 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jPanelKamiInfoTaula = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTableKamiInfo = new javax.swing.JTable();
-        jPanelPrakBotoiak1 = new javax.swing.JPanel();
+        jPanelKamiBotoiak = new javax.swing.JPanel();
         jButtonGehituKami = new javax.swing.JButton();
         jButtonAldatuKami = new javax.swing.JButton();
         jButtonEzabatuKami = new javax.swing.JButton();
         jPanelPrak = new javax.swing.JPanel();
-        jPanelPrakKud = new javax.swing.JPanel();
+        jPanelPrakGoiburua = new javax.swing.JPanel();
         jTextFieldBilatu5 = new javax.swing.JTextField();
         jLabelPrakKud1 = new javax.swing.JLabel();
         bilatuLabel7 = new javax.swing.JLabel();
@@ -149,11 +150,11 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
 
         bilatuLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanelJertsKudLayout = new javax.swing.GroupLayout(jPanelJertsKud);
-        jPanelJertsKud.setLayout(jPanelJertsKudLayout);
-        jPanelJertsKudLayout.setHorizontalGroup(
-            jPanelJertsKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsKudLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelJertsGoiburuaLayout = new javax.swing.GroupLayout(jPanelJertsGoiburua);
+        jPanelJertsGoiburua.setLayout(jPanelJertsGoiburuaLayout);
+        jPanelJertsGoiburuaLayout.setHorizontalGroup(
+            jPanelJertsGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsGoiburuaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelJertsKud2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 587, Short.MAX_VALUE)
@@ -162,16 +163,16 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
                 .addComponent(jTextFieldBilatu2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanelJertsKudLayout.setVerticalGroup(
-            jPanelJertsKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsKudLayout.createSequentialGroup()
+        jPanelJertsGoiburuaLayout.setVerticalGroup(
+            jPanelJertsGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsGoiburuaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jTextFieldBilatu2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsKudLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsGoiburuaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelJertsKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelJertsGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bilatuLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsKudLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelJertsGoiburuaLayout.createSequentialGroup()
                         .addComponent(jLabelJertsKud2)
                         .addContainerGap())))
         );
@@ -382,7 +383,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelJertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelJertsBotoiak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelJertsKud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelJertsGoiburua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelJertsGorp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -390,7 +391,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
             jPanelJertsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelJertsLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelJertsKud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelJertsGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelJertsGorp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -405,11 +406,11 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
 
         bilatuLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanelKamiKudLayout = new javax.swing.GroupLayout(jPanelKamiKud);
-        jPanelKamiKud.setLayout(jPanelKamiKudLayout);
-        jPanelKamiKudLayout.setHorizontalGroup(
-            jPanelKamiKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiKudLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelKamiGoiburuaLayout = new javax.swing.GroupLayout(jPanelKamiGoiburua);
+        jPanelKamiGoiburua.setLayout(jPanelKamiGoiburuaLayout);
+        jPanelKamiGoiburuaLayout.setHorizontalGroup(
+            jPanelKamiGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiGoiburuaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelKamiKud, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -418,16 +419,16 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
                 .addComponent(jTextFieldBilatu3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanelKamiKudLayout.setVerticalGroup(
-            jPanelKamiKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiKudLayout.createSequentialGroup()
+        jPanelKamiGoiburuaLayout.setVerticalGroup(
+            jPanelKamiGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiGoiburuaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jTextFieldBilatu3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiKudLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiGoiburuaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelKamiKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelKamiGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bilatuLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiKudLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiGoiburuaLayout.createSequentialGroup()
                         .addComponent(jLabelKamiKud)
                         .addContainerGap())))
         );
@@ -615,11 +616,11 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonEzabatuKami.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonEzabatuKami.setText("Ezabatu");
 
-        javax.swing.GroupLayout jPanelPrakBotoiak1Layout = new javax.swing.GroupLayout(jPanelPrakBotoiak1);
-        jPanelPrakBotoiak1.setLayout(jPanelPrakBotoiak1Layout);
-        jPanelPrakBotoiak1Layout.setHorizontalGroup(
-            jPanelPrakBotoiak1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakBotoiak1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelKamiBotoiakLayout = new javax.swing.GroupLayout(jPanelKamiBotoiak);
+        jPanelKamiBotoiak.setLayout(jPanelKamiBotoiakLayout);
+        jPanelKamiBotoiakLayout.setHorizontalGroup(
+            jPanelKamiBotoiakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiBotoiakLayout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addComponent(jButtonEzabatuKami)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -628,11 +629,11 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
                 .addComponent(jButtonGehituKami)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanelPrakBotoiak1Layout.setVerticalGroup(
-            jPanelPrakBotoiak1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakBotoiak1Layout.createSequentialGroup()
+        jPanelKamiBotoiakLayout.setVerticalGroup(
+            jPanelKamiBotoiakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelKamiBotoiakLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelPrakBotoiak1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelKamiBotoiakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEzabatuKami)
                     .addComponent(jButtonAldatuKami)
                     .addComponent(jButtonGehituKami))
@@ -647,19 +648,19 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelKamiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanelKamiGorp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelPrakBotoiak1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanelKamiKud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanelKamiBotoiak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelKamiGoiburua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelKamiLayout.setVerticalGroup(
             jPanelKamiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelKamiLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelKamiKud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelKamiGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelKamiGorp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelPrakBotoiak1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelKamiBotoiak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
         );
 
@@ -672,11 +673,11 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
 
         bilatuLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanelPrakKudLayout = new javax.swing.GroupLayout(jPanelPrakKud);
-        jPanelPrakKud.setLayout(jPanelPrakKudLayout);
-        jPanelPrakKudLayout.setHorizontalGroup(
-            jPanelPrakKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakKudLayout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelPrakGoiburuaLayout = new javax.swing.GroupLayout(jPanelPrakGoiburua);
+        jPanelPrakGoiburua.setLayout(jPanelPrakGoiburuaLayout);
+        jPanelPrakGoiburuaLayout.setHorizontalGroup(
+            jPanelPrakGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakGoiburuaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelPrakKud1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -685,16 +686,16 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
                 .addComponent(jTextFieldBilatu5, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        jPanelPrakKudLayout.setVerticalGroup(
-            jPanelPrakKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakKudLayout.createSequentialGroup()
+        jPanelPrakGoiburuaLayout.setVerticalGroup(
+            jPanelPrakGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakGoiburuaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jTextFieldBilatu5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakKudLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakGoiburuaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelPrakKudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelPrakGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bilatuLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakKudLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelPrakGoiburuaLayout.createSequentialGroup()
                         .addComponent(jLabelPrakKud1)
                         .addContainerGap())))
         );
@@ -932,7 +933,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
             .addGroup(jPanelPrakLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelPrakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelPrakKud, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPrakGoiburua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelPrakGorp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanelPrakBotoiak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -941,7 +942,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
             jPanelPrakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelPrakLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelPrakKud, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelPrakGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanelPrakGorp, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -957,27 +958,41 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
+        javax.swing.GroupLayout jPanelOsoaLayout = new javax.swing.GroupLayout(jPanelOsoa);
+        jPanelOsoa.setLayout(jPanelOsoaLayout);
+        jPanelOsoaLayout.setHorizontalGroup(
+            jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPaneProd)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOsoaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonIrten)
+                .addGap(25, 25, 25))
+        );
+        jPanelOsoaLayout.setVerticalGroup(
+            jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jTabbedPaneProd, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButtonIrten)
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPaneProd)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonIrten)
-                .addGap(31, 31, 31))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jTabbedPaneProd, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonIrten)
-                .addContainerGap())
+            .addComponent(jPanelOsoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -1062,30 +1077,31 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTaila1;
     private javax.swing.JLabel jLabelTaila2;
     public javax.swing.JPanel jPanelJerts;
-    private javax.swing.JPanel jPanelJertsBotoiak;
-    private javax.swing.JPanel jPanelJertsGorp;
+    public javax.swing.JPanel jPanelJertsBotoiak;
+    public javax.swing.JPanel jPanelJertsGoiburua;
+    public javax.swing.JPanel jPanelJertsGorp;
     public javax.swing.JPanel jPanelJertsInfo;
     public javax.swing.JPanel jPanelJertsInfoTaula;
-    private javax.swing.JPanel jPanelJertsKud;
     public javax.swing.JPanel jPanelJertsTextField;
     public javax.swing.JPanel jPanelKami;
-    private javax.swing.JPanel jPanelKamiGorp;
+    public javax.swing.JPanel jPanelKamiBotoiak;
+    public javax.swing.JPanel jPanelKamiGoiburua;
+    public javax.swing.JPanel jPanelKamiGorp;
     public javax.swing.JPanel jPanelKamiInfo;
-    private javax.swing.JPanel jPanelKamiInfoTaula;
-    private javax.swing.JPanel jPanelKamiKud;
+    public javax.swing.JPanel jPanelKamiInfoTaula;
     public javax.swing.JPanel jPanelKamiTextField;
+    public javax.swing.JPanel jPanelOsoa;
     public javax.swing.JPanel jPanelPrak;
-    private javax.swing.JPanel jPanelPrakBotoiak;
-    private javax.swing.JPanel jPanelPrakBotoiak1;
-    private javax.swing.JPanel jPanelPrakGorp;
+    public javax.swing.JPanel jPanelPrakBotoiak;
+    public javax.swing.JPanel jPanelPrakGoiburua;
+    public javax.swing.JPanel jPanelPrakGorp;
     public javax.swing.JPanel jPanelPrakInfo;
-    private javax.swing.JPanel jPanelPrakInfoTaula;
-    private javax.swing.JPanel jPanelPrakKud;
+    public javax.swing.JPanel jPanelPrakInfoTaula;
     public javax.swing.JPanel jPanelPrakTextField;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPaneProd;
+    public javax.swing.JTabbedPane jTabbedPaneProd;
     public javax.swing.JTable jTableJertsInfo;
     public javax.swing.JTable jTableKamiInfo;
     public javax.swing.JTable jTablePrakInfo;

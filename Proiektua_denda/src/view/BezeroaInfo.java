@@ -5,6 +5,9 @@
  */
 package view;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+
 /**
  *
  * @author Oihane Axpe
@@ -32,6 +35,7 @@ public class BezeroaInfo extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         buttonGroupEmGiz = new javax.swing.ButtonGroup();
         jDialogEzabatuKonfirm = new javax.swing.JDialog();
+        jPanelOsoa = new javax.swing.JPanel();
         jPanelBezTaula = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableBezeroaInfo = new javax.swing.JTable();
@@ -56,11 +60,11 @@ public class BezeroaInfo extends javax.swing.JFrame {
         jRadioButtonGiz = new javax.swing.JRadioButton();
         jTextFieldHerria = new javax.swing.JTextField();
         jTextFieldTlf = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
+        jPanelGoiburua = new javax.swing.JPanel();
         jTextFieldBilatu = new javax.swing.JTextField();
         jLabelBezKud = new javax.swing.JLabel();
         bilatuLabel2 = new javax.swing.JLabel();
-        oinaPanel1 = new javax.swing.JPanel();
+        jPanelOina = new javax.swing.JPanel();
         jButtonIrten = new javax.swing.JButton();
         jButtonGehitu = new javax.swing.JButton();
         jButtonAldatu = new javax.swing.JButton();
@@ -174,21 +178,22 @@ public class BezeroaInfo extends javax.swing.JFrame {
         jPanelBezTextField.setLayout(jPanelBezTextFieldLayout);
         jPanelBezTextFieldLayout.setHorizontalGroup(
             jPanelBezTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBezTextFieldLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanelBezTextFieldLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanelBezTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNan, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addGroup(jPanelBezTextFieldLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBezTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldIzena, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldNan, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldHerria, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                        .addComponent(jTextFieldKodeBez, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBezTextFieldLayout.createSequentialGroup()
                         .addComponent(jRadioButtonEmak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButtonGiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldKodeBez, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
+                        .addComponent(jRadioButtonGiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelBezTextFieldLayout.setVerticalGroup(
@@ -198,9 +203,9 @@ public class BezeroaInfo extends javax.swing.JFrame {
                 .addComponent(jTextFieldKodeBez)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldIzena)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(16, 16, 16)
                 .addComponent(jTextFieldAbizena1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addComponent(jTextFieldAbizena2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldNan)
@@ -210,7 +215,7 @@ public class BezeroaInfo extends javax.swing.JFrame {
                 .addGroup(jPanelBezTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButtonEmak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButtonGiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldHerria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldTlf)
@@ -242,7 +247,7 @@ public class BezeroaInfo extends javax.swing.JFrame {
             .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelBezTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelBezTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelKodBez, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -260,8 +265,8 @@ public class BezeroaInfo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabelHerria, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)))
-                .addGap(0, 7, Short.MAX_VALUE))
+                        .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE)
+                        .addGap(0, 7, Short.MAX_VALUE))))
         );
 
         jLabelBezKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -269,28 +274,28 @@ public class BezeroaInfo extends javax.swing.JFrame {
 
         bilatuLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelGoiburuaLayout = new javax.swing.GroupLayout(jPanelGoiburua);
+        jPanelGoiburua.setLayout(jPanelGoiburuaLayout);
+        jPanelGoiburuaLayout.setHorizontalGroup(
+            jPanelGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelBezKud, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 658, Short.MAX_VALUE)
                 .addComponent(bilatuLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldBilatu, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        jPanelGoiburuaLayout.setVerticalGroup(
+            jPanelGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jTextFieldBilatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanelGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(bilatuLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
                         .addComponent(jLabelBezKud)
                         .addContainerGap())))
         );
@@ -310,11 +315,11 @@ public class BezeroaInfo extends javax.swing.JFrame {
         jButtonEzabatu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonEzabatu.setText("Ezabatu");
 
-        javax.swing.GroupLayout oinaPanel1Layout = new javax.swing.GroupLayout(oinaPanel1);
-        oinaPanel1.setLayout(oinaPanel1Layout);
-        oinaPanel1Layout.setHorizontalGroup(
-            oinaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, oinaPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelOinaLayout = new javax.swing.GroupLayout(jPanelOina);
+        jPanelOina.setLayout(jPanelOinaLayout);
+        jPanelOinaLayout.setHorizontalGroup(
+            jPanelOinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOinaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonEzabatu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -325,12 +330,12 @@ public class BezeroaInfo extends javax.swing.JFrame {
                 .addComponent(jButtonIrten)
                 .addContainerGap())
         );
-        oinaPanel1Layout.setVerticalGroup(
-            oinaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, oinaPanel1Layout.createSequentialGroup()
+        jPanelOinaLayout.setVerticalGroup(
+            jPanelOinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOinaLayout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
-                .addGroup(oinaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(oinaPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelOinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelOinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonEzabatu)
                         .addComponent(jButtonAldatu)
                         .addComponent(jButtonGehitu))
@@ -338,37 +343,53 @@ public class BezeroaInfo extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout jPanelOsoaLayout = new javax.swing.GroupLayout(jPanelOsoa);
+        jPanelOsoa.setLayout(jPanelOsoaLayout);
+        jPanelOsoaLayout.setHorizontalGroup(
+            jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOsoaLayout.createSequentialGroup()
+                .addContainerGap(105, Short.MAX_VALUE)
+                .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanelOina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                        .addComponent(jPanelBezDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanelBezTaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31))
+            .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                    .addGap(23, 23, 23)
+                    .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+        jPanelOsoaLayout.setVerticalGroup(
+            jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanelBezTaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanelBezDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jPanelOina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(376, Short.MAX_VALUE)))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(109, 109, 109)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(oinaPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jPanelBezDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jPanelBezTaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(25, 25, 25))
+                .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelBezTaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelBezDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(oinaPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
+            .addComponent(jPanelOsoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -430,10 +451,12 @@ public class BezeroaInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNan;
     private javax.swing.JLabel jLabelSexua;
     private javax.swing.JLabel jLabelTlf;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelBezDatuak;
-    private javax.swing.JPanel jPanelBezTaula;
+    public javax.swing.JPanel jPanelBezDatuak;
+    public javax.swing.JPanel jPanelBezTaula;
     public javax.swing.JPanel jPanelBezTextField;
+    public javax.swing.JPanel jPanelGoiburua;
+    public javax.swing.JPanel jPanelOina;
+    public javax.swing.JPanel jPanelOsoa;
     public javax.swing.JRadioButton jRadioButtonEmak;
     public javax.swing.JRadioButton jRadioButtonGiz;
     private javax.swing.JScrollPane jScrollPane2;
@@ -449,7 +472,6 @@ public class BezeroaInfo extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldKodeBez;
     public javax.swing.JTextField jTextFieldNan;
     public javax.swing.JTextField jTextFieldTlf;
-    private javax.swing.JPanel oinaPanel1;
     // End of variables declaration//GEN-END:variables
     
 }

@@ -8,6 +8,7 @@ package controller;
 import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
@@ -18,6 +19,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseListener;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -94,9 +96,23 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         this.viewEskaeraGehitu = viewEskGehitu;
         this.viewHornitzaileaGehitu = viewHornGehitu;
         this.viewMenuNagusia = viewMenuNag;
-        
         botoiakEntzuten();
         hasieratu();
+        
+        /* Bisten estiloa */
+        menuNagEstiloa();
+        bezInfoEstiloa();
+        bezGehituEstiloa();
+        langInfoEstiloa();
+        langGehituEstiloa();
+        prodInfoEstiloa();
+        jertsGehituEstiloa();
+        kamiGehituEstiloa();
+        prakGehituEstiloa();
+        hornInfoEstiloa();
+        hornGehituEstiloa();
+        eskInfoEstiloa();
+        eskGehituEstiloa();
     }
     
     /* METODOAK */
@@ -283,6 +299,374 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         sasoiaKargatuKami();
         sasoiaKargatuPrak();
         motaKargatu();
+    }
+    
+    public void menuNagEstiloa() {
+        viewMenuNagusia.setTitle("ATENEA");
+        viewMenuNagusia.jButtonIrten.setBackground(Color.WHITE);
+        viewMenuNagusia.jPanelGoiburua.setBackground(new Color(0,0,153));
+        viewMenuNagusia.jPanelGorputza.setBackground(Color.WHITE);
+    }
+    
+    public void bezInfoEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewBezeroaInfo.setTitle("Bezeroen informazioa");
+        viewBezeroaInfo.jButtonIrten.setBackground(urdina);
+        viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaInfo.jTextFieldJaioData.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewBezeroaInfo.jTextFieldKodeBez.setOpaque(false);
+        viewBezeroaInfo.jTextFieldIzena.setOpaque(false);
+        viewBezeroaInfo.jTextFieldAbizena1.setOpaque(false);
+        viewBezeroaInfo.jTextFieldAbizena2.setOpaque(false);
+        viewBezeroaInfo.jTextFieldHerria.setOpaque(false);
+        viewBezeroaInfo.jTextFieldJaioData.setOpaque(false);
+        viewBezeroaInfo.jRadioButtonEmak.setOpaque(false);
+        viewBezeroaInfo.jRadioButtonGiz.setOpaque(false);
+        viewBezeroaInfo.jTextFieldNan.setOpaque(false);
+        viewBezeroaInfo.jTextFieldTlf.setOpaque(false);
+
+        viewBezeroaInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewBezeroaInfo.jPanelGoiburua.setOpaque(false);
+        viewBezeroaInfo.jPanelOina.setOpaque(false);
+        viewBezeroaInfo.jPanelBezDatuak.setOpaque(false);
+        viewBezeroaInfo.jPanelBezTextField.setOpaque(false);
+        viewBezeroaInfo.jPanelBezTaula.setOpaque(false);
+    }
+ 
+    public void bezGehituEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewBezeroaGehitu.setTitle("Bezero berria");
+        viewBezeroaGehitu.jButtonIrten.setBackground(urdina);
+        viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewBezeroaGehitu.jTextFieldIzena.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldAbizena1.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldAbizena2.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldHerria.setOpaque(false);
+        viewBezeroaGehitu.jDateChooserJaioData.setOpaque(false);
+        viewBezeroaGehitu.jRadioButtonEmak.setOpaque(false);
+        viewBezeroaGehitu.jRadioButtonGiz.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldNan.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldTlf.setOpaque(false);
+        viewBezeroaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewBezeroaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewBezeroaGehitu.jPanelGoiburua.setOpaque(false);
+        viewBezeroaGehitu.jPanelBezDatuak.setOpaque(false);
+    }
+    
+    public void langInfoEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewLangileaInfo.setTitle("Langileen informazioa");
+        viewLangileaInfo.jButtonIrten.setBackground(urdina);
+        viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldJaioData.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaInfo.jTextFieldEremua.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewLangileaInfo.jTextFieldKodeLang.setOpaque(false);
+        viewLangileaInfo.jTextFieldIzena.setOpaque(false);
+        viewLangileaInfo.jTextFieldAbizena1.setOpaque(false);
+        viewLangileaInfo.jTextFieldAbizena2.setOpaque(false);
+        viewLangileaInfo.jTextFieldHerria.setOpaque(false);
+        viewLangileaInfo.jTextFieldJaioData.setOpaque(false);
+        viewLangileaInfo.jRadioButtonEmak.setOpaque(false);
+        viewLangileaInfo.jRadioButtonGiz.setOpaque(false);
+        viewLangileaInfo.jTextFieldNan.setOpaque(false);
+        viewLangileaInfo.jTextFieldTlf.setOpaque(false);
+        viewLangileaInfo.jTextFieldSoldata.setOpaque(false);
+        viewLangileaInfo.jTextFieldEremua.setOpaque(false);
+        
+        viewLangileaInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewLangileaInfo.jPanelGoiburua.setOpaque(false);
+        viewLangileaInfo.jPanelOina.setOpaque(false);
+        viewLangileaInfo.jPanelLangDatuak.setOpaque(false);
+        viewLangileaInfo.jPanelLangTextField.setOpaque(false);
+        viewLangileaInfo.jPanelLangTaula.setOpaque(false);
+    }
+    
+    public void langGehituEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewLangileaGehitu.setTitle("Langile berria");
+        viewLangileaGehitu.jButtonIrten.setBackground(urdina);
+        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewLangileaGehitu.jTextFieldIzena.setOpaque(false);
+        viewLangileaGehitu.jTextFieldAbizena1.setOpaque(false);
+        viewLangileaGehitu.jTextFieldAbizena2.setOpaque(false);
+        viewLangileaGehitu.jTextFieldHerria.setOpaque(false);
+        viewLangileaGehitu.jDateChooserJaioData.setOpaque(false);
+        viewLangileaGehitu.jRadioButtonEmak.setOpaque(false);
+        viewLangileaGehitu.jRadioButtonGiz.setOpaque(false);
+        viewLangileaGehitu.jTextFieldNan.setOpaque(false);
+        viewLangileaGehitu.jTextFieldTlf.setOpaque(false);
+        viewLangileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewLangileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewLangileaGehitu.jPanelGoiburua.setOpaque(false);
+        viewLangileaGehitu.jPanelLangDatuak.setOpaque(false);
+    }
+    
+    public void prodInfoEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewProduktuaAukeratu.setTitle("Produktuen informazioa");
+        viewProduktuaAukeratu.jButtonIrten.setBackground(urdina);
+        /* Jertsea */
+        viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldSexuaJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldTailaJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+
+        viewProduktuaAukeratu.jTextFieldKodeJerts.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldMarkaJerts.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldSexuaJerts.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldStockJerts.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldTailaJerts.setOpaque(false);
+        
+        
+        /* Kamiseta */
+        viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldMarkaKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldPrezioaKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldSexuaKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldTailaKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldSasoiaKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewProduktuaAukeratu.jTextFieldKodeKami.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldMarkaKami.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldPrezioaKami.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldSexuaKami.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldStockKami.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldTailaKami.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldSasoiaKami.setOpaque(false);
+        
+        /* Praka */
+        viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldMarkaPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldSexuaPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldTailaPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldSasoiaPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewProduktuaAukeratu.jTextFieldMotaPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewProduktuaAukeratu.jTextFieldKodePrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldMarkaPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldSexuaPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldStockPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldTailaPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldSasoiaPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setOpaque(false);
+        viewProduktuaAukeratu.jTextFieldMotaPrak.setOpaque(false);
+
+        /* Fondo txuria jarri */
+        viewProduktuaAukeratu.jPanelOsoa.setBackground(Color.WHITE);
+        viewProduktuaAukeratu.jTabbedPaneProd.setOpaque(false);
+        viewProduktuaAukeratu.jPanelJerts.setBackground(Color.WHITE);
+        viewProduktuaAukeratu.jPanelJertsGoiburua.setOpaque(false);
+        viewProduktuaAukeratu.jPanelJertsGorp.setOpaque(false);
+        viewProduktuaAukeratu.jPanelJertsInfo.setOpaque(false);
+        viewProduktuaAukeratu.jPanelJertsTextField.setOpaque(false);
+        viewProduktuaAukeratu.jPanelJertsInfoTaula.setOpaque(false);
+        viewProduktuaAukeratu.jPanelJertsBotoiak.setOpaque(false);
+        viewProduktuaAukeratu.jPanelKami.setBackground(Color.WHITE);
+        viewProduktuaAukeratu.jPanelKamiGoiburua.setOpaque(false);
+        viewProduktuaAukeratu.jPanelKamiGorp.setOpaque(false);
+        viewProduktuaAukeratu.jPanelKamiInfo.setOpaque(false);
+        viewProduktuaAukeratu.jPanelKamiTextField.setOpaque(false);
+        viewProduktuaAukeratu.jPanelKamiInfoTaula.setOpaque(false);
+        viewProduktuaAukeratu.jPanelKamiBotoiak.setOpaque(false);
+        viewProduktuaAukeratu.jPanelPrak.setBackground(Color.WHITE);
+        viewProduktuaAukeratu.jPanelPrakGoiburua.setOpaque(false);
+        viewProduktuaAukeratu.jPanelPrakGorp.setOpaque(false);
+        viewProduktuaAukeratu.jPanelPrakInfo.setOpaque(false);
+        viewProduktuaAukeratu.jPanelPrakTextField.setOpaque(false);
+        viewProduktuaAukeratu.jPanelPrakInfoTaula.setOpaque(false);
+        viewProduktuaAukeratu.jPanelPrakBotoiak.setOpaque(false);
+    }
+    
+    public void jertsGehituEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewJertseaGehitu.setTitle("Jertse berria");
+        viewJertseaGehitu.jButtonIrten.setBackground(urdina);
+        viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewJertseaGehitu.jTextFieldKodeJerts.setOpaque(false);
+        viewJertseaGehitu.jTextFieldMarka.setOpaque(false);
+        viewJertseaGehitu.jTextFieldPrezioa.setOpaque(false);
+        viewJertseaGehitu.jTextFieldKolorea.setOpaque(false);
+        viewJertseaGehitu.jTextFieldStock.setOpaque(false);
+        viewJertseaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewJertseaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewJertseaGehitu.jPanelGoiburua.setOpaque(false);
+        viewJertseaGehitu.jPanelJertsDatuak.setOpaque(false);
+    }
+    
+    public void kamiGehituEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewKamisetaGehitu.setTitle("Kamiseta berria");
+        viewKamisetaGehitu.jButtonIrten.setBackground(urdina);
+        viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewKamisetaGehitu.jTextFieldKodeKami.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldMarka.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldPrezioa.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldKolorea.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldStock.setOpaque(false);
+        viewKamisetaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewKamisetaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewKamisetaGehitu.jPanelGoiburua.setOpaque(false);
+        viewKamisetaGehitu.jPanelKamiDatuak.setOpaque(false);
+    }
+    public void prakGehituEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewPrakaGehitu.setTitle("Kamiseta berria");
+        viewPrakaGehitu.jButtonIrten.setBackground(urdina);
+        viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewPrakaGehitu.jTextFieldKodePrak.setOpaque(false);
+        viewPrakaGehitu.jTextFieldMarka.setOpaque(false);
+        viewPrakaGehitu.jTextFieldPrezioa.setOpaque(false);
+        viewPrakaGehitu.jTextFieldKolorea.setOpaque(false);
+        viewPrakaGehitu.jTextFieldStock.setOpaque(false);
+        viewPrakaGehitu.jTextFieldLuzeera.setOpaque(false);
+        viewPrakaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewPrakaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewPrakaGehitu.jPanelGoiburua.setOpaque(false);
+        viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
+    }
+    
+    public void hornInfoEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewHornitzaileaInfo.setTitle("Hornitzaileen informazioa");
+        viewHornitzaileaInfo.jButtonIrten.setBackground(urdina);
+        viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewHornitzaileaInfo.jTextFieldKodeHor.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldIzena.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldHerria.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldEmail.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldTlf.setOpaque(false);
+        
+        viewHornitzaileaInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewHornitzaileaInfo.jPanelGoiburua.setOpaque(false);
+        viewHornitzaileaInfo.jPanelOina.setOpaque(false);
+        viewHornitzaileaInfo.jPanelHornDatuak.setOpaque(false);
+        viewHornitzaileaInfo.jPanelHornTextField.setOpaque(false);
+        viewHornitzaileaInfo.jPanelHornInfoTaula.setOpaque(false);
+    }
+    
+    public void hornGehituEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewHornitzaileaGehitu.setTitle("Hornitzaile berria");
+        viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);
+        viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        
+        viewHornitzaileaGehitu.jTextFieldIzena.setOpaque(false);
+        viewHornitzaileaGehitu.jTextFieldHerria.setOpaque(false);
+        viewHornitzaileaGehitu.jTextFieldTlf.setOpaque(false);
+        viewHornitzaileaGehitu.jTextFieldEmail.setOpaque(false);
+        viewHornitzaileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewHornitzaileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewHornitzaileaGehitu.jPanelGoiburua.setOpaque(false);
+        viewHornitzaileaGehitu.jPanelHornDatuak.setOpaque(false);
+    }
+    
+    public void eskInfoEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewEskaeraInfo.setTitle("Eskaeren informazioa");
+        viewEskaeraInfo.jButtonIrten.setBackground(urdina);
+        viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewEskaeraInfo.jTextFieldHornitzailea.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewEskaeraInfo.jTextFieldData.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+        viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+
+        viewEskaeraInfo.jTextFieldKodeEsk.setOpaque(false);
+        viewEskaeraInfo.jTextFieldHornitzailea.setOpaque(false);
+        viewEskaeraInfo.jTextFieldData.setOpaque(false);
+        viewEskaeraInfo.jTextFieldKopurua.setOpaque(false);
+        
+        viewEskaeraInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewEskaeraInfo.jPanelGoiburua.setOpaque(false);
+        viewEskaeraInfo.jPanelOina.setOpaque(false);
+        viewEskaeraInfo.jPanelEskDatuak.setOpaque(false);
+        viewEskaeraInfo.jPanelEskTextField.setOpaque(false);
+        viewEskaeraInfo.jPanelEskInfoTaula.setOpaque(false);
+    }
+    
+    public void eskGehituEstiloa() {
+        Color urdina = new Color(0,0,153);
+        viewEskaeraGehitu.setTitle("Eskaera berria");
+        viewEskaeraGehitu.jButtonIrten.setBackground(urdina);
+        viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, urdina));
+       
+        viewEskaeraGehitu.jTextFieldKopurua.setOpaque(false);
+        viewEskaeraGehitu.jComboBoxHornitzailea.setOpaque(false);
+        viewEskaeraGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewEskaeraGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewEskaeraGehitu.jPanelGoiburua.setOpaque(false);
+        viewEskaeraGehitu.jPanelEskDatuak.setOpaque(false);
     }
     
     @Override
@@ -1083,13 +1467,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         Component[] components = container.getComponents();
         for (Component component : components) {
             component.setFont(new Font(mota, Font.PLAIN, tamaina));
-//            component.setForeground(Color.black);
         }
     }
+
+    
+    
     
     public void aukBezDatuakBete(int aukLerroa, boolean bool) {    
         if (bool) {
-            fontComponets(viewBezeroaInfo.jPanelBezTextField, "Calibri Light", 13);
+//            fontComponets(viewBezeroaInfo.jPanelBezTextField, "Calibri Light", 13);
             viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
             viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
             viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
