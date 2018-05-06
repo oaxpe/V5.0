@@ -66,7 +66,10 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanelOsoa" alignment="1" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="jPanelOsoa" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -88,32 +91,35 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="1093" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1112" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanelOina" alignment="1" max="32767" attributes="0"/>
+                      <Component id="jPanelHornDatuak" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="718" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jPanelHornDatuak" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="20" max="32767" attributes="0"/>
-                              <Component id="jPanelHornInfoTaula" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanelGoiburua" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="0" pref="109" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jPanelOina" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanelHornInfoTaula" alignment="1" min="-2" pref="680" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanelGoiburua" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="43" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="314" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="340" max="32767" attributes="0"/>
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -147,7 +153,7 @@
                       <Component id="jButtonAldatu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonGehitu" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="622" max="32767" attributes="0"/>
                       <Component id="jButtonIrten" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   </Group>
@@ -233,7 +239,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabelHorKud" min="-2" pref="257" max="-2" attributes="0"/>
-                      <EmptySpace pref="582" max="32767" attributes="0"/>
+                      <EmptySpace pref="610" max="32767" attributes="0"/>
                       <Component id="bilatuLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jTextFieldBilatu" min="-2" pref="155" max="-2" attributes="0"/>
@@ -290,15 +296,21 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabelKodHor" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelTlf" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelHerria" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelIzena" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabelEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelKodHor" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelTlf" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelHerria" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelIzena" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelEmail" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jPanelHornTextField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jTextFieldKodeHor" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldIzena" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldHerria" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldTlf" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="jTextFieldEmail" min="-2" pref="164" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="20" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -306,19 +318,29 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jPanelHornTextField" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jLabelKodHor" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabelIzena" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="jLabelHerria" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabelTlf" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Component id="jLabelEmail" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelKodHor" alignment="3" pref="20" max="32767" attributes="0"/>
+                          <Component id="jTextFieldKodeHor" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelIzena" alignment="3" pref="20" max="32767" attributes="0"/>
+                          <Component id="jTextFieldIzena" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelHerria" alignment="3" pref="20" max="32767" attributes="0"/>
+                          <Component id="jTextFieldHerria" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelTlf" alignment="3" pref="20" max="32767" attributes="0"/>
+                          <Component id="jTextFieldTlf" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabelEmail" alignment="3" pref="20" max="32767" attributes="0"/>
+                          <Component id="jTextFieldEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -366,113 +388,71 @@
                 <Property name="text" type="java.lang.String" value="Kodea:"/>
               </Properties>
             </Component>
-            <Container class="javax.swing.JPanel" name="jPanelHornTextField">
+            <Component class="javax.swing.JTextField" name="jTextFieldKodeHor">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
-
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextFieldIzena" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
-                              <Component id="jTextFieldEmail" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
-                              <Component id="jTextFieldHerria" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
-                              <Component id="jTextFieldTlf" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
-                              <Component id="jTextFieldKodeHor" alignment="0" min="-2" pref="164" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jTextFieldKodeHor" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextFieldIzena" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextFieldHerria" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextFieldTlf" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jTextFieldEmail" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-              </Layout>
-              <SubComponents>
-                <Component class="javax.swing.JTextField" name="jTextFieldKodeHor">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldEmail">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldIzena">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldTlf">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JTextField" name="jTextFieldHerria">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
-              </SubComponents>
-            </Container>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldIzena">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldHerria">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldTlf">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="jTextFieldEmail">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="12" style="0"/>
+                </Property>
+                <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelHornInfoTaula">
@@ -483,9 +463,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jScrollPane3" pref="664" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="668" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -493,7 +474,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="158" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="186" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

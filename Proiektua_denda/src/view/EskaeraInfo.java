@@ -41,11 +41,10 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jLabelData = new javax.swing.JLabel();
         jLabelTlf = new javax.swing.JLabel();
         jLabelKodESk = new javax.swing.JLabel();
-        jPanelEskTextField = new javax.swing.JPanel();
+        jTextFieldKodeEsk = new javax.swing.JTextField();
         jTextFieldHornitzailea = new javax.swing.JTextField();
         jTextFieldData = new javax.swing.JTextField();
         jTextFieldKopurua = new javax.swing.JTextField();
-        jTextFieldKodeEsk = new javax.swing.JTextField();
         jPanelEskInfoTaula = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableEskaeraInfo = new javax.swing.JTable();
@@ -82,7 +81,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelEskKud, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 597, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 618, Short.MAX_VALUE)
                 .addComponent(jLabelBilatu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldBilatu, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -113,71 +112,60 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jLabelKodESk.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodESk.setText("Kodea:");
 
+        jTextFieldKodeEsk.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
         jTextFieldHornitzailea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jTextFieldData.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jTextFieldKopurua.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        jTextFieldKodeEsk.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout jPanelEskTextFieldLayout = new javax.swing.GroupLayout(jPanelEskTextField);
-        jPanelEskTextField.setLayout(jPanelEskTextFieldLayout);
-        jPanelEskTextFieldLayout.setHorizontalGroup(
-            jPanelEskTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEskTextFieldLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelEskTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelEskTextFieldLayout.setVerticalGroup(
-            jPanelEskTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEskTextFieldLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout jPanelEskDatuakLayout = new javax.swing.GroupLayout(jPanelEskDatuak);
         jPanelEskDatuak.setLayout(jPanelEskDatuakLayout);
         jPanelEskDatuakLayout.setHorizontalGroup(
             jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEskDatuakLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelKodESk)
-                    .addComponent(jLabelTlf)
-                    .addComponent(jLabelHornitzailea)
-                    .addComponent(jLabelData))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelEskTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelEskDatuakLayout.createSequentialGroup()
+                        .addComponent(jLabelKodESk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelEskDatuakLayout.createSequentialGroup()
+                        .addComponent(jLabelHornitzailea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
+                        .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20))
         );
         jPanelEskDatuakLayout.setVerticalGroup(
             jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEskDatuakLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelEskTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEskDatuakLayout.createSequentialGroup()
-                        .addComponent(jLabelKodESk)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelHornitzailea)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelData)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelTlf)
-                        .addContainerGap())))
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
+                        .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelKodESk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelHornitzailea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         jTableEskaeraInfo.setAutoCreateRowSorter(true);
@@ -207,7 +195,8 @@ public class EskaeraInfo extends javax.swing.JFrame {
             jPanelEskInfoTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEskInfoTaulaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
@@ -259,10 +248,10 @@ public class EskaeraInfo extends javax.swing.JFrame {
             .addGroup(jPanelOsoaLayout.createSequentialGroup()
                 .addGap(109, 109, 109)
                 .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelOina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOsoaLayout.createSequentialGroup()
+                    .addComponent(jPanelOina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelOsoaLayout.createSequentialGroup()
                         .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanelEskInfoTaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
             .addGroup(jPanelOsoaLayout.createSequentialGroup()
@@ -289,7 +278,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
                 .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0))
         );
@@ -367,7 +356,6 @@ public class EskaeraInfo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTlf;
     public javax.swing.JPanel jPanelEskDatuak;
     public javax.swing.JPanel jPanelEskInfoTaula;
-    public javax.swing.JPanel jPanelEskTextField;
     public javax.swing.JPanel jPanelGoiburua;
     public javax.swing.JPanel jPanelOina;
     public javax.swing.JPanel jPanelOsoa;

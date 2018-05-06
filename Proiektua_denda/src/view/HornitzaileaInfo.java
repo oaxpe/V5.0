@@ -48,12 +48,11 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
         jLabelHerria = new javax.swing.JLabel();
         jLabelTlf = new javax.swing.JLabel();
         jLabelKodHor = new javax.swing.JLabel();
-        jPanelHornTextField = new javax.swing.JPanel();
         jTextFieldKodeHor = new javax.swing.JTextField();
-        jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldIzena = new javax.swing.JTextField();
-        jTextFieldTlf = new javax.swing.JTextField();
         jTextFieldHerria = new javax.swing.JTextField();
+        jTextFieldTlf = new javax.swing.JTextField();
+        jTextFieldEmail = new javax.swing.JTextField();
         jPanelHornInfoTaula = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableHornitzaileaInfo = new javax.swing.JTable();
@@ -110,7 +109,7 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
                 .addComponent(jButtonAldatu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonGehitu)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 622, Short.MAX_VALUE)
                 .addComponent(jButtonIrten)
                 .addGap(23, 23, 23))
         );
@@ -138,7 +137,7 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelHorKud, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 582, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 610, Short.MAX_VALUE)
                 .addComponent(bilatuLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldBilatu, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,47 +174,17 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
         jTextFieldKodeHor.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldKodeHor.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
         jTextFieldIzena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldIzena.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
-        jTextFieldTlf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextFieldTlf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         jTextFieldHerria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldHerria.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout jPanelHornTextFieldLayout = new javax.swing.GroupLayout(jPanelHornTextField);
-        jPanelHornTextField.setLayout(jPanelHornTextFieldLayout);
-        jPanelHornTextFieldLayout.setHorizontalGroup(
-            jPanelHornTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHornTextFieldLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanelHornTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldTlf, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldKodeHor, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
-        );
-        jPanelHornTextFieldLayout.setVerticalGroup(
-            jPanelHornTextFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHornTextFieldLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTextFieldKodeHor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldIzena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldTlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jTextFieldTlf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldTlf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTextFieldEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanelHornDatuakLayout = new javax.swing.GroupLayout(jPanelHornDatuak);
         jPanelHornDatuak.setLayout(jPanelHornDatuakLayout);
@@ -224,31 +193,43 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
             .addGroup(jPanelHornDatuakLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelKodHor)
-                    .addComponent(jLabelTlf)
-                    .addComponent(jLabelHerria)
-                    .addComponent(jLabelIzena)
-                    .addComponent(jLabelEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelHornTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelKodHor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelHerria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelIzena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldKodeHor, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldTlf, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanelHornDatuakLayout.setVerticalGroup(
             jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHornDatuakLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelHornTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelHornDatuakLayout.createSequentialGroup()
-                        .addComponent(jLabelKodHor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelIzena)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelHerria)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabelTlf)
-                        .addGap(11, 11, 11)
-                        .addComponent(jLabelEmail)))
+                .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelKodHor, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKodeHor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelIzena, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelHerria, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(jTextFieldTlf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelHornDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -271,41 +252,44 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
         jPanelHornInfoTaula.setLayout(jPanelHornInfoTaulaLayout);
         jPanelHornInfoTaulaLayout.setHorizontalGroup(
             jPanelHornInfoTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelHornInfoTaulaLayout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHornInfoTaulaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 668, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
         );
         jPanelHornInfoTaulaLayout.setVerticalGroup(
             jPanelHornInfoTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelHornInfoTaulaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanelOsoaLayout = new javax.swing.GroupLayout(jPanelOsoa);
         jPanelOsoa.setLayout(jPanelOsoaLayout);
         jPanelOsoaLayout.setHorizontalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1093, Short.MAX_VALUE)
+            .addGap(0, 1112, Short.MAX_VALUE)
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addGap(109, 109, 109)
-                    .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanelOina, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOsoaLayout.createSequentialGroup()
-                            .addComponent(jPanelHornDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                            .addComponent(jPanelHornInfoTaula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(15, 15, 15)))
-                    .addContainerGap())
+                    .addComponent(jPanelHornDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(718, Short.MAX_VALUE))
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(43, Short.MAX_VALUE)))
+                    .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                            .addGap(0, 109, Short.MAX_VALUE)
+                            .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jPanelOina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanelHornInfoTaula, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addContainerGap(34, Short.MAX_VALUE)))
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 314, Short.MAX_VALUE)
+            .addGap(0, 340, Short.MAX_VALUE)
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -323,7 +307,9 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelOsoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,7 +381,6 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
     public javax.swing.JPanel jPanelGoiburua;
     public javax.swing.JPanel jPanelHornDatuak;
     public javax.swing.JPanel jPanelHornInfoTaula;
-    public javax.swing.JPanel jPanelHornTextField;
     public javax.swing.JPanel jPanelOina;
     public javax.swing.JPanel jPanelOsoa;
     private javax.swing.JScrollPane jScrollPane2;

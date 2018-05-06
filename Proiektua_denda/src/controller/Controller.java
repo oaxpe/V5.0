@@ -336,7 +336,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaInfo.jPanelGoiburua.setOpaque(false);
         viewBezeroaInfo.jPanelOina.setOpaque(false);
         viewBezeroaInfo.jPanelBezDatuak.setOpaque(false);
-        viewBezeroaInfo.jPanelBezTextField.setOpaque(false);
         viewBezeroaInfo.jPanelBezTaula.setOpaque(false);
     }
  
@@ -399,7 +398,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaInfo.jPanelGoiburua.setOpaque(false);
         viewLangileaInfo.jPanelOina.setOpaque(false);
         viewLangileaInfo.jPanelLangDatuak.setOpaque(false);
-        viewLangileaInfo.jPanelLangTextField.setOpaque(false);
         viewLangileaInfo.jPanelLangTaula.setOpaque(false);
     }
     
@@ -502,21 +500,18 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jPanelJertsGoiburua.setOpaque(false);
         viewProduktuaAukeratu.jPanelJertsGorp.setOpaque(false);
         viewProduktuaAukeratu.jPanelJertsInfo.setOpaque(false);
-        viewProduktuaAukeratu.jPanelJertsTextField.setOpaque(false);
         viewProduktuaAukeratu.jPanelJertsInfoTaula.setOpaque(false);
         viewProduktuaAukeratu.jPanelJertsBotoiak.setOpaque(false);
         viewProduktuaAukeratu.jPanelKami.setBackground(Color.WHITE);
         viewProduktuaAukeratu.jPanelKamiGoiburua.setOpaque(false);
         viewProduktuaAukeratu.jPanelKamiGorp.setOpaque(false);
         viewProduktuaAukeratu.jPanelKamiInfo.setOpaque(false);
-        viewProduktuaAukeratu.jPanelKamiTextField.setOpaque(false);
         viewProduktuaAukeratu.jPanelKamiInfoTaula.setOpaque(false);
         viewProduktuaAukeratu.jPanelKamiBotoiak.setOpaque(false);
         viewProduktuaAukeratu.jPanelPrak.setBackground(Color.WHITE);
         viewProduktuaAukeratu.jPanelPrakGoiburua.setOpaque(false);
         viewProduktuaAukeratu.jPanelPrakGorp.setOpaque(false);
         viewProduktuaAukeratu.jPanelPrakInfo.setOpaque(false);
-        viewProduktuaAukeratu.jPanelPrakTextField.setOpaque(false);
         viewProduktuaAukeratu.jPanelPrakInfoTaula.setOpaque(false);
         viewProduktuaAukeratu.jPanelPrakBotoiak.setOpaque(false);
     }
@@ -608,7 +603,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewHornitzaileaInfo.jPanelGoiburua.setOpaque(false);
         viewHornitzaileaInfo.jPanelOina.setOpaque(false);
         viewHornitzaileaInfo.jPanelHornDatuak.setOpaque(false);
-        viewHornitzaileaInfo.jPanelHornTextField.setOpaque(false);
         viewHornitzaileaInfo.jPanelHornInfoTaula.setOpaque(false);
     }
     
@@ -650,7 +644,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jPanelGoiburua.setOpaque(false);
         viewEskaeraInfo.jPanelOina.setOpaque(false);
         viewEskaeraInfo.jPanelEskDatuak.setOpaque(false);
-        viewEskaeraInfo.jPanelEskTextField.setOpaque(false);
         viewEskaeraInfo.jPanelEskInfoTaula.setOpaque(false);
     }
     
@@ -686,30 +679,25 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewMenuNagusia.jButtonBezeroa) {
             viewBezeroaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-//            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
-            enableComponets(viewBezeroaInfo.jPanelBezTextField, false);
-//            viewBezeroaInfo.jTextFieldAbizena1.setEditable(false);
+            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
             bezDatuakErakutsiTaula();
         }
         else if (comando == viewMenuNagusia.jButtonLangilea) {
             viewLangileaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-//            enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-            enableComponets(viewLangileaInfo.jPanelLangTextField, false);
+            enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
             langDatuakErakutsiTaula();
         }
         else if (comando == viewMenuNagusia.jButtonHornitzailea) {
             viewHornitzaileaInfo.setVisible(true); 
             viewMenuNagusia.setEnabled(false);
-//            enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
-            enableComponets(viewHornitzaileaInfo.jPanelHornTextField, false);
+            enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
             hornDatuakErakutsiTaula();
         }
         else if (comando == viewMenuNagusia.jButtonEskaera) {
             viewEskaeraInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-//            enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
-            enableComponets(viewEskaeraInfo.jPanelEskTextField, false);
+            enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
             eskDatuakErakutsiTaula();
         }
         
@@ -722,7 +710,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewBezeroaInfo.jButtonIrten) {
             viewBezeroaInfo.dispose();
             viewMenuNagusia.setEnabled(true);
-//            viewMenuNagusia.setAlwaysOnTop(true);
         }
         else if (comando == viewBezeroaInfo.jButtonEzabatu) {
             int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(); // aukeratutako lerroa
@@ -1051,18 +1038,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public void ancestorAdded(AncestorEvent event) {
         Object comando = event.getSource();
         if (comando == viewProduktuaAukeratu.jPanelJerts) {
-//            enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
-            enableComponets(viewProduktuaAukeratu.jPanelJertsTextField, false);
+            enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
             jertsDatuakErakutsiTaula();
         }
         else if (comando == viewProduktuaAukeratu.jPanelKami) {
-//            enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
-            enableComponets(viewProduktuaAukeratu.jPanelKamiTextField, false);
+            enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
             kamiDatuakErakutsiTaula();
         }
         else if (comando == viewProduktuaAukeratu.jPanelPrak) {
-//            enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
-            enableComponets(viewProduktuaAukeratu.jPanelPrakTextField, false);
+            enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
             prakDatuakErakutsiTaula();
         }
     }
