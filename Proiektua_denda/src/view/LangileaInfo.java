@@ -490,7 +490,7 @@ public class LangileaInfo extends javax.swing.JFrame {
     public javax.swing.JTable jTableLangileaInfo;
     public javax.swing.JTextField jTextFieldAbizena1;
     public javax.swing.JTextField jTextFieldAbizena2;
-    private javax.swing.JTextField jTextFieldBilatu;
+    public javax.swing.JTextField jTextFieldBilatu;
     public javax.swing.JTextField jTextFieldEremua;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;

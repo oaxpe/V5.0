@@ -363,7 +363,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     public javax.swing.JTable jTableEskaeraInfo;
-    private javax.swing.JTextField jTextFieldBilatu;
+    public javax.swing.JTextField jTextFieldBilatu;
     public javax.swing.JTextField jTextFieldData;
     public javax.swing.JTextField jTextFieldHornitzailea;
     public javax.swing.JTextField jTextFieldKodeEsk;

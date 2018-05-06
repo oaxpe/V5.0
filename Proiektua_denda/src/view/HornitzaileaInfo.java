@@ -387,7 +387,7 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
     public javax.swing.JTable jTableHornitzaileaInfo;
-    private javax.swing.JTextField jTextFieldBilatu;
+    public javax.swing.JTextField jTextFieldBilatu;
     public javax.swing.JTextField jTextFieldEmail;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;

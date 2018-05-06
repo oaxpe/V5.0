@@ -446,7 +446,7 @@ public class BezeroaInfo extends javax.swing.JFrame {
     public javax.swing.JTable jTableBezeroaInfo;
     public javax.swing.JTextField jTextFieldAbizena1;
     public javax.swing.JTextField jTextFieldAbizena2;
-    private javax.swing.JTextField jTextFieldBilatu;
+    public javax.swing.JTextField jTextFieldBilatu;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;
     public javax.swing.JTextField jTextFieldJaioData;

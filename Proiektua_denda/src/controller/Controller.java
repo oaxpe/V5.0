@@ -299,6 +299,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         sasoiaKargatuKami();
         sasoiaKargatuPrak();
         motaKargatu();
+        
+        /* momentuz bilatzeko aukera ez dago eskuragai */
+        viewBezeroaInfo.jTextFieldBilatu.setEnabled(false);
+        viewLangileaInfo.jTextFieldBilatu.setEnabled(false);
+        viewProduktuaAukeratu.jTextFieldBilatuJerts.setEnabled(false);
+        viewProduktuaAukeratu.jTextFieldBilatuKami.setEnabled(false);
+        viewProduktuaAukeratu.jTextFieldBilatuPrak.setEnabled(false);
+        viewHornitzaileaInfo.jTextFieldBilatu.setEnabled(false);
+        viewEskaeraInfo.jTextFieldBilatu.setEnabled(false);
     }
     
     public void menuNagEstiloa() {

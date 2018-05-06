@@ -171,7 +171,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="bilatuLabel4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextFieldBilatu2" min="-2" pref="155" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBilatuJerts" min="-2" pref="155" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -180,7 +180,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldBilatu2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBilatuJerts" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -196,7 +196,10 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextFieldBilatu2">
+                    <Component class="javax.swing.JTextField" name="jTextFieldBilatuJerts">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabelJertsKud2">
                       <Properties>
@@ -656,7 +659,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="bilatuLabel5" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextFieldBilatu3" min="-2" pref="155" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBilatuKami" min="-2" pref="155" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -665,7 +668,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldBilatu3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBilatuKami" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -681,7 +684,10 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextFieldBilatu3">
+                    <Component class="javax.swing.JTextField" name="jTextFieldBilatuKami">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabelKamiKud">
                       <Properties>
@@ -1128,7 +1134,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jPanelPrakGoiburua" alignment="0" max="32767" attributes="0"/>
                               <Component id="jPanelPrakBotoiak" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jPanelPrakGorp" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="jPanelPrakGorp" alignment="0" pref="1162" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1163,7 +1169,7 @@
                               <EmptySpace pref="694" max="32767" attributes="0"/>
                               <Component id="bilatuLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jTextFieldBilatu5" min="-2" pref="155" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBilatuPrak" min="-2" pref="155" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1172,7 +1178,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jTextFieldBilatu5" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldBilatuPrak" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -1188,7 +1194,10 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="jTextFieldBilatu5">
+                    <Component class="javax.swing.JTextField" name="jTextFieldBilatuPrak">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabelPrakKud1">
                       <Properties>
