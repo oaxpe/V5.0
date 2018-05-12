@@ -78,26 +78,42 @@ public class KamisetaGehitu extends javax.swing.JFrame {
         jLabelKodKami.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodKami.setText("Kodea:");
 
+        jTextFieldKodeKami.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelMarka.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelMarka.setText("Marka:");
+
+        jTextFieldMarka.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelPrezioa.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelPrezioa.setText("Prezioa:");
 
+        jTextFieldPrezioa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelKolorea.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKolorea.setText("Kolorea:");
+
+        jTextFieldKolorea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelSexua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSexua.setText("Sexua:");
 
+        jComboBoxSexua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelJaioData.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelJaioData.setText("Stock-ean:");
+
+        jTextFieldStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelTaila.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelTaila.setText("Taila:");
 
+        jComboBoxTaila.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelSasoia.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSasoia.setText("Sasoia:");
+
+        jComboBoxSasoia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanelKamiDatuakLayout = new javax.swing.GroupLayout(jPanelKamiDatuak);
         jPanelKamiDatuak.setLayout(jPanelKamiDatuakLayout);
@@ -181,16 +197,16 @@ public class KamisetaGehitu extends javax.swing.JFrame {
                     .addComponent(jButtonReset)))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
         jButtonBerriaGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/berriaGehitu.png"))); // NOI18N
         jButtonBerriaGehitu.setBorder(null);
         jButtonBerriaGehitu.setBorderPainted(false);
+        jButtonBerriaGehitu.setOpaque(false);
 
+        jLabelBerriaGehitu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBerriaGehitu.setText("Berria gehitu");
 
         jLabelKamiGehitu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -227,7 +243,7 @@ public class KamisetaGehitu extends javax.swing.JFrame {
             .addGroup(jPanelOsoaLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jPanelKamiDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(116, Short.MAX_VALUE))
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -236,12 +252,12 @@ public class KamisetaGehitu extends javax.swing.JFrame {
                             .addGap(352, 352, 352)
                             .addComponent(jButtonIrten))
                         .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(22, Short.MAX_VALUE)))
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOsoaLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(66, Short.MAX_VALUE)
                 .addComponent(jPanelKamiDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,24 +266,24 @@ public class KamisetaGehitu extends javax.swing.JFrame {
                     .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(336, 336, 336)
                     .addComponent(jButtonIrten)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(19, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         pack();

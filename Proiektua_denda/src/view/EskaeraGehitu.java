@@ -43,12 +43,17 @@ public class EskaeraGehitu extends javax.swing.JFrame {
         jLabelEskGehitu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Eskaera berria");
 
         jLabelHornitzailea.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelHornitzailea.setText("Hornitzailea:");
 
+        jComboBoxHornitzailea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelKopurua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKopurua.setText("Kopurua:");
+
+        jTextFieldKopurua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jButtonReset.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonReset.setText("Reset");
@@ -95,16 +100,16 @@ public class EskaeraGehitu extends javax.swing.JFrame {
                     .addComponent(jButtonGorde)))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
         jButtonBerriaGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/berriaGehitu.png"))); // NOI18N
         jButtonBerriaGehitu.setBorder(null);
         jButtonBerriaGehitu.setBorderPainted(false);
+        jButtonBerriaGehitu.setOpaque(false);
 
+        jLabelBerriaGehitu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBerriaGehitu.setText("Berria gehitu");
 
         jLabelEskGehitu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -138,30 +143,26 @@ public class EskaeraGehitu extends javax.swing.JFrame {
         jPanelOsoa.setLayout(jPanelOsoaLayout);
         jPanelOsoaLayout.setHorizontalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 473, Short.MAX_VALUE)
-            .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelOsoaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanelOsoaLayout.createSequentialGroup()
-                            .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButtonIrten)))
-                    .addContainerGap(24, Short.MAX_VALUE)))
+            .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                        .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonIrten)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 183, Short.MAX_VALUE)
-            .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelOsoaLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jButtonIrten)
-                        .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonIrten)
+                    .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +228,7 @@ public class EskaeraGehitu extends javax.swing.JFrame {
                 new EskaeraGehitu().setVisible(true);
             }
         });
-                         
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton jButtonBerriaGehitu;
     public javax.swing.JButton jButtonGorde;
@@ -244,3 +245,4 @@ public class EskaeraGehitu extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldKopurua;
     // End of variables declaration//GEN-END:variables
 }
+

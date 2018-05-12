@@ -71,12 +71,15 @@ public class BezeroaGehitu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanelOsoa.setToolTipText("Bezero berria");
+
         jLabelBezGehitu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelBezGehitu.setText("BEZEROAREN DATUAK:");
 
         jButtonBerriaGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/berriaGehitu.png"))); // NOI18N
         jButtonBerriaGehitu.setBorderPainted(false);
 
+        jLabelBerriaGehitu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBerriaGehitu.setText("Berria gehitu");
 
         javax.swing.GroupLayout jPanelGoiburuaLayout = new javax.swing.GroupLayout(jPanelGoiburua);
@@ -104,9 +107,7 @@ public class BezeroaGehitu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
@@ -125,6 +126,12 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         jLabelSexua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSexua.setText("Sexua:");
 
+        jTextFieldIzena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextFieldAbizena2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextFieldNan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jbuttonGroupEmakGiz.add(jRadioButtonEmak);
         jRadioButtonEmak.setText("Emakumea");
 
@@ -133,6 +140,8 @@ public class BezeroaGehitu extends javax.swing.JFrame {
 
         jLabelAbizena1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelAbizena1.setText("Lehenengo abizena:");
+
+        jTextFieldAbizena1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jButtonGorde.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonGorde.setText("Gorde");
@@ -143,10 +152,14 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         jLabelHerria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelHerria.setText("Herria:");
 
+        jTextFieldHerria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelTlf.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelTlf.setText("Telefonoa:");
 
-        jDateChooserJaioData.setDateFormatString("yyyy-MM-dd");
+        jTextFieldTlf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jDateChooserJaioData.setDateFormatString("yyyy/MM/dd");
         jDateChooserJaioData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanelBezDatuakLayout = new javax.swing.GroupLayout(jPanelBezDatuak);
@@ -259,7 +272,7 @@ public class BezeroaGehitu extends javax.swing.JFrame {
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 439, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addContainerGap()

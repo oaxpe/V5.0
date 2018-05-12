@@ -36,6 +36,8 @@ public class LangileaInfo extends javax.swing.JFrame {
         jPanelLangTaula = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableLangileaInfo = new javax.swing.JTable();
+        jButtonAldaketaGorde = new javax.swing.JButton();
+        jButtonAldaketaEzabatu = new javax.swing.JButton();
         jPanelLangDatuak = new javax.swing.JPanel();
         jLabelIzena = new javax.swing.JLabel();
         jLabelAbizena2 = new javax.swing.JLabel();
@@ -53,13 +55,13 @@ public class LangileaInfo extends javax.swing.JFrame {
         jTextFieldAbizena1 = new javax.swing.JTextField();
         jTextFieldAbizena2 = new javax.swing.JTextField();
         jTextFieldNan = new javax.swing.JTextField();
-        jTextFieldJaioData = new javax.swing.JTextField();
         jRadioButtonEmak = new javax.swing.JRadioButton();
         jRadioButtonGiz = new javax.swing.JRadioButton();
         jTextFieldHerria = new javax.swing.JTextField();
         jTextFieldTlf = new javax.swing.JTextField();
         jTextFieldSoldata = new javax.swing.JTextField();
-        jTextFieldEremua = new javax.swing.JTextField();
+        jDateChooserJaioData = new com.toedter.calendar.JDateChooser();
+        jComboBoxEremua = new javax.swing.JComboBox<>();
         jPanelGoiburua = new javax.swing.JPanel();
         jTextFieldBilatu = new javax.swing.JTextField();
         jLabelLangKud = new javax.swing.JLabel();
@@ -95,6 +97,7 @@ public class LangileaInfo extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Langileen informazioa");
 
         jTableLangileaInfo.setAutoCreateRowSorter(true);
         jTableLangileaInfo.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -111,18 +114,34 @@ public class LangileaInfo extends javax.swing.JFrame {
         jTableLangileaInfo.setAutoscrolls(false);
         jScrollPane3.setViewportView(jTableLangileaInfo);
 
+        jButtonAldaketaGorde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/gorde.png"))); // NOI18N
+        jButtonAldaketaGorde.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jButtonAldaketaEzabatu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezabatu.png"))); // NOI18N
+        jButtonAldaketaEzabatu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout jPanelLangTaulaLayout = new javax.swing.GroupLayout(jPanelLangTaula);
         jPanelLangTaula.setLayout(jPanelLangTaulaLayout);
         jPanelLangTaulaLayout.setHorizontalGroup(
             jPanelLangTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+            .addGroup(jPanelLangTaulaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonAldaketaGorde)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAldaketaEzabatu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelLangTaulaLayout.setVerticalGroup(
             jPanelLangTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLangTaulaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelLangTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAldaketaGorde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAldaketaEzabatu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jLabelIzena.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
@@ -158,17 +177,20 @@ public class LangileaInfo extends javax.swing.JFrame {
         jLabelSoldata1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSoldata1.setText("Eremua:");
 
+        jTextFieldKodeLang.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldKodeLang.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldIzena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldIzena.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldAbizena1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldAbizena1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldAbizena2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldAbizena2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldNan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldNan.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
-        jTextFieldJaioData.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         buttonGroupEmGiz.add(jRadioButtonEmak);
         jRadioButtonEmak.setText("Emakumea");
@@ -176,13 +198,18 @@ public class LangileaInfo extends javax.swing.JFrame {
         buttonGroupEmGiz.add(jRadioButtonGiz);
         jRadioButtonGiz.setText("Gizona");
 
+        jTextFieldHerria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldHerria.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldTlf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldTlf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldSoldata.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldSoldata.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        jTextFieldEremua.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        jDateChooserJaioData.setDateFormatString("yyyy/MM/dd");
+
+        jComboBoxEremua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanelLangDatuakLayout = new javax.swing.GroupLayout(jPanelLangDatuak);
         jPanelLangDatuak.setLayout(jPanelLangDatuakLayout);
@@ -205,7 +232,7 @@ public class LangileaInfo extends javax.swing.JFrame {
                         .addComponent(jTextFieldIzena, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelAbizena1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
                         .addComponent(jLabelNan)
@@ -219,18 +246,22 @@ public class LangileaInfo extends javax.swing.JFrame {
                             .addComponent(jLabelSexua)
                             .addComponent(jLabelTlf)
                             .addComponent(jLabelHerria))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(jRadioButtonEmak)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jRadioButtonGiz))
-                                .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldTlf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldSoldata, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldEremua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelLangDatuakLayout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLangDatuakLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLangDatuakLayout.createSequentialGroup()
+                                        .addComponent(jRadioButtonEmak)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jRadioButtonGiz)
+                                        .addGap(18, 18, 18))
+                                    .addComponent(jTextFieldTlf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldSoldata, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jComboBoxEremua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelLangDatuakLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -260,9 +291,9 @@ public class LangileaInfo extends javax.swing.JFrame {
                     .addComponent(jLabelNan)
                     .addComponent(jTextFieldNan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabelJaioData)
-                    .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSexua)
@@ -283,9 +314,11 @@ public class LangileaInfo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelLangDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSoldata1)
-                    .addComponent(jTextFieldEremua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                    .addComponent(jComboBoxEremua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2))
         );
+
+        jTextFieldBilatu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelLangKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelLangKud.setText("LANGILEAK KUDEATU");
@@ -318,9 +351,7 @@ public class LangileaInfo extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
@@ -460,10 +491,14 @@ public class LangileaInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bilatuLabel2;
     private javax.swing.ButtonGroup buttonGroupEmGiz;
+    public javax.swing.JButton jButtonAldaketaEzabatu;
+    public javax.swing.JButton jButtonAldaketaGorde;
     public javax.swing.JButton jButtonAldatu;
     public javax.swing.JButton jButtonEzabatu;
     public javax.swing.JButton jButtonGehitu;
     public javax.swing.JButton jButtonIrten;
+    public javax.swing.JComboBox<String> jComboBoxEremua;
+    public com.toedter.calendar.JDateChooser jDateChooserJaioData;
     public javax.swing.JDialog jDialogEzabatuKonfirm;
     private javax.swing.JLabel jLabelAbizena1;
     private javax.swing.JLabel jLabelAbizena2;
@@ -491,10 +526,8 @@ public class LangileaInfo extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldAbizena1;
     public javax.swing.JTextField jTextFieldAbizena2;
     public javax.swing.JTextField jTextFieldBilatu;
-    public javax.swing.JTextField jTextFieldEremua;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;
-    public javax.swing.JTextField jTextFieldJaioData;
     public javax.swing.JTextField jTextFieldKodeLang;
     public javax.swing.JTextField jTextFieldNan;
     public javax.swing.JTextField jTextFieldSoldata;

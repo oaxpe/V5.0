@@ -82,29 +82,49 @@ public class PrakaGehitu extends javax.swing.JFrame {
         jLabelKodPrak.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodPrak.setText("Kodea:");
 
+        jTextFieldKodePrak.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelMarka.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelMarka.setText("Marka:");
+
+        jTextFieldMarka.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelPrezioa.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelPrezioa.setText("Prezioa:");
 
+        jTextFieldPrezioa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelKolorea.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKolorea.setText("Kolorea:");
+
+        jTextFieldKolorea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelSexua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSexua.setText("Sexua:");
 
+        jComboBoxSexua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelJaioData.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelJaioData.setText("Stock-ean:");
+
+        jTextFieldStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelTaila.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelTaila.setText("Taila:");
 
+        jComboBoxTaila.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelSasoia.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSasoia.setText("Sasoia:");
 
+        jComboBoxSasoia.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelLuzeera.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelLuzeera.setText("Luzeera:");
+
+        jTextFieldLuzeera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jComboBoxMota.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelMota.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelMota.setText("Mota:");
@@ -207,16 +227,16 @@ public class PrakaGehitu extends javax.swing.JFrame {
                     .addComponent(jButtonReset)))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
         jButtonBerriaGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/berriaGehitu.png"))); // NOI18N
         jButtonBerriaGehitu.setBorder(null);
         jButtonBerriaGehitu.setBorderPainted(false);
+        jButtonBerriaGehitu.setOpaque(false);
 
+        jLabelBerriaGehitu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBerriaGehitu.setText("Berria gehitu");
 
         jLabelKamiGehitu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -250,7 +270,7 @@ public class PrakaGehitu extends javax.swing.JFrame {
         jPanelOsoa.setLayout(jPanelOsoaLayout);
         jPanelOsoaLayout.setHorizontalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 445, Short.MAX_VALUE)
+            .addGap(0, 462, Short.MAX_VALUE)
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -260,11 +280,11 @@ public class PrakaGehitu extends javax.swing.JFrame {
                             .addComponent(jPanelPrakDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jButtonIrten)))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(19, Short.MAX_VALUE)))
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 518, Short.MAX_VALUE)
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -273,24 +293,24 @@ public class PrakaGehitu extends javax.swing.JFrame {
                     .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jButtonIrten)
                         .addComponent(jPanelPrakDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(21, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
                 .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
 
         pack();

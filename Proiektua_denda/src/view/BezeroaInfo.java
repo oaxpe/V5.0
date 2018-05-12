@@ -5,9 +5,6 @@
  */
 package view;
 
-import java.awt.Color;
-import javax.swing.BorderFactory;
-
 /**
  *
  * @author Oihane Axpe
@@ -39,6 +36,8 @@ public class BezeroaInfo extends javax.swing.JFrame {
         jPanelBezTaula = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableBezeroaInfo = new javax.swing.JTable();
+        jButtonAldaketaGorde = new javax.swing.JButton();
+        jButtonAldaketaEzabatu = new javax.swing.JButton();
         jPanelBezDatuak = new javax.swing.JPanel();
         jLabelIzena = new javax.swing.JLabel();
         jLabelAbizena2 = new javax.swing.JLabel();
@@ -54,11 +53,11 @@ public class BezeroaInfo extends javax.swing.JFrame {
         jTextFieldAbizena1 = new javax.swing.JTextField();
         jTextFieldAbizena2 = new javax.swing.JTextField();
         jTextFieldNan = new javax.swing.JTextField();
-        jTextFieldJaioData = new javax.swing.JTextField();
         jRadioButtonEmak = new javax.swing.JRadioButton();
         jRadioButtonGiz = new javax.swing.JRadioButton();
         jTextFieldHerria = new javax.swing.JTextField();
         jTextFieldTlf = new javax.swing.JTextField();
+        jDateChooserJaioData = new com.toedter.calendar.JDateChooser();
         jPanelGoiburua = new javax.swing.JPanel();
         jTextFieldBilatu = new javax.swing.JTextField();
         jLabelBezKud = new javax.swing.JLabel();
@@ -107,20 +106,35 @@ public class BezeroaInfo extends javax.swing.JFrame {
         ));
         jTableBezeroaInfo.setToolTipText("");
         jTableBezeroaInfo.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        jTableBezeroaInfo.setAutoscrolls(false);
         jScrollPane3.setViewportView(jTableBezeroaInfo);
+
+        jButtonAldaketaGorde.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/gorde.png"))); // NOI18N
+        jButtonAldaketaGorde.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jButtonAldaketaEzabatu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezabatu.png"))); // NOI18N
+        jButtonAldaketaEzabatu.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelBezTaulaLayout = new javax.swing.GroupLayout(jPanelBezTaula);
         jPanelBezTaula.setLayout(jPanelBezTaulaLayout);
         jPanelBezTaulaLayout.setHorizontalGroup(
             jPanelBezTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 690, Short.MAX_VALUE)
+            .addGroup(jPanelBezTaulaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonAldaketaGorde)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAldaketaEzabatu)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelBezTaulaLayout.setVerticalGroup(
             jPanelBezTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBezTaulaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelBezTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAldaketaGorde, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonAldaketaEzabatu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -151,17 +165,20 @@ public class BezeroaInfo extends javax.swing.JFrame {
         jLabelKodBez.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodBez.setText("Kodea:");
 
+        jTextFieldKodeBez.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldKodeBez.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldIzena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldIzena.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldAbizena1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldAbizena1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldAbizena2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldAbizena2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldNan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldNan.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
-        jTextFieldJaioData.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         buttonGroupEmGiz.add(jRadioButtonEmak);
         jRadioButtonEmak.setText("Emakumea");
@@ -169,9 +186,13 @@ public class BezeroaInfo extends javax.swing.JFrame {
         buttonGroupEmGiz.add(jRadioButtonGiz);
         jRadioButtonGiz.setText("Gizona");
 
+        jTextFieldHerria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldHerria.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldTlf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldTlf.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jDateChooserJaioData.setDateFormatString("yyyy/MM/dd");
 
         javax.swing.GroupLayout jPanelBezDatuakLayout = new javax.swing.GroupLayout(jPanelBezDatuak);
         jPanelBezDatuak.setLayout(jPanelBezDatuakLayout);
@@ -189,67 +210,75 @@ public class BezeroaInfo extends javax.swing.JFrame {
                     .addComponent(jLabelNan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelIzena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldKodeBez, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNan, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBezDatuakLayout.createSequentialGroup()
-                        .addComponent(jRadioButtonEmak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButtonGiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                    .addComponent(jTextFieldTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE))
-                .addGap(20, 20, 20))
+                    .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
+                        .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldKodeBez, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldAbizena2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldNan, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBezDatuakLayout.createSequentialGroup()
+                                        .addComponent(jRadioButtonEmak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jRadioButtonGiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(20, 20, 20))
+                    .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldTlf, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelBezDatuakLayout.setVerticalGroup(
             jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelKodBez, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jTextFieldKodeBez))
+                    .addComponent(jLabelKodBez, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKodeBez, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelIzena, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                    .addComponent(jLabelIzena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldIzena, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAbizena1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                    .addComponent(jLabelAbizena1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldAbizena1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jTextFieldAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                    .addComponent(jLabelAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldAbizena2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNan, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jTextFieldNan, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
+                    .addComponent(jLabelNan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldNan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelJaioData)
+                    .addComponent(jDateChooserJaioData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelJaioData, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jTextFieldJaioData, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelSexua, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                    .addComponent(jLabelSexua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButtonEmak, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jRadioButtonGiz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelHerria, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE))
+                    .addComponent(jLabelHerria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldHerria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelBezDatuakLayout.createSequentialGroup()
-                        .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBezDatuakLayout.createSequentialGroup()
-                        .addComponent(jTextFieldTlf, javax.swing.GroupLayout.DEFAULT_SIZE, 23, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addGroup(jPanelBezDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelTlf)
+                    .addComponent(jTextFieldTlf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jTextFieldBilatu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelBezKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelBezKud.setText("BEZEROAK KUDEATU");
@@ -282,9 +311,7 @@ public class BezeroaInfo extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
@@ -418,10 +445,13 @@ public class BezeroaInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bilatuLabel2;
     private javax.swing.ButtonGroup buttonGroupEmGiz;
+    public javax.swing.JButton jButtonAldaketaEzabatu;
+    public javax.swing.JButton jButtonAldaketaGorde;
     public javax.swing.JButton jButtonAldatu;
     public javax.swing.JButton jButtonEzabatu;
     public javax.swing.JButton jButtonGehitu;
     public javax.swing.JButton jButtonIrten;
+    public com.toedter.calendar.JDateChooser jDateChooserJaioData;
     public javax.swing.JDialog jDialogEzabatuKonfirm;
     private javax.swing.JLabel jLabelAbizena1;
     private javax.swing.JLabel jLabelAbizena2;
@@ -449,7 +479,6 @@ public class BezeroaInfo extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldBilatu;
     public javax.swing.JTextField jTextFieldHerria;
     public javax.swing.JTextField jTextFieldIzena;
-    public javax.swing.JTextField jTextFieldJaioData;
     public javax.swing.JTextField jTextFieldKodeBez;
     public javax.swing.JTextField jTextFieldNan;
     public javax.swing.JTextField jTextFieldTlf;

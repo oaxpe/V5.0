@@ -148,7 +148,8 @@ public class JertseaKudeatu {
     }
     
     /* Dauden jertse guztiak erakusteko metodoa */
-    public static void jertseaInbentarioa() {
+    public static ArrayList<Jertsea> jertseaInbentarioa() {
+        ArrayList<Jertsea> jertsInb = new ArrayList<Jertsea>();
         boolean bool = false;
         System.out.println("\nJERTSEAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
@@ -158,6 +159,7 @@ public class JertseaKudeatu {
             while (true) {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
                 jerts.prodInbentarioa();// objektuaren datuak erakutsi
+                jertsInb.add(jerts);
                 bool = true;
             }
         } catch (EOFException ex) { 
@@ -169,10 +171,12 @@ public class JertseaKudeatu {
         } 
         if (!bool)
             System.out.println("Ez dago jertserik.");   
+        return jertsInb;
     }
     
     /* kantitatea 5 baino gutxiago duten jertseak erakusten ditu */
-    public static void jertseaEskatzeko() {
+    public static ArrayList<Jertsea> jertseaEskatzeko() {
+        ArrayList<Jertsea> jertsEsk = new ArrayList<Jertsea>();
         System.out.println("\nJERTSEAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         boolean bool = false;
@@ -183,6 +187,7 @@ public class JertseaKudeatu {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
                 if (jerts.getKantStock()<5) {
                     jerts.prodInbentarioa();// objektuaren datuak erakutsi
+                    jertsEsk.add(jerts);
                     bool = true;
                 }
             }
@@ -195,6 +200,7 @@ public class JertseaKudeatu {
         } 
         if (!bool)
             System.out.println("\tEz dago eskatzeko produkturik.");
+        return jertsEsk;
     }
     
     /* JERTSEAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */

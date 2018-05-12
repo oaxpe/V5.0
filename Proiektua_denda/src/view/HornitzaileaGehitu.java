@@ -70,8 +70,16 @@ public class HornitzaileaGehitu extends javax.swing.JFrame {
         emailLabel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         emailLabel.setText("Email:");
 
+        jTextFieldIzena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextFieldTlf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextFieldEmail.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         herriaLabel.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         herriaLabel.setText("Herria:");
+
+        jTextFieldHerria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jButtonGorde.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonGorde.setText("Gorde");
@@ -133,16 +141,16 @@ public class HornitzaileaGehitu extends javax.swing.JFrame {
                     .addComponent(jButtonReset)))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
         jButtonBerriaGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/berriaGehitu.png"))); // NOI18N
         jButtonBerriaGehitu.setBorder(null);
         jButtonBerriaGehitu.setBorderPainted(false);
+        jButtonBerriaGehitu.setOpaque(false);
 
+        jLabelBerriaGehitu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBerriaGehitu.setText("Berria gehitu");
 
         jLabelHornGehitu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N

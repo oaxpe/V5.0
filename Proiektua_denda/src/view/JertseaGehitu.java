@@ -71,6 +71,7 @@ public class JertseaGehitu extends javax.swing.JFrame {
         jButtonBerriaGehitu.setBorder(null);
         jButtonBerriaGehitu.setBorderPainted(false);
 
+        jLabelBerriaGehitu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBerriaGehitu.setText("Berria gehitu");
 
         jLabelJertsGehitu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -100,9 +101,7 @@ public class JertseaGehitu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
@@ -115,23 +114,37 @@ public class JertseaGehitu extends javax.swing.JFrame {
         jLabelKodJerts.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodJerts.setText("Kodea:");
 
+        jTextFieldKodeJerts.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelMarka.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelMarka.setText("Marka:");
+
+        jTextFieldMarka.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelPrezioa.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelPrezioa.setText("Prezioa:");
 
+        jTextFieldPrezioa.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelKolorea.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKolorea.setText("Kolorea:");
+
+        jTextFieldKolorea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelSexua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSexua.setText("Sexua:");
 
+        jComboBoxSexua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelJaioData.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelJaioData.setText("Stock-ean:");
 
+        jTextFieldStock.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelTaila.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelTaila.setText("Taila:");
+
+        jComboBoxTaila.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanelJertsDatuakLayout = new javax.swing.GroupLayout(jPanelJertsDatuak);
         jPanelJertsDatuak.setLayout(jPanelJertsDatuakLayout);
@@ -227,7 +240,7 @@ public class JertseaGehitu extends javax.swing.JFrame {
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 391, Short.MAX_VALUE)
+            .addGap(0, 419, Short.MAX_VALUE)
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addContainerGap()

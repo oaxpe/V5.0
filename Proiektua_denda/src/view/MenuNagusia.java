@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.Color;
+
 /**
  *
  * @author Oihane Axpe
@@ -43,9 +45,9 @@ public class MenuNagusia extends javax.swing.JFrame {
         jLabelInfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ATENEA");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanelGoiburua.setBackground(new java.awt.Color(0, 0, 153));
         jPanelGoiburua.setForeground(new java.awt.Color(51, 0, 51));
 
         jLabel1.setFont(new java.awt.Font("Toledo", 1, 36)); // NOI18N
@@ -81,6 +83,7 @@ public class MenuNagusia extends javax.swing.JFrame {
         jButtonDenda.setFont(jButtonDenda.getFont().deriveFont(jButtonDenda.getFont().getStyle() | java.awt.Font.BOLD, 20));
         jButtonDenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/denda.png"))); // NOI18N
         jButtonDenda.setText("Denda");
+        jButtonDenda.setOpaque(false);
 
         jButtonProduktua.setFont(jButtonProduktua.getFont().deriveFont(jButtonProduktua.getFont().getStyle() | java.awt.Font.BOLD, 20));
         jButtonProduktua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/produktuak.png"))); // NOI18N
@@ -90,10 +93,12 @@ public class MenuNagusia extends javax.swing.JFrame {
         jButtonBezeroa.setFont(jButtonBezeroa.getFont().deriveFont(jButtonBezeroa.getFont().getStyle() | java.awt.Font.BOLD, 20));
         jButtonBezeroa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bezeroa.png"))); // NOI18N
         jButtonBezeroa.setText("Bezeroak");
+        jButtonBezeroa.setOpaque(false);
 
         jButtonLangilea.setFont(jButtonLangilea.getFont().deriveFont(jButtonLangilea.getFont().getStyle() | java.awt.Font.BOLD, 20));
         jButtonLangilea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/langileak.png"))); // NOI18N
         jButtonLangilea.setText("Langileak");
+        jButtonLangilea.setOpaque(false);
 
         jButtonHornitzailea.setFont(jButtonHornitzailea.getFont().deriveFont(jButtonHornitzailea.getFont().getStyle() | java.awt.Font.BOLD, 20));
         jButtonHornitzailea.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/hornitzailea.png"))); // NOI18N
@@ -109,15 +114,15 @@ public class MenuNagusia extends javax.swing.JFrame {
         jPanelGorputzaLayout.setHorizontalGroup(
             jPanelGorputzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelGorputzaLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(95, 95, 95)
                 .addGroup(jPanelGorputzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonProduktua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonDenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelGorputzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonHornitzailea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButtonBezeroa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelGorputzaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButtonEskaera)
                     .addComponent(jButtonLangilea))
@@ -143,9 +148,6 @@ public class MenuNagusia extends javax.swing.JFrame {
                 .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        jPanelOina.setBackground(new java.awt.Color(0, 0, 102));
-
-        jButtonIrten.setBackground(new java.awt.Color(204, 204, 204));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
@@ -167,7 +169,7 @@ public class MenuNagusia extends javax.swing.JFrame {
         jPanelOinaLayout.setVerticalGroup(
             jPanelOinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOinaLayout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(jPanelOinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonIrten, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabelInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -180,9 +182,7 @@ public class MenuNagusia extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelGoiburua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanelOina, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanelGorputza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanelGorputza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +191,8 @@ public class MenuNagusia extends javax.swing.JFrame {
                 .addGap(0, 0, 0)
                 .addComponent(jPanelGorputza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanelOina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanelOina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();

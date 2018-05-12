@@ -83,9 +83,7 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
@@ -124,6 +122,8 @@ public class HornitzaileaInfo extends javax.swing.JFrame {
                     .addComponent(jButtonIrten))
                 .addContainerGap())
         );
+
+        jTextFieldBilatu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelHorKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelHorKud.setText("HORNITZAILEAK KUDEATU");

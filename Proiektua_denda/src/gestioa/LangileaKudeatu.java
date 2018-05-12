@@ -85,7 +85,6 @@ public class LangileaKudeatu {
             System.gc();
             Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
-            System.out.println("a");
             Logger.getLogger(LangileaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
 

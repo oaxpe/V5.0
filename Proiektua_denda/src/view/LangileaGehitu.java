@@ -73,11 +73,15 @@ public class LangileaGehitu extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Langile berria");
+
+        jPanelOsoa.setToolTipText("");
 
         jButtonBerriaGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/berriaGehitu.png"))); // NOI18N
         jButtonBerriaGehitu.setBorder(null);
         jButtonBerriaGehitu.setBorderPainted(false);
 
+        jLabelBerriaGehitu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelBerriaGehitu.setText("Berria gehitu");
 
         jLabelLangGehitu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -107,9 +111,7 @@ public class LangileaGehitu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
@@ -128,6 +130,12 @@ public class LangileaGehitu extends javax.swing.JFrame {
         jLabelSexua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSexua.setText("Sexua:");
 
+        jTextFieldIzena.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextFieldAbizena2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jTextFieldNan.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         emakumeGizonbuttonGroup1.add(jRadioButtonEmak);
         jRadioButtonEmak.setText("Emakumea");
 
@@ -136,6 +144,8 @@ public class LangileaGehitu extends javax.swing.JFrame {
 
         jLabelAbizena1.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelAbizena1.setText("Lehenengo abizena:");
+
+        jTextFieldAbizena1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jButtonGorde.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonGorde.setText("Gorde");
@@ -146,16 +156,24 @@ public class LangileaGehitu extends javax.swing.JFrame {
         jLabelHerria.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelHerria.setText("Herria:");
 
+        jTextFieldHerria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelTlf.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelTlf.setText("Telefonoa:");
+
+        jTextFieldTlf.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelSoldata.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelSoldata.setText("Soldata:");
 
+        jTextFieldSoldata.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
         jLabelEremua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelEremua.setText("Eremua:");
 
-        jDateChooserJaioData.setDateFormatString("yyyy-MM-dd");
+        jComboBoxEremua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jDateChooserJaioData.setDateFormatString("yyyy/MM/dd");
         jDateChooserJaioData.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanelLangDatuakLayout = new javax.swing.GroupLayout(jPanelLangDatuak);
@@ -283,7 +301,7 @@ public class LangileaGehitu extends javax.swing.JFrame {
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 529, Short.MAX_VALUE)
+            .addGap(0, 537, Short.MAX_VALUE)
             .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanelOsoaLayout.createSequentialGroup()
                     .addContainerGap()
@@ -292,23 +310,18 @@ public class LangileaGehitu extends javax.swing.JFrame {
                     .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jPanelLangDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButtonIrten))
-                    .addContainerGap(31, Short.MAX_VALUE)))
+                    .addContainerGap(39, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanelOsoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanelOsoa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

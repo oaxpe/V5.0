@@ -43,8 +43,8 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jLabelKodESk = new javax.swing.JLabel();
         jTextFieldKodeEsk = new javax.swing.JTextField();
         jTextFieldHornitzailea = new javax.swing.JTextField();
-        jTextFieldData = new javax.swing.JTextField();
         jTextFieldKopurua = new javax.swing.JTextField();
+        jDateChooserData = new com.toedter.calendar.JDateChooser();
         jPanelEskInfoTaula = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableEskaeraInfo = new javax.swing.JTable();
@@ -68,6 +68,9 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Eskaeren informazioa");
+
+        jTextFieldBilatu.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         jLabelEskKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelEskKud.setText("ESKAERAK KUDEATU");
@@ -112,13 +115,16 @@ public class EskaeraInfo extends javax.swing.JFrame {
         jLabelKodESk.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabelKodESk.setText("Kodea:");
 
+        jTextFieldKodeEsk.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldKodeEsk.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
+        jTextFieldHornitzailea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldHornitzailea.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        jTextFieldData.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-
+        jTextFieldKopurua.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTextFieldKopurua.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        jDateChooserData.setDateFormatString("yyyy/MM/dd");
 
         javax.swing.GroupLayout jPanelEskDatuakLayout = new javax.swing.GroupLayout(jPanelEskDatuak);
         jPanelEskDatuak.setLayout(jPanelEskDatuakLayout);
@@ -141,26 +147,27 @@ public class EskaeraInfo extends javax.swing.JFrame {
                             .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(28, 28, 28)
                         .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jDateChooserData, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(20, 20, 20))
         );
         jPanelEskDatuakLayout.setVerticalGroup(
             jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEskDatuakLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelKodESk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelHornitzailea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
-                        .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelKodESk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldKodeEsk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelHornitzailea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextFieldHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jDateChooserData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTlf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -199,20 +206,21 @@ public class EskaeraInfo extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButtonIrten.setBackground(new java.awt.Color(51, 0, 0));
         jButtonIrten.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
-        jButtonIrten.setForeground(new java.awt.Color(255, 255, 255));
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
         jButtonGehitu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonGehitu.setText("Gehitu");
+        jButtonGehitu.setOpaque(false);
 
         jButtonAldatu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonAldatu.setText("Aldatu");
+        jButtonAldatu.setOpaque(false);
 
         jButtonEzabatu.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonEzabatu.setText("Ezabatu");
+        jButtonEzabatu.setOpaque(false);
 
         javax.swing.GroupLayout jPanelOinaLayout = new javax.swing.GroupLayout(jPanelOina);
         jPanelOina.setLayout(jPanelOinaLayout);
@@ -348,6 +356,7 @@ public class EskaeraInfo extends javax.swing.JFrame {
     public javax.swing.JButton jButtonEzabatu;
     public javax.swing.JButton jButtonGehitu;
     public javax.swing.JButton jButtonIrten;
+    public com.toedter.calendar.JDateChooser jDateChooserData;
     private javax.swing.JLabel jLabelBilatu;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelEskKud;
@@ -364,7 +373,6 @@ public class EskaeraInfo extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     public javax.swing.JTable jTableEskaeraInfo;
     public javax.swing.JTextField jTextFieldBilatu;
-    public javax.swing.JTextField jTextFieldData;
     public javax.swing.JTextField jTextFieldHornitzailea;
     public javax.swing.JTextField jTextFieldKodeEsk;
     public javax.swing.JTextField jTextFieldKopurua;

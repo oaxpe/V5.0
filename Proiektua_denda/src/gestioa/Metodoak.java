@@ -150,4 +150,14 @@ public class Metodoak {
         dataFormatua = new SimpleDateFormat("yyyy/MM/dd").format(data.getTime()); // formatu zehatz baten jarri            
         return dataFormatua; 
     }
+    public static Date dataErakutsi(String s) {
+        Date data  = null;
+        DateFormat dataFormatua = new SimpleDateFormat("yyyy/MM/dd");//.format(data.getTime()); // formatu zehatz baten jarri            
+        try {
+            data = dataFormatua.parse(s);
+        } catch (ParseException ex) {
+            Logger.getLogger(Metodoak.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return data; 
+    }
 }
