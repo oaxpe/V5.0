@@ -105,6 +105,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         this.viewMenuNagusia = viewMenuNag;
         botoiakEntzuten();
         hasieratu();
+        viewMenuNagusia.setVisible(true);
     }
     
     /* METODOAK */
@@ -329,36 +330,20 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     public void hasieratu() {
-        viewMenuNagusia.setVisible(true);
-        
-        viewMenuNagusia.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewBezeroaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewBezeroaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewLangileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewLangileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewProduktuaAukeratu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewJertseaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewKamisetaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewPrakaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewHornitzaileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewHornitzaileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewEskaeraInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewEskaeraGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        
-        // LocationRelativeTo
-        viewMenuNagusia.setLocationRelativeTo(null);
-        viewBezeroaInfo.setLocationRelativeTo(null);
-        viewBezeroaGehitu.setLocationRelativeTo(null);
-        viewLangileaInfo.setLocationRelativeTo(null);
-        viewLangileaGehitu.setLocationRelativeTo(null);
-        viewProduktuaAukeratu.setLocationRelativeTo(null);
-        viewJertseaGehitu.setLocationRelativeTo(null);
-        viewKamisetaGehitu.setLocationRelativeTo(null);
-        viewPrakaGehitu.setLocationRelativeTo(null);
-        viewHornitzaileaInfo.setLocationRelativeTo(null);
-        viewHornitzaileaGehitu.setLocationRelativeTo(null);
-        viewEskaeraInfo.setLocationRelativeTo(null);
-        viewEskaeraGehitu.setLocationRelativeTo(null);
+        /* BISTEN ESTILOA */
+        menuNagEstiloa();
+        bezInfoEstiloa();
+        bezGehituEstiloa();
+        langInfoEstiloa();
+        langGehituEstiloa();
+        prodInfoEstiloa();
+        jertsGehituEstiloa();
+        kamiGehituEstiloa();
+        prakGehituEstiloa();
+        hornInfoEstiloa();
+        hornGehituEstiloa();
+        eskInfoEstiloa();
+        eskGehituEstiloa();  
         
 //        viewBezeroaInfo.jButtonAldatu.setEnabled(false);
 //        viewLangileaInfo.jButtonAldatu.setEnabled(false);
@@ -374,7 +359,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
         
         // tauletako estiloa
-        viewBezeroaInfo.jTableBezeroaInfo.setRowMargin(5);//ShowGrid(false);
+        viewBezeroaInfo.jTableBezeroaInfo.setShowGrid(false);
         viewBezeroaInfo.jTableBezeroaInfo.setShowHorizontalLines(true);
         viewLangileaInfo.jTableLangileaInfo.setShowGrid(false);
         viewLangileaInfo.jTableLangileaInfo.setShowHorizontalLines(true);
@@ -429,26 +414,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTextFieldBilatuKami.setEnabled(false);
         viewProduktuaAukeratu.jTextFieldBilatuPrak.setEnabled(false);
         viewHornitzaileaInfo.jTextFieldBilatu.setEnabled(false);
-        viewEskaeraInfo.jTextFieldBilatu.setEnabled(false);
-        
-        /* BISTEN ESTILOA */
-        menuNagEstiloa();
-        bezInfoEstiloa();
-        bezGehituEstiloa();
-        langInfoEstiloa();
-        langGehituEstiloa();
-        prodInfoEstiloa();
-        jertsGehituEstiloa();
-        kamiGehituEstiloa();
-        prakGehituEstiloa();
-        hornInfoEstiloa();
-        hornGehituEstiloa();
-        eskInfoEstiloa();
-        eskGehituEstiloa();        
+        viewEskaeraInfo.jTextFieldBilatu.setEnabled(false);     
     }
     
     public void menuNagEstiloa() {
         viewMenuNagusia.setTitle("ATENEA");
+        viewMenuNagusia.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewMenuNagusia.setLocationRelativeTo(null);
         viewMenuNagusia.jPanelGoiburua.setBackground(new Color(0,0,153));
         viewMenuNagusia.jPanelOina.setBackground(new Color(0,0,153));
         viewMenuNagusia.jPanelGorputza.setBackground(Color.WHITE);
@@ -457,6 +429,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void bezInfoEstiloa() {
         viewBezeroaInfo.setTitle("Bezeroen informazioa");
+        viewBezeroaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewBezeroaInfo.setLocationRelativeTo(null);
         viewBezeroaInfo.jButtonIrten.setBackground(urdina);
         viewBezeroaInfo.jButtonIrten.setForeground(Color.WHITE);
         viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -488,6 +462,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
  
     public void bezGehituEstiloa() {
         viewBezeroaGehitu.setTitle("Bezero berria");
+        viewBezeroaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewBezeroaGehitu.setLocationRelativeTo(null);
         viewBezeroaGehitu.jButtonIrten.setBackground(urdina);
         viewBezeroaGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -515,6 +491,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void langInfoEstiloa() {
         viewLangileaInfo.setTitle("Langileen informazioa");
+        viewLangileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewLangileaInfo.setLocationRelativeTo(null);
         viewLangileaInfo.jButtonIrten.setBackground(urdina);
         viewLangileaInfo.jButtonIrten.setForeground(Color.WHITE);
         viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -549,6 +527,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void langGehituEstiloa() {
         viewLangileaGehitu.setTitle("Langile berria");
+        viewLangileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewLangileaGehitu.setLocationRelativeTo(null);
         viewLangileaGehitu.jButtonIrten.setBackground(urdina);
         viewLangileaGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -577,6 +557,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void prodInfoEstiloa() {
         viewProduktuaAukeratu.setTitle("Produktuen informazioa");
+        viewProduktuaAukeratu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewProduktuaAukeratu.setLocationRelativeTo(null);
         viewProduktuaAukeratu.jTabbedPaneProd.setTabPlacement(JTabbedPane.TOP);
         viewProduktuaAukeratu.jButtonIrten.setBackground(urdina);
         viewProduktuaAukeratu.jButtonIrten.setForeground(Color.WHITE);
@@ -660,6 +642,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void jertsGehituEstiloa() {
         viewJertseaGehitu.setTitle("Jertse berria");
+        viewJertseaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewJertseaGehitu.setLocationRelativeTo(null);
         viewJertseaGehitu.jButtonIrten.setBackground(urdina);
         viewJertseaGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -682,6 +666,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void kamiGehituEstiloa() {
         viewKamisetaGehitu.setTitle("Kamiseta berria");
+        viewKamisetaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewKamisetaGehitu.setLocationRelativeTo(null);
         viewKamisetaGehitu.jButtonIrten.setBackground(urdina);
         viewKamisetaGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -702,7 +688,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewKamisetaGehitu.jPanelKamiDatuak.setOpaque(false);
     }
     public void prakGehituEstiloa() {
-        viewPrakaGehitu.setTitle("Kamiseta berria");
+        viewPrakaGehitu.setTitle("Praka berria");
+        viewPrakaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewPrakaGehitu.setLocationRelativeTo(null);
         viewPrakaGehitu.jButtonIrten.setBackground(urdina);
         viewPrakaGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -727,6 +715,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void hornInfoEstiloa() {
         viewHornitzaileaInfo.setTitle("Hornitzaileen informazioa");
+        viewHornitzaileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewHornitzaileaInfo.setLocationRelativeTo(null);
         viewHornitzaileaInfo.jButtonIrten.setBackground(urdina);
         viewHornitzaileaInfo.jButtonIrten.setForeground(Color.WHITE);
         viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -751,6 +741,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void hornGehituEstiloa() {
         viewHornitzaileaGehitu.setTitle("Hornitzaile berria");
+        viewHornitzaileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewHornitzaileaGehitu.setLocationRelativeTo(null);
         viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);
         viewHornitzaileaGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -771,6 +763,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void eskInfoEstiloa() {
         viewEskaeraInfo.setTitle("Eskaeren informazioa");
+        viewEskaeraInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewEskaeraInfo.setLocationRelativeTo(null);
         viewEskaeraInfo.jButtonIrten.setBackground(urdina);
         viewEskaeraInfo.jButtonIrten.setForeground(Color.WHITE);
         viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -791,6 +785,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     public void eskGehituEstiloa() {
         viewEskaeraGehitu.setTitle("Eskaera berria");
+        viewEskaeraGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewEskaeraGehitu.setLocationRelativeTo(null);
         viewEskaeraGehitu.jButtonIrten.setBackground(urdina);
         viewEskaeraGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -804,6 +800,513 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraGehitu.jPanelEskDatuak.setOpaque(false);
     }
         
+    /* METODOAK */
+    private void bezDatuakErakutsiTaula(ArrayList<Bezeroa> bezGuzt) {
+        DefaultTableModel model = new DefaultTableModel();
+        viewBezeroaInfo.jTableBezeroaInfo.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("IZENA");
+        model.addColumn("1.ABIZENA");
+        model.addColumn("2.ABIZENA");
+        model.addColumn("NAN");
+        model.addColumn("JAIOTZE DATA");
+        model.addColumn("SEXUA");
+        model.addColumn("HERRIA");
+        model.addColumn("TELEFONOA");
+        
+        for (int i=0; i<bezGuzt.size(); i++) {
+            Bezeroa bez = bezGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(bez.getKodBez(), i, 0);
+            model.setValueAt(bez.getIzena(), i, 1);
+            model.setValueAt(bez.getAbizena1(), i, 2);
+            model.setValueAt(bez.getAbizena2(), i, 3);
+            model.setValueAt(bez.getNan(), i, 4);
+            model.setValueAt(bez.getJaiotzeData(), i, 5);
+            model.setValueAt(bez.getSexua(), i, 6);
+            model.setValueAt(bez.getHerria(), i, 7);
+            model.setValueAt(bez.getTelefonoa(), i, 8);
+        }
+    }
+
+    private void langDatuakErakutsiTaula(ArrayList<Langilea> langGuzt) {
+        DefaultTableModel model = new DefaultTableModel();
+        viewLangileaInfo.jTableLangileaInfo.setModel(model);
+        model.addColumn("Kodea");
+        model.addColumn("Izena");
+        model.addColumn("1.abizena");
+        model.addColumn("2.abizena");
+        model.addColumn("NAN");
+        model.addColumn("Jaiotze data");
+        model.addColumn("Sexua");
+        model.addColumn("Herria");
+        model.addColumn("Telefono");
+        model.addColumn("Soldata");
+        model.addColumn("Eremua");
+        
+        for (int i=0; i<langGuzt.size(); i++) {
+            Langilea lang = langGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(lang.getKodLan(), i, 0);
+            model.setValueAt(lang.getIzena(), i, 1);
+            model.setValueAt(lang.getAbizena1(), i, 2);
+            model.setValueAt(lang.getAbizena2(), i, 3);
+            model.setValueAt(lang.getNan(), i, 4);
+            model.setValueAt(lang.getJaiotzeData(), i, 5);
+            model.setValueAt(lang.getSexua(), i, 6);
+            model.setValueAt(lang.getHerria(), i, 7);
+            model.setValueAt(lang.getTelefonoa(), i, 8);
+            model.setValueAt(lang.getSoldata(), i, 9);
+            model.setValueAt(lang.getEremua(), i, 10);
+        }
+    }
+    
+    private void jertsDatuakErakutsiTaula(ArrayList<Jertsea> jertsGuzt) {
+        DefaultTableModel model = new DefaultTableModel();
+        viewProduktuaAukeratu.jTableJertsInfo.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("MARKA");
+        model.addColumn("PREZIOA");
+        model.addColumn("KOLOREA");
+        model.addColumn("SEXUA");
+        model.addColumn("STOCK kantitatea");
+        model.addColumn("TAILA");
+        
+        for (int i=0; i<jertsGuzt.size(); i++) {
+            Jertsea jerts = jertsGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(jerts.getKodPro(), i, 0);
+            model.setValueAt(jerts.getMarka(), i, 1);
+            model.setValueAt(jerts.getPrezioa(), i, 2);
+            model.setValueAt(jerts.getKolorea(), i, 3);
+            model.setValueAt(jerts.getSexua(), i, 4);
+            model.setValueAt(jerts.getKantStock(), i, 5);
+            model.setValueAt(jerts.getTaila(), i, 6);
+        }
+    }
+    
+    private void kamiDatuakErakutsiTaula() {
+        DefaultTableModel model = new DefaultTableModel();
+        viewProduktuaAukeratu.jTableKamiInfo.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("MARKA");
+        model.addColumn("PREZIOA");
+        model.addColumn("KOLOREA");
+        model.addColumn("SEXUA");
+        model.addColumn("STOCK kantitatea");
+        model.addColumn("TAILA");
+        model.addColumn("SASOIA");
+        ArrayList<Kamiseta> kamiGuzt = KamisetaKudeatu.kamisetaGuztErakutsi();
+        
+        for (int i=0; i<kamiGuzt.size(); i++) {
+            Kamiseta kami = kamiGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(kami.getKodPro(), i, 0);
+            model.setValueAt(kami.getMarka(), i, 1);
+            model.setValueAt(kami.getPrezioa(), i, 2);
+            model.setValueAt(kami.getKolorea(), i, 3);
+            model.setValueAt(kami.getSexua(), i, 4);
+            model.setValueAt(kami.getKantStock(), i, 5);
+            model.setValueAt(kami.getTaila(), i, 6);
+            model.setValueAt(kami.getSasoia(), i, 7);
+        }
+    }
+    
+    private void prakDatuakErakutsiTaula() {
+        DefaultTableModel model = new DefaultTableModel();
+        viewProduktuaAukeratu.jTablePrakInfo.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("MARKA");
+        model.addColumn("PREZIOA");
+        model.addColumn("KOLOREA");
+        model.addColumn("SEXUA");
+        model.addColumn("STOCK kantitatea");
+        model.addColumn("TAILA");
+        model.addColumn("SASOIA");
+        model.addColumn("LUZEERA");
+        model.addColumn("MOTA");
+        
+        ArrayList<Praka> prakGuzt = PrakaKudeatu.prakaGutztErakutsi();
+        
+        for (int i=0; i<prakGuzt.size(); i++) {
+            Praka prak = prakGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(prak.getKodPro(), i, 0);
+            model.setValueAt(prak.getMarka(), i, 1);
+            model.setValueAt(prak.getPrezioa(), i, 2);
+            model.setValueAt(prak.getKolorea(), i, 3);
+            model.setValueAt(prak.getSexua(), i, 4);
+            model.setValueAt(prak.getKantStock(), i, 5);
+            model.setValueAt(prak.getTaila(), i, 6);
+            model.setValueAt(prak.getSasoia(), i, 7);
+            model.setValueAt(prak.getLuzeera(), i, 8);
+            model.setValueAt(prak.getMota(), i, 9);
+        }
+    }
+
+    private void hornDatuakErakutsiTaula() {
+        DefaultTableModel model = new DefaultTableModel();
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("IZENA");
+        model.addColumn("HERRIA");
+        model.addColumn("TELEFONOA");
+        model.addColumn("EMAILA");
+        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi();
+        
+        for (int i=0; i<hornGuzt.size(); i++) {
+            Hornitzailea horn = hornGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(horn.getKodHor(), i, 0);
+            model.setValueAt(horn.getIzena(), i, 1);
+            model.setValueAt(horn.getHerria(), i, 2);
+            model.setValueAt(horn.getTelefonoa(), i, 3);
+            model.setValueAt(horn.getEmail(), i, 4);
+        }
+    }
+    
+    private void eskDatuakErakutsiTaula() {
+        DefaultTableModel model = new DefaultTableModel();
+        viewEskaeraInfo.jTableEskaeraInfo.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("HORNITZAILEA");
+        model.addColumn("DATA");
+        model.addColumn("KOPURUA");
+        ArrayList<Eskaera> eskGuzt = EskaeraKudeatu.eskaeraGuztiakErakutsi();
+        
+        for (int i=0; i<eskGuzt.size(); i++) {
+            Eskaera esk = eskGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(esk.getEskZenb(), i, 0);
+            model.setValueAt(esk.getHornitzailea(), i, 1);
+            model.setValueAt(esk.getData(), i, 2);
+            model.setValueAt(esk.getKopurua(), i, 3);
+        }
+    }
+    
+    public void hornitzaileaKargatu(JComboBox comboBox) {
+        ArrayList<String> alHornitzaileGuzt = HornitzaileaKudeatu.hornitzaileIzenak();
+        comboBox.addItem("--- Aukeratu ---");
+        for (int i = 0; i < alHornitzaileGuzt.size(); i++) {
+            comboBox.addItem(alHornitzaileGuzt.get(i));
+        }
+    }
+    
+    public void tailaKargatuString(JComboBox comboBox) {
+        String[] taila = ProduktuaKudeatu.tailaKontrolatuString();
+        comboBox.addItem("--- Aukeratu ---");
+        for (String i : taila) {
+            comboBox.addItem(i);
+        }
+    }
+    
+    public void tailaKargatuInt(JComboBox comboBox) {
+        int[] taila = ProduktuaKudeatu.tailaKontrolatuZenb();
+        comboBox.addItem("--- Aukeratu ---");
+        for (int i : taila) {
+            comboBox.addItem(String.valueOf(i));
+        }
+    }
+    
+    public void sexuaKargatu(JComboBox comboBox) {
+        String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
+        comboBox.addItem("--- Aukeratu ---");
+        for (String i : sexua) {
+            comboBox.addItem(i);
+        }
+    }
+    
+    public void sasoiaKargatu(JComboBox comboBox) {
+        String[] sasoia = ProduktuaKudeatu.sasoiaKontrolatu();
+        comboBox.addItem("--- Aukeratu ---");
+        for (String i : sasoia) {
+            comboBox.addItem(i);
+        }
+    }
+    
+    public void motaKargatu(JComboBox comboBox) {
+        String[] mota = ProduktuaKudeatu.motaKontrolatu();
+        comboBox.addItem("--- Aukeratu ---");
+        for (String i : mota) {
+            comboBox.addItem(i);
+        }
+    }
+    
+    public void langEremuaKargatu(JComboBox comboBox) {
+        String[] eremua = LangileaKudeatu.langileEremuaKontrolatu();
+        comboBox.addItem("--- Aukeratu ---");
+        for (String i : eremua) {
+            comboBox.addItem(i);
+        }
+    }
+    
+    public void aukKargatu(JComboBox comboBox) {
+        String[] produktua = {"--- Aukeratu ---", "Koltsultatu", "Inbentarioa", "Eskatzeko dauden produktuak"};
+        comboBox.removeAllItems();
+        for (String i : produktua) {
+            comboBox.addItem(i);
+        }
+    }
+    
+    private void resetBezeroaGehitu() {
+        viewBezeroaGehitu.jTextFieldIzena.setText(null);
+        viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
+        viewBezeroaGehitu.jTextFieldAbizena2.setText(null);
+        viewBezeroaGehitu.jTextFieldNan.setText(null);
+        viewBezeroaGehitu.jDateChooserJaioData.setDate(null);
+        viewBezeroaGehitu.jRadioButtonEmak.setSelected(false);
+        viewBezeroaGehitu.jRadioButtonGiz.setSelected(false);
+        viewBezeroaGehitu.jTextFieldHerria.setText(null);
+        viewBezeroaGehitu.jTextFieldTlf.setText(null);
+    }
+    
+    private void resetLangileaGehitu() {
+        viewLangileaGehitu.jTextFieldIzena.setText(null);
+        viewLangileaGehitu.jTextFieldAbizena1.setText(null);
+        viewLangileaGehitu.jTextFieldAbizena2.setText(null);
+        viewLangileaGehitu.jTextFieldNan.setText(null);
+        viewLangileaGehitu.jDateChooserJaioData.setDate(null);
+        viewLangileaGehitu.jRadioButtonEmak.setSelected(false);
+        viewLangileaGehitu.jRadioButtonGiz.setSelected(false);
+        viewLangileaGehitu.jTextFieldHerria.setText(null);
+        viewLangileaGehitu.jTextFieldTlf.setText(null);
+        viewLangileaGehitu.jTextFieldSoldata.setText(null);
+        viewLangileaGehitu.jComboBoxEremua.setSelectedIndex(0);
+    }
+    
+    private void resetJertseaGehitu() {
+        viewJertseaGehitu.jTextFieldKodeJerts.setText(null);
+        viewJertseaGehitu.jTextFieldMarka.setText(null);
+        viewJertseaGehitu.jTextFieldPrezioa.setText(null);
+        viewJertseaGehitu.jTextFieldKolorea.setText(null);
+        viewJertseaGehitu.jComboBoxSexua.setSelectedIndex(0);
+        viewJertseaGehitu.jTextFieldStock.setText(null);
+        viewJertseaGehitu.jComboBoxTaila.setSelectedIndex(0);
+    }
+    
+    private void resetKamisetaGehitu() {
+        viewKamisetaGehitu.jTextFieldKodeKami.setText(null);
+        viewKamisetaGehitu.jTextFieldMarka.setText(null);
+        viewKamisetaGehitu.jTextFieldPrezioa.setText(null);
+        viewKamisetaGehitu.jTextFieldKolorea.setText(null);
+        viewKamisetaGehitu.jComboBoxSexua.setSelectedIndex(0);
+        viewKamisetaGehitu.jTextFieldStock.setText(null);
+        viewKamisetaGehitu.jComboBoxTaila.setSelectedIndex(0);
+        viewKamisetaGehitu.jComboBoxSasoia.setSelectedIndex(0);
+    }
+    
+    private void resetPrakaGehitu() {
+        viewPrakaGehitu.jTextFieldKodePrak.setText(null);
+        viewPrakaGehitu.jTextFieldMarka.setText(null);
+        viewPrakaGehitu.jTextFieldPrezioa.setText(null);
+        viewPrakaGehitu.jTextFieldKolorea.setText(null);
+        viewPrakaGehitu.jComboBoxSexua.setSelectedIndex(0);
+        viewPrakaGehitu.jTextFieldStock.setText(null);
+        viewPrakaGehitu.jComboBoxTaila.setSelectedIndex(0);
+        viewPrakaGehitu.jComboBoxSasoia.setSelectedIndex(0);
+        viewPrakaGehitu.jTextFieldLuzeera.setText(null);
+        viewPrakaGehitu.jComboBoxMota.setSelectedIndex(0);
+    }
+    
+    private void resetHornitzaileaGehitu() {
+        viewHornitzaileaGehitu.jTextFieldIzena.setText(null);
+        viewHornitzaileaGehitu.jTextFieldHerria.setText(null);
+        viewHornitzaileaGehitu.jTextFieldTlf.setText(null);
+        viewHornitzaileaGehitu.jTextFieldEmail.setText(null);
+    }
+    
+    private void resetEskaeraGehitu() {
+        viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
+        viewEskaeraGehitu.jTextFieldKopurua.setText(null);
+    }
+    
+    private void enableComponets (Container container, boolean bool) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            component.setEnabled(bool);
+        }
+    }
+    
+    private void fontComponets (Container container, String mota, int tamaina) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            component.setFont(new Font(mota, Font.PLAIN, tamaina));
+        }
+    }
+
+    private void aukBezDatuakBete(int aukLerroa) {    
+            viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
+            viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
+            viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
+            viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
+            viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
+            viewBezeroaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5))));
+            String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
+            if (aukSexuaRB.equals("emakumea")) {
+                viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
+            }
+            else {
+                viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
+            }
+            viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
+            viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
+    }
+    
+    private void resetBezeroaInfo() {
+        viewBezeroaInfo.jTextFieldKodeBez.setText(null);
+        viewBezeroaInfo.jTextFieldIzena.setText(null);
+        viewBezeroaInfo.jTextFieldAbizena1.setText(null);
+        viewBezeroaInfo.jTextFieldAbizena2.setText(null);
+        viewBezeroaInfo.jTextFieldNan.setText(null);
+        viewBezeroaInfo.jDateChooserJaioData.setDate(null);
+        viewBezeroaInfo.jRadioButtonEmak.setSelected(false);
+        viewBezeroaInfo.jRadioButtonGiz.setSelected(false);
+        viewBezeroaInfo.jTextFieldHerria.setText(null);
+        viewBezeroaInfo.jTextFieldTlf.setText(null);  
+    }
+    
+    private void aukLangDatuakBete(int aukLerroa) { 
+        viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewLangileaInfo.jTextFieldAbizena2.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewLangileaInfo.jTextFieldNan.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewLangileaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5))));
+        System.out.println(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5)));
+        String aukSexuaRB = String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
+        if (aukSexuaRB.equals("emakumea")) {
+            viewLangileaInfo.jRadioButtonEmak.setSelected(true);
+        }
+        else {
+            viewLangileaInfo.jRadioButtonGiz.setSelected(true);
+        }
+        viewLangileaInfo.jTextFieldHerria.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 7)));
+        viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
+        viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
+        viewLangileaInfo.jComboBoxEremua.setSelectedItem(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
+    }
+    
+    private void resetLangileaInfo() {
+        viewLangileaInfo.jTextFieldKodeLang.setText(null);
+        viewLangileaInfo.jTextFieldIzena.setText(null);
+        viewLangileaInfo.jTextFieldAbizena1.setText(null);
+        viewLangileaInfo.jTextFieldAbizena2.setText(null);
+        viewLangileaInfo.jTextFieldNan.setText(null);
+        viewLangileaInfo.jDateChooserJaioData.setDate(null);
+        viewLangileaInfo.jRadioButtonEmak.setSelected(false);
+        viewLangileaInfo.jRadioButtonGiz.setSelected(false);
+        viewLangileaInfo.jTextFieldHerria.setText(null);
+        viewLangileaInfo.jTextFieldTlf.setText(null);
+        viewLangileaInfo.jTextFieldSoldata.setText(null);
+        viewLangileaInfo.jComboBoxEremua.setSelectedItem(null);      
+    }
+    
+    private void aukJertsDatuakBete(int aukLerroa) {
+        viewProduktuaAukeratu.jTextFieldKodeJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewProduktuaAukeratu.jComboBoxSexuaJerts.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewProduktuaAukeratu.jTextFieldStockJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 5)));
+        viewProduktuaAukeratu.jComboBoxTailaJerts.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6)));
+    }
+    
+    private void resetJerts() {
+        viewProduktuaAukeratu.jTextFieldKodeJerts.setText(null);
+        viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(null);
+        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(null);
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(null);
+        viewProduktuaAukeratu.jComboBoxSexuaJerts.setSelectedItem(null);
+        viewProduktuaAukeratu.jTextFieldStockJerts.setText(null);
+        viewProduktuaAukeratu.jComboBoxTailaJerts.setSelectedItem(null);
+    }
+    
+    private void aukKamiDatuakBete(int aukLerroa) {
+        viewProduktuaAukeratu.jTextFieldKodeKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewProduktuaAukeratu.jTextFieldMarkaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewProduktuaAukeratu.jComboBoxSexuaKami.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewProduktuaAukeratu.jTextFieldStockKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 5)));
+        viewProduktuaAukeratu.jComboBoxTailaKami.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6)));
+        viewProduktuaAukeratu.jComboBoxSasoiaKami.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 7)));
+    }
+    
+    private void resetKami() {
+        viewProduktuaAukeratu.jTextFieldKodeKami.setText(null);
+        viewProduktuaAukeratu.jTextFieldMarkaKami.setText(null);
+        viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(null);
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(null);
+        viewProduktuaAukeratu.jComboBoxSexuaKami.setSelectedItem(null);
+        viewProduktuaAukeratu.jTextFieldStockKami.setText(null);
+        viewProduktuaAukeratu.jComboBoxTailaKami.setSelectedItem(null);
+        viewProduktuaAukeratu.jComboBoxSasoiaKami.setSelectedItem(null);
+    }
+    
+    private void aukPrakDatuakBete(int aukLerroa) { 
+        viewProduktuaAukeratu.jTextFieldKodePrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewProduktuaAukeratu.jComboBoxSexuaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewProduktuaAukeratu.jTextFieldStockPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 5)));
+        viewProduktuaAukeratu.jComboBoxTailaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6)));
+        viewProduktuaAukeratu.jComboBoxSasoiaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 7)));
+        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 8)));
+        viewProduktuaAukeratu.jComboBoxMotaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 9)));
+    }
+    
+    private void resetPrak() {
+        viewProduktuaAukeratu.jTextFieldKodePrak.setText(null);
+        viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(null);
+        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(null);
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(null);
+        viewProduktuaAukeratu.jComboBoxSexuaPrak.setSelectedItem(null);
+        viewProduktuaAukeratu.jTextFieldStockPrak.setText(null);
+        viewProduktuaAukeratu.jComboBoxTailaPrak.setSelectedItem(null);
+        viewProduktuaAukeratu.jComboBoxSasoiaPrak.setSelectedItem(null);
+        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(null);
+        viewProduktuaAukeratu.jComboBoxMotaPrak.setSelectedItem(null); 
+    }
+    
+    private void aukHornDatuakBete(int aukLerroa) {
+        viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
+    }
+    
+    private void resetHornInfo() {
+        viewHornitzaileaInfo.jTextFieldKodeHor.setText(null);
+        viewHornitzaileaInfo.jTextFieldIzena.setText(null);
+        viewHornitzaileaInfo.jTextFieldHerria.setText(null);
+        viewHornitzaileaInfo.jTextFieldTlf.setText(null);
+        viewHornitzaileaInfo.jTextFieldEmail.setText(null);
+    }
+    
+    private void aukEskDatuakBete(int aukLerroa) { 
+        viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewEskaeraInfo.jTextFieldHornitzailea.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewEskaeraInfo.jDateChooserData.setDate(Metodoak.dataErakutsi(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2))));
+        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
+    }
+    
+    private void resetEskInfo() {
+        viewEskaeraInfo.jTextFieldKodeEsk.setText(null);
+        viewEskaeraInfo.jTextFieldHornitzailea.setText(null);
+        viewEskaeraInfo.jDateChooserData.setDate(null);
+        viewEskaeraInfo.jTextFieldKopurua.setText(null); 
+    }
+    
+    /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
@@ -1289,7 +1792,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public void mouseReleased(MouseEvent e) {
         
     }
-    //[0,102,255]
 
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -1348,518 +1850,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewEskaeraInfo.jButtonIrten.setBackground(urdina);  
         else if (comando == viewEskaeraGehitu.jButtonIrten)
             viewEskaeraGehitu.jButtonIrten.setBackground(urdina);  
-        
-    }
-
-    /* METODOAK */
-    private void bezDatuakErakutsiTaula(ArrayList<Bezeroa> bezGuzt) {
-        DefaultTableModel model = new DefaultTableModel();// definimos el objeto tableModel
-        viewBezeroaInfo.jTableBezeroaInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("1.ABIZENA");
-        model.addColumn("2.ABIZENA");
-        model.addColumn("NAN");
-        model.addColumn("JAIOTZE DATA");
-        model.addColumn("SEXUA");
-        model.addColumn("HERRIA");
-        model.addColumn("TELEFONOA");
-//        ArrayList<Bezeroa> bezGuzt = BezeroaKudeatu.bezeroGuztiakErakutsi();
-        
-        for (int i=0; i<bezGuzt.size(); i++) {
-            Bezeroa bez = bezGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(bez.getKodBez(), i, 0);
-            model.setValueAt(bez.getIzena(), i, 1);
-            model.setValueAt(bez.getAbizena1(), i, 2);
-            model.setValueAt(bez.getAbizena2(), i, 3);
-            model.setValueAt(bez.getNan(), i, 4);
-            model.setValueAt(bez.getJaiotzeData(), i, 5);
-            model.setValueAt(bez.getSexua(), i, 6);
-            model.setValueAt(bez.getHerria(), i, 7);
-            model.setValueAt(bez.getTelefonoa(), i, 8);
-        }
-    }
-
-    private void langDatuakErakutsiTaula(ArrayList<Langilea> langGuzt) {
-        DefaultTableModel model = new DefaultTableModel();// definimos el objeto tableModel
-        viewLangileaInfo.jTableLangileaInfo.setModel(model);
-        model.addColumn("Kodea");
-        model.addColumn("Izena");
-        model.addColumn("1.abizena");
-        model.addColumn("2.abizena");
-        model.addColumn("NAN");
-        model.addColumn("Jaiotze data");
-        model.addColumn("Sexua");
-        model.addColumn("Herria");
-        model.addColumn("Telefono");
-        model.addColumn("Soldata");
-        model.addColumn("Eremua");
-//        ArrayList<Langilea> langGuzt = LangileaKudeatu.langileGuztiakErakutsi();
-        
-        for (int i=0; i<langGuzt.size(); i++) {
-            Langilea lang = langGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(lang.getKodLan(), i, 0);
-            model.setValueAt(lang.getIzena(), i, 1);
-            model.setValueAt(lang.getAbizena1(), i, 2);
-            model.setValueAt(lang.getAbizena2(), i, 3);
-            model.setValueAt(lang.getNan(), i, 4);
-            model.setValueAt(lang.getJaiotzeData(), i, 5);
-            model.setValueAt(lang.getSexua(), i, 6);
-            model.setValueAt(lang.getHerria(), i, 7);
-            model.setValueAt(lang.getTelefonoa(), i, 8);
-            model.setValueAt(lang.getSoldata(), i, 9);
-            model.setValueAt(lang.getEremua(), i, 10);
-        }
     }
     
-    private void jertsDatuakErakutsiTaula(ArrayList<Jertsea> jertsGuzt) {
-        DefaultTableModel model = new DefaultTableModel();// definimos el objeto tableModel
-        viewProduktuaAukeratu.jTableJertsInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("MARKA");
-        model.addColumn("PREZIOA");
-        model.addColumn("KOLOREA");
-        model.addColumn("SEXUA");
-        model.addColumn("STOCK kantitatea");
-        model.addColumn("TAILA");
-//        ArrayList<Jertsea> jertsGuzt = JertseaKudeatu.jertsGuztErakutsi();
-        
-        for (int i=0; i<jertsGuzt.size(); i++) {
-            Jertsea jerts = jertsGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(jerts.getKodPro(), i, 0);
-            model.setValueAt(jerts.getMarka(), i, 1);
-            model.setValueAt(jerts.getPrezioa(), i, 2);
-            model.setValueAt(jerts.getKolorea(), i, 3);
-            model.setValueAt(jerts.getSexua(), i, 4);
-            model.setValueAt(jerts.getKantStock(), i, 5);
-            model.setValueAt(jerts.getTaila(), i, 6);
-        }
-    }
-    
-    private void kamiDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();// definimos el objeto tableModel
-        viewProduktuaAukeratu.jTableKamiInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("MARKA");
-        model.addColumn("PREZIOA");
-        model.addColumn("KOLOREA");
-        model.addColumn("SEXUA");
-        model.addColumn("STOCK kantitatea");
-        model.addColumn("TAILA");
-        model.addColumn("SASOIA");
-        ArrayList<Kamiseta> kamiGuzt = KamisetaKudeatu.kamisetaGuztErakutsi();
-        
-        for (int i=0; i<kamiGuzt.size(); i++) {
-            Kamiseta kami = kamiGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(kami.getKodPro(), i, 0);
-            model.setValueAt(kami.getMarka(), i, 1);
-            model.setValueAt(kami.getPrezioa(), i, 2);
-            model.setValueAt(kami.getKolorea(), i, 3);
-            model.setValueAt(kami.getSexua(), i, 4);
-            model.setValueAt(kami.getKantStock(), i, 5);
-            model.setValueAt(kami.getTaila(), i, 6);
-            model.setValueAt(kami.getSasoia(), i, 7);
-        }
-    }
-    
-    private void prakDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();// definimos el objeto tableModel
-        viewProduktuaAukeratu.jTablePrakInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("MARKA");
-        model.addColumn("PREZIOA");
-        model.addColumn("KOLOREA");
-        model.addColumn("SEXUA");
-        model.addColumn("STOCK kantitatea");
-        model.addColumn("TAILA");
-        model.addColumn("SASOIA");
-        model.addColumn("LUZEERA");
-        model.addColumn("MOTA");
-        
-        ArrayList<Praka> prakGuzt = PrakaKudeatu.prakaGutztErakutsi();
-        
-        for (int i=0; i<prakGuzt.size(); i++) {
-            Praka prak = prakGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(prak.getKodPro(), i, 0);
-            model.setValueAt(prak.getMarka(), i, 1);
-            model.setValueAt(prak.getPrezioa(), i, 2);
-            model.setValueAt(prak.getKolorea(), i, 3);
-            model.setValueAt(prak.getSexua(), i, 4);
-            model.setValueAt(prak.getKantStock(), i, 5);
-            model.setValueAt(prak.getTaila(), i, 6);
-            model.setValueAt(prak.getSasoia(), i, 7);
-            model.setValueAt(prak.getLuzeera(), i, 8);
-            model.setValueAt(prak.getMota(), i, 9);
-        }
-    }
-
-    private void hornDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();// definimos el objeto tableModel
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("HERRIA");
-        model.addColumn("TELEFONOA");
-        model.addColumn("EMAILA");
-        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi();
-        
-        for (int i=0; i<hornGuzt.size(); i++) {
-            Hornitzailea horn = hornGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(horn.getKodHor(), i, 0);
-            model.setValueAt(horn.getIzena(), i, 1);
-            model.setValueAt(horn.getHerria(), i, 2);
-            model.setValueAt(horn.getTelefonoa(), i, 3);
-            model.setValueAt(horn.getEmail(), i, 4);
-        }
-    }
-    
-    private void eskDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();// definimos el objeto tableModel
-        viewEskaeraInfo.jTableEskaeraInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("HORNITZAILEA");
-        model.addColumn("DATA");
-        model.addColumn("KOPURUA");
-        ArrayList<Eskaera> eskGuzt = EskaeraKudeatu.eskaeraGuztiakErakutsi();
-        
-        for (int i=0; i<eskGuzt.size(); i++) {
-            Eskaera esk = eskGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(esk.getEskZenb(), i, 0);
-            model.setValueAt(esk.getHornitzailea(), i, 1);
-            model.setValueAt(esk.getData(), i, 2);
-            model.setValueAt(esk.getKopurua(), i, 3);
-        }
-    }
-    
-    public void hornitzaileaKargatu(JComboBox comboBox) {
-        ArrayList<String> alHornitzaileGuzt = HornitzaileaKudeatu.hornitzaileIzenak();
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i = 0; i < alHornitzaileGuzt.size(); i++) {
-            comboBox.addItem(alHornitzaileGuzt.get(i));
-        }
-    }
-    
-    public void tailaKargatuString(JComboBox comboBox) {
-        String[] taila = ProduktuaKudeatu.tailaKontrolatuString();
-        comboBox.addItem("--- Aukeratu ---");
-        for (String i : taila) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    public void tailaKargatuInt(JComboBox comboBox) {
-        int[] taila = ProduktuaKudeatu.tailaKontrolatuZenb();
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i : taila) {
-            comboBox.addItem(String.valueOf(i));
-        }
-    }
-    
-    public void sexuaKargatu(JComboBox comboBox) {
-        String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
-        comboBox.addItem("--- Aukeratu ---");
-        for (String i : sexua) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    public void sasoiaKargatu(JComboBox comboBox) {
-        String[] sasoia = ProduktuaKudeatu.sasoiaKontrolatu();
-        comboBox.addItem("--- Aukeratu ---");
-        for (String i : sasoia) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    public void motaKargatu(JComboBox comboBox) {
-        String[] mota = ProduktuaKudeatu.motaKontrolatu();
-        comboBox.addItem("--- Aukeratu ---");
-        for (String i : mota) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    public void langEremuaKargatu(JComboBox comboBox) {
-        String[] eremua = LangileaKudeatu.langileEremuaKontrolatu();
-        comboBox.addItem("--- Aukeratu ---");
-        for (String i : eremua) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    public void aukKargatu(JComboBox comboBox) {
-        String[] produktua = {"--- Aukeratu ---", "Koltsultatu", "Inbentarioa", "Eskatzeko dauden produktuak"};
-        comboBox.removeAllItems();
-        for (String i : produktua) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    private void resetBezeroaGehitu() {
-        viewBezeroaGehitu.jTextFieldIzena.setText(null);
-        viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
-        viewBezeroaGehitu.jTextFieldAbizena2.setText(null);
-        viewBezeroaGehitu.jTextFieldNan.setText(null);
-        viewBezeroaGehitu.jDateChooserJaioData.setDate(null);
-        viewBezeroaGehitu.jRadioButtonEmak.setSelected(false);
-        viewBezeroaGehitu.jRadioButtonGiz.setSelected(false);
-        viewBezeroaGehitu.jTextFieldHerria.setText(null);
-        viewBezeroaGehitu.jTextFieldTlf.setText(null);
-    }
-    
-    private void resetLangileaGehitu() {
-        viewLangileaGehitu.jTextFieldIzena.setText(null);
-        viewLangileaGehitu.jTextFieldAbizena1.setText(null);
-        viewLangileaGehitu.jTextFieldAbizena2.setText(null);
-        viewLangileaGehitu.jTextFieldNan.setText(null);
-        viewLangileaGehitu.jDateChooserJaioData.setDate(null);
-        viewLangileaGehitu.jRadioButtonEmak.setSelected(false);
-        viewLangileaGehitu.jRadioButtonGiz.setSelected(false);
-        viewLangileaGehitu.jTextFieldHerria.setText(null);
-        viewLangileaGehitu.jTextFieldTlf.setText(null);
-        viewLangileaGehitu.jTextFieldSoldata.setText(null);
-        viewLangileaGehitu.jComboBoxEremua.setSelectedIndex(0);
-    }
-    
-    private void resetJertseaGehitu() {
-        viewJertseaGehitu.jTextFieldKodeJerts.setText(null);
-        viewJertseaGehitu.jTextFieldMarka.setText(null);
-        viewJertseaGehitu.jTextFieldPrezioa.setText(null);
-        viewJertseaGehitu.jTextFieldKolorea.setText(null);
-        viewJertseaGehitu.jComboBoxSexua.setSelectedIndex(0);
-        viewJertseaGehitu.jTextFieldStock.setText(null);
-        viewJertseaGehitu.jComboBoxTaila.setSelectedIndex(0);
-    }
-    
-    private void resetKamisetaGehitu() {
-        viewKamisetaGehitu.jTextFieldKodeKami.setText(null);
-        viewKamisetaGehitu.jTextFieldMarka.setText(null);
-        viewKamisetaGehitu.jTextFieldPrezioa.setText(null);
-        viewKamisetaGehitu.jTextFieldKolorea.setText(null);
-        viewKamisetaGehitu.jComboBoxSexua.setSelectedIndex(0);
-        viewKamisetaGehitu.jTextFieldStock.setText(null);
-        viewKamisetaGehitu.jComboBoxTaila.setSelectedIndex(0);
-        viewKamisetaGehitu.jComboBoxSasoia.setSelectedIndex(0);
-    }
-    
-    private void resetPrakaGehitu() {
-        viewPrakaGehitu.jTextFieldKodePrak.setText(null);
-        viewPrakaGehitu.jTextFieldMarka.setText(null);
-        viewPrakaGehitu.jTextFieldPrezioa.setText(null);
-        viewPrakaGehitu.jTextFieldKolorea.setText(null);
-        viewPrakaGehitu.jComboBoxSexua.setSelectedIndex(0);
-        viewPrakaGehitu.jTextFieldStock.setText(null);
-        viewPrakaGehitu.jComboBoxTaila.setSelectedIndex(0);
-        viewPrakaGehitu.jComboBoxSasoia.setSelectedIndex(0);
-        viewPrakaGehitu.jTextFieldLuzeera.setText(null);
-        viewPrakaGehitu.jComboBoxMota.setSelectedIndex(0);
-    }
-    
-    private void resetHornitzaileaGehitu() {
-        viewHornitzaileaGehitu.jTextFieldIzena.setText(null);
-        viewHornitzaileaGehitu.jTextFieldHerria.setText(null);
-        viewHornitzaileaGehitu.jTextFieldTlf.setText(null);
-        viewHornitzaileaGehitu.jTextFieldEmail.setText(null);
-    }
-    
-    private void resetEskaeraGehitu() {
-        viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
-        viewEskaeraGehitu.jTextFieldKopurua.setText(null);
-    }
-    
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            component.setEnabled(bool);
-        }
-    }
-    
-    private void fontComponets (Container container, String mota, int tamaina) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            component.setFont(new Font(mota, Font.PLAIN, tamaina));
-        }
-    }
-
-    private void aukBezDatuakBete(int aukLerroa) {    
-            viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
-            viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
-            viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
-            viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
-            viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
-            viewBezeroaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5))));
-            String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-            if (aukSexuaRB.equals("emakumea")) {
-                viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
-            }
-            else {
-                viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
-            }
-            viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
-            viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
-    }
-    
-    private void resetBezeroaInfo() {
-        viewBezeroaInfo.jTextFieldKodeBez.setText(null);
-        viewBezeroaInfo.jTextFieldIzena.setText(null);
-        viewBezeroaInfo.jTextFieldAbizena1.setText(null);
-        viewBezeroaInfo.jTextFieldAbizena2.setText(null);
-        viewBezeroaInfo.jTextFieldNan.setText(null);
-        viewBezeroaInfo.jDateChooserJaioData.setDate(null);
-        viewBezeroaInfo.jRadioButtonEmak.setSelected(false);
-        viewBezeroaInfo.jRadioButtonGiz.setSelected(false);
-        viewBezeroaInfo.jTextFieldHerria.setText(null);
-        viewBezeroaInfo.jTextFieldTlf.setText(null);  
-    }
-    
-    private void aukLangDatuakBete(int aukLerroa) { 
-        viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewLangileaInfo.jTextFieldAbizena2.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewLangileaInfo.jTextFieldNan.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewLangileaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5))));
-        System.out.println(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5)));
-        String aukSexuaRB = String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-        if (aukSexuaRB.equals("emakumea")) {
-            viewLangileaInfo.jRadioButtonEmak.setSelected(true);
-        }
-        else {
-            viewLangileaInfo.jRadioButtonGiz.setSelected(true);
-        }
-        viewLangileaInfo.jTextFieldHerria.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
-        viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
-        viewLangileaInfo.jComboBoxEremua.setSelectedItem(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
-    }
-    
-    private void resetLangileaInfo() {
-        viewLangileaInfo.jTextFieldKodeLang.setText(null);
-        viewLangileaInfo.jTextFieldIzena.setText(null);
-        viewLangileaInfo.jTextFieldAbizena1.setText(null);
-        viewLangileaInfo.jTextFieldAbizena2.setText(null);
-        viewLangileaInfo.jTextFieldNan.setText(null);
-        viewLangileaInfo.jDateChooserJaioData.setDate(null);
-        viewLangileaInfo.jRadioButtonEmak.setSelected(false);
-        viewLangileaInfo.jRadioButtonGiz.setSelected(false);
-        viewLangileaInfo.jTextFieldHerria.setText(null);
-        viewLangileaInfo.jTextFieldTlf.setText(null);
-        viewLangileaInfo.jTextFieldSoldata.setText(null);
-        viewLangileaInfo.jComboBoxEremua.setSelectedItem(null);      
-    }
-    
-    private void aukJertsDatuakBete(int aukLerroa) {
-        viewProduktuaAukeratu.jTextFieldKodeJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewProduktuaAukeratu.jComboBoxSexuaJerts.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewProduktuaAukeratu.jTextFieldStockJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewProduktuaAukeratu.jComboBoxTailaJerts.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6)));
-    }
-    
-    private void resetJerts() {
-        viewProduktuaAukeratu.jTextFieldKodeJerts.setText(null);
-        viewProduktuaAukeratu.jTextFieldMarkaJerts.setText(null);
-        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setText(null);
-        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setText(null);
-        viewProduktuaAukeratu.jComboBoxSexuaJerts.setSelectedItem(null);
-        viewProduktuaAukeratu.jTextFieldStockJerts.setText(null);
-        viewProduktuaAukeratu.jComboBoxTailaJerts.setSelectedItem(null);
-    }
-    
-    private void aukKamiDatuakBete(int aukLerroa) {
-        viewProduktuaAukeratu.jTextFieldKodeKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewProduktuaAukeratu.jTextFieldMarkaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewProduktuaAukeratu.jComboBoxSexuaKami.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewProduktuaAukeratu.jTextFieldStockKami.setText(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewProduktuaAukeratu.jComboBoxTailaKami.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6)));
-        viewProduktuaAukeratu.jComboBoxSasoiaKami.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 7)));
-    }
-    
-    private void resetKami() {
-        viewProduktuaAukeratu.jTextFieldKodeKami.setText(null);
-        viewProduktuaAukeratu.jTextFieldMarkaKami.setText(null);
-        viewProduktuaAukeratu.jTextFieldPrezioaKami.setText(null);
-        viewProduktuaAukeratu.jTextFieldKoloreaKami.setText(null);
-        viewProduktuaAukeratu.jComboBoxSexuaKami.setSelectedItem(null);
-        viewProduktuaAukeratu.jTextFieldStockKami.setText(null);
-        viewProduktuaAukeratu.jComboBoxTailaKami.setSelectedItem(null);
-        viewProduktuaAukeratu.jComboBoxSasoiaKami.setSelectedItem(null);
-    }
-    
-    private void aukPrakDatuakBete(int aukLerroa) { 
-        viewProduktuaAukeratu.jTextFieldKodePrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewProduktuaAukeratu.jComboBoxSexuaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewProduktuaAukeratu.jTextFieldStockPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewProduktuaAukeratu.jComboBoxTailaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6)));
-        viewProduktuaAukeratu.jComboBoxSasoiaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 8)));
-        viewProduktuaAukeratu.jComboBoxMotaPrak.setSelectedItem(String.valueOf(viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 9)));
-    }
-    
-    private void resetPrak() {
-        viewProduktuaAukeratu.jTextFieldKodePrak.setText(null);
-        viewProduktuaAukeratu.jTextFieldMarkaPrak.setText(null);
-        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setText(null);
-        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setText(null);
-        viewProduktuaAukeratu.jComboBoxSexuaPrak.setSelectedItem(null);
-        viewProduktuaAukeratu.jTextFieldStockPrak.setText(null);
-        viewProduktuaAukeratu.jComboBoxTailaPrak.setSelectedItem(null);
-        viewProduktuaAukeratu.jComboBoxSasoiaPrak.setSelectedItem(null);
-        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(null);
-        viewProduktuaAukeratu.jComboBoxMotaPrak.setSelectedItem(null); 
-    }
-    
-    private void aukHornDatuakBete(int aukLerroa) {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
-    }
-    
-    private void resetHornInfo() {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setText(null);
-        viewHornitzaileaInfo.jTextFieldIzena.setText(null);
-        viewHornitzaileaInfo.jTextFieldHerria.setText(null);
-        viewHornitzaileaInfo.jTextFieldTlf.setText(null);
-        viewHornitzaileaInfo.jTextFieldEmail.setText(null);
-    }
-    
-    private void aukEskDatuakBete(int aukLerroa) { 
-        viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewEskaeraInfo.jTextFieldHornitzailea.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewEskaeraInfo.jDateChooserData.setDate(Metodoak.dataErakutsi(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2))));
-        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
-    }
-    
-    private void resetEskInfo() {
-        viewEskaeraInfo.jTextFieldKodeEsk.setText(null);
-        viewEskaeraInfo.jTextFieldHornitzailea.setText(null);
-        viewEskaeraInfo.jDateChooserData.setDate(null);
-        viewEskaeraInfo.jTextFieldKopurua.setText(null); 
-    }
-
     @Override
     public void valueChanged(ListSelectionEvent e) {
         /* Tauletako lerroak aukeratzerakoan */
