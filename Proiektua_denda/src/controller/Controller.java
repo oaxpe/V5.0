@@ -1642,18 +1642,42 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
         }
         else if (comando == viewBezeroaInfo.jButtonAldaketaEzabatu) {
-            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
-            enableComponets(viewBezeroaInfo.jPanelOina, true);
-            viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
-            viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-            aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow()); // taulako datuekin berriz bete
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            if (konf == 0) { // bai
+                enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
+                enableComponets(viewBezeroaInfo.jPanelOina, true);
+                viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
+                viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow()); // taulako datuekin berriz bete
+            }
         }
         else if (comando == viewBezeroaInfo.jButtonAldaketaGorde) {
-            //aldaketa gorde
-            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
-            enableComponets(viewBezeroaInfo.jPanelOina, true);
-            viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
-            viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            if (konf == 0) { // bai
+                /* Bezeroa ezabatu */
+                int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow();
+                String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
+                BezeroaKudeatu.bezeroaEzabatu(nan);
+                /* Bezeroa gehitu */
+                String sexuaRB = ""; // RadioButton-aren balioa gorde
+                if (viewBezeroaInfo.jRadioButtonEmak.isSelected()) {
+                    sexuaRB = viewBezeroaInfo.jRadioButtonEmak.getText();
+                }
+                else if (viewBezeroaInfo.jRadioButtonGiz.isSelected()) {
+                    sexuaRB = viewBezeroaInfo.jRadioButtonGiz.getText();
+                }
+                Bezeroa bez = new Bezeroa(viewBezeroaInfo.jTextFieldKodeBez.getText(), viewBezeroaInfo.jTextFieldIzena.getText(), 
+                        viewBezeroaInfo.jTextFieldAbizena1.getText(), viewBezeroaInfo.jTextFieldAbizena2.getText(), 
+                        viewBezeroaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaInfo.jDateChooserJaioData.getDate()), 
+                        sexuaRB, viewBezeroaInfo.jTextFieldHerria.getText(), viewBezeroaInfo.jTextFieldTlf.getText());
+                BezeroaKudeatu.bezeroaGehitu(bez);
+
+                bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
+                enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
+                enableComponets(viewBezeroaInfo.jPanelOina, true);
+                viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
+                viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+            }           
         }
         
         /* BezeroaGehitu-ko aukerak */
@@ -1721,18 +1745,43 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             } 
         }
         else if (comando == viewLangileaInfo.jButtonAldaketaEzabatu) {
-            enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-            enableComponets(viewLangileaInfo.jPanelOina, true);
-            viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
-            viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-            aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow()); // taulako datuekin berriz bete
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            if (konf == 0) { // bai
+                enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
+                enableComponets(viewLangileaInfo.jPanelOina, true);
+                viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
+                viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow()); // taulako datuekin berriz bete
+            }
         }
         else if (comando == viewLangileaInfo.jButtonAldaketaGorde) {
-            //aldaketa gorde
-            enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-            enableComponets(viewLangileaInfo.jPanelOina, true);
-            viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
-            viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            if (konf == 0) { // bai
+                int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
+                /* Langilea ezabatu */
+                String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
+                LangileaKudeatu.langileaEzabatu(nan);
+                
+                /* Langilea gorde */
+                String sexuaRB = ""; // RadioButton-aren balioa gorde
+                if (viewLangileaInfo.jRadioButtonEmak.isSelected()) {
+                    sexuaRB = viewLangileaInfo.jRadioButtonEmak.getText();
+                }
+                else if (viewLangileaInfo.jRadioButtonGiz.isSelected()) {
+                    sexuaRB = viewLangileaInfo.jRadioButtonGiz.getText();
+                }
+                Langilea lang = new Langilea(viewLangileaInfo.jTextFieldKodeLang.getText(), viewLangileaInfo.jTextFieldIzena.getText(), 
+                        viewLangileaInfo.jTextFieldAbizena1.getText(), viewLangileaInfo.jTextFieldAbizena2.getText(), 
+                        viewLangileaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewLangileaInfo.jDateChooserJaioData.getDate()), 
+                        sexuaRB, viewLangileaInfo.jTextFieldHerria.getText(), viewLangileaInfo.jTextFieldTlf.getText(), 
+                        Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString());
+                LangileaKudeatu.langileaGehitu(lang);
+                
+                enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
+                enableComponets(viewLangileaInfo.jPanelOina, true);
+                viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
+                viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+            }
         }
         
         /* LangileaGehitu-ko aukerak */
@@ -1747,7 +1796,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             else if (viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
                 sexuaRB = viewLangileaGehitu.jRadioButtonGiz.getText();
             }
-
+            
             Langilea lang = new Langilea(viewLangileaGehitu.jTextFieldIzena.getText(), viewLangileaGehitu.jTextFieldAbizena1.getText(), 
                     viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(),  Metodoak.dataGorde(viewLangileaGehitu.jDateChooserJaioData.getDate()), 
                     sexuaRB, viewLangileaGehitu.jTextFieldHerria.getText(), viewLangileaGehitu.jTextFieldTlf.getText(), 
