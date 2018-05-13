@@ -110,7 +110,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     /* METODOAK */
-    public void botoiakEntzuten() { 
+    private void botoiakEntzuten() { 
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(this);
         viewBezeroaInfo.jButtonIrten.addActionListener(this);
@@ -330,7 +330,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraGehitu.jComboBoxHornitzailea.addFocusListener(this);
     }
     
-    public void hasieratu() {
+    private void hasieratu() {
         /* BISTEN ESTILOA */
         menuNagEstiloa();
         bezInfoEstiloa();
@@ -418,7 +418,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jTextFieldBilatu.setEnabled(false);     
     }
     
-    public void menuNagEstiloa() {
+    private void menuNagEstiloa() {
         viewMenuNagusia.setTitle("ATENEA");
         viewMenuNagusia.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewMenuNagusia.setLocationRelativeTo(null);
@@ -428,7 +428,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewMenuNagusia.jButtonIrten.setBackground(Color.WHITE);
     }
     
-    public void bezInfoEstiloa() {
+    private void bezInfoEstiloa() {
         viewBezeroaInfo.setTitle("Bezeroen informazioa");
         viewBezeroaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewBezeroaInfo.setLocationRelativeTo(null);
@@ -461,7 +461,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaInfo.jPanelBezTaula.setOpaque(false);
     }
  
-    public void bezGehituEstiloa() {
+    private void bezGehituEstiloa() {
         viewBezeroaGehitu.setTitle("Bezero berria");
         viewBezeroaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewBezeroaGehitu.setLocationRelativeTo(null);
@@ -490,7 +490,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.jPanelBezDatuak.setOpaque(false);
     }
     
-    public void langInfoEstiloa() {
+    private void langInfoEstiloa() {
         viewLangileaInfo.setTitle("Langileen informazioa");
         viewLangileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewLangileaInfo.setLocationRelativeTo(null);
@@ -526,7 +526,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaInfo.jPanelLangTaula.setOpaque(false);
     }
     
-    public void langGehituEstiloa() {
+    private void langGehituEstiloa() {
         viewLangileaGehitu.setTitle("Langile berria");
         viewLangileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewLangileaGehitu.setLocationRelativeTo(null);
@@ -556,7 +556,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaGehitu.jPanelLangDatuak.setOpaque(false);
     }
     
-    public void prodInfoEstiloa() {
+    private void prodInfoEstiloa() {
         viewProduktuaAukeratu.setTitle("Produktuen informazioa");
         viewProduktuaAukeratu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewProduktuaAukeratu.setLocationRelativeTo(null);
@@ -641,7 +641,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jPanelPrakBotoiak.setOpaque(false); 
     }
     
-    public void jertsGehituEstiloa() {
+    private void jertsGehituEstiloa() {
         viewJertseaGehitu.setTitle("Jertse berria");
         viewJertseaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewJertseaGehitu.setLocationRelativeTo(null);
@@ -665,7 +665,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewJertseaGehitu.jPanelJertsDatuak.setOpaque(false);
     }
     
-    public void kamiGehituEstiloa() {
+    private void kamiGehituEstiloa() {
         viewKamisetaGehitu.setTitle("Kamiseta berria");
         viewKamisetaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewKamisetaGehitu.setLocationRelativeTo(null);
@@ -688,7 +688,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewKamisetaGehitu.jPanelGoiburua.setOpaque(false);
         viewKamisetaGehitu.jPanelKamiDatuak.setOpaque(false);
     }
-    public void prakGehituEstiloa() {
+    private void prakGehituEstiloa() {
         viewPrakaGehitu.setTitle("Praka berria");
         viewPrakaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewPrakaGehitu.setLocationRelativeTo(null);
@@ -714,7 +714,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
     }
     
-    public void hornInfoEstiloa() {
+    private void hornInfoEstiloa() {
         viewHornitzaileaInfo.setTitle("Hornitzaileen informazioa");
         viewHornitzaileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewHornitzaileaInfo.setLocationRelativeTo(null);
@@ -740,7 +740,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewHornitzaileaInfo.jPanelHornInfoTaula.setOpaque(false);
     }
     
-    public void hornGehituEstiloa() {
+    private void hornGehituEstiloa() {
         viewHornitzaileaGehitu.setTitle("Hornitzaile berria");
         viewHornitzaileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewHornitzaileaGehitu.setLocationRelativeTo(null);
@@ -762,7 +762,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewHornitzaileaGehitu.jPanelHornDatuak.setOpaque(false);
     }
     
-    public void eskInfoEstiloa() {
+    private void eskInfoEstiloa() {
         viewEskaeraInfo.setTitle("Eskaeren informazioa");
         viewEskaeraInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewEskaeraInfo.setLocationRelativeTo(null);
@@ -784,7 +784,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jPanelEskInfoTaula.setOpaque(false);
     }
     
-    public void eskGehituEstiloa() {
+    private void eskGehituEstiloa() {
         viewEskaeraGehitu.setTitle("Eskaera berria");
         viewEskaeraGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewEskaeraGehitu.setLocationRelativeTo(null);
@@ -992,7 +992,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void hornitzaileaKargatu(JComboBox comboBox) {
+    private void hornitzaileaKargatu(JComboBox comboBox) {
         ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
         ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
         for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
@@ -1004,7 +1004,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void tailaKargatuString(JComboBox comboBox) {
+    private void tailaKargatuString(JComboBox comboBox) {
         String[] taila = ProduktuaKudeatu.tailaKontrolatuString();
         comboBox.addItem("--- Aukeratu ---");
         for (String i : taila) {
@@ -1012,7 +1012,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void tailaKargatuInt(JComboBox comboBox) {
+    private void tailaKargatuInt(JComboBox comboBox) {
         int[] taila = ProduktuaKudeatu.tailaKontrolatuZenb();
         comboBox.addItem("--- Aukeratu ---");
         for (int i : taila) {
@@ -1020,7 +1020,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void sexuaKargatu(JComboBox comboBox) {
+    private void sexuaKargatu(JComboBox comboBox) {
         String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
         comboBox.addItem("--- Aukeratu ---");
         for (String i : sexua) {
@@ -1028,7 +1028,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void sasoiaKargatu(JComboBox comboBox) {
+    private void sasoiaKargatu(JComboBox comboBox) {
         String[] sasoia = ProduktuaKudeatu.sasoiaKontrolatu();
         comboBox.addItem("--- Aukeratu ---");
         for (String i : sasoia) {
@@ -1036,7 +1036,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void motaKargatu(JComboBox comboBox) {
+    private void motaKargatu(JComboBox comboBox) {
         String[] mota = ProduktuaKudeatu.motaKontrolatu();
         comboBox.addItem("--- Aukeratu ---");
         for (String i : mota) {
@@ -1044,7 +1044,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void langEremuaKargatu(JComboBox comboBox) {
+    private void langEremuaKargatu(JComboBox comboBox) {
         String[] eremua = LangileaKudeatu.langileEremuaKontrolatu();
         comboBox.addItem("--- Aukeratu ---");
         for (String i : eremua) {
@@ -1052,7 +1052,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    public void aukKargatu(JComboBox comboBox) {
+    private void aukKargatu(JComboBox comboBox) {
         String[] produktua = {"--- Aukeratu ---", "Koltsultatu", "Inbentarioa", "Eskatzeko dauden produktuak"};
         comboBox.removeAllItems();
         for (String i : produktua) {
