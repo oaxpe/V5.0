@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.ListSelectionModel;
@@ -992,10 +993,14 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     public void hornitzaileaKargatu(JComboBox comboBox) {
-        ArrayList<String> alHornitzaileGuzt = HornitzaileaKudeatu.hornitzaileIzenak();
+        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
+        ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
+        for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
+            alHonritzaileIzenak.add(horn.getIzena());
+        }
         comboBox.addItem("--- Aukeratu ---");
-        for (int i = 0; i < alHornitzaileGuzt.size(); i++) {
-            comboBox.addItem(alHornitzaileGuzt.get(i));
+        for (int i = 0; i < alHonritzaileIzenak.size(); i++) { // izenak comboBox-ean gorde
+            comboBox.addItem(alHonritzaileIzenak.get(i));
         }
     }
     
@@ -1130,7 +1135,10 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private void enableComponets (Container container, boolean bool) {
         Component[] components = container.getComponents();
         for (Component component : components) {
-            component.setEnabled(bool);
+            if (!(component instanceof JLabel)) {
+                component.setEnabled(bool);
+                component.setForeground(Color.BLACK);
+            }
         }
     }
     

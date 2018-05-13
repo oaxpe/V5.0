@@ -166,27 +166,4 @@ public class HornitzaileaKudeatu {
             fTemp.delete();
         }
     }
-    
-    /* hornitzaileen izenak bakarrik erakusten duen metodoa */
-    public static ArrayList<String> hornitzaileIzenak() {
-        ArrayList<String> alHorniIzenGuzt = new ArrayList<String>();
-        try {
-            FileInputStream fis = new FileInputStream(f);
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
-//            System.out.println("HORNITZAILEAK: ");
-//            System.out.printf("\t%1$-20s    %2$-10s    %3$-10s    %4$-15s    %5$-10s\n", "Kodea", "Izena", "Herria", "Telefonoa", "Email-a");
-            while (true) {
-                Hornitzailea horn = (Hornitzailea) geois.readObject(); // objektua irakurri              
-                alHorniIzenGuzt.add(horn.getIzena());
-                System.out.println(horn.getIzena());
-            }
-        } catch (EOFException ex) { 
-            // fitxategiaren bukaerara heltzen denean, errorea omititu
-        } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
-        } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
-        }
-        return alHorniIzenGuzt;
-    }
 }
