@@ -9,53 +9,72 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 4.0
  */
-public class Denda { 
+public class Denda implements Serializable { 
     /* ATRIBUTOAK */
+    private String kodDend;
     private String izena;
     private String helbidea;
     private String herria;
     private int kodPostala;
-    private String email;
     private String telefonoa;
+    private String email;
     
     /* ERAIKITZAILEAK */
     public Denda () {
-        this.izena="Denda";
-        this.helbidea="San Juan kalea, 3";
-        this.herria="Eibar";
-        this.kodPostala=20600;
-        this.email="denda@gmai.com";
-        this.telefonoa="943201258";
+        
     }
     
-    public Denda (String izena, String helbidea, String herria, int kodPostala, String email, String tlf) {
-        this.izena=izena;
-        this.helbidea=helbidea;
-        this.herria=herria;
-        this.kodPostala=kodPostala;
-        this.email=email;
-        this.telefonoa=tlf;
+    public Denda (String izena, String helbidea, String herria, int kodPostala, String tlf, String email) {
+        setKodDend();
+        this.izena = izena;
+        this.helbidea = helbidea;
+        this.herria = herria;
+        this.kodPostala = kodPostala;
+        this.telefonoa = tlf;
+        this.email = email;
+    }
+    
+    public Denda (String kodea, String izena, String helbidea, String herria, int kodPostala, String tlf, String email) {
+        this.kodDend = kodea;
+        this.izena = izena;
+        this.helbidea = helbidea;
+        this.herria = herria;
+        this.kodPostala = kodPostala;
+        this.telefonoa = tlf;
+        this.email = email;
     }
     
     /* METODOAK */
     public void printDatuak() {
         System.out.println("DENDAREN DATUAK:");
-        System.out.println("\tIzena: "+this.izena);
-        System.out.println("\tHelbidea: "+this.helbidea);
-        System.out.println("\tHerria: "+this.herria);
-        System.out.println("\tPosta kodea: "+this.kodPostala);
-        System.out.println("\tEmail-a: "+this.email);
-        System.out.println("\tTelefonoa: "+this.telefonoa);
+        System.out.println("\tKodea: " + this.kodDend);
+        System.out.println("\tIzena: " + this.izena);
+        System.out.println("\tHelbidea: " + this.helbidea);
+        System.out.println("\tHerria: " + this.herria);
+        System.out.println("\tPosta kodea: " + this.kodPostala);
+        System.out.println("\tEmail-a: " + this.email);
+        System.out.println("\tTelefonoa: " + this.telefonoa);
     }
      
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+
+    public String getKodDend() {
+        return kodDend;
+    }
+
+    public void setKodDend() {
+        this.kodDend = Metodoak.kodeakAldatuEtaGorde("Denda"); // Bezeroaren kodea automatikoki hartu kodeak.txt fitxategitik 
+    }
+    
+    
     public String getIzena() {
         return izena;
     }
