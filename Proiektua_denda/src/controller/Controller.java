@@ -905,7 +905,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
     /* METODOAK */
     private void bezDatuakErakutsiTaula(ArrayList<Bezeroa> bezGuzt) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewBezeroaInfo.jTableBezeroaInfo.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");
@@ -934,7 +939,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     private void dendDatuakErakutsiTaula(ArrayList<Denda> dendGuzt) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewDendaInfo.jTableDendaInfo.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");
@@ -959,7 +969,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
 
     private void langDatuakErakutsiTaula(ArrayList<Langilea> langGuzt) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewLangileaInfo.jTableLangileaInfo.setModel(model);
         model.addColumn("Kodea");
         model.addColumn("Izena");
@@ -992,7 +1008,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     private void jertsDatuakErakutsiTaula(ArrayList<Jertsea> jertsGuzt) {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewProduktuaAukeratu.jTableJertsInfo.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
@@ -1017,7 +1039,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     private void kamiDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewProduktuaAukeratu.jTableKamiInfo.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
@@ -1045,7 +1073,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     private void prakDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewProduktuaAukeratu.jTablePrakInfo.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
@@ -1078,7 +1112,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
 
     private void hornDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewHornitzaileaInfo.jTableHornitzaileaInfo.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");
@@ -1100,7 +1140,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     }
     
     private void eskDatuakErakutsiTaula() {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
         viewEskaeraInfo.jTableEskaeraInfo.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("HORNITZAILEA");
@@ -1594,7 +1640,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 // fitxategia ez bada existitzen, errorea ematen  du.
             }
             resetDendaGehitu();
-            enableComponets(viewDendaGehitu.jPanelDendDatuak, false);
+            enableComponets(viewDendaGehitu.jPanelDendDatuak, false);    
         }
         else if (comando == viewDendaGehitu.jButtonReset) {
             resetDendaGehitu();
@@ -2047,7 +2093,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             eskDatuakErakutsiTaula();
         }
     }
-    
+            
     @Override
     public void ancestorAdded(AncestorEvent event) {
         Object comando = event.getSource();
