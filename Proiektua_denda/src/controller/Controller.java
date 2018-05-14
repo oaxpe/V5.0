@@ -1573,7 +1573,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewDendaInfo.jButtonEzabatu) {
             int aukLerroa = viewDendaInfo.jTableDendaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(null, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(null, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako bezeroaren nan zenbakia lortu
                     DendaKudeatu.dendaEzabatu(kodea);
@@ -1581,7 +1581,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
             }
             else {
-                JOptionPane.showMessageDialog(null, "Ez da dendarik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da dendarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewDendaInfo.jButtonAldatu) {
@@ -1592,11 +1592,11 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(true);
             }
             else {
-                JOptionPane.showMessageDialog(null, "Ez da dendarik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da dendarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewDendaInfo.jButtonAldaketaEzabatu) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
                 enableComponets(viewDendaInfo.jPanelDendDatuak, false);
                 enableComponets(viewDendaInfo.jPanelOina, true);
@@ -1606,7 +1606,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
         }
         else if (comando == viewDendaInfo.jButtonAldaketaGorde) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
                 int aukLerroa = viewDendaInfo.jTableDendaInfo.getSelectedRow();
                 String kodea = (String) viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako bezeroaren nan zenbakia lortu
@@ -1665,7 +1665,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewBezeroaInfo.jButtonEzabatu) {
             int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
                     BezeroaKudeatu.bezeroaEzabatu(nan);
@@ -1673,7 +1673,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
             }
             else {
-                JOptionPane.showMessageDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ez da bezerorik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da bezerorik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewBezeroaInfo.jButtonAldatu) {
@@ -1684,11 +1684,11 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(true);
             }
             else {
-                JOptionPane.showMessageDialog(null, "Ez da bezerorik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da bezerorik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewBezeroaInfo.jButtonAldaketaEzabatu) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
                 enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
                 enableComponets(viewBezeroaInfo.jPanelOina, true);
@@ -1698,7 +1698,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
         }
         else if (comando == viewBezeroaInfo.jButtonAldaketaGorde) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
                 /* Bezeroa ezabatu */
                 int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow();
@@ -1768,7 +1768,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewLangileaInfo.jButtonEzabatu) {
             int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
                     LangileaKudeatu.langileaEzabatu(nan);
@@ -1776,7 +1776,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
             }
             else {
-                JOptionPane.showMessageDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ez da langilerik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ez da langilerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewLangileaInfo.jButtonAldatu) {
@@ -1787,11 +1787,11 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(true);
             }
             else {
-                JOptionPane.showMessageDialog(null, "Ez da langilerik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da langilerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             } 
         }
         else if (comando == viewLangileaInfo.jButtonAldaketaEzabatu) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
                 enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
                 enableComponets(viewLangileaInfo.jPanelOina, true);
@@ -1801,7 +1801,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
         }
         else if (comando == viewLangileaInfo.jButtonAldaketaGorde) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
                 int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
                 /* Langilea ezabatu */
@@ -1870,7 +1870,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts) {
             int aukLerroa = viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
@@ -1879,7 +1879,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
             }
             else {
-                JOptionPane.showMessageDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ez da jertserik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da jertserik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewProduktuaAukeratu.jButtonGehituKami) {
@@ -1890,7 +1890,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami) {
             int aukLerroa = viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
@@ -1899,7 +1899,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 kamiDatuakErakutsiTaula();
             }
             else {
-                JOptionPane.showMessageDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ez da kamisetarik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da kamisetarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewProduktuaAukeratu.jButtonGehituPrak) {
@@ -1910,7 +1910,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak) {
             int aukLerroa = viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
@@ -1919,7 +1919,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 prakDatuakErakutsiTaula();
             }
             else {
-                JOptionPane.showMessageDialog(viewProduktuaAukeratu.jDialogEzabatuKonfirm, "Ez da prakarik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da prakarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewProduktuaAukeratu.jButtonIrten) {
@@ -2022,7 +2022,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewHornitzaileaInfo.jButtonEzabatu) {
             int aukLerroa = viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
                     HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
@@ -2032,7 +2032,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 hornDatuakErakutsiTaula();
             }
             else {
-                JOptionPane.showMessageDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ez da hornitzailerik aukeratu"); // ventana emergente
+                JOptionPane.showMessageDialog(null, "Ez da hornitzailerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
         
