@@ -1355,6 +1355,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private void resetEskaeraGehitu() {
         viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
         viewEskaeraGehitu.jTextFieldKopurua.setText(null);
+        
+        viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
     
     private void enableComponets (Container container, boolean bool) {
@@ -2203,11 +2206,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewEskaeraGehitu.jPanelEskDatuak, true);
         }
         else if (comando == viewEskaeraGehitu.jButtonGorde){
-            Eskaera esk = new Eskaera (viewEskaeraGehitu.jComboBoxHornitzailea.getSelectedItem().toString(), 
-                    Integer.parseInt(viewEskaeraGehitu.jTextFieldKopurua.getText()));
-            EskaeraKudeatu.eskaeraGehitu(esk);
-            resetEskaeraGehitu();
-            enableComponets(viewEskaeraGehitu.jPanelEskDatuak, false);
+            if (balidazioaEskGehitu()) {
+                Eskaera esk = new Eskaera (viewEskaeraGehitu.jComboBoxHornitzailea.getSelectedItem().toString(), 
+                        Integer.parseInt(viewEskaeraGehitu.jTextFieldKopurua.getText()));
+                EskaeraKudeatu.eskaeraGehitu(esk);
+                resetEskaeraGehitu();
+                enableComponets(viewEskaeraGehitu.jPanelEskDatuak, false);
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
         }
         else if (comando == viewEskaeraGehitu.jButtonReset){
             resetEskaeraGehitu();
@@ -3064,6 +3071,19 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }
+        return bool;
+    }
+    
+    private boolean balidazioaEskGehitu() {
+        boolean bool = true;
+        if (viewEskaeraGehitu.jComboBoxHornitzailea.getSelectedIndex() == 0) {
+            viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }     
+        if (viewEskaeraGehitu.jTextFieldKopurua.getText().isEmpty()) {
+            viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
         return bool;
     }
 
