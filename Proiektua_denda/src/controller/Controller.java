@@ -26,7 +26,6 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
@@ -1241,6 +1240,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewDendaGehitu.jTextFieldPostKod.setText(null);
         viewDendaGehitu.jTextFieldTlf.setText(null);
         viewDendaGehitu.jTextFieldEmail.setText(null);
+        
+        viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
     
     private void resetBezeroaGehitu() {
@@ -1253,6 +1259,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.jRadioButtonGiz.setSelected(false);
         viewBezeroaGehitu.jTextFieldHerria.setText(null);
         viewBezeroaGehitu.jTextFieldTlf.setText(null);
+        
+        viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
     }
     
     private void resetLangileaGehitu() {
@@ -1267,6 +1282,17 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaGehitu.jTextFieldTlf.setText(null);
         viewLangileaGehitu.jTextFieldSoldata.setText(null);
         viewLangileaGehitu.jComboBoxEremua.setSelectedIndex(0);
+
+        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
+        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
     }
     
     private void resetJertseaGehitu() {
@@ -1352,7 +1378,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         if (aukSexuaRB.equals("emakumea")) {
             viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
         }
-        else {
+        else if (aukSexuaRB.equals("gizona")) {
             viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
         }
         viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
@@ -1603,6 +1629,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 enableComponets(viewDendaInfo.jPanelOina, true);
                 viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
                 viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                resetDendInfoErr();
                 aukDendDatuakBete(viewDendaInfo.jTableDendaInfo.getSelectedRow()); // taulako datuekin berriz bete
             }
         }
@@ -1703,35 +1730,40 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 enableComponets(viewBezeroaInfo.jPanelOina, true);
                 viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
                 viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                resetBezInfoErr();
                 aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow()); // taulako datuekin berriz bete
             }
         }
         else if (comando == viewBezeroaInfo.jButtonAldaketaGorde) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                /* Bezeroa ezabatu */
-                int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow();
-                String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
-                BezeroaKudeatu.bezeroaEzabatu(nan);
-                /* Bezeroa gehitu */
-                String sexuaRB = ""; // RadioButton-aren balioa gorde
-                if (viewBezeroaInfo.jRadioButtonEmak.isSelected()) {
-                    sexuaRB = viewBezeroaInfo.jRadioButtonEmak.getText();
-                }
-                else if (viewBezeroaInfo.jRadioButtonGiz.isSelected()) {
-                    sexuaRB = viewBezeroaInfo.jRadioButtonGiz.getText();
-                }
-                Bezeroa bez = new Bezeroa(viewBezeroaInfo.jTextFieldKodeBez.getText(), viewBezeroaInfo.jTextFieldIzena.getText(), 
-                        viewBezeroaInfo.jTextFieldAbizena1.getText(), viewBezeroaInfo.jTextFieldAbizena2.getText(), 
-                        viewBezeroaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaInfo.jDateChooserJaioData.getDate()), 
-                        sexuaRB, viewBezeroaInfo.jTextFieldHerria.getText(), viewBezeroaInfo.jTextFieldTlf.getText());
-                BezeroaKudeatu.bezeroaGehitu(bez);
+                if (balidazioaBezInfo()) {
+                    /* Bezeroa ezabatu */
+                    int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow();
+                    String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
+                    BezeroaKudeatu.bezeroaEzabatu(nan);
+                    /* Bezeroa gehitu */
+                    String sexuaRB = ""; // RadioButton-aren balioa gorde
+                    if (viewBezeroaInfo.jRadioButtonEmak.isSelected()) {
+                        sexuaRB = viewBezeroaInfo.jRadioButtonEmak.getText();
+                    }
+                    else if (viewBezeroaInfo.jRadioButtonGiz.isSelected()) {
+                        sexuaRB = viewBezeroaInfo.jRadioButtonGiz.getText();
+                    }
+                    Bezeroa bez = new Bezeroa(viewBezeroaInfo.jTextFieldKodeBez.getText(), viewBezeroaInfo.jTextFieldIzena.getText(), 
+                            viewBezeroaInfo.jTextFieldAbizena1.getText(), viewBezeroaInfo.jTextFieldAbizena2.getText(), 
+                            viewBezeroaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaInfo.jDateChooserJaioData.getDate()), 
+                            sexuaRB, viewBezeroaInfo.jTextFieldHerria.getText(), viewBezeroaInfo.jTextFieldTlf.getText());
+                    BezeroaKudeatu.bezeroaGehitu(bez);
 
-                bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
-                enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
-                enableComponets(viewBezeroaInfo.jPanelOina, true);
-                viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
-                viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                    bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
+                    enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
+                    enableComponets(viewBezeroaInfo.jPanelOina, true);
+                    viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
+                    viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente 
             }           
         }
         
@@ -1740,19 +1772,21 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewBezeroaGehitu.jPanelBezDatuak, true);
         }
         else if (comando == viewBezeroaGehitu.jButtonGorde) {
-            String sexuaRB = ""; // RadioButton-aren balioa gorde
-            if (viewBezeroaGehitu.jRadioButtonEmak.isSelected()) {
-                sexuaRB = viewBezeroaGehitu.jRadioButtonEmak.getText();
+            if (balidazioaBezGehitu()) {
+                String sexuaRB = ""; // RadioButton-aren balioa gorde
+                if (viewBezeroaGehitu.jRadioButtonEmak.isSelected()) {
+                    sexuaRB = viewBezeroaGehitu.jRadioButtonEmak.getText();
+                }
+                else if (viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
+                    sexuaRB = viewBezeroaGehitu.jRadioButtonGiz.getText();
+                }
+                Bezeroa bez = new Bezeroa(viewBezeroaGehitu.jTextFieldIzena.getText(), viewBezeroaGehitu.jTextFieldAbizena1.getText(), 
+                        viewBezeroaGehitu.jTextFieldAbizena2.getText(), viewBezeroaGehitu.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaGehitu.jDateChooserJaioData.getDate()), 
+                        sexuaRB, viewBezeroaGehitu.jTextFieldHerria.getText(), viewBezeroaGehitu.jTextFieldTlf.getText());
+                BezeroaKudeatu.bezeroaGehitu(bez);
+                resetBezeroaGehitu();
+                enableComponets(viewBezeroaGehitu.jPanelBezDatuak, false);
             }
-            else if (viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
-                sexuaRB = viewBezeroaGehitu.jRadioButtonGiz.getText();
-            }
-            Bezeroa bez = new Bezeroa(viewBezeroaGehitu.jTextFieldIzena.getText(), viewBezeroaGehitu.jTextFieldAbizena1.getText(), 
-                    viewBezeroaGehitu.jTextFieldAbizena2.getText(), viewBezeroaGehitu.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaGehitu.jDateChooserJaioData.getDate()), 
-                    sexuaRB, viewBezeroaGehitu.jTextFieldHerria.getText(), viewBezeroaGehitu.jTextFieldTlf.getText());
-            BezeroaKudeatu.bezeroaGehitu(bez);
-            resetBezeroaGehitu();
-            enableComponets(viewBezeroaGehitu.jPanelBezDatuak, false);
         }
         else if (comando == viewBezeroaGehitu.jButtonReset) {
             resetBezeroaGehitu();
@@ -1806,6 +1840,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 enableComponets(viewLangileaInfo.jPanelOina, true);
                 viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
                 viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                resetLangInfoErr();
                 aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow()); // taulako datuekin berriz bete
             }
         }
@@ -1813,29 +1848,33 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
                 int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
-                /* Langilea ezabatu */
-                String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
-                LangileaKudeatu.langileaEzabatu(nan);
-                
-                /* Langilea gorde */
-                String sexuaRB = ""; // RadioButton-aren balioa gorde
-                if (viewLangileaInfo.jRadioButtonEmak.isSelected()) {
-                    sexuaRB = viewLangileaInfo.jRadioButtonEmak.getText();
+                if (balidazioaLangInfo()) {
+                    /* Langilea ezabatu */
+                    String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
+                    LangileaKudeatu.langileaEzabatu(nan);
+
+                    /* Langilea gorde */
+                    String sexuaRB = ""; // RadioButton-aren balioa gorde
+                    if (viewLangileaInfo.jRadioButtonEmak.isSelected()) {
+                        sexuaRB = viewLangileaInfo.jRadioButtonEmak.getText();
+                    }
+                    else if (viewLangileaInfo.jRadioButtonGiz.isSelected()) {
+                        sexuaRB = viewLangileaInfo.jRadioButtonGiz.getText();
+                    }
+                    Langilea lang = new Langilea(viewLangileaInfo.jTextFieldKodeLang.getText(), viewLangileaInfo.jTextFieldIzena.getText(), 
+                            viewLangileaInfo.jTextFieldAbizena1.getText(), viewLangileaInfo.jTextFieldAbizena2.getText(), 
+                            viewLangileaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewLangileaInfo.jDateChooserJaioData.getDate()), 
+                            sexuaRB, viewLangileaInfo.jTextFieldHerria.getText(), viewLangileaInfo.jTextFieldTlf.getText(), 
+                            Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString());
+                    LangileaKudeatu.langileaGehitu(lang);
+
+                    langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
+                    enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
+                    enableComponets(viewLangileaInfo.jPanelOina, true);
+                    viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
+                    viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                    
                 }
-                else if (viewLangileaInfo.jRadioButtonGiz.isSelected()) {
-                    sexuaRB = viewLangileaInfo.jRadioButtonGiz.getText();
-                }
-                Langilea lang = new Langilea(viewLangileaInfo.jTextFieldKodeLang.getText(), viewLangileaInfo.jTextFieldIzena.getText(), 
-                        viewLangileaInfo.jTextFieldAbizena1.getText(), viewLangileaInfo.jTextFieldAbizena2.getText(), 
-                        viewLangileaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewLangileaInfo.jDateChooserJaioData.getDate()), 
-                        sexuaRB, viewLangileaInfo.jTextFieldHerria.getText(), viewLangileaInfo.jTextFieldTlf.getText(), 
-                        Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString());
-                LangileaKudeatu.langileaGehitu(lang);
-                
-                enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-                enableComponets(viewLangileaInfo.jPanelOina, true);
-                viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
-                viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
             }
         }
         
@@ -1844,21 +1883,23 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewLangileaGehitu.jPanelLangDatuak, true);
         }
         else if (comando == viewLangileaGehitu.jButtonGorde) {
-            String sexuaRB = ""; // RadioButton-aren balioa gorde
-            if (viewLangileaGehitu.jRadioButtonEmak.isSelected()) {
-                sexuaRB = viewLangileaGehitu.jRadioButtonEmak.getText();
-            }
-            else if (viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
-                sexuaRB = viewLangileaGehitu.jRadioButtonGiz.getText();
-            }
-            
-            Langilea lang = new Langilea(viewLangileaGehitu.jTextFieldIzena.getText(), viewLangileaGehitu.jTextFieldAbizena1.getText(), 
-                    viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(),  Metodoak.dataGorde(viewLangileaGehitu.jDateChooserJaioData.getDate()), 
-                    sexuaRB, viewLangileaGehitu.jTextFieldHerria.getText(), viewLangileaGehitu.jTextFieldTlf.getText(), 
-                    Double.parseDouble(viewLangileaGehitu.jTextFieldSoldata.getText()), viewLangileaGehitu.jComboBoxEremua.getSelectedItem().toString());
-            LangileaKudeatu.langileaGehitu(lang);
-            resetLangileaGehitu();
-            enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
+            if (balidazioaLangGehitu()) {
+                String sexuaRB = ""; // RadioButton-aren balioa gorde
+                if (viewLangileaGehitu.jRadioButtonEmak.isSelected()) {
+                    sexuaRB = viewLangileaGehitu.jRadioButtonEmak.getText();
+                }
+                else if (viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
+                    sexuaRB = viewLangileaGehitu.jRadioButtonGiz.getText();
+                }
+
+                Langilea lang = new Langilea(viewLangileaGehitu.jTextFieldIzena.getText(), viewLangileaGehitu.jTextFieldAbizena1.getText(), 
+                        viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(),  Metodoak.dataGorde(viewLangileaGehitu.jDateChooserJaioData.getDate()), 
+                        sexuaRB, viewLangileaGehitu.jTextFieldHerria.getText(), viewLangileaGehitu.jTextFieldTlf.getText(), 
+                        Double.parseDouble(viewLangileaGehitu.jTextFieldSoldata.getText()), viewLangileaGehitu.jComboBoxEremua.getSelectedItem().toString());
+                LangileaKudeatu.langileaGehitu(lang);
+                resetLangileaGehitu();
+                enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
+            }   
         }
         else if (comando == viewLangileaGehitu.jButtonReset) {
             resetLangileaGehitu();
@@ -2713,5 +2754,211 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         return bool;
     }
     
+    private boolean balidazioaBezInfo() {
+        boolean bool = true;
+        if (viewBezeroaInfo.jTextFieldIzena.getText().isEmpty()) {
+            viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewBezeroaInfo.jTextFieldAbizena1.getText().isEmpty()) {
+            viewBezeroaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewBezeroaInfo.jTextFieldAbizena2.getText().isEmpty()) {
+            viewBezeroaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewBezeroaInfo.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewBezeroaInfo.jTextFieldNan.getText()))) {
+            viewBezeroaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        // data balidatu ??
+        if (!viewBezeroaInfo.jRadioButtonEmak.isSelected() && !viewBezeroaInfo.jRadioButtonGiz.isSelected()) {
+            viewBezeroaInfo.jRadioButtonEmak.setForeground(Color.RED);
+            viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.RED);
+        }  
+        if (viewBezeroaInfo.jTextFieldHerria.getText().isEmpty()) {
+            viewBezeroaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewBezeroaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewBezeroaInfo.jTextFieldTlf.getText()))) {
+            viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        else {
+            viewBezeroaInfo.jRadioButtonEmak.setForeground(Color.RED);
+            viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.RED);
+        }
+        return bool;
+    }
+    private boolean balidazioaBezGehitu() {
+        boolean bool = true;
+        if (viewBezeroaGehitu.jTextFieldIzena.getText().isEmpty()) {
+            viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewBezeroaGehitu.jTextFieldAbizena1.getText().isEmpty()) {
+            viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewBezeroaGehitu.jTextFieldAbizena2.getText().isEmpty()) {
+            viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewBezeroaGehitu.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewBezeroaGehitu.jTextFieldNan.getText()))) {
+            viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        // data balidatu ??
+        if (!viewBezeroaGehitu.jRadioButtonEmak.isSelected() && !viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
+            viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.RED);
+            viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.RED);
+        }  
+        else if (viewBezeroaGehitu.jRadioButtonEmak.isSelected() || viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
+            viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+            viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
+        }
+        if (viewBezeroaGehitu.jTextFieldHerria.getText().isEmpty()) {
+            viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewBezeroaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewBezeroaGehitu.jTextFieldTlf.getText()))) {
+            viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        return bool;
+    }
     
+    private boolean balidazioaLangInfo() {
+        boolean bool = true;
+        if (viewLangileaInfo.jTextFieldIzena.getText().isEmpty()) {
+            viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewLangileaInfo.jTextFieldAbizena1.getText().isEmpty()) {
+            viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewLangileaInfo.jTextFieldAbizena2.getText().isEmpty()) {
+            viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewLangileaInfo.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewLangileaInfo.jTextFieldNan.getText()))) {
+            viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        // data balidatu ??
+        if (!viewLangileaInfo.jRadioButtonEmak.isSelected() && !viewLangileaInfo.jRadioButtonGiz.isSelected()) {
+            viewLangileaInfo.jRadioButtonEmak.setForeground(Color.RED);
+            viewLangileaInfo.jRadioButtonGiz.setForeground(Color.RED);
+        }  
+        else if (viewLangileaInfo.jRadioButtonEmak.isSelected() || viewLangileaInfo.jRadioButtonGiz.isSelected()) {
+            viewLangileaInfo.jRadioButtonEmak.setForeground(Color.BLACK);
+            viewLangileaInfo.jRadioButtonGiz.setForeground(Color.BLACK);
+        }
+        if (viewLangileaInfo.jTextFieldHerria.getText().isEmpty()) {
+            viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewLangileaInfo.jTextFieldTlf.getText()))) {
+            viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaInfo.jTextFieldSoldata.getText().isEmpty()) {
+            viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaInfo.jTextFieldSoldata.getText().isEmpty()) {
+            viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaInfo.jComboBoxEremua.getSelectedIndex()==0) {
+            viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+    
+    private boolean balidazioaLangGehitu() {
+        boolean bool = true;
+        if (viewLangileaGehitu.jTextFieldIzena.getText().isEmpty()) {
+            viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewLangileaGehitu.jTextFieldAbizena1.getText().isEmpty()) {
+            viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewLangileaGehitu.jTextFieldAbizena2.getText().isEmpty()) {
+            viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewLangileaGehitu.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewLangileaGehitu.jTextFieldNan.getText()))) {
+            viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        // data balidatu ??
+        if (!viewLangileaGehitu.jRadioButtonEmak.isSelected() && !viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
+            viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.RED);
+            viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.RED);
+        }  
+        else if (viewLangileaGehitu.jRadioButtonEmak.isSelected() || viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
+            viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+            viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
+        }
+        if (viewLangileaGehitu.jTextFieldHerria.getText().isEmpty()) {
+            viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewLangileaGehitu.jTextFieldTlf.getText()))) {
+            viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaGehitu.jTextFieldSoldata.getText().isEmpty()) {
+            viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaGehitu.jTextFieldSoldata.getText().isEmpty()) {
+            viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewLangileaGehitu.jComboBoxEremua.getSelectedIndex()==0) {
+            viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+
+    private void resetBezInfoErr() {
+        viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.BLACK);
+    }
+    
+    private void resetDendInfoErr() {
+        viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+    }    
+    
+    private void resetLangInfoErr() {
+        viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
 }
