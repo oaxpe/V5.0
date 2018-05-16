@@ -11,7 +11,6 @@ import gestioa.*;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -269,6 +268,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
 
         /* FocusListener */
         // DendaInfo
+        viewDendaInfo.jTextFieldKodeDend.addFocusListener(this);
         viewDendaInfo.jTextFieldIzena.addFocusListener(this);
         viewDendaInfo.jTextFieldHelbidea.addFocusListener(this);
         viewDendaInfo.jTextFieldHerria.addFocusListener(this);
@@ -285,6 +285,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewDendaGehitu.jTextFieldEmail.addFocusListener(this);
         
         // BezeroaInfo
+        viewBezeroaInfo.jTextFieldKodeBez.addFocusListener(this);
         viewBezeroaInfo.jTextFieldIzena.addFocusListener(this);
         viewBezeroaInfo.jTextFieldAbizena1.addFocusListener(this);
         viewBezeroaInfo.jTextFieldAbizena2.addFocusListener(this);
@@ -307,6 +308,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.jTextFieldTlf.addFocusListener(this);
         
         // LangileaInfo
+        viewLangileaInfo.jTextFieldKodeLang.addFocusListener(this);
         viewLangileaInfo.jTextFieldIzena.addFocusListener(this);
         viewLangileaInfo.jTextFieldAbizena1.addFocusListener(this);
         viewLangileaInfo.jTextFieldAbizena2.addFocusListener(this);
@@ -396,6 +398,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jComboBoxMota.addFocusListener(this);
         
         // HornitzaileaInfo
+        viewHornitzaileaInfo.jTextFieldKodeHor.addFocusListener(this);
         viewHornitzaileaInfo.jTextFieldIzena.addFocusListener(this);
         viewHornitzaileaInfo.jTextFieldHerria.addFocusListener(this);
         viewHornitzaileaInfo.jTextFieldTlf.addFocusListener(this);
@@ -408,6 +411,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewHornitzaileaGehitu.jTextFieldEmail.addFocusListener(this);
         
         // EskaeraInfo
+        viewEskaeraInfo.jTextFieldKodeEsk.addFocusListener(this);
         viewEskaeraInfo.jComboBoxHornitzailea.addFocusListener(this);
         viewEskaeraInfo.jDateChooserData.addFocusListener(this);
         viewEskaeraInfo.jTextFieldKopurua.addFocusListener(this);
@@ -435,16 +439,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         eskInfoEstiloa();
         eskGehituEstiloa();  
         
-//        viewBezeroaInfo.jButtonAldatu.setEnabled(false);
-//        viewLangileaInfo.jButtonAldatu.setEnabled(false);
-//        viewProduktuaAukeratu.jButtonAldatuJerts.setEnabled(false);
-//        viewProduktuaAukeratu.jButtonAldatuKami.setEnabled(false);
-//        viewProduktuaAukeratu.jButtonAldatuPrak.setEnabled(false);
-//        viewHornitzaileaInfo.jButtonAldatu.setEnabled(false);
-//        viewEskaeraInfo.jButtonAldatu.setEnabled(false); // ez dago eskaerak aldatzeko aukerarik
-//        viewEskaeraInfo.jButtonEzabatu.setEnabled(false); // ez dago eskaerak ezabatzeko aukerarik
-        
         // tauletako estiloa
+        viewDendaInfo.jTableDendaInfo.setShowGrid(false);
+        viewDendaInfo.jTableDendaInfo.setShowHorizontalLines(true);
         viewBezeroaInfo.jTableBezeroaInfo.setShowGrid(false);
         viewBezeroaInfo.jTableBezeroaInfo.setShowHorizontalLines(true);
         viewLangileaInfo.jTableLangileaInfo.setShowGrid(false);
@@ -624,6 +621,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
         
         viewBezeroaGehitu.jTextFieldIzena.setOpaque(false);
         viewBezeroaGehitu.jTextFieldAbizena1.setOpaque(false);
@@ -655,6 +654,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewLangileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
         
         viewLangileaInfo.jTextFieldKodeLang.setOpaque(false);
@@ -692,7 +692,10 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
+        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
         
         viewLangileaGehitu.jTextFieldIzena.setOpaque(false);
         viewLangileaGehitu.jTextFieldAbizena1.setOpaque(false);
@@ -814,7 +817,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
         viewJertseaGehitu.jTextFieldKodeJerts.setOpaque(false);
         viewJertseaGehitu.jTextFieldMarka.setOpaque(false);
@@ -838,7 +843,10 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
         viewKamisetaGehitu.jTextFieldKodeKami.setOpaque(false);
         viewKamisetaGehitu.jTextFieldMarka.setOpaque(false);
@@ -862,8 +870,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
         viewPrakaGehitu.jTextFieldKodePrak.setOpaque(false);
         viewPrakaGehitu.jTextFieldMarka.setOpaque(false);
@@ -959,6 +971,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraGehitu.setLocationRelativeTo(null);
         viewEskaeraGehitu.jButtonIrten.setBackground(urdina);
         viewEskaeraGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
        
         viewEskaeraGehitu.jTextFieldKopurua.setOpaque(false);
@@ -1122,7 +1135,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         model.addColumn("STOCK kantitatea");
         model.addColumn("TAILA");
         model.addColumn("SASOIA");
-//        ArrayList<Kamiseta> kamiGuzt = KamisetaKudeatu.kamisetaGuztErakutsi();
         
         for (int i=0; i<kamiGuzt.size(); i++) {
             Kamiseta kami = kamiGuzt.get(i);
@@ -1159,8 +1171,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         model.addColumn("LUZEERA");
         model.addColumn("MOTA");
         
-//        ArrayList<Praka> prakGuzt = PrakaKudeatu.prakaGutztErakutsi();
-        
         for (int i=0; i<prakGuzt.size(); i++) {
             Praka prak = prakGuzt.get(i);
             Array[] os = null;
@@ -1192,7 +1202,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         model.addColumn("HERRIA");
         model.addColumn("TELEFONOA");
         model.addColumn("EMAILA");
-//        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi();
         
         for (int i=0; i<hornGuzt.size(); i++) {
             Hornitzailea horn = hornGuzt.get(i);
@@ -1219,7 +1228,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         model.addColumn("HORNITZAILEA");
         model.addColumn("DATA");
         model.addColumn("KOPURUA");
-//        ArrayList<Eskaera> eskGuzt = EskaeraKudeatu.eskaeraGuztiakErakutsi();
         
         for (int i=0; i<eskGuzt.size(); i++) {
             Eskaera esk = eskGuzt.get(i);
@@ -1370,6 +1378,14 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewJertseaGehitu.jComboBoxSexua.setSelectedIndex(0);
         viewJertseaGehitu.jTextFieldStock.setText(null);
         viewJertseaGehitu.jComboBoxTaila.setSelectedIndex(0);
+        
+        viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
     private void resetKamisetaGehitu() {
@@ -1381,6 +1397,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewKamisetaGehitu.jTextFieldStock.setText(null);
         viewKamisetaGehitu.jComboBoxTaila.setSelectedIndex(0);
         viewKamisetaGehitu.jComboBoxSasoia.setSelectedIndex(0);
+        
+        viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
     private void resetPrakaGehitu() {
@@ -1394,6 +1419,17 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jComboBoxSasoia.setSelectedIndex(0);
         viewPrakaGehitu.jTextFieldLuzeera.setText(null);
         viewPrakaGehitu.jComboBoxMota.setSelectedIndex(0);
+        
+        viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
     private void resetHornitzaileaGehitu() {
@@ -1422,13 +1458,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             if (!(component instanceof JLabel)) {
                 component.setEnabled(bool);
             }
-        }
-    }
-    
-    private void fontComponets (Container container, String mota, int tamaina) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            component.setFont(new Font(mota, Font.PLAIN, tamaina));
         }
     }
 
@@ -1628,6 +1657,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewMenuNagusia.jButtonDenda) {
             viewDendaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
+            enableComponets(viewDendaInfo.jPanelDendDatuak, false);
             dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
         }
         else if (comando == viewMenuNagusia.jButtonProduktua) {
@@ -2531,7 +2561,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                     jertsDatuakErakutsiTaula(JertseaKudeatu.jertseaInbentarioa());
                 }
             }
-            
         }
         else if (comando == viewProduktuaAukeratu.jPanelKami) {
             enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
@@ -3243,24 +3272,31 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     private boolean balidazioaDendaInfo() {
         boolean bool = true;
-        if (viewDendaInfo.jTextFieldIzena.getText().isEmpty()  || viewDendaInfo.jTextFieldHelbidea.getText().isEmpty() 
-                || viewDendaInfo.jTextFieldHerria.getText().isEmpty() || viewDendaInfo.jTextFieldPostKod.getText().isEmpty()
-                || viewDendaInfo.jTextFieldTlf.getText().isEmpty() || viewDendaInfo.jTextFieldEmail.getText().isEmpty() 
-                || !(Metodoak.tlfBalidazioa(viewDendaInfo.jTextFieldTlf.getText())) || !(Metodoak.emailBalidazioa(viewDendaInfo.jTextFieldEmail.getText()))) {
+        if (viewDendaInfo.jTextFieldIzena.getText().isEmpty()) {
+            viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }
-        if (viewDendaInfo.jTextFieldIzena.getText().isEmpty())
-            viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-        if (viewDendaInfo.jTextFieldHelbidea.getText().isEmpty())
+        if (viewDendaInfo.jTextFieldHelbidea.getText().isEmpty()) {
             viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-        if (viewDendaInfo.jTextFieldHerria.getText().isEmpty())
+            bool = false;
+        }
+        if (viewDendaInfo.jTextFieldHerria.getText().isEmpty()) {
             viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-        if (viewDendaInfo.jTextFieldPostKod.getText().isEmpty())
+            bool = false;
+        }    
+        if (viewDendaInfo.jTextFieldPostKod.getText().isEmpty()) {
             viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-        if (viewDendaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewDendaInfo.jTextFieldTlf.getText())))
+            bool = false;
+        }
+        if (viewDendaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewDendaInfo.jTextFieldTlf.getText()))) {
             viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-        if (viewDendaInfo.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewDendaInfo.jTextFieldEmail.getText())))
+            bool = false;
+        }  
+        if (viewDendaInfo.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewDendaInfo.jTextFieldEmail.getText()))) {
             viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        
         return bool;
     }
     
