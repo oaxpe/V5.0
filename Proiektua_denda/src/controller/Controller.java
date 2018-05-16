@@ -71,7 +71,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private HornitzaileaGehitu viewHornitzaileaGehitu;
     private EskaeraInfo viewEskaeraInfo;
     private EskaeraGehitu viewEskaeraGehitu;
-    // falta --> DendaInfo eta DendaGehitu?????
     
     private Color urdina = new Color(0,0,153);
     
@@ -179,14 +178,20 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         // ProduktuaAukeratu-ko botoiak
         viewProduktuaAukeratu.jButtonGehituJerts.addActionListener(this);
-        viewProduktuaAukeratu.jButtonAldatuJerts.addActionListener(this);
         viewProduktuaAukeratu.jButtonEzabatuJerts.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldatuJerts.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldaketaGordeJerts.addActionListener(this);
         viewProduktuaAukeratu.jButtonGehituKami.addActionListener(this);
-        viewProduktuaAukeratu.jButtonAldatuKami.addActionListener(this);
         viewProduktuaAukeratu.jButtonEzabatuKami.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldatuKami.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuKami.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldaketaGordeKami.addActionListener(this);
         viewProduktuaAukeratu.jButtonGehituPrak.addActionListener(this);
-        viewProduktuaAukeratu.jButtonAldatuPrak.addActionListener(this);
         viewProduktuaAukeratu.jButtonEzabatuPrak.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldatuPrak.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.addActionListener(this);
+        viewProduktuaAukeratu.jButtonAldaketaGordePrak.addActionListener(this);
         viewProduktuaAukeratu.jToggleButtonErakutsi.addActionListener(this);
         viewProduktuaAukeratu.jToggleButtonEzkutatu.addActionListener(this);
         viewProduktuaAukeratu.jButtonBidali.addActionListener(this);
@@ -327,7 +332,38 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewLangileaGehitu.jTextFieldSoldata.addFocusListener(this);
         viewLangileaGehitu.jComboBoxEremua.addFocusListener(this);
         
-        // ProduktuaAukeratu ??????
+        // ProduktuaAukeratu
+        /* JERTSEA */
+        viewProduktuaAukeratu.jTextFieldKodeJerts.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldMarkaJerts.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldPrezioaJerts.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxSexuaJerts.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldStockJerts.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxTailaJerts.addFocusListener(this);
+        
+        /* KAMISETA */
+        viewProduktuaAukeratu.jTextFieldKodeKami.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldMarkaKami.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldPrezioaKami.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxSexuaKami.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldStockKami.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxTailaKami.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxSasoiaKami.addFocusListener(this);
+        
+        /* PRAKA */
+        viewProduktuaAukeratu.jTextFieldKodePrak.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldMarkaPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldPrezioaPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxSexuaPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldStockPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxTailaPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxSasoiaPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.addFocusListener(this);
+        viewProduktuaAukeratu.jComboBoxMotaPrak.addFocusListener(this);
+        
         // JertseaGehitu
         viewJertseaGehitu.jTextFieldKodeJerts.addFocusListener(this);
         viewJertseaGehitu.jTextFieldMarka.addFocusListener(this);
@@ -401,9 +437,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
 //        viewBezeroaInfo.jButtonAldatu.setEnabled(false);
 //        viewLangileaInfo.jButtonAldatu.setEnabled(false);
-        viewProduktuaAukeratu.jButtonAldatuJerts.setEnabled(false);
-        viewProduktuaAukeratu.jButtonAldatuKami.setEnabled(false);
-        viewProduktuaAukeratu.jButtonAldatuPrak.setEnabled(false);
+//        viewProduktuaAukeratu.jButtonAldatuJerts.setEnabled(false);
+//        viewProduktuaAukeratu.jButtonAldatuKami.setEnabled(false);
+//        viewProduktuaAukeratu.jButtonAldatuPrak.setEnabled(false);
 //        viewHornitzaileaInfo.jButtonAldatu.setEnabled(false);
 //        viewEskaeraInfo.jButtonAldatu.setEnabled(false); // ez dago eskaerak aldatzeko aukerarik
 //        viewEskaeraInfo.jButtonEzabatu.setEnabled(false); // ez dago eskaerak ezabatzeko aukerarik
@@ -684,10 +720,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         /* Jertsea */
         viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jTextFieldPrezioaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxSexuaJerts.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxTailaJerts.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldBilatuJerts.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
 
         viewProduktuaAukeratu.jTextFieldKodeJerts.setOpaque(false);
@@ -698,10 +736,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
 
         /* Kamiseta */
         viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewProduktuaAukeratu.jTextFieldKoloreaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jTextFieldMarkaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jTextFieldPrezioaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxSexuaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxTailaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jComboBoxSasoiaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldBilatuKami.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
         
         viewProduktuaAukeratu.jTextFieldKodeKami.setOpaque(false);
@@ -712,11 +753,15 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         /* Praka */
         viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jTextFieldMarkaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jTextFieldPrezioaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxSexuaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxTailaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldBilatuPrak.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
         
         viewProduktuaAukeratu.jTextFieldKodePrak.setOpaque(false);
@@ -1060,7 +1105,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    private void kamiDatuakErakutsiTaula() {
+    private void kamiDatuakErakutsiTaula(ArrayList<Kamiseta> kamiGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -1077,7 +1122,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         model.addColumn("STOCK kantitatea");
         model.addColumn("TAILA");
         model.addColumn("SASOIA");
-        ArrayList<Kamiseta> kamiGuzt = KamisetaKudeatu.kamisetaGuztErakutsi();
+//        ArrayList<Kamiseta> kamiGuzt = KamisetaKudeatu.kamisetaGuztErakutsi();
         
         for (int i=0; i<kamiGuzt.size(); i++) {
             Kamiseta kami = kamiGuzt.get(i);
@@ -1094,7 +1139,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    private void prakDatuakErakutsiTaula() {
+    private void prakDatuakErakutsiTaula(ArrayList<Praka> prakGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -1114,7 +1159,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         model.addColumn("LUZEERA");
         model.addColumn("MOTA");
         
-        ArrayList<Praka> prakGuzt = PrakaKudeatu.prakaGutztErakutsi();
+//        ArrayList<Praka> prakGuzt = PrakaKudeatu.prakaGutztErakutsi();
         
         for (int i=0; i<prakGuzt.size(); i++) {
             Praka prak = prakGuzt.get(i);
@@ -1967,6 +2012,58 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 JOptionPane.showMessageDialog(null, "Ez da jertserik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
             }
         }
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuJerts) {
+            if (viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow()!=-1) {
+                enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, true);
+                enableComponets(viewProduktuaAukeratu.jPanelJertsBotoiak, false);
+                viewProduktuaAukeratu.jButtonIrten.setEnabled(false);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, false);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, false);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Ez da produkturik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
+            } 
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts) {
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
+            if (konf == 0) { // bai
+                enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
+                enableComponets(viewProduktuaAukeratu.jPanelJertsBotoiak, true);
+                resetJertsInfoErr();
+                aukJertsDatuakBete(viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow()); // taulako datuekin berriz bete
+                viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, true);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, true);
+            }
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordeJerts) {
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
+            if (konf == 0) { // bai
+                if (balidazioaJertsInfo()) {
+                    int aukLerroa = viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(); // aukeratutako lerroa
+                    /* Jertsea ezabatu */
+                    String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                    String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                    JertseaKudeatu.jertseaEzabatu(kodea, taila);
+
+                    /* Jertsea gorde */
+                    Jertsea jerts = new Jertsea(viewProduktuaAukeratu.jTextFieldKodeJerts.getText(), viewProduktuaAukeratu.jTextFieldMarkaJerts.getText(), 
+                            Double.parseDouble(viewProduktuaAukeratu.jTextFieldPrezioaJerts.getText()), viewProduktuaAukeratu.jTextFieldKoloreaJerts.getText(), 
+                            viewProduktuaAukeratu.jComboBoxSexuaJerts.getSelectedItem().toString(), Integer.parseInt(viewProduktuaAukeratu.jTextFieldStockJerts.getText()), 
+                            viewProduktuaAukeratu.jComboBoxTailaJerts.getSelectedItem().toString());
+                    JertseaKudeatu.jertsGehitu(jerts);
+                    
+                    jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
+                    enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
+                    enableComponets(viewProduktuaAukeratu.jPanelJertsBotoiak, true);
+                    viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
+                    viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, true);
+                    viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, true);
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
+            }
+        }
         else if (comando == viewProduktuaAukeratu.jButtonGehituKami) {
             viewKamisetaGehitu.setVisible(true);
             viewProduktuaAukeratu.setEnabled(false);
@@ -1981,10 +2078,62 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                     String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
                     KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
                 }
-                kamiDatuakErakutsiTaula();
+                kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da kamisetarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
+            }
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuKami) {
+            if (viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow()!=-1) {
+                enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, true);
+                enableComponets(viewProduktuaAukeratu.jPanelKamiBotoiak, false);
+                viewProduktuaAukeratu.jButtonIrten.setEnabled(false);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, false);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, false);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Ez da produkturik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
+            } 
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuKami) {
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
+            if (konf == 0) { // bai
+                enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
+                enableComponets(viewProduktuaAukeratu.jPanelKamiBotoiak, true);
+                resetKamiInfoErr();
+                aukKamiDatuakBete(viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow()); // taulako datuekin berriz bete
+                viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, true);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, true);
+            }
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordeKami) {
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
+            if (konf == 0) { // bai
+                if (balidazioaKamiInfo()) {
+                    int aukLerroa = viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(); // aukeratutako lerroa
+                    /* Kamiseta ezabatu */
+                    String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                    String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                    KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
+
+                    /* Kamiseta gorde */
+                    Kamiseta kami = new Kamiseta(viewProduktuaAukeratu.jTextFieldKodeKami.getText(), viewProduktuaAukeratu.jTextFieldMarkaKami.getText(), 
+                            Double.parseDouble(viewProduktuaAukeratu.jTextFieldPrezioaKami.getText()), viewProduktuaAukeratu.jTextFieldKoloreaKami.getText(), 
+                            viewProduktuaAukeratu.jComboBoxSexuaKami.getSelectedItem().toString(), Integer.parseInt(viewProduktuaAukeratu.jTextFieldStockKami.getText()), 
+                            viewProduktuaAukeratu.jComboBoxTailaKami.getSelectedItem().toString(), viewProduktuaAukeratu.jComboBoxSasoiaKami.getSelectedItem().toString());
+                    KamisetaKudeatu.kamisetaGehitu(kami);
+                    
+                    kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
+                    enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
+                    enableComponets(viewProduktuaAukeratu.jPanelKamiBotoiak, true);
+                    viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
+                    viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, true);
+                    viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, true);
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewProduktuaAukeratu.jButtonGehituPrak) {
@@ -2001,10 +2150,63 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                     int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
                     PrakaKudeatu.prakaEzabatu(kodea, taila);
                 }
-                prakDatuakErakutsiTaula();
+                prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da prakarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
+            }
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuPrak) {
+            if (viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow()!=-1) {
+                enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, true);
+                enableComponets(viewProduktuaAukeratu.jPanelPrakBotoiak, false);
+                viewProduktuaAukeratu.jButtonIrten.setEnabled(false);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, false);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, false);
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Ez da produkturik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
+            } 
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak) {
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
+            if (konf == 0) { // bai
+                enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
+                enableComponets(viewProduktuaAukeratu.jPanelPrakBotoiak, true);
+                resetPrakInfoErr();
+                aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow()); // taulako datuekin berriz bete
+                viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, true);
+                viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, true);
+            }
+        }
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordePrak) {
+            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
+            if (konf == 0) { // bai
+                if (balidazioaPrakInfo()) {
+                    int aukLerroa = viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(); // aukeratutako lerroa
+                    /* Praka ezabatu */
+                    String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
+                    int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
+                    PrakaKudeatu.prakaEzabatu(kodea, taila);
+
+                    /* Praka gorde */
+                    Praka prak = new Praka(viewProduktuaAukeratu.jTextFieldKodePrak.getText(), viewProduktuaAukeratu.jTextFieldMarkaPrak.getText(), 
+                            Double.parseDouble(viewProduktuaAukeratu.jTextFieldPrezioaPrak.getText()), viewProduktuaAukeratu.jTextFieldKoloreaPrak.getText(), 
+                            viewProduktuaAukeratu.jComboBoxSexuaPrak.getSelectedItem().toString(), Integer.parseInt(viewProduktuaAukeratu.jTextFieldStockPrak.getText()), 
+                            Integer.parseInt(viewProduktuaAukeratu.jComboBoxTailaPrak.getSelectedItem().toString()), viewProduktuaAukeratu.jComboBoxSasoiaPrak.getSelectedItem().toString(),
+                            Integer.parseInt(viewProduktuaAukeratu.jTextFieldLuzeeraPrak.getText()), viewProduktuaAukeratu.jComboBoxMotaPrak.getSelectedItem().toString());
+                    PrakaKudeatu.prakaGehitu(prak);
+                    
+                    prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
+                    enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
+                    enableComponets(viewProduktuaAukeratu.jPanelPrakBotoiak, true);
+                    viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
+                    viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, true);
+                    viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, true);
+                }
+                else
+                    JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
             }
         }
         else if (comando == viewProduktuaAukeratu.jButtonIrten) {
@@ -2025,17 +2227,20 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         /* JertseaGehitu-ko aukerak */
         if (comando == viewJertseaGehitu.jButtonBerriaGehitu){
-            System.out.println("a");
             enableComponets(viewJertseaGehitu.jPanelJertsDatuak, true);
         }
         else if (comando == viewJertseaGehitu.jButtonGorde) {
-            Jertsea jerts = new Jertsea(viewJertseaGehitu.jTextFieldKodeJerts.getText(), viewJertseaGehitu.jTextFieldMarka.getText(), 
-                    Double.parseDouble(viewJertseaGehitu.jTextFieldPrezioa.getText()), viewJertseaGehitu.jTextFieldKolorea.getText(), 
-                    viewJertseaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewJertseaGehitu.jTextFieldStock.getText()),
-                    viewJertseaGehitu.jComboBoxTaila.getSelectedItem().toString());
-            JertseaKudeatu.jertsGehitu(jerts);
-            resetJertseaGehitu();
-            enableComponets(viewJertseaGehitu.jPanelJertsDatuak, false);
+            if (balidazioaJertsGehitu()) {
+                Jertsea jerts = new Jertsea(viewJertseaGehitu.jTextFieldKodeJerts.getText(), viewJertseaGehitu.jTextFieldMarka.getText(), 
+                        Double.parseDouble(viewJertseaGehitu.jTextFieldPrezioa.getText()), viewJertseaGehitu.jTextFieldKolorea.getText(), 
+                        viewJertseaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewJertseaGehitu.jTextFieldStock.getText()),
+                        viewJertseaGehitu.jComboBoxTaila.getSelectedItem().toString());
+                JertseaKudeatu.jertsGehitu(jerts);
+                resetJertseaGehitu();
+                enableComponets(viewJertseaGehitu.jPanelJertsDatuak, false);
+            }   
+            else
+                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
         } 
         else if (comando == viewJertseaGehitu.jButtonReset) {
             resetJertseaGehitu();
@@ -2052,13 +2257,17 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewKamisetaGehitu.jPanelKamiDatuak, true);
         }
         else if (comando == viewKamisetaGehitu.jButtonGorde) {
-            Kamiseta kami = new Kamiseta (viewKamisetaGehitu.jTextFieldKodeKami.getText(), viewKamisetaGehitu.jTextFieldMarka.getText(), 
-                    Double.parseDouble(viewKamisetaGehitu.jTextFieldPrezioa.getText()), viewKamisetaGehitu.jTextFieldKolorea.getText(), 
-                    viewKamisetaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewKamisetaGehitu.jTextFieldStock.getText()), 
-                    viewKamisetaGehitu.jComboBoxTaila.getSelectedItem().toString(), viewKamisetaGehitu.jComboBoxSasoia.getSelectedItem().toString());
-            KamisetaKudeatu.kamisetaGehitu(kami);
-            resetKamisetaGehitu();
-            enableComponets(viewKamisetaGehitu.jPanelKamiDatuak, false);
+            if (balidazioaKamiGehitu()) {
+                Kamiseta kami = new Kamiseta (viewKamisetaGehitu.jTextFieldKodeKami.getText(), viewKamisetaGehitu.jTextFieldMarka.getText(), 
+                        Double.parseDouble(viewKamisetaGehitu.jTextFieldPrezioa.getText()), viewKamisetaGehitu.jTextFieldKolorea.getText(), 
+                        viewKamisetaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewKamisetaGehitu.jTextFieldStock.getText()), 
+                        viewKamisetaGehitu.jComboBoxTaila.getSelectedItem().toString(), viewKamisetaGehitu.jComboBoxSasoia.getSelectedItem().toString());
+                KamisetaKudeatu.kamisetaGehitu(kami);
+                resetKamisetaGehitu();
+                enableComponets(viewKamisetaGehitu.jPanelKamiDatuak, false);
+            }   
+            else
+                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
         }
         else if (comando == viewKamisetaGehitu.jButtonReset) {
             resetKamisetaGehitu();
@@ -2067,7 +2276,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetKamisetaGehitu();
             viewKamisetaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
-            kamiDatuakErakutsiTaula();
+            kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
         }
         
         /* PrakaGehitu-ko aukerak */
@@ -2075,14 +2284,18 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewPrakaGehitu.jPanelPrakDatuak, true);
         }
         else if (comando == viewPrakaGehitu.jButtonGorde) {
-            Praka prak = new Praka (viewPrakaGehitu.jTextFieldKodePrak.getText(), viewPrakaGehitu.jTextFieldMarka.getText(), 
-                    Double.parseDouble(viewPrakaGehitu.jTextFieldPrezioa.getText()), viewPrakaGehitu.jTextFieldKolorea.getText(), 
-                    viewPrakaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewPrakaGehitu.jTextFieldStock.getText()), 
-                    Integer.parseInt(viewPrakaGehitu.jComboBoxTaila.getSelectedItem().toString()), viewPrakaGehitu.jComboBoxSasoia.getSelectedItem().toString(), 
-                    Integer.parseInt(viewPrakaGehitu.jTextFieldLuzeera.getText()), viewPrakaGehitu.jComboBoxMota.getSelectedItem().toString());
-            PrakaKudeatu.prakaGehitu(prak);
-            resetPrakaGehitu();
-            enableComponets(viewPrakaGehitu.jPanelPrakDatuak, false);
+            if (balidazioaPrakGehitu()) {
+                Praka prak = new Praka (viewPrakaGehitu.jTextFieldKodePrak.getText(), viewPrakaGehitu.jTextFieldMarka.getText(), 
+                        Double.parseDouble(viewPrakaGehitu.jTextFieldPrezioa.getText()), viewPrakaGehitu.jTextFieldKolorea.getText(), 
+                        viewPrakaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewPrakaGehitu.jTextFieldStock.getText()), 
+                        Integer.parseInt(viewPrakaGehitu.jComboBoxTaila.getSelectedItem().toString()), viewPrakaGehitu.jComboBoxSasoia.getSelectedItem().toString(), 
+                        Integer.parseInt(viewPrakaGehitu.jTextFieldLuzeera.getText()), viewPrakaGehitu.jComboBoxMota.getSelectedItem().toString());
+                PrakaKudeatu.prakaGehitu(prak);
+                resetPrakaGehitu();
+                enableComponets(viewPrakaGehitu.jPanelPrakDatuak, false);
+            }   
+            else
+                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
         }
         else if (comando == viewPrakaGehitu.jButtonReset) {
             resetPrakaGehitu();
@@ -2091,7 +2304,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             resetPrakaGehitu();
             viewPrakaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
-            prakDatuakErakutsiTaula();
+            prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
         }
         
         /* HornitzaileaInfo-ko aukerak */
@@ -2322,11 +2535,11 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         else if (comando == viewProduktuaAukeratu.jPanelKami) {
             enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
-            kamiDatuakErakutsiTaula();
+            kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
         }
         else if (comando == viewProduktuaAukeratu.jPanelPrak) {
             enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
-            prakDatuakErakutsiTaula();
+            prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
         }
     }
 
@@ -2532,7 +2745,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public void focusGained(FocusEvent e) {
         Object comando = e.getSource();
         // DendaInfo
-        if (comando == viewDendaInfo.jTextFieldIzena) 
+        if (comando == viewDendaInfo.jTextFieldKodeDend) 
+            viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewDendaInfo.jTextFieldIzena) 
             viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewDendaInfo.jTextFieldHelbidea) 
             viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
@@ -2560,6 +2775,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
 
         // BezeroaInfo
+        else if (comando == viewBezeroaInfo.jTextFieldKodeBez) 
+            viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewBezeroaInfo.jTextFieldIzena) 
             viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewBezeroaInfo.jTextFieldAbizena1) 
@@ -2572,6 +2789,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewBezeroaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewBezeroaInfo.jTextFieldTlf) 
             viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        
         // BezeroaGehitu
         else if (comando == viewBezeroaGehitu.jTextFieldIzena)
             viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
@@ -2587,6 +2805,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         
         // LangileaInfo
+        else if (comando == viewLangileaInfo.jTextFieldKodeLang) 
+            viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewLangileaInfo.jTextFieldIzena) 
             viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewLangileaInfo.jTextFieldAbizena1) 
@@ -2622,6 +2842,22 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
          else if (comando == viewLangileaGehitu.jComboBoxEremua)
             viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(urdina, 1));
          
+        // JertseaInfo
+        else if (comando == viewProduktuaAukeratu.jTextFieldKodeJerts)
+            viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldMarkaJerts)
+            viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldPrezioaJerts)
+            viewProduktuaAukeratu.jTextFieldPrezioaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldKoloreaJerts)
+            viewProduktuaAukeratu.jTextFieldKoloreaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSexuaJerts)
+            viewProduktuaAukeratu.jComboBoxSexuaJerts.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        else if (comando == viewProduktuaAukeratu.jTextFieldStockJerts)
+            viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jComboBoxTailaJerts)
+            viewProduktuaAukeratu.jComboBoxTailaJerts.setBorder(BorderFactory.createLineBorder(urdina, 1));
+         
         // JertseaGehitu
         else if (comando == viewJertseaGehitu.jTextFieldKodeJerts)
             viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
@@ -2637,6 +2873,24 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewJertseaGehitu.jComboBoxTaila)
             viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        
+        // KamisetaInfo
+        else if (comando == viewProduktuaAukeratu.jTextFieldKodeKami)
+            viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldMarkaKami)
+            viewProduktuaAukeratu.jTextFieldMarkaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldPrezioaKami)
+            viewProduktuaAukeratu.jTextFieldPrezioaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldKoloreaKami)
+            viewProduktuaAukeratu.jTextFieldKoloreaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSexuaKami)
+            viewProduktuaAukeratu.jComboBoxSexuaKami.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        else if (comando == viewProduktuaAukeratu.jTextFieldStockKami)
+            viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jComboBoxTailaKami)
+            viewProduktuaAukeratu.jComboBoxTailaKami.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSasoiaKami)
+            viewProduktuaAukeratu.jComboBoxSasoiaKami.setBorder(BorderFactory.createLineBorder(urdina, 1));
         
         // KamisetaGehitu
         else if (comando == viewKamisetaGehitu.jTextFieldKodeKami)
@@ -2655,6 +2909,28 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(urdina, 1));
         else if (comando == viewKamisetaGehitu.jComboBoxSasoia)
             viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        
+        // PrakaInfo
+        else if (comando == viewProduktuaAukeratu.jTextFieldKodePrak)
+            viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldMarkaPrak)
+            viewProduktuaAukeratu.jTextFieldMarkaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldPrezioaPrak)
+            viewProduktuaAukeratu.jTextFieldPrezioaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jTextFieldKoloreaPrak)
+            viewProduktuaAukeratu.jTextFieldKoloreaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSexuaPrak)
+            viewProduktuaAukeratu.jComboBoxSexuaPrak.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        else if (comando == viewProduktuaAukeratu.jTextFieldStockPrak)
+            viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jComboBoxTailaPrak)
+            viewProduktuaAukeratu.jComboBoxTailaPrak.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSasoiaPrak)
+            viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        else if (comando == viewProduktuaAukeratu.jTextFieldLuzeeraPrak)
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
+        else if (comando == viewProduktuaAukeratu.jComboBoxMotaPrak) 
+            viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(urdina, 1));
         
         // PrakaGehitu
         else if (comando == viewPrakaGehitu.jTextFieldKodePrak)
@@ -2679,6 +2955,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(urdina, 1));
         
         // HornitzaileaInfo
+        else if (comando == viewHornitzaileaInfo.jTextFieldKodeHor)
+            viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewHornitzaileaInfo.jTextFieldIzena)
             viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewHornitzaileaInfo.jTextFieldHerria)
@@ -2699,6 +2977,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         
         // EskaeraInfo
+        else if (comando == viewEskaeraInfo.jTextFieldKodeEsk)
+            viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));   
         else if (comando == viewEskaeraInfo.jTextFieldKopurua)
             viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));   
         else if (comando == viewEskaeraInfo.jComboBoxHornitzailea) 
@@ -2715,7 +2995,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public void focusLost(FocusEvent e) {
         Object comando = e.getSource();
         // DendaInfo
-        if (comando == viewDendaInfo.jTextFieldIzena) 
+        if (comando == viewDendaInfo.jTextFieldKodeDend) 
+            viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewDendaInfo.jTextFieldIzena) 
             viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewDendaInfo.jTextFieldHelbidea) 
             viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -2743,6 +3025,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         
         // BezeroaInfo
+        else if (comando == viewBezeroaInfo.jTextFieldKodeBez) 
+            viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewBezeroaInfo.jTextFieldIzena) 
             viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewBezeroaInfo.jTextFieldAbizena1) 
@@ -2771,6 +3055,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         
         // LangileaInfo
+        else if (comando == viewLangileaInfo.jTextFieldKodeLang) 
+            viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewLangileaInfo.jTextFieldIzena) 
             viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewLangileaInfo.jTextFieldAbizena1) 
@@ -2787,6 +3073,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewLangileaInfo.jComboBoxEremua)
             viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
         // LangileaGehitu
         else if (comando == viewLangileaGehitu.jTextFieldIzena)
             viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -2805,6 +3092,22 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewLangileaGehitu.jComboBoxEremua)
             viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
+        // JertseaInfo
+        else if (comando == viewProduktuaAukeratu.jTextFieldKodeJerts)
+            viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldMarkaJerts)
+            viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldPrezioaJerts)
+            viewProduktuaAukeratu.jTextFieldPrezioaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldKoloreaJerts)
+            viewProduktuaAukeratu.jTextFieldKoloreaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSexuaJerts)
+            viewProduktuaAukeratu.jComboBoxSexuaJerts.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewProduktuaAukeratu.jTextFieldStockJerts)
+            viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jComboBoxTailaJerts)
+            viewProduktuaAukeratu.jComboBoxTailaJerts.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
         // JertseaGehitu
         else if (comando == viewJertseaGehitu.jTextFieldKodeJerts)
             viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -2821,6 +3124,24 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewJertseaGehitu.jComboBoxTaila)
             viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
+        // KamisetaInfo
+        else if (comando == viewProduktuaAukeratu.jTextFieldKodeKami)
+            viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldMarkaKami)
+            viewProduktuaAukeratu.jTextFieldMarkaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldPrezioaKami)
+            viewProduktuaAukeratu.jTextFieldPrezioaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldKoloreaKami)
+            viewProduktuaAukeratu.jTextFieldKoloreaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSexuaKami)
+            viewProduktuaAukeratu.jComboBoxSexuaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewProduktuaAukeratu.jTextFieldStockKami)
+            viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jComboBoxTailaKami)
+            viewProduktuaAukeratu.jComboBoxTailaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSasoiaKami)
+            viewProduktuaAukeratu.jComboBoxSasoiaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+     
         // KamisetaGehitu
         else if (comando == viewKamisetaGehitu.jTextFieldKodeKami)
             viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -2838,6 +3159,29 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         else if (comando == viewKamisetaGehitu.jComboBoxSasoia)
             viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
+        // PrakaInfo
+        else if (comando == viewProduktuaAukeratu.jTextFieldKodePrak)
+            viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldMarkaPrak)
+            viewProduktuaAukeratu.jTextFieldMarkaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldPrezioaPrak)
+            viewProduktuaAukeratu.jTextFieldPrezioaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jTextFieldKoloreaPrak)
+            viewProduktuaAukeratu.jTextFieldKoloreaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSexuaPrak)
+            viewProduktuaAukeratu.jComboBoxSexuaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewProduktuaAukeratu.jTextFieldStockPrak)
+            viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jComboBoxTailaPrak)
+            viewProduktuaAukeratu.jComboBoxTailaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewProduktuaAukeratu.jComboBoxSasoiaPrak)
+            viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewProduktuaAukeratu.jTextFieldLuzeeraPrak)
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        else if (comando == viewProduktuaAukeratu.jComboBoxMotaPrak) 
+            viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
         // PrakaGehitu
         else if (comando == viewPrakaGehitu.jTextFieldKodePrak)
             viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -2861,6 +3205,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
         // HornitzaileaInfo
+        else if (comando == viewHornitzaileaInfo.jTextFieldKodeHor)
+            viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewHornitzaileaInfo.jTextFieldIzena)
             viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewHornitzaileaInfo.jTextFieldHerria)
@@ -2881,6 +3227,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         
         // EskaeraInfo
+        else if (comando == viewEskaeraInfo.jTextFieldKodeEsk)
+            viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));  
         else if (comando == viewEskaeraInfo.jTextFieldKopurua)
             viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));  
         else if (comando == viewEskaeraInfo.jComboBoxHornitzailea) 
@@ -3121,6 +3469,236 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         return bool;
     }
     
+    private boolean balidazioaJertsInfo() {
+        boolean bool = true;
+        if (viewProduktuaAukeratu.jTextFieldKodeJerts.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewProduktuaAukeratu.jTextFieldMarkaJerts.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewProduktuaAukeratu.jTextFieldPrezioaJerts.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldPrezioaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewProduktuaAukeratu.jTextFieldKoloreaJerts.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldKoloreaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxSexuaJerts.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxSexuaJerts.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jTextFieldStockJerts.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxTailaJerts.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxTailaJerts.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+    
+    private boolean balidazioaKamiInfo() {
+        boolean bool = true;
+        if (viewProduktuaAukeratu.jTextFieldKodeKami.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewProduktuaAukeratu.jTextFieldMarkaKami.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldMarkaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewProduktuaAukeratu.jTextFieldPrezioaKami.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldPrezioaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewProduktuaAukeratu.jTextFieldKoloreaKami.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldKoloreaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxSexuaKami.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxSexuaKami.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jTextFieldStockKami.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxTailaKami.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxTailaKami.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxSasoiaKami.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxSasoiaKami.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+    
+    private boolean balidazioaPrakInfo() {
+        boolean bool = true;
+        if (viewProduktuaAukeratu.jTextFieldKodePrak.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewProduktuaAukeratu.jTextFieldMarkaPrak.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldMarkaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewProduktuaAukeratu.jTextFieldPrezioaPrak.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldPrezioaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewProduktuaAukeratu.jTextFieldKoloreaPrak.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldKoloreaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxSexuaPrak.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxSexuaPrak.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jTextFieldStockPrak.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxTailaPrak.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxTailaPrak.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxSasoiaPrak.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jTextFieldLuzeeraPrak.getText().isEmpty()) {
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProduktuaAukeratu.jComboBoxMotaPrak.getSelectedIndex() == 0) {
+            viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+    
+    private boolean balidazioaJertsGehitu() {
+        boolean bool = true;
+        if (viewJertseaGehitu.jTextFieldKodeJerts.getText().isEmpty()) {
+            viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewJertseaGehitu.jTextFieldMarka.getText().isEmpty()) {
+            viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewJertseaGehitu.jTextFieldPrezioa.getText().isEmpty()) {
+            viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewJertseaGehitu.jTextFieldKolorea.getText().isEmpty()) {
+            viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewJertseaGehitu.jComboBoxSexua.getSelectedIndex() == 0) {
+            viewJertseaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewJertseaGehitu.jTextFieldStock.getText().isEmpty()) {
+            viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewJertseaGehitu.jComboBoxTaila.getSelectedIndex() == 0) {
+            viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+    
+    private boolean balidazioaKamiGehitu() {
+        boolean bool = true;
+        if (viewKamisetaGehitu.jTextFieldKodeKami.getText().isEmpty()) {
+            viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewKamisetaGehitu.jTextFieldMarka.getText().isEmpty()) {
+            viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewKamisetaGehitu.jTextFieldPrezioa.getText().isEmpty()) {
+            viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewKamisetaGehitu.jTextFieldKolorea.getText().isEmpty()) {
+            viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewKamisetaGehitu.jComboBoxSexua.getSelectedIndex() == 0) {
+            viewKamisetaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewKamisetaGehitu.jTextFieldStock.getText().isEmpty()) {
+            viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewKamisetaGehitu.jComboBoxTaila.getSelectedIndex() == 0) {
+            viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewKamisetaGehitu.jComboBoxSasoia.getSelectedIndex() == 0) {
+            viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+    
+    private boolean balidazioaPrakGehitu() {
+        boolean bool = true;
+        if (viewPrakaGehitu.jTextFieldKodePrak.getText().isEmpty()) {
+            viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }     
+        if (viewPrakaGehitu.jTextFieldMarka.getText().isEmpty()) {
+            viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewPrakaGehitu.jTextFieldPrezioa.getText().isEmpty()) {
+            viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }   
+        if (viewPrakaGehitu.jTextFieldKolorea.getText().isEmpty()) {
+            viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewPrakaGehitu.jComboBoxSexua.getSelectedIndex() == 0) {
+            viewPrakaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewPrakaGehitu.jTextFieldStock.getText().isEmpty()) {
+            viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewPrakaGehitu.jComboBoxTaila.getSelectedIndex() == 0) {
+            viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewPrakaGehitu.jComboBoxSasoia.getSelectedIndex() == 0) {
+            viewPrakaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewPrakaGehitu.jTextFieldLuzeera.getText().isEmpty()) {
+            viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewPrakaGehitu.jComboBoxMota.getSelectedIndex() == 0) {
+            viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        return bool;
+    }
+        
     private boolean balidazioaHornInfo() {
         boolean bool = true;
         if (viewHornitzaileaInfo.jTextFieldIzena.getText().isEmpty()) {
@@ -3235,5 +3813,39 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewEskaeraInfo.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+    }
+
+    private void resetJertsInfoErr() {
+        viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldPrezioaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldKoloreaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxSexuaJerts.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxTailaJerts.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+    
+    private void resetKamiInfoErr() {
+        viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldMarkaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldPrezioaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldKoloreaKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxSexuaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxTailaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jComboBoxSasoiaKami.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+
+    private void resetPrakInfoErr() {
+        viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldMarkaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldPrezioaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jTextFieldKoloreaPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxSexuaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxTailaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
 }
