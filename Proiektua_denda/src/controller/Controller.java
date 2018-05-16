@@ -473,7 +473,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jTableEskaeraInfo.setShowGrid(false);
         viewEskaeraInfo.jTableEskaeraInfo.setShowHorizontalLines(true);
 
-        // Bista guztietako ComboBox-ak kargatu.
+        /* Bista guztietako ComboBox-ak kargatu */
         langEremuaKargatu(viewLangileaInfo.jComboBoxEremua);
         langEremuaKargatu(viewLangileaGehitu.jComboBoxEremua);
         hornitzaileaKargatu(viewEskaeraInfo.jComboBoxHornitzailea);
@@ -506,17 +506,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTextFieldKodeKami.setEditable(false);
         viewProduktuaAukeratu.jTextFieldKodePrak.setEditable(false);
         viewHornitzaileaInfo.jTextFieldKodeHor.setEditable(false);
-        viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);
-        
-        /* momentuz bilatzeko aukera ez dago eskuragai */
-//        viewDendaInfo.jTextFieldBilatu.setEditable(false);
-//        viewBezeroaInfo.jTextFieldBilatu.setEnabled(false);
-//        viewLangileaInfo.jTextFieldBilatu.setEnabled(false);
-//        viewProduktuaAukeratu.jTextFieldBilatuJerts.setEnabled(false);
-//        viewProduktuaAukeratu.jTextFieldBilatuKami.setEnabled(false);
-//        viewProduktuaAukeratu.jTextFieldBilatuPrak.setEnabled(false);
-//        viewHornitzaileaInfo.jTextFieldBilatu.setEnabled(false);
-//        viewEskaeraInfo.jTextFieldBilatu.setEnabled(false);     
+        viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);   
     }
     
     private void menuNagEstiloa() {
@@ -527,6 +517,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewMenuNagusia.jPanelOina.setBackground(new Color(0,0,153));
         viewMenuNagusia.jPanelGorputza.setBackground(Color.WHITE);
         viewMenuNagusia.jButtonIrten.setBackground(Color.WHITE);
+        
+        viewMenuNagusia.jButtonDenda.setToolTipText("Denda");
+        viewMenuNagusia.jButtonBezeroa.setToolTipText("Bezeroa");
+        viewMenuNagusia.jButtonLangilea.setToolTipText("Langilea");
+        viewMenuNagusia.jButtonProduktua.setToolTipText("Produktuak");
+        viewMenuNagusia.jButtonHornitzailea.setToolTipText("Hornitzailea");
+        viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
     }
     
     private void dendInfoEstiloa() {
@@ -561,6 +558,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
         viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewDendaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewDendaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
     }
     
     private void dendGehituEstiloa() {
@@ -623,6 +623,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
         viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewBezeroaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewBezeroaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
     }
  
     private void bezGehituEstiloa() {
@@ -694,6 +697,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
         viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewLangileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewLangileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
     }
     
     private void langGehituEstiloa() {
@@ -752,6 +758,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTextFieldMarkaJerts.setOpaque(false);
         viewProduktuaAukeratu.jTextFieldPrezioaJerts.setOpaque(false);
         viewProduktuaAukeratu.jTextFieldStockJerts.setOpaque(false);
+        
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts.setToolTipText("Ezeztatu");
+        viewProduktuaAukeratu.jButtonAldaketaGordeJerts.setToolTipText("Gorde");
 
         /* Kamiseta */
         viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -769,6 +778,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTextFieldMarkaKami.setOpaque(false);
         viewProduktuaAukeratu.jTextFieldPrezioaKami.setOpaque(false);
         viewProduktuaAukeratu.jTextFieldStockKami.setOpaque(false);
+        
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuKami.setToolTipText("Ezeztatu");
+        viewProduktuaAukeratu.jButtonAldaketaGordeKami.setToolTipText("Gorde");
         
         /* Praka */
         viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -789,6 +801,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTextFieldPrezioaPrak.setOpaque(false);
         viewProduktuaAukeratu.jTextFieldStockPrak.setOpaque(false);
         viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setOpaque(false);
+        
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.setToolTipText("Ezeztatu");
+        viewProduktuaAukeratu.jButtonAldaketaGordePrak.setToolTipText("Gorde");
 
         /* Aukerak */
         viewProduktuaAukeratu.jTextFieldKodeProd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -933,6 +948,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
         viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewHornitzaileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
     }
     
     private void hornGehituEstiloa() {
@@ -979,6 +997,9 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         viewEskaeraInfo.jButtonAldaketaEzabatu.setEnabled(false);
         viewEskaeraInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewEskaeraInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewEskaeraInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
     }
     
     private void eskGehituEstiloa() {
