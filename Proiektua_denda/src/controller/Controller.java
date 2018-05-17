@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.lang.reflect.Array;
@@ -25,7 +27,9 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
@@ -33,13 +37,15 @@ import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author Oihane Axpe
  * @version 4.0
  */
-public class Controller implements ActionListener, MouseListener, AncestorListener, ListSelectionListener, ListDataListener, FocusListener/*, KeyListener*/ {
+public class Controller implements ActionListener, MouseListener, AncestorListener, ListSelectionListener, ListDataListener, FocusListener, KeyListener {
     /* Model */
     private Bezeroa bezeroa;
     private Denda denda;
@@ -266,6 +272,16 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jTableEskaeraInfo.getSelectionModel().addListSelectionListener(this);
         viewProduktuaAukeratu.jComboBoxAukeratuProd.getModel().addListDataListener(this);
 
+        /* KeyListener */
+        viewDendaInfo.jTextFieldBilatu.addKeyListener(this);
+        viewBezeroaInfo.jTextFieldBilatu.addKeyListener(this);
+        viewLangileaInfo.jTextFieldBilatu.addKeyListener(this);
+        viewProduktuaAukeratu.jTextFieldBilatuJerts.addKeyListener(this);
+        viewProduktuaAukeratu.jTextFieldBilatuKami.addKeyListener(this);
+        viewProduktuaAukeratu.jTextFieldBilatuPrak.addKeyListener(this);
+        viewHornitzaileaInfo.jTextFieldBilatu.addKeyListener(this);
+        viewEskaeraInfo.jTextFieldBilatu.addKeyListener(this);
+        
         /* FocusListener */
         // DendaInfo
         viewDendaInfo.jTextFieldKodeDend.addFocusListener(this);
@@ -493,14 +509,14 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);
         
         /* momentuz bilatzeko aukera ez dago eskuragai */
-        viewDendaInfo.jTextFieldBilatu.setEditable(false);
-        viewBezeroaInfo.jTextFieldBilatu.setEnabled(false);
-        viewLangileaInfo.jTextFieldBilatu.setEnabled(false);
-        viewProduktuaAukeratu.jTextFieldBilatuJerts.setEnabled(false);
-        viewProduktuaAukeratu.jTextFieldBilatuKami.setEnabled(false);
-        viewProduktuaAukeratu.jTextFieldBilatuPrak.setEnabled(false);
-        viewHornitzaileaInfo.jTextFieldBilatu.setEnabled(false);
-        viewEskaeraInfo.jTextFieldBilatu.setEnabled(false);     
+//        viewDendaInfo.jTextFieldBilatu.setEditable(false);
+//        viewBezeroaInfo.jTextFieldBilatu.setEnabled(false);
+//        viewLangileaInfo.jTextFieldBilatu.setEnabled(false);
+//        viewProduktuaAukeratu.jTextFieldBilatuJerts.setEnabled(false);
+//        viewProduktuaAukeratu.jTextFieldBilatuKami.setEnabled(false);
+//        viewProduktuaAukeratu.jTextFieldBilatuPrak.setEnabled(false);
+//        viewHornitzaileaInfo.jTextFieldBilatu.setEnabled(false);
+//        viewEskaeraInfo.jTextFieldBilatu.setEnabled(false);     
     }
     
     private void menuNagEstiloa() {
@@ -2521,7 +2537,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
         }
         
-        
         /* EskaeraGehitu-ko aukerak */
         else if (comando == viewEskaeraGehitu.jButtonBerriaGehitu) {
             enableComponets(viewEskaeraGehitu.jPanelEskDatuak, true);
@@ -3270,6 +3285,37 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
+    @Override
+    public void keyTyped(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        Object comando = e.getSource();
+        if (comando == viewDendaInfo.jTextFieldBilatu)
+            txtBilatuTaulan(viewDendaInfo.jTableDendaInfo, viewDendaInfo.jTextFieldBilatu.getText());
+        else if (comando == viewBezeroaInfo.jTextFieldBilatu)
+            txtBilatuTaulan(viewBezeroaInfo.jTableBezeroaInfo, viewBezeroaInfo.jTextFieldBilatu.getText());
+        else if (comando == viewLangileaInfo.jTextFieldBilatu)
+            txtBilatuTaulan(viewLangileaInfo.jTableLangileaInfo, viewLangileaInfo.jTextFieldBilatu.getText());
+        else if (comando == viewProduktuaAukeratu.jTextFieldBilatuJerts)
+            txtBilatuTaulan(viewProduktuaAukeratu.jTableJertsInfo, viewProduktuaAukeratu.jTextFieldBilatuJerts.getText());
+        else if (comando == viewProduktuaAukeratu.jTextFieldBilatuKami)
+            txtBilatuTaulan(viewProduktuaAukeratu.jTableKamiInfo, viewProduktuaAukeratu.jTextFieldBilatuKami.getText());
+        else if (comando == viewProduktuaAukeratu.jTextFieldBilatuPrak)
+            txtBilatuTaulan(viewProduktuaAukeratu.jTablePrakInfo, viewProduktuaAukeratu.jTextFieldBilatuPrak.getText());
+        else if (comando == viewHornitzaileaInfo.jTextFieldBilatu)
+            txtBilatuTaulan(viewHornitzaileaInfo.jTableHornitzaileaInfo, viewHornitzaileaInfo.jTextFieldBilatu.getText());
+        else if (comando == viewEskaeraInfo.jTextFieldBilatu)
+            txtBilatuTaulan(viewEskaeraInfo.jTableEskaeraInfo, viewEskaeraInfo.jTextFieldBilatu.getText());
+    }
+    
     private boolean balidazioaDendaInfo() {
         boolean bool = true;
         if (viewDendaInfo.jTextFieldIzena.getText().isEmpty()) {
@@ -3883,5 +3929,12 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+    
+    private void txtBilatuTaulan(JTable taula, String textua) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
+        taula.setRowSorter(rowSorter);
+        
+        rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }
