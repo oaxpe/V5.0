@@ -123,6 +123,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         dendaGehituController dendGehituCtr = new dendaGehituController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
         bezInfoController bezInfoCtr = new bezInfoController(bezeroa, viewBezeroaInfo, viewBezeroaGehitu, viewMenuNagusia);
         bezGehituController bezGehituCtr = new bezGehituController(bezeroa, viewBezeroaInfo, viewBezeroaGehitu);
+        langInfoController langInfoCtr = new langInfoController(langilea, viewLangileaInfo, viewLangileaGehitu, viewMenuNagusia);
+        langGehituController langGehituCtr = new langGehituController(langilea, viewLangileaInfo, viewLangileaGehitu);
         
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(this);
@@ -130,8 +132,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewDendaGehitu.jButtonIrten.addActionListener(dendGehituCtr);
         viewBezeroaInfo.jButtonIrten.addActionListener(bezInfoCtr);
         viewBezeroaGehitu.jButtonIrten.addActionListener(bezGehituCtr);
-        viewLangileaInfo.jButtonIrten.addActionListener(this);
-        viewLangileaGehitu.jButtonIrten.addActionListener(this);
+        viewLangileaInfo.jButtonIrten.addActionListener(langInfoCtr);
+        viewLangileaGehitu.jButtonIrten.addActionListener(langGehituCtr);
         viewProduktuaAukeratu.jButtonIrten.addActionListener(this);
         viewJertseaGehitu.jButtonIrten.addActionListener(this);
         viewKamisetaGehitu.jButtonIrten.addActionListener(this);
@@ -174,16 +176,16 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.jButtonBerriaGehitu.addActionListener(bezGehituCtr);
         
         // LangileaInfo-ko botoiak
-        viewLangileaInfo.jButtonEzabatu.addActionListener(this);
-        viewLangileaInfo.jButtonAldatu.addActionListener(this);
-        viewLangileaInfo.jButtonGehitu.addActionListener(this);
-        viewLangileaInfo.jButtonAldaketaGorde.addActionListener(this);
-        viewLangileaInfo.jButtonAldaketaEzabatu.addActionListener(this);
+        viewLangileaInfo.jButtonEzabatu.addActionListener(langInfoCtr);
+        viewLangileaInfo.jButtonAldatu.addActionListener(langInfoCtr);
+        viewLangileaInfo.jButtonGehitu.addActionListener(langInfoCtr);
+        viewLangileaInfo.jButtonAldaketaGorde.addActionListener(langInfoCtr);
+        viewLangileaInfo.jButtonAldaketaEzabatu.addActionListener(langInfoCtr);
         
         // LangileaGehitu-ko botoiak
-        viewLangileaGehitu.jButtonReset.addActionListener(this);
-        viewLangileaGehitu.jButtonGorde.addActionListener(this);
-        viewLangileaGehitu.jButtonBerriaGehitu.addActionListener(this);
+        viewLangileaGehitu.jButtonReset.addActionListener(langGehituCtr);
+        viewLangileaGehitu.jButtonGorde.addActionListener(langGehituCtr);
+        viewLangileaGehitu.jButtonBerriaGehitu.addActionListener(langGehituCtr);
         
         // ProduktuaAukeratu-ko botoiak
         viewProduktuaAukeratu.jButtonGehituJerts.addActionListener(this);
@@ -254,8 +256,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewDendaGehitu.jButtonIrten.addMouseListener(dendGehituCtr);
         viewBezeroaInfo.jButtonIrten.addMouseListener(bezInfoCtr);
         viewBezeroaGehitu.jButtonIrten.addMouseListener(bezGehituCtr);
-        viewLangileaInfo.jButtonIrten.addMouseListener(this);
-        viewLangileaGehitu.jButtonIrten.addMouseListener(this);
+        viewLangileaInfo.jButtonIrten.addMouseListener(langInfoCtr);
+        viewLangileaGehitu.jButtonIrten.addMouseListener(langGehituCtr);
         viewProduktuaAukeratu.jButtonIrten.addMouseListener(this);
         viewJertseaGehitu.jButtonIrten.addMouseListener(this);
         viewKamisetaGehitu.jButtonIrten.addMouseListener(this);
@@ -268,7 +270,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         /* ListSelectionListener */
         viewDendaInfo.jTableDendaInfo.getSelectionModel().addListSelectionListener(dendInfoCtr);
         viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel().addListSelectionListener(bezInfoCtr);
-        viewLangileaInfo.jTableLangileaInfo.getSelectionModel().addListSelectionListener(this);
+        viewLangileaInfo.jTableLangileaInfo.getSelectionModel().addListSelectionListener(langInfoCtr);
         viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel().addListSelectionListener(this);
         viewProduktuaAukeratu.jTableKamiInfo.getSelectionModel().addListSelectionListener(this);
         viewProduktuaAukeratu.jTablePrakInfo.getSelectionModel().addListSelectionListener(this);
@@ -279,7 +281,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         /* KeyListener */
         viewDendaInfo.jTextFieldBilatu.addKeyListener(dendInfoCtr);
         viewBezeroaInfo.jTextFieldBilatu.addKeyListener(bezInfoCtr);
-        viewLangileaInfo.jTextFieldBilatu.addKeyListener(this);
+        viewLangileaInfo.jTextFieldBilatu.addKeyListener(langInfoCtr);
         viewProduktuaAukeratu.jTextFieldBilatuJerts.addKeyListener(this);
         viewProduktuaAukeratu.jTextFieldBilatuKami.addKeyListener(this);
         viewProduktuaAukeratu.jTextFieldBilatuPrak.addKeyListener(this);
@@ -328,31 +330,31 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaGehitu.jTextFieldTlf.addFocusListener(bezGehituCtr);
         
         // LangileaInfo
-        viewLangileaInfo.jTextFieldKodeLang.addFocusListener(this);
-        viewLangileaInfo.jTextFieldIzena.addFocusListener(this);
-        viewLangileaInfo.jTextFieldAbizena1.addFocusListener(this);
-        viewLangileaInfo.jTextFieldAbizena2.addFocusListener(this);
-        viewLangileaInfo.jTextFieldNan.addFocusListener(this);
-//        viewLangileaInfo.jDateChooserJaioData.addFocusListener(this);
-        viewLangileaInfo.jRadioButtonEmak.addFocusListener(this);
-        viewLangileaInfo.jRadioButtonGiz.addFocusListener(this);
-        viewLangileaInfo.jTextFieldHerria.addFocusListener(this);
-        viewLangileaInfo.jTextFieldTlf.addFocusListener(this);
-        viewLangileaInfo.jTextFieldSoldata.addFocusListener(this);
-        viewLangileaInfo.jComboBoxEremua.addFocusListener(this);
+        viewLangileaInfo.jTextFieldKodeLang.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jTextFieldIzena.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jTextFieldAbizena1.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jTextFieldAbizena2.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jTextFieldNan.addFocusListener(langInfoCtr);
+//        viewLangileaInfo.jDateChooserJaioData.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jRadioButtonEmak.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jRadioButtonGiz.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jTextFieldHerria.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jTextFieldTlf.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jTextFieldSoldata.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jComboBoxEremua.addFocusListener(langInfoCtr);
         
         // LangileaGehitu
-        viewLangileaGehitu.jTextFieldIzena.addFocusListener(this);
-        viewLangileaGehitu.jTextFieldAbizena1.addFocusListener(this);
-        viewLangileaGehitu.jTextFieldAbizena2.addFocusListener(this);
-        viewLangileaGehitu.jTextFieldNan.addFocusListener(this);
-//        viewLangileaGehitu.jDateChooserJaioData.addFocusListener(this);
-//        viewLangileaGehitu.jRadioButtonEmak.addFocusListener(this);
-//        viewLangileaGehitu.jRadioButtonGiz.addFocusListener(this);
-        viewLangileaGehitu.jTextFieldHerria.addFocusListener(this);
-        viewLangileaGehitu.jTextFieldTlf.addFocusListener(this);
-        viewLangileaGehitu.jTextFieldSoldata.addFocusListener(this);
-        viewLangileaGehitu.jComboBoxEremua.addFocusListener(this);
+        viewLangileaGehitu.jTextFieldIzena.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jTextFieldAbizena1.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jTextFieldAbizena2.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jTextFieldNan.addFocusListener(langGehituCtr);
+//        viewLangileaGehitu.jDateChooserJaioData.addFocusListener(langGehituCtr);
+//        viewLangileaGehitu.jRadioButtonEmak.addFocusListener(langGehituCtr);
+//        viewLangileaGehitu.jRadioButtonGiz.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jTextFieldHerria.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jTextFieldTlf.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jTextFieldSoldata.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jComboBoxEremua.addFocusListener(langGehituCtr);
         
         // ProduktuaAukeratu
         /* JERTSEA */
@@ -444,8 +446,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private void hasieratu() {
         /* BISTEN ESTILOA */
         menuNagEstiloa();
-        langInfoEstiloa();
-        langGehituEstiloa();
         prodInfoEstiloa();
         jertsGehituEstiloa();
         kamiGehituEstiloa();
@@ -456,8 +456,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         eskGehituEstiloa();  
         
         // tauletako estiloa
-        viewLangileaInfo.jTableLangileaInfo.setShowGrid(false);
-        viewLangileaInfo.jTableLangileaInfo.setShowHorizontalLines(true);
         viewProduktuaAukeratu.jTableJertsInfo.setShowGrid(false);
         viewProduktuaAukeratu.jTableJertsInfo.setShowHorizontalLines(true);
         viewProduktuaAukeratu.jTableKamiInfo.setShowGrid(false);
@@ -495,7 +493,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         aukKargatu(viewProduktuaAukeratu.jComboBoxAukeratuProd);
         
         /* Kodeak ezin dira aldatu */
-        viewLangileaInfo.jTextFieldKodeLang.setEditable(false);
         viewProduktuaAukeratu.jTextFieldKodeJerts.setEditable(false);
         viewProduktuaAukeratu.jTextFieldKodeKami.setEditable(false);
         viewProduktuaAukeratu.jTextFieldKodePrak.setEditable(false);
@@ -520,82 +517,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
     }
 
-    private void langInfoEstiloa() {
-        viewLangileaInfo.setTitle("Langileen informazioa");
-        viewLangileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewLangileaInfo.setLocationRelativeTo(null);
-        viewLangileaInfo.jButtonIrten.setBackground(urdina);
-        viewLangileaInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewLangileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-        
-        viewLangileaInfo.jTextFieldKodeLang.setOpaque(false);
-        viewLangileaInfo.jTextFieldIzena.setOpaque(false);
-        viewLangileaInfo.jTextFieldAbizena1.setOpaque(false);
-        viewLangileaInfo.jTextFieldAbizena2.setOpaque(false);
-        viewLangileaInfo.jTextFieldHerria.setOpaque(false);
-        viewLangileaInfo.jDateChooserJaioData.setOpaque(false);
-        viewLangileaInfo.jRadioButtonEmak.setOpaque(false);
-        viewLangileaInfo.jRadioButtonGiz.setOpaque(false);
-        viewLangileaInfo.jTextFieldNan.setOpaque(false);
-        viewLangileaInfo.jTextFieldTlf.setOpaque(false);
-        viewLangileaInfo.jTextFieldSoldata.setOpaque(false);
-        viewLangileaInfo.jComboBoxEremua.setOpaque(false);
-        
-        viewLangileaInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewLangileaInfo.jPanelGoiburua.setOpaque(false);
-        viewLangileaInfo.jPanelOina.setOpaque(false);
-        viewLangileaInfo.jPanelLangDatuak.setOpaque(false);
-        viewLangileaInfo.jPanelLangTaula.setOpaque(false);
-        
-        viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewLangileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewLangileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
-    }
-    
-    private void langGehituEstiloa() {
-        viewLangileaGehitu.setTitle("Langile berria");
-        viewLangileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewLangileaGehitu.setLocationRelativeTo(null);
-        viewLangileaGehitu.jButtonIrten.setBackground(urdina);
-        viewLangileaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
-        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-        
-        viewLangileaGehitu.jTextFieldIzena.setOpaque(false);
-        viewLangileaGehitu.jTextFieldAbizena1.setOpaque(false);
-        viewLangileaGehitu.jTextFieldAbizena2.setOpaque(false);
-        viewLangileaGehitu.jTextFieldHerria.setOpaque(false);
-        viewLangileaGehitu.jDateChooserJaioData.setOpaque(false);
-        viewLangileaGehitu.jRadioButtonEmak.setOpaque(false);
-        viewLangileaGehitu.jRadioButtonGiz.setOpaque(false);
-        viewLangileaGehitu.jTextFieldNan.setOpaque(false);
-        viewLangileaGehitu.jTextFieldTlf.setOpaque(false);
-        viewLangileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewLangileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewLangileaGehitu.jPanelGoiburua.setOpaque(false);
-        viewLangileaGehitu.jPanelLangDatuak.setOpaque(false);
-    }
-    
     private void prodInfoEstiloa() {
         viewProduktuaAukeratu.setTitle("Produktuen informazioa");
         viewProduktuaAukeratu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -1207,53 +1128,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             comboBox.addItem(i);
         }
     }
-    
-    private void resetBezeroaGehitu() {
-        viewBezeroaGehitu.jTextFieldIzena.setText(null);
-        viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
-        viewBezeroaGehitu.jTextFieldAbizena2.setText(null);
-        viewBezeroaGehitu.jTextFieldNan.setText(null);
-        viewBezeroaGehitu.jDateChooserJaioData.setDate(null);
-        viewBezeroaGehitu.jRadioButtonEmak.setSelected(false);
-        viewBezeroaGehitu.jRadioButtonGiz.setSelected(false);
-        viewBezeroaGehitu.jTextFieldHerria.setText(null);
-        viewBezeroaGehitu.jTextFieldTlf.setText(null);
-        
-        viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-        viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-    }
-    
-    private void resetLangileaGehitu() {
-        viewLangileaGehitu.jTextFieldIzena.setText(null);
-        viewLangileaGehitu.jTextFieldAbizena1.setText(null);
-        viewLangileaGehitu.jTextFieldAbizena2.setText(null);
-        viewLangileaGehitu.jTextFieldNan.setText(null);
-        viewLangileaGehitu.jDateChooserJaioData.setDate(null);
-        viewLangileaGehitu.jRadioButtonEmak.setSelected(false);
-        viewLangileaGehitu.jRadioButtonGiz.setSelected(false);
-        viewLangileaGehitu.jTextFieldHerria.setText(null);
-        viewLangileaGehitu.jTextFieldTlf.setText(null);
-        viewLangileaGehitu.jTextFieldSoldata.setText(null);
-        viewLangileaGehitu.jComboBoxEremua.setSelectedIndex(0);
-
-        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
-        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-    }
-    
+ 
     private void resetJertseaGehitu() {
         viewJertseaGehitu.jTextFieldKodeJerts.setText(null);
         viewJertseaGehitu.jTextFieldMarka.setText(null);
@@ -1343,42 +1218,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 component.setEnabled(bool);
             }
         }
-    }
-    
-    private void aukLangDatuakBete(int aukLerroa) { 
-        viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewLangileaInfo.jTextFieldAbizena2.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewLangileaInfo.jTextFieldNan.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewLangileaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5))));
-        System.out.println(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5)));
-        String aukSexuaRB = String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-        if (aukSexuaRB.equals("emakumea")) {
-            viewLangileaInfo.jRadioButtonEmak.setSelected(true);
-        }
-        else {
-            viewLangileaInfo.jRadioButtonGiz.setSelected(true);
-        }
-        viewLangileaInfo.jTextFieldHerria.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
-        viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
-        viewLangileaInfo.jComboBoxEremua.setSelectedItem(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
-    }
-    
-    private void resetLangileaInfo() {
-        viewLangileaInfo.jTextFieldKodeLang.setText(null);
-        viewLangileaInfo.jTextFieldIzena.setText(null);
-        viewLangileaInfo.jTextFieldAbizena1.setText(null);
-        viewLangileaInfo.jTextFieldAbizena2.setText(null);
-        viewLangileaInfo.jTextFieldNan.setText(null);
-        viewLangileaInfo.jDateChooserJaioData.setDate(null);
-        viewLangileaInfo.jRadioButtonEmak.setSelected(false);
-        viewLangileaInfo.jRadioButtonGiz.setSelected(false);
-        viewLangileaInfo.jTextFieldHerria.setText(null);
-        viewLangileaInfo.jTextFieldTlf.setText(null);
-        viewLangileaInfo.jTextFieldSoldata.setText(null);
-        viewLangileaInfo.jComboBoxEremua.setSelectedItem(null);      
     }
     
     private void aukJertsDatuakBete(int aukLerroa) {
@@ -1523,122 +1362,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewMenuNagusia.setEnabled(false);
             enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
             eskDatuakErakutsiTaula(EskaeraKudeatu.eskaeraGuztiakErakutsi());
-        }
-        
-        /* LangileaInfo-ko aukerak */
-        else if (comando == viewLangileaInfo.jButtonGehitu) {
-            viewLangileaGehitu.setVisible(true);
-            viewLangileaInfo.setEnabled(false);
-            enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
-        }
-        else if (comando == viewLangileaInfo.jButtonIrten) {
-            viewLangileaInfo.dispose();
-            viewMenuNagusia.setEnabled(true);
-        }
-        else if (comando == viewLangileaInfo.jButtonEzabatu) {
-            int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
-            if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-                if (konf == 0) { // bai
-                    String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
-                    LangileaKudeatu.langileaEzabatu(nan);
-                }
-                langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
-            }
-            else {
-                JOptionPane.showMessageDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ez da langilerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
-            }
-        }
-        else if (comando == viewLangileaInfo.jButtonAldatu) {
-            if (viewLangileaInfo.jTableLangileaInfo.getSelectedRow()!=-1) {
-                enableComponets(viewLangileaInfo.jPanelLangDatuak, true);
-                enableComponets(viewLangileaInfo.jPanelOina, false);
-                viewLangileaInfo.jButtonAldaketaGorde.setEnabled(true);
-                viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(true);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Ez da langilerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
-            } 
-        }
-        else if (comando == viewLangileaInfo.jButtonAldaketaEzabatu) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-            if (konf == 0) { // bai
-                enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-                enableComponets(viewLangileaInfo.jPanelOina, true);
-                viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
-                viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-                resetLangInfoErr();
-                aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow()); // taulako datuekin berriz bete
-            }
-        }
-        else if (comando == viewLangileaInfo.jButtonAldaketaGorde) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-            if (konf == 0) { // bai
-                int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
-                if (balidazioaLangInfo()) {
-                    /* Langilea ezabatu */
-                    String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
-                    LangileaKudeatu.langileaEzabatu(nan);
-
-                    /* Langilea gorde */
-                    String sexuaRB = ""; // RadioButton-aren balioa gorde
-                    if (viewLangileaInfo.jRadioButtonEmak.isSelected()) {
-                        sexuaRB = viewLangileaInfo.jRadioButtonEmak.getText();
-                    }
-                    else if (viewLangileaInfo.jRadioButtonGiz.isSelected()) {
-                        sexuaRB = viewLangileaInfo.jRadioButtonGiz.getText();
-                    }
-                    Langilea lang = new Langilea(viewLangileaInfo.jTextFieldKodeLang.getText(), viewLangileaInfo.jTextFieldIzena.getText(), 
-                            viewLangileaInfo.jTextFieldAbizena1.getText(), viewLangileaInfo.jTextFieldAbizena2.getText(), 
-                            viewLangileaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewLangileaInfo.jDateChooserJaioData.getDate()), 
-                            sexuaRB, viewLangileaInfo.jTextFieldHerria.getText(), viewLangileaInfo.jTextFieldTlf.getText(), 
-                            Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString());
-                    LangileaKudeatu.langileaGehitu(lang);
-
-                    langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
-                    enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-                    enableComponets(viewLangileaInfo.jPanelOina, true);
-                    viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
-                    viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-                }
-                else
-                    JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
-            }
-        }
-        
-        /* LangileaGehitu-ko aukerak */
-        else if (comando == viewLangileaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewLangileaGehitu.jPanelLangDatuak, true);
-        }
-        else if (comando == viewLangileaGehitu.jButtonGorde) {
-            if (balidazioaLangGehitu()) {
-                String sexuaRB = ""; // RadioButton-aren balioa gorde
-                if (viewLangileaGehitu.jRadioButtonEmak.isSelected()) {
-                    sexuaRB = viewLangileaGehitu.jRadioButtonEmak.getText();
-                }
-                else if (viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
-                    sexuaRB = viewLangileaGehitu.jRadioButtonGiz.getText();
-                }
-
-                Langilea lang = new Langilea(viewLangileaGehitu.jTextFieldIzena.getText(), viewLangileaGehitu.jTextFieldAbizena1.getText(), 
-                        viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(),  Metodoak.dataGorde(viewLangileaGehitu.jDateChooserJaioData.getDate()), 
-                        sexuaRB, viewLangileaGehitu.jTextFieldHerria.getText(), viewLangileaGehitu.jTextFieldTlf.getText(), 
-                        Double.parseDouble(viewLangileaGehitu.jTextFieldSoldata.getText()), viewLangileaGehitu.jComboBoxEremua.getSelectedItem().toString());
-                LangileaKudeatu.langileaGehitu(lang);
-                resetLangileaGehitu();
-                enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
-            }   
-            else
-                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
-        }
-        else if (comando == viewLangileaGehitu.jButtonReset) {
-            resetLangileaGehitu();
-        }
-        else if (comando == viewLangileaGehitu.jButtonIrten) {
-            resetLangileaGehitu();
-            viewLangileaGehitu.dispose();
-            viewLangileaInfo.setEnabled(true);
-            langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
         }
         
         /* ProduktuakAukeratu-ko aukerak */
@@ -2219,11 +1942,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewLangileaInfo.jButtonIrten)
-            viewLangileaInfo.jButtonIrten.setBackground(new Color (0,0,51));
-        else if (comando == viewLangileaGehitu.jButtonIrten)
-            viewLangileaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
-        else if (comando == viewProduktuaAukeratu.jButtonIrten)
+        if (comando == viewProduktuaAukeratu.jButtonIrten)
             viewProduktuaAukeratu.jButtonIrten.setBackground(new Color (0,0,51));
         else if (comando == viewJertseaGehitu.jButtonIrten)
             viewJertseaGehitu.jButtonIrten.setBackground(new Color (0,0,51));  
@@ -2244,11 +1963,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewLangileaInfo.jButtonIrten)
-            viewLangileaInfo.jButtonIrten.setBackground(urdina);
-        else if (comando == viewLangileaGehitu.jButtonIrten)
-            viewLangileaGehitu.jButtonIrten.setBackground(urdina);
-        else if (comando == viewProduktuaAukeratu.jButtonIrten)
+        if (comando == viewProduktuaAukeratu.jButtonIrten)
             viewProduktuaAukeratu.jButtonIrten.setBackground(urdina);
         else if (comando == viewJertseaGehitu.jButtonIrten)
             viewJertseaGehitu.jButtonIrten.setBackground(urdina);
@@ -2270,17 +1985,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public void valueChanged(ListSelectionEvent e) {
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
-        if (lsm == viewLangileaInfo.jTableLangileaInfo.getSelectionModel()) {
-            if (lsm.isSelectionEmpty()) {
-                resetLangileaInfo();
-            }
-            else {
-                viewLangileaInfo.jTableLangileaInfo.setSelectionBackground(urdina);
-                viewLangileaInfo.jTableLangileaInfo.setSelectionForeground(Color.WHITE);
-                aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow());
-            }
-        }
-        else if (lsm == viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel()) {
+        if (lsm == viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel()) {
             if (lsm.isSelectionEmpty()) {
                 resetJerts();
             }
@@ -2356,46 +2061,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void focusGained(FocusEvent e) {
         Object comando = e.getSource();
-        // LangileaInfo
-        if (comando == viewLangileaInfo.jTextFieldKodeLang) 
-            viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaInfo.jTextFieldIzena) 
-            viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaInfo.jTextFieldAbizena1) 
-            viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaInfo.jTextFieldAbizena2) 
-            viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaInfo.jTextFieldNan) 
-            viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaInfo.jTextFieldHerria) 
-            viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaInfo.jTextFieldTlf) 
-            viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaInfo.jTextFieldSoldata)
-            viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-         else if (comando == viewLangileaInfo.jComboBoxEremua)
-            viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(urdina, 1));
-        
-        // LangileaGehitu
-        else if (comando == viewLangileaGehitu.jTextFieldIzena)
-            viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaGehitu.jTextFieldAbizena1) 
-            viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaGehitu.jTextFieldAbizena2) 
-            viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaGehitu.jTextFieldNan) 
-            viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaGehitu.jTextFieldHerria) 
-            viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaGehitu.jTextFieldTlf) 
-            viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewLangileaGehitu.jTextFieldSoldata)
-            viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-         else if (comando == viewLangileaGehitu.jComboBoxEremua)
-            viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(urdina, 1));
-         
         // JertseaInfo
-        else if (comando == viewProduktuaAukeratu.jTextFieldKodeJerts)
+        if (comando == viewProduktuaAukeratu.jTextFieldKodeJerts)
             viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewProduktuaAukeratu.jTextFieldMarkaJerts)
             viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
@@ -2546,46 +2213,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void focusLost(FocusEvent e) {
         Object comando = e.getSource();
-        // LangileaInfo
-        if (comando == viewLangileaInfo.jTextFieldKodeLang) 
-            viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jTextFieldIzena) 
-            viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jTextFieldAbizena1) 
-            viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jTextFieldAbizena2) 
-            viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jTextFieldNan) 
-            viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jTextFieldHerria) 
-            viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jTextFieldTlf) 
-            viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jTextFieldSoldata)
-            viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaInfo.jComboBoxEremua)
-            viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        
-        // LangileaGehitu
-        else if (comando == viewLangileaGehitu.jTextFieldIzena)
-            viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaGehitu.jTextFieldAbizena1) 
-            viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaGehitu.jTextFieldAbizena2) 
-            viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaGehitu.jTextFieldNan) 
-            viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaGehitu.jTextFieldHerria) 
-            viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaGehitu.jTextFieldTlf) 
-            viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaGehitu.jTextFieldSoldata) 
-            viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewLangileaGehitu.jComboBoxEremua)
-            viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        
         // JertseaInfo
-        else if (comando == viewProduktuaAukeratu.jTextFieldKodeJerts)
+        if (comando == viewProduktuaAukeratu.jTextFieldKodeJerts)
             viewProduktuaAukeratu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewProduktuaAukeratu.jTextFieldMarkaJerts)
             viewProduktuaAukeratu.jTextFieldMarkaJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -2746,9 +2375,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void keyReleased(KeyEvent e) {
         Object comando = e.getSource();
-        if (comando == viewLangileaInfo.jTextFieldBilatu)
-            txtBilatuTaulan(viewLangileaInfo.jTableLangileaInfo, viewLangileaInfo.jTextFieldBilatu.getText());
-        else if (comando == viewProduktuaAukeratu.jTextFieldBilatuJerts)
+        if (comando == viewProduktuaAukeratu.jTextFieldBilatuJerts)
             txtBilatuTaulan(viewProduktuaAukeratu.jTableJertsInfo, viewProduktuaAukeratu.jTextFieldBilatuJerts.getText());
         else if (comando == viewProduktuaAukeratu.jTextFieldBilatuKami)
             txtBilatuTaulan(viewProduktuaAukeratu.jTableKamiInfo, viewProduktuaAukeratu.jTextFieldBilatuKami.getText());
@@ -2759,107 +2386,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewEskaeraInfo.jTextFieldBilatu)
             txtBilatuTaulan(viewEskaeraInfo.jTableEskaeraInfo, viewEskaeraInfo.jTextFieldBilatu.getText());
     }
-    
-    private boolean balidazioaLangInfo() {
-        boolean bool = true;
-        if (viewLangileaInfo.jTextFieldIzena.getText().isEmpty()) {
-            viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }     
-        if (viewLangileaInfo.jTextFieldAbizena1.getText().isEmpty()) {
-            viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewLangileaInfo.jTextFieldAbizena2.getText().isEmpty()) {
-            viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewLangileaInfo.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewLangileaInfo.jTextFieldNan.getText()))) {
-            viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        // data balidatu ??
-        if (!viewLangileaInfo.jRadioButtonEmak.isSelected() && !viewLangileaInfo.jRadioButtonGiz.isSelected()) {
-            viewLangileaInfo.jRadioButtonEmak.setForeground(Color.RED);
-            viewLangileaInfo.jRadioButtonGiz.setForeground(Color.RED);
-        }  
-        else if (viewLangileaInfo.jRadioButtonEmak.isSelected() || viewLangileaInfo.jRadioButtonGiz.isSelected()) {
-            viewLangileaInfo.jRadioButtonEmak.setForeground(Color.BLACK);
-            viewLangileaInfo.jRadioButtonGiz.setForeground(Color.BLACK);
-        }
-        if (viewLangileaInfo.jTextFieldHerria.getText().isEmpty()) {
-            viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewLangileaInfo.jTextFieldTlf.getText()))) {
-            viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaInfo.jTextFieldSoldata.getText().isEmpty()) {
-            viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaInfo.jTextFieldSoldata.getText().isEmpty()) {
-            viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaInfo.jComboBoxEremua.getSelectedIndex()==0) {
-            viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-            bool = false;
-        }
-        return bool;
-    }
-    
-    private boolean balidazioaLangGehitu() {
-        boolean bool = true;
-        if (viewLangileaGehitu.jTextFieldIzena.getText().isEmpty()) {
-            viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }     
-        if (viewLangileaGehitu.jTextFieldAbizena1.getText().isEmpty()) {
-            viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewLangileaGehitu.jTextFieldAbizena2.getText().isEmpty()) {
-            viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewLangileaGehitu.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewLangileaGehitu.jTextFieldNan.getText()))) {
-            viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        // data balidatu ??
-        if (!viewLangileaGehitu.jRadioButtonEmak.isSelected() && !viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
-            viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.RED);
-            viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.RED);
-        }  
-        else if (viewLangileaGehitu.jRadioButtonEmak.isSelected() || viewLangileaGehitu.jRadioButtonGiz.isSelected()) {
-            viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-            viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-        }
-        if (viewLangileaGehitu.jTextFieldHerria.getText().isEmpty()) {
-            viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewLangileaGehitu.jTextFieldTlf.getText()))) {
-            viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaGehitu.jTextFieldSoldata.getText().isEmpty()) {
-            viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaGehitu.jTextFieldSoldata.getText().isEmpty()) {
-            viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewLangileaGehitu.jComboBoxEremua.getSelectedIndex()==0) {
-            viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
-            bool = false;
-        }
-        return bool;
-    }
-    
+   
     private boolean balidazioaJertsInfo() {
         boolean bool = true;
         if (viewProduktuaAukeratu.jTextFieldKodeJerts.getText().isEmpty()) {
@@ -3157,18 +2684,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             bool = false;
         }   
         return bool;
-    }
-
-    private void resetLangInfoErr() {
-        viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
     private void resetHornInfoErr() {
