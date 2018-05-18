@@ -42,33 +42,12 @@ import javax.swing.table.TableRowSorter;
  */
 public class hornInfoController implements ActionListener, MouseListener, ListSelectionListener, FocusListener, KeyListener {
     /* Model */
-    private Bezeroa bezeroa;
-    private Denda denda;
-    private Eskaera eskaera;
     private Hornitzailea hornitzailea;
-    private Jertsea jertsea;
-    private Kamiseta kamiseta;
-    private Langilea langilea;
-    private Pertsona pertsona;
-    private Praka praka;
-    private Produktua produktua;
-    private Salmenta salmenta;
     
     /* Bistak */
     private MenuNagusia viewMenuNagusia; 
-    private DendaInfo viewDendaInfo;
-    private DendaGehitu viewDendaGehitu;
-    private BezeroaInfo viewBezeroaInfo;
-    private BezeroaGehitu viewBezeroaGehitu;
-    private LangileaInfo viewLangileaInfo;
-    private LangileaGehitu viewLangileaGehitu;
-    private ProduktuaAukeratu viewProduktuaAukeratu;
-    private JertseaGehitu viewJertseaGehitu;
-    private KamisetaGehitu viewKamisetaGehitu;
-    private PrakaGehitu viewPrakaGehitu;
     private HornitzaileaInfo viewHornitzaileaInfo;
     private HornitzaileaGehitu viewHornitzaileaGehitu;
-    private EskaeraInfo viewEskaeraInfo;
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);

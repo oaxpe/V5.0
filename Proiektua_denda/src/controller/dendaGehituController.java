@@ -20,7 +20,6 @@ import java.awt.event.MouseListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
@@ -33,34 +32,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class dendaGehituController implements ActionListener, MouseListener, FocusListener {
     /* Model */
-//    private Bezeroa bezeroa;
     private Denda denda;
-//    private Eskaera eskaera;
-//    private Hornitzailea hornitzailea;
-//    private Jertsea jertsea;
-//    private Kamiseta kamiseta;
-//    private Langilea langilea;
-//    private Pertsona pertsona;
-//    private Praka praka;
-//    private Produktua produktua;
-//    private Salmenta salmenta;
     
     /* Bistak */
-//    private MenuNagusia viewMenuNagusia; 
     private DendaInfo viewDendaInfo;
     private DendaGehitu viewDendaGehitu;
-//    private BezeroaInfo viewBezeroaInfo;
-//    private BezeroaGehitu viewBezeroaGehitu;
-//    private LangileaInfo viewLangileaInfo;
-//    private LangileaGehitu viewLangileaGehitu;
-//    private ProduktuaAukeratu viewProduktuaAukeratu;
-//    private JertseaGehitu viewJertseaGehitu;
-//    private KamisetaGehitu viewKamisetaGehitu;
-//    private PrakaGehitu viewPrakaGehitu;
-//    private HornitzaileaInfo viewHornitzaileaInfo;
-//    private HornitzaileaGehitu viewHornitzaileaGehitu;
-//    private EskaeraInfo viewEskaeraInfo;
-//    private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
     
