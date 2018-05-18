@@ -1345,37 +1345,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    private void aukBezDatuakBete(int aukLerroa) {    
-        viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewBezeroaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5))));
-        String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-        if (aukSexuaRB.equals("emakumea")) {
-            viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
-        }
-        else if (aukSexuaRB.equals("gizona")) {
-            viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
-        }
-        viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
-    }
-    
-    private void resetBezeroaInfo() {
-        viewBezeroaInfo.jTextFieldKodeBez.setText(null);
-        viewBezeroaInfo.jTextFieldIzena.setText(null);
-        viewBezeroaInfo.jTextFieldAbizena1.setText(null);
-        viewBezeroaInfo.jTextFieldAbizena2.setText(null);
-        viewBezeroaInfo.jTextFieldNan.setText(null);
-        viewBezeroaInfo.jDateChooserJaioData.setDate(null);
-        viewBezeroaInfo.jRadioButtonEmak.setSelected(false);
-        viewBezeroaInfo.jRadioButtonGiz.setSelected(false);
-        viewBezeroaInfo.jTextFieldHerria.setText(null);
-        viewBezeroaInfo.jTextFieldTlf.setText(null);  
-    }
-    
     private void aukLangDatuakBete(int aukLerroa) { 
         viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
         viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
@@ -1554,39 +1523,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewMenuNagusia.setEnabled(false);
             enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
             eskDatuakErakutsiTaula(EskaeraKudeatu.eskaeraGuztiakErakutsi());
-        }
-        
-        /* BezeroaGehitu-ko aukerak */
-        else if (comando == viewBezeroaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewBezeroaGehitu.jPanelBezDatuak, true);
-        }
-        else if (comando == viewBezeroaGehitu.jButtonGorde) {
-            if (balidazioaBezGehitu()) {
-                String sexuaRB = ""; // RadioButton-aren balioa gorde
-                if (viewBezeroaGehitu.jRadioButtonEmak.isSelected()) {
-                    sexuaRB = viewBezeroaGehitu.jRadioButtonEmak.getText();
-                }
-                else if (viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
-                    sexuaRB = viewBezeroaGehitu.jRadioButtonGiz.getText();
-                }
-                Bezeroa bez = new Bezeroa(viewBezeroaGehitu.jTextFieldIzena.getText(), viewBezeroaGehitu.jTextFieldAbizena1.getText(), 
-                        viewBezeroaGehitu.jTextFieldAbizena2.getText(), viewBezeroaGehitu.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaGehitu.jDateChooserJaioData.getDate()), 
-                        sexuaRB, viewBezeroaGehitu.jTextFieldHerria.getText(), viewBezeroaGehitu.jTextFieldTlf.getText());
-                BezeroaKudeatu.bezeroaGehitu(bez);
-                resetBezeroaGehitu();
-                enableComponets(viewBezeroaGehitu.jPanelBezDatuak, false);
-            }
-            else
-                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
-        }
-        else if (comando == viewBezeroaGehitu.jButtonReset) {
-            resetBezeroaGehitu();
-        }
-        else if (comando == viewBezeroaGehitu.jButtonIrten) {
-            resetBezeroaGehitu();
-            viewBezeroaGehitu.dispose();
-            viewBezeroaInfo.setEnabled(true);
-            bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
         }
         
         /* LangileaInfo-ko aukerak */
@@ -2283,9 +2219,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if ( comando == viewBezeroaGehitu.jButtonIrten)
-            viewBezeroaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
-        else if (comando == viewLangileaInfo.jButtonIrten)
+        if (comando == viewLangileaInfo.jButtonIrten)
             viewLangileaInfo.jButtonIrten.setBackground(new Color (0,0,51));
         else if (comando == viewLangileaGehitu.jButtonIrten)
             viewLangileaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
@@ -2310,9 +2244,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if ( comando == viewBezeroaGehitu.jButtonIrten)
-            viewBezeroaGehitu.jButtonIrten.setBackground(urdina);
-        else if (comando == viewLangileaInfo.jButtonIrten)
+        if (comando == viewLangileaInfo.jButtonIrten)
             viewLangileaInfo.jButtonIrten.setBackground(urdina);
         else if (comando == viewLangileaGehitu.jButtonIrten)
             viewLangileaGehitu.jButtonIrten.setBackground(urdina);
@@ -2424,22 +2356,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void focusGained(FocusEvent e) {
         Object comando = e.getSource();
-        // BezeroaGehitu
-        if (comando == viewBezeroaGehitu.jTextFieldIzena)
-            viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewBezeroaGehitu.jTextFieldAbizena1) 
-            viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewBezeroaGehitu.jTextFieldAbizena2) 
-            viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewBezeroaGehitu.jTextFieldNan) 
-            viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewBezeroaGehitu.jTextFieldHerria) 
-            viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewBezeroaGehitu.jTextFieldTlf) 
-            viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        
         // LangileaInfo
-        else if (comando == viewLangileaInfo.jTextFieldKodeLang) 
+        if (comando == viewLangileaInfo.jTextFieldKodeLang) 
             viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewLangileaInfo.jTextFieldIzena) 
             viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
@@ -2628,22 +2546,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void focusLost(FocusEvent e) {
         Object comando = e.getSource();
-        // BezeroaGehitu
-        if (comando == viewBezeroaGehitu.jTextFieldIzena) 
-            viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewBezeroaGehitu.jTextFieldAbizena1) 
-            viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewBezeroaGehitu.jTextFieldAbizena2) 
-            viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewBezeroaGehitu.jTextFieldNan) 
-            viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewBezeroaGehitu.jTextFieldHerria) 
-            viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewBezeroaGehitu.jTextFieldTlf) 
-            viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
         // LangileaInfo
-        else if (comando == viewLangileaInfo.jTextFieldKodeLang) 
+        if (comando == viewLangileaInfo.jTextFieldKodeLang) 
             viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewLangileaInfo.jTextFieldIzena) 
             viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -2854,44 +2758,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             txtBilatuTaulan(viewHornitzaileaInfo.jTableHornitzaileaInfo, viewHornitzaileaInfo.jTextFieldBilatu.getText());
         else if (comando == viewEskaeraInfo.jTextFieldBilatu)
             txtBilatuTaulan(viewEskaeraInfo.jTableEskaeraInfo, viewEskaeraInfo.jTextFieldBilatu.getText());
-    }
-
-    private boolean balidazioaBezGehitu() {
-        boolean bool = true;
-        if (viewBezeroaGehitu.jTextFieldIzena.getText().isEmpty()) {
-            viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }     
-        if (viewBezeroaGehitu.jTextFieldAbizena1.getText().isEmpty()) {
-            viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewBezeroaGehitu.jTextFieldAbizena2.getText().isEmpty()) {
-            viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewBezeroaGehitu.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewBezeroaGehitu.jTextFieldNan.getText()))) {
-            viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        // data balidatu ??
-        if (!viewBezeroaGehitu.jRadioButtonEmak.isSelected() && !viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
-            viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.RED);
-            viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.RED);
-        }  
-        else if (viewBezeroaGehitu.jRadioButtonEmak.isSelected() || viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
-            viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-            viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-        }
-        if (viewBezeroaGehitu.jTextFieldHerria.getText().isEmpty()) {
-            viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewBezeroaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewBezeroaGehitu.jTextFieldTlf.getText()))) {
-            viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        return bool;
     }
     
     private boolean balidazioaLangInfo() {
