@@ -59,7 +59,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private Produktua produktua;
     private Salmenta salmenta;
     
-    
     /* Bistak */
     private MenuNagusia viewMenuNagusia; 
     private DendaInfo viewDendaInfo;
@@ -120,10 +119,13 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     
     /* METODOAK */
     private void botoiakEntzuten() { 
+        dendaInfoController dendInfoCtr = new dendaInfoController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
+        dendaGehituController dendGehituCtr = new dendaGehituController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
+        
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(this);
-        viewDendaInfo.jButtonIrten.addActionListener(this);
-        viewDendaGehitu.jButtonIrten.addActionListener(this);
+        viewDendaInfo.jButtonIrten.addActionListener(dendInfoCtr);
+        viewDendaGehitu.jButtonIrten.addActionListener(dendGehituCtr);
         viewBezeroaInfo.jButtonIrten.addActionListener(this);
         viewBezeroaGehitu.jButtonIrten.addActionListener(this);
         viewLangileaInfo.jButtonIrten.addActionListener(this);
@@ -146,16 +148,16 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewMenuNagusia.jButtonProduktua.addActionListener(this);
         
         // DendaInfo-ko botoiak
-        viewDendaInfo.jButtonEzabatu.addActionListener(this);
-        viewDendaInfo.jButtonAldatu.addActionListener(this);
-        viewDendaInfo.jButtonGehitu.addActionListener(this);
-        viewDendaInfo.jButtonAldaketaGorde.addActionListener(this);
-        viewDendaInfo.jButtonAldaketaEzabatu.addActionListener(this);
+        viewDendaInfo.jButtonEzabatu.addActionListener(dendInfoCtr);
+        viewDendaInfo.jButtonAldatu.addActionListener(dendInfoCtr);
+        viewDendaInfo.jButtonGehitu.addActionListener(dendInfoCtr);
+        viewDendaInfo.jButtonAldaketaGorde.addActionListener(dendInfoCtr);
+        viewDendaInfo.jButtonAldaketaEzabatu.addActionListener(dendInfoCtr);
         
         // DendaGehitu-ko botoiak
-        viewDendaGehitu.jButtonReset.addActionListener(this);
-        viewDendaGehitu.jButtonGorde.addActionListener(this);
-        viewDendaGehitu.jButtonBerriaGehitu.addActionListener(this);        
+        viewDendaGehitu.jButtonReset.addActionListener(dendGehituCtr);
+        viewDendaGehitu.jButtonGorde.addActionListener(dendGehituCtr);
+        viewDendaGehitu.jButtonBerriaGehitu.addActionListener(dendGehituCtr);        
         
         // BezeroaInfo-ko botoiak
         viewBezeroaInfo.jButtonEzabatu.addActionListener(this);
@@ -246,8 +248,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jPanelPrak.addAncestorListener(this);
                 
         /* MouseListener */
-        viewDendaInfo.jButtonIrten.addMouseListener(this);
-        viewDendaGehitu.jButtonIrten.addMouseListener(this);
+        viewDendaInfo.jButtonIrten.addMouseListener(dendInfoCtr);
+        viewDendaGehitu.jButtonIrten.addMouseListener(dendGehituCtr);
         viewBezeroaInfo.jButtonIrten.addMouseListener(this);
         viewBezeroaGehitu.jButtonIrten.addMouseListener(this);
         viewLangileaInfo.jButtonIrten.addMouseListener(this);
@@ -262,7 +264,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewEskaeraGehitu.jButtonIrten.addMouseListener(this);
         
         /* ListSelectionListener */
-        viewDendaInfo.jTableDendaInfo.getSelectionModel().addListSelectionListener(this);
+        viewDendaInfo.jTableDendaInfo.getSelectionModel().addListSelectionListener(dendInfoCtr);
         viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel().addListSelectionListener(this);
         viewLangileaInfo.jTableLangileaInfo.getSelectionModel().addListSelectionListener(this);
         viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel().addListSelectionListener(this);
@@ -273,7 +275,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jComboBoxAukeratuProd.getModel().addListDataListener(this);
 
         /* KeyListener */
-        viewDendaInfo.jTextFieldBilatu.addKeyListener(this);
+        viewDendaInfo.jTextFieldBilatu.addKeyListener(dendInfoCtr);
         viewBezeroaInfo.jTextFieldBilatu.addKeyListener(this);
         viewLangileaInfo.jTextFieldBilatu.addKeyListener(this);
         viewProduktuaAukeratu.jTextFieldBilatuJerts.addKeyListener(this);
@@ -284,21 +286,21 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         
         /* FocusListener */
         // DendaInfo
-        viewDendaInfo.jTextFieldKodeDend.addFocusListener(this);
-        viewDendaInfo.jTextFieldIzena.addFocusListener(this);
-        viewDendaInfo.jTextFieldHelbidea.addFocusListener(this);
-        viewDendaInfo.jTextFieldHerria.addFocusListener(this);
-        viewDendaInfo.jTextFieldPostKod.addFocusListener(this);
-        viewDendaInfo.jTextFieldTlf.addFocusListener(this);
-        viewDendaInfo.jTextFieldEmail.addFocusListener(this);
+        viewDendaInfo.jTextFieldKodeDend.addFocusListener(dendInfoCtr);
+        viewDendaInfo.jTextFieldIzena.addFocusListener(dendInfoCtr);
+        viewDendaInfo.jTextFieldHelbidea.addFocusListener(dendInfoCtr);
+        viewDendaInfo.jTextFieldHerria.addFocusListener(dendInfoCtr);
+        viewDendaInfo.jTextFieldPostKod.addFocusListener(dendInfoCtr);
+        viewDendaInfo.jTextFieldTlf.addFocusListener(dendInfoCtr);
+        viewDendaInfo.jTextFieldEmail.addFocusListener(dendInfoCtr);
         
         // DendaGehitu
-        viewDendaGehitu.jTextFieldIzena.addFocusListener(this);
-        viewDendaGehitu.jTextFieldHelbidea.addFocusListener(this);
-        viewDendaGehitu.jTextFieldHerria.addFocusListener(this);
-        viewDendaGehitu.jTextFieldPostKod.addFocusListener(this);
-        viewDendaGehitu.jTextFieldTlf.addFocusListener(this);
-        viewDendaGehitu.jTextFieldEmail.addFocusListener(this);
+        viewDendaGehitu.jTextFieldIzena.addFocusListener(dendGehituCtr);
+        viewDendaGehitu.jTextFieldHelbidea.addFocusListener(dendGehituCtr);
+        viewDendaGehitu.jTextFieldHerria.addFocusListener(dendGehituCtr);
+        viewDendaGehitu.jTextFieldPostKod.addFocusListener(dendGehituCtr);
+        viewDendaGehitu.jTextFieldTlf.addFocusListener(dendGehituCtr);
+        viewDendaGehitu.jTextFieldEmail.addFocusListener(dendGehituCtr);
         
         // BezeroaInfo
         viewBezeroaInfo.jTextFieldKodeBez.addFocusListener(this);
@@ -440,8 +442,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private void hasieratu() {
         /* BISTEN ESTILOA */
         menuNagEstiloa();
-        dendInfoEstiloa();
-        dendGehituEstiloa();
         bezInfoEstiloa();
         bezGehituEstiloa();
         langInfoEstiloa();
@@ -456,8 +456,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         eskGehituEstiloa();  
         
         // tauletako estiloa
-        viewDendaInfo.jTableDendaInfo.setShowGrid(false);
-        viewDendaInfo.jTableDendaInfo.setShowHorizontalLines(true);
         viewBezeroaInfo.jTableBezeroaInfo.setShowGrid(false);
         viewBezeroaInfo.jTableBezeroaInfo.setShowHorizontalLines(true);
         viewLangileaInfo.jTableLangileaInfo.setShowGrid(false);
@@ -499,7 +497,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         aukKargatu(viewProduktuaAukeratu.jComboBoxAukeratuProd);
         
         /* Kodeak ezin dira aldatu */
-        viewDendaInfo.jTextFieldKodeDend.setEditable(false);
         viewBezeroaInfo.jTextFieldKodeBez.setEditable(false);
         viewLangileaInfo.jTextFieldKodeLang.setEditable(false);
         viewProduktuaAukeratu.jTextFieldKodeJerts.setEditable(false);
@@ -525,70 +522,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewMenuNagusia.jButtonHornitzailea.setToolTipText("Hornitzailea");
         viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
     }
-    
-    private void dendInfoEstiloa() {
-        viewDendaInfo.setTitle("Dendaren informazioa");
-        viewDendaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewDendaInfo.setLocationRelativeTo(null);
-        viewDendaInfo.jButtonIrten.setBackground(urdina);
-        viewDendaInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-        
-        viewDendaInfo.jTextFieldBilatu.setOpaque(false);
-        viewDendaInfo.jTextFieldKodeDend.setOpaque(false);
-        viewDendaInfo.jTextFieldIzena.setOpaque(false);
-        viewDendaInfo.jTextFieldHelbidea.setOpaque(false);
-        viewDendaInfo.jTextFieldHerria.setOpaque(false);
-        viewDendaInfo.jTextFieldPostKod.setOpaque(false);
-        viewDendaInfo.jTextFieldTlf.setOpaque(false);
-        viewDendaInfo.jTextFieldEmail.setOpaque(false);
 
-        viewDendaInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewDendaInfo.jPanelGoiburua.setOpaque(false);
-        viewDendaInfo.jPanelOina.setOpaque(false);
-        viewDendaInfo.jPanelDendDatuak.setOpaque(false);
-        viewDendaInfo.jPanelDendTaula.setOpaque(false);
-        
-        viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewDendaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewDendaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
-    }
-    
-    private void dendGehituEstiloa() {
-        viewDendaGehitu.setTitle("Denda berria");
-        viewDendaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewDendaGehitu.setLocationRelativeTo(null);
-        viewDendaGehitu.jButtonIrten.setBackground(urdina);
-        viewDendaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
-        viewDendaGehitu.jTextFieldIzena.setOpaque(false);
-        viewDendaGehitu.jTextFieldHelbidea.setOpaque(false);
-        viewDendaGehitu.jTextFieldHerria.setOpaque(false);
-        viewDendaGehitu.jTextFieldPostKod.setOpaque(false);
-        viewDendaGehitu.jTextFieldTlf.setOpaque(false);
-        viewDendaGehitu.jTextFieldEmail.setOpaque(false);
-        viewDendaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewDendaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewDendaGehitu.jPanelGoiburua.setOpaque(false);
-        viewDendaGehitu.jPanelDendDatuak.setOpaque(false);
-    }
-    
     private void bezInfoEstiloa() {
         viewBezeroaInfo.setTitle("Bezeroen informazioa");
         viewBezeroaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -1024,6 +958,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private void bezDatuakErakutsiTaula(ArrayList<Bezeroa> bezGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
+            @Override
             public boolean isCellEditable(int rowIndex,int columnIndex){
                 return false;
             } 
@@ -1058,6 +993,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private void dendDatuakErakutsiTaula(ArrayList<Denda> dendGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
+            @Override
             public boolean isCellEditable(int rowIndex,int columnIndex){
                 return false;
             } 
@@ -1345,22 +1281,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
     }
     
-    private void resetDendaGehitu() {
-        viewDendaGehitu.jTextFieldIzena.setText(null);
-        viewDendaGehitu.jTextFieldHelbidea.setText(null);
-        viewDendaGehitu.jTextFieldHerria.setText(null);
-        viewDendaGehitu.jTextFieldPostKod.setText(null);
-        viewDendaGehitu.jTextFieldTlf.setText(null);
-        viewDendaGehitu.jTextFieldEmail.setText(null);
-        
-        viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }
-    
     private void resetBezeroaGehitu() {
         viewBezeroaGehitu.jTextFieldIzena.setText(null);
         viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
@@ -1497,16 +1417,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             }
         }
     }
-
-    private void aukDendDatuakBete(int aukLerroa) {
-        viewDendaInfo.jTextFieldKodeDend.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewDendaInfo.jTextFieldIzena.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewDendaInfo.jTextFieldHelbidea.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewDendaInfo.jTextFieldHerria.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewDendaInfo.jTextFieldPostKod.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewDendaInfo.jTextFieldTlf.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewDendaInfo.jTextFieldEmail.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 6)));
-    }
     
     private void aukBezDatuakBete(int aukLerroa) {    
         viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
@@ -1524,16 +1434,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
         viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
-    }
-    
-    private void resetDendaInfo() {
-        viewDendaInfo.jTextFieldKodeDend.setText(null);
-        viewDendaInfo.jTextFieldIzena.setText(null);
-        viewDendaInfo.jTextFieldHelbidea.setText(null);
-        viewDendaInfo.jTextFieldHerria.setText(null);
-        viewDendaInfo.jTextFieldPostKod.setText(null);
-        viewDendaInfo.jTextFieldTlf.setText(null);  
-        viewDendaInfo.jTextFieldEmail.setText(null);
     }
     
     private void resetBezeroaInfo() {
@@ -1728,108 +1628,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
             eskDatuakErakutsiTaula(EskaeraKudeatu.eskaeraGuztiakErakutsi());
         }
-        
-        /* DendaInfo-ko aukerak */
-        else if (comando == viewDendaInfo.jButtonGehitu) {
-            viewDendaGehitu.setVisible(true);
-            viewDendaInfo.setEnabled(false);
-            enableComponets(viewDendaGehitu.jPanelDendDatuak, false);
-        }
-        else if (comando == viewDendaInfo.jButtonIrten) {
-            viewDendaInfo.dispose();
-            viewMenuNagusia.setEnabled(true);
-        }
-        else if (comando == viewDendaInfo.jButtonEzabatu) {
-            int aukLerroa = viewDendaInfo.jTableDendaInfo.getSelectedRow(); // aukeratutako lerroa
-            if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(null, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-                if (konf == 0) { // bai
-                    String kodea = (String) viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako bezeroaren nan zenbakia lortu
-                    DendaKudeatu.dendaEzabatu(kodea);
-                }
-                dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Ez da dendarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
-            }
-        }
-        else if (comando == viewDendaInfo.jButtonAldatu) {
-            if (viewDendaInfo.jTableDendaInfo.getSelectedRow()!=-1) {
-                enableComponets(viewDendaInfo.jPanelDendDatuak, true);
-                enableComponets(viewDendaInfo.jPanelOina, false);
-                viewDendaInfo.jButtonAldaketaGorde.setEnabled(true);
-                viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(true);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Ez da dendarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
-            }
-        }
-        else if (comando == viewDendaInfo.jButtonAldaketaEzabatu) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-            if (konf == 0) { // bai
-                enableComponets(viewDendaInfo.jPanelDendDatuak, false);
-                enableComponets(viewDendaInfo.jPanelOina, true);
-                viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
-                viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-                resetDendInfoErr();
-                aukDendDatuakBete(viewDendaInfo.jTableDendaInfo.getSelectedRow()); // taulako datuekin berriz bete
-            }
-        }
-        else if (comando == viewDendaInfo.jButtonAldaketaGorde) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-            if (konf == 0) { // bai
-                if (balidazioaDendaInfo()) {
-                    int aukLerroa = viewDendaInfo.jTableDendaInfo.getSelectedRow();
-                    String kodea = (String) viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako bezeroaren nan zenbakia lortu
-                    DendaKudeatu.dendaEzabatu(kodea);
-                    Denda d = new Denda(viewDendaInfo.jTextFieldKodeDend.getText(), viewDendaInfo.jTextFieldIzena.getText(), 
-                            viewDendaInfo.jTextFieldHelbidea.getText(), viewDendaInfo.jTextFieldHerria.getText(), 
-                            Integer.parseInt(viewDendaInfo.jTextFieldPostKod.getText()), 
-                            viewDendaInfo.jTextFieldTlf.getText(), viewDendaInfo.jTextFieldEmail.getText());
-                    DendaKudeatu.dendaGehitu(d);
-                    dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
-                    enableComponets(viewDendaInfo.jPanelDendDatuak, false);
-                    enableComponets(viewDendaInfo.jPanelOina, true);
-                    viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
-                    viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-                }
-                else
-                    JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
-            }
-        } 
-        
-        /* DendaGehitu-ko aukerak */
-        else if (comando == viewDendaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewDendaGehitu.jPanelDendDatuak, true);
-        }
-        else if (comando == viewDendaGehitu.jButtonGorde) {
-            if (balidazioaDendaGehitu()) {
-                try {
-                    Denda d = new Denda(viewDendaGehitu.jTextFieldIzena.getText(), viewDendaGehitu.jTextFieldHelbidea.getText(), 
-                        viewDendaGehitu.jTextFieldHerria.getText(), Integer.parseInt(viewDendaGehitu.jTextFieldPostKod.getText()), 
-                        viewDendaGehitu.jTextFieldTlf.getText(), viewDendaGehitu.jTextFieldEmail.getText());
-                    d.printDatuak();
-                    DendaKudeatu.dendaGehitu(d);
-                }
-                catch (Exception ex) {
-                    // fitxategia ez bada existitzen, errorea ematen  du.
-                }
-                resetDendaGehitu();
-                enableComponets(viewDendaGehitu.jPanelDendDatuak, false);
-            }
-            else
-                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
-        }
-        else if (comando == viewDendaGehitu.jButtonReset) {
-            resetDendaGehitu();
-        }
-        else if (comando == viewDendaGehitu.jButtonIrten) {
-            resetDendaGehitu();
-            viewDendaGehitu.dispose();
-            viewDendaInfo.setEnabled(true);
-            dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
-        }
-        
+
         /* BezeroaInfo-ko aukerak */
         else if (comando == viewBezeroaInfo.jButtonGehitu) {
             viewBezeroaGehitu.setVisible(true);
@@ -2636,11 +2435,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewDendaInfo.jButtonIrten)
-            viewDendaInfo.jButtonIrten.setBackground(new Color (0,0,51));
-        else if (comando == viewDendaGehitu.jButtonIrten)
-            viewDendaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
-        else if (comando == viewBezeroaInfo.jButtonIrten)
+        if (comando == viewBezeroaInfo.jButtonIrten)
             viewBezeroaInfo.jButtonIrten.setBackground(new Color (0,0,51));
         else if ( comando == viewBezeroaGehitu.jButtonIrten)
             viewBezeroaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
@@ -2669,11 +2464,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewDendaInfo.jButtonIrten)
-            viewDendaInfo.jButtonIrten.setBackground(urdina);
-        else if (comando == viewDendaGehitu.jButtonIrten)
-            viewDendaGehitu.jButtonIrten.setBackground(urdina);
-        else if (comando == viewBezeroaInfo.jButtonIrten)
+        if (comando == viewBezeroaInfo.jButtonIrten)
             viewBezeroaInfo.jButtonIrten.setBackground(urdina);
         else if ( comando == viewBezeroaGehitu.jButtonIrten)
             viewBezeroaGehitu.jButtonIrten.setBackground(urdina);
@@ -2703,17 +2494,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     public void valueChanged(ListSelectionEvent e) {
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
-        if (lsm == viewDendaInfo.jTableDendaInfo.getSelectionModel()) {
-            if (lsm.isSelectionEmpty()) {
-                resetDendaInfo();
-            }
-            else {
-                viewDendaInfo.jTableDendaInfo.setSelectionBackground(urdina);
-                viewDendaInfo.jTableDendaInfo.setSelectionForeground(Color.WHITE);
-                aukDendDatuakBete(viewDendaInfo.jTableDendaInfo.getSelectedRow());
-            }
-        }
-        else if (lsm == viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel()) {
+        if (lsm == viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel()) {
             if (lsm.isSelectionEmpty()) {
                 resetBezeroaInfo();
             }
@@ -2809,38 +2590,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void focusGained(FocusEvent e) {
         Object comando = e.getSource();
-        // DendaInfo
-        if (comando == viewDendaInfo.jTextFieldKodeDend) 
-            viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaInfo.jTextFieldIzena) 
-            viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaInfo.jTextFieldHelbidea) 
-            viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaInfo.jTextFieldHerria) 
-            viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaInfo.jTextFieldPostKod) 
-            viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaInfo.jTextFieldTlf) 
-            viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaInfo.jTextFieldEmail) 
-            viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        
-        // DendaGehitu
-        else if (comando == viewDendaGehitu.jTextFieldIzena) 
-            viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaGehitu.jTextFieldHelbidea) 
-            viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaGehitu.jTextFieldHerria) 
-            viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaGehitu.jTextFieldPostKod) 
-            viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaGehitu.jTextFieldTlf) 
-            viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewDendaGehitu.jTextFieldEmail) 
-            viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-
         // BezeroaInfo
-        else if (comando == viewBezeroaInfo.jTextFieldKodeBez) 
+        if (comando == viewBezeroaInfo.jTextFieldKodeBez) 
             viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewBezeroaInfo.jTextFieldIzena) 
             viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
@@ -3059,38 +2810,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void focusLost(FocusEvent e) {
         Object comando = e.getSource();
-        // DendaInfo
-        if (comando == viewDendaInfo.jTextFieldKodeDend) 
-            viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaInfo.jTextFieldIzena) 
-            viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaInfo.jTextFieldHelbidea) 
-            viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaInfo.jTextFieldHerria) 
-            viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaInfo.jTextFieldPostKod) 
-            viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaInfo.jTextFieldTlf) 
-            viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaInfo.jTextFieldEmail)
-            viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
-        // DendaGehitu
-        else if (comando == viewDendaGehitu.jTextFieldIzena) 
-            viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaGehitu.jTextFieldHelbidea) 
-            viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaGehitu.jTextFieldHerria) 
-            viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaGehitu.jTextFieldPostKod) 
-            viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaGehitu.jTextFieldTlf)
-            viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewDendaGehitu.jTextFieldEmail)
-            viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
         // BezeroaInfo
-        else if (comando == viewBezeroaInfo.jTextFieldKodeBez) 
+        if (comando == viewBezeroaInfo.jTextFieldKodeBez) 
             viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewBezeroaInfo.jTextFieldIzena) 
             viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -3319,9 +3040,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     @Override
     public void keyReleased(KeyEvent e) {
         Object comando = e.getSource();
-        if (comando == viewDendaInfo.jTextFieldBilatu)
-            txtBilatuTaulan(viewDendaInfo.jTableDendaInfo, viewDendaInfo.jTextFieldBilatu.getText());
-        else if (comando == viewBezeroaInfo.jTextFieldBilatu)
+        if (comando == viewBezeroaInfo.jTextFieldBilatu)
             txtBilatuTaulan(viewBezeroaInfo.jTableBezeroaInfo, viewBezeroaInfo.jTextFieldBilatu.getText());
         else if (comando == viewLangileaInfo.jTextFieldBilatu)
             txtBilatuTaulan(viewLangileaInfo.jTableLangileaInfo, viewLangileaInfo.jTextFieldBilatu.getText());
@@ -3335,65 +3054,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             txtBilatuTaulan(viewHornitzaileaInfo.jTableHornitzaileaInfo, viewHornitzaileaInfo.jTextFieldBilatu.getText());
         else if (comando == viewEskaeraInfo.jTextFieldBilatu)
             txtBilatuTaulan(viewEskaeraInfo.jTableEskaeraInfo, viewEskaeraInfo.jTextFieldBilatu.getText());
-    }
-    
-    private boolean balidazioaDendaInfo() {
-        boolean bool = true;
-        if (viewDendaInfo.jTextFieldIzena.getText().isEmpty()) {
-            viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewDendaInfo.jTextFieldHelbidea.getText().isEmpty()) {
-            viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewDendaInfo.jTextFieldHerria.getText().isEmpty()) {
-            viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }    
-        if (viewDendaInfo.jTextFieldPostKod.getText().isEmpty()) {
-            viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewDendaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewDendaInfo.jTextFieldTlf.getText()))) {
-            viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }  
-        if (viewDendaInfo.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewDendaInfo.jTextFieldEmail.getText()))) {
-            viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        
-        return bool;
-    }
-    
-    private boolean balidazioaDendaGehitu() {
-        boolean bool = true;
-        if (viewDendaGehitu.jTextFieldIzena.getText().isEmpty()) {
-            viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }     
-        if (viewDendaGehitu.jTextFieldHelbidea.getText().isEmpty()) {
-            viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewDendaGehitu.jTextFieldHerria.getText().isEmpty()) {
-            viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewDendaGehitu.jTextFieldPostKod.getText().isEmpty()) {
-            viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewDendaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewDendaGehitu.jTextFieldTlf.getText()))) {
-            viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        if (viewDendaGehitu.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewDendaGehitu.jTextFieldEmail.getText()))) {
-            viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        return bool;
     }
 
     private boolean balidazioaBezInfo() {
@@ -3756,7 +3416,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         return bool;
     }
-    
+
     private boolean balidazioaPrakGehitu() {
         boolean bool = true;
         if (viewPrakaGehitu.jTextFieldKodePrak.getText().isEmpty()) {
@@ -3882,16 +3542,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.BLACK);
     }
     
-    private void resetDendInfoErr() {
-        viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }    
-    
     private void resetLangInfoErr() {
         viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -3955,7 +3605,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
     private void txtBilatuTaulan(JTable taula, String textua) {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
         taula.setRowSorter(rowSorter);
-        
         rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }

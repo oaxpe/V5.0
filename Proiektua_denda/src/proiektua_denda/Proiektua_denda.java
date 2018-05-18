@@ -6,6 +6,7 @@
 package proiektua_denda;
 
 import controller.Controller;
+import controller.dendaInfoController;
 import view.*;
 import model.*;
 
