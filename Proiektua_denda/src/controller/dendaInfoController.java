@@ -23,7 +23,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -42,72 +41,21 @@ import javax.swing.table.TableRowSorter;
  */
 public class dendaInfoController implements ActionListener, MouseListener, ListSelectionListener, FocusListener, KeyListener {
     /* Model */
-//    private Bezeroa bezeroa;
     private Denda denda;
-//    private Eskaera eskaera;
-//    private Hornitzailea hornitzailea;
-//    private Jertsea jertsea;
-//    private Kamiseta kamiseta;
-//    private Langilea langilea;
-//    private Pertsona pertsona;
-//    private Praka praka;
-//    private Produktua produktua;
-//    private Salmenta salmenta;
     
     /* Bistak */
     private MenuNagusia viewMenuNagusia; 
     private DendaInfo viewDendaInfo;
     private DendaGehitu viewDendaGehitu;
-//    private BezeroaInfo viewBezeroaInfo;
-//    private BezeroaGehitu viewBezeroaGehitu;
-//    private LangileaInfo viewLangileaInfo;
-//    private LangileaGehitu viewLangileaGehitu;
-//    private ProduktuaAukeratu viewProduktuaAukeratu;
-//    private JertseaGehitu viewJertseaGehitu;
-//    private KamisetaGehitu viewKamisetaGehitu;
-//    private PrakaGehitu viewPrakaGehitu;
-//    private HornitzaileaInfo viewHornitzaileaInfo;
-//    private HornitzaileaGehitu viewHornitzaileaGehitu;
-//    private EskaeraInfo viewEskaeraInfo;
-//    private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
     
     /* ERAIKITZAILEA */   
-    public dendaInfoController(/*Bezeroa bez,*/ Denda denda, /*Eskaera esk, Hornitzailea horn, Jertsea jerts,
-            Kamiseta kami, Langilea lang, Praka prak, Salmenta salm,*/
-            DendaInfo viewDendInfo, DendaGehitu viewDendGehitu/*, BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, 
-            LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, ProduktuaAukeratu viewProdAuk, 
-            JertseaGehitu viewJertsGehitu, KamisetaGehitu viewKamGehitu, PrakaGehitu viewPrakGehitu, 
-            HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraInfo viewEskInfo, 
-            EskaeraGehitu viewEskGehitu*/, MenuNagusia viewMenuNag) {
-//        this.bezeroa = bez;
-        this.denda = denda;
-//        this.eskaera = esk;
-//        this.hornitzailea = horn;
-//        this.jertsea = jerts;
-//        this.kamiseta = kami;
-//        this.langilea = lang;
-//        this.praka = prak;
-//        this.salmenta = salm;
-        
+    public dendaInfoController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
+        this.denda = denda;       
         this.viewDendaInfo = viewDendInfo;
         this.viewDendaGehitu = viewDendGehitu;
-//        this.viewBezeroaInfo = viewBezInfo;
-//        this.viewBezeroaGehitu = viewBezGehitu;
-//        this.viewLangileaInfo = viewLangInfo;
-//        this.viewLangileaGehitu = viewLangGehitu;
-//        this.viewProduktuaAukeratu = viewProdAuk;
-//        this.viewJertseaGehitu = viewJertsGehitu;
-//        this.viewKamisetaGehitu = viewKamGehitu;
-//        this.viewPrakaGehitu = viewPrakGehitu;
-//        this.viewHornitzaileaInfo = viewHornInfo;
-//        this.viewHornitzaileaGehitu = viewHornGehitu;
-//        this.viewEskaeraInfo = viewEskInfo;
-//        this.viewEskaeraGehitu = viewEskGehitu;
-//        this.viewHornitzaileaGehitu = viewHornGehitu;
         this.viewMenuNagusia = viewMenuNag;
-//        botoiakEntzuten();
         dendInfoEstiloa();
     }
     
@@ -160,6 +108,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     public void dendDatuakErakutsiTaula(ArrayList<Denda> dendGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
+            @Override
             public boolean isCellEditable(int rowIndex,int columnIndex){
                 return false;
             } 
@@ -186,19 +135,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
             model.setValueAt(dend.getEmail(), i, 6);
         }
     }
-   
-    private void hornitzaileaKargatu(JComboBox comboBox) {
-        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
-        ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
-        for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
-            alHonritzaileIzenak.add(horn.getIzena());
-        }
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i = 0; i < alHonritzaileIzenak.size(); i++) { // izenak comboBox-ean gorde
-            comboBox.addItem(alHonritzaileIzenak.get(i));
-        }
-    }
-    
+
     private void enableComponets (Container container, boolean bool) {
         Component[] components = container.getComponents();
         for (Component component : components) {

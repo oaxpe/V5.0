@@ -46,7 +46,7 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
 //    private Salmenta salmenta;
     
     /* Bistak */
-    private MenuNagusia viewMenuNagusia; 
+//    private MenuNagusia viewMenuNagusia; 
     private DendaInfo viewDendaInfo;
     private DendaGehitu viewDendaGehitu;
 //    private BezeroaInfo viewBezeroaInfo;
@@ -65,41 +65,11 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
     private Color urdina = new Color(0,0,153);
     
     /* ERAIKITZAILEA */   
-    public dendaGehituController(/*Bezeroa bez, */Denda denda/*, Eskaera esk, Hornitzailea horn, Jertsea jerts,
-            Kamiseta kami, Langilea lang, Praka prak, Salmenta salm*/,
-            DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, /*BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, 
-            LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, ProduktuaAukeratu viewProdAuk, 
-            JertseaGehitu viewJertsGehitu, KamisetaGehitu viewKamGehitu, PrakaGehitu viewPrakGehitu, 
-            HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraInfo viewEskInfo, 
-            EskaeraGehitu viewEskGehitu,*/ MenuNagusia viewMenuNag) {
-//        this.bezeroa = bez;
+    public dendaGehituController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
         this.denda = denda;
-//        this.eskaera = esk;
-//        this.hornitzailea = horn;
-//        this.jertsea = jerts;
-//        this.kamiseta = kami;
-//        this.langilea = lang;
-//        this.praka = prak;
-//        this.salmenta = salm;
-        
         this.viewDendaInfo = viewDendInfo;
         this.viewDendaGehitu = viewDendGehitu;
-//        this.viewBezeroaInfo = viewBezInfo;
-//        this.viewBezeroaGehitu = viewBezGehitu;
-//        this.viewLangileaInfo = viewLangInfo;
-//        this.viewLangileaGehitu = viewLangGehitu;
-//        this.viewProduktuaAukeratu = viewProdAuk;
-//        this.viewJertseaGehitu = viewJertsGehitu;
-//        this.viewKamisetaGehitu = viewKamGehitu;
-//        this.viewPrakaGehitu = viewPrakGehitu;
-//        this.viewHornitzaileaInfo = viewHornInfo;
-//        this.viewHornitzaileaGehitu = viewHornGehitu;
-//        this.viewEskaeraInfo = viewEskInfo;
-//        this.viewEskaeraGehitu = viewEskGehitu;
-//        this.viewHornitzaileaGehitu = viewHornGehitu;
-        this.viewMenuNagusia = viewMenuNag;
         dendGehituEstiloa();
-        viewMenuNagusia.setVisible(true);
     }
     
     /* METODOAK */
@@ -128,71 +98,6 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         viewDendaGehitu.jPanelGoiburua.setOpaque(false);
         viewDendaGehitu.jPanelDendDatuak.setOpaque(false);
     }
-//    private void dendDatuakErakutsiTaula(ArrayList<Denda> dendGuzt) {
-//        DefaultTableModel model = new DefaultTableModel() {
-//            /* Datuak taulan ez editatzeko */
-//            public boolean isCellEditable(int rowIndex,int columnIndex){
-//                return false;
-//            } 
-//        };
-//        viewDendaInfo.jTableDendaInfo.setModel(model);
-//        model.addColumn("KODEA");
-//        model.addColumn("IZENA");
-//        model.addColumn("HELBIDEA");
-//        model.addColumn("HERRIA");
-//        model.addColumn("POSTA KODEA");
-//        model.addColumn("TELEFONOA");
-//        model.addColumn("EMAILA");
-//        
-//        for (int i=0; i<dendGuzt.size(); i++) {
-//            Denda dend = dendGuzt.get(i);
-//            Array[] os = null;
-//            model.addRow(os);
-//            model.setValueAt(dend.getKodDend(), i, 0);
-//            model.setValueAt(dend.getIzena(), i, 1);
-//            model.setValueAt(dend.getHelbidea(), i, 2);
-//            model.setValueAt(dend.getHerria(), i, 3);
-//            model.setValueAt(dend.getKodPostala(), i, 4);
-//            model.setValueAt(dend.getTelefonoa(), i, 5);
-//            model.setValueAt(dend.getEmail(), i, 6);
-//        }
-//    }
-    private void hornitzaileaKargatu(JComboBox comboBox) {
-        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
-        ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
-        for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
-            alHonritzaileIzenak.add(horn.getIzena());
-        }
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i = 0; i < alHonritzaileIzenak.size(); i++) { // izenak comboBox-ean gorde
-            comboBox.addItem(alHonritzaileIzenak.get(i));
-        }
-    }
-    
-    private void tailaKargatuString(JComboBox comboBox) {
-        String[] taila = ProduktuaKudeatu.tailaKontrolatuString();
-        comboBox.addItem("--- Aukeratu ---");
-        for (String i : taila) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    private void tailaKargatuInt(JComboBox comboBox) {
-        int[] taila = ProduktuaKudeatu.tailaKontrolatuZenb();
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i : taila) {
-            comboBox.addItem(String.valueOf(i));
-        }
-    }
-    
-    private void sexuaKargatu(JComboBox comboBox) {
-        String[] sexua = ProduktuaKudeatu.sexuaKontrolatu();
-        comboBox.addItem("--- Aukeratu ---");
-        for (String i : sexua) {
-            comboBox.addItem(i);
-        }
-    }
-
 
     private void resetDendaGehitu() {
         viewDendaGehitu.jTextFieldIzena.setText(null);
@@ -218,16 +123,6 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
             }
         }
     }
-
-//    private void aukDendDatuakBete(int aukLerroa) {
-//        viewDendaInfo.jTextFieldKodeDend.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0)));
-//        viewDendaInfo.jTextFieldIzena.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 1)));
-//        viewDendaInfo.jTextFieldHelbidea.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 2)));
-//        viewDendaInfo.jTextFieldHerria.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 3)));
-//        viewDendaInfo.jTextFieldPostKod.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 4)));
-//        viewDendaInfo.jTextFieldTlf.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 5)));
-//        viewDendaInfo.jTextFieldEmail.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 6)));
-//    }
 
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
