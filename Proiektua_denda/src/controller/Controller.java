@@ -110,7 +110,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         this.viewHornitzaileaGehitu = viewHornGehitu;
         this.viewEskaeraInfo = viewEskInfo;
         this.viewEskaeraGehitu = viewEskGehitu;
-        this.viewHornitzaileaGehitu = viewHornGehitu;
         this.viewMenuNagusia = viewMenuNag;
         botoiakEntzuten();
         hasieratu();
@@ -125,6 +124,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         bezGehituController bezGehituCtr = new bezGehituController(bezeroa, viewBezeroaInfo, viewBezeroaGehitu);
         langInfoController langInfoCtr = new langInfoController(langilea, viewLangileaInfo, viewLangileaGehitu, viewMenuNagusia);
         langGehituController langGehituCtr = new langGehituController(langilea, viewLangileaInfo, viewLangileaGehitu);
+        hornInfoController hornInfoCtr = new hornInfoController(hornitzailea, viewHornitzaileaInfo, viewHornitzaileaGehitu, viewMenuNagusia);
+        hornGehituController hornGehituCtr = new hornGehituController(hornitzailea, viewHornitzaileaInfo, viewHornitzaileaGehitu, viewEskaeraGehitu);
         
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(this);
@@ -138,8 +139,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewJertseaGehitu.jButtonIrten.addActionListener(this);
         viewKamisetaGehitu.jButtonIrten.addActionListener(this);
         viewPrakaGehitu.jButtonIrten.addActionListener(this);
-        viewHornitzaileaInfo.jButtonIrten.addActionListener(this);
-        viewHornitzaileaGehitu.jButtonIrten.addActionListener(this);
+        viewHornitzaileaInfo.jButtonIrten.addActionListener(hornInfoCtr);
+        viewHornitzaileaGehitu.jButtonIrten.addActionListener(hornGehituCtr);
         viewEskaeraInfo.jButtonIrten.addActionListener(this);
         viewEskaeraGehitu.jButtonIrten.addActionListener(this);
 
@@ -223,16 +224,16 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jButtonBerriaGehitu.addActionListener(this);
         
         // HornitzaileaInfo-ko botoiak
-        viewHornitzaileaInfo.jButtonEzabatu.addActionListener(this);
-        viewHornitzaileaInfo.jButtonAldatu.addActionListener(this);
-        viewHornitzaileaInfo.jButtonGehitu.addActionListener(this);
-        viewHornitzaileaInfo.jButtonAldaketaGorde.addActionListener(this);
-        viewHornitzaileaInfo.jButtonAldaketaEzabatu.addActionListener(this);
+        viewHornitzaileaInfo.jButtonEzabatu.addActionListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonAldatu.addActionListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonGehitu.addActionListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonAldaketaGorde.addActionListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonAldaketaEzabatu.addActionListener(hornInfoCtr);
         
         // HornitzaileaGehitu-ko botoik
-        viewHornitzaileaGehitu.jButtonReset.addActionListener(this);
-        viewHornitzaileaGehitu.jButtonGorde.addActionListener(this);
-        viewHornitzaileaGehitu.jButtonBerriaGehitu.addActionListener(this);
+        viewHornitzaileaGehitu.jButtonReset.addActionListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jButtonGorde.addActionListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jButtonBerriaGehitu.addActionListener(hornGehituCtr);
         
         // EskaeraInfo-ko botoiak
         viewEskaeraInfo.jButtonEzabatu.addActionListener(this);
@@ -262,8 +263,8 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewJertseaGehitu.jButtonIrten.addMouseListener(this);
         viewKamisetaGehitu.jButtonIrten.addMouseListener(this);
         viewPrakaGehitu.jButtonIrten.addMouseListener(this);
-        viewHornitzaileaInfo.jButtonIrten.addMouseListener(this);
-        viewHornitzaileaGehitu.jButtonIrten.addMouseListener(this);
+        viewHornitzaileaInfo.jButtonIrten.addMouseListener(hornInfoCtr);
+        viewHornitzaileaGehitu.jButtonIrten.addMouseListener(hornGehituCtr);
         viewEskaeraInfo.jButtonIrten.addMouseListener(this);
         viewEskaeraGehitu.jButtonIrten.addMouseListener(this);
         
@@ -274,7 +275,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel().addListSelectionListener(this);
         viewProduktuaAukeratu.jTableKamiInfo.getSelectionModel().addListSelectionListener(this);
         viewProduktuaAukeratu.jTablePrakInfo.getSelectionModel().addListSelectionListener(this);
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectionModel().addListSelectionListener(this);
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectionModel().addListSelectionListener(hornInfoCtr);
         viewEskaeraInfo.jTableEskaeraInfo.getSelectionModel().addListSelectionListener(this);
         viewProduktuaAukeratu.jComboBoxAukeratuProd.getModel().addListDataListener(this);
 
@@ -285,7 +286,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTextFieldBilatuJerts.addKeyListener(this);
         viewProduktuaAukeratu.jTextFieldBilatuKami.addKeyListener(this);
         viewProduktuaAukeratu.jTextFieldBilatuPrak.addKeyListener(this);
-        viewHornitzaileaInfo.jTextFieldBilatu.addKeyListener(this);
+        viewHornitzaileaInfo.jTextFieldBilatu.addKeyListener(hornInfoCtr);
         viewEskaeraInfo.jTextFieldBilatu.addKeyListener(this);
         
         /* FocusListener */
@@ -420,17 +421,17 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jComboBoxMota.addFocusListener(this);
         
         // HornitzaileaInfo
-        viewHornitzaileaInfo.jTextFieldKodeHor.addFocusListener(this);
-        viewHornitzaileaInfo.jTextFieldIzena.addFocusListener(this);
-        viewHornitzaileaInfo.jTextFieldHerria.addFocusListener(this);
-        viewHornitzaileaInfo.jTextFieldTlf.addFocusListener(this);
-        viewHornitzaileaInfo.jTextFieldEmail.addFocusListener(this);
+        viewHornitzaileaInfo.jTextFieldKodeHor.addFocusListener(hornInfoCtr);
+        viewHornitzaileaInfo.jTextFieldIzena.addFocusListener(hornInfoCtr);
+        viewHornitzaileaInfo.jTextFieldHerria.addFocusListener(hornInfoCtr);
+        viewHornitzaileaInfo.jTextFieldTlf.addFocusListener(hornInfoCtr);
+        viewHornitzaileaInfo.jTextFieldEmail.addFocusListener(hornInfoCtr);
         
         // HornitzaileaGehitu
-        viewHornitzaileaGehitu.jTextFieldIzena.addFocusListener(this);
-        viewHornitzaileaGehitu.jTextFieldHerria.addFocusListener(this);
-        viewHornitzaileaGehitu.jTextFieldTlf.addFocusListener(this);
-        viewHornitzaileaGehitu.jTextFieldEmail.addFocusListener(this);
+        viewHornitzaileaGehitu.jTextFieldIzena.addFocusListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jTextFieldHerria.addFocusListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jTextFieldTlf.addFocusListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jTextFieldEmail.addFocusListener(hornGehituCtr);
         
         // EskaeraInfo
         viewEskaeraInfo.jTextFieldKodeEsk.addFocusListener(this);
@@ -450,7 +451,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         jertsGehituEstiloa();
         kamiGehituEstiloa();
         prakGehituEstiloa();
-        hornInfoEstiloa();
         hornGehituEstiloa();
         eskInfoEstiloa();
         eskGehituEstiloa();  
@@ -462,8 +462,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTableKamiInfo.setShowHorizontalLines(true);
         viewProduktuaAukeratu.jTablePrakInfo.setShowGrid(false);
         viewProduktuaAukeratu.jTablePrakInfo.setShowHorizontalLines(true);
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowGrid(false);
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowHorizontalLines(true);
         viewEskaeraInfo.jTableEskaeraInfo.setShowGrid(false);
         viewEskaeraInfo.jTableEskaeraInfo.setShowHorizontalLines(true);
 
@@ -496,7 +494,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jTextFieldKodeJerts.setEditable(false);
         viewProduktuaAukeratu.jTextFieldKodeKami.setEditable(false);
         viewProduktuaAukeratu.jTextFieldKodePrak.setEditable(false);
-        viewHornitzaileaInfo.jTextFieldKodeHor.setEditable(false);
         viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);   
     }
     
@@ -701,38 +698,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewPrakaGehitu.jPanelGoiburua.setOpaque(false);
         viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
-    }
-    
-    private void hornInfoEstiloa() {
-        viewHornitzaileaInfo.setTitle("Hornitzaileen informazioa");
-        viewHornitzaileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewHornitzaileaInfo.setLocationRelativeTo(null);
-        viewHornitzaileaInfo.jButtonIrten.setBackground(urdina);
-        viewHornitzaileaInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-        
-        viewHornitzaileaInfo.jTextFieldKodeHor.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldIzena.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldHerria.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldEmail.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldTlf.setOpaque(false);
-        
-        viewHornitzaileaInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewHornitzaileaInfo.jPanelGoiburua.setOpaque(false);
-        viewHornitzaileaInfo.jPanelOina.setOpaque(false);
-        viewHornitzaileaInfo.jPanelHornDatuak.setOpaque(false);
-        viewHornitzaileaInfo.jPanelHornInfoTaula.setOpaque(false);
-        
-        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewHornitzaileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
     }
     
     private void hornGehituEstiloa() {
@@ -1191,18 +1156,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
-    private void resetHornitzaileaGehitu() {
-        viewHornitzaileaGehitu.jTextFieldIzena.setText(null);
-        viewHornitzaileaGehitu.jTextFieldHerria.setText(null);
-        viewHornitzaileaGehitu.jTextFieldTlf.setText(null);
-        viewHornitzaileaGehitu.jTextFieldEmail.setText(null);
-        
-        viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }
-    
     private void resetEskaeraGehitu() {
         viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
         viewEskaeraGehitu.jTextFieldKopurua.setText(null);
@@ -1286,22 +1239,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewProduktuaAukeratu.jComboBoxSasoiaPrak.setSelectedItem(null);
         viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setText(null);
         viewProduktuaAukeratu.jComboBoxMotaPrak.setSelectedItem(null); 
-    }
-    
-    private void aukHornDatuakBete(int aukLerroa) {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
-    }
-    
-    private void resetHornInfo() {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setText(null);
-        viewHornitzaileaInfo.jTextFieldIzena.setText(null);
-        viewHornitzaileaInfo.jTextFieldHerria.setText(null);
-        viewHornitzaileaInfo.jTextFieldTlf.setText(null);
-        viewHornitzaileaInfo.jTextFieldEmail.setText(null);
     }
     
     private void aukEskDatuakBete(int aukLerroa) { 
@@ -1680,112 +1617,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
         }
         
-        /* HornitzaileaInfo-ko aukerak */
-        else if (comando == viewHornitzaileaInfo.jButtonGehitu) {
-            viewHornitzaileaGehitu.setVisible(true);
-            viewHornitzaileaInfo.setEnabled(false);
-            enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, false);
-        }
-        else if (comando == viewHornitzaileaInfo.jButtonIrten) {
-            viewHornitzaileaInfo.dispose();
-            viewMenuNagusia.setEnabled(true);
-        } 
-        else if (comando == viewHornitzaileaInfo.jButtonEzabatu) {
-            int aukLerroa = viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(); // aukeratutako lerroa
-            if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-                if (konf == 0) { // bai
-                    String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-                    HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
-                    viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                    hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
-                }                
-                hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Ez da hornitzailerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
-            }
-        }
-        else if (comando == viewHornitzaileaInfo.jButtonAldatu) {
-            if (viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow()!=-1) {
-                enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, true);
-                enableComponets(viewHornitzaileaInfo.jPanelOina, false);
-                viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(true);
-                viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(true);
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Ez da hornitzailerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
-            } 
-        }
-        else if (comando == viewHornitzaileaInfo.jButtonAldaketaEzabatu) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-            if (konf == 0) { // bai
-                enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
-                enableComponets(viewHornitzaileaInfo.jPanelOina, true);
-                viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
-                viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-                resetHornInfoErr();
-                aukHornDatuakBete(viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow()); // taulako datuekin berriz bete
-            }
-        }
-        else if (comando == viewHornitzaileaInfo.jButtonAldaketaGorde) {
-            int konf = JOptionPane.showConfirmDialog(null, "Aldaketak gorde nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
-            if (konf == 0) { // bai
-                if (balidazioaHornInfo()) {
-                    int aukLerroa = viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(); // aukeratutako lerroa
-                    /* Hornitzailea ezabatu */
-                    String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-                    HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
-
-                    /* Hornitzailea gorde */
-                    Hornitzailea horn = new Hornitzailea(viewHornitzaileaInfo.jTextFieldKodeHor.getText(), viewHornitzaileaInfo.jTextFieldIzena.getText(), 
-                            viewHornitzaileaInfo.jTextFieldHerria.getText(), viewHornitzaileaInfo.jTextFieldTlf.getText(), viewHornitzaileaInfo.jTextFieldEmail.getText());
-                    HornitzaileaKudeatu.hornitzaileaGehitu(horn);
-                    enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
-                    
-                    /* Hornitzaileak aktualizatu */
-                    viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                    hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
-                    
-                    hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
-                    enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
-                    enableComponets(viewHornitzaileaInfo.jPanelOina, true);
-                    viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
-                    viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-                }
-                else
-                    JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
-            }
-        }
-        
-        /* HornitzaileaGehituko aukerak */
-        else if (comando == viewHornitzaileaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, true);
-        }
-        else if (comando == viewHornitzaileaGehitu.jButtonGorde) {
-            if (balidazioaHornGehitu()) {
-                Hornitzailea horn = new Hornitzailea(viewHornitzaileaGehitu.jTextFieldIzena.getText(), viewHornitzaileaGehitu.jTextFieldHerria.getText(),
-                        viewHornitzaileaGehitu.jTextFieldTlf.getText(), viewHornitzaileaGehitu.jTextFieldEmail.getText());
-                HornitzaileaKudeatu.hornitzaileaGehitu(horn);
-                resetHornitzaileaGehitu();
-                enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, false);
-                // Hornitzaileak aktualizatu
-                viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
-            }
-            else
-                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
-        }
-        else if (comando == viewHornitzaileaGehitu.jButtonReset) {
-            resetHornitzaileaGehitu();
-        }
-        else if (comando == viewHornitzaileaGehitu.jButtonIrten) {
-            resetHornitzaileaGehitu();
-            viewHornitzaileaGehitu.dispose();
-            viewHornitzaileaInfo.setEnabled(true);
-            hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
-        }
-        
         /* EskaeraInfo-ko aukerak */
         else if (comando == viewEskaeraInfo.jButtonGehitu) {
             viewEskaeraGehitu.setVisible(true);
@@ -1950,10 +1781,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewKamisetaGehitu.jButtonIrten.setBackground(new Color (0,0,51));  
         else if (comando == viewPrakaGehitu.jButtonIrten)
             viewPrakaGehitu.jButtonIrten.setBackground(new Color (0,0,51));  
-        else if (comando == viewHornitzaileaInfo.jButtonIrten)
-            viewHornitzaileaInfo.jButtonIrten.setBackground(new Color (0,0,51));  
-        else if (comando == viewHornitzaileaGehitu.jButtonIrten)
-            viewHornitzaileaGehitu.jButtonIrten.setBackground(new Color (0,0,51));  
         else if (comando == viewEskaeraInfo.jButtonIrten)
             viewEskaeraInfo.jButtonIrten.setBackground(new Color (0,0,51));  
         else if (comando == viewEskaeraGehitu.jButtonIrten)
@@ -1971,10 +1798,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewKamisetaGehitu.jButtonIrten.setBackground(urdina);  
         else if (comando == viewPrakaGehitu.jButtonIrten)
             viewPrakaGehitu.jButtonIrten.setBackground(urdina);  
-        else if (comando == viewHornitzaileaInfo.jButtonIrten)
-            viewHornitzaileaInfo.jButtonIrten.setBackground(urdina);  
-        else if (comando == viewHornitzaileaGehitu.jButtonIrten)
-            viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);  
         else if (comando == viewEskaeraInfo.jButtonIrten)
             viewEskaeraInfo.jButtonIrten.setBackground(urdina);  
         else if (comando == viewEskaeraGehitu.jButtonIrten)
@@ -2013,16 +1836,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
                 viewProduktuaAukeratu.jTablePrakInfo.setSelectionBackground(urdina);
                 viewProduktuaAukeratu.jTablePrakInfo.setSelectionForeground(Color.WHITE);
                 aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow());
-            }
-        }
-        else if (lsm == viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectionModel()) {
-            if (lsm.isSelectionEmpty()) {
-                resetHornInfo();
-            }
-            else {
-                viewHornitzaileaInfo.jTableHornitzaileaInfo.setSelectionBackground(urdina);
-                viewHornitzaileaInfo.jTableHornitzaileaInfo.setSelectionForeground(Color.WHITE);
-                aukHornDatuakBete(viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow());
             }
         }
         else if (lsm == viewEskaeraInfo.jTableEskaeraInfo.getSelectionModel()) {
@@ -2172,29 +1985,7 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewPrakaGehitu.jComboBoxMota) 
             viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(urdina, 1));
-        
-        // HornitzaileaInfo
-        else if (comando == viewHornitzaileaInfo.jTextFieldKodeHor)
-            viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewHornitzaileaInfo.jTextFieldIzena)
-            viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewHornitzaileaInfo.jTextFieldHerria)
-            viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewHornitzaileaInfo.jTextFieldEmail)
-            viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewHornitzaileaInfo.jTextFieldTlf)
-            viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        
-        // HornitzaileaGehitu
-        else if (comando == viewHornitzaileaGehitu.jTextFieldIzena)
-            viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewHornitzaileaGehitu.jTextFieldHerria)
-            viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewHornitzaileaGehitu.jTextFieldEmail)
-            viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        else if (comando == viewHornitzaileaGehitu.jTextFieldTlf)
-            viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-        
+       
         // EskaeraInfo
         else if (comando == viewEskaeraInfo.jTextFieldKodeEsk)
             viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));   
@@ -2325,28 +2116,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         else if (comando == viewPrakaGehitu.jComboBoxMota) 
             viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
-        // HornitzaileaInfo
-        else if (comando == viewHornitzaileaInfo.jTextFieldKodeHor)
-            viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewHornitzaileaInfo.jTextFieldIzena)
-            viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewHornitzaileaInfo.jTextFieldHerria)
-            viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewHornitzaileaInfo.jTextFieldEmail)
-            viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewHornitzaileaInfo.jTextFieldTlf)
-            viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
-        // HornitzaileaGehitu
-        else if (comando == viewHornitzaileaGehitu.jTextFieldIzena)
-            viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewHornitzaileaGehitu.jTextFieldHerria)
-            viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewHornitzaileaGehitu.jTextFieldEmail)
-            viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        else if (comando == viewHornitzaileaGehitu.jTextFieldTlf)
-            viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
         // EskaeraInfo
         else if (comando == viewEskaeraInfo.jTextFieldKodeEsk)
             viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));  
@@ -2381,8 +2150,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             txtBilatuTaulan(viewProduktuaAukeratu.jTableKamiInfo, viewProduktuaAukeratu.jTextFieldBilatuKami.getText());
         else if (comando == viewProduktuaAukeratu.jTextFieldBilatuPrak)
             txtBilatuTaulan(viewProduktuaAukeratu.jTablePrakInfo, viewProduktuaAukeratu.jTextFieldBilatuPrak.getText());
-        else if (comando == viewHornitzaileaInfo.jTextFieldBilatu)
-            txtBilatuTaulan(viewHornitzaileaInfo.jTableHornitzaileaInfo, viewHornitzaileaInfo.jTextFieldBilatu.getText());
         else if (comando == viewEskaeraInfo.jTextFieldBilatu)
             txtBilatuTaulan(viewEskaeraInfo.jTableEskaeraInfo, viewEskaeraInfo.jTextFieldBilatu.getText());
     }
@@ -2616,48 +2383,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         }
         return bool;
     }
-        
-    private boolean balidazioaHornInfo() {
-        boolean bool = true;
-        if (viewHornitzaileaInfo.jTextFieldIzena.getText().isEmpty()) {
-            viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }     
-        if (viewHornitzaileaInfo.jTextFieldHerria.getText().isEmpty()) {
-            viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewHornitzaileaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewHornitzaileaInfo.jTextFieldTlf.getText()))) {
-            viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewHornitzaileaInfo.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewHornitzaileaInfo.jTextFieldEmail.getText()))) {
-            viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        return bool;
-    }
-    
-    private boolean balidazioaHornGehitu() {
-        boolean bool = true;
-        if (viewHornitzaileaGehitu.jTextFieldIzena.getText().isEmpty()) {
-            viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }     
-        if (viewHornitzaileaGehitu.jTextFieldHerria.getText().isEmpty()) {
-            viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewHornitzaileaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewHornitzaileaGehitu.jTextFieldTlf.getText()))) {
-            viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewHornitzaileaGehitu.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewHornitzaileaGehitu.jTextFieldEmail.getText()))) {
-            viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }
-        return bool;
-    }
     
     private boolean balidazioaEskInfo() {
         boolean bool = true;
@@ -2684,14 +2409,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
             bool = false;
         }   
         return bool;
-    }
-    
-    private void resetHornInfoErr() {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
 
     private void resetEskInfoErr() {
