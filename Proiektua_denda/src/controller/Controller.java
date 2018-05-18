@@ -451,7 +451,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         jertsGehituEstiloa();
         kamiGehituEstiloa();
         prakGehituEstiloa();
-        hornGehituEstiloa();
         eskInfoEstiloa();
         eskGehituEstiloa();  
         
@@ -698,28 +697,6 @@ public class Controller implements ActionListener, MouseListener, AncestorListen
         viewPrakaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewPrakaGehitu.jPanelGoiburua.setOpaque(false);
         viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
-    }
-    
-    private void hornGehituEstiloa() {
-        viewHornitzaileaGehitu.setTitle("Hornitzaile berria");
-        viewHornitzaileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewHornitzaileaGehitu.setLocationRelativeTo(null);
-        viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);
-        viewHornitzaileaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
-        viewHornitzaileaGehitu.jTextFieldIzena.setOpaque(false);
-        viewHornitzaileaGehitu.jTextFieldHerria.setOpaque(false);
-        viewHornitzaileaGehitu.jTextFieldTlf.setOpaque(false);
-        viewHornitzaileaGehitu.jTextFieldEmail.setOpaque(false);
-        viewHornitzaileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewHornitzaileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewHornitzaileaGehitu.jPanelGoiburua.setOpaque(false);
-        viewHornitzaileaGehitu.jPanelHornDatuak.setOpaque(false);
     }
     
     private void eskInfoEstiloa() {
