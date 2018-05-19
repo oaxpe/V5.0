@@ -41,49 +41,6 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         this.viewDendaGehitu = viewDendGehitu;
         dendGehituEstiloa();
     }
-    
-    /* METODOAK */
-    private void dendGehituEstiloa() {
-        viewDendaGehitu.setTitle("Denda berria");
-        viewDendaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewDendaGehitu.setLocationRelativeTo(null);
-        viewDendaGehitu.jButtonIrten.setBackground(urdina);
-        viewDendaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
-        viewDendaGehitu.jTextFieldIzena.setOpaque(false);
-        viewDendaGehitu.jTextFieldHelbidea.setOpaque(false);
-        viewDendaGehitu.jTextFieldHerria.setOpaque(false);
-        viewDendaGehitu.jTextFieldPostKod.setOpaque(false);
-        viewDendaGehitu.jTextFieldTlf.setOpaque(false);
-        viewDendaGehitu.jTextFieldEmail.setOpaque(false);
-        viewDendaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewDendaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewDendaGehitu.jPanelGoiburua.setOpaque(false);
-        viewDendaGehitu.jPanelDendDatuak.setOpaque(false);
-    }
-
-    private void resetDendaGehitu() {
-        viewDendaGehitu.jTextFieldIzena.setText(null);
-        viewDendaGehitu.jTextFieldHelbidea.setText(null);
-        viewDendaGehitu.jTextFieldHerria.setText(null);
-        viewDendaGehitu.jTextFieldPostKod.setText(null);
-        viewDendaGehitu.jTextFieldTlf.setText(null);
-        viewDendaGehitu.jTextFieldEmail.setText(null);
-        
-        viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }
 
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
@@ -190,6 +147,49 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
             viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewDendaGehitu.jTextFieldEmail)
             viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+    }
+        
+    /* METODOAK */
+    private void dendGehituEstiloa() {
+        viewDendaGehitu.setTitle("Denda berria");
+        viewDendaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewDendaGehitu.setLocationRelativeTo(null);
+        viewDendaGehitu.jButtonIrten.setBackground(urdina);
+        viewDendaGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        
+        viewDendaGehitu.jTextFieldIzena.setOpaque(false);
+        viewDendaGehitu.jTextFieldHelbidea.setOpaque(false);
+        viewDendaGehitu.jTextFieldHerria.setOpaque(false);
+        viewDendaGehitu.jTextFieldPostKod.setOpaque(false);
+        viewDendaGehitu.jTextFieldTlf.setOpaque(false);
+        viewDendaGehitu.jTextFieldEmail.setOpaque(false);
+        viewDendaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewDendaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewDendaGehitu.jPanelGoiburua.setOpaque(false);
+        viewDendaGehitu.jPanelDendDatuak.setOpaque(false);
+    }
+
+    private void resetDendaGehitu() {
+        viewDendaGehitu.jTextFieldIzena.setText(null);
+        viewDendaGehitu.jTextFieldHelbidea.setText(null);
+        viewDendaGehitu.jTextFieldHerria.setText(null);
+        viewDendaGehitu.jTextFieldPostKod.setText(null);
+        viewDendaGehitu.jTextFieldTlf.setText(null);
+        viewDendaGehitu.jTextFieldEmail.setText(null);
+        
+        viewDendaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
 
     private boolean balidazioaDendaGehitu() {

@@ -57,103 +57,6 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     public dendaInfoController(){
         
     }
-    
-    /* METODOAK */    
-    private void dendInfoEstiloa() {
-        viewDendaInfo.setTitle("Dendaren informazioa");
-        viewDendaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewDendaInfo.setLocationRelativeTo(null);
-        viewDendaInfo.jButtonIrten.setBackground(urdina);
-        viewDendaInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewDendaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-        
-        viewDendaInfo.jTextFieldBilatu.setOpaque(false);
-        viewDendaInfo.jTextFieldKodeDend.setOpaque(false);
-        viewDendaInfo.jTextFieldIzena.setOpaque(false);
-        viewDendaInfo.jTextFieldHelbidea.setOpaque(false);
-        viewDendaInfo.jTextFieldHerria.setOpaque(false);
-        viewDendaInfo.jTextFieldPostKod.setOpaque(false);
-        viewDendaInfo.jTextFieldTlf.setOpaque(false);
-        viewDendaInfo.jTextFieldEmail.setOpaque(false);
-
-        viewDendaInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewDendaInfo.jPanelGoiburua.setOpaque(false);
-        viewDendaInfo.jPanelOina.setOpaque(false);
-        viewDendaInfo.jPanelDendDatuak.setOpaque(false);
-        viewDendaInfo.jPanelDendTaula.setOpaque(false);
-        
-        viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewDendaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewDendaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
-        
-        // tauletako estiloa
-        viewDendaInfo.jTableDendaInfo.setShowGrid(false);
-        viewDendaInfo.jTableDendaInfo.setShowHorizontalLines(true);
-        
-        /* Kodeak ezin dira aldatu */
-        viewDendaInfo.jTextFieldKodeDend.setEditable(false);  
-    }
-          
-    /* METODOAK */   
-    public void dendDatuakErakutsiTaula(JTable taula, ArrayList<Denda> dendGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        taula.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("HELBIDEA");
-        model.addColumn("HERRIA");
-        model.addColumn("POSTA KODEA");
-        model.addColumn("TELEFONOA");
-        model.addColumn("EMAILA");
-        
-        for (int i=0; i<dendGuzt.size(); i++) {
-            Denda dend = dendGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(dend.getKodDend(), i, 0);
-            model.setValueAt(dend.getIzena(), i, 1);
-            model.setValueAt(dend.getHelbidea(), i, 2);
-            model.setValueAt(dend.getHerria(), i, 3);
-            model.setValueAt(dend.getKodPostala(), i, 4);
-            model.setValueAt(dend.getTelefonoa(), i, 5);
-            model.setValueAt(dend.getEmail(), i, 6);
-        }
-    }
-
-    private void aukDendDatuakBete(int aukLerroa) {
-        viewDendaInfo.jTextFieldKodeDend.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewDendaInfo.jTextFieldIzena.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewDendaInfo.jTextFieldHelbidea.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewDendaInfo.jTextFieldHerria.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewDendaInfo.jTextFieldPostKod.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewDendaInfo.jTextFieldTlf.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 5)));
-        viewDendaInfo.jTextFieldEmail.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 6)));
-    }
-
-    private void resetDendaInfo() {
-        viewDendaInfo.jTextFieldKodeDend.setText(null);
-        viewDendaInfo.jTextFieldIzena.setText(null);
-        viewDendaInfo.jTextFieldHelbidea.setText(null);
-        viewDendaInfo.jTextFieldHerria.setText(null);
-        viewDendaInfo.jTextFieldPostKod.setText(null);
-        viewDendaInfo.jTextFieldTlf.setText(null);  
-        viewDendaInfo.jTextFieldEmail.setText(null);
-    }
         
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
@@ -329,6 +232,102 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         Object comando = e.getSource();
         if (comando == viewDendaInfo.jTextFieldBilatu)
             ctr.txtBilatuTaulan(viewDendaInfo.jTableDendaInfo, viewDendaInfo.jTextFieldBilatu.getText());
+    }
+    
+    /* METODOAK */    
+    private void dendInfoEstiloa() {
+        viewDendaInfo.setTitle("Dendaren informazioa");
+        viewDendaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewDendaInfo.setLocationRelativeTo(null);
+        viewDendaInfo.jButtonIrten.setBackground(urdina);
+        viewDendaInfo.jButtonIrten.setForeground(Color.WHITE);
+        viewDendaInfo.jTextFieldKodeDend.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldHelbidea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewDendaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
+        
+        viewDendaInfo.jTextFieldBilatu.setOpaque(false);
+        viewDendaInfo.jTextFieldKodeDend.setOpaque(false);
+        viewDendaInfo.jTextFieldIzena.setOpaque(false);
+        viewDendaInfo.jTextFieldHelbidea.setOpaque(false);
+        viewDendaInfo.jTextFieldHerria.setOpaque(false);
+        viewDendaInfo.jTextFieldPostKod.setOpaque(false);
+        viewDendaInfo.jTextFieldTlf.setOpaque(false);
+        viewDendaInfo.jTextFieldEmail.setOpaque(false);
+
+        viewDendaInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewDendaInfo.jPanelGoiburua.setOpaque(false);
+        viewDendaInfo.jPanelOina.setOpaque(false);
+        viewDendaInfo.jPanelDendDatuak.setOpaque(false);
+        viewDendaInfo.jPanelDendTaula.setOpaque(false);
+        
+        viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+        viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewDendaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewDendaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
+        
+        // tauletako estiloa
+        viewDendaInfo.jTableDendaInfo.setShowGrid(false);
+        viewDendaInfo.jTableDendaInfo.setShowHorizontalLines(true);
+        
+        /* Kodeak ezin dira aldatu */
+        viewDendaInfo.jTextFieldKodeDend.setEditable(false);  
+    }
+
+    public void dendDatuakErakutsiTaula(JTable taula, ArrayList<Denda> dendGuzt) {
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        taula.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("IZENA");
+        model.addColumn("HELBIDEA");
+        model.addColumn("HERRIA");
+        model.addColumn("POSTA KODEA");
+        model.addColumn("TELEFONOA");
+        model.addColumn("EMAILA");
+        
+        for (int i=0; i<dendGuzt.size(); i++) {
+            Denda dend = dendGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(dend.getKodDend(), i, 0);
+            model.setValueAt(dend.getIzena(), i, 1);
+            model.setValueAt(dend.getHelbidea(), i, 2);
+            model.setValueAt(dend.getHerria(), i, 3);
+            model.setValueAt(dend.getKodPostala(), i, 4);
+            model.setValueAt(dend.getTelefonoa(), i, 5);
+            model.setValueAt(dend.getEmail(), i, 6);
+        }
+    }
+
+    private void aukDendDatuakBete(int aukLerroa) {
+        viewDendaInfo.jTextFieldKodeDend.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewDendaInfo.jTextFieldIzena.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewDendaInfo.jTextFieldHelbidea.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewDendaInfo.jTextFieldHerria.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewDendaInfo.jTextFieldPostKod.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewDendaInfo.jTextFieldTlf.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 5)));
+        viewDendaInfo.jTextFieldEmail.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 6)));
+    }
+
+    private void resetDendaInfo() {
+        viewDendaInfo.jTextFieldKodeDend.setText(null);
+        viewDendaInfo.jTextFieldIzena.setText(null);
+        viewDendaInfo.jTextFieldHelbidea.setText(null);
+        viewDendaInfo.jTextFieldHerria.setText(null);
+        viewDendaInfo.jTextFieldPostKod.setText(null);
+        viewDendaInfo.jTextFieldTlf.setText(null);  
+        viewDendaInfo.jTextFieldEmail.setText(null);
     }
     
     private boolean balidazioaDendaInfo() {

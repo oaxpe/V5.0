@@ -40,24 +40,6 @@ public class menuNagController implements ActionListener{
         this.viewMenuNagusia = viewMenuNag;
         menuNagEstiloa();
     }
-    
-    /* METODOAK */      
-    private void menuNagEstiloa() {
-        viewMenuNagusia.setTitle("ATENEA");
-        viewMenuNagusia.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewMenuNagusia.setLocationRelativeTo(null);
-        viewMenuNagusia.jPanelGoiburua.setBackground(new Color(0,0,153));
-        viewMenuNagusia.jPanelOina.setBackground(new Color(0,0,153));
-        viewMenuNagusia.jPanelGorputza.setBackground(Color.WHITE);
-        viewMenuNagusia.jButtonIrten.setBackground(Color.WHITE);
-        
-        viewMenuNagusia.jButtonDenda.setToolTipText("Denda");
-        viewMenuNagusia.jButtonBezeroa.setToolTipText("Bezeroa");
-        viewMenuNagusia.jButtonLangilea.setToolTipText("Langilea");
-        viewMenuNagusia.jButtonProduktua.setToolTipText("Produktuak");
-        viewMenuNagusia.jButtonHornitzailea.setToolTipText("Hornitzailea");
-        viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
-    }
 
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
@@ -112,5 +94,23 @@ public class menuNagController implements ActionListener{
             ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
             eskInfoCtr.eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
         }
+    }
+        
+    /* METODOAK */      
+    private void menuNagEstiloa() {
+        viewMenuNagusia.setTitle("ATENEA");
+        viewMenuNagusia.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewMenuNagusia.setLocationRelativeTo(null);
+        viewMenuNagusia.jPanelGoiburua.setBackground(new Color(0,0,153));
+        viewMenuNagusia.jPanelOina.setBackground(new Color(0,0,153));
+        viewMenuNagusia.jPanelGorputza.setBackground(Color.WHITE);
+        viewMenuNagusia.jButtonIrten.setBackground(Color.WHITE);
+        
+        viewMenuNagusia.jButtonDenda.setToolTipText("Denda");
+        viewMenuNagusia.jButtonBezeroa.setToolTipText("Bezeroa");
+        viewMenuNagusia.jButtonLangilea.setToolTipText("Langilea");
+        viewMenuNagusia.jButtonProduktua.setToolTipText("Produktuak");
+        viewMenuNagusia.jButtonHornitzailea.setToolTipText("Hornitzailea");
+        viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
     }
 }

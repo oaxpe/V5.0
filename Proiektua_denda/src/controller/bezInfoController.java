@@ -57,120 +57,6 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
     public bezInfoController() {
         
     }
-    
-    /* METODOAK */  
-    private void bezInfoEstiloa() {
-        viewBezeroaInfo.setTitle("Bezeroen informazioa");
-        viewBezeroaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewBezeroaInfo.setLocationRelativeTo(null);
-        viewBezeroaInfo.jButtonIrten.setBackground(urdina);
-        viewBezeroaInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-        
-        viewBezeroaInfo.jTextFieldKodeBez.setOpaque(false);
-        viewBezeroaInfo.jTextFieldIzena.setOpaque(false);
-        viewBezeroaInfo.jTextFieldAbizena1.setOpaque(false);
-        viewBezeroaInfo.jTextFieldAbizena2.setOpaque(false);
-        viewBezeroaInfo.jTextFieldHerria.setOpaque(false);
-        viewBezeroaInfo.jDateChooserJaioData.setOpaque(false);
-        viewBezeroaInfo.jRadioButtonEmak.setOpaque(false);
-        viewBezeroaInfo.jRadioButtonGiz.setOpaque(false);
-        viewBezeroaInfo.jTextFieldNan.setOpaque(false);
-        viewBezeroaInfo.jTextFieldTlf.setOpaque(false);
-
-        viewBezeroaInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewBezeroaInfo.jPanelGoiburua.setOpaque(false);
-        viewBezeroaInfo.jPanelOina.setOpaque(false);
-        viewBezeroaInfo.jPanelBezDatuak.setOpaque(false);
-        viewBezeroaInfo.jPanelBezTaula.setOpaque(false);
-        
-        viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewBezeroaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewBezeroaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
-
-         // tauletako estiloa
-        viewBezeroaInfo.jTableBezeroaInfo.setShowGrid(false);
-        viewBezeroaInfo.jTableBezeroaInfo.setShowHorizontalLines(true);
-        
-        /* Kodeak ezin dira aldatu */
-        viewBezeroaInfo.jTextFieldKodeBez.setEditable(false);
-    }
-
-    /* METODOAK */
-    public void bezDatuakErakutsiTaula(JTable taula, ArrayList<Bezeroa> bezGuzt) { // bezGehituController-ean ere erabiltzen da
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        taula.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("1.ABIZENA");
-        model.addColumn("2.ABIZENA");
-        model.addColumn("NAN");
-        model.addColumn("JAIOTZE DATA");
-        model.addColumn("SEXUA");
-        model.addColumn("HERRIA");
-        model.addColumn("TELEFONOA");
-        
-        for (int i=0; i<bezGuzt.size(); i++) {
-            Bezeroa bez = bezGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(bez.getKodBez(), i, 0);
-            model.setValueAt(bez.getIzena(), i, 1);
-            model.setValueAt(bez.getAbizena1(), i, 2);
-            model.setValueAt(bez.getAbizena2(), i, 3);
-            model.setValueAt(bez.getNan(), i, 4);
-            model.setValueAt(bez.getJaiotzeData(), i, 5);
-            model.setValueAt(bez.getSexua(), i, 6);
-            model.setValueAt(bez.getHerria(), i, 7);
-            model.setValueAt(bez.getTelefonoa(), i, 8);
-        }
-    }
-    
-    private void aukBezDatuakBete(int aukLerroa) {    
-        viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewBezeroaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5))));
-        String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-        if (aukSexuaRB.equals("emakumea")) {
-            viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
-        }
-        else if (aukSexuaRB.equals("gizona")) {
-            viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
-        }
-        viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
-    }
-    
-    private void resetBezeroaInfo() {
-        viewBezeroaInfo.jTextFieldKodeBez.setText(null);
-        viewBezeroaInfo.jTextFieldIzena.setText(null);
-        viewBezeroaInfo.jTextFieldAbizena1.setText(null);
-        viewBezeroaInfo.jTextFieldAbizena2.setText(null);
-        viewBezeroaInfo.jTextFieldNan.setText(null);
-        viewBezeroaInfo.jDateChooserJaioData.setDate(null);
-        viewBezeroaInfo.jRadioButtonEmak.setSelected(false);
-        viewBezeroaInfo.jRadioButtonGiz.setSelected(false);
-        viewBezeroaInfo.jTextFieldHerria.setText(null);
-        viewBezeroaInfo.jTextFieldTlf.setText(null);  
-    }
 
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
@@ -357,7 +243,120 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         if (comando == viewBezeroaInfo.jTextFieldBilatu)
             ctr.txtBilatuTaulan(viewBezeroaInfo.jTableBezeroaInfo, viewBezeroaInfo.jTextFieldBilatu.getText());
     }
+        
+    /* METODOAK */  
+    private void bezInfoEstiloa() {
+        viewBezeroaInfo.setTitle("Bezeroen informazioa");
+        viewBezeroaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewBezeroaInfo.setLocationRelativeTo(null);
+        viewBezeroaInfo.jButtonIrten.setBackground(urdina);
+        viewBezeroaInfo.jButtonIrten.setForeground(Color.WHITE);
+        viewBezeroaInfo.jTextFieldKodeBez.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
+        
+        viewBezeroaInfo.jTextFieldKodeBez.setOpaque(false);
+        viewBezeroaInfo.jTextFieldIzena.setOpaque(false);
+        viewBezeroaInfo.jTextFieldAbizena1.setOpaque(false);
+        viewBezeroaInfo.jTextFieldAbizena2.setOpaque(false);
+        viewBezeroaInfo.jTextFieldHerria.setOpaque(false);
+        viewBezeroaInfo.jDateChooserJaioData.setOpaque(false);
+        viewBezeroaInfo.jRadioButtonEmak.setOpaque(false);
+        viewBezeroaInfo.jRadioButtonGiz.setOpaque(false);
+        viewBezeroaInfo.jTextFieldNan.setOpaque(false);
+        viewBezeroaInfo.jTextFieldTlf.setOpaque(false);
 
+        viewBezeroaInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewBezeroaInfo.jPanelGoiburua.setOpaque(false);
+        viewBezeroaInfo.jPanelOina.setOpaque(false);
+        viewBezeroaInfo.jPanelBezDatuak.setOpaque(false);
+        viewBezeroaInfo.jPanelBezTaula.setOpaque(false);
+        
+        viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+        viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewBezeroaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewBezeroaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
+
+         // tauletako estiloa
+        viewBezeroaInfo.jTableBezeroaInfo.setShowGrid(false);
+        viewBezeroaInfo.jTableBezeroaInfo.setShowHorizontalLines(true);
+        
+        /* Kodeak ezin dira aldatu */
+        viewBezeroaInfo.jTextFieldKodeBez.setEditable(false);
+    }
+
+    public void bezDatuakErakutsiTaula(JTable taula, ArrayList<Bezeroa> bezGuzt) { // bezGehituController-ean ere erabiltzen da
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        taula.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("IZENA");
+        model.addColumn("1.ABIZENA");
+        model.addColumn("2.ABIZENA");
+        model.addColumn("NAN");
+        model.addColumn("JAIOTZE DATA");
+        model.addColumn("SEXUA");
+        model.addColumn("HERRIA");
+        model.addColumn("TELEFONOA");
+        
+        for (int i=0; i<bezGuzt.size(); i++) {
+            Bezeroa bez = bezGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(bez.getKodBez(), i, 0);
+            model.setValueAt(bez.getIzena(), i, 1);
+            model.setValueAt(bez.getAbizena1(), i, 2);
+            model.setValueAt(bez.getAbizena2(), i, 3);
+            model.setValueAt(bez.getNan(), i, 4);
+            model.setValueAt(bez.getJaiotzeData(), i, 5);
+            model.setValueAt(bez.getSexua(), i, 6);
+            model.setValueAt(bez.getHerria(), i, 7);
+            model.setValueAt(bez.getTelefonoa(), i, 8);
+        }
+    }
+    
+    private void aukBezDatuakBete(int aukLerroa) {    
+        viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewBezeroaInfo.jTextFieldIzena.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewBezeroaInfo.jTextFieldAbizena1.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewBezeroaInfo.jTextFieldAbizena2.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewBezeroaInfo.jTextFieldNan.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewBezeroaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 5))));
+        String aukSexuaRB = String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
+        if (aukSexuaRB.equals("emakumea")) {
+            viewBezeroaInfo.jRadioButtonEmak.setSelected(true);
+        }
+        else if (aukSexuaRB.equals("gizona")) {
+            viewBezeroaInfo.jRadioButtonGiz.setSelected(true);
+        }
+        viewBezeroaInfo.jTextFieldHerria.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 7)));
+        viewBezeroaInfo.jTextFieldTlf.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 8)));
+    }
+    
+    private void resetBezeroaInfo() {
+        viewBezeroaInfo.jTextFieldKodeBez.setText(null);
+        viewBezeroaInfo.jTextFieldIzena.setText(null);
+        viewBezeroaInfo.jTextFieldAbizena1.setText(null);
+        viewBezeroaInfo.jTextFieldAbizena2.setText(null);
+        viewBezeroaInfo.jTextFieldNan.setText(null);
+        viewBezeroaInfo.jDateChooserJaioData.setDate(null);
+        viewBezeroaInfo.jRadioButtonEmak.setSelected(false);
+        viewBezeroaInfo.jRadioButtonGiz.setSelected(false);
+        viewBezeroaInfo.jTextFieldHerria.setText(null);
+        viewBezeroaInfo.jTextFieldTlf.setText(null);  
+    }
+    
     private boolean balidazioaBezInfo() {
         boolean bool = true;
         if (viewBezeroaInfo.jTextFieldIzena.getText().isEmpty()) {

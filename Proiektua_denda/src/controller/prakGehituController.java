@@ -42,61 +42,6 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
         prakGehituEstiloa();
     }
     
-    /* METODOAK */   
-    private void prakGehituEstiloa() {
-        viewPrakaGehitu.setTitle("Praka berria");
-        viewPrakaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewPrakaGehitu.setLocationRelativeTo(null);
-        viewPrakaGehitu.jButtonIrten.setBackground(urdina);
-        viewPrakaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewPrakaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        
-        viewPrakaGehitu.jTextFieldKodePrak.setOpaque(false);
-        viewPrakaGehitu.jTextFieldMarka.setOpaque(false);
-        viewPrakaGehitu.jTextFieldPrezioa.setOpaque(false);
-        viewPrakaGehitu.jTextFieldKolorea.setOpaque(false);
-        viewPrakaGehitu.jTextFieldStock.setOpaque(false);
-        viewPrakaGehitu.jTextFieldLuzeera.setOpaque(false);
-        viewPrakaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewPrakaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewPrakaGehitu.jPanelGoiburua.setOpaque(false);
-        viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
-    }
-
-    private void resetPrakaGehitu() {
-        viewPrakaGehitu.jTextFieldKodePrak.setText(null);
-        viewPrakaGehitu.jTextFieldMarka.setText(null);
-        viewPrakaGehitu.jTextFieldPrezioa.setText(null);
-        viewPrakaGehitu.jTextFieldKolorea.setText(null);
-        viewPrakaGehitu.jComboBoxSexua.setSelectedIndex(0);
-        viewPrakaGehitu.jTextFieldStock.setText(null);
-        viewPrakaGehitu.jComboBoxTaila.setSelectedIndex(0);
-        viewPrakaGehitu.jComboBoxSasoia.setSelectedIndex(0);
-        viewPrakaGehitu.jTextFieldLuzeera.setText(null);
-        viewPrakaGehitu.jComboBoxMota.setSelectedIndex(0);
-        
-        viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewPrakaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -215,6 +160,61 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
             viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
 
+    /* METODOAK */   
+    private void prakGehituEstiloa() {
+        viewPrakaGehitu.setTitle("Praka berria");
+        viewPrakaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewPrakaGehitu.setLocationRelativeTo(null);
+        viewPrakaGehitu.jButtonIrten.setBackground(urdina);
+        viewPrakaGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
+        viewPrakaGehitu.jTextFieldKodePrak.setOpaque(false);
+        viewPrakaGehitu.jTextFieldMarka.setOpaque(false);
+        viewPrakaGehitu.jTextFieldPrezioa.setOpaque(false);
+        viewPrakaGehitu.jTextFieldKolorea.setOpaque(false);
+        viewPrakaGehitu.jTextFieldStock.setOpaque(false);
+        viewPrakaGehitu.jTextFieldLuzeera.setOpaque(false);
+        viewPrakaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewPrakaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewPrakaGehitu.jPanelGoiburua.setOpaque(false);
+        viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
+    }
+
+    private void resetPrakaGehitu() {
+        viewPrakaGehitu.jTextFieldKodePrak.setText(null);
+        viewPrakaGehitu.jTextFieldMarka.setText(null);
+        viewPrakaGehitu.jTextFieldPrezioa.setText(null);
+        viewPrakaGehitu.jTextFieldKolorea.setText(null);
+        viewPrakaGehitu.jComboBoxSexua.setSelectedIndex(0);
+        viewPrakaGehitu.jTextFieldStock.setText(null);
+        viewPrakaGehitu.jComboBoxTaila.setSelectedIndex(0);
+        viewPrakaGehitu.jComboBoxSasoia.setSelectedIndex(0);
+        viewPrakaGehitu.jTextFieldLuzeera.setText(null);
+        viewPrakaGehitu.jComboBoxMota.setSelectedIndex(0);
+        
+        viewPrakaGehitu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+    
     private boolean balidazioaPrakGehitu() {
         boolean bool = true;
         if (viewPrakaGehitu.jTextFieldKodePrak.getText().isEmpty()) {

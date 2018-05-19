@@ -42,66 +42,6 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         langGehituEstiloa();
     }
     
-    /* METODOAK */
-    private void langGehituEstiloa() {
-        viewLangileaGehitu.setTitle("Langile berria");
-        viewLangileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewLangileaGehitu.setLocationRelativeTo(null);
-        viewLangileaGehitu.jButtonIrten.setBackground(urdina);
-        viewLangileaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
-        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-        
-        viewLangileaGehitu.jTextFieldIzena.setOpaque(false);
-        viewLangileaGehitu.jTextFieldAbizena1.setOpaque(false);
-        viewLangileaGehitu.jTextFieldAbizena2.setOpaque(false);
-        viewLangileaGehitu.jTextFieldHerria.setOpaque(false);
-        viewLangileaGehitu.jDateChooserJaioData.setOpaque(false);
-        viewLangileaGehitu.jRadioButtonEmak.setOpaque(false);
-        viewLangileaGehitu.jRadioButtonGiz.setOpaque(false);
-        viewLangileaGehitu.jTextFieldNan.setOpaque(false);
-        viewLangileaGehitu.jTextFieldTlf.setOpaque(false);
-        viewLangileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewLangileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewLangileaGehitu.jPanelGoiburua.setOpaque(false);
-        viewLangileaGehitu.jPanelLangDatuak.setOpaque(false);
-    }
-
-    /* METODOAK */    
-    private void resetLangileaGehitu() {
-        viewLangileaGehitu.jTextFieldIzena.setText(null);
-        viewLangileaGehitu.jTextFieldAbizena1.setText(null);
-        viewLangileaGehitu.jTextFieldAbizena2.setText(null);
-        viewLangileaGehitu.jTextFieldNan.setText(null);
-        viewLangileaGehitu.jDateChooserJaioData.setDate(null);
-        viewLangileaGehitu.jRadioButtonEmak.setSelected(false);
-        viewLangileaGehitu.jRadioButtonGiz.setSelected(false);
-        viewLangileaGehitu.jTextFieldHerria.setText(null);
-        viewLangileaGehitu.jTextFieldTlf.setText(null);
-        viewLangileaGehitu.jTextFieldSoldata.setText(null);
-        viewLangileaGehitu.jComboBoxEremua.setSelectedIndex(0);
-
-        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
-        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -218,6 +158,65 @@ public class langGehituController implements ActionListener, MouseListener, Focu
             viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewLangileaGehitu.jComboBoxEremua)
             viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+        
+    /* METODOAK */
+    private void langGehituEstiloa() {
+        viewLangileaGehitu.setTitle("Langile berria");
+        viewLangileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewLangileaGehitu.setLocationRelativeTo(null);
+        viewLangileaGehitu.jButtonIrten.setBackground(urdina);
+        viewLangileaGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
+        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
+        
+        viewLangileaGehitu.jTextFieldIzena.setOpaque(false);
+        viewLangileaGehitu.jTextFieldAbizena1.setOpaque(false);
+        viewLangileaGehitu.jTextFieldAbizena2.setOpaque(false);
+        viewLangileaGehitu.jTextFieldHerria.setOpaque(false);
+        viewLangileaGehitu.jDateChooserJaioData.setOpaque(false);
+        viewLangileaGehitu.jRadioButtonEmak.setOpaque(false);
+        viewLangileaGehitu.jRadioButtonGiz.setOpaque(false);
+        viewLangileaGehitu.jTextFieldNan.setOpaque(false);
+        viewLangileaGehitu.jTextFieldTlf.setOpaque(false);
+        viewLangileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewLangileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewLangileaGehitu.jPanelGoiburua.setOpaque(false);
+        viewLangileaGehitu.jPanelLangDatuak.setOpaque(false);
+    }
+ 
+    private void resetLangileaGehitu() {
+        viewLangileaGehitu.jTextFieldIzena.setText(null);
+        viewLangileaGehitu.jTextFieldAbizena1.setText(null);
+        viewLangileaGehitu.jTextFieldAbizena2.setText(null);
+        viewLangileaGehitu.jTextFieldNan.setText(null);
+        viewLangileaGehitu.jDateChooserJaioData.setDate(null);
+        viewLangileaGehitu.jRadioButtonEmak.setSelected(false);
+        viewLangileaGehitu.jRadioButtonGiz.setSelected(false);
+        viewLangileaGehitu.jTextFieldHerria.setText(null);
+        viewLangileaGehitu.jTextFieldTlf.setText(null);
+        viewLangileaGehitu.jTextFieldSoldata.setText(null);
+        viewLangileaGehitu.jComboBoxEremua.setSelectedIndex(0);
+
+        viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
+        viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
     }
     
     private boolean balidazioaLangGehitu() {

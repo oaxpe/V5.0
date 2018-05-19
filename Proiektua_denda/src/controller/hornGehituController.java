@@ -44,41 +44,6 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
         hornGehituEstiloa();
     }
     
-    /* METODOAK */        
-    private void hornGehituEstiloa() {
-        viewHornitzaileaGehitu.setTitle("Hornitzaile berria");
-        viewHornitzaileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewHornitzaileaGehitu.setLocationRelativeTo(null);
-        viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);
-        viewHornitzaileaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
-        viewHornitzaileaGehitu.jTextFieldIzena.setOpaque(false);
-        viewHornitzaileaGehitu.jTextFieldHerria.setOpaque(false);
-        viewHornitzaileaGehitu.jTextFieldTlf.setOpaque(false);
-        viewHornitzaileaGehitu.jTextFieldEmail.setOpaque(false);
-        viewHornitzaileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewHornitzaileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewHornitzaileaGehitu.jPanelGoiburua.setOpaque(false);
-        viewHornitzaileaGehitu.jPanelHornDatuak.setOpaque(false);
-    }
- 
-    private void resetHornitzaileaGehitu() {
-        viewHornitzaileaGehitu.jTextFieldIzena.setText(null);
-        viewHornitzaileaGehitu.jTextFieldHerria.setText(null);
-        viewHornitzaileaGehitu.jTextFieldTlf.setText(null);
-        viewHornitzaileaGehitu.jTextFieldEmail.setText(null);
-        
-        viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -171,6 +136,41 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
             viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewHornitzaileaGehitu.jTextFieldTlf)
             viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+    }
+        
+    /* METODOAK */        
+    private void hornGehituEstiloa() {
+        viewHornitzaileaGehitu.setTitle("Hornitzaile berria");
+        viewHornitzaileaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewHornitzaileaGehitu.setLocationRelativeTo(null);
+        viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);
+        viewHornitzaileaGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        
+        viewHornitzaileaGehitu.jTextFieldIzena.setOpaque(false);
+        viewHornitzaileaGehitu.jTextFieldHerria.setOpaque(false);
+        viewHornitzaileaGehitu.jTextFieldTlf.setOpaque(false);
+        viewHornitzaileaGehitu.jTextFieldEmail.setOpaque(false);
+        viewHornitzaileaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewHornitzaileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewHornitzaileaGehitu.jPanelGoiburua.setOpaque(false);
+        viewHornitzaileaGehitu.jPanelHornDatuak.setOpaque(false);
+    }
+ 
+    private void resetHornitzaileaGehitu() {
+        viewHornitzaileaGehitu.jTextFieldIzena.setText(null);
+        viewHornitzaileaGehitu.jTextFieldHerria.setText(null);
+        viewHornitzaileaGehitu.jTextFieldTlf.setText(null);
+        viewHornitzaileaGehitu.jTextFieldEmail.setText(null);
+        
+        viewHornitzaileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
 
     private boolean balidazioaHornGehitu() {

@@ -58,80 +58,6 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         
     }
     
-    /* METODOAK */
-    private void eskInfoEstiloa() {
-        viewEskaeraInfo.setTitle("Eskaeren informazioa");
-        viewEskaeraInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewEskaeraInfo.setLocationRelativeTo(null);
-        viewEskaeraInfo.jButtonIrten.setBackground(urdina);
-        viewEskaeraInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewEskaeraInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-
-        viewEskaeraInfo.jTextFieldKodeEsk.setOpaque(false);
-        viewEskaeraInfo.jComboBoxHornitzailea.setOpaque(false);
-        viewEskaeraInfo.jTextFieldKopurua.setOpaque(false);
-        
-        viewEskaeraInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewEskaeraInfo.jPanelGoiburua.setOpaque(false);
-        viewEskaeraInfo.jPanelOina.setOpaque(false);
-        viewEskaeraInfo.jPanelEskDatuak.setOpaque(false);
-        viewEskaeraInfo.jPanelEskInfoTaula.setOpaque(false);
-        
-        viewEskaeraInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewEskaeraInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewEskaeraInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewEskaeraInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
-        
-        // tauletako estiloa
-        viewEskaeraInfo.jTableEskaeraInfo.setShowGrid(false);
-        viewEskaeraInfo.jTableEskaeraInfo.setShowHorizontalLines(true);
-
-        /* Kodeak ezin dira aldatu */
-        viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);  
-    }
-    
-    public void eskDatuakErakutsiTaula(JTable taula, ArrayList<Eskaera> eskGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        taula.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("HORNITZAILEA");
-        model.addColumn("DATA");
-        model.addColumn("KOPURUA");
-        
-        for (int i=0; i<eskGuzt.size(); i++) {
-            Eskaera esk = eskGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(esk.getEskZenb(), i, 0);
-            model.setValueAt(esk.getHornitzailea(), i, 1);
-            model.setValueAt(esk.getData(), i, 2);
-            model.setValueAt(esk.getKopurua(), i, 3);
-        }
-    }
-    
-    private void aukEskDatuakBete(int aukLerroa) { 
-        viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewEskaeraInfo.jComboBoxHornitzailea.setSelectedItem(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewEskaeraInfo.jDateChooserData.setDate(Metodoak.dataErakutsi(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2))));
-        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
-    }
-    
-    private void resetEskInfo() {
-        viewEskaeraInfo.jTextFieldKodeEsk.setText(null);
-        viewEskaeraInfo.jComboBoxHornitzailea.setSelectedItem(null);
-        viewEskaeraInfo.jDateChooserData.setDate(null);
-        viewEskaeraInfo.jTextFieldKopurua.setText(null); 
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -299,6 +225,80 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         Object comando = e.getSource();
         if (comando == viewEskaeraInfo.jTextFieldBilatu)
             ctr.txtBilatuTaulan(viewEskaeraInfo.jTableEskaeraInfo, viewEskaeraInfo.jTextFieldBilatu.getText());
+    }
+    
+    /* METODOAK */
+    private void eskInfoEstiloa() {
+        viewEskaeraInfo.setTitle("Eskaeren informazioa");
+        viewEskaeraInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewEskaeraInfo.setLocationRelativeTo(null);
+        viewEskaeraInfo.jButtonIrten.setBackground(urdina);
+        viewEskaeraInfo.jButtonIrten.setForeground(Color.WHITE);
+        viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
+
+        viewEskaeraInfo.jTextFieldKodeEsk.setOpaque(false);
+        viewEskaeraInfo.jComboBoxHornitzailea.setOpaque(false);
+        viewEskaeraInfo.jTextFieldKopurua.setOpaque(false);
+        
+        viewEskaeraInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewEskaeraInfo.jPanelGoiburua.setOpaque(false);
+        viewEskaeraInfo.jPanelOina.setOpaque(false);
+        viewEskaeraInfo.jPanelEskDatuak.setOpaque(false);
+        viewEskaeraInfo.jPanelEskInfoTaula.setOpaque(false);
+        
+        viewEskaeraInfo.jButtonAldaketaEzabatu.setEnabled(false);
+        viewEskaeraInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewEskaeraInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewEskaeraInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
+        
+        // tauletako estiloa
+        viewEskaeraInfo.jTableEskaeraInfo.setShowGrid(false);
+        viewEskaeraInfo.jTableEskaeraInfo.setShowHorizontalLines(true);
+
+        /* Kodeak ezin dira aldatu */
+        viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);  
+    }
+    
+    public void eskDatuakErakutsiTaula(JTable taula, ArrayList<Eskaera> eskGuzt) {
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        taula.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("HORNITZAILEA");
+        model.addColumn("DATA");
+        model.addColumn("KOPURUA");
+        
+        for (int i=0; i<eskGuzt.size(); i++) {
+            Eskaera esk = eskGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(esk.getEskZenb(), i, 0);
+            model.setValueAt(esk.getHornitzailea(), i, 1);
+            model.setValueAt(esk.getData(), i, 2);
+            model.setValueAt(esk.getKopurua(), i, 3);
+        }
+    }
+    
+    private void aukEskDatuakBete(int aukLerroa) { 
+        viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewEskaeraInfo.jComboBoxHornitzailea.setSelectedItem(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewEskaeraInfo.jDateChooserData.setDate(Metodoak.dataErakutsi(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2))));
+        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
+    }
+    
+    private void resetEskInfo() {
+        viewEskaeraInfo.jTextFieldKodeEsk.setText(null);
+        viewEskaeraInfo.jComboBoxHornitzailea.setSelectedItem(null);
+        viewEskaeraInfo.jDateChooserData.setDate(null);
+        viewEskaeraInfo.jTextFieldKopurua.setText(null); 
     }
     
     private boolean balidazioaEskInfo() {

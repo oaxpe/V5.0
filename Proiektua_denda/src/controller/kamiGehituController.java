@@ -42,54 +42,6 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
         kamiGehituEstiloa();
     }
     
-    /* METODOAK */    
-    private void kamiGehituEstiloa() {
-        viewKamisetaGehitu.setTitle("Kamiseta berria");
-        viewKamisetaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewKamisetaGehitu.setLocationRelativeTo(null);
-        viewKamisetaGehitu.jButtonIrten.setBackground(urdina);
-        viewKamisetaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        
-        viewKamisetaGehitu.jTextFieldKodeKami.setOpaque(false);
-        viewKamisetaGehitu.jTextFieldMarka.setOpaque(false);
-        viewKamisetaGehitu.jTextFieldPrezioa.setOpaque(false);
-        viewKamisetaGehitu.jTextFieldKolorea.setOpaque(false);
-        viewKamisetaGehitu.jTextFieldStock.setOpaque(false);
-        viewKamisetaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewKamisetaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewKamisetaGehitu.jPanelGoiburua.setOpaque(false);
-        viewKamisetaGehitu.jPanelKamiDatuak.setOpaque(false);
-    }
-
-    private void resetKamisetaGehitu() {
-        viewKamisetaGehitu.jTextFieldKodeKami.setText(null);
-        viewKamisetaGehitu.jTextFieldMarka.setText(null);
-        viewKamisetaGehitu.jTextFieldPrezioa.setText(null);
-        viewKamisetaGehitu.jTextFieldKolorea.setText(null);
-        viewKamisetaGehitu.jComboBoxSexua.setSelectedIndex(0);
-        viewKamisetaGehitu.jTextFieldStock.setText(null);
-        viewKamisetaGehitu.jComboBoxTaila.setSelectedIndex(0);
-        viewKamisetaGehitu.jComboBoxSasoia.setSelectedIndex(0);
-        
-        viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -197,6 +149,54 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
             viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         else if (comando == viewKamisetaGehitu.jComboBoxSasoia)
             viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+        
+    /* METODOAK */    
+    private void kamiGehituEstiloa() {
+        viewKamisetaGehitu.setTitle("Kamiseta berria");
+        viewKamisetaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewKamisetaGehitu.setLocationRelativeTo(null);
+        viewKamisetaGehitu.jButtonIrten.setBackground(urdina);
+        viewKamisetaGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
+        viewKamisetaGehitu.jTextFieldKodeKami.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldMarka.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldPrezioa.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldKolorea.setOpaque(false);
+        viewKamisetaGehitu.jTextFieldStock.setOpaque(false);
+        viewKamisetaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewKamisetaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewKamisetaGehitu.jPanelGoiburua.setOpaque(false);
+        viewKamisetaGehitu.jPanelKamiDatuak.setOpaque(false);
+    }
+
+    private void resetKamisetaGehitu() {
+        viewKamisetaGehitu.jTextFieldKodeKami.setText(null);
+        viewKamisetaGehitu.jTextFieldMarka.setText(null);
+        viewKamisetaGehitu.jTextFieldPrezioa.setText(null);
+        viewKamisetaGehitu.jTextFieldKolorea.setText(null);
+        viewKamisetaGehitu.jComboBoxSexua.setSelectedIndex(0);
+        viewKamisetaGehitu.jTextFieldStock.setText(null);
+        viewKamisetaGehitu.jComboBoxTaila.setSelectedIndex(0);
+        viewKamisetaGehitu.jComboBoxSasoia.setSelectedIndex(0);
+        
+        viewKamisetaGehitu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
    
     private boolean balidazioaKamiGehitu() {

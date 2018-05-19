@@ -6,7 +6,6 @@
 package proiektua_denda;
 
 import controller.Controller;
-import controller.dendaInfoController;
 import view.*;
 import model.*;
 
@@ -56,14 +55,4 @@ public class Proiektua_denda {
                 viewHornInfo, viewHornGehitu, viewEskInfo, viewEskGehitu, viewMenuNag);
 
     }
-    // PAUSA bat egiteko funtzioa
-//    public static void pausa() {
-//        try {
-//            System.out.println("\nSakatu 'Enter' jarraitzeko...");
-//            System.in.read();
-//        } 
-//        catch (IOException gaizki) {
-//            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-//        }
-//    }
 }

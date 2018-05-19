@@ -58,132 +58,6 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         
     }
 
-    /* METODOAK */
-    private void langInfoEstiloa() {
-        viewLangileaInfo.setTitle("Langileen informazioa");
-        viewLangileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewLangileaInfo.setLocationRelativeTo(null);
-        viewLangileaInfo.jButtonIrten.setBackground(urdina);
-        viewLangileaInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewLangileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-        
-        viewLangileaInfo.jTextFieldKodeLang.setOpaque(false);
-        viewLangileaInfo.jTextFieldIzena.setOpaque(false);
-        viewLangileaInfo.jTextFieldAbizena1.setOpaque(false);
-        viewLangileaInfo.jTextFieldAbizena2.setOpaque(false);
-        viewLangileaInfo.jTextFieldHerria.setOpaque(false);
-        viewLangileaInfo.jDateChooserJaioData.setOpaque(false);
-        viewLangileaInfo.jRadioButtonEmak.setOpaque(false);
-        viewLangileaInfo.jRadioButtonGiz.setOpaque(false);
-        viewLangileaInfo.jTextFieldNan.setOpaque(false);
-        viewLangileaInfo.jTextFieldTlf.setOpaque(false);
-        viewLangileaInfo.jTextFieldSoldata.setOpaque(false);
-        viewLangileaInfo.jComboBoxEremua.setOpaque(false);
-        
-        viewLangileaInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewLangileaInfo.jPanelGoiburua.setOpaque(false);
-        viewLangileaInfo.jPanelOina.setOpaque(false);
-        viewLangileaInfo.jPanelLangDatuak.setOpaque(false);
-        viewLangileaInfo.jPanelLangTaula.setOpaque(false);
-        
-        viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewLangileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewLangileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
-        
-        // tauletako estiloa
-        viewLangileaInfo.jTableLangileaInfo.setShowGrid(false);
-        viewLangileaInfo.jTableLangileaInfo.setShowHorizontalLines(true);
-
-        /* Kodeak ezin dira aldatu */
-        viewLangileaInfo.jTextFieldKodeLang.setEditable(false);
-    }
- 
-    public void langDatuakErakutsiTaula(JTable taula, ArrayList<Langilea> langGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        taula.setModel(model);
-        model.addColumn("Kodea");
-        model.addColumn("Izena");
-        model.addColumn("1.abizena");
-        model.addColumn("2.abizena");
-        model.addColumn("NAN");
-        model.addColumn("Jaiotze data");
-        model.addColumn("Sexua");
-        model.addColumn("Herria");
-        model.addColumn("Telefono");
-        model.addColumn("Soldata");
-        model.addColumn("Eremua");
-        
-        for (int i=0; i<langGuzt.size(); i++) {
-            Langilea lang = langGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(lang.getKodLan(), i, 0);
-            model.setValueAt(lang.getIzena(), i, 1);
-            model.setValueAt(lang.getAbizena1(), i, 2);
-            model.setValueAt(lang.getAbizena2(), i, 3);
-            model.setValueAt(lang.getNan(), i, 4);
-            model.setValueAt(lang.getJaiotzeData(), i, 5);
-            model.setValueAt(lang.getSexua(), i, 6);
-            model.setValueAt(lang.getHerria(), i, 7);
-            model.setValueAt(lang.getTelefonoa(), i, 8);
-            model.setValueAt(lang.getSoldata(), i, 9);
-            model.setValueAt(lang.getEremua(), i, 10);
-        }
-    }
-
-    private void aukLangDatuakBete(int aukLerroa) { 
-        viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewLangileaInfo.jTextFieldAbizena2.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewLangileaInfo.jTextFieldNan.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4)));
-        viewLangileaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5))));
-        System.out.println(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5)));
-        String aukSexuaRB = String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
-        if (aukSexuaRB.equals("emakumea")) {
-            viewLangileaInfo.jRadioButtonEmak.setSelected(true);
-        }
-        else {
-            viewLangileaInfo.jRadioButtonGiz.setSelected(true);
-        }
-        viewLangileaInfo.jTextFieldHerria.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 7)));
-        viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
-        viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
-        viewLangileaInfo.jComboBoxEremua.setSelectedItem(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
-    }
-    
-    private void resetLangileaInfo() {
-        viewLangileaInfo.jTextFieldKodeLang.setText(null);
-        viewLangileaInfo.jTextFieldIzena.setText(null);
-        viewLangileaInfo.jTextFieldAbizena1.setText(null);
-        viewLangileaInfo.jTextFieldAbizena2.setText(null);
-        viewLangileaInfo.jTextFieldNan.setText(null);
-        viewLangileaInfo.jDateChooserJaioData.setDate(null);
-        viewLangileaInfo.jRadioButtonEmak.setSelected(false);
-        viewLangileaInfo.jRadioButtonGiz.setSelected(false);
-        viewLangileaInfo.jTextFieldHerria.setText(null);
-        viewLangileaInfo.jTextFieldTlf.setText(null);
-        viewLangileaInfo.jTextFieldSoldata.setText(null);
-        viewLangileaInfo.jComboBoxEremua.setSelectedItem(null);      
-    }
-
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -380,6 +254,132 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             ctr.txtBilatuTaulan(viewLangileaInfo.jTableLangileaInfo, viewLangileaInfo.jTextFieldBilatu.getText());
     }
     
+    /* METODOAK */
+    private void langInfoEstiloa() {
+        viewLangileaInfo.setTitle("Langileen informazioa");
+        viewLangileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewLangileaInfo.setLocationRelativeTo(null);
+        viewLangileaInfo.jButtonIrten.setBackground(urdina);
+        viewLangileaInfo.jButtonIrten.setForeground(Color.WHITE);
+        viewLangileaInfo.jTextFieldKodeLang.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
+        
+        viewLangileaInfo.jTextFieldKodeLang.setOpaque(false);
+        viewLangileaInfo.jTextFieldIzena.setOpaque(false);
+        viewLangileaInfo.jTextFieldAbizena1.setOpaque(false);
+        viewLangileaInfo.jTextFieldAbizena2.setOpaque(false);
+        viewLangileaInfo.jTextFieldHerria.setOpaque(false);
+        viewLangileaInfo.jDateChooserJaioData.setOpaque(false);
+        viewLangileaInfo.jRadioButtonEmak.setOpaque(false);
+        viewLangileaInfo.jRadioButtonGiz.setOpaque(false);
+        viewLangileaInfo.jTextFieldNan.setOpaque(false);
+        viewLangileaInfo.jTextFieldTlf.setOpaque(false);
+        viewLangileaInfo.jTextFieldSoldata.setOpaque(false);
+        viewLangileaInfo.jComboBoxEremua.setOpaque(false);
+        
+        viewLangileaInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewLangileaInfo.jPanelGoiburua.setOpaque(false);
+        viewLangileaInfo.jPanelOina.setOpaque(false);
+        viewLangileaInfo.jPanelLangDatuak.setOpaque(false);
+        viewLangileaInfo.jPanelLangTaula.setOpaque(false);
+        
+        viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+        viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewLangileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewLangileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
+        
+        // tauletako estiloa
+        viewLangileaInfo.jTableLangileaInfo.setShowGrid(false);
+        viewLangileaInfo.jTableLangileaInfo.setShowHorizontalLines(true);
+
+        /* Kodeak ezin dira aldatu */
+        viewLangileaInfo.jTextFieldKodeLang.setEditable(false);
+    }
+ 
+    public void langDatuakErakutsiTaula(JTable taula, ArrayList<Langilea> langGuzt) {
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        taula.setModel(model);
+        model.addColumn("Kodea");
+        model.addColumn("Izena");
+        model.addColumn("1.abizena");
+        model.addColumn("2.abizena");
+        model.addColumn("NAN");
+        model.addColumn("Jaiotze data");
+        model.addColumn("Sexua");
+        model.addColumn("Herria");
+        model.addColumn("Telefono");
+        model.addColumn("Soldata");
+        model.addColumn("Eremua");
+        
+        for (int i=0; i<langGuzt.size(); i++) {
+            Langilea lang = langGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(lang.getKodLan(), i, 0);
+            model.setValueAt(lang.getIzena(), i, 1);
+            model.setValueAt(lang.getAbizena1(), i, 2);
+            model.setValueAt(lang.getAbizena2(), i, 3);
+            model.setValueAt(lang.getNan(), i, 4);
+            model.setValueAt(lang.getJaiotzeData(), i, 5);
+            model.setValueAt(lang.getSexua(), i, 6);
+            model.setValueAt(lang.getHerria(), i, 7);
+            model.setValueAt(lang.getTelefonoa(), i, 8);
+            model.setValueAt(lang.getSoldata(), i, 9);
+            model.setValueAt(lang.getEremua(), i, 10);
+        }
+    }
+
+    private void aukLangDatuakBete(int aukLerroa) { 
+        viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewLangileaInfo.jTextFieldIzena.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewLangileaInfo.jTextFieldAbizena1.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewLangileaInfo.jTextFieldAbizena2.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewLangileaInfo.jTextFieldNan.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewLangileaInfo.jDateChooserJaioData.setDate(Metodoak.dataErakutsi(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5))));
+        System.out.println(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 5)));
+        String aukSexuaRB = String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 6)).toLowerCase();
+        if (aukSexuaRB.equals("emakumea")) {
+            viewLangileaInfo.jRadioButtonEmak.setSelected(true);
+        }
+        else {
+            viewLangileaInfo.jRadioButtonGiz.setSelected(true);
+        }
+        viewLangileaInfo.jTextFieldHerria.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 7)));
+        viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
+        viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
+        viewLangileaInfo.jComboBoxEremua.setSelectedItem(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
+    }
+    
+    private void resetLangileaInfo() {
+        viewLangileaInfo.jTextFieldKodeLang.setText(null);
+        viewLangileaInfo.jTextFieldIzena.setText(null);
+        viewLangileaInfo.jTextFieldAbizena1.setText(null);
+        viewLangileaInfo.jTextFieldAbizena2.setText(null);
+        viewLangileaInfo.jTextFieldNan.setText(null);
+        viewLangileaInfo.jDateChooserJaioData.setDate(null);
+        viewLangileaInfo.jRadioButtonEmak.setSelected(false);
+        viewLangileaInfo.jRadioButtonGiz.setSelected(false);
+        viewLangileaInfo.jTextFieldHerria.setText(null);
+        viewLangileaInfo.jTextFieldTlf.setText(null);
+        viewLangileaInfo.jTextFieldSoldata.setText(null);
+        viewLangileaInfo.jComboBoxEremua.setSelectedItem(null);      
+    }
+
     private boolean balidazioaLangInfo() {
         boolean bool = true;
         if (viewLangileaInfo.jTextFieldIzena.getText().isEmpty()) {

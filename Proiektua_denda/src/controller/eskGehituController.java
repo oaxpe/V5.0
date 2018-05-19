@@ -42,33 +42,6 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         eskGehituEstiloa();
     }
     
-    /* METODOAK */       
-    private void eskGehituEstiloa() {
-        viewEskaeraGehitu.setTitle("Eskaera berria");
-        viewEskaeraGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewEskaeraGehitu.setLocationRelativeTo(null);
-        viewEskaeraGehitu.jButtonIrten.setBackground(urdina);
-        viewEskaeraGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-       
-        viewEskaeraGehitu.jTextFieldKopurua.setOpaque(false);
-        viewEskaeraGehitu.jComboBoxHornitzailea.setOpaque(false);
-        viewEskaeraGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewEskaeraGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewEskaeraGehitu.jPanelGoiburua.setOpaque(false);
-        viewEskaeraGehitu.jPanelEskDatuak.setOpaque(false);
-    }
-    
-    private void resetEskaeraGehitu() {
-        viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
-        viewEskaeraGehitu.jTextFieldKopurua.setText(null);
-        
-        viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -150,6 +123,33 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
             viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));   
         else if (comando == viewEskaeraGehitu.jComboBoxHornitzailea) 
             viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+        
+    /* METODOAK */       
+    private void eskGehituEstiloa() {
+        viewEskaeraGehitu.setTitle("Eskaera berria");
+        viewEskaeraGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewEskaeraGehitu.setLocationRelativeTo(null);
+        viewEskaeraGehitu.jButtonIrten.setBackground(urdina);
+        viewEskaeraGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+       
+        viewEskaeraGehitu.jTextFieldKopurua.setOpaque(false);
+        viewEskaeraGehitu.jComboBoxHornitzailea.setOpaque(false);
+        viewEskaeraGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewEskaeraGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewEskaeraGehitu.jPanelGoiburua.setOpaque(false);
+        viewEskaeraGehitu.jPanelEskDatuak.setOpaque(false);
+    }
+    
+    private void resetEskaeraGehitu() {
+        viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
+        viewEskaeraGehitu.jTextFieldKopurua.setText(null);
+        
+        viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
    
     private boolean balidazioaEskGehitu() {

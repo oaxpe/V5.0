@@ -59,90 +59,6 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         
     }
     
-    /* METODOAK */
-    private void hornInfoEstiloa() {
-        viewHornitzaileaInfo.setTitle("Hornitzaileen informazioa");
-        viewHornitzaileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewHornitzaileaInfo.setLocationRelativeTo(null);
-        viewHornitzaileaInfo.jButtonIrten.setBackground(urdina);
-        viewHornitzaileaInfo.jButtonIrten.setForeground(Color.WHITE);
-        viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewHornitzaileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
-        
-        viewHornitzaileaInfo.jTextFieldKodeHor.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldIzena.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldHerria.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldEmail.setOpaque(false);
-        viewHornitzaileaInfo.jTextFieldTlf.setOpaque(false);
-        
-        viewHornitzaileaInfo.jPanelOsoa.setBackground(Color.WHITE);
-        viewHornitzaileaInfo.jPanelGoiburua.setOpaque(false);
-        viewHornitzaileaInfo.jPanelOina.setOpaque(false);
-        viewHornitzaileaInfo.jPanelHornDatuak.setOpaque(false);
-        viewHornitzaileaInfo.jPanelHornInfoTaula.setOpaque(false);
-        
-        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
-        viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
-        
-        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
-        viewHornitzaileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
-        
-        // tauletako estiloa
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowGrid(false);
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowHorizontalLines(true);
-        
-        /* Kodeak ezin dira aldatu */
-        viewHornitzaileaInfo.jTextFieldKodeHor.setEditable(false);
-    }
-
-    /* METODOAK */ 
-    public void hornDatuakErakutsiTaula(JTable taula, ArrayList<Hornitzailea> hornGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        taula.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("HERRIA");
-        model.addColumn("TELEFONOA");
-        model.addColumn("EMAILA");
-        
-        for (int i=0; i<hornGuzt.size(); i++) {
-            Hornitzailea horn = hornGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(horn.getKodHor(), i, 0);
-            model.setValueAt(horn.getIzena(), i, 1);
-            model.setValueAt(horn.getHerria(), i, 2);
-            model.setValueAt(horn.getTelefonoa(), i, 3);
-            model.setValueAt(horn.getEmail(), i, 4);
-        }
-    }
-    
-    private void aukHornDatuakBete(int aukLerroa) {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
-        viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
-        viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
-    }
-    
-    private void resetHornInfo() {
-        viewHornitzaileaInfo.jTextFieldKodeHor.setText(null);
-        viewHornitzaileaInfo.jTextFieldIzena.setText(null);
-        viewHornitzaileaInfo.jTextFieldHerria.setText(null);
-        viewHornitzaileaInfo.jTextFieldTlf.setText(null);
-        viewHornitzaileaInfo.jTextFieldEmail.setText(null);
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -318,6 +234,89 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         Object comando = e.getSource();
          if (comando == viewHornitzaileaInfo.jTextFieldBilatu)
             ctr.txtBilatuTaulan(viewHornitzaileaInfo.jTableHornitzaileaInfo, viewHornitzaileaInfo.jTextFieldBilatu.getText());
+    }
+        
+    /* METODOAK */
+    private void hornInfoEstiloa() {
+        viewHornitzaileaInfo.setTitle("Hornitzaileen informazioa");
+        viewHornitzaileaInfo.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewHornitzaileaInfo.setLocationRelativeTo(null);
+        viewHornitzaileaInfo.jButtonIrten.setBackground(urdina);
+        viewHornitzaileaInfo.jButtonIrten.setForeground(Color.WHITE);
+        viewHornitzaileaInfo.jTextFieldKodeHor.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaInfo.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewHornitzaileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
+        
+        viewHornitzaileaInfo.jTextFieldKodeHor.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldIzena.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldHerria.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldEmail.setOpaque(false);
+        viewHornitzaileaInfo.jTextFieldTlf.setOpaque(false);
+        
+        viewHornitzaileaInfo.jPanelOsoa.setBackground(Color.WHITE);
+        viewHornitzaileaInfo.jPanelGoiburua.setOpaque(false);
+        viewHornitzaileaInfo.jPanelOina.setOpaque(false);
+        viewHornitzaileaInfo.jPanelHornDatuak.setOpaque(false);
+        viewHornitzaileaInfo.jPanelHornInfoTaula.setOpaque(false);
+        
+        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+        viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
+        
+        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setToolTipText("Ezeztatu");
+        viewHornitzaileaInfo.jButtonAldaketaGorde.setToolTipText("Gorde");
+        
+        // tauletako estiloa
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowGrid(false);
+        viewHornitzaileaInfo.jTableHornitzaileaInfo.setShowHorizontalLines(true);
+        
+        /* Kodeak ezin dira aldatu */
+        viewHornitzaileaInfo.jTextFieldKodeHor.setEditable(false);
+    }
+
+    public void hornDatuakErakutsiTaula(JTable taula, ArrayList<Hornitzailea> hornGuzt) {
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        taula.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("IZENA");
+        model.addColumn("HERRIA");
+        model.addColumn("TELEFONOA");
+        model.addColumn("EMAILA");
+        
+        for (int i=0; i<hornGuzt.size(); i++) {
+            Hornitzailea horn = hornGuzt.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(horn.getKodHor(), i, 0);
+            model.setValueAt(horn.getIzena(), i, 1);
+            model.setValueAt(horn.getHerria(), i, 2);
+            model.setValueAt(horn.getTelefonoa(), i, 3);
+            model.setValueAt(horn.getEmail(), i, 4);
+        }
+    }
+    
+    private void aukHornDatuakBete(int aukLerroa) {
+        viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
+        viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
+        viewHornitzaileaInfo.jTextFieldHerria.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewHornitzaileaInfo.jTextFieldTlf.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewHornitzaileaInfo.jTextFieldEmail.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 4)));
+    }
+    
+    private void resetHornInfo() {
+        viewHornitzaileaInfo.jTextFieldKodeHor.setText(null);
+        viewHornitzaileaInfo.jTextFieldIzena.setText(null);
+        viewHornitzaileaInfo.jTextFieldHerria.setText(null);
+        viewHornitzaileaInfo.jTextFieldTlf.setText(null);
+        viewHornitzaileaInfo.jTextFieldEmail.setText(null);
     }
         
     private boolean balidazioaHornInfo() {

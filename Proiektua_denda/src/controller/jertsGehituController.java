@@ -42,51 +42,6 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
         jertsGehituEstiloa();
     }
     
-    /* METODOAK */        
-    private void jertsGehituEstiloa() {
-        viewJertseaGehitu.setTitle("Jertse berria");
-        viewJertseaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewJertseaGehitu.setLocationRelativeTo(null);
-        viewJertseaGehitu.jButtonIrten.setBackground(urdina);
-        viewJertseaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        
-        viewJertseaGehitu.jTextFieldKodeJerts.setOpaque(false);
-        viewJertseaGehitu.jTextFieldMarka.setOpaque(false);
-        viewJertseaGehitu.jTextFieldPrezioa.setOpaque(false);
-        viewJertseaGehitu.jTextFieldKolorea.setOpaque(false);
-        viewJertseaGehitu.jTextFieldStock.setOpaque(false);
-        viewJertseaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewJertseaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewJertseaGehitu.jPanelGoiburua.setOpaque(false);
-        viewJertseaGehitu.jPanelJertsDatuak.setOpaque(false);
-    }
- 
-    private void resetJertseaGehitu() {
-        viewJertseaGehitu.jTextFieldKodeJerts.setText(null);
-        viewJertseaGehitu.jTextFieldMarka.setText(null);
-        viewJertseaGehitu.jTextFieldPrezioa.setText(null);
-        viewJertseaGehitu.jTextFieldKolorea.setText(null);
-        viewJertseaGehitu.jComboBoxSexua.setSelectedIndex(0);
-        viewJertseaGehitu.jTextFieldStock.setText(null);
-        viewJertseaGehitu.jComboBoxTaila.setSelectedIndex(0);
-        
-        viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-        viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -190,6 +145,51 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
             viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewJertseaGehitu.jComboBoxTaila)
             viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+    }
+    
+    /* METODOAK */        
+    private void jertsGehituEstiloa() {
+        viewJertseaGehitu.setTitle("Jertse berria");
+        viewJertseaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewJertseaGehitu.setLocationRelativeTo(null);
+        viewJertseaGehitu.jButtonIrten.setBackground(urdina);
+        viewJertseaGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
+        viewJertseaGehitu.jTextFieldKodeJerts.setOpaque(false);
+        viewJertseaGehitu.jTextFieldMarka.setOpaque(false);
+        viewJertseaGehitu.jTextFieldPrezioa.setOpaque(false);
+        viewJertseaGehitu.jTextFieldKolorea.setOpaque(false);
+        viewJertseaGehitu.jTextFieldStock.setOpaque(false);
+        viewJertseaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewJertseaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewJertseaGehitu.jPanelGoiburua.setOpaque(false);
+        viewJertseaGehitu.jPanelJertsDatuak.setOpaque(false);
+    }
+ 
+    private void resetJertseaGehitu() {
+        viewJertseaGehitu.jTextFieldKodeJerts.setText(null);
+        viewJertseaGehitu.jTextFieldMarka.setText(null);
+        viewJertseaGehitu.jTextFieldPrezioa.setText(null);
+        viewJertseaGehitu.jTextFieldKolorea.setText(null);
+        viewJertseaGehitu.jComboBoxSexua.setSelectedIndex(0);
+        viewJertseaGehitu.jTextFieldStock.setText(null);
+        viewJertseaGehitu.jComboBoxTaila.setSelectedIndex(0);
+        
+        viewJertseaGehitu.jTextFieldKodeJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldMarka.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldPrezioa.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jTextFieldKolorea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxSexua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
     private boolean balidazioaJertsGehitu() {

@@ -41,59 +41,6 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
         this.viewBezeroaGehitu = viewBezGehitu;
         bezGehituEstiloa();
     }
-    
-    /* METODOAK */
-    private void bezGehituEstiloa() {
-        viewBezeroaGehitu.setTitle("Bezero berria");
-        viewBezeroaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewBezeroaGehitu.setLocationRelativeTo(null);
-        viewBezeroaGehitu.jButtonIrten.setBackground(urdina);
-        viewBezeroaGehitu.jButtonIrten.setForeground(Color.WHITE);
-        viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-        viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-        
-        viewBezeroaGehitu.jTextFieldIzena.setOpaque(false);
-        viewBezeroaGehitu.jTextFieldAbizena1.setOpaque(false);
-        viewBezeroaGehitu.jTextFieldAbizena2.setOpaque(false);
-        viewBezeroaGehitu.jTextFieldHerria.setOpaque(false);
-        viewBezeroaGehitu.jDateChooserJaioData.setOpaque(false);
-        viewBezeroaGehitu.jRadioButtonEmak.setOpaque(false);
-        viewBezeroaGehitu.jRadioButtonGiz.setOpaque(false);
-        viewBezeroaGehitu.jTextFieldNan.setOpaque(false);
-        viewBezeroaGehitu.jTextFieldTlf.setOpaque(false);
-        viewBezeroaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
-
-        viewBezeroaGehitu.jPanelOsoa.setBackground(Color.WHITE);
-        viewBezeroaGehitu.jPanelGoiburua.setOpaque(false);
-        viewBezeroaGehitu.jPanelBezDatuak.setOpaque(false);
-    }
-
-    private void resetBezeroaGehitu() {
-        viewBezeroaGehitu.jTextFieldIzena.setText(null);
-        viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
-        viewBezeroaGehitu.jTextFieldAbizena2.setText(null);
-        viewBezeroaGehitu.jTextFieldNan.setText(null);
-        viewBezeroaGehitu.jDateChooserJaioData.setDate(null);
-        viewBezeroaGehitu.jRadioButtonEmak.setSelected(false);
-        viewBezeroaGehitu.jRadioButtonGiz.setSelected(false);
-        viewBezeroaGehitu.jTextFieldHerria.setText(null);
-        viewBezeroaGehitu.jTextFieldTlf.setText(null);
-        
-        viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
-        viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
-    }
 
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
@@ -200,6 +147,59 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
             viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewBezeroaGehitu.jTextFieldTlf) 
             viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+    }
+
+    /* METODOAK */
+    private void bezGehituEstiloa() {
+        viewBezeroaGehitu.setTitle("Bezero berria");
+        viewBezeroaGehitu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewBezeroaGehitu.setLocationRelativeTo(null);
+        viewBezeroaGehitu.jButtonIrten.setBackground(urdina);
+        viewBezeroaGehitu.jButtonIrten.setForeground(Color.WHITE);
+        viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
+        
+        viewBezeroaGehitu.jTextFieldIzena.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldAbizena1.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldAbizena2.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldHerria.setOpaque(false);
+        viewBezeroaGehitu.jDateChooserJaioData.setOpaque(false);
+        viewBezeroaGehitu.jRadioButtonEmak.setOpaque(false);
+        viewBezeroaGehitu.jRadioButtonGiz.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldNan.setOpaque(false);
+        viewBezeroaGehitu.jTextFieldTlf.setOpaque(false);
+        viewBezeroaGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
+
+        viewBezeroaGehitu.jPanelOsoa.setBackground(Color.WHITE);
+        viewBezeroaGehitu.jPanelGoiburua.setOpaque(false);
+        viewBezeroaGehitu.jPanelBezDatuak.setOpaque(false);
+    }
+
+    private void resetBezeroaGehitu() {
+        viewBezeroaGehitu.jTextFieldIzena.setText(null);
+        viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
+        viewBezeroaGehitu.jTextFieldAbizena2.setText(null);
+        viewBezeroaGehitu.jTextFieldNan.setText(null);
+        viewBezeroaGehitu.jDateChooserJaioData.setDate(null);
+        viewBezeroaGehitu.jRadioButtonEmak.setSelected(false);
+        viewBezeroaGehitu.jRadioButtonGiz.setSelected(false);
+        viewBezeroaGehitu.jTextFieldHerria.setText(null);
+        viewBezeroaGehitu.jTextFieldTlf.setText(null);
+        
+        viewBezeroaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
+        viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
     }
 
     private boolean balidazioaBezGehitu() {
