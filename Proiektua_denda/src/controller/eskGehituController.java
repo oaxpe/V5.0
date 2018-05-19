@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -21,7 +19,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -39,6 +36,7 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public eskGehituController(Eskaera esk, EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu) {
@@ -100,22 +98,13 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
     
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* EskaeraGehitu-ko aukerak */
         if (comando == viewEskaeraGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewEskaeraGehitu.jPanelEskDatuak, true);
+            ctr.enableComponents(viewEskaeraGehitu.jPanelEskDatuak, true);
         }
         else if (comando == viewEskaeraGehitu.jButtonGorde){
             if (balidazioaEskGehitu()) {
@@ -123,7 +112,7 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
                         Integer.parseInt(viewEskaeraGehitu.jTextFieldKopurua.getText()));
                 EskaeraKudeatu.eskaeraGehitu(esk);
                 resetEskaeraGehitu();
-                enableComponets(viewEskaeraGehitu.jPanelEskDatuak, false);
+                ctr.enableComponents(viewEskaeraGehitu.jPanelEskDatuak, false);
             }
             else
                 JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente

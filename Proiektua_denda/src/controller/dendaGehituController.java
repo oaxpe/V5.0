@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -20,7 +18,6 @@ import java.awt.event.MouseListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.table.DefaultTableModel;
@@ -39,6 +36,7 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
     private DendaGehitu viewDendaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public dendaGehituController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
@@ -90,15 +88,6 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
-    
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
 
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
@@ -106,7 +95,7 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         Object comando = e.getSource();
         /* DendaGehitu-ko aukerak */
         if (comando == viewDendaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewDendaGehitu.jPanelDendDatuak, true);
+            ctr.enableComponents(viewDendaGehitu.jPanelDendDatuak, true);
         }
         else if (comando == viewDendaGehitu.jButtonGorde) {
             if (balidazioaDendaGehitu()) {
@@ -121,7 +110,7 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
                     // fitxategia ez bada existitzen, errorea ematen  du.
                 }
                 resetDendaGehitu();
-                enableComponets(viewDendaGehitu.jPanelDendDatuak, false);
+                ctr.enableComponents(viewDendaGehitu.jPanelDendDatuak, false);
             }
             else
                 JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente

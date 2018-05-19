@@ -9,15 +9,11 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
@@ -26,66 +22,26 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  * @version 4.0
  */
 public class menuNagController implements ActionListener{
-    /* Model */
-//    private Bezeroa bezeroa;
-//    private Denda denda;
-//    private Eskaera eskaera;
-//    private Hornitzailea hornitzailea;
-//    private Jertsea jertsea;
-//    private Kamiseta kamiseta;
-//    private Langilea langilea;
-//    private Pertsona pertsona;
-//    private Praka praka;
-//    private Produktua produktua;
-//    private Salmenta salmenta;
-    
     /* Bistak */
     private MenuNagusia viewMenuNagusia; 
     private DendaInfo viewDendaInfo;
-    private DendaGehitu viewDendaGehitu;
     private BezeroaInfo viewBezeroaInfo;
-    private BezeroaGehitu viewBezeroaGehitu;
     private LangileaInfo viewLangileaInfo;
-    private LangileaGehitu viewLangileaGehitu;
     private ProduktuaAukeratu viewProduktuaAukeratu;
-    private JertseaGehitu viewJertseaGehitu;
-    private KamisetaGehitu viewKamisetaGehitu;
-    private PrakaGehitu viewPrakaGehitu;
     private HornitzaileaInfo viewHornitzaileaInfo;
-    private HornitzaileaGehitu viewHornitzaileaGehitu;
     private EskaeraInfo viewEskaeraInfo;
-    private EskaeraGehitu viewEskaeraGehitu;
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
 
     /* ERAIKITZAILEA */   
-    public menuNagController(/*Bezeroa bez, Denda denda, Eskaera esk, Hornitzailea horn, Jertsea jerts,
-            Kamiseta kami, Langilea lang, Praka prak, Salmenta salm,*/
-            DendaInfo viewDendInfo, BezeroaInfo viewBezInfo, 
+    public menuNagController(DendaInfo viewDendInfo, BezeroaInfo viewBezInfo, 
             LangileaInfo viewLangInfo,  ProduktuaAukeratu viewProdAuk, 
             HornitzaileaInfo viewHornInfo, EskaeraInfo viewEskInfo, MenuNagusia viewMenuNag) {
-//        this.bezeroa = bez;
-//        this.denda = denda;
-//        this.eskaera = esk;
-//        this.hornitzailea = horn;
-//        this.jertsea = jerts;
-//        this.kamiseta = kami;
-//        this.langilea = lang;
-//        this.praka = prak;
-//        this.salmenta = salm;
-        
         this.viewDendaInfo = viewDendInfo;
-//        this.viewDendaGehitu = viewDendGehitu;
         this.viewBezeroaInfo = viewBezInfo;
-//        this.viewBezeroaGehitu = viewBezGehitu;
         this.viewLangileaInfo = viewLangInfo;
-//        this.viewLangileaGehitu = viewLangGehitu;
         this.viewProduktuaAukeratu = viewProdAuk;
-//        this.viewJertseaGehitu = viewJertsGehitu;
-//        this.viewKamisetaGehitu = viewKamGehitu;
-//        this.viewPrakaGehitu = viewPrakGehitu;
         this.viewHornitzaileaInfo = viewHornInfo;
-//        this.viewHornitzaileaGehitu = viewHornGehitu;
         this.viewEskaeraInfo = viewEskInfo;
-//        this.viewEskaeraGehitu = viewEskGehitu;
         this.viewMenuNagusia = viewMenuNag;
         menuNagEstiloa();
     }
@@ -264,15 +220,6 @@ public class menuNagController implements ActionListener{
             model.setValueAt(esk.getKopurua(), i, 3);
         }
     }
-    
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
 
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
@@ -285,38 +232,38 @@ public class menuNagController implements ActionListener{
         else if (comando == viewMenuNagusia.jButtonDenda) {
             viewDendaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewDendaInfo.jPanelDendDatuak, false);
+            ctr.enableComponents(viewDendaInfo.jPanelDendDatuak, false);
             dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
         }
         else if (comando == viewMenuNagusia.jButtonProduktua) {
             viewProduktuaAukeratu.setVisible(true);
             viewMenuNagusia.setEnabled(false);
             viewProduktuaAukeratu.jToggleButtonEzkutatu.setSelected(true);
-            enableComponets(viewProduktuaAukeratu.jPanelGoiburua, false);
-            enableComponets(viewProduktuaAukeratu.jPanelAukerak, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelAukerak, false);
         }
         else if (comando == viewMenuNagusia.jButtonBezeroa) {
             viewBezeroaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
+            ctr.enableComponents(viewBezeroaInfo.jPanelBezDatuak, false);
             bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
         }
         else if (comando == viewMenuNagusia.jButtonLangilea) {
             viewLangileaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
+            ctr.enableComponents(viewLangileaInfo.jPanelLangDatuak, false);
             langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
         }
         else if (comando == viewMenuNagusia.jButtonHornitzailea) {
             viewHornitzaileaInfo.setVisible(true); 
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
+            ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
             hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
         }
         else if (comando == viewMenuNagusia.jButtonEskaera) {
             viewEskaeraInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
-            enableComponets(viewEskaeraInfo.jPanelEskDatuak, false);
+            ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
             eskDatuakErakutsiTaula(EskaeraKudeatu.eskaeraGuztiakErakutsi());
         }
     }

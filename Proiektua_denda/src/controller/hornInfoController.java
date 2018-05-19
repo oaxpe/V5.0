@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -23,17 +21,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -51,6 +43,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public hornInfoController(Hornitzailea horn, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, MenuNagusia viewMenuNag) {
@@ -102,18 +95,6 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
     }
 
     /* METODOAK */ 
-    private void hornitzaileaKargatu(JComboBox comboBox) {
-        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
-        ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
-        for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
-            alHonritzaileIzenak.add(horn.getIzena());
-        }
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i = 0; i < alHonritzaileIzenak.size(); i++) { // izenak comboBox-ean gorde
-            comboBox.addItem(alHonritzaileIzenak.get(i));
-        }
-    }
-    
     private void hornDatuakErakutsiTaula(ArrayList<Hornitzailea> hornGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
@@ -141,15 +122,6 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         }
     }
     
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
-    
     private void aukHornDatuakBete(int aukLerroa) {
         viewHornitzaileaInfo.jTextFieldKodeHor.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0)));
         viewHornitzaileaInfo.jTextFieldIzena.setText(String.valueOf(viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 1)));
@@ -174,7 +146,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         if (comando == viewHornitzaileaInfo.jButtonGehitu) {
             viewHornitzaileaGehitu.setVisible(true);
             viewHornitzaileaInfo.setEnabled(false);
-            enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, false);
+            ctr.enableComponents(viewHornitzaileaGehitu.jPanelHornDatuak, false);
         }
         else if (comando == viewHornitzaileaInfo.jButtonIrten) {
             viewHornitzaileaInfo.dispose();
@@ -188,7 +160,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                     String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
                     HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
                     viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                    hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
+                    ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
                 }                
                 hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
             }
@@ -198,8 +170,8 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         }
         else if (comando == viewHornitzaileaInfo.jButtonAldatu) {
             if (viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow()!=-1) {
-                enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, true);
-                enableComponets(viewHornitzaileaInfo.jPanelOina, false);
+                ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, true);
+                ctr.enableComponents(viewHornitzaileaInfo.jPanelOina, false);
                 viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(true);
                 viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(true);
             }
@@ -210,8 +182,8 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         else if (comando == viewHornitzaileaInfo.jButtonAldaketaEzabatu) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
-                enableComponets(viewHornitzaileaInfo.jPanelOina, true);
+                ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
+                ctr.enableComponents(viewHornitzaileaInfo.jPanelOina, true);
                 viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
                 viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 resetHornInfoErr();
@@ -231,15 +203,15 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                     Hornitzailea horn = new Hornitzailea(viewHornitzaileaInfo.jTextFieldKodeHor.getText(), viewHornitzaileaInfo.jTextFieldIzena.getText(), 
                             viewHornitzaileaInfo.jTextFieldHerria.getText(), viewHornitzaileaInfo.jTextFieldTlf.getText(), viewHornitzaileaInfo.jTextFieldEmail.getText());
                     HornitzaileaKudeatu.hornitzaileaGehitu(horn);
-                    enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
+                    ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
                     
                     /* Hornitzaileak aktualizatu */
                     viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                    hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
+                    ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
                     
                     hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
-                    enableComponets(viewHornitzaileaInfo.jPanelHornDatuak, false);
-                    enableComponets(viewHornitzaileaInfo.jPanelOina, true);
+                    ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
+                    ctr.enableComponents(viewHornitzaileaInfo.jPanelOina, true);
                     viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
                     viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 }
@@ -340,7 +312,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
     public void keyReleased(KeyEvent e) {
         Object comando = e.getSource();
          if (comando == viewHornitzaileaInfo.jTextFieldBilatu)
-            txtBilatuTaulan(viewHornitzaileaInfo.jTableHornitzaileaInfo, viewHornitzaileaInfo.jTextFieldBilatu.getText());
+            ctr.txtBilatuTaulan(viewHornitzaileaInfo.jTableHornitzaileaInfo, viewHornitzaileaInfo.jTextFieldBilatu.getText());
     }
         
     private boolean balidazioaHornInfo() {
@@ -370,11 +342,5 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         viewHornitzaileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewHornitzaileaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewHornitzaileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }
-    
-    private void txtBilatuTaulan(JTable taula, String textua) {
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
-        taula.setRowSorter(rowSorter);
-        rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }

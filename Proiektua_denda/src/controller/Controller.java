@@ -8,17 +8,15 @@ package controller;
 import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -56,7 +54,10 @@ public class Controller {
     private EskaeraInfo viewEskaeraInfo;
     private EskaeraGehitu viewEskaeraGehitu;
 
-    /* ERAIKITZAILEA */   
+    /* ERAIKITZAILEA */  
+    public Controller() {
+        
+    }
     public Controller(Bezeroa bez, Denda denda, Eskaera esk, Hornitzailea horn, Jertsea jerts,
             Kamiseta kami, Langilea lang, Praka prak, Salmenta salm,
             DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, 
@@ -458,7 +459,7 @@ public class Controller {
         aukKargatu(viewProduktuaAukeratu.jComboBoxAukeratuProd);
     }
     
-    private void hornitzaileaKargatu(JComboBox comboBox) {
+    public void hornitzaileaKargatu(JComboBox comboBox) {
         ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
         ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
         for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
@@ -524,5 +525,20 @@ public class Controller {
         for (String i : produktua) {
             comboBox.addItem(i);
         }
+    }
+    
+    public void enableComponents (Container container, boolean bool) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            if (!(component instanceof JLabel)) {
+                component.setEnabled(bool);
+            }
+        }
+    }
+    
+    public void txtBilatuTaulan(JTable taula, String textua) {
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
+        taula.setRowSorter(rowSorter);
+        rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }

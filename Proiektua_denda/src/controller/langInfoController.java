@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -23,7 +21,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -49,6 +46,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
     private LangileaGehitu viewLangileaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public langInfoController(Langilea lang, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, MenuNagusia viewMenuNag) {
@@ -148,15 +146,6 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             model.setValueAt(lang.getEremua(), i, 10);
         }
     }
-   
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
 
     private void aukLangDatuakBete(int aukLerroa) { 
         viewLangileaInfo.jTextFieldKodeLang.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 0)));
@@ -202,7 +191,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         if (comando == viewLangileaInfo.jButtonGehitu) {
             viewLangileaGehitu.setVisible(true);
             viewLangileaInfo.setEnabled(false);
-            enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
+            ctr.enableComponents(viewLangileaGehitu.jPanelLangDatuak, false);
         }
         else if (comando == viewLangileaInfo.jButtonIrten) {
             viewLangileaInfo.dispose();
@@ -224,8 +213,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         }
         else if (comando == viewLangileaInfo.jButtonAldatu) {
             if (viewLangileaInfo.jTableLangileaInfo.getSelectedRow()!=-1) {
-                enableComponets(viewLangileaInfo.jPanelLangDatuak, true);
-                enableComponets(viewLangileaInfo.jPanelOina, false);
+                ctr.enableComponents(viewLangileaInfo.jPanelLangDatuak, true);
+                ctr.enableComponents(viewLangileaInfo.jPanelOina, false);
                 viewLangileaInfo.jButtonAldaketaGorde.setEnabled(true);
                 viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(true);
             }
@@ -236,8 +225,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         else if (comando == viewLangileaInfo.jButtonAldaketaEzabatu) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-                enableComponets(viewLangileaInfo.jPanelOina, true);
+                ctr.enableComponents(viewLangileaInfo.jPanelLangDatuak, false);
+                ctr.enableComponents(viewLangileaInfo.jPanelOina, true);
                 viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
                 viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 resetLangInfoErr();
@@ -269,8 +258,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                     LangileaKudeatu.langileaGehitu(lang);
 
                     langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
-                    enableComponets(viewLangileaInfo.jPanelLangDatuak, false);
-                    enableComponets(viewLangileaInfo.jPanelOina, true);
+                    ctr.enableComponents(viewLangileaInfo.jPanelLangDatuak, false);
+                    ctr.enableComponents(viewLangileaInfo.jPanelOina, true);
                     viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);
                     viewLangileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 }
@@ -387,7 +376,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
     public void keyReleased(KeyEvent e) {
         Object comando = e.getSource();
         if (comando == viewLangileaInfo.jTextFieldBilatu)
-            txtBilatuTaulan(viewLangileaInfo.jTableLangileaInfo, viewLangileaInfo.jTextFieldBilatu.getText());
+            ctr.txtBilatuTaulan(viewLangileaInfo.jTableLangileaInfo, viewLangileaInfo.jTextFieldBilatu.getText());
     }
     
     private boolean balidazioaLangInfo() {
@@ -450,11 +439,5 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-    }
-
-    private void txtBilatuTaulan(JTable taula, String textua) {
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
-        taula.setRowSorter(rowSorter);
-        rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }

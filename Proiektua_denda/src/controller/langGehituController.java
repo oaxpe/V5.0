@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -21,7 +19,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -39,10 +36,11 @@ public class langGehituController implements ActionListener, MouseListener, Focu
     private LangileaGehitu viewLangileaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public langGehituController(Langilea lang, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu) {
-        this.langilea = langilea;
+        this.langilea = lang;
         this.viewLangileaInfo = viewLangInfo;
         this.viewLangileaGehitu = viewLangGehitu;
         langGehituEstiloa();
@@ -146,23 +144,14 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
         viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
     }
-  
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
-   
+    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* LangileaGehitu-ko aukerak */
         if (comando == viewLangileaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewLangileaGehitu.jPanelLangDatuak, true);
+            ctr.enableComponents(viewLangileaGehitu.jPanelLangDatuak, true);
         }
         else if (comando == viewLangileaGehitu.jButtonGorde) {
             if (balidazioaLangGehitu()) {
@@ -180,7 +169,7 @@ public class langGehituController implements ActionListener, MouseListener, Focu
                         Double.parseDouble(viewLangileaGehitu.jTextFieldSoldata.getText()), viewLangileaGehitu.jComboBoxEremua.getSelectedItem().toString());
                 LangileaKudeatu.langileaGehitu(lang);
                 resetLangileaGehitu();
-                enableComponets(viewLangileaGehitu.jPanelLangDatuak, false);
+                ctr.enableComponents(viewLangileaGehitu.jPanelLangDatuak, false);
             }   
             else
                 JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente

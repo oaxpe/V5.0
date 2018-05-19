@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -22,7 +20,6 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -41,6 +38,7 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public hornGehituController(Hornitzailea horn, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraGehitu viewEskGehitu) {
@@ -125,22 +123,13 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
         viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
     
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }    
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* HornitzaileaGehituko aukerak */
         if (comando == viewHornitzaileaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, true);
+            ctr.enableComponents(viewHornitzaileaGehitu.jPanelHornDatuak, true);
         }
         else if (comando == viewHornitzaileaGehitu.jButtonGorde) {
             if (balidazioaHornGehitu()) {
@@ -148,7 +137,7 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
                         viewHornitzaileaGehitu.jTextFieldTlf.getText(), viewHornitzaileaGehitu.jTextFieldEmail.getText());
                 HornitzaileaKudeatu.hornitzaileaGehitu(horn);
                 resetHornitzaileaGehitu();
-                enableComponets(viewHornitzaileaGehitu.jPanelHornDatuak, false);
+                ctr.enableComponents(viewHornitzaileaGehitu.jPanelHornDatuak, false);
                 // Hornitzaileak aktualizatu
                 viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
                 hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);

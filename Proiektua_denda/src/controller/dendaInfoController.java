@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -23,16 +21,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -49,6 +42,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     private DendaGehitu viewDendaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public dendaInfoController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
@@ -136,15 +130,6 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         }
     }
 
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
-
     private void aukDendDatuakBete(int aukLerroa) {
         viewDendaInfo.jTextFieldKodeDend.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0)));
         viewDendaInfo.jTextFieldIzena.setText(String.valueOf(viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 1)));
@@ -173,7 +158,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         if (comando == viewDendaInfo.jButtonGehitu) {
             viewDendaGehitu.setVisible(true);
             viewDendaInfo.setEnabled(false);
-            enableComponets(viewDendaGehitu.jPanelDendDatuak, false);
+            ctr.enableComponents(viewDendaGehitu.jPanelDendDatuak, false);
         }
         else if (comando == viewDendaInfo.jButtonIrten) {
             viewDendaInfo.dispose();
@@ -195,8 +180,8 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         }
         else if (comando == viewDendaInfo.jButtonAldatu) {
             if (viewDendaInfo.jTableDendaInfo.getSelectedRow()!=-1) {
-                enableComponets(viewDendaInfo.jPanelDendDatuak, true);
-                enableComponets(viewDendaInfo.jPanelOina, false);
+                ctr.enableComponents(viewDendaInfo.jPanelDendDatuak, true);
+                ctr.enableComponents(viewDendaInfo.jPanelOina, false);
                 viewDendaInfo.jButtonAldaketaGorde.setEnabled(true);
                 viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(true);
             }
@@ -207,8 +192,8 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         else if (comando == viewDendaInfo.jButtonAldaketaEzabatu) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                enableComponets(viewDendaInfo.jPanelDendDatuak, false);
-                enableComponets(viewDendaInfo.jPanelOina, true);
+                ctr.enableComponents(viewDendaInfo.jPanelDendDatuak, false);
+                ctr.enableComponents(viewDendaInfo.jPanelOina, true);
                 viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
                 viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 resetDendInfoErr();
@@ -228,8 +213,8 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                             viewDendaInfo.jTextFieldTlf.getText(), viewDendaInfo.jTextFieldEmail.getText());
                     DendaKudeatu.dendaGehitu(d);
                     dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
-                    enableComponets(viewDendaInfo.jPanelDendDatuak, false);
-                    enableComponets(viewDendaInfo.jPanelOina, true);
+                    ctr.enableComponents(viewDendaInfo.jPanelDendDatuak, false);
+                    ctr.enableComponents(viewDendaInfo.jPanelOina, true);
                     viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
                     viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 }
@@ -338,7 +323,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     public void keyReleased(KeyEvent e) {
         Object comando = e.getSource();
         if (comando == viewDendaInfo.jTextFieldBilatu)
-            txtBilatuTaulan(viewDendaInfo.jTableDendaInfo, viewDendaInfo.jTextFieldBilatu.getText());
+            ctr.txtBilatuTaulan(viewDendaInfo.jTableDendaInfo, viewDendaInfo.jTextFieldBilatu.getText());
     }
     
     private boolean balidazioaDendaInfo() {
@@ -379,11 +364,5 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-    }    
-
-    private void txtBilatuTaulan(JTable taula, String textua) {
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
-        taula.setRowSorter(rowSorter);
-        rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }

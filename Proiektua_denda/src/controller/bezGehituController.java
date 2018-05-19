@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -21,8 +19,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -40,6 +36,7 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
     private BezeroaGehitu viewBezeroaGehitu;
 
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public bezGehituController(Bezeroa bez, BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu) {
@@ -116,19 +113,6 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
             model.setValueAt(bez.getTelefonoa(), i, 8);
         }
     }
-    
- 
-    private void hornitzaileaKargatu(JComboBox comboBox) {
-        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
-        ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
-        for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
-            alHonritzaileIzenak.add(horn.getIzena());
-        }
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i = 0; i < alHonritzaileIzenak.size(); i++) { // izenak comboBox-ean gorde
-            comboBox.addItem(alHonritzaileIzenak.get(i));
-        }
-    }
 
     private void resetBezeroaGehitu() {
         viewBezeroaGehitu.jTextFieldIzena.setText(null);
@@ -151,22 +135,13 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
         viewBezeroaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
     }
 
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
-
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* BezeroaGehitu-ko aukerak */
         if (comando == viewBezeroaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewBezeroaGehitu.jPanelBezDatuak, true);
+            ctr.enableComponents(viewBezeroaGehitu.jPanelBezDatuak, true);
         }
         else if (comando == viewBezeroaGehitu.jButtonGorde) {
             if (balidazioaBezGehitu()) {
@@ -182,7 +157,7 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
                         sexuaRB, viewBezeroaGehitu.jTextFieldHerria.getText(), viewBezeroaGehitu.jTextFieldTlf.getText());
                 BezeroaKudeatu.bezeroaGehitu(bez);
                 resetBezeroaGehitu();
-                enableComponets(viewBezeroaGehitu.jPanelBezDatuak, false);
+                ctr.enableComponents(viewBezeroaGehitu.jPanelBezDatuak, false);
             }
             else
                 JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente

@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -21,7 +19,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -39,6 +36,7 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
     private JertseaGehitu viewJertseaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public jertsGehituController(Jertsea jerts, ProduktuaAukeratu viewProdAuk, JertseaGehitu viewJertsGehitu) {
@@ -124,22 +122,13 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
         viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* JertseaGehitu-ko aukerak */
         if (comando == viewJertseaGehitu.jButtonBerriaGehitu){
-            enableComponets(viewJertseaGehitu.jPanelJertsDatuak, true);
+            ctr.enableComponents(viewJertseaGehitu.jPanelJertsDatuak, true);
         }
         else if (comando == viewJertseaGehitu.jButtonGorde) {
             if (balidazioaJertsGehitu()) {
@@ -149,7 +138,7 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
                         viewJertseaGehitu.jComboBoxTaila.getSelectedItem().toString());
                 JertseaKudeatu.jertsGehitu(jerts);
                 resetJertseaGehitu();
-                enableComponets(viewJertseaGehitu.jPanelJertsDatuak, false);
+                ctr.enableComponents(viewJertseaGehitu.jPanelJertsDatuak, false);
             }   
             else
                 JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente

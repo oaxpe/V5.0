@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -21,7 +19,6 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -39,6 +36,7 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
     private KamisetaGehitu viewKamisetaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public kamiGehituController(Kamiseta kami, ProduktuaAukeratu viewProdAuk, KamisetaGehitu viewKamGehitu) {
@@ -129,22 +127,13 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
         viewKamisetaGehitu.jComboBoxSasoia.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
-    
     /* LISTENERS (ActionListener, FocusListener, MouseListener...)  */
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* KamisetaGehitu-ko aukerak */
         if (comando == viewKamisetaGehitu.jButtonBerriaGehitu) {
-            enableComponets(viewKamisetaGehitu.jPanelKamiDatuak, true);
+            ctr.enableComponents(viewKamisetaGehitu.jPanelKamiDatuak, true);
         }
         else if (comando == viewKamisetaGehitu.jButtonGorde) {
             if (balidazioaKamiGehitu()) {
@@ -154,7 +143,7 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
                         viewKamisetaGehitu.jComboBoxTaila.getSelectedItem().toString(), viewKamisetaGehitu.jComboBoxSasoia.getSelectedItem().toString());
                 KamisetaKudeatu.kamisetaGehitu(kami);
                 resetKamisetaGehitu();
-                enableComponets(viewKamisetaGehitu.jPanelKamiDatuak, false);
+                ctr.enableComponents(viewKamisetaGehitu.jPanelKamiDatuak, false);
             }   
             else
                 JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente

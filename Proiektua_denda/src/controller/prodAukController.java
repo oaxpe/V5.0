@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -23,12 +21,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
@@ -36,8 +31,6 @@ import javax.swing.event.ListDataEvent;
 import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -58,6 +51,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     private PrakaGehitu viewPrakaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public prodAukController(Jertsea jerts, Kamiseta kami, Praka prak, ProduktuaAukeratu viewProdAuk, 
@@ -291,15 +285,6 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
             model.setValueAt(prak.getMota(), i, 9);
         }
     }
-
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
     
     private void aukJertsDatuakBete(int aukLerroa) {
         viewProduktuaAukeratu.jTextFieldKodeJerts.setText(String.valueOf(viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0)));
@@ -377,7 +362,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         if (comando == viewProduktuaAukeratu.jButtonGehituJerts) {
             viewJertseaGehitu.setVisible(true);
             viewProduktuaAukeratu.setEnabled(false);
-            enableComponets(viewJertseaGehitu.jPanelJertsDatuak, false);
+            ctr.enableComponents(viewJertseaGehitu.jPanelJertsDatuak, false);
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts) {
             int aukLerroa = viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(); // aukeratutako lerroa
@@ -396,8 +381,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
         else if (comando == viewProduktuaAukeratu.jButtonAldatuJerts) {
             if (viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow()!=-1) {
-                enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, true);
-                enableComponets(viewProduktuaAukeratu.jPanelJertsBotoiak, false);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, true);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsBotoiak, false);
                 viewProduktuaAukeratu.jButtonIrten.setEnabled(false);
                 viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, false);
                 viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, false);
@@ -409,8 +394,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
-                enableComponets(viewProduktuaAukeratu.jPanelJertsBotoiak, true);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsBotoiak, true);
                 resetJertsInfoErr();
                 aukJertsDatuakBete(viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow()); // taulako datuekin berriz bete
                 viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
@@ -436,8 +421,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                     JertseaKudeatu.jertsGehitu(jerts);
                     
                     jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
-                    enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
-                    enableComponets(viewProduktuaAukeratu.jPanelJertsBotoiak, true);
+                    ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
+                    ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsBotoiak, true);
                     viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
                     viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, true);
                     viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, true);
@@ -449,7 +434,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         else if (comando == viewProduktuaAukeratu.jButtonGehituKami) {
             viewKamisetaGehitu.setVisible(true);
             viewProduktuaAukeratu.setEnabled(false);
-            enableComponets(viewKamisetaGehitu.jPanelKamiDatuak, false);
+            ctr.enableComponents(viewKamisetaGehitu.jPanelKamiDatuak, false);
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami) {
             int aukLerroa = viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(); // aukeratutako lerroa
@@ -468,8 +453,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
         else if (comando == viewProduktuaAukeratu.jButtonAldatuKami) {
             if (viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow()!=-1) {
-                enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, true);
-                enableComponets(viewProduktuaAukeratu.jPanelKamiBotoiak, false);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, true);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiBotoiak, false);
                 viewProduktuaAukeratu.jButtonIrten.setEnabled(false);
                 viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, false);
                 viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, false);
@@ -481,8 +466,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuKami) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
-                enableComponets(viewProduktuaAukeratu.jPanelKamiBotoiak, true);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, false);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiBotoiak, true);
                 resetKamiInfoErr();
                 aukKamiDatuakBete(viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow()); // taulako datuekin berriz bete
                 viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
@@ -508,8 +493,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                     KamisetaKudeatu.kamisetaGehitu(kami);
                     
                     kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
-                    enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
-                    enableComponets(viewProduktuaAukeratu.jPanelKamiBotoiak, true);
+                    ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, false);
+                    ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiBotoiak, true);
                     viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
                     viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, true);
                     viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(2, true);
@@ -521,7 +506,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         else if (comando == viewProduktuaAukeratu.jButtonGehituPrak) {
             viewPrakaGehitu.setVisible(true);
             viewProduktuaAukeratu.setEnabled(false);
-            enableComponets(viewPrakaGehitu.jPanelPrakDatuak, false);
+            ctr.enableComponents(viewPrakaGehitu.jPanelPrakDatuak, false);
         }
         else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak) {
             int aukLerroa = viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(); // aukeratutako lerroa
@@ -540,8 +525,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
         else if (comando == viewProduktuaAukeratu.jButtonAldatuPrak) {
             if (viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow()!=-1) {
-                enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, true);
-                enableComponets(viewProduktuaAukeratu.jPanelPrakBotoiak, false);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakInfo, true);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakBotoiak, false);
                 viewProduktuaAukeratu.jButtonIrten.setEnabled(false);
                 viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, false);
                 viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, false);
@@ -553,8 +538,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
-                enableComponets(viewProduktuaAukeratu.jPanelPrakBotoiak, true);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakInfo, false);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakBotoiak, true);
                 resetPrakInfoErr();
                 aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow()); // taulako datuekin berriz bete
                 viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
@@ -581,8 +566,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                     PrakaKudeatu.prakaGehitu(prak);
                     
                     prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
-                    enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
-                    enableComponets(viewProduktuaAukeratu.jPanelPrakBotoiak, true);
+                    ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakInfo, false);
+                    ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakBotoiak, true);
                     viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
                     viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(0, true);
                     viewProduktuaAukeratu.jTabbedPaneProd.setEnabledAt(1, true);
@@ -593,17 +578,17 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
         else if (comando == viewProduktuaAukeratu.jButtonIrten) {
             viewProduktuaAukeratu.jToggleButtonEzkutatu.setSelected(true);
-            enableComponets(viewProduktuaAukeratu.jPanelGoiburua, false);
-            enableComponets(viewProduktuaAukeratu.jPanelAukerak, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelAukerak, false);
             viewProduktuaAukeratu.dispose();
             viewMenuNagusia.setEnabled(true);
         }
         else if (viewProduktuaAukeratu.jToggleButtonErakutsi.isSelected()) {
-            enableComponets(viewProduktuaAukeratu.jPanelGoiburua, true);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, true);
         }
         else if (viewProduktuaAukeratu.jToggleButtonEzkutatu.isSelected()) {
-            enableComponets(viewProduktuaAukeratu.jPanelGoiburua, false);
-            enableComponets(viewProduktuaAukeratu.jPanelAukerak, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelAukerak, false);
             viewProduktuaAukeratu.jComboBoxAukeratuProd.setSelectedIndex(0);
         }
     }
@@ -613,7 +598,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         Object comando = event.getSource();
         if (comando == viewProduktuaAukeratu.jPanelJerts) {
             if (viewProduktuaAukeratu.jToggleButtonEzkutatu.isSelected()) {
-                enableComponets(viewProduktuaAukeratu.jPanelJertsInfo, false);
+                ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
                 jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
             }
             else {
@@ -623,11 +608,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
             }
         }
         else if (comando == viewProduktuaAukeratu.jPanelKami) {
-            enableComponets(viewProduktuaAukeratu.jPanelKamiInfo, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, false);
             kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
         }
         else if (comando == viewProduktuaAukeratu.jPanelPrak) {
-            enableComponets(viewProduktuaAukeratu.jPanelPrakInfo, false);
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakInfo, false);
             prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
         }
     }
@@ -862,11 +847,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     public void keyReleased(KeyEvent e) {
         Object comando = e.getSource();
         if (comando == viewProduktuaAukeratu.jTextFieldBilatuJerts)
-            txtBilatuTaulan(viewProduktuaAukeratu.jTableJertsInfo, viewProduktuaAukeratu.jTextFieldBilatuJerts.getText());
+            ctr.txtBilatuTaulan(viewProduktuaAukeratu.jTableJertsInfo, viewProduktuaAukeratu.jTextFieldBilatuJerts.getText());
         else if (comando == viewProduktuaAukeratu.jTextFieldBilatuKami)
-            txtBilatuTaulan(viewProduktuaAukeratu.jTableKamiInfo, viewProduktuaAukeratu.jTextFieldBilatuKami.getText());
+            ctr.txtBilatuTaulan(viewProduktuaAukeratu.jTableKamiInfo, viewProduktuaAukeratu.jTextFieldBilatuKami.getText());
         else if (comando == viewProduktuaAukeratu.jTextFieldBilatuPrak)
-            txtBilatuTaulan(viewProduktuaAukeratu.jTablePrakInfo, viewProduktuaAukeratu.jTextFieldBilatuPrak.getText());
+            ctr.txtBilatuTaulan(viewProduktuaAukeratu.jTablePrakInfo, viewProduktuaAukeratu.jTextFieldBilatuPrak.getText());
     }
    
     private boolean balidazioaJertsInfo() {
@@ -1016,11 +1001,5 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
-    }
-    
-    private void txtBilatuTaulan(JTable taula, String textua) {
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
-        taula.setRowSorter(rowSorter);
-        rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }

@@ -9,8 +9,6 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -23,16 +21,11 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -49,6 +42,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
     private BezeroaGehitu viewBezeroaGehitu;
 
     private Color urdina = new Color(0,0,153);
+    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public bezInfoController(Bezeroa bez, BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, MenuNagusia viewMenuNag) {
@@ -141,15 +135,6 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
             model.setValueAt(bez.getTelefonoa(), i, 8);
         }
     }
- 
-    private void enableComponets (Container container, boolean bool) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            if (!(component instanceof JLabel)) {
-                component.setEnabled(bool);
-            }
-        }
-    }
     
     private void aukBezDatuakBete(int aukLerroa) {    
         viewBezeroaInfo.jTextFieldKodeBez.setText(String.valueOf(viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 0)));
@@ -190,7 +175,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         if (comando == viewBezeroaInfo.jButtonGehitu) {
             viewBezeroaGehitu.setVisible(true);
             viewBezeroaInfo.setEnabled(false);
-            enableComponets(viewBezeroaGehitu.jPanelBezDatuak, false);
+            ctr.enableComponents(viewBezeroaGehitu.jPanelBezDatuak, false);
         } 
         else if (comando == viewBezeroaInfo.jButtonIrten) {
             viewBezeroaInfo.dispose();
@@ -212,8 +197,8 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         }
         else if (comando == viewBezeroaInfo.jButtonAldatu) {
             if (viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow()!=-1) {
-                enableComponets(viewBezeroaInfo.jPanelBezDatuak, true);
-                enableComponets(viewBezeroaInfo.jPanelOina, false);
+                ctr.enableComponents(viewBezeroaInfo.jPanelBezDatuak, true);
+                ctr.enableComponents(viewBezeroaInfo.jPanelOina, false);
                 viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(true);
                 viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(true);
             }
@@ -224,8 +209,8 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         else if (comando == viewBezeroaInfo.jButtonAldaketaEzabatu) {
             int konf = JOptionPane.showConfirmDialog(null, "Aldaketak ez dira gordeko. Irten nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
             if (konf == 0) { // bai
-                enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
-                enableComponets(viewBezeroaInfo.jPanelOina, true);
+                ctr.enableComponents(viewBezeroaInfo.jPanelBezDatuak, false);
+                ctr.enableComponents(viewBezeroaInfo.jPanelOina, true);
                 viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
                 viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 resetBezInfoErr();
@@ -255,8 +240,8 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                     BezeroaKudeatu.bezeroaGehitu(bez);
 
                     bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
-                    enableComponets(viewBezeroaInfo.jPanelBezDatuak, false);
-                    enableComponets(viewBezeroaInfo.jPanelOina, true);
+                    ctr.enableComponents(viewBezeroaInfo.jPanelBezDatuak, false);
+                    ctr.enableComponents(viewBezeroaInfo.jPanelOina, true);
                     viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);
                     viewBezeroaInfo.jButtonAldaketaEzabatu.setEnabled(false);
                 }
@@ -365,7 +350,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
     public void keyReleased(KeyEvent e) {
         Object comando = e.getSource();
         if (comando == viewBezeroaInfo.jTextFieldBilatu)
-            txtBilatuTaulan(viewBezeroaInfo.jTableBezeroaInfo, viewBezeroaInfo.jTextFieldBilatu.getText());
+            ctr.txtBilatuTaulan(viewBezeroaInfo.jTableBezeroaInfo, viewBezeroaInfo.jTextFieldBilatu.getText());
     }
 
     private boolean balidazioaBezInfo() {
@@ -415,11 +400,5 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewBezeroaInfo.jRadioButtonEmak.setForeground(Color.BLACK);
         viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.BLACK);
-    }
-    
-    private void txtBilatuTaulan(JTable taula, String textua) {
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(taula.getModel());
-        taula.setRowSorter(rowSorter);
-        rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
 }
