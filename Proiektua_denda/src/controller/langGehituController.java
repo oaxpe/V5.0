@@ -15,10 +15,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -36,7 +33,6 @@ public class langGehituController implements ActionListener, MouseListener, Focu
     private LangileaGehitu viewLangileaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public langGehituController(Langilea lang, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu) {
@@ -80,46 +76,7 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         viewLangileaGehitu.jPanelLangDatuak.setOpaque(false);
     }
 
-    /* METODOAK */
-    private void langDatuakErakutsiTaula(ArrayList<Langilea> langGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewLangileaInfo.jTableLangileaInfo.setModel(model);
-        model.addColumn("Kodea");
-        model.addColumn("Izena");
-        model.addColumn("1.abizena");
-        model.addColumn("2.abizena");
-        model.addColumn("NAN");
-        model.addColumn("Jaiotze data");
-        model.addColumn("Sexua");
-        model.addColumn("Herria");
-        model.addColumn("Telefono");
-        model.addColumn("Soldata");
-        model.addColumn("Eremua");
-        
-        for (int i=0; i<langGuzt.size(); i++) {
-            Langilea lang = langGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(lang.getKodLan(), i, 0);
-            model.setValueAt(lang.getIzena(), i, 1);
-            model.setValueAt(lang.getAbizena1(), i, 2);
-            model.setValueAt(lang.getAbizena2(), i, 3);
-            model.setValueAt(lang.getNan(), i, 4);
-            model.setValueAt(lang.getJaiotzeData(), i, 5);
-            model.setValueAt(lang.getSexua(), i, 6);
-            model.setValueAt(lang.getHerria(), i, 7);
-            model.setValueAt(lang.getTelefonoa(), i, 8);
-            model.setValueAt(lang.getSoldata(), i, 9);
-            model.setValueAt(lang.getEremua(), i, 10);
-        }
-    }
-    
+    /* METODOAK */    
     private void resetLangileaGehitu() {
         viewLangileaGehitu.jTextFieldIzena.setText(null);
         viewLangileaGehitu.jTextFieldAbizena1.setText(null);
@@ -149,6 +106,10 @@ public class langGehituController implements ActionListener, MouseListener, Focu
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        langInfoController langInfoCtr = new langInfoController();
+        
         /* LangileaGehitu-ko aukerak */
         if (comando == viewLangileaGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewLangileaGehitu.jPanelLangDatuak, true);
@@ -181,7 +142,7 @@ public class langGehituController implements ActionListener, MouseListener, Focu
             resetLangileaGehitu();
             viewLangileaGehitu.dispose();
             viewLangileaInfo.setEnabled(true);
-            langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
+            langInfoCtr.langDatuakErakutsiTaula(viewLangileaInfo.jTableLangileaInfo, LangileaKudeatu.langileGuztiakErakutsi());
         }
     }
 

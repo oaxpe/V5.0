@@ -23,6 +23,7 @@ import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
@@ -51,7 +52,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     private PrakaGehitu viewPrakaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public prodAukController(Jertsea jerts, Kamiseta kami, Praka prak, ProduktuaAukeratu viewProdAuk, 
@@ -66,6 +67,10 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         this.viewPrakaGehitu = viewPrakGehitu;
         this.viewMenuNagusia = viewMenuNag;
         prodInfoEstiloa();
+    }
+    
+    public prodAukController() {
+        
     }
     
     /* METODOAK */
@@ -185,7 +190,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         viewProduktuaAukeratu.jTextFieldKodePrak.setEditable(false);
     }
 
-    private void jertsDatuakErakutsiTaula(ArrayList<Jertsea> jertsGuzt) {
+    public void jertsDatuakErakutsiTaula(JTable taula, ArrayList<Jertsea> jertsGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -193,7 +198,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 return false;
             } 
         };
-        viewProduktuaAukeratu.jTableJertsInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
         model.addColumn("PREZIOA");
@@ -216,7 +221,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
     }
     
-    private void kamiDatuakErakutsiTaula(ArrayList<Kamiseta> kamiGuzt) {
+    public void kamiDatuakErakutsiTaula(JTable taula, ArrayList<Kamiseta> kamiGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -224,7 +229,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 return false;
             } 
         };
-        viewProduktuaAukeratu.jTableKamiInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
         model.addColumn("PREZIOA");
@@ -249,7 +254,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
     }
     
-    private void prakDatuakErakutsiTaula(ArrayList<Praka> prakGuzt) {
+    public void prakDatuakErakutsiTaula(JTable taula, ArrayList<Praka> prakGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -257,7 +262,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 return false;
             } 
         };
-        viewProduktuaAukeratu.jTablePrakInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
         model.addColumn("PREZIOA");
@@ -373,7 +378,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                     String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
                     JertseaKudeatu.jertseaEzabatu(kodea, taila);
                 }
-                jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
+                jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da jertserik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -420,7 +425,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                             viewProduktuaAukeratu.jComboBoxTailaJerts.getSelectedItem().toString());
                     JertseaKudeatu.jertsGehitu(jerts);
                     
-                    jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
+                    jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsBotoiak, true);
                     viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
@@ -445,7 +450,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                     String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
                     KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
                 }
-                kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
+                kamiDatuakErakutsiTaula(viewProduktuaAukeratu.jTableKamiInfo, KamisetaKudeatu.kamisetaGuztErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da kamisetarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -492,7 +497,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                             viewProduktuaAukeratu.jComboBoxTailaKami.getSelectedItem().toString(), viewProduktuaAukeratu.jComboBoxSasoiaKami.getSelectedItem().toString());
                     KamisetaKudeatu.kamisetaGehitu(kami);
                     
-                    kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
+                    kamiDatuakErakutsiTaula(viewProduktuaAukeratu.jTableKamiInfo, KamisetaKudeatu.kamisetaGuztErakutsi());
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, false);
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiBotoiak, true);
                     viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
@@ -517,7 +522,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                     int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
                     PrakaKudeatu.prakaEzabatu(kodea, taila);
                 }
-                prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
+                prakDatuakErakutsiTaula(viewProduktuaAukeratu.jTablePrakInfo, PrakaKudeatu.prakaGutztErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da prakarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -565,7 +570,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                             Integer.parseInt(viewProduktuaAukeratu.jTextFieldLuzeeraPrak.getText()), viewProduktuaAukeratu.jComboBoxMotaPrak.getSelectedItem().toString());
                     PrakaKudeatu.prakaGehitu(prak);
                     
-                    prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
+                    prakDatuakErakutsiTaula(viewProduktuaAukeratu.jTablePrakInfo, PrakaKudeatu.prakaGutztErakutsi());
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakInfo, false);
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakBotoiak, true);
                     viewProduktuaAukeratu.jButtonIrten.setEnabled(true);
@@ -599,21 +604,21 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         if (comando == viewProduktuaAukeratu.jPanelJerts) {
             if (viewProduktuaAukeratu.jToggleButtonEzkutatu.isSelected()) {
                 ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
-                jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
+                jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
             }
             else {
                 if (viewProduktuaAukeratu.jComboBoxAukeratuProd.getSelectedItem() == "Inbentarioa") {
-                    jertsDatuakErakutsiTaula(JertseaKudeatu.jertseaInbentarioa());
+                    jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertseaInbentarioa());
                 }
             }
         }
         else if (comando == viewProduktuaAukeratu.jPanelKami) {
             ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, false);
-            kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
+            kamiDatuakErakutsiTaula(viewProduktuaAukeratu.jTableKamiInfo, KamisetaKudeatu.kamisetaGuztErakutsi());
         }
         else if (comando == viewProduktuaAukeratu.jPanelPrak) {
             ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakInfo, false);
-            prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
+            prakDatuakErakutsiTaula(viewProduktuaAukeratu.jTablePrakInfo, PrakaKudeatu.prakaGutztErakutsi());
         }
     }
 
@@ -706,10 +711,10 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     public void contentsChanged(ListDataEvent e) {
         Object comando = e.getSource();
         if (viewProduktuaAukeratu.jComboBoxAukeratuProd.getSelectedItem() == "Inbentarioa") {
-            jertsDatuakErakutsiTaula(JertseaKudeatu.jertseaInbentarioa());
+            jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertseaInbentarioa());
         }
         if (viewProduktuaAukeratu.jComboBoxAukeratuProd.getSelectedItem() == "Eskatzeko dauden produktuak") {
-            jertsDatuakErakutsiTaula(JertseaKudeatu.jertseaEskatzeko());
+            jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertseaEskatzeko());
         }
     }
 

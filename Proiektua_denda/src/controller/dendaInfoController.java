@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
@@ -42,7 +43,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     private DendaGehitu viewDendaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public dendaInfoController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
@@ -51,6 +52,10 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         this.viewDendaGehitu = viewDendGehitu;
         this.viewMenuNagusia = viewMenuNag;
         dendInfoEstiloa();
+    }
+    
+    public dendaInfoController(){
+        
     }
     
     /* METODOAK */    
@@ -99,7 +104,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     }
           
     /* METODOAK */   
-    public void dendDatuakErakutsiTaula(ArrayList<Denda> dendGuzt) {
+    public void dendDatuakErakutsiTaula(JTable taula, ArrayList<Denda> dendGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -107,7 +112,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                 return false;
             } 
         };
-        viewDendaInfo.jTableDendaInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");
         model.addColumn("HELBIDEA");
@@ -172,7 +177,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                     String kodea = (String) viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako bezeroaren nan zenbakia lortu
                     DendaKudeatu.dendaEzabatu(kodea);
                 }
-                dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
+                dendDatuakErakutsiTaula(viewDendaInfo.jTableDendaInfo, DendaKudeatu.dendGuztiakErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da dendarik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -212,7 +217,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                             Integer.parseInt(viewDendaInfo.jTextFieldPostKod.getText()), 
                             viewDendaInfo.jTextFieldTlf.getText(), viewDendaInfo.jTextFieldEmail.getText());
                     DendaKudeatu.dendaGehitu(d);
-                    dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
+                    dendDatuakErakutsiTaula(viewDendaInfo.jTableDendaInfo, DendaKudeatu.dendGuztiakErakutsi());
                     ctr.enableComponents(viewDendaInfo.jPanelDendDatuak, false);
                     ctr.enableComponents(viewDendaInfo.jPanelOina, true);
                     viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);

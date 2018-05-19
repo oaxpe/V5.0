@@ -15,10 +15,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -36,7 +33,6 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
     private JertseaGehitu viewJertseaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public jertsGehituController(Jertsea jerts, ProduktuaAukeratu viewProdAuk, JertseaGehitu viewJertsGehitu) {
@@ -72,37 +68,6 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
         viewJertseaGehitu.jPanelGoiburua.setOpaque(false);
         viewJertseaGehitu.jPanelJertsDatuak.setOpaque(false);
     }
-    
-    private void jertsDatuakErakutsiTaula(ArrayList<Jertsea> jertsGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewProduktuaAukeratu.jTableJertsInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("MARKA");
-        model.addColumn("PREZIOA");
-        model.addColumn("KOLOREA");
-        model.addColumn("SEXUA");
-        model.addColumn("STOCK kantitatea");
-        model.addColumn("TAILA");
-        
-        for (int i=0; i<jertsGuzt.size(); i++) {
-            Jertsea jerts = jertsGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(jerts.getKodPro(), i, 0);
-            model.setValueAt(jerts.getMarka(), i, 1);
-            model.setValueAt(jerts.getPrezioa(), i, 2);
-            model.setValueAt(jerts.getKolorea(), i, 3);
-            model.setValueAt(jerts.getSexua(), i, 4);
-            model.setValueAt(jerts.getKantStock(), i, 5);
-            model.setValueAt(jerts.getTaila(), i, 6);
-        }
-    }
  
     private void resetJertseaGehitu() {
         viewJertseaGehitu.jTextFieldKodeJerts.setText(null);
@@ -126,6 +91,10 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        prodAukController prodAukCtr = new prodAukController();
+        
         /* JertseaGehitu-ko aukerak */
         if (comando == viewJertseaGehitu.jButtonBerriaGehitu){
             ctr.enableComponents(viewJertseaGehitu.jPanelJertsDatuak, true);
@@ -150,7 +119,7 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
             resetJertseaGehitu();
             viewJertseaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
-            jertsDatuakErakutsiTaula(JertseaKudeatu.jertsGuztErakutsi());
+            prodAukCtr.jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
         }
     }
             

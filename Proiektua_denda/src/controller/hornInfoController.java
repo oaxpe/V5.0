@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
@@ -43,7 +44,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public hornInfoController(Hornitzailea horn, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, MenuNagusia viewMenuNag) {
@@ -52,6 +53,10 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         this.viewHornitzaileaGehitu = viewHornGehitu;
         this.viewMenuNagusia = viewMenuNag;
         hornInfoEstiloa();
+    }
+    
+    public hornInfoController() {
+        
     }
     
     /* METODOAK */
@@ -95,7 +100,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
     }
 
     /* METODOAK */ 
-    private void hornDatuakErakutsiTaula(ArrayList<Hornitzailea> hornGuzt) {
+    public void hornDatuakErakutsiTaula(JTable taula, ArrayList<Hornitzailea> hornGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -103,7 +108,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                 return false;
             } 
         };
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");
         model.addColumn("HERRIA");
@@ -162,7 +167,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                     viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
                     ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
                 }                
-                hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
+                hornDatuakErakutsiTaula(viewHornitzaileaInfo.jTableHornitzaileaInfo, HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da hornitzailerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -209,7 +214,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                     viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
                     ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
                     
-                    hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
+                    hornDatuakErakutsiTaula(viewHornitzaileaInfo.jTableHornitzaileaInfo, HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
                     ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
                     ctr.enableComponents(viewHornitzaileaInfo.jPanelOina, true);
                     viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);

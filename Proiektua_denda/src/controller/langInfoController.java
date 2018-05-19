@@ -24,12 +24,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.RowFilter;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableModel;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -46,7 +43,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
     private LangileaGehitu viewLangileaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public langInfoController(Langilea lang, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, MenuNagusia viewMenuNag) {
@@ -57,6 +54,10 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         langInfoEstiloa();
     }
     
+    public langInfoController() {
+        
+    }
+
     /* METODOAK */
     private void langInfoEstiloa() {
         viewLangileaInfo.setTitle("Langileen informazioa");
@@ -108,7 +109,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldKodeLang.setEditable(false);
     }
  
-    private void langDatuakErakutsiTaula(ArrayList<Langilea> langGuzt) {
+    public void langDatuakErakutsiTaula(JTable taula, ArrayList<Langilea> langGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -116,7 +117,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                 return false;
             } 
         };
-        viewLangileaInfo.jTableLangileaInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("Kodea");
         model.addColumn("Izena");
         model.addColumn("1.abizena");
@@ -205,7 +206,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                     String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
                     LangileaKudeatu.langileaEzabatu(nan);
                 }
-                langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
+                langDatuakErakutsiTaula(viewLangileaInfo.jTableLangileaInfo, LangileaKudeatu.langileGuztiakErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ez da langilerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -257,7 +258,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                             Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString());
                     LangileaKudeatu.langileaGehitu(lang);
 
-                    langDatuakErakutsiTaula(LangileaKudeatu.langileGuztiakErakutsi());
+                    langDatuakErakutsiTaula(viewLangileaInfo.jTableLangileaInfo, LangileaKudeatu.langileGuztiakErakutsi());
                     ctr.enableComponents(viewLangileaInfo.jPanelLangDatuak, false);
                     ctr.enableComponents(viewLangileaInfo.jPanelOina, true);
                     viewLangileaInfo.jButtonAldaketaGorde.setEnabled(false);

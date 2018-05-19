@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
@@ -42,7 +43,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public eskInfoController(Eskaera esk, EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag) {
@@ -51,6 +52,10 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         this.viewEskaeraGehitu = viewEskGehitu;
         this.viewMenuNagusia = viewMenuNag;
         eskInfoEstiloa();
+    }
+    
+    public eskInfoController() {
+        
     }
     
     /* METODOAK */
@@ -88,7 +93,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);  
     }
     
-    private void eskDatuakErakutsiTaula(ArrayList<Eskaera> eskGuzt) {
+    public void eskDatuakErakutsiTaula(JTable taula, ArrayList<Eskaera> eskGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -96,7 +101,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
                 return false;
             } 
         };
-        viewEskaeraInfo.jTableEskaeraInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("HORNITZAILEA");
         model.addColumn("DATA");
@@ -149,7 +154,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
                     String kodea = (String) viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
                     EskaeraKudeatu.eskaeraEzabatu(kodea);
                 }                
-                eskDatuakErakutsiTaula(EskaeraKudeatu.eskaeraGuztiakErakutsi());
+                eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da hornitzailerik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -198,7 +203,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
                     viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
                     ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
                     
-                    eskDatuakErakutsiTaula(EskaeraKudeatu.eskaeraGuztiakErakutsi());
+                    eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
                     ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
                     ctr.enableComponents(viewEskaeraInfo.jPanelOina, true);
                     viewEskaeraInfo.jButtonAldaketaGorde.setEnabled(false);

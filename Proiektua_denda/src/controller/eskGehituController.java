@@ -15,10 +15,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -36,7 +33,6 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public eskGehituController(Eskaera esk, EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu) {
@@ -65,31 +61,6 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         viewEskaeraGehitu.jPanelEskDatuak.setOpaque(false);
     }
     
-    private void eskDatuakErakutsiTaula(ArrayList<Eskaera> eskGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewEskaeraInfo.jTableEskaeraInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("HORNITZAILEA");
-        model.addColumn("DATA");
-        model.addColumn("KOPURUA");
-        
-        for (int i=0; i<eskGuzt.size(); i++) {
-            Eskaera esk = eskGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(esk.getEskZenb(), i, 0);
-            model.setValueAt(esk.getHornitzailea(), i, 1);
-            model.setValueAt(esk.getData(), i, 2);
-            model.setValueAt(esk.getKopurua(), i, 3);
-        }
-    }
-    
     private void resetEskaeraGehitu() {
         viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
         viewEskaeraGehitu.jTextFieldKopurua.setText(null);
@@ -102,6 +73,10 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        eskInfoController eskInfoCtr = new eskInfoController();
+        
         /* EskaeraGehitu-ko aukerak */
         if (comando == viewEskaeraGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewEskaeraGehitu.jPanelEskDatuak, true);
@@ -124,7 +99,7 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
             resetEskaeraGehitu();
             viewEskaeraGehitu.dispose();
             viewEskaeraInfo.setEnabled(true);
-            eskDatuakErakutsiTaula(EskaeraKudeatu.eskaeraGuztiakErakutsi());
+            eskInfoCtr.eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
         }
     }
     

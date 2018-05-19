@@ -15,12 +15,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -36,7 +33,6 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
     private DendaGehitu viewDendaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public dendaGehituController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
@@ -93,6 +89,10 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        dendaInfoController dendInfoCtr = new dendaInfoController();
+        
         /* DendaGehitu-ko aukerak */
         if (comando == viewDendaGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewDendaGehitu.jPanelDendDatuak, true);
@@ -122,7 +122,7 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
             resetDendaGehitu();
             viewDendaGehitu.dispose();
             viewDendaInfo.setEnabled(true);
-            dendDatuakErakutsiTaula(DendaKudeatu.dendGuztiakErakutsi());
+            dendInfoCtr.dendDatuakErakutsiTaula(viewDendaInfo.jTableDendaInfo, DendaKudeatu.dendGuztiakErakutsi());
         }
     }
 
@@ -219,36 +219,5 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
             bool = false;
         }
         return bool;
-    }
-    
-    private void dendDatuakErakutsiTaula(ArrayList<Denda> dendGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewDendaInfo.jTableDendaInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("HELBIDEA");
-        model.addColumn("HERRIA");
-        model.addColumn("POSTA KODEA");
-        model.addColumn("TELEFONOA");
-        model.addColumn("EMAILA");
-        
-        for (int i=0; i<dendGuzt.size(); i++) {
-            Denda dend = dendGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(dend.getKodDend(), i, 0);
-            model.setValueAt(dend.getIzena(), i, 1);
-            model.setValueAt(dend.getHelbidea(), i, 2);
-            model.setValueAt(dend.getHerria(), i, 3);
-            model.setValueAt(dend.getKodPostala(), i, 4);
-            model.setValueAt(dend.getTelefonoa(), i, 5);
-            model.setValueAt(dend.getEmail(), i, 6);
-        }
     }
 }

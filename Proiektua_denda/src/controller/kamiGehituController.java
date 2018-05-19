@@ -15,10 +15,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -36,7 +33,6 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
     private KamisetaGehitu viewKamisetaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public kamiGehituController(Kamiseta kami, ProduktuaAukeratu viewProdAuk, KamisetaGehitu viewKamGehitu) {
@@ -73,39 +69,6 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
         viewKamisetaGehitu.jPanelGoiburua.setOpaque(false);
         viewKamisetaGehitu.jPanelKamiDatuak.setOpaque(false);
     }
-    
-    private void kamiDatuakErakutsiTaula(ArrayList<Kamiseta> kamiGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewProduktuaAukeratu.jTableKamiInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("MARKA");
-        model.addColumn("PREZIOA");
-        model.addColumn("KOLOREA");
-        model.addColumn("SEXUA");
-        model.addColumn("STOCK kantitatea");
-        model.addColumn("TAILA");
-        model.addColumn("SASOIA");
-        
-        for (int i=0; i<kamiGuzt.size(); i++) {
-            Kamiseta kami = kamiGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(kami.getKodPro(), i, 0);
-            model.setValueAt(kami.getMarka(), i, 1);
-            model.setValueAt(kami.getPrezioa(), i, 2);
-            model.setValueAt(kami.getKolorea(), i, 3);
-            model.setValueAt(kami.getSexua(), i, 4);
-            model.setValueAt(kami.getKantStock(), i, 5);
-            model.setValueAt(kami.getTaila(), i, 6);
-            model.setValueAt(kami.getSasoia(), i, 7);
-        }
-    }
 
     private void resetKamisetaGehitu() {
         viewKamisetaGehitu.jTextFieldKodeKami.setText(null);
@@ -131,6 +94,10 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        prodAukController prodAukCtr = new prodAukController();
+        
         /* KamisetaGehitu-ko aukerak */
         if (comando == viewKamisetaGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewKamisetaGehitu.jPanelKamiDatuak, true);
@@ -155,7 +122,7 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
             resetKamisetaGehitu();
             viewKamisetaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
-            kamiDatuakErakutsiTaula(KamisetaKudeatu.kamisetaGuztErakutsi());
+            prodAukCtr.kamiDatuakErakutsiTaula(viewProduktuaAukeratu.jTableKamiInfo, KamisetaKudeatu.kamisetaGuztErakutsi());
         }
     }
 

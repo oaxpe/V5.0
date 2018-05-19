@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.ListSelectionEvent;
@@ -42,7 +43,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
     private BezeroaGehitu viewBezeroaGehitu;
 
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public bezInfoController(Bezeroa bez, BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, MenuNagusia viewMenuNag) {
@@ -51,6 +52,10 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         this.viewBezeroaGehitu = viewBezGehitu;
         this.viewMenuNagusia = viewMenuNag;
         bezInfoEstiloa();
+    }
+    
+    public bezInfoController() {
+        
     }
     
     /* METODOAK */  
@@ -101,7 +106,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
     }
 
     /* METODOAK */
-    private void bezDatuakErakutsiTaula(ArrayList<Bezeroa> bezGuzt) {
+    public void bezDatuakErakutsiTaula(JTable taula, ArrayList<Bezeroa> bezGuzt) { // bezGehituController-ean ere erabiltzen da
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -109,7 +114,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                 return false;
             } 
         };
-        viewBezeroaInfo.jTableBezeroaInfo.setModel(model);
+        taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");
         model.addColumn("1.ABIZENA");
@@ -189,7 +194,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                     String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
                     BezeroaKudeatu.bezeroaEzabatu(nan);
                 }
-                bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
+                bezDatuakErakutsiTaula(viewBezeroaInfo.jTableBezeroaInfo, BezeroaKudeatu.bezeroGuztiakErakutsi());
             }
             else {
                 JOptionPane.showMessageDialog(null, "Ez da bezerorik aukeratu", "KONTUZ!", JOptionPane.WARNING_MESSAGE); // ventana emergente
@@ -239,7 +244,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                             sexuaRB, viewBezeroaInfo.jTextFieldHerria.getText(), viewBezeroaInfo.jTextFieldTlf.getText());
                     BezeroaKudeatu.bezeroaGehitu(bez);
 
-                    bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
+                    bezDatuakErakutsiTaula(viewBezeroaInfo.jTableBezeroaInfo, BezeroaKudeatu.bezeroGuztiakErakutsi());
                     ctr.enableComponents(viewBezeroaInfo.jPanelBezDatuak, false);
                     ctr.enableComponents(viewBezeroaInfo.jPanelOina, true);
                     viewBezeroaInfo.jButtonAldaketaGorde.setEnabled(false);

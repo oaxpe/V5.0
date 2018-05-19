@@ -15,10 +15,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -36,7 +33,6 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
     private BezeroaGehitu viewBezeroaGehitu;
 
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public bezGehituController(Bezeroa bez, BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu) {
@@ -78,42 +74,6 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
         viewBezeroaGehitu.jPanelBezDatuak.setOpaque(false);
     }
 
-    /* METODOAK */
-    private void bezDatuakErakutsiTaula(ArrayList<Bezeroa> bezGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewBezeroaInfo.jTableBezeroaInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("1.ABIZENA");
-        model.addColumn("2.ABIZENA");
-        model.addColumn("NAN");
-        model.addColumn("JAIOTZE DATA");
-        model.addColumn("SEXUA");
-        model.addColumn("HERRIA");
-        model.addColumn("TELEFONOA");
-        
-        for (int i=0; i<bezGuzt.size(); i++) {
-            Bezeroa bez = bezGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(bez.getKodBez(), i, 0);
-            model.setValueAt(bez.getIzena(), i, 1);
-            model.setValueAt(bez.getAbizena1(), i, 2);
-            model.setValueAt(bez.getAbizena2(), i, 3);
-            model.setValueAt(bez.getNan(), i, 4);
-            model.setValueAt(bez.getJaiotzeData(), i, 5);
-            model.setValueAt(bez.getSexua(), i, 6);
-            model.setValueAt(bez.getHerria(), i, 7);
-            model.setValueAt(bez.getTelefonoa(), i, 8);
-        }
-    }
-
     private void resetBezeroaGehitu() {
         viewBezeroaGehitu.jTextFieldIzena.setText(null);
         viewBezeroaGehitu.jTextFieldAbizena1.setText(null);
@@ -139,6 +99,10 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        bezInfoController bezInfoCtr = new bezInfoController();
+    
         /* BezeroaGehitu-ko aukerak */
         if (comando == viewBezeroaGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewBezeroaGehitu.jPanelBezDatuak, true);
@@ -169,7 +133,7 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
             resetBezeroaGehitu();
             viewBezeroaGehitu.dispose();
             viewBezeroaInfo.setEnabled(true);
-            bezDatuakErakutsiTaula(BezeroaKudeatu.bezeroGuztiakErakutsi());
+            bezInfoCtr.bezDatuakErakutsiTaula(viewBezeroaInfo.jTableBezeroaInfo, BezeroaKudeatu.bezeroGuztiakErakutsi());
         }
     }
  

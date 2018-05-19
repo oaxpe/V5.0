@@ -15,11 +15,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -38,7 +34,6 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public hornGehituController(Hornitzailea horn, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraGehitu viewEskGehitu) {
@@ -71,45 +66,6 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
         viewHornitzaileaGehitu.jPanelGoiburua.setOpaque(false);
         viewHornitzaileaGehitu.jPanelHornDatuak.setOpaque(false);
     }
-
-    private void hornDatuakErakutsiTaula(ArrayList<Hornitzailea> hornGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewHornitzaileaInfo.jTableHornitzaileaInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("IZENA");
-        model.addColumn("HERRIA");
-        model.addColumn("TELEFONOA");
-        model.addColumn("EMAILA");
-        
-        for (int i=0; i<hornGuzt.size(); i++) {
-            Hornitzailea horn = hornGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(horn.getKodHor(), i, 0);
-            model.setValueAt(horn.getIzena(), i, 1);
-            model.setValueAt(horn.getHerria(), i, 2);
-            model.setValueAt(horn.getTelefonoa(), i, 3);
-            model.setValueAt(horn.getEmail(), i, 4);
-        }
-    }
-    
-    private void hornitzaileaKargatu(JComboBox comboBox) {
-        ArrayList<Hornitzailea> hornGuzt = HornitzaileaKudeatu.hornitzaileGuztiakErakutsi(); // hornitzaile objetua gorde
-        ArrayList<String> alHonritzaileIzenak = new ArrayList(); // horn izena bakarrik gordeko da
-        for (Hornitzailea horn : hornGuzt) { // izena alHornitzaileIzenak-en gorde
-            alHonritzaileIzenak.add(horn.getIzena());
-        }
-        comboBox.addItem("--- Aukeratu ---");
-        for (int i = 0; i < alHonritzaileIzenak.size(); i++) { // izenak comboBox-ean gorde
-            comboBox.addItem(alHonritzaileIzenak.get(i));
-        }
-    }
  
     private void resetHornitzaileaGehitu() {
         viewHornitzaileaGehitu.jTextFieldIzena.setText(null);
@@ -127,6 +83,10 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        hornInfoController hornInfoCtr = new hornInfoController();
+        
         /* HornitzaileaGehituko aukerak */
         if (comando == viewHornitzaileaGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewHornitzaileaGehitu.jPanelHornDatuak, true);
@@ -140,7 +100,7 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
                 ctr.enableComponents(viewHornitzaileaGehitu.jPanelHornDatuak, false);
                 // Hornitzaileak aktualizatu
                 viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
+                ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
             }
             else
                 JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
@@ -152,7 +112,7 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
             resetHornitzaileaGehitu();
             viewHornitzaileaGehitu.dispose();
             viewHornitzaileaInfo.setEnabled(true);
-            hornDatuakErakutsiTaula(HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
+            hornInfoCtr.hornDatuakErakutsiTaula(viewHornitzaileaInfo.jTableHornitzaileaInfo, HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
         }
     }
 

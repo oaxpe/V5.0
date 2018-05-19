@@ -15,10 +15,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import javax.swing.BorderFactory;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
@@ -36,7 +33,6 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
     private PrakaGehitu viewPrakaGehitu;
     
     private Color urdina = new Color(0,0,153);
-    Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public prakGehituController(Praka prak, ProduktuaAukeratu viewProdAuk, PrakaGehitu viewPrakGehitu) {
@@ -76,43 +72,6 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
         viewPrakaGehitu.jPanelGoiburua.setOpaque(false);
         viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
     }
-    
-    private void prakDatuakErakutsiTaula(ArrayList<Praka> prakGuzt) {
-        DefaultTableModel model = new DefaultTableModel() {
-            /* Datuak taulan ez editatzeko */
-            @Override
-            public boolean isCellEditable(int rowIndex,int columnIndex){
-                return false;
-            } 
-        };
-        viewProduktuaAukeratu.jTablePrakInfo.setModel(model);
-        model.addColumn("KODEA");
-        model.addColumn("MARKA");
-        model.addColumn("PREZIOA");
-        model.addColumn("KOLOREA");
-        model.addColumn("SEXUA");
-        model.addColumn("STOCK kantitatea");
-        model.addColumn("TAILA");
-        model.addColumn("SASOIA");
-        model.addColumn("LUZEERA");
-        model.addColumn("MOTA");
-        
-        for (int i=0; i<prakGuzt.size(); i++) {
-            Praka prak = prakGuzt.get(i);
-            Array[] os = null;
-            model.addRow(os);
-            model.setValueAt(prak.getKodPro(), i, 0);
-            model.setValueAt(prak.getMarka(), i, 1);
-            model.setValueAt(prak.getPrezioa(), i, 2);
-            model.setValueAt(prak.getKolorea(), i, 3);
-            model.setValueAt(prak.getSexua(), i, 4);
-            model.setValueAt(prak.getKantStock(), i, 5);
-            model.setValueAt(prak.getTaila(), i, 6);
-            model.setValueAt(prak.getSasoia(), i, 7);
-            model.setValueAt(prak.getLuzeera(), i, 8);
-            model.setValueAt(prak.getMota(), i, 9);
-        }
-    }
 
     private void resetPrakaGehitu() {
         viewPrakaGehitu.jTextFieldKodePrak.setText(null);
@@ -142,6 +101,10 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
     @Override
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
+        /* instantzia berriak, bertako metodoak erabiltzeko */
+        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
+        prodAukController prodAukCtr = new prodAukController();
+        
         /* PrakaGehitu-ko aukerak */
         if (comando == viewPrakaGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewPrakaGehitu.jPanelPrakDatuak, true);
@@ -167,7 +130,7 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
             resetPrakaGehitu();
             viewPrakaGehitu.dispose();
             viewProduktuaAukeratu.setEnabled(true);
-            prakDatuakErakutsiTaula(PrakaKudeatu.prakaGutztErakutsi());
+            prodAukCtr.prakDatuakErakutsiTaula(viewProduktuaAukeratu.jTablePrakInfo, PrakaKudeatu.prakaGutztErakutsi());
         }
     }
              
