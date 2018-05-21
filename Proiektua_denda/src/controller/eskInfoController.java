@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -159,15 +160,39 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewEskaeraInfo.jButtonIrten)
-            viewEskaeraInfo.jButtonIrten.setBackground(new Color (0,0,51));  
+        if (comando == viewEskaeraInfo.jButtonIrten) {
+            viewEskaeraInfo.jButtonIrten.setBackground(new Color (0,0,51));
+            viewEskaeraInfo.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewEskaeraInfo.jButtonAldaketaEzabatu)
+            viewEskaeraInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonAldaketaGorde)
+            viewEskaeraInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonAldatu)
+            viewEskaeraInfo.jButtonAldatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonEzabatu)
+            viewEskaeraInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonGehitu)
+            viewEskaeraInfo.jButtonGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewEskaeraInfo.jButtonIrten)
+        if (comando == viewEskaeraInfo.jButtonIrten) {
             viewEskaeraInfo.jButtonIrten.setBackground(urdina);  
+            viewEskaeraInfo.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewEskaeraInfo.jButtonAldaketaEzabatu)
+            viewEskaeraInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonAldaketaGorde)
+            viewEskaeraInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonAldatu)
+            viewEskaeraInfo.jButtonAldatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonEzabatu)
+            viewEskaeraInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewEskaeraInfo.jButtonGehitu)
+            viewEskaeraInfo.jButtonGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
     @Override

@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -162,15 +163,38 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewLangileaInfo.jButtonIrten)
+        if (comando == viewLangileaInfo.jButtonIrten) {
             viewLangileaInfo.jButtonIrten.setBackground(new Color (0,0,51));
+            viewLangileaInfo.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewLangileaInfo.jButtonAldaketaEzabatu)
+            viewLangileaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonAldaketaGorde)
+            viewLangileaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonAldatu)
+            viewLangileaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonEzabatu)
+            viewLangileaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonGehitu)
+            viewLangileaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewLangileaInfo.jButtonIrten)
+        if (comando == viewLangileaInfo.jButtonIrten) {
             viewLangileaInfo.jButtonIrten.setBackground(urdina);
+        }
+        else if (comando == viewLangileaInfo.jButtonAldaketaEzabatu)
+            viewLangileaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonAldaketaGorde)
+            viewLangileaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonAldatu)
+            viewLangileaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonEzabatu)
+            viewLangileaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewLangileaInfo.jButtonGehitu)
+            viewLangileaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
     @Override

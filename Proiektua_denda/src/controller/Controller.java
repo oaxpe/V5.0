@@ -241,20 +241,120 @@ public class Controller {
         viewProduktuaAukeratu.jPanelPrak.addAncestorListener(prodAukCtr);
                 
         /* MouseListener */
+        // MenuNagusia
+        viewMenuNagusia.jButtonIrten.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonDenda.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonBezeroa.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonLangilea.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonProduktua.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonHornitzailea.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonEskaera.addMouseListener(menuNagCtr);
+        
+        // DendaInfo
         viewDendaInfo.jButtonIrten.addMouseListener(dendInfoCtr);
+        viewDendaInfo.jButtonAldaketaEzabatu.addMouseListener(dendInfoCtr);
+        viewDendaInfo.jButtonAldaketaGorde.addMouseListener(dendInfoCtr);
+        viewDendaInfo.jButtonAldatu.addMouseListener(dendInfoCtr);
+        viewDendaInfo.jButtonEzabatu.addMouseListener(dendInfoCtr);
+        viewDendaInfo.jButtonGehitu.addMouseListener(dendInfoCtr);
+        
+        // DendaGehitu
         viewDendaGehitu.jButtonIrten.addMouseListener(dendGehituCtr);
+        viewDendaGehitu.jButtonBerriaGehitu.addMouseListener(dendGehituCtr);
+        viewDendaGehitu.jButtonGorde.addMouseListener(dendGehituCtr);
+        viewDendaGehitu.jButtonReset.addMouseListener(dendGehituCtr);
+        
+        // BezeroaInfo
         viewBezeroaInfo.jButtonIrten.addMouseListener(bezInfoCtr);
+        viewBezeroaInfo.jButtonAldaketaEzabatu.addMouseListener(bezInfoCtr);
+        viewBezeroaInfo.jButtonAldaketaGorde.addMouseListener(bezInfoCtr);
+        viewBezeroaInfo.jButtonAldatu.addMouseListener(bezInfoCtr);
+        viewBezeroaInfo.jButtonEzabatu.addMouseListener(bezInfoCtr);
+        viewBezeroaInfo.jButtonGehitu.addMouseListener(bezInfoCtr);
+        
+        // BezeroaGehitu
         viewBezeroaGehitu.jButtonIrten.addMouseListener(bezGehituCtr);
+        viewBezeroaGehitu.jButtonBerriaGehitu.addMouseListener(bezGehituCtr);
+        viewBezeroaGehitu.jButtonGorde.addMouseListener(bezGehituCtr);
+        viewBezeroaGehitu.jButtonReset.addMouseListener(bezGehituCtr);
+        
+        // LangileaInfo
         viewLangileaInfo.jButtonIrten.addMouseListener(langInfoCtr);
+        viewLangileaInfo.jButtonAldaketaEzabatu.addMouseListener(langInfoCtr);
+        viewLangileaInfo.jButtonAldaketaGorde.addMouseListener(langInfoCtr);
+        viewLangileaInfo.jButtonAldatu.addMouseListener(langInfoCtr);
+        viewLangileaInfo.jButtonEzabatu.addMouseListener(langInfoCtr);
+        viewLangileaInfo.jButtonGehitu.addMouseListener(langInfoCtr);
+        
+        // LangileaGehitu
         viewLangileaGehitu.jButtonIrten.addMouseListener(langGehituCtr);
+        viewLangileaGehitu.jButtonBerriaGehitu.addMouseListener(langGehituCtr);
+        viewLangileaGehitu.jButtonGorde.addMouseListener(langGehituCtr);
+        viewLangileaGehitu.jButtonReset.addMouseListener(langGehituCtr);
+        
+        // ProduktuaAukeratu (jerts, kami, prak info)
         viewProduktuaAukeratu.jButtonIrten.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldaketaGordeJerts.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldatuJerts.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonEzabatuJerts.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonGehituJerts.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuKami.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldaketaGordeKami.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldatuKami.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonEzabatuKami.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonGehituKami.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldaketaGordePrak.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonAldatuPrak.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonEzabatuPrak.addMouseListener(prodAukCtr);
+        viewProduktuaAukeratu.jButtonGehituPrak.addMouseListener(prodAukCtr);
+        
+        // JertseaGehitu
         viewJertseaGehitu.jButtonIrten.addMouseListener(jertsGehituCtr);
+        viewJertseaGehitu.jButtonBerriaGehitu.addMouseListener(jertsGehituCtr);
+        viewJertseaGehitu.jButtonGorde.addMouseListener(jertsGehituCtr);
+        viewJertseaGehitu.jButtonReset.addMouseListener(jertsGehituCtr);
+        
+        // KamisetaGehitu
         viewKamisetaGehitu.jButtonIrten.addMouseListener(kamiGehituCtr);
+        viewKamisetaGehitu.jButtonBerriaGehitu.addMouseListener(kamiGehituCtr);
+        viewKamisetaGehitu.jButtonGorde.addMouseListener(kamiGehituCtr);
+        viewKamisetaGehitu.jButtonReset.addMouseListener(kamiGehituCtr);
+        
+        // PrakaGehitu
         viewPrakaGehitu.jButtonIrten.addMouseListener(prakGehituCtr);
+        viewPrakaGehitu.jButtonBerriaGehitu.addMouseListener(prakGehituCtr);
+        viewPrakaGehitu.jButtonGorde.addMouseListener(prakGehituCtr);
+        viewPrakaGehitu.jButtonReset.addMouseListener(prakGehituCtr);
+        
+        // HornitzaileaInfo
         viewHornitzaileaInfo.jButtonIrten.addMouseListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonAldaketaEzabatu.addMouseListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonAldaketaGorde.addMouseListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonAldatu.addMouseListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonEzabatu.addMouseListener(hornInfoCtr);
+        viewHornitzaileaInfo.jButtonGehitu.addMouseListener(hornInfoCtr);
+        
+        // HornitzaileaGehitu
         viewHornitzaileaGehitu.jButtonIrten.addMouseListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jButtonBerriaGehitu.addMouseListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jButtonGorde.addMouseListener(hornGehituCtr);
+        viewHornitzaileaGehitu.jButtonReset.addMouseListener(hornGehituCtr);
+        
+        // EskaeraInfo
         viewEskaeraInfo.jButtonIrten.addMouseListener(eskInfoCtr);
+        viewEskaeraInfo.jButtonAldaketaEzabatu.addMouseListener(eskInfoCtr);
+        viewEskaeraInfo.jButtonAldaketaGorde.addMouseListener(eskInfoCtr);
+        viewEskaeraInfo.jButtonAldatu.addMouseListener(eskInfoCtr);
+        viewEskaeraInfo.jButtonEzabatu.addMouseListener(eskInfoCtr);
+        viewEskaeraInfo.jButtonGehitu.addMouseListener(eskInfoCtr);
+        
+        // EskaeraGehitu
         viewEskaeraGehitu.jButtonIrten.addMouseListener(eskGehituCtr);
+        viewEskaeraGehitu.jButtonBerriaGehitu.addMouseListener(eskGehituCtr);
+        viewEskaeraGehitu.jButtonGorde.addMouseListener(eskGehituCtr);
+        viewEskaeraGehitu.jButtonReset.addMouseListener(eskGehituCtr);
         
         /* ListSelectionListener */
         viewDendaInfo.jTableDendaInfo.getSelectionModel().addListSelectionListener(dendInfoCtr);

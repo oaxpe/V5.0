@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -99,15 +100,31 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewHornitzaileaGehitu.jButtonIrten)
-            viewHornitzaileaGehitu.jButtonIrten.setBackground(new Color (0,0,51));  
+        if (comando == viewHornitzaileaGehitu.jButtonIrten) {
+            viewHornitzaileaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
+            viewHornitzaileaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewHornitzaileaGehitu.jButtonBerriaGehitu)
+            viewHornitzaileaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewHornitzaileaGehitu.jButtonGorde)
+            viewHornitzaileaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewHornitzaileaGehitu.jButtonReset)
+            viewHornitzaileaGehitu.jButtonReset.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewHornitzaileaGehitu.jButtonIrten)
-            viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);  
+        if (comando == viewHornitzaileaGehitu.jButtonIrten) {
+            viewHornitzaileaGehitu.jButtonIrten.setBackground(urdina);
+            viewHornitzaileaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewHornitzaileaGehitu.jButtonBerriaGehitu)
+            viewHornitzaileaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewHornitzaileaGehitu.jButtonGorde)
+            viewHornitzaileaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewHornitzaileaGehitu.jButtonReset)
+            viewHornitzaileaGehitu.jButtonReset.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }   
 
     @Override

@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -97,15 +98,31 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewPrakaGehitu.jButtonIrten)
-            viewPrakaGehitu.jButtonIrten.setBackground(new Color (0,0,51));  
+        if (comando == viewPrakaGehitu.jButtonIrten) {
+            viewPrakaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
+            viewPrakaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewPrakaGehitu.jButtonBerriaGehitu)
+            viewPrakaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewPrakaGehitu.jButtonGorde)
+            viewPrakaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewPrakaGehitu.jButtonReset)
+            viewPrakaGehitu.jButtonReset.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewPrakaGehitu.jButtonIrten)
-            viewPrakaGehitu.jButtonIrten.setBackground(urdina);  
+        if (comando == viewPrakaGehitu.jButtonIrten) {
+            viewPrakaGehitu.jButtonIrten.setBackground(urdina);
+            viewPrakaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewPrakaGehitu.jButtonBerriaGehitu)
+            viewPrakaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewPrakaGehitu.jButtonGorde)
+            viewPrakaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewPrakaGehitu.jButtonReset)
+            viewPrakaGehitu.jButtonReset.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 
     @Override

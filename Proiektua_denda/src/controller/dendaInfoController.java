@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -150,15 +151,39 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewDendaInfo.jButtonIrten)
+        if (comando == viewDendaInfo.jButtonIrten){
             viewDendaInfo.jButtonIrten.setBackground(new Color (0,0,51));
+            viewDendaInfo.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewDendaInfo.jButtonAldaketaEzabatu)
+            viewDendaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewDendaInfo.jButtonAldaketaGorde)
+            viewDendaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewDendaInfo.jButtonAldatu)
+            viewDendaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewDendaInfo.jButtonEzabatu)
+            viewDendaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewDendaInfo.jButtonGehitu)
+            viewDendaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewDendaInfo.jButtonIrten)
+        if (comando == viewDendaInfo.jButtonIrten) {
             viewDendaInfo.jButtonIrten.setBackground(urdina);
+            viewDendaInfo.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewDendaInfo.jButtonAldaketaEzabatu)
+            viewDendaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewDendaInfo.jButtonAldaketaGorde)
+            viewDendaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewDendaInfo.jButtonAldatu)
+            viewDendaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewDendaInfo.jButtonEzabatu)
+            viewDendaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewDendaInfo.jButtonGehitu)
+            viewDendaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
     @Override

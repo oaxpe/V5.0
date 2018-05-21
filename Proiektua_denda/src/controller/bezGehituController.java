@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -102,15 +103,32 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if ( comando == viewBezeroaGehitu.jButtonIrten)
+        if ( comando == viewBezeroaGehitu.jButtonIrten) {
             viewBezeroaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
+            viewBezeroaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewBezeroaGehitu.jButtonBerriaGehitu)
+            viewBezeroaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewBezeroaGehitu.jButtonGorde)
+            viewBezeroaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewBezeroaGehitu.jButtonReset)
+            viewBezeroaGehitu.jButtonReset.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if ( comando == viewBezeroaGehitu.jButtonIrten)
+        if ( comando == viewBezeroaGehitu.jButtonIrten) {
             viewBezeroaGehitu.jButtonIrten.setBackground(urdina);
+            viewBezeroaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewBezeroaGehitu.jButtonBerriaGehitu)
+            viewBezeroaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewBezeroaGehitu.jButtonGorde)
+            viewBezeroaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewBezeroaGehitu.jButtonReset)
+            viewBezeroaGehitu.jButtonReset.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 
     @Override

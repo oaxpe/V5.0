@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -101,15 +102,31 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewDendaGehitu.jButtonIrten)
+        if (comando == viewDendaGehitu.jButtonIrten) {
             viewDendaGehitu.jButtonIrten.setBackground(new Color (0,0,51));
+            viewDendaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewDendaGehitu.jButtonBerriaGehitu)
+            viewDendaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewDendaGehitu.jButtonGorde)
+            viewDendaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewDendaGehitu.jButtonReset)
+            viewDendaGehitu.jButtonReset.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewDendaGehitu.jButtonIrten)
+        if (comando == viewDendaGehitu.jButtonIrten) {
             viewDendaGehitu.jButtonIrten.setBackground(urdina);
+            viewDendaGehitu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewDendaGehitu.jButtonBerriaGehitu)
+            viewDendaGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewDendaGehitu.jButtonGorde)
+            viewDendaGehitu.jButtonGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewDendaGehitu.jButtonReset)
+            viewDendaGehitu.jButtonReset.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 
 

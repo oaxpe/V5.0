@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -364,15 +365,85 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewProduktuaAukeratu.jButtonIrten)
-            viewProduktuaAukeratu.jButtonIrten.setBackground(new Color (0,0,51));  
+        if (comando == viewProduktuaAukeratu.jButtonIrten) {
+            viewProduktuaAukeratu.jButtonIrten.setBackground(new Color (0,0,51));
+            viewProduktuaAukeratu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        // JertseaInfo
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts)
+            viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordeJerts)
+            viewProduktuaAukeratu.jButtonAldaketaGordeJerts.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuJerts)
+            viewProduktuaAukeratu.jButtonAldatuJerts.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts)
+            viewProduktuaAukeratu.jButtonEzabatuJerts.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonGehituJerts)
+            viewProduktuaAukeratu.jButtonGehituJerts.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        // KamisetaInfo
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuKami)
+            viewProduktuaAukeratu.jButtonAldaketaEzabatuKami.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordeKami)
+            viewProduktuaAukeratu.jButtonAldaketaGordeKami.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuKami)
+            viewProduktuaAukeratu.jButtonAldatuKami.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami)
+            viewProduktuaAukeratu.jButtonEzabatuKami.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonGehituKami)
+            viewProduktuaAukeratu.jButtonGehituKami.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        // PrakaInfo
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak)
+            viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordePrak)
+            viewProduktuaAukeratu.jButtonAldaketaGordePrak.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuPrak)
+            viewProduktuaAukeratu.jButtonAldatuPrak.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak)
+            viewProduktuaAukeratu.jButtonEzabatuPrak.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonGehituPrak)
+            viewProduktuaAukeratu.jButtonGehituPrak.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewProduktuaAukeratu.jButtonIrten)
+        if (comando == viewProduktuaAukeratu.jButtonIrten) {
             viewProduktuaAukeratu.jButtonIrten.setBackground(urdina);
+            viewProduktuaAukeratu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        // JertseaInfo
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts)
+            viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordeJerts)
+            viewProduktuaAukeratu.jButtonAldaketaGordeJerts.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuJerts)
+            viewProduktuaAukeratu.jButtonAldatuJerts.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonEzabatuJerts)
+            viewProduktuaAukeratu.jButtonEzabatuJerts.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonGehituJerts)
+            viewProduktuaAukeratu.jButtonGehituJerts.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        // KamisetaInfo
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuKami)
+            viewProduktuaAukeratu.jButtonAldaketaEzabatuKami.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordeKami)
+            viewProduktuaAukeratu.jButtonAldaketaGordeKami.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuKami)
+            viewProduktuaAukeratu.jButtonAldatuKami.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonEzabatuKami)
+            viewProduktuaAukeratu.jButtonEzabatuKami.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonGehituKami)
+            viewProduktuaAukeratu.jButtonGehituKami.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        // PrakaInfo
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak)
+            viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldaketaGordePrak)
+            viewProduktuaAukeratu.jButtonAldaketaGordePrak.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonAldatuPrak)
+            viewProduktuaAukeratu.jButtonAldatuPrak.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonEzabatuPrak)
+            viewProduktuaAukeratu.jButtonEzabatuPrak.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProduktuaAukeratu.jButtonGehituPrak)
+            viewProduktuaAukeratu.jButtonGehituPrak.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
     @Override

@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -160,15 +161,39 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewBezeroaInfo.jButtonIrten)
+        if (comando == viewBezeroaInfo.jButtonIrten) {
             viewBezeroaInfo.jButtonIrten.setBackground(new Color (0,0,51));
+            viewBezeroaInfo.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewBezeroaInfo.jButtonAldaketaEzabatu)
+            viewBezeroaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonAldaketaGorde)
+            viewBezeroaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonAldatu)
+            viewBezeroaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonEzabatu)
+            viewBezeroaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonGehitu)
+            viewBezeroaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewBezeroaInfo.jButtonIrten)
+        if (comando == viewBezeroaInfo.jButtonIrten) {
             viewBezeroaInfo.jButtonIrten.setBackground(urdina);
+            viewBezeroaInfo.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewBezeroaInfo.jButtonAldaketaEzabatu)
+            viewBezeroaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonAldaketaGorde)
+            viewBezeroaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonAldatu)
+            viewBezeroaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonEzabatu)
+            viewBezeroaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewBezeroaInfo.jButtonGehitu)
+            viewBezeroaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR)); 
     }
     
     @Override

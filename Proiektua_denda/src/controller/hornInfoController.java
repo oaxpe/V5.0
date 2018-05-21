@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -160,15 +161,39 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource(); 
-        if (comando == viewHornitzaileaInfo.jButtonIrten)
+        if (comando == viewHornitzaileaInfo.jButtonIrten) {
             viewHornitzaileaInfo.jButtonIrten.setBackground(new Color (0,0,51));   
+            viewHornitzaileaInfo.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewHornitzaileaInfo.jButtonAldaketaEzabatu)
+            viewHornitzaileaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonAldaketaGorde)
+            viewHornitzaileaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonAldatu)
+            viewHornitzaileaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonEzabatu)
+            viewHornitzaileaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonGehitu)
+            viewHornitzaileaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));    
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewHornitzaileaInfo.jButtonIrten)
-            viewHornitzaileaInfo.jButtonIrten.setBackground(urdina);  
+        if (comando == viewHornitzaileaInfo.jButtonIrten) {
+            viewHornitzaileaInfo.jButtonIrten.setBackground(urdina); 
+            viewHornitzaileaInfo.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewHornitzaileaInfo.jButtonAldaketaEzabatu)
+            viewHornitzaileaInfo.jButtonAldaketaEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonAldaketaGorde)
+            viewHornitzaileaInfo.jButtonAldaketaGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonAldatu)
+            viewHornitzaileaInfo.jButtonAldatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonEzabatu)
+            viewHornitzaileaInfo.jButtonEzabatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewHornitzaileaInfo.jButtonGehitu)
+            viewHornitzaileaInfo.jButtonGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));    
     }
     
     @Override

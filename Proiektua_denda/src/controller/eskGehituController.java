@@ -9,6 +9,7 @@ import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -94,15 +95,31 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewEskaeraGehitu.jButtonIrten)
+        if (comando == viewEskaeraGehitu.jButtonIrten) {
             viewEskaeraGehitu.jButtonIrten.setBackground(new Color (0,0,51));  
+            viewEskaeraGehitu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
+        else if (comando == viewEskaeraGehitu.jButtonBerriaGehitu)
+            viewEskaeraGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewEskaeraGehitu.jButtonGorde)
+            viewEskaeraGehitu.jButtonGorde.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewEskaeraGehitu.jButtonReset)
+            viewEskaeraGehitu.jButtonReset.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         Object comando = e.getSource();
-        if (comando == viewEskaeraGehitu.jButtonIrten)
+        if (comando == viewEskaeraGehitu.jButtonIrten) {
             viewEskaeraGehitu.jButtonIrten.setBackground(urdina);
+            viewEskaeraGehitu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewEskaeraGehitu.jButtonBerriaGehitu)
+            viewEskaeraGehitu.jButtonBerriaGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewEskaeraGehitu.jButtonGorde)
+            viewEskaeraGehitu.jButtonGorde.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewEskaeraGehitu.jButtonReset)
+            viewEskaeraGehitu.jButtonReset.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
     @Override

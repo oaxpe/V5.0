@@ -8,8 +8,11 @@ package controller;
 import view.*; // bista guztiak importatu
 import gestioa.*;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
@@ -17,7 +20,7 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
  * @author Oihane Axpe
  * @version 4.0
  */
-public class menuNagController implements ActionListener{
+public class menuNagController implements ActionListener, MouseListener{
     /* Bistak */
     private MenuNagusia viewMenuNagusia; 
     private DendaInfo viewDendaInfo;
@@ -112,5 +115,58 @@ public class menuNagController implements ActionListener{
         viewMenuNagusia.jButtonProduktua.setToolTipText("Produktuak");
         viewMenuNagusia.jButtonHornitzailea.setToolTipText("Hornitzailea");
         viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        Object comando = e.getSource();
+        if (comando == viewMenuNagusia.jButtonIrten)
+            viewMenuNagusia.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonDenda)
+            viewMenuNagusia.jButtonDenda.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonBezeroa)
+            viewMenuNagusia.jButtonBezeroa.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonLangilea)
+            viewMenuNagusia.jButtonLangilea.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonProduktua)
+            viewMenuNagusia.jButtonProduktua.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonHornitzailea)
+            viewMenuNagusia.jButtonHornitzailea.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonEskaera)
+            viewMenuNagusia.jButtonEskaera.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        Object comando = e.getSource();
+        if (comando == viewMenuNagusia.jButtonIrten)
+            viewMenuNagusia.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonDenda)
+            viewMenuNagusia.jButtonDenda.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonBezeroa)
+            viewMenuNagusia.jButtonBezeroa.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonLangilea)
+            viewMenuNagusia.jButtonLangilea.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonProduktua)
+            viewMenuNagusia.jButtonProduktua.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonHornitzailea)
+            viewMenuNagusia.jButtonHornitzailea.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewMenuNagusia.jButtonEskaera)
+            viewMenuNagusia.jButtonEskaera.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
 }
