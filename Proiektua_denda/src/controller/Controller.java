@@ -249,6 +249,9 @@ public class Controller {
         viewMenuNagusia.jButtonProduktua.addMouseListener(menuNagCtr);
         viewMenuNagusia.jButtonHornitzailea.addMouseListener(menuNagCtr);
         viewMenuNagusia.jButtonEskaera.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonInbentarioa.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonEskatzeko.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonKontsulta.addMouseListener(menuNagCtr);
         
         // DendaInfo
         viewDendaInfo.jButtonIrten.addMouseListener(dendInfoCtr);
