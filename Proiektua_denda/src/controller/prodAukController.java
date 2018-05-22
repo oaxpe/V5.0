@@ -29,8 +29,6 @@ import javax.swing.ListSelectionModel;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -39,7 +37,7 @@ import javax.swing.event.ListSelectionListener;
  * @author Oihane Axpe
  * @version 4.0
  */
-public class prodAukController implements ActionListener, MouseListener, AncestorListener, ListSelectionListener, ListDataListener, FocusListener, KeyListener {
+public class prodAukController implements ActionListener, MouseListener, AncestorListener, ListSelectionListener, FocusListener, KeyListener {
     /* Model */
     private Jertsea jertsea;
     private Kamiseta kamiseta;
@@ -297,19 +295,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
             }
         }
         else if (comando == viewProduktuaAukeratu.jButtonIrten) {
-            viewProduktuaAukeratu.jToggleButtonEzkutatu.setSelected(true);
-            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, false);
-            ctr.enableComponents(viewProduktuaAukeratu.jPanelAukerak, false);
             viewProduktuaAukeratu.dispose();
             viewMenuNagusia.setEnabled(true);
-        }
-        else if (viewProduktuaAukeratu.jToggleButtonErakutsi.isSelected()) {
-            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, true);
-        }
-        else if (viewProduktuaAukeratu.jToggleButtonEzkutatu.isSelected()) {
-            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, false);
-            ctr.enableComponents(viewProduktuaAukeratu.jPanelAukerak, false);
-            viewProduktuaAukeratu.jComboBoxAukeratuProd.setSelectedIndex(0);
         }
     }
             
@@ -317,15 +304,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     public void ancestorAdded(AncestorEvent event) {
         Object comando = event.getSource();
         if (comando == viewProduktuaAukeratu.jPanelJerts) {
-            if (viewProduktuaAukeratu.jToggleButtonEzkutatu.isSelected()) {
-                ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
-                jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
-            }
-            else {
-                if (viewProduktuaAukeratu.jComboBoxAukeratuProd.getSelectedItem() == "Inbentarioa") {
-                    jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertseaInbentarioa());
-                }
-            }
+            ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
+            jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
         }
         else if (comando == viewProduktuaAukeratu.jPanelKami) {
             ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, false);
@@ -365,6 +345,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     @Override
     public void mouseEntered(MouseEvent e) {
         Object comando = e.getSource();
+        
         if (comando == viewProduktuaAukeratu.jButtonIrten) {
             viewProduktuaAukeratu.jButtonIrten.setBackground(new Color (0,0,51));
             viewProduktuaAukeratu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
@@ -448,6 +429,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        Color urdinArgia = new Color(102,153,255); // xagua gainetik pasatzen denean jarriko den kolorea
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
         if (lsm == viewProduktuaAukeratu.jTableJertsInfo.getSelectionModel()) {
@@ -455,7 +437,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 resetJerts();
             }
             else {
-                viewProduktuaAukeratu.jTableJertsInfo.setSelectionBackground(urdina);
+                viewProduktuaAukeratu.jTableJertsInfo.setSelectionBackground(urdinArgia);
                 viewProduktuaAukeratu.jTableJertsInfo.setSelectionForeground(Color.WHITE);
                 aukJertsDatuakBete(viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow());
             }
@@ -465,7 +447,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 resetKami();
             }
             else {
-                viewProduktuaAukeratu.jTableKamiInfo.setSelectionBackground(urdina);
+                viewProduktuaAukeratu.jTableKamiInfo.setSelectionBackground(urdinArgia);
                 viewProduktuaAukeratu.jTableKamiInfo.setSelectionForeground(Color.WHITE);
                 aukKamiDatuakBete(viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow());
             }
@@ -475,31 +457,10 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 resetPrak();
             }
             else {
-                viewProduktuaAukeratu.jTablePrakInfo.setSelectionBackground(urdina);
+                viewProduktuaAukeratu.jTablePrakInfo.setSelectionBackground(urdinArgia);
                 viewProduktuaAukeratu.jTablePrakInfo.setSelectionForeground(Color.WHITE);
                 aukPrakDatuakBete(viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow());
             }
-        }
-    }
-
-    @Override
-    public void intervalAdded(ListDataEvent e) {
-        
-    }
-
-    @Override
-    public void intervalRemoved(ListDataEvent e) {
-        
-    }
-
-    @Override
-    public void contentsChanged(ListDataEvent e) {
-        Object comando = e.getSource();
-        if (viewProduktuaAukeratu.jComboBoxAukeratuProd.getSelectedItem() == "Inbentarioa") {
-            jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertseaInbentarioa());
-        }
-        if (viewProduktuaAukeratu.jComboBoxAukeratuProd.getSelectedItem() == "Eskatzeko dauden produktuak") {
-            jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertseaEskatzeko());
         }
     }
 
@@ -645,11 +606,14 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     }
     
     /* METODOAK */
+    /* ProdInfo bistaren estiloa definitzen da */
     private void prodInfoEstiloa() {
         viewProduktuaAukeratu.setTitle("Produktuen informazioa");
         viewProduktuaAukeratu.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         viewProduktuaAukeratu.setLocationRelativeTo(null);
         viewProduktuaAukeratu.jTabbedPaneProd.setTabPlacement(JTabbedPane.TOP);
+        
+        /* Irten botoiaren estiloa */
         viewProduktuaAukeratu.jButtonIrten.setBackground(urdina);
         viewProduktuaAukeratu.jButtonIrten.setForeground(Color.WHITE);
         
@@ -715,18 +679,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.setToolTipText("Ezeztatu");
         viewProduktuaAukeratu.jButtonAldaketaGordePrak.setToolTipText("Gorde");
 
-        /* Aukerak */
-        viewProduktuaAukeratu.jTextFieldKodeProd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        viewProduktuaAukeratu.jToggleButtonEzkutatu.setSelected(true);
-        viewProduktuaAukeratu.jTextFieldKodeProd.setOpaque(false);
-        viewProduktuaAukeratu.jRadioButtonJertsea.setOpaque(false);
-        viewProduktuaAukeratu.jRadioButtonKamiseta.setOpaque(false);
-        viewProduktuaAukeratu.jRadioButtonPraka.setOpaque(false);
-        
         /* Fondo txuria jarri */
         viewProduktuaAukeratu.jPanelOsoa.setBackground(Color.WHITE);
-        viewProduktuaAukeratu.jPanelGoiburua.setOpaque(false);
-        viewProduktuaAukeratu.jPanelAukerak.setOpaque(false);
         viewProduktuaAukeratu.jTabbedPaneProd.setOpaque(false);
         viewProduktuaAukeratu.jPanelJerts.setBackground(Color.WHITE);
         viewProduktuaAukeratu.jPanelJertsGoiburua.setOpaque(false);
@@ -747,7 +701,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         viewProduktuaAukeratu.jPanelPrakInfoTaula.setOpaque(false);
         viewProduktuaAukeratu.jPanelPrakBotoiak.setOpaque(false); 
         
-        // tauletako estiloa
+        /* Tauletako estiloa */
         viewProduktuaAukeratu.jTableJertsInfo.setShowGrid(false);
         viewProduktuaAukeratu.jTableJertsInfo.setShowHorizontalLines(true);
         viewProduktuaAukeratu.jTableKamiInfo.setShowGrid(false);
@@ -761,6 +715,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         viewProduktuaAukeratu.jTextFieldKodePrak.setEditable(false);
     }
 
+    /* Parametro bezala pasatzen zaion taulan, jertse guztiak gehitzeko metodoa */
     public void jertsDatuakErakutsiTaula(JTable taula, ArrayList<Jertsea> jertsGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
@@ -769,6 +724,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
@@ -792,6 +749,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
     }
     
+    /* Parametro bezala pasatzen zaion taulan, kamiseta guztiak gehitzeko metodoa */
     public void kamiDatuakErakutsiTaula(JTable taula, ArrayList<Kamiseta> kamiGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
@@ -800,6 +758,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");
@@ -825,6 +785,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
     }
     
+    /* Parametro bezala pasatzen zaion taulan, praka guztiak gehitzeko metodoa */
     public void prakDatuakErakutsiTaula(JTable taula, ArrayList<Praka> prakGuzt) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
@@ -833,6 +794,8 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("MARKA");

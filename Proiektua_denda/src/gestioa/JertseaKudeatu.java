@@ -122,7 +122,8 @@ public class JertseaKudeatu {
     }
     
     /* Jertse baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */
-    public static void jertseaKontsultatu(String kodea) {
+    public static ArrayList<Jertsea> jertseaKontsultatu(String kodea) {
+        ArrayList<Jertsea> jertsKonts = new ArrayList<Jertsea>();
         System.out.println();
         System.out.printf("%1$-15s    %2$-10s    %3$-10s    %4$-10s\n", "Kodea", "Kolorea", "Taila", "Kantitatea");
         boolean bool = false;
@@ -133,6 +134,7 @@ public class JertseaKudeatu {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
                 if (jerts.getKodPro().equals(kodea)) {
                     jerts.prodKontsultatu(); // objektuaren datuak erakutsi
+                    jertsKonts.add(jerts);
                     bool = true;
                 }
             }
@@ -145,6 +147,7 @@ public class JertseaKudeatu {
         } 
         if (!bool)
             System.out.println("Ez dago kode hori duen produkturik.");
+        return jertsKonts;
     }
     
     /* Dauden jertse guztiak erakusteko metodoa */

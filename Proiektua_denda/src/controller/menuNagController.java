@@ -15,8 +15,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import javax.swing.JButton;
+import javax.swing.JTable;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
+import javax.swing.table.DefaultTableModel;
+import model.Jertsea;
+import model.Kamiseta;
+import model.Praka;
 
 /**
  *
@@ -32,11 +39,15 @@ public class menuNagController implements ActionListener, MouseListener{
     private ProduktuaAukeratu viewProduktuaAukeratu;
     private HornitzaileaInfo viewHornitzaileaInfo;
     private EskaeraInfo viewEskaeraInfo;
+    private ProdInbEsk viewProdInbEsk;
+    private ProdKontsultatu viewProdKontsultatu;
+    
+    private Color urdina = new Color(0,0,153);
 
     /* ERAIKITZAILEA */   
     public menuNagController(DendaInfo viewDendInfo, BezeroaInfo viewBezInfo, 
             LangileaInfo viewLangInfo,  ProduktuaAukeratu viewProdAuk, 
-            HornitzaileaInfo viewHornInfo, EskaeraInfo viewEskInfo, MenuNagusia viewMenuNag) {
+            HornitzaileaInfo viewHornInfo, EskaeraInfo viewEskInfo, MenuNagusia viewMenuNag, ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts) {
         this.viewDendaInfo = viewDendInfo;
         this.viewBezeroaInfo = viewBezInfo;
         this.viewLangileaInfo = viewLangInfo;
@@ -44,6 +55,8 @@ public class menuNagController implements ActionListener, MouseListener{
         this.viewHornitzaileaInfo = viewHornInfo;
         this.viewEskaeraInfo = viewEskInfo;
         this.viewMenuNagusia = viewMenuNag;
+        this.viewProdInbEsk = viewProdInbEsk;
+        this.viewProdKontsultatu = viewProdKonts;
         menuNagEstiloa();
     }
 
@@ -69,13 +82,6 @@ public class menuNagController implements ActionListener, MouseListener{
             ctr.enableComponents(viewDendaInfo.jPanelDendDatuak, false);
             dendInfoCtr.dendDatuakErakutsiTaula(viewDendaInfo.jTableDendaInfo, DendaKudeatu.dendGuztiakErakutsi());
         }
-        else if (comando == viewMenuNagusia.jButtonProduktua) {
-            viewProduktuaAukeratu.setVisible(true);
-            viewMenuNagusia.setEnabled(false);
-            viewProduktuaAukeratu.jToggleButtonEzkutatu.setSelected(true);
-            ctr.enableComponents(viewProduktuaAukeratu.jPanelGoiburua, false);
-            ctr.enableComponents(viewProduktuaAukeratu.jPanelAukerak, false);
-        }
         else if (comando == viewMenuNagusia.jButtonBezeroa) {
             viewBezeroaInfo.setVisible(true);
             viewMenuNagusia.setEnabled(false);
@@ -100,42 +106,36 @@ public class menuNagController implements ActionListener, MouseListener{
             ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
             eskInfoCtr.eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
         }
-    }
-        
-    /* METODOAK */      
-    private void menuNagEstiloa() {
-        viewMenuNagusia.setTitle("ATENEA");
-        viewMenuNagusia.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        viewMenuNagusia.setLocationRelativeTo(null);
-        viewMenuNagusia.jPanelGoiburua.setBackground(new Color(0,0,153));
-        viewMenuNagusia.jPanelOina.setBackground(new Color(0,0,153));
-        viewMenuNagusia.jPanelGorputza.setBackground(Color.WHITE);
-        viewMenuNagusia.jButtonIrten.setBackground(Color.WHITE);
-        
-        viewMenuNagusia.jButtonDenda.setToolTipText("Denda");
-        viewMenuNagusia.jButtonBezeroa.setToolTipText("Bezeroa");
-        viewMenuNagusia.jButtonLangilea.setToolTipText("Langilea");
-        viewMenuNagusia.jButtonProduktua.setToolTipText("Produktuak");
-        viewMenuNagusia.jButtonHornitzailea.setToolTipText("Hornitzailea");
-        viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
-
-        botoienFormatoa(viewMenuNagusia.jPanelGorputza); // koloreak definitu
-    }
-    
-    private void botoienFormatoa (Container container) {
-        Component[] components = container.getComponents();
-        for (Component component : components) {
-            component.setBackground(Color.WHITE);
-            component.setForeground(Color.BLACK);
-            if (component instanceof JButton) {
-                ((JButton) component).setOpaque(true);
-                ((JButton) component).setIconTextGap(20); // Ikono eta textuaren arteko tartea definitu
-                ((JButton) component).setHorizontalAlignment(JButton.LEFT); // Botoi barrukoa ezkerrean alineatzeko
-                ((JButton) component).setBorderPainted(false);
-            }   
+        else if (comando == viewMenuNagusia.jButtonProduktua) {
+            viewProduktuaAukeratu.setVisible(true);
+            viewMenuNagusia.setEnabled(false);
+        }
+        else if (comando == viewMenuNagusia.jButtonInbentarioa) {
+            viewProdInbEsk.setVisible(true);
+            viewMenuNagusia.setEnabled(false);
+            viewProdInbEsk.jLabelProdKud.setText("PRODUKTUEN INBENTARIOA");
+            viewProdInbEsk.setTitle("Produktuen inbentarioa");
+            /* Produktuen taulak bete */
+            jertsDatuakErakutsiTaula(viewProdInbEsk.jTableJertsea, JertseaKudeatu.jertseaInbentarioa());
+            kamiDatuakErakutsiTaula(viewProdInbEsk.jTableKamiseta, KamisetaKudeatu.kamisetaInbentarioa());
+            prakDatuakErakutsiTaula(viewProdInbEsk.jTablePraka, PrakaKudeatu.prakaEskatzeko());
+        }
+        else if (comando == viewMenuNagusia.jButtonEskatzeko) {
+            viewProdInbEsk.setVisible(true);
+            viewMenuNagusia.setEnabled(false);
+            viewProdInbEsk.jLabelProdKud.setText("ESKATZEKO PRODUKTUEN ZERRENDA");
+            viewProdInbEsk.setTitle("Eskatzeko produktuak");
+            /* Produktuen taulak bete */
+            jertsDatuakErakutsiTaula(viewProdInbEsk.jTableJertsea, JertseaKudeatu.jertseaEskatzeko());
+            kamiDatuakErakutsiTaula(viewProdInbEsk.jTableKamiseta, KamisetaKudeatu.kamisetaEskatzeko());
+            prakDatuakErakutsiTaula(viewProdInbEsk.jTablePraka, PrakaKudeatu.prakaEskatzeko());
+        }
+        else if (comando == viewMenuNagusia.jButtonKontsulta) {
+            viewProdKontsultatu.setVisible(true);
+            viewMenuNagusia.setEnabled(false);
         }
     }
-
+    
     @Override
     public void mouseClicked(MouseEvent e) {
         
@@ -253,7 +253,132 @@ public class menuNagController implements ActionListener, MouseListener{
             viewMenuNagusia.jButtonKontsulta.setBackground(Color.WHITE);
             viewMenuNagusia.jButtonKontsulta.setForeground(Color.BLACK);
             viewMenuNagusia.jButtonKontsulta.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }   
+    }
+        
+    /* METODOAK */      
+    private void menuNagEstiloa() {
+        viewMenuNagusia.setTitle("ATENEA");
+        viewMenuNagusia.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        viewMenuNagusia.setLocationRelativeTo(null);
+        viewMenuNagusia.jPanelGoiburua.setBackground(new Color(0,0,153));
+        viewMenuNagusia.jPanelOina.setBackground(new Color(0,0,153));
+        viewMenuNagusia.jPanelGorputza.setBackground(Color.WHITE);
+        viewMenuNagusia.jButtonIrten.setBackground(Color.WHITE);
+        
+        viewMenuNagusia.jButtonDenda.setToolTipText("Denda");
+        viewMenuNagusia.jButtonBezeroa.setToolTipText("Bezeroa");
+        viewMenuNagusia.jButtonLangilea.setToolTipText("Langilea");
+        viewMenuNagusia.jButtonProduktua.setToolTipText("Produktuak");
+        viewMenuNagusia.jButtonHornitzailea.setToolTipText("Hornitzailea");
+        viewMenuNagusia.jButtonEskaera.setToolTipText("Eskaera");
+        viewMenuNagusia.jButtonInbentarioa.setToolTipText("Produktuen inbentarioa");
+        viewMenuNagusia.jButtonEskatzeko.setToolTipText("Eskatzeko produktuak");
+        viewMenuNagusia.jButtonKontsulta.setToolTipText("Produktuen kontsulta");
+
+        botoienFormatoa(viewMenuNagusia.jPanelGorputza); // koloreak definitu
+        viewMenuNagusia.jSeparatorEskum.setBackground(urdina);
+        viewMenuNagusia.jSeparatorEzker.setBackground(urdina);
+    }
+    
+    private void botoienFormatoa (Container container) {
+        Component[] components = container.getComponents();
+        for (Component component : components) {
+            component.setBackground(Color.WHITE);
+            component.setForeground(Color.BLACK);
+            if (component instanceof JButton) {
+                ((JButton) component).setOpaque(true);
+                ((JButton) component).setIconTextGap(20); // Ikono eta textuaren arteko tartea definitu
+                ((JButton) component).setHorizontalAlignment(JButton.LEFT); // Botoi barrukoa ezkerrean alineatzeko
+                ((JButton) component).setBorderPainted(false); // botoien ertzak margotuta
+            }
         }
-            
+    }
+
+    private void jertsDatuakErakutsiTaula(JTable jTableJertsea, ArrayList<Jertsea> jertseaInbentarioa) {
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        jTableJertsea.getTableHeader().setBackground(urdina);
+        jTableJertsea.getTableHeader().setForeground(Color.WHITE);
+        jTableJertsea.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("MARKA");
+        model.addColumn("SEXUA");
+        model.addColumn("STOCK kantitatea");
+        model.addColumn("TAILA");
+        
+        for (int i=0; i<jertseaInbentarioa.size(); i++) {
+            Jertsea jerts = jertseaInbentarioa.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(jerts.getKodPro(), i, 0);
+            model.setValueAt(jerts.getMarka(), i, 1);
+            model.setValueAt(jerts.getSexua(), i, 2);
+            model.setValueAt(jerts.getKantStock(), i, 3);
+            model.setValueAt(jerts.getTaila(), i, 4);
+        }
+    }
+    
+    private void kamiDatuakErakutsiTaula(JTable jTableKamiseta, ArrayList<Kamiseta> kamisetak) {
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        jTableKamiseta.getTableHeader().setBackground(urdina);
+        jTableKamiseta.getTableHeader().setForeground(Color.WHITE);
+        jTableKamiseta.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("MARKA");
+        model.addColumn("SEXUA");
+        model.addColumn("STOCK kantitatea");
+        model.addColumn("TAILA");
+        
+        for (int i=0; i<kamisetak.size(); i++) {
+            Kamiseta kami = kamisetak.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(kami.getKodPro(), i, 0);
+            model.setValueAt(kami.getMarka(), i, 1);
+            model.setValueAt(kami.getSexua(), i, 2);
+            model.setValueAt(kami.getKantStock(), i, 3);
+            model.setValueAt(kami.getTaila(), i, 4);
+        }
+    }
+    
+    private void prakDatuakErakutsiTaula(JTable jTablePraka, ArrayList<Praka> prakak) {
+        DefaultTableModel model = new DefaultTableModel() {
+            /* Datuak taulan ez editatzeko */
+            @Override
+            public boolean isCellEditable(int rowIndex,int columnIndex){
+                return false;
+            } 
+        };
+        jTablePraka.getTableHeader().setBackground(urdina);
+        jTablePraka.getTableHeader().setForeground(Color.WHITE);
+        jTablePraka.setModel(model);
+        model.addColumn("KODEA");
+        model.addColumn("MARKA");
+        model.addColumn("SEXUA");
+        model.addColumn("STOCK kantitatea");
+        model.addColumn("TAILA");
+        
+        for (int i=0; i<prakak.size(); i++) {
+            Praka prak = prakak.get(i);
+            Array[] os = null;
+            model.addRow(os);
+            model.setValueAt(prak.getKodPro(), i, 0);
+            model.setValueAt(prak.getMarka(), i, 1);
+            model.setValueAt(prak.getSexua(), i, 2);
+            model.setValueAt(prak.getKantStock(), i, 3);
+            model.setValueAt(prak.getTaila(), i, 4);
+        }
     }
 }

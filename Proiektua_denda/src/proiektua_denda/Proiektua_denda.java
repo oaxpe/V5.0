@@ -47,12 +47,14 @@ public class Proiektua_denda {
         HornitzaileaGehitu viewHornGehitu = new HornitzaileaGehitu();
         EskaeraInfo viewEskInfo = new EskaeraInfo();
         EskaeraGehitu viewEskGehitu = new EskaeraGehitu();
+        ProdInbEsk viewProdInbEsk = new ProdInbEsk();
+        ProdKontsultatu viewProdKonts = new ProdKontsultatu();
 
         /* CONTROLLER */
         Controller ctrl = new Controller(bez, denda, esk, horn, jerts, kami, lang, prak, salm,
                 viewDendInfo, viewDendGehitu, viewBezInfo, viewBezGehitu, viewLangInfo, 
                 viewLangGehitu, viewProdAuk, viewJertsGehitu, viewKamGehitu, viewPrakGehitu, 
-                viewHornInfo, viewHornGehitu, viewEskInfo, viewEskGehitu, viewMenuNag);
+                viewHornInfo, viewHornGehitu, viewEskInfo, viewEskGehitu, viewMenuNag, viewProdInbEsk, viewProdKonts);
 
     }
 }

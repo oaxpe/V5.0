@@ -53,6 +53,8 @@ public class Controller {
     private HornitzaileaGehitu viewHornitzaileaGehitu;
     private EskaeraInfo viewEskaeraInfo;
     private EskaeraGehitu viewEskaeraGehitu;
+    private ProdInbEsk viewProdInbEsk;
+    private ProdKontsultatu viewProdKontsultatu;
 
     /* ERAIKITZAILEA */  
     public Controller() {
@@ -64,7 +66,7 @@ public class Controller {
             LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, ProduktuaAukeratu viewProdAuk, 
             JertseaGehitu viewJertsGehitu, KamisetaGehitu viewKamGehitu, PrakaGehitu viewPrakGehitu, 
             HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraInfo viewEskInfo, 
-            EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag) {
+            EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag, ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts) {
         this.bezeroa = bez;
         this.denda = denda;
         this.eskaera = esk;
@@ -90,6 +92,8 @@ public class Controller {
         this.viewEskaeraInfo = viewEskInfo;
         this.viewEskaeraGehitu = viewEskGehitu;
         this.viewMenuNagusia = viewMenuNag;
+        this.viewProdInbEsk = viewProdInbEsk;
+        this.viewProdKontsultatu = viewProdKonts;
         botoiakEntzuten();
         hasieratu();
         viewMenuNagusia.setVisible(true);
@@ -98,7 +102,7 @@ public class Controller {
     /* METODOAK */
     private void botoiakEntzuten() { 
         menuNagController menuNagCtr = new menuNagController(viewDendaInfo, viewBezeroaInfo, viewLangileaInfo, viewProduktuaAukeratu, 
-            viewHornitzaileaInfo, viewEskaeraInfo, viewMenuNagusia);
+            viewHornitzaileaInfo, viewEskaeraInfo, viewMenuNagusia, viewProdInbEsk, viewProdKontsultatu);
         dendaInfoController dendInfoCtr = new dendaInfoController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
         dendaGehituController dendGehituCtr = new dendaGehituController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
         bezInfoController bezInfoCtr = new bezInfoController(bezeroa, viewBezeroaInfo, viewBezeroaGehitu, viewMenuNagusia);
@@ -114,6 +118,8 @@ public class Controller {
         hornGehituController hornGehituCtr = new hornGehituController(hornitzailea, viewHornitzaileaInfo, viewHornitzaileaGehitu, viewEskaeraGehitu);
         eskInfoController eskInfoCtr = new eskInfoController(eskaera, viewEskaeraInfo, viewEskaeraGehitu, viewMenuNagusia);
         eskGehituController eskGehituCtr = new eskGehituController(eskaera, viewEskaeraInfo, viewEskaeraGehitu);
+        prodInbEskController prodInbEskCtr = new prodInbEskController(jertsea, kamiseta, praka, viewMenuNagusia, viewProdInbEsk);
+        prodKontsultatuController prodKontsCtr = new prodKontsultatuController(jertsea, kamiseta, praka, viewMenuNagusia, viewProdKontsultatu);
         
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(menuNagCtr);
@@ -139,6 +145,9 @@ public class Controller {
         viewMenuNagusia.jButtonHornitzailea.addActionListener(menuNagCtr);
         viewMenuNagusia.jButtonLangilea.addActionListener(menuNagCtr);
         viewMenuNagusia.jButtonProduktua.addActionListener(menuNagCtr);
+        viewMenuNagusia.jButtonInbentarioa.addActionListener(menuNagCtr);
+        viewMenuNagusia.jButtonEskatzeko.addActionListener(menuNagCtr);
+        viewMenuNagusia.jButtonKontsulta.addActionListener(menuNagCtr);
         
         // DendaInfo-ko botoiak
         viewDendaInfo.jButtonEzabatu.addActionListener(dendInfoCtr);
@@ -192,9 +201,6 @@ public class Controller {
         viewProduktuaAukeratu.jButtonAldatuPrak.addActionListener(prodAukCtr);
         viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.addActionListener(prodAukCtr);
         viewProduktuaAukeratu.jButtonAldaketaGordePrak.addActionListener(prodAukCtr);
-        viewProduktuaAukeratu.jToggleButtonErakutsi.addActionListener(prodAukCtr);
-        viewProduktuaAukeratu.jToggleButtonEzkutatu.addActionListener(prodAukCtr);
-        viewProduktuaAukeratu.jButtonBidali.addActionListener(prodAukCtr);
         
         // JertseaGehitu-ko botoiak
         viewJertseaGehitu.jButtonReset.addActionListener(jertsGehituCtr);
@@ -234,6 +240,14 @@ public class Controller {
         viewEskaeraGehitu.jButtonReset.addActionListener(eskGehituCtr);
         viewEskaeraGehitu.jButtonGorde.addActionListener(eskGehituCtr);
         viewEskaeraGehitu.jButtonBerriaGehitu.addActionListener(eskGehituCtr);
+        
+        // Produktua Inbentario Eskatzekoak
+        viewProdInbEsk.jButtonIrten.addActionListener(prodInbEskCtr);
+        
+        // ProduktuaKontsultatu
+        viewProdKontsultatu.jButtonIrten.addActionListener(prodKontsCtr);
+        viewProdKontsultatu.jButtonBidali.addActionListener(prodKontsCtr);
+        viewProdKontsultatu.jButtonEzeztatu.addActionListener(prodKontsCtr);
          
         /* AncestorListener */
         viewProduktuaAukeratu.jPanelJerts.addAncestorListener(prodAukCtr);
@@ -359,6 +373,14 @@ public class Controller {
         viewEskaeraGehitu.jButtonGorde.addMouseListener(eskGehituCtr);
         viewEskaeraGehitu.jButtonReset.addMouseListener(eskGehituCtr);
         
+        // Produktua Inbentario Eskatzekoak
+        viewProdInbEsk.jButtonIrten.addMouseListener(prodInbEskCtr);
+        
+        // ProduktuaKontsultatu
+        viewProdKontsultatu.jRadioButtonJerts.addMouseListener(prodKontsCtr);
+        viewProdKontsultatu.jRadioButtonKami.addMouseListener(prodKontsCtr);
+        viewProdKontsultatu.jRadioButtonPrak.addMouseListener(prodKontsCtr);
+        
         /* ListSelectionListener */
         viewDendaInfo.jTableDendaInfo.getSelectionModel().addListSelectionListener(dendInfoCtr);
         viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel().addListSelectionListener(bezInfoCtr);
@@ -368,7 +390,6 @@ public class Controller {
         viewProduktuaAukeratu.jTablePrakInfo.getSelectionModel().addListSelectionListener(prodAukCtr);
         viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectionModel().addListSelectionListener(hornInfoCtr);
         viewEskaeraInfo.jTableEskaeraInfo.getSelectionModel().addListSelectionListener(eskInfoCtr);
-        viewProduktuaAukeratu.jComboBoxAukeratuProd.getModel().addListDataListener(prodAukCtr);
 
         /* KeyListener */
         viewDendaInfo.jTextFieldBilatu.addKeyListener(dendInfoCtr);
@@ -379,6 +400,9 @@ public class Controller {
         viewProduktuaAukeratu.jTextFieldBilatuPrak.addKeyListener(prodAukCtr);
         viewHornitzaileaInfo.jTextFieldBilatu.addKeyListener(hornInfoCtr);
         viewEskaeraInfo.jTextFieldBilatu.addKeyListener(eskInfoCtr);
+        viewProdInbEsk.jTextFieldBilatuJerts.addKeyListener(prodInbEskCtr);
+        viewProdInbEsk.jTextFieldBilatuKami.addKeyListener(prodInbEskCtr);
+        viewProdInbEsk.jTextFieldBilatuPrak.addKeyListener(prodInbEskCtr);
         
         /* FocusListener */
         // DendaInfo
@@ -533,6 +557,9 @@ public class Controller {
         // EskaeraGehitu
         viewEskaeraGehitu.jTextFieldKopurua.addFocusListener(eskGehituCtr);
         viewEskaeraGehitu.jComboBoxHornitzailea.addFocusListener(eskGehituCtr);
+        
+        // ProdKontsultatu
+        viewProdKontsultatu.jTextFieldKodeProd.addFocusListener(prodKontsCtr);
     }
     
     private void hasieratu() {        
@@ -559,7 +586,6 @@ public class Controller {
         sexuaKargatu(viewPrakaGehitu.jComboBoxSexua);
         tailaKargatuInt(viewPrakaGehitu.jComboBoxTaila);
         motaKargatu(viewPrakaGehitu.jComboBoxMota);
-        aukKargatu(viewProduktuaAukeratu.jComboBoxAukeratuProd);
     }
     
     public void hornitzaileaKargatu(JComboBox comboBox) {
@@ -574,7 +600,7 @@ public class Controller {
         }
     }
     
-    private void tailaKargatuString(JComboBox comboBox) {
+    public void tailaKargatuString(JComboBox comboBox) {
         String[] taila = ProduktuaKudeatu.tailaKontrolatuString();
         comboBox.addItem("--- Aukeratu ---");
         for (String i : taila) {
@@ -582,7 +608,7 @@ public class Controller {
         }
     }
     
-    private void tailaKargatuInt(JComboBox comboBox) {
+    public void tailaKargatuInt(JComboBox comboBox) {
         int[] taila = ProduktuaKudeatu.tailaKontrolatuZenb();
         comboBox.addItem("--- Aukeratu ---");
         for (int i : taila) {

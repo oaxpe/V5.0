@@ -288,7 +288,7 @@ public class MenuNagusia extends javax.swing.JFrame {
     public javax.swing.JPanel jPanelGoiburua;
     public javax.swing.JPanel jPanelGorputza;
     public javax.swing.JPanel jPanelOina;
-    private javax.swing.JSeparator jSeparatorEskum;
-    private javax.swing.JSeparator jSeparatorEzker;
+    public javax.swing.JSeparator jSeparatorEskum;
+    public javax.swing.JSeparator jSeparatorEzker;
     // End of variables declaration//GEN-END:variables
 }

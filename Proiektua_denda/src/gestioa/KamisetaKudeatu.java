@@ -121,7 +121,8 @@ public class KamisetaKudeatu {
     }
     
     /* Kamiseta baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */
-    public static void kamisetaKontsultatu(String kodea) {
+    public static ArrayList<Kamiseta> kamisetaKontsultatu(String kodea) {
+        ArrayList<Kamiseta> kamiKonts = new ArrayList<Kamiseta>();
         System.out.println();
         System.out.printf("%1$-15s    %2$-10s    %3$-10s    %4$-10s\n", "Kodea", "Kolorea", "Taila", "Kantitatea");
         boolean bool = false;
@@ -132,6 +133,7 @@ public class KamisetaKudeatu {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
                 if (kami.getKodPro().equals(kodea)) {
                     kami.prodKontsultatu(); // objektuaren datuak erakutsi
+                    kamiKonts.add(kami);
                     bool = true;
                 }
             }
@@ -145,10 +147,12 @@ public class KamisetaKudeatu {
         
         if (!bool)
             System.out.println("Ez dago kode hori duen produkturik.");
+        return kamiKonts;
     }
     
     /* Dauden kamiseta guztiak erakusteko metodoa */
-    public static void kamisetaInbentarioa() {
+    public static ArrayList<Kamiseta> kamisetaInbentarioa() {
+        ArrayList<Kamiseta> kamiEsk = new ArrayList<Kamiseta>();
         boolean bool = false;
         System.out.println("\nKAMISETAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
@@ -158,6 +162,7 @@ public class KamisetaKudeatu {
             while (true) {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
                 kami.prodInbentarioa();// objektuaren datuak erakutsi
+                kamiEsk.add(kami);
                 bool = true;
             }
         } catch (EOFException ex) { 
@@ -169,10 +174,12 @@ public class KamisetaKudeatu {
         } 
         if (!bool)
             System.out.println("\tEz dago kamisetarik.");
+        return kamiEsk;
     }
     
     /* kantitatea 5 baino gutxiago duten kamisetak erakusten ditu */
-    public static void kamisetaEskatzeko() {
+    public static ArrayList<Kamiseta> kamisetaEskatzeko() {
+        ArrayList<Kamiseta> kamiInb = new ArrayList<Kamiseta>();
         System.out.println("\nKAMISETAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         boolean bool = false;
@@ -183,6 +190,7 @@ public class KamisetaKudeatu {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
                 if (kami.getKantStock()<5) {
                     kami.prodInbentarioa();// objektuaren datuak erakutsi
+                    kamiInb.add(kami);
                     bool = true;
                 }
             }
@@ -195,6 +203,7 @@ public class KamisetaKudeatu {
         } 
         if (!bool)
             System.out.println("\tEz dago eskatzeko produkturik.");
+        return kamiInb;
     }
        
     /* KAMISETAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */

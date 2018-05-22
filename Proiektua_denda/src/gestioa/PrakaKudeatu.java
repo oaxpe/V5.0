@@ -122,7 +122,8 @@ public class PrakaKudeatu {
     }
     
     /* Praka baten kodea, ArrayList-ean dagoen kontsultatu */
-    public static void prakaKontsultatu(String kodea) {
+    public static ArrayList<Praka> prakaKontsultatu(String kodea) {
+        ArrayList<Praka> prakKonts = new ArrayList<Praka>();
         System.out.println();
         System.out.printf("%1$-15s    %2$-10s    %3$-10s    %4$-10s\n", "Kodea", "Kolorea", "Taila", "Kantitatea");
         boolean bool = false;
@@ -133,6 +134,7 @@ public class PrakaKudeatu {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
                 if (prak.getKodPro().equals(kodea)) {
                     prak.prodKontsultatu(); // objektuaren datuak erakutsi
+                    prakKonts.add(prak);
                     bool = true;
                 }
             }
@@ -145,10 +147,12 @@ public class PrakaKudeatu {
         } 
         if (!bool)
             System.out.println("Ez dago kode hori duen produkturik.");
+        return prakKonts;
     }
     
     /* Dauden praka guztiak erakusteko metodoa */
-    public static void prakaInbentarioa() {
+    public static ArrayList<Praka> prakaInbentarioa() {
+        ArrayList<Praka> prakInb = new ArrayList<Praka>();
         boolean bool = false;
         System.out.println("\nPRAKAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
@@ -158,6 +162,7 @@ public class PrakaKudeatu {
             while (true) {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
                 prak.prodInbentarioa();// objektuaren datuak erakutsi
+                prakInb.add(prak);
                 bool = true;
             }
         } catch (EOFException ex) { 
@@ -168,11 +173,13 @@ public class PrakaKudeatu {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
         } 
         if (!bool)
-            System.out.println("\tEz dago prakarik.");      
+            System.out.println("\tEz dago prakarik.");  
+        return prakInb;
     }
     
     /* kantitatea 5 baino gutxiago duten prakak erakusten ditu */
-    public static void prakaEskatzeko() {  
+    public static ArrayList<Praka> prakaEskatzeko() {  
+        ArrayList<Praka> prakEsk = new ArrayList<Praka>();
         System.out.println("\nPRAKAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         boolean bool = false;
@@ -183,6 +190,7 @@ public class PrakaKudeatu {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
                 if (prak.getKantStock()<5) {
                     prak.prodInbentarioa();// objektuaren datuak erakutsi
+                    prakEsk.add(prak);
                     bool = true;
                 }
             }
@@ -195,6 +203,7 @@ public class PrakaKudeatu {
         } 
         if (!bool)
             System.out.println("\tEz dago eskatzeko produkturik.");
+        return prakEsk;
     }
     
     /* PRAKAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */ 
