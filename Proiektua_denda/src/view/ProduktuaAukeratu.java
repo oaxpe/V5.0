@@ -131,22 +131,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonAldatuPrak = new javax.swing.JButton();
         jButtonEzabatuPrak = new javax.swing.JButton();
         jButtonIrten = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        jPanelGoiburua = new javax.swing.JPanel();
-        jLabelAukeratu = new javax.swing.JLabel();
-        jComboBoxAukeratuProd = new javax.swing.JComboBox<>();
-        jButtonBidali = new javax.swing.JButton();
-        jPanelAukerak = new javax.swing.JPanel();
-        jComboBoxTailaProd = new javax.swing.JComboBox<>();
-        jLabelTailaProd = new javax.swing.JLabel();
-        jTextFieldKodeProd = new javax.swing.JTextField();
-        jRadioButtonPraka = new javax.swing.JRadioButton();
-        jRadioButtonKamiseta = new javax.swing.JRadioButton();
-        jRadioButtonJertsea = new javax.swing.JRadioButton();
-        jLabelKodProd = new javax.swing.JLabel();
-        jLabelProduktua = new javax.swing.JLabel();
-        jToggleButtonErakutsi = new javax.swing.JToggleButton();
-        jToggleButtonEzkutatu = new javax.swing.JToggleButton();
+        jLabelProdKud = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDialogEzabatuKonfirmLayout = new javax.swing.GroupLayout(jDialogEzabatuKonfirm.getContentPane());
         jDialogEzabatuKonfirm.getContentPane().setLayout(jDialogEzabatuKonfirmLayout);
@@ -245,7 +230,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonAldaketaGordeJerts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/gorde.png"))); // NOI18N
         jButtonAldaketaGordeJerts.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButtonAldaketaEzabatuJerts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezabatu.png"))); // NOI18N
+        jButtonAldaketaEzabatuJerts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezeztatu.png"))); // NOI18N
         jButtonAldaketaEzabatuJerts.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelJertsInfoLayout = new javax.swing.GroupLayout(jPanelJertsInfo);
@@ -522,7 +507,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
 
         jComboBoxSasoiaKami.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        jButtonAldaketaEzabatuKami.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezabatu.png"))); // NOI18N
+        jButtonAldaketaEzabatuKami.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezeztatu.png"))); // NOI18N
         jButtonAldaketaEzabatuKami.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jButtonAldaketaGordeKami.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/gorde.png"))); // NOI18N
@@ -819,7 +804,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonAldaketaGordePrak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/gorde.png"))); // NOI18N
         jButtonAldaketaGordePrak.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButtonAldaketaEzabatuPrak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezabatu.png"))); // NOI18N
+        jButtonAldaketaEzabatuPrak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezeztatu.png"))); // NOI18N
         jButtonAldaketaEzabatuPrak.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout jPanelPrakInfoLayout = new javax.swing.GroupLayout(jPanelPrakInfo);
@@ -1026,124 +1011,8 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
         jButtonIrten.setText("Irten");
         jButtonIrten.setBorderPainted(false);
 
-        jLabelAukeratu.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelAukeratu.setText("Aukeratu");
-
-        jComboBoxAukeratuProd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBoxAukeratuProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButtonBidali.setText("Bidali");
-
-        jPanelAukerak.setOpaque(false);
-
-        jComboBoxTailaProd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jComboBoxTailaProd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabelTailaProd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelTailaProd.setText("TAILA");
-
-        jTextFieldKodeProd.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        buttonGroupProd.add(jRadioButtonPraka);
-        jRadioButtonPraka.setText("Praka");
-
-        buttonGroupProd.add(jRadioButtonKamiseta);
-        jRadioButtonKamiseta.setText("Kamiseta");
-
-        buttonGroupProd.add(jRadioButtonJertsea);
-        jRadioButtonJertsea.setText("Jertsea");
-
-        jLabelKodProd.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelKodProd.setText("KODEA");
-
-        jLabelProduktua.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabelProduktua.setText("PRODUKTUA");
-
-        javax.swing.GroupLayout jPanelAukerakLayout = new javax.swing.GroupLayout(jPanelAukerak);
-        jPanelAukerak.setLayout(jPanelAukerakLayout);
-        jPanelAukerakLayout.setHorizontalGroup(
-            jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 571, Short.MAX_VALUE)
-            .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelAukerakLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabelProduktua)
-                        .addComponent(jLabelKodProd))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                    .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelAukerakLayout.createSequentialGroup()
-                            .addComponent(jRadioButtonJertsea)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jRadioButtonKamiseta)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jRadioButtonPraka))
-                        .addGroup(jPanelAukerakLayout.createSequentialGroup()
-                            .addComponent(jTextFieldKodeProd, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(39, 39, 39)
-                            .addComponent(jLabelTailaProd)
-                            .addGap(18, 18, 18)
-                            .addComponent(jComboBoxTailaProd, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap()))
-        );
-        jPanelAukerakLayout.setVerticalGroup(
-            jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 101, Short.MAX_VALUE)
-            .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanelAukerakLayout.createSequentialGroup()
-                    .addGap(25, 25, 25)
-                    .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelProduktua)
-                        .addComponent(jRadioButtonJertsea)
-                        .addComponent(jRadioButtonKamiseta)
-                        .addComponent(jRadioButtonPraka))
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTailaProd)
-                            .addComponent(jComboBoxTailaProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanelAukerakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelKodProd)
-                            .addComponent(jTextFieldKodeProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(25, Short.MAX_VALUE)))
-        );
-
-        javax.swing.GroupLayout jPanelGoiburuaLayout = new javax.swing.GroupLayout(jPanelGoiburua);
-        jPanelGoiburua.setLayout(jPanelGoiburuaLayout);
-        jPanelGoiburuaLayout.setHorizontalGroup(
-            jPanelGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelGoiburuaLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabelAukeratu)
-                .addGap(18, 18, 18)
-                .addComponent(jComboBoxAukeratuProd, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jPanelAukerak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(jButtonBidali)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanelGoiburuaLayout.setVerticalGroup(
-            jPanelGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelGoiburuaLayout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addGroup(jPanelGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
-                        .addGroup(jPanelGoiburuaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBoxAukeratuProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelAukeratu))
-                        .addGap(35, 35, 35))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelGoiburuaLayout.createSequentialGroup()
-                        .addComponent(jButtonBidali)
-                        .addGap(20, 20, 20))
-                    .addComponent(jPanelAukerak, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-
-        buttonGroupVisible.add(jToggleButtonErakutsi);
-        jToggleButtonErakutsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/erakutsi.png"))); // NOI18N
-
-        buttonGroupVisible.add(jToggleButtonEzkutatu);
-        jToggleButtonEzkutatu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezkutatu.png"))); // NOI18N
+        jLabelProdKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabelProdKud.setText("PRODUKTUAK KUDEATU");
 
         javax.swing.GroupLayout jPanelOsoaLayout = new javax.swing.GroupLayout(jPanelOsoa);
         jPanelOsoa.setLayout(jPanelOsoaLayout);
@@ -1157,32 +1026,18 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
                         .addComponent(jButtonIrten)
                         .addGap(33, 33, 33))
                     .addGroup(jPanelOsoaLayout.createSequentialGroup()
-                        .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTabbedPaneProd, javax.swing.GroupLayout.PREFERRED_SIZE, 1258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelOsoaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButtonErakutsi, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jToggleButtonEzkutatu, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109))
+                        .addComponent(jTabbedPaneProd, javax.swing.GroupLayout.PREFERRED_SIZE, 1258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanelOsoaLayout.createSequentialGroup()
+                        .addComponent(jLabelProdKud, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanelOsoaLayout.setVerticalGroup(
             jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelOsoaLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelOsoaLayout.createSequentialGroup()
-                        .addComponent(jToggleButtonErakutsi)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jToggleButtonEzkutatu)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
+                .addComponent(jLabelProdKud)
+                .addGap(27, 27, 27)
                 .addComponent(jTabbedPaneProd, javax.swing.GroupLayout.DEFAULT_SIZE, 585, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonIrten)
@@ -1256,7 +1111,6 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     public javax.swing.JButton jButtonAldatuJerts;
     public javax.swing.JButton jButtonAldatuKami;
     public javax.swing.JButton jButtonAldatuPrak;
-    public javax.swing.JButton jButtonBidali;
     public javax.swing.JButton jButtonEzabatuJerts;
     public javax.swing.JButton jButtonEzabatuKami;
     public javax.swing.JButton jButtonEzabatuPrak;
@@ -1264,7 +1118,6 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     public javax.swing.JButton jButtonGehituKami;
     public javax.swing.JButton jButtonGehituPrak;
     public javax.swing.JButton jButtonIrten;
-    public javax.swing.JComboBox<String> jComboBoxAukeratuProd;
     public javax.swing.JComboBox<String> jComboBoxMotaPrak;
     public javax.swing.JComboBox<String> jComboBoxSasoiaKami;
     public javax.swing.JComboBox<String> jComboBoxSasoiaPrak;
@@ -1274,9 +1127,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboBoxTailaJerts;
     public javax.swing.JComboBox<String> jComboBoxTailaKami;
     public javax.swing.JComboBox<String> jComboBoxTailaPrak;
-    public javax.swing.JComboBox<String> jComboBoxTailaProd;
     public javax.swing.JDialog jDialogEzabatuKonfirm;
-    private javax.swing.JLabel jLabelAukeratu;
     private javax.swing.JLabel jLabelJaioData;
     private javax.swing.JLabel jLabelJaioData1;
     private javax.swing.JLabel jLabelJaioData2;
@@ -1285,7 +1136,6 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelKodJerts;
     private javax.swing.JLabel jLabelKodJerts1;
     private javax.swing.JLabel jLabelKodJerts2;
-    public javax.swing.JLabel jLabelKodProd;
     private javax.swing.JLabel jLabelKolorea;
     private javax.swing.JLabel jLabelKolorea1;
     private javax.swing.JLabel jLabelKolorea2;
@@ -1298,7 +1148,7 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPrezioa;
     private javax.swing.JLabel jLabelPrezioa1;
     private javax.swing.JLabel jLabelPrezioa2;
-    private javax.swing.JLabel jLabelProduktua;
+    private javax.swing.JLabel jLabelProdKud;
     private javax.swing.JLabel jLabelSasoia;
     private javax.swing.JLabel jLabelSasoia1;
     private javax.swing.JLabel jLabelSexua;
@@ -1307,9 +1157,6 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTaila;
     private javax.swing.JLabel jLabelTaila1;
     private javax.swing.JLabel jLabelTaila2;
-    public javax.swing.JLabel jLabelTailaProd;
-    public javax.swing.JPanel jPanelAukerak;
-    public javax.swing.JPanel jPanelGoiburua;
     public javax.swing.JPanel jPanelJerts;
     public javax.swing.JPanel jPanelJertsBotoiak;
     public javax.swing.JPanel jPanelJertsGoiburua;
@@ -1329,13 +1176,9 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     public javax.swing.JPanel jPanelPrakGorp;
     public javax.swing.JPanel jPanelPrakInfo;
     public javax.swing.JPanel jPanelPrakInfoTaula;
-    public javax.swing.JRadioButton jRadioButtonJertsea;
-    public javax.swing.JRadioButton jRadioButtonKamiseta;
-    public javax.swing.JRadioButton jRadioButtonPraka;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JSeparator jSeparator1;
     public javax.swing.JTabbedPane jTabbedPaneProd;
     public javax.swing.JTable jTableJertsInfo;
     public javax.swing.JTable jTableKamiInfo;
@@ -1346,7 +1189,6 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldKodeJerts;
     public javax.swing.JTextField jTextFieldKodeKami;
     public javax.swing.JTextField jTextFieldKodePrak;
-    public javax.swing.JTextField jTextFieldKodeProd;
     public javax.swing.JTextField jTextFieldKoloreaJerts;
     public javax.swing.JTextField jTextFieldKoloreaKami;
     public javax.swing.JTextField jTextFieldKoloreaPrak;
@@ -1360,7 +1202,5 @@ public class ProduktuaAukeratu extends javax.swing.JFrame {
     public javax.swing.JTextField jTextFieldStockJerts;
     public javax.swing.JTextField jTextFieldStockKami;
     public javax.swing.JTextField jTextFieldStockPrak;
-    public javax.swing.JToggleButton jToggleButtonErakutsi;
-    public javax.swing.JToggleButton jToggleButtonEzkutatu;
     // End of variables declaration//GEN-END:variables
 }
