@@ -78,35 +78,39 @@ public class prodKontsultatuController implements ActionListener, MouseListener,
             taulaHustu(viewProdKontsultatu.jTableProdInfo); // taulan dauden datuak kendu
         }
         else if (comando == viewProdKontsultatu.jButtonBidali) {
-            String kodea = viewProdKontsultatu.jTextFieldKodeProd.getText();
-            /* datuak kontsultatu eta kargatu taulan */
-            if (viewProdKontsultatu.jRadioButtonJerts.isSelected()) {
-                ArrayList<Jertsea> jertsKontsulta = JertseaKudeatu.jertseaKontsultatu(kodea);
-                if (jertsKontsulta.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Jertse hori ez dago", "Abisua", JOptionPane.INFORMATION_MESSAGE);
-                    resetAukerak();
+            if (balidazioaProdKonts()) {
+                String kodea = viewProdKontsultatu.jTextFieldKodeProd.getText();
+                /* datuak kontsultatu eta kargatu taulan */
+                if (viewProdKontsultatu.jRadioButtonJerts.isSelected()) {
+                    ArrayList<Jertsea> jertsKontsulta = JertseaKudeatu.jertseaKontsultatu(kodea);
+                    if (jertsKontsulta.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Jertse hori ez dago", "Abisua", JOptionPane.INFORMATION_MESSAGE);
+                        resetAukerak();
+                    }
+                    else
+                        prodAukCtr.jertsDatuakErakutsiTaula(viewProdKontsultatu.jTableProdInfo, jertsKontsulta);
                 }
-                else
-                    prodAukCtr.jertsDatuakErakutsiTaula(viewProdKontsultatu.jTableProdInfo, jertsKontsulta);
-            }
-            else if (viewProdKontsultatu.jRadioButtonKami.isSelected()) {
-                ArrayList<Kamiseta> kamiKontsulta = KamisetaKudeatu.kamisetaKontsultatu(kodea);
-                if (kamiKontsulta.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Kamiseta hori ez dago", "Abisua", JOptionPane.INFORMATION_MESSAGE);
-                    resetAukerak();
+                else if (viewProdKontsultatu.jRadioButtonKami.isSelected()) {
+                    ArrayList<Kamiseta> kamiKontsulta = KamisetaKudeatu.kamisetaKontsultatu(kodea);
+                    if (kamiKontsulta.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Kamiseta hori ez dago", "Abisua", JOptionPane.INFORMATION_MESSAGE);
+                        resetAukerak();
+                    }
+                    else
+                        prodAukCtr.kamiDatuakErakutsiTaula(viewProdKontsultatu.jTableProdInfo, kamiKontsulta);
                 }
-                else
-                    prodAukCtr.kamiDatuakErakutsiTaula(viewProdKontsultatu.jTableProdInfo, kamiKontsulta);
-            }
-            else if (viewProdKontsultatu.jRadioButtonPrak.isSelected()) {
-                ArrayList<Praka> prakKontsulta = PrakaKudeatu.prakaKontsultatu(kodea);
-                if (prakKontsulta.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Praka hori ez dago", "Abisua", JOptionPane.INFORMATION_MESSAGE);
-                    resetAukerak();
+                else if (viewProdKontsultatu.jRadioButtonPrak.isSelected()) {
+                    ArrayList<Praka> prakKontsulta = PrakaKudeatu.prakaKontsultatu(kodea);
+                    if (prakKontsulta.isEmpty()) {
+                        JOptionPane.showMessageDialog(null, "Praka hori ez dago", "Abisua", JOptionPane.INFORMATION_MESSAGE);
+                        resetAukerak();
+                    }
+                    else
+                        prodAukCtr.prakDatuakErakutsiTaula(viewProdKontsultatu.jTableProdInfo, prakKontsulta);
                 }
-                else
-                    prodAukCtr.prakDatuakErakutsiTaula(viewProdKontsultatu.jTableProdInfo, prakKontsulta);
             }
+            else
+                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
         }
     }
     
@@ -215,6 +219,16 @@ public class prodKontsultatuController implements ActionListener, MouseListener,
         viewProdKontsultatu.jRadioButtonKami.setSelected(false);
         viewProdKontsultatu.jRadioButtonPrak.setSelected(false);
         viewProdKontsultatu.jTextFieldKodeProd.setText(null);
+    }
+    
+    /* Saldu nahi den produktua aukeratzeko kanpoak hutsik ezin dira geratu. */
+    private boolean balidazioaProdKonts() {
+        boolean bool = true;
+        if (viewProdKontsultatu.jTextFieldKodeProd.getText().isEmpty()) {
+            viewProdKontsultatu.jTextFieldKodeProd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        return bool;
     }
     
     /* Taulako datuak ezabatzen duen metodoa */

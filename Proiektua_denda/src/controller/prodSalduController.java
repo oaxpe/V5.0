@@ -80,44 +80,47 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
 
         }
         else if (comando == viewProdSaldu.jButtonSaldu) {
-//            String kodea = viewProdSaldu.jTextFieldKodeProd.getText();
-            /* datuak kontsultatu eta kargatu taulan */
-            if (viewProdSaldu.jRadioButtonJerts.isSelected()) {
-                if (!JertseaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString())) {
-                    JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
-                    resetAukerak();
+            if (balidazioaProdSaldu()) { // kanpo guztiak beteta dauden konprobatzen du
+                /* datuak kontsultatu eta kargatu taulan */
+                if (viewProdSaldu.jRadioButtonJerts.isSelected()) {
+                    if (!JertseaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString())) {
+                        JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
+                        resetAukerak();
+                    }
+                    else {
+                        JertseaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString());
+                        SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
+                        taulaHustu(viewProdSaldu.jTableProdInfo);
+                        lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
+                    }    
                 }
-                else {
-                    JertseaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString());
-                    SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
-                    taulaHustu(viewProdSaldu.jTableProdInfo);
-                    lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
-                }    
-            }
-            else if (viewProdSaldu.jRadioButtonKami.isSelected()) {
-                if (!KamisetaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString())) {
-                    JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
-                    resetAukerak();
+                else if (viewProdSaldu.jRadioButtonKami.isSelected()) {
+                    if (!KamisetaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString())) {
+                        JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
+                        resetAukerak();
+                    }
+                    else {
+                        KamisetaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString());
+                        SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
+                        taulaHustu(viewProdSaldu.jTableProdInfo);
+                        lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
+                    }    
                 }
-                else {
-                    KamisetaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString());
-                    SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
-                    taulaHustu(viewProdSaldu.jTableProdInfo);
-                    lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
-                }    
-            }
-            else if (viewProdSaldu.jRadioButtonPrak.isSelected()) {
-                if (!PrakaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), Integer.parseInt(viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()))) {
-                    JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
-                    resetAukerak();
+                else if (viewProdSaldu.jRadioButtonPrak.isSelected()) {
+                    if (!PrakaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), Integer.parseInt(viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()))) {
+                        JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
+                        resetAukerak();
+                    }
+                    else {
+                        PrakaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), Integer.parseInt(viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
+                        SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
+                        taulaHustu(viewProdSaldu.jTableProdInfo);
+                        lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
+                    }    
                 }
-                else {
-                    PrakaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), Integer.parseInt(viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
-                    SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
-                    taulaHustu(viewProdSaldu.jTableProdInfo);
-                    lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
-                }    
             }
+            else 
+                JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
         }
     }
     
@@ -247,6 +250,32 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
         viewProdSaldu.jTextFieldKodeProd.setText(null);
         viewProdSaldu.jTextFieldKantitatea.setText(null);
         viewProdSaldu.jComboBoxTaila.setSelectedIndex(0);
+    }
+    
+    /* Saldu nahi den produktua aukeratzeko kanpoak hutsik ezin dira geratu. */
+    private boolean balidazioaProdSaldu() {
+        boolean bool = true;
+        if (viewProdSaldu.jTextFieldKodeProd.getText().isEmpty()) {
+            viewProdSaldu.jTextFieldKodeProd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewProdSaldu.jComboBoxTaila.getSelectedIndex() == 0) {
+            viewProdSaldu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewProdSaldu.jTextFieldKantitatea.getText().isEmpty()) {
+            viewProdSaldu.jTextFieldKantitatea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (!ctr.zenbakiaDa(viewProdSaldu.jTextFieldKantitatea.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewProdSaldu.jTextFieldKantitatea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProdSaldu.jTextFieldKantitatea.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else {
+            viewProdSaldu.jTextFieldKantitatea.setToolTipText(null);
+        }
+        return bool;
     }
     
     /* Taulako datuak ezabatzen duen metodoa */

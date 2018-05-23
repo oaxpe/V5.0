@@ -697,4 +697,13 @@ public class Controller {
         taula.setRowSorter(rowSorter);
         rowSorter.setRowFilter(RowFilter.regexFilter(textua));
     }
+    
+    public boolean zenbakiaDa(String s){
+	try {
+            Integer.parseInt(s);
+            return true;
+	} catch (NumberFormatException nfe){
+            return false;
+	}
+    }
 }
