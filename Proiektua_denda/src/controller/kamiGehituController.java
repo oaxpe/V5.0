@@ -34,6 +34,7 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
     private KamisetaGehitu viewKamisetaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public kamiGehituController(Kamiseta kami, ProduktuaAukeratu viewProdAuk, KamisetaGehitu viewKamGehitu) {
@@ -48,7 +49,6 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* instantzia berriak, bertako metodoak erabiltzeko */
-        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
         prodAukController prodAukCtr = new prodAukController();
         
         /* KamisetaGehitu-ko aukerak */
@@ -240,8 +240,16 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
         }
         if (viewKamisetaGehitu.jTextFieldStock.getText().isEmpty()) {
             viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewKamisetaGehitu.jTextFieldStock.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewKamisetaGehitu.jTextFieldStock.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewKamisetaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewKamisetaGehitu.jTextFieldStock.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewKamisetaGehitu.jTextFieldStock.setToolTipText(null);
         if (viewKamisetaGehitu.jComboBoxTaila.getSelectedIndex() == 0) {
             viewKamisetaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;

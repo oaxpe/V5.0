@@ -200,14 +200,30 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
             viewHornitzaileaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }   
-        if (viewHornitzaileaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewHornitzaileaGehitu.jTextFieldTlf.getText()))) {
+        if (viewHornitzaileaGehitu.jTextFieldTlf.getText().isEmpty()) {
             viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }   
-        if (viewHornitzaileaGehitu.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewHornitzaileaGehitu.jTextFieldEmail.getText()))) {
-            viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewHornitzaileaGehitu.jTextFieldTlf.setToolTipText(null);
             bool = false;
         }
+        else if (!Metodoak.tlfBalidazioa(viewHornitzaileaGehitu.jTextFieldTlf.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewHornitzaileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewHornitzaileaGehitu.jTextFieldTlf.setToolTipText("Telefono zenbaki okerra");
+            bool = false;
+        }
+        else 
+            viewHornitzaileaGehitu.jTextFieldTlf.setToolTipText(null);
+        if (viewHornitzaileaGehitu.jTextFieldEmail.getText().isEmpty()) {
+            viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewHornitzaileaGehitu.jTextFieldEmail.setToolTipText(null);
+            bool = false;
+        }
+        else if (!Metodoak.emailBalidazioa(viewHornitzaileaGehitu.jTextFieldEmail.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewHornitzaileaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewHornitzaileaGehitu.jTextFieldEmail.setToolTipText("Email kontu okerra");
+            bool = false;
+        }
+        else 
+            viewHornitzaileaGehitu.jTextFieldEmail.setToolTipText(null);
         return bool;
     }
 }

@@ -396,27 +396,40 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
             viewBezeroaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }   
-        if (viewBezeroaInfo.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewBezeroaInfo.jTextFieldNan.getText()))) {
+        if (viewBezeroaInfo.jTextFieldNan.getText().isEmpty()) {
             viewBezeroaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewBezeroaInfo.jTextFieldNan.setToolTipText(null);
             bool = false;
         }
+        else if (!Metodoak.nanBalidazioa(viewBezeroaInfo.jTextFieldNan.getText())) {
+            viewBezeroaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewBezeroaInfo.jTextFieldNan.setToolTipText("NAN formatu okerra");
+            bool = false;
+        }
+        else 
+            viewBezeroaInfo.jTextFieldNan.setToolTipText(null);
         // data balidatu ??
         if (!viewBezeroaInfo.jRadioButtonEmak.isSelected() && !viewBezeroaInfo.jRadioButtonGiz.isSelected()) {
             viewBezeroaInfo.jRadioButtonEmak.setForeground(Color.RED);
             viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.RED);
+            bool = false;
         }  
         if (viewBezeroaInfo.jTextFieldHerria.getText().isEmpty()) {
             viewBezeroaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }
-        if (viewBezeroaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewBezeroaInfo.jTextFieldTlf.getText()))) {
+        if (viewBezeroaInfo.jTextFieldTlf.getText().isEmpty()) {
             viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewBezeroaInfo.jTextFieldTlf.setToolTipText(null);
             bool = false;
         }
-        else {
-            viewBezeroaInfo.jRadioButtonEmak.setForeground(Color.RED);
-            viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.RED);
+        else if (!Metodoak.tlfBalidazioa(viewBezeroaInfo.jTextFieldTlf.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewBezeroaInfo.jTextFieldTlf.setToolTipText("Telefono zenbaki okerra");
+            bool = false;
         }
+        else 
+            viewBezeroaInfo.jTextFieldTlf.setToolTipText(null);
         return bool;
     }
 
@@ -429,5 +442,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         viewBezeroaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewBezeroaInfo.jRadioButtonEmak.setForeground(Color.BLACK);
         viewBezeroaInfo.jRadioButtonGiz.setForeground(Color.BLACK);
+        viewBezeroaInfo.jTextFieldTlf.setToolTipText(null);
+        viewBezeroaInfo.jTextFieldNan.setToolTipText(null);
     }
 }

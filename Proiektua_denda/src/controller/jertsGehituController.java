@@ -34,6 +34,7 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
     private JertseaGehitu viewJertseaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public jertsGehituController(Jertsea jerts, ProduktuaAukeratu viewProdAuk, JertseaGehitu viewJertsGehitu) {
@@ -48,7 +49,6 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* instantzia berriak, bertako metodoak erabiltzeko */
-        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
         prodAukController prodAukCtr = new prodAukController();
         
         /* JertseaGehitu-ko aukerak */
@@ -233,8 +233,16 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
         }
         if (viewJertseaGehitu.jTextFieldStock.getText().isEmpty()) {
             viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewJertseaGehitu.jTextFieldStock.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewJertseaGehitu.jTextFieldStock.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewJertseaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewJertseaGehitu.jTextFieldStock.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewJertseaGehitu.jTextFieldStock.setToolTipText(null);
         if (viewJertseaGehitu.jComboBoxTaila.getSelectedIndex() == 0) {
             viewJertseaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;

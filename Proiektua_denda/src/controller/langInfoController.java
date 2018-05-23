@@ -418,10 +418,18 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             viewLangileaInfo.jTextFieldAbizena2.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }   
-        if (viewLangileaInfo.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewLangileaInfo.jTextFieldNan.getText()))) {
+        if (viewLangileaInfo.jTextFieldNan.getText().isEmpty()) {
             viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewLangileaInfo.jTextFieldNan.setToolTipText(null);
             bool = false;
         }
+        else if (!Metodoak.nanBalidazioa(viewLangileaInfo.jTextFieldNan.getText())) {
+            viewLangileaInfo.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewLangileaInfo.jTextFieldNan.setToolTipText("NAN formatu okerra");
+            bool = false;
+        }
+        else
+            viewLangileaInfo.jTextFieldNan.setToolTipText(null);
         // data balidatu ??
         if (!viewLangileaInfo.jRadioButtonEmak.isSelected() && !viewLangileaInfo.jRadioButtonGiz.isSelected()) {
             viewLangileaInfo.jRadioButtonEmak.setForeground(Color.RED);
@@ -435,10 +443,18 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             viewLangileaInfo.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }
-        if (viewLangileaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewLangileaInfo.jTextFieldTlf.getText()))) {
+        if (viewLangileaInfo.jTextFieldTlf.getText().isEmpty()) {
             viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewLangileaInfo.jTextFieldTlf.setToolTipText(null);
             bool = false;
         }
+        else if (!Metodoak.tlfBalidazioa(viewLangileaInfo.jTextFieldTlf.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewLangileaInfo.jTextFieldTlf.setToolTipText("Telefono zenbaki okerra");
+            bool = false;
+        }
+        else
+            viewLangileaInfo.jTextFieldTlf.setToolTipText(null);
         if (viewLangileaInfo.jTextFieldSoldata.getText().isEmpty()) {
             viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
@@ -464,5 +480,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        
+        viewLangileaInfo.jTextFieldTlf.setToolTipText(null);
+        viewLangileaInfo.jTextFieldNan.setToolTipText(null);
     }
 }

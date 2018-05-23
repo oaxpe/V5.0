@@ -335,8 +335,16 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         // data balidatu ?????
         if (viewEskaeraInfo.jTextFieldKopurua.getText().isEmpty()) {
             viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewEskaeraInfo.jTextFieldKopurua.setToolTipText(null);
             bool = false;
-        }   
+        }
+        else if (!ctr.zenbakiaDa(viewEskaeraInfo.jTextFieldKopurua.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewEskaeraInfo.jTextFieldKopurua.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewEskaeraGehitu.jTextFieldKopurua.setToolTipText(null);
         return bool;
     }
       

@@ -34,6 +34,7 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
     private DendaGehitu viewDendaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public dendaGehituController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
@@ -207,6 +208,9 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        
+        viewDendaGehitu.jTextFieldTlf.setToolTipText(null);
+        viewDendaGehitu.jTextFieldEmail.setToolTipText(null);
     }
 
     private boolean balidazioaDendaGehitu() {
@@ -225,16 +229,40 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         }   
         if (viewDendaGehitu.jTextFieldPostKod.getText().isEmpty()) {
             viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaGehitu.jTextFieldPostKod.setToolTipText(null);
             bool = false;
         }
-        if (viewDendaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewDendaGehitu.jTextFieldTlf.getText()))) {
+        else if (!ctr.zenbakiaDa(viewDendaGehitu.jTextFieldPostKod.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaGehitu.jTextFieldPostKod.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewDendaGehitu.jTextFieldPostKod.setToolTipText(null);
+        if (viewDendaGehitu.jTextFieldTlf.getText().isEmpty()) {
             viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaGehitu.jTextFieldTlf.setToolTipText(null);
             bool = false;
         }
-        if (viewDendaGehitu.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewDendaGehitu.jTextFieldEmail.getText()))) {
+        else if (!Metodoak.tlfBalidazioa(viewDendaGehitu.jTextFieldTlf.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaGehitu.jTextFieldTlf.setToolTipText("Telefono zenbaki okerra");
+            bool = false;
+        }
+        else 
+            viewDendaGehitu.jTextFieldTlf.setToolTipText(null);
+        if (viewDendaGehitu.jTextFieldEmail.getText().isEmpty()) {
             viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaGehitu.jTextFieldEmail.setToolTipText(null);
             bool = false;
         }
+        else if (!Metodoak.emailBalidazioa(viewDendaGehitu.jTextFieldEmail.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaGehitu.jTextFieldEmail.setToolTipText("Email kontu okerra");
+            bool = false;
+        }
+        else 
+            viewDendaGehitu.jTextFieldEmail.setToolTipText(null);
         return bool;
     }
 }

@@ -34,6 +34,7 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public eskGehituController(Eskaera esk, EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu) {
@@ -177,8 +178,16 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         }     
         if (viewEskaeraGehitu.jTextFieldKopurua.getText().isEmpty()) {
             viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewEskaeraGehitu.jTextFieldKopurua.setToolTipText(null);
             bool = false;
-        }   
+        }
+        else if (!ctr.zenbakiaDa(viewEskaeraGehitu.jTextFieldKopurua.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewEskaeraGehitu.jTextFieldKopurua.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewEskaeraGehitu.jTextFieldKopurua.setToolTipText(null);
         return bool;
     }
 }

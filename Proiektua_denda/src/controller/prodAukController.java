@@ -914,11 +914,19 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         if (viewProduktuaAukeratu.jComboBoxSexuaJerts.getSelectedIndex() == 0) {
             viewProduktuaAukeratu.jComboBoxSexuaJerts.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
-        }
+        }      
         if (viewProduktuaAukeratu.jTextFieldStockJerts.getText().isEmpty()) {
             viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldStockJerts.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewProduktuaAukeratu.jTextFieldStockJerts.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewProduktuaAukeratu.jTextFieldStockJerts.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldStockJerts.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewProduktuaAukeratu.jTextFieldStockJerts.setToolTipText(null);
         if (viewProduktuaAukeratu.jComboBoxTailaJerts.getSelectedIndex() == 0) {
             viewProduktuaAukeratu.jComboBoxTailaJerts.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
@@ -950,8 +958,16 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
         if (viewProduktuaAukeratu.jTextFieldStockKami.getText().isEmpty()) {
             viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldStockKami.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewProduktuaAukeratu.jTextFieldStockKami.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewProduktuaAukeratu.jTextFieldStockKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldStockKami.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewProduktuaAukeratu.jTextFieldStockKami.setToolTipText(null);
         if (viewProduktuaAukeratu.jComboBoxTailaKami.getSelectedIndex() == 0) {
             viewProduktuaAukeratu.jComboBoxTailaKami.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
@@ -987,8 +1003,16 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         }
         if (viewProduktuaAukeratu.jTextFieldStockPrak.getText().isEmpty()) {
             viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldStockPrak.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewProduktuaAukeratu.jTextFieldStockPrak.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewProduktuaAukeratu.jTextFieldStockPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldStockPrak.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewProduktuaAukeratu.jTextFieldStockPrak.setToolTipText(null);
         if (viewProduktuaAukeratu.jComboBoxTailaPrak.getSelectedIndex() == 0) {
             viewProduktuaAukeratu.jComboBoxTailaPrak.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
@@ -996,11 +1020,19 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         if (viewProduktuaAukeratu.jComboBoxSasoiaPrak.getSelectedIndex() == 0) {
             viewProduktuaAukeratu.jComboBoxSasoiaPrak.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
-        }
+        }        
         if (viewProduktuaAukeratu.jTextFieldLuzeeraPrak.getText().isEmpty()) {
             viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewProduktuaAukeratu.jTextFieldLuzeeraPrak.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewProduktuaAukeratu.jTextFieldLuzeeraPrak.setToolTipText(null);        
         if (viewProduktuaAukeratu.jComboBoxMotaPrak.getSelectedIndex() == 0) {
             viewProduktuaAukeratu.jComboBoxMotaPrak.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;

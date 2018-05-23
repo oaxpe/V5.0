@@ -293,6 +293,7 @@ public class menuNagController implements ActionListener, MouseListener{
         viewMenuNagusia.jButtonInbentarioa.setToolTipText("Produktuen inbentarioa");
         viewMenuNagusia.jButtonEskatzeko.setToolTipText("Eskatzeko produktuak");
         viewMenuNagusia.jButtonKontsulta.setToolTipText("Produktuen kontsulta");
+        viewMenuNagusia.jButtonKontsulta.setToolTipText("Produktuen salmenta");
 
         botoienFormatoa(viewMenuNagusia.jPanelGorputza); // koloreak definitu
         viewMenuNagusia.jSeparatorEskum.setBackground(urdina);

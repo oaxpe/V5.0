@@ -34,6 +34,7 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
     private PrakaGehitu viewPrakaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public prakGehituController(Praka prak, ProduktuaAukeratu viewProdAuk, PrakaGehitu viewPrakGehitu) {
@@ -48,7 +49,6 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
     public void actionPerformed(ActionEvent e) {
         Object comando = e.getSource();
         /* instantzia berriak, bertako metodoak erabiltzeko */
-        Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
         prodAukController prodAukCtr = new prodAukController();
         
         /* PrakaGehitu-ko aukerak */
@@ -256,8 +256,16 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
         }
         if (viewPrakaGehitu.jTextFieldStock.getText().isEmpty()) {
             viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewPrakaGehitu.jTextFieldStock.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewPrakaGehitu.jTextFieldStock.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewPrakaGehitu.jTextFieldStock.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewPrakaGehitu.jTextFieldStock.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewPrakaGehitu.jTextFieldStock.setToolTipText(null);
         if (viewPrakaGehitu.jComboBoxTaila.getSelectedIndex() == 0) {
             viewPrakaGehitu.jComboBoxTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
@@ -268,8 +276,16 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
         }
         if (viewPrakaGehitu.jTextFieldLuzeera.getText().isEmpty()) {
             viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewPrakaGehitu.jTextFieldLuzeera.setToolTipText(null);
             bool = false;
         }
+        else if (!ctr.zenbakiaDa(viewPrakaGehitu.jTextFieldLuzeera.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewPrakaGehitu.jTextFieldLuzeera.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewPrakaGehitu.jTextFieldLuzeera.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewPrakaGehitu.jTextFieldLuzeera.setToolTipText(null);
         if (viewPrakaGehitu.jComboBoxMota.getSelectedIndex() == 0) {
             viewPrakaGehitu.jComboBoxMota.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;

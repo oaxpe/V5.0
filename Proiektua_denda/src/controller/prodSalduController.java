@@ -249,7 +249,6 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
         viewProdSaldu.jRadioButtonPrak.setSelected(false);
         viewProdSaldu.jTextFieldKodeProd.setText(null);
         viewProdSaldu.jTextFieldKantitatea.setText(null);
-        viewProdSaldu.jComboBoxTaila.setSelectedIndex(0);
     }
     
     /* Saldu nahi den produktua aukeratzeko kanpoak hutsik ezin dira geratu. */
@@ -265,9 +264,10 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
         }
         if (viewProdSaldu.jTextFieldKantitatea.getText().isEmpty()) {
             viewProdSaldu.jTextFieldKantitatea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewProdSaldu.jTextFieldKantitatea.setToolTipText(null);
             bool = false;
         }
-        if (!ctr.zenbakiaDa(viewProdSaldu.jTextFieldKantitatea.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+        else if (!ctr.zenbakiaDa(viewProdSaldu.jTextFieldKantitatea.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
             viewProdSaldu.jTextFieldKantitatea.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             viewProdSaldu.jTextFieldKantitatea.setToolTipText("Zenbakia izan behar da");
             bool = false;

@@ -236,8 +236,17 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
         }   
         if (viewBezeroaGehitu.jTextFieldNan.getText().isEmpty() || !(Metodoak.nanBalidazioa(viewBezeroaGehitu.jTextFieldNan.getText()))) {
             viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewBezeroaGehitu.jTextFieldNan.setToolTipText(null);
             bool = false;
         }
+        else if (!(Metodoak.nanBalidazioa(viewBezeroaGehitu.jTextFieldNan.getText()))) {
+            viewBezeroaGehitu.jTextFieldNan.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewBezeroaGehitu.jTextFieldNan.setToolTipText("NAN formatu okerra");
+            bool = false;
+        }
+        else 
+            viewBezeroaGehitu.jTextFieldNan.setToolTipText(null);
+        
         // data balidatu ??
         if (!viewBezeroaGehitu.jRadioButtonEmak.isSelected() && !viewBezeroaGehitu.jRadioButtonGiz.isSelected()) {
             viewBezeroaGehitu.jRadioButtonEmak.setForeground(Color.RED);
@@ -251,10 +260,17 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
             viewBezeroaGehitu.jTextFieldHerria.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }
-        if (viewBezeroaGehitu.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewBezeroaGehitu.jTextFieldTlf.getText()))) {
+        if (viewBezeroaGehitu.jTextFieldTlf.getText().isEmpty()) {
             viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             bool = false;
         }
+        if (!(Metodoak.tlfBalidazioa(viewBezeroaGehitu.jTextFieldTlf.getText()))) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewBezeroaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewBezeroaGehitu.jTextFieldTlf.setToolTipText("Telefono zenbaki okerra");
+            bool = false;
+        }
+        else
+            viewBezeroaGehitu.jTextFieldTlf.setToolTipText(null);
         return bool;
     }
 }

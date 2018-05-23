@@ -371,17 +371,40 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         }    
         if (viewDendaInfo.jTextFieldPostKod.getText().isEmpty()) {
             viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaInfo.jTextFieldPostKod.setToolTipText(null);
             bool = false;
         }
-        if (viewDendaInfo.jTextFieldTlf.getText().isEmpty() || !(Metodoak.tlfBalidazioa(viewDendaInfo.jTextFieldTlf.getText()))) {
+        else if (!ctr.zenbakiaDa(viewDendaInfo.jTextFieldPostKod.getText())) { // sartutako balioa, zenbakia den edo ez konprobatzen du
+            viewDendaInfo.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaInfo.jTextFieldPostKod.setToolTipText("Zenbakia izan behar da");
+            bool = false;
+        }
+        else 
+            viewDendaInfo.jTextFieldPostKod.setToolTipText(null);
+        if (viewDendaInfo.jTextFieldTlf.getText().isEmpty()) {
             viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
-            bool = false;
-        }  
-        if (viewDendaInfo.jTextFieldEmail.getText().isEmpty() || !(Metodoak.emailBalidazioa(viewDendaInfo.jTextFieldEmail.getText()))) {
-            viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaInfo.jTextFieldTlf.setToolTipText(null);
             bool = false;
         }
-        
+        else if (!Metodoak.tlfBalidazioa(viewDendaInfo.jTextFieldTlf.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewDendaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaInfo.jTextFieldTlf.setToolTipText("Telefono zenbaki okerra");
+            bool = false;
+        }
+        else 
+            viewDendaInfo.jTextFieldTlf.setToolTipText(null);
+        if (viewDendaInfo.jTextFieldEmail.getText().isEmpty()) {
+            viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaInfo.jTextFieldEmail.setToolTipText(null);
+            bool = false;
+        }
+        else if (!Metodoak.emailBalidazioa(viewDendaInfo.jTextFieldEmail.getText())) { // sartutako balioa, egokia den konprobatzen du (expresio erregularrekin)
+            viewDendaInfo.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            viewDendaInfo.jTextFieldEmail.setToolTipText("Email kontu okerra");
+            bool = false;
+        }
+        else 
+            viewDendaInfo.jTextFieldEmail.setToolTipText(null);
         return bool;
     }
 
