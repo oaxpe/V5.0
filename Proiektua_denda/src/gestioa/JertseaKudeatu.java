@@ -207,7 +207,7 @@ public class JertseaKudeatu {
     }
     
     /* JERTSEAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */
-    public static void prodSaldu(String kodea, int kantitatea, String taila) {
+    public static boolean prodSaldu(String kodea, int kantitatea, String taila) {
         boolean bool = false;
         System.out.println(""
                 + "-----------------------------------------\n"
@@ -218,18 +218,18 @@ public class JertseaKudeatu {
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
             while (true) {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri  
-                if (!jerts.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
+                if (!jerts.getKodPro().toLowerCase().equals(kodea.toLowerCase())) { // kodea konparatu
                     geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
                     geoos.flush();
                 } 
                 else {
-                    if (!jerts.getTaila().equals(taila.toUpperCase())) {
+                    if (!jerts.getTaila().toLowerCase().equals(taila.toLowerCase())) {
                         geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
                         geoos.flush();
                     }
                     else {
                         if (jerts.isEskuragai()) {
-                            if (jerts.getKodPro().equals(kodea) && jerts.getKantStock()>=kantitatea) {
+                            if (jerts.getKodPro().toLowerCase().equals(kodea.toLowerCase()) && jerts.getKantStock()>=kantitatea) {
                                 int k = jerts.getKantStock()-kantitatea;
                                 jerts.setKantStock(k); // salduko den prod kantitatea stock-etik kendu
                                 geoos.writeObject(jerts); // objektua fitxategi berrian idatzi
@@ -262,5 +262,6 @@ public class JertseaKudeatu {
         
         if (!bool)
                 System.out.println("\tProduktu hori ez dago dendan.");
+        return bool;
     }
 }

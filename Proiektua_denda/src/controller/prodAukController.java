@@ -329,7 +329,7 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
     
     @Override
     public void mouseClicked(MouseEvent me) {
-        
+
     } 
 
     @Override

@@ -51,7 +51,8 @@ public class SalmentaKudeatu {
             System.out.println("SALMENTAK: ");
             System.out.printf("\t%1$-15s    %2$-15s    %3$-10s\n", "Salmenta zenb", "Data", "Kopurua");
             while (true) {
-                Salmenta salm = (Salmenta) geois.readObject(); // objektua irakurri              
+                Salmenta salm = (Salmenta) geois.readObject(); // objektua irakurri    
+                salmGuzt.add(salm);
                 salm.printSalmenta(); // objektuaren datuak erakutsi
             }
         } catch (EOFException ex) { 

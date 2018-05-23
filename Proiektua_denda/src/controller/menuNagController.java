@@ -41,13 +41,14 @@ public class menuNagController implements ActionListener, MouseListener{
     private EskaeraInfo viewEskaeraInfo;
     private ProdInbEsk viewProdInbEsk;
     private ProdKontsultatu viewProdKontsultatu;
+    private ProdSaldu viewProdSaldu;
     
     private Color urdina = new Color(0,0,153);
 
     /* ERAIKITZAILEA */   
     public menuNagController(DendaInfo viewDendInfo, BezeroaInfo viewBezInfo, 
             LangileaInfo viewLangInfo,  ProduktuaAukeratu viewProdAuk, 
-            HornitzaileaInfo viewHornInfo, EskaeraInfo viewEskInfo, MenuNagusia viewMenuNag, ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts) {
+            HornitzaileaInfo viewHornInfo, EskaeraInfo viewEskInfo, MenuNagusia viewMenuNag, ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts, ProdSaldu viewProdSaldu) {
         this.viewDendaInfo = viewDendInfo;
         this.viewBezeroaInfo = viewBezInfo;
         this.viewLangileaInfo = viewLangInfo;
@@ -57,6 +58,7 @@ public class menuNagController implements ActionListener, MouseListener{
         this.viewMenuNagusia = viewMenuNag;
         this.viewProdInbEsk = viewProdInbEsk;
         this.viewProdKontsultatu = viewProdKonts;
+        this.viewProdSaldu = viewProdSaldu;
         menuNagEstiloa();
     }
 
@@ -71,6 +73,7 @@ public class menuNagController implements ActionListener, MouseListener{
         langInfoController langInfoCtr = new langInfoController();
         hornInfoController hornInfoCtr = new hornInfoController();
         eskInfoController eskInfoCtr = new eskInfoController();
+        prodSalduController prodSaldCtr = new prodSalduController();
         
         /* Menu nagusiko aukerak */
         if (comando == viewMenuNagusia.jButtonIrten) {
@@ -133,6 +136,11 @@ public class menuNagController implements ActionListener, MouseListener{
         else if (comando == viewMenuNagusia.jButtonKontsulta) {
             viewProdKontsultatu.setVisible(true);
             viewMenuNagusia.setEnabled(false);
+        }
+        else if (comando == viewMenuNagusia.jButtonSalmenta) {
+            viewProdSaldu.setVisible(true);
+            viewMenuNagusia.setEnabled(false);
+            prodSaldCtr.lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
         }
     }
     
@@ -202,6 +210,11 @@ public class menuNagController implements ActionListener, MouseListener{
             viewMenuNagusia.jButtonKontsulta.setForeground(Color.WHITE);
             viewMenuNagusia.jButtonKontsulta.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
+        else if (comando == viewMenuNagusia.jButtonSalmenta) {
+            viewMenuNagusia.jButtonSalmenta.setBackground(urdinArgia);
+            viewMenuNagusia.jButtonSalmenta.setForeground(Color.WHITE);
+            viewMenuNagusia.jButtonSalmenta.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
     }
 
     @Override
@@ -253,6 +266,11 @@ public class menuNagController implements ActionListener, MouseListener{
             viewMenuNagusia.jButtonKontsulta.setBackground(Color.WHITE);
             viewMenuNagusia.jButtonKontsulta.setForeground(Color.BLACK);
             viewMenuNagusia.jButtonKontsulta.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        }
+        else if (comando == viewMenuNagusia.jButtonSalmenta) {
+            viewMenuNagusia.jButtonSalmenta.setBackground(Color.WHITE);
+            viewMenuNagusia.jButtonSalmenta.setForeground(Color.BLACK);
+            viewMenuNagusia.jButtonSalmenta.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         }   
     }
         

@@ -207,7 +207,7 @@ public class KamisetaKudeatu {
     }
        
     /* KAMISETAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */
-    public static void prodSaldu(String kodea, String taila, int kantitatea) {
+    public static boolean prodSaldu(String kodea, int kantitatea, String taila) {
         boolean bool = false;
         System.out.println(""
                 + "-----------------------------------------\n"
@@ -218,18 +218,18 @@ public class KamisetaKudeatu {
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
             while (true) {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
-                if (!kami.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
+                if (!kami.getKodPro().toLowerCase().equals(kodea.toLowerCase())) { // kodea konparatu
                     geoos.writeObject(kami); // objektua fitxategi berrian idatzi
                     geoos.flush();
                 } 
                 else {
-                    if (!kami.getTaila().equals(taila)) {
+                    if (!kami.getTaila().toLowerCase().equals(taila.toLowerCase())) {
                         geoos.writeObject(kami); // objektua fitxategi berrian idatzi
                         geoos.flush();
                     }
                     else {
                         if (kami.isEskuragai()) {
-                            if (kami.getKodPro().equals(kodea) && kami.getKantStock()>=kantitatea) {
+                            if (kami.getKodPro().toLowerCase().equals(kodea.toLowerCase()) && kami.getKantStock()>=kantitatea) {
                                 kami.setKantStock(kami.getKantStock()-kantitatea); // salduko den prod kantitatea stock-etik kendu
                                 geoos.writeObject(kami); // objektua fitxategi berrian idatzi
                                 geoos.flush();
@@ -262,6 +262,7 @@ public class KamisetaKudeatu {
         
         if (!bool)
                 System.out.println("\tProduktu hori ez dago dendan.");
+        return bool;
     }
     
 }

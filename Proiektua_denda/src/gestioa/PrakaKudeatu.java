@@ -207,7 +207,7 @@ public class PrakaKudeatu {
     }
     
     /* PRAKAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */ 
-    public static void prodSaldu(String kodea, int taila, int kantitatea) {
+    public static boolean prodSaldu(String kodea, int taila, int kantitatea) {
         boolean bool = false;
         System.out.println(""
                 + "-----------------------------------------\n"
@@ -261,5 +261,6 @@ public class PrakaKudeatu {
         
         if (!bool)
                 System.out.println("\tProduktu hori ez dago dendan.");
+        return bool;
     }
 }

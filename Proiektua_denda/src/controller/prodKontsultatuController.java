@@ -140,6 +140,10 @@ public class prodKontsultatuController implements ActionListener, MouseListener,
             viewProdKontsultatu.jButtonIrten.setBackground(new Color (0,0,51));
             viewProdKontsultatu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
+        else if (comando == viewProdKontsultatu.jButtonBidali) 
+            viewProdKontsultatu.jButtonBidali.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProdKontsultatu.jButtonEzeztatu)
+            viewProdKontsultatu.jButtonEzeztatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     @Override
@@ -150,6 +154,10 @@ public class prodKontsultatuController implements ActionListener, MouseListener,
             viewProdKontsultatu.jButtonIrten.setBackground(urdina);
             viewProdKontsultatu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         }
+        else if (comando == viewProdKontsultatu.jButtonBidali) 
+            viewProdKontsultatu.jButtonBidali.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProdKontsultatu.jButtonEzeztatu)
+            viewProdKontsultatu.jButtonEzeztatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
     
     @Override

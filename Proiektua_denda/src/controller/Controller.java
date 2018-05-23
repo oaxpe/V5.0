@@ -55,6 +55,7 @@ public class Controller {
     private EskaeraGehitu viewEskaeraGehitu;
     private ProdInbEsk viewProdInbEsk;
     private ProdKontsultatu viewProdKontsultatu;
+    private ProdSaldu viewProdSaldu;
 
     /* ERAIKITZAILEA */  
     public Controller() {
@@ -66,7 +67,7 @@ public class Controller {
             LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, ProduktuaAukeratu viewProdAuk, 
             JertseaGehitu viewJertsGehitu, KamisetaGehitu viewKamGehitu, PrakaGehitu viewPrakGehitu, 
             HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraInfo viewEskInfo, 
-            EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag, ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts) {
+            EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag, ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts, ProdSaldu viewProdSaldu) {
         this.bezeroa = bez;
         this.denda = denda;
         this.eskaera = esk;
@@ -94,6 +95,7 @@ public class Controller {
         this.viewMenuNagusia = viewMenuNag;
         this.viewProdInbEsk = viewProdInbEsk;
         this.viewProdKontsultatu = viewProdKonts;
+        this.viewProdSaldu = viewProdSaldu;
         botoiakEntzuten();
         hasieratu();
         viewMenuNagusia.setVisible(true);
@@ -102,7 +104,7 @@ public class Controller {
     /* METODOAK */
     private void botoiakEntzuten() { 
         menuNagController menuNagCtr = new menuNagController(viewDendaInfo, viewBezeroaInfo, viewLangileaInfo, viewProduktuaAukeratu, 
-            viewHornitzaileaInfo, viewEskaeraInfo, viewMenuNagusia, viewProdInbEsk, viewProdKontsultatu);
+            viewHornitzaileaInfo, viewEskaeraInfo, viewMenuNagusia, viewProdInbEsk, viewProdKontsultatu, viewProdSaldu);
         dendaInfoController dendInfoCtr = new dendaInfoController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
         dendaGehituController dendGehituCtr = new dendaGehituController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
         bezInfoController bezInfoCtr = new bezInfoController(bezeroa, viewBezeroaInfo, viewBezeroaGehitu, viewMenuNagusia);
@@ -120,6 +122,7 @@ public class Controller {
         eskGehituController eskGehituCtr = new eskGehituController(eskaera, viewEskaeraInfo, viewEskaeraGehitu);
         prodInbEskController prodInbEskCtr = new prodInbEskController(jertsea, kamiseta, praka, viewMenuNagusia, viewProdInbEsk);
         prodKontsultatuController prodKontsCtr = new prodKontsultatuController(jertsea, kamiseta, praka, viewMenuNagusia, viewProdKontsultatu);
+        prodSalduController prodSalduCtr = new prodSalduController(jertsea, kamiseta, praka, viewMenuNagusia, viewProdSaldu);
         
         /* ActionListeners gehitu */
         viewMenuNagusia.jButtonIrten.addActionListener(menuNagCtr);
@@ -148,6 +151,7 @@ public class Controller {
         viewMenuNagusia.jButtonInbentarioa.addActionListener(menuNagCtr);
         viewMenuNagusia.jButtonEskatzeko.addActionListener(menuNagCtr);
         viewMenuNagusia.jButtonKontsulta.addActionListener(menuNagCtr);
+        viewMenuNagusia.jButtonSalmenta.addActionListener(menuNagCtr);
         
         // DendaInfo-ko botoiak
         viewDendaInfo.jButtonEzabatu.addActionListener(dendInfoCtr);
@@ -248,6 +252,11 @@ public class Controller {
         viewProdKontsultatu.jButtonIrten.addActionListener(prodKontsCtr);
         viewProdKontsultatu.jButtonBidali.addActionListener(prodKontsCtr);
         viewProdKontsultatu.jButtonEzeztatu.addActionListener(prodKontsCtr);
+        
+        // ProduktuaSaldu
+        viewProdSaldu.jButtonIrten.addActionListener(prodSalduCtr);
+        viewProdSaldu.jButtonSaldu.addActionListener(prodSalduCtr);
+        viewProdSaldu.jButtonEzeztatu.addActionListener(prodSalduCtr);  
          
         /* AncestorListener */
         viewProduktuaAukeratu.jPanelJerts.addAncestorListener(prodAukCtr);
@@ -266,6 +275,7 @@ public class Controller {
         viewMenuNagusia.jButtonInbentarioa.addMouseListener(menuNagCtr);
         viewMenuNagusia.jButtonEskatzeko.addMouseListener(menuNagCtr);
         viewMenuNagusia.jButtonKontsulta.addMouseListener(menuNagCtr);
+        viewMenuNagusia.jButtonSalmenta.addMouseListener(menuNagCtr);
         
         // DendaInfo
         viewDendaInfo.jButtonIrten.addMouseListener(dendInfoCtr);
@@ -380,6 +390,18 @@ public class Controller {
         viewProdKontsultatu.jRadioButtonJerts.addMouseListener(prodKontsCtr);
         viewProdKontsultatu.jRadioButtonKami.addMouseListener(prodKontsCtr);
         viewProdKontsultatu.jRadioButtonPrak.addMouseListener(prodKontsCtr);
+        viewProdKontsultatu.jButtonBidali.addMouseListener(prodKontsCtr);
+        viewProdKontsultatu.jButtonEzeztatu.addMouseListener(prodKontsCtr);
+        viewProdKontsultatu.jButtonIrten.addMouseListener(prodKontsCtr);
+        
+        
+        // ProduktuaSaldu
+        viewProdSaldu.jRadioButtonJerts.addMouseListener(prodSalduCtr);
+        viewProdSaldu.jRadioButtonKami.addMouseListener(prodSalduCtr);
+        viewProdSaldu.jRadioButtonPrak.addMouseListener(prodSalduCtr);
+        viewProdSaldu.jButtonSaldu.addMouseListener(prodSalduCtr);
+        viewProdSaldu.jButtonEzeztatu.addMouseListener(prodSalduCtr);
+        viewProdSaldu.jButtonIrten.addMouseListener(prodSalduCtr);
         
         /* ListSelectionListener */
         viewDendaInfo.jTableDendaInfo.getSelectionModel().addListSelectionListener(dendInfoCtr);
@@ -560,6 +582,11 @@ public class Controller {
         
         // ProdKontsultatu
         viewProdKontsultatu.jTextFieldKodeProd.addFocusListener(prodKontsCtr);
+        
+        // ProdSaldu
+        viewProdSaldu.jTextFieldKodeProd.addFocusListener(prodSalduCtr);
+        viewProdSaldu.jComboBoxTaila.addFocusListener(prodSalduCtr);
+        viewProdSaldu.jTextFieldKantitatea.addFocusListener(prodSalduCtr);
     }
     
     private void hasieratu() {        
