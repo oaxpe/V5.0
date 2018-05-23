@@ -25,17 +25,17 @@ import model.Jertsea;
  * @version 4.0
  */
 public class JertseaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\jertsea.obj");
-    private static File fTemp = new File(d+"\\jertsTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fJerts = new File(dirObj+"\\jertsea.obj");
+    private static File fJertsTemp = new File(dirObj+"\\jertsTemp.obj");
     
     /* Jertse berri bat gehitu */
     public static void jertsGehitu(Jertsea jerts1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));    
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fJerts, true));    
             geoos.writeObject(jerts1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -54,8 +54,8 @@ public class JertseaKudeatu {
     public static void jertseaEzabatu(String kodea, String taila) {
         boolean ezabatuta = false;
         try {    
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fJertsTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fJerts));
             
             while (true) { // fitxategiko objektuak irakurri
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri              
@@ -76,7 +76,7 @@ public class JertseaKudeatu {
         }
         try {
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fJertsTemp.getAbsolutePath()), Paths.get(fJerts.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(JertseaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,7 +93,7 @@ public class JertseaKudeatu {
         FileInputStream fis = null;
         GoibururikEzObjectInputStream geois = null;
         try {
-            fis = new FileInputStream(f);
+            fis = new FileInputStream(fJerts);
             geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("JERTSEAK:");
             System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s    %5$-10s    %6$-10s\n", "Kodea", "Marka", "Kolorea", "Sexua", "Prezioa", "Tailak");
@@ -128,7 +128,7 @@ public class JertseaKudeatu {
         System.out.printf("%1$-15s    %2$-10s    %3$-10s    %4$-10s\n", "Kodea", "Kolorea", "Taila", "Kantitatea");
         boolean bool = false;
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fJerts);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
@@ -157,7 +157,7 @@ public class JertseaKudeatu {
         System.out.println("\nJERTSEAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fJerts);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
@@ -184,7 +184,7 @@ public class JertseaKudeatu {
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         boolean bool = false;
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fJerts);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri   
@@ -214,8 +214,8 @@ public class JertseaKudeatu {
                 + "|         Produktuaren salmenta         |\n"
                 + "-----------------------------------------");
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fJertsTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fJerts));
             while (true) {
                 Jertsea jerts = (Jertsea) geois.readObject(); // objektua irakurri  
                 if (!jerts.getKodPro().toLowerCase().equals(kodea.toLowerCase())) { // kodea konparatu
@@ -255,7 +255,7 @@ public class JertseaKudeatu {
         } 
         System.gc();
         try {
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fJertsTemp.getAbsolutePath()), Paths.get(fJerts.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -20,16 +20,16 @@ import model.Salmenta;
  * @version 4.0
  */
 public class SalmentaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\salmenta.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fSalm = new File(dirObj+"\\salmenta.obj");
     
     /* Salmenta berri bat gehitu/gestionatu */
     public static void salmentaGehitu(Salmenta salm1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fSalm, true));
             geoos.writeObject(salm1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -46,7 +46,7 @@ public class SalmentaKudeatu {
     public static ArrayList<Salmenta> salmentaGuztiakErakutsi() {
         ArrayList<Salmenta> salmGuzt = new ArrayList<Salmenta>();
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fSalm);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("SALMENTAK: ");
             System.out.printf("\t%1$-15s    %2$-15s    %3$-10s\n", "Salmenta zenb", "Data", "Kopurua");

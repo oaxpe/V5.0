@@ -25,17 +25,17 @@ import model.Kamiseta;
  * @version 4.0
  */
 public class KamisetaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\kamiseta.obj");
-    private static File fTemp = new File(d+"\\kamiTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fKami = new File(dirObj+"\\kamiseta.obj");
+    private static File fKamiTemp = new File(dirObj+"\\kamiTemp.obj");
 
     /* Kamiseta berri bat gehitu */
     public static void kamisetaGehitu(Kamiseta kami1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));  
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fKami, true));  
             geoos.writeObject(kami1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -54,8 +54,8 @@ public class KamisetaKudeatu {
     public static void kamisetaEzabatu(String kodea, String taila) {
         boolean ezabatuta = false;
         try {    
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fKamiTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fKami));
             
             while (true) { // fitxategiko objektuak irakurri
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri              
@@ -76,7 +76,7 @@ public class KamisetaKudeatu {
         }
         try {
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fKamiTemp.getAbsolutePath()), Paths.get(fKami.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(KamisetaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,7 +93,7 @@ public class KamisetaKudeatu {
         FileInputStream fis = null;
         GoibururikEzObjectInputStream geois = null;
         try {
-            fis = new FileInputStream(f);
+            fis = new FileInputStream(fKami);
             geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("KAMISETAK:");
             System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s    %5$-10s    %6$-10s    %7$-10s\n", "Kodea", "Marka", "Kolorea", "Sexua", "Prezioa", "Tailak", "Sasoia");
@@ -127,7 +127,7 @@ public class KamisetaKudeatu {
         System.out.printf("%1$-15s    %2$-10s    %3$-10s    %4$-10s\n", "Kodea", "Kolorea", "Taila", "Kantitatea");
         boolean bool = false;
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fKami);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
@@ -157,7 +157,7 @@ public class KamisetaKudeatu {
         System.out.println("\nKAMISETAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fKami);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
@@ -184,7 +184,7 @@ public class KamisetaKudeatu {
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         boolean bool = false;
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fKami);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
@@ -214,8 +214,8 @@ public class KamisetaKudeatu {
                 + "|         Produktuaren salmenta         |\n"
                 + "-----------------------------------------");
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fKamiTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fKami));
             while (true) {
                 Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
                 if (!kami.getKodPro().toLowerCase().equals(kodea.toLowerCase())) { // kodea konparatu
@@ -254,15 +254,14 @@ public class KamisetaKudeatu {
         }
         System.gc();
         try {
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fKamiTemp.getAbsolutePath()), Paths.get(fKami.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
-            fTemp.delete();
+            fKamiTemp.delete();
         }
         
         if (!bool)
                 System.out.println("\tProduktu hori ez dago dendan.");
         return bool;
     }
-    
 }

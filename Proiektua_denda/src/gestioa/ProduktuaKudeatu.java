@@ -5,48 +5,12 @@
  */
 package gestioa;
 
-import java.io.IOException;
-
 /**
  *
  * @author Oihane Axpe
  * @version 4.0
  */
-public class ProduktuaKudeatu {
-
-
-    /* Dendan dauden produktuen inbentarioa */
-    public static void inbentarioa() {
-        System.out.print(""
-                + "-------------------------------------------------------------\n"
-                + "|        Dendako produktuen inbentarioa (produktuka)        |\n"
-                + "-------------------------------------------------------------\n");
-        KamisetaKudeatu.kamisetaInbentarioa();
-        JertseaKudeatu.jertseaInbentarioa();
-        PrakaKudeatu.prakaInbentarioa();
-    }
-    
-    /* Dendan dauden produktu bakoitzaren kantitatea 5 baino txikiagoa bada, produktu hori eskatu egin behar da */
-    public static void prodEskatzeko() {
-        System.out.print(""
-                + "--------------------------------------------\n"
-                + "|           Eskatzeko produktuak           |\n"
-                + "--------------------------------------------\n");
-        KamisetaKudeatu.kamisetaEskatzeko();
-        JertseaKudeatu.jertseaEskatzeko();
-        PrakaKudeatu.prakaEskatzeko();
-    }
-    
-    public static void prodErakutsi() throws IOException {
-        System.out.print(""
-                + "------------------------------------------\n"
-                + "|        Dendako produktu guztiak        |\n"
-                + "------------------------------------------\n");
-        KamisetaKudeatu.kamisetaGuztErakutsi();
-        JertseaKudeatu.jertsGuztErakutsi();
-        PrakaKudeatu.prakaGutztErakutsi();
-    }
-    
+public class ProduktuaKudeatu {    
     /* Produktuen taila kontrolatzeko metodoa. Taila (String) bueltatu. */
     public static String[] tailaKontrolatuString() {
         String[] tailaString = {"XS", "S", "M", "L", "XL", "XXL"}; // taila posibleak gordeko ditu

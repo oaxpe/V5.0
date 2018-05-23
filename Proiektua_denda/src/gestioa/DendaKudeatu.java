@@ -17,7 +17,6 @@ import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Bezeroa;
 import model.Denda;
 
 /**
@@ -26,17 +25,17 @@ import model.Denda;
  * @version 4.0
  */
 public class DendaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\denda.obj");
-    private static File fTemp = new File(d+"\\dendaTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fDend = new File(dirObj+"\\denda.obj");
+    private static File fDendTemp = new File(dirObj+"\\dendaTemp.obj");
     
     /* Denda berri bat gehitu */
     public static void dendaGehitu(Denda dend1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true)); 
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fDend, true)); 
             geoos.writeObject(dend1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -56,8 +55,8 @@ public class DendaKudeatu {
         boolean ezabatuta = false;
         GoibururikEzObjectOutputStream geoos = null;
         try {    
-            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fDendTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fDend));
             
             while (true) { // fitxategiko objektuak irakurri
                 Denda dend = (Denda) geois.readObject(); // objektua irakurri              
@@ -79,7 +78,7 @@ public class DendaKudeatu {
         try {
             geoos.close();
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fDendTemp.getAbsolutePath()), Paths.get(fDend.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(BezeroaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,7 +92,7 @@ public class DendaKudeatu {
     public static ArrayList<Denda> dendGuztiakErakutsi() {
         ArrayList<Denda> dendaGuzt = new ArrayList<Denda>();
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fDend);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Denda denda = (Denda) geois.readObject(); // objektua irakurri   

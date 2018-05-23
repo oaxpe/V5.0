@@ -26,17 +26,17 @@ import model.Eskaera;
  * @version 4.0
  */
 public class EskaeraKudeatu implements Serializable {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\eskaera.obj");
-    private static File fTemp = new File(d+"\\eskTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fEsk = new File(dirObj+"\\eskaera.obj");
+    private static File fEskTemp = new File(dirObj+"\\eskTemp.obj");
     
     /* Eskaera berri bat gehitu/gestionatu */
     public static void eskaeraGehitu(Eskaera esk1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fEsk, true));
             geoos.writeObject(esk1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -54,8 +54,8 @@ public class EskaeraKudeatu implements Serializable {
         boolean ezabatuta = false;
         GoibururikEzObjectOutputStream geoos = null;
         try {            
-            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fEskTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fEsk));
             
             while (true) { // fitxategiko objektuak irakurri
                 Eskaera esk = (Eskaera) geois.readObject(); // objektua irakurri              
@@ -82,7 +82,7 @@ public class EskaeraKudeatu implements Serializable {
         try {
             geoos.close();
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fEskTemp.getAbsolutePath()), Paths.get(fEsk.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(EskaeraKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,7 +92,7 @@ public class EskaeraKudeatu implements Serializable {
     public static ArrayList<Eskaera> eskaeraGuztiakErakutsi() {
         ArrayList<Eskaera> eskGuzt = new ArrayList<Eskaera>();
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fEsk);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("ESKAERAK: ");
             System.out.printf("\t%1$-15s    %2$-15s    %3$-10s    %4$-15s\n", "Eskaera zenb", "Hornitzailea", "Kopurua", "Data");
@@ -110,6 +110,5 @@ public class EskaeraKudeatu implements Serializable {
         }    
         return eskGuzt;
     }
-    
 }
 

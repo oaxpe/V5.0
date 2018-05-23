@@ -25,9 +25,9 @@ import model.Langilea;
  * @version 4.0
  */
 public class LangileaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\langilea.obj");
-    private static File fTemp = new File(d+"\\langTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fLang = new File(dirObj+"\\langilea.obj");
+    private static File fLangTemp = new File(dirObj+"\\langTemp.obj");
     
     /* langileen lan eremua bistan ikusteko */
     public static String[] langileEremuaKontrolatu() {
@@ -37,11 +37,11 @@ public class LangileaKudeatu {
     
     /* Langile berri bat gehitu */
     public static void langileaGehitu(Langilea lang1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));        
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fLang, true));        
             geoos.writeObject(lang1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -60,8 +60,8 @@ public class LangileaKudeatu {
         boolean ezabatuta = false;
         GoibururikEzObjectOutputStream geoos = null;
         try {    
-            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fLangTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fLang));
             
             while (true) { // fitxategiko objektuak irakurri
                 Langilea lang = (Langilea) geois.readObject(); // objektua irakurri              
@@ -83,7 +83,7 @@ public class LangileaKudeatu {
         try {
             geoos.close();
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fLangTemp.getAbsolutePath()), Paths.get(fLang.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(LangileaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,11 +93,12 @@ public class LangileaKudeatu {
         else
             System.out.println(nan+" zenbakia duen bezerorik ez dago erregistratuta.");
     }
+    
     /* Langileen inguruko informazioa erakusten du. */
     public static ArrayList<Langilea> langileGuztiakErakutsi() {
         ArrayList<Langilea> langGuzt = new ArrayList<Langilea>();
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fLang);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("LANGILEAK: ");
             System.out.printf("\t%1$-10s    %2$-10s    %3$-20s    %4$-10s  %5$-15s    %6$-10s    %7$-10s    %8$-10s    %9$-10s\n", "Langile kodea", "Izena", "Abizenak", "NAN zenbakia", "Jaiotze data", "Sexua", "Herria", "Telefonoa", "Lan-eremua");  // inprimitzen den informazioari formatua emateko
@@ -120,8 +121,8 @@ public class LangileaKudeatu {
     public static void langileaDatuakAldatu(String nan, int aukera) {
         boolean aldatuta = true;
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fLangTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fLang));
             while (true) {
                 Langilea lang = (Langilea) geois.readObject(); // objektua irakurri   
                 Langilea l = new Langilea(lang.getKodLan(), lang.getIzena(), lang.getAbizena1(), lang.getAbizena2(), lang.getNan(), lang.getJaiotzeData(), lang.getSexua(), lang.getHerria(), lang.getTelefonoa(), lang.getSoldata(), lang.getEremua());
@@ -184,10 +185,10 @@ public class LangileaKudeatu {
         }
         
         try {
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fLangTemp.getAbsolutePath()), Paths.get(fLang.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
-            fTemp.delete();
+            fLangTemp.delete();
         }
     }
 }

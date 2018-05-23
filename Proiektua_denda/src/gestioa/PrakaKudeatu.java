@@ -25,17 +25,17 @@ import model.Praka;
  * @version 4.0
  */
 public class PrakaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\praka.obj");
-    private static File fTemp = new File(d+"\\prakTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fPrak = new File(dirObj+"\\praka.obj");
+    private static File fPrakTemp = new File(dirObj+"\\prakTemp.obj");
 
     /* Praka berri bat gehitu */
     public static void prakaGehitu(Praka prak1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true)); 
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fPrak, true)); 
             geoos.writeObject(prak1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -54,8 +54,8 @@ public class PrakaKudeatu {
     public static void prakaEzabatu(String kodea, int taila) {
         boolean ezabatuta = false;
         try {    
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fPrakTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fPrak));
             
             while (true) { // fitxategiko objektuak irakurri
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri              
@@ -76,7 +76,7 @@ public class PrakaKudeatu {
         }
         try {
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fPrakTemp.getAbsolutePath()), Paths.get(fPrak.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -93,7 +93,7 @@ public class PrakaKudeatu {
         FileInputStream fis = null;
         GoibururikEzObjectInputStream geois = null;
         try {
-            fis = new FileInputStream(f);
+            fis = new FileInputStream(fPrak);
             geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("PRAKAK:");
             System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s    %5$-10s    %6$-10s    %7$-10s    %8$-10s\n", "Kodea", "Marka", "Kolorea", "Sexua", "Prezioa", "Tailak", "Luzeera", "Mota");
@@ -128,7 +128,7 @@ public class PrakaKudeatu {
         System.out.printf("%1$-15s    %2$-10s    %3$-10s    %4$-10s\n", "Kodea", "Kolorea", "Taila", "Kantitatea");
         boolean bool = false;
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fPrak);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
@@ -157,7 +157,7 @@ public class PrakaKudeatu {
         System.out.println("\nPRAKAK:");
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fPrak);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
@@ -184,7 +184,7 @@ public class PrakaKudeatu {
         System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s\n", "Kodea", "Marka", "Sexua", "Kantitatea");
         boolean bool = false;
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fPrak);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             while (true) {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri   
@@ -214,8 +214,8 @@ public class PrakaKudeatu {
                 + "|         Produktuaren salmenta         |\n"
                 + "-----------------------------------------");
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fPrakTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fPrak));
             while (true) {
                 Praka prak = (Praka) geois.readObject(); // objektua irakurri 
                 if (!prak.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
@@ -254,7 +254,7 @@ public class PrakaKudeatu {
         } 
         System.gc();
         try {
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fPrakTemp.getAbsolutePath()), Paths.get(fPrak.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }

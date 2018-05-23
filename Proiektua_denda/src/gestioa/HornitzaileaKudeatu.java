@@ -25,16 +25,16 @@ import model.Hornitzailea;
  * @version 4.0
  */
 public class HornitzaileaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\hornitzailea.obj");
-    private static File fTemp = new File(d+"\\hornTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fHorn = new File(dirObj+"\\hornitzailea.obj");
+    private static File fHornTemp = new File(dirObj+"\\hornTemp.obj");
     /* Hornitzaile berri bat gehitu */
     public static void hornitzaileaGehitu(Hornitzailea horn1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fHorn, true));
             geoos.writeObject(horn1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -52,8 +52,8 @@ public class HornitzaileaKudeatu {
         boolean ezabatuta = false;
         GoibururikEzObjectOutputStream geoos = null;
         try {            
-            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fHornTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fHorn));
             
             while (true) { // fitxategiko objektuak irakurri
                 Hornitzailea horn = (Hornitzailea) geois.readObject(); // objektua irakurri              
@@ -81,7 +81,7 @@ public class HornitzaileaKudeatu {
         try {
             geoos.close();
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fHornTemp.getAbsolutePath()), Paths.get(fHorn.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(HornitzaileaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -91,7 +91,7 @@ public class HornitzaileaKudeatu {
     public static ArrayList<Hornitzailea> hornitzaileGuztiakErakutsi() {
         ArrayList<Hornitzailea> hornGuzt = new ArrayList<Hornitzailea>();
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fHorn);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("HORNITZAILEAK: ");
             System.out.printf("\t%1$-20s    %2$-10s    %3$-10s    %4$-15s    %5$-10s\n", "Kodea", "Izena", "Herria", "Telefonoa", "Email-a");
@@ -114,8 +114,8 @@ public class HornitzaileaKudeatu {
     public static void hornitzaileaDatuakAldatu(String kodea, int aukera) {
         boolean aldatuta = true;
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fHornTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fHorn));
             while (true) {
                 Hornitzailea horni = (Hornitzailea) geois.readObject(); // objektua irakurri  
                 Hornitzailea h = new Hornitzailea(horni.getKodHor(), horni.getIzena(), horni.getHerria(), horni.getTelefonoa(), horni.getEmail());
@@ -160,10 +160,10 @@ public class HornitzaileaKudeatu {
         }
         
         try {
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fHornTemp.getAbsolutePath()), Paths.get(fHorn.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
-            fTemp.delete();
+            fHornTemp.delete();
         }
     }
 }

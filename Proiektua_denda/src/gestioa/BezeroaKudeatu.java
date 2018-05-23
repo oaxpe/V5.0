@@ -25,17 +25,17 @@ import model.Bezeroa;
  * @version 4.0
  */
 public class BezeroaKudeatu {
-    private static File d = new File("Objektuak");
-    private static File f = new File(d+"\\bezeroa.obj");
-    private static File fTemp = new File(d+"\\bezTemp.obj");
+    private static File dirObj = new File("Objektuak");
+    private static File fBez = new File(dirObj+"\\bezeroa.obj");
+    private static File fBezTemp = new File(dirObj+"\\bezTemp.obj");
     
     /* Bezero berri bat gehitu */
     public static void bezeroaGehitu(Bezeroa bez1) {
-        if (!d.exists()) {
-            d.mkdir();
+        if (!dirObj.exists()) {
+            dirObj.mkdir();
         }
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(f, true)); 
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fBez, true)); 
             geoos.writeObject(bez1); // objektua fitxategian idatzi
             geoos.flush();
             geoos.close();
@@ -55,8 +55,8 @@ public class BezeroaKudeatu {
         boolean ezabatuta = false;
         GoibururikEzObjectOutputStream geoos = null;
         try {    
-            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fBezTemp, true));
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fBez));
             
             while (true) { // fitxategiko objektuak irakurri
                 Bezeroa bez = (Bezeroa) geois.readObject(); // objektua irakurri              
@@ -78,7 +78,7 @@ public class BezeroaKudeatu {
         try {
             geoos.close();
             System.gc();
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fBezTemp.getAbsolutePath()), Paths.get(fBez.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(BezeroaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -92,7 +92,7 @@ public class BezeroaKudeatu {
     public static ArrayList<Bezeroa> bezeroGuztiakErakutsi() {
         ArrayList<Bezeroa> bezGuzt = new ArrayList<Bezeroa>();
         try {
-            FileInputStream fis = new FileInputStream(f);
+            FileInputStream fis = new FileInputStream(fBez);
             GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
             System.out.println("BEZEROAK: ");
             System.out.printf("\t%1$-10s    %2$-10s    %3$-20s  %4$-10s    %5$-15s    %6$-10s    %7$-10s    %8$-10s\n", "Bezero kodea", "Izena", "Abizenak", "NAN zenbakia", "Jaiotze data", "Sexua", "Herria", "Telefonoa"); // inprimitzen den informazioari formatua emateko
@@ -115,8 +115,8 @@ public class BezeroaKudeatu {
     public static void bezeroDatuakAldatu(String nan, int aukera) {
         boolean aldatuta = true;
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fTemp, true)); // fitx berrian idazten joateko
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(f));
+            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fBezTemp, true)); // fitx berrian idazten joateko
+            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fBez));
             while (true) {
                 Bezeroa bez = (Bezeroa) geois.readObject(); // objektua irakurri   
                 Bezeroa b = new Bezeroa(bez.getKodBez(), bez.getIzena(), bez.getAbizena1(), bez.getAbizena2(), bez.getNan(), bez.getJaiotzeData(), bez.getSexua(), bez.getHerria(), bez.getTelefonoa());
@@ -173,10 +173,10 @@ public class BezeroaKudeatu {
         }
         
         try {
-            Files.move(Paths.get(fTemp.getAbsolutePath()), Paths.get(f.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+            Files.move(Paths.get(fBezTemp.getAbsolutePath()), Paths.get(fBez.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
             Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
-            fTemp.delete();
+            fBezTemp.delete();
         }
     }
 }
