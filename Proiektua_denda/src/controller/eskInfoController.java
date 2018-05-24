@@ -197,6 +197,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        Color urdinArgia = new Color(102,153,255); // xagua gainetik pasatzen denean jarriko den kolorea
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
         if (lsm == viewEskaeraInfo.jTableEskaeraInfo.getSelectionModel()) {
@@ -204,7 +205,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
                 resetEskInfo();
             }
             else {
-                viewEskaeraInfo.jTableEskaeraInfo.setSelectionBackground(urdina);
+                viewEskaeraInfo.jTableEskaeraInfo.setSelectionBackground(urdinArgia);
                 viewEskaeraInfo.jTableEskaeraInfo.setSelectionForeground(Color.WHITE);
                 aukEskDatuakBete(viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow());
             }
@@ -295,6 +296,8 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("HORNITZAILEA");

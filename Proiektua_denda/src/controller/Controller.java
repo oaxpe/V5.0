@@ -61,13 +61,15 @@ public class Controller {
     public Controller() {
         
     }
+    
     public Controller(Bezeroa bez, Denda denda, Eskaera esk, Hornitzailea horn, Jertsea jerts,
             Kamiseta kami, Langilea lang, Praka prak, Salmenta salm,
-            DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, BezeroaInfo viewBezInfo, BezeroaGehitu viewBezGehitu, 
-            LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, ProduktuaAukeratu viewProdAuk, 
-            JertseaGehitu viewJertsGehitu, KamisetaGehitu viewKamGehitu, PrakaGehitu viewPrakGehitu, 
-            HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraInfo viewEskInfo, 
-            EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag, ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts, ProdSaldu viewProdSaldu) {
+            DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, BezeroaInfo viewBezInfo, 
+            BezeroaGehitu viewBezGehitu, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu,
+            ProduktuaAukeratu viewProdAuk, JertseaGehitu viewJertsGehitu, KamisetaGehitu viewKamGehitu,
+            PrakaGehitu viewPrakGehitu, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu,
+            EskaeraInfo viewEskInfo, EskaeraGehitu viewEskGehitu, MenuNagusia viewMenuNag, 
+            ProdInbEsk viewProdInbEsk, ProdKontsultatu viewProdKonts, ProdSaldu viewProdSaldu) {
         this.bezeroa = bez;
         this.denda = denda;
         this.eskaera = esk;
@@ -671,14 +673,6 @@ public class Controller {
         String[] eremua = LangileaKudeatu.langileEremuaKontrolatu();
         comboBox.addItem("--- Aukeratu ---");
         for (String i : eremua) {
-            comboBox.addItem(i);
-        }
-    }
-    
-    private void aukKargatu(JComboBox comboBox) {
-        String[] produktua = {"--- Aukeratu ---", "Koltsultatu", "Inbentarioa", "Eskatzeko dauden produktuak"};
-        comboBox.removeAllItems();
-        for (String i : produktua) {
             comboBox.addItem(i);
         }
     }

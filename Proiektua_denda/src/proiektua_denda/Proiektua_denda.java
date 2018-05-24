@@ -52,10 +52,11 @@ public class Proiektua_denda {
         ProdSaldu viewProdSaldu = new ProdSaldu();
 
         /* CONTROLLER */
-        Controller ctrl = new Controller(bez, denda, esk, horn, jerts, kami, lang, prak, salm,
-                viewDendInfo, viewDendGehitu, viewBezInfo, viewBezGehitu, viewLangInfo, 
-                viewLangGehitu, viewProdAuk, viewJertsGehitu, viewKamGehitu, viewPrakGehitu, 
-                viewHornInfo, viewHornGehitu, viewEskInfo, viewEskGehitu, viewMenuNag, viewProdInbEsk, viewProdKonts, viewProdSaldu);
-
+        Controller ctrl = new Controller(bez, denda, esk, horn, jerts, kami, 
+                lang, prak, salm, viewDendInfo, viewDendGehitu, viewBezInfo, 
+                viewBezGehitu, viewLangInfo, viewLangGehitu, viewProdAuk, 
+                viewJertsGehitu, viewKamGehitu, viewPrakGehitu, viewHornInfo, 
+                viewHornGehitu, viewEskInfo, viewEskGehitu, viewMenuNag, 
+                viewProdInbEsk, viewProdKonts, viewProdSaldu);
     }
 }

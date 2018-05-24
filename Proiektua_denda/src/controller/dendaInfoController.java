@@ -188,6 +188,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        Color urdinArgia = new Color(102,153,255); // xagua gainetik pasatzen denean jarriko den kolorea
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
         if (lsm == viewDendaInfo.jTableDendaInfo.getSelectionModel()) {
@@ -195,7 +196,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                 resetDendaInfo();
             }
             else {
-                viewDendaInfo.jTableDendaInfo.setSelectionBackground(urdina);
+                viewDendaInfo.jTableDendaInfo.setSelectionBackground(urdinArgia);
                 viewDendaInfo.jTableDendaInfo.setSelectionForeground(Color.WHITE);
                 aukDendDatuakBete(viewDendaInfo.jTableDendaInfo.getSelectedRow());
             }
@@ -312,6 +313,8 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");

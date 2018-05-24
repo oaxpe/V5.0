@@ -199,6 +199,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        Color urdinArgia = new Color(102,153,255); // xagua gainetik pasatzen denean jarriko den kolorea
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
         if (lsm == viewLangileaInfo.jTableLangileaInfo.getSelectionModel()) {
@@ -206,7 +207,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                 resetLangileaInfo();
             }
             else {
-                viewLangileaInfo.jTableLangileaInfo.setSelectionBackground(urdina);
+                viewLangileaInfo.jTableLangileaInfo.setSelectionBackground(urdinArgia);
                 viewLangileaInfo.jTableLangileaInfo.setSelectionForeground(Color.WHITE);
                 aukLangDatuakBete(viewLangileaInfo.jTableLangileaInfo.getSelectedRow());
             }
@@ -337,6 +338,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("Kodea");
         model.addColumn("Izena");

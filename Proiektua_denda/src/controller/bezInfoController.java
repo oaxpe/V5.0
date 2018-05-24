@@ -198,6 +198,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        Color urdinArgia = new Color(102,153,255); // xagua gainetik pasatzen denean jarriko den kolorea
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
         if (lsm == viewBezeroaInfo.jTableBezeroaInfo.getSelectionModel()) {
@@ -205,7 +206,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                 resetBezeroaInfo();
             }
             else {
-                viewBezeroaInfo.jTableBezeroaInfo.setSelectionBackground(urdina);
+                viewBezeroaInfo.jTableBezeroaInfo.setSelectionBackground(urdinArgia);
                 viewBezeroaInfo.jTableBezeroaInfo.setSelectionForeground(Color.WHITE);
                 aukBezDatuakBete(viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow());
             }
@@ -324,6 +325,8 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");

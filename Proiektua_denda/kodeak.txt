@@ -1,5 +1,6 @@
-bezeroa#1010
-langilea#1002
-hornitzailea#1002
-eskaera#1000
-salmenta#1000
+denda#1001
+bezeroa#1003
+langilea#1006
+hornitzailea#1003
+eskaera#1003
+salmenta#1001

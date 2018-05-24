@@ -198,6 +198,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
     
     @Override
     public void valueChanged(ListSelectionEvent e) {
+        Color urdinArgia = new Color(102,153,255); // xagua gainetik pasatzen denean jarriko den kolorea
         /* Tauletako lerroak aukeratzerakoan */
         ListSelectionModel lsm = (ListSelectionModel) e.getSource();
         if (lsm == viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectionModel()) {
@@ -205,7 +206,7 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                 resetHornInfo();
             }
             else {
-                viewHornitzaileaInfo.jTableHornitzaileaInfo.setSelectionBackground(urdina);
+                viewHornitzaileaInfo.jTableHornitzaileaInfo.setSelectionBackground(urdinArgia);
                 viewHornitzaileaInfo.jTableHornitzaileaInfo.setSelectionForeground(Color.WHITE);
                 aukHornDatuakBete(viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow());
             }
@@ -309,6 +310,8 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                 return false;
             } 
         };
+        taula.getTableHeader().setBackground(urdina);
+        taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
         model.addColumn("IZENA");
