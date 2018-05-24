@@ -33,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class prodSalduController implements ActionListener, MouseListener, FocusListener {
     /* Model */

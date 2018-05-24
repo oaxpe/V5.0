@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Hornitzailea implements Serializable {
     /* ATRIBUTOAK */
@@ -25,11 +25,7 @@ public class Hornitzailea implements Serializable {
     private String email;
     
     public Hornitzailea () {
-//        setKodHor();
-//        setIzena();
-//        setHerria();
-//        setTelefonoa();
-//        setEmail();
+
     }
     
     public Hornitzailea (String izena, String herria, String tlf, String email) {

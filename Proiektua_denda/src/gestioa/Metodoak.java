@@ -25,7 +25,7 @@ import java.util.regex.Pattern;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Metodoak {
     public static String printGorriz(String textua) {

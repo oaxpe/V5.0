@@ -7,7 +7,8 @@ package view;
 
 /**
  *
- * @author Administrador
+ * @author Oihane Axpe
+ * @version 5.0
  */
 public class ProduktuaAukeratu extends javax.swing.JFrame {
 

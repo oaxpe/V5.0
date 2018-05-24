@@ -22,7 +22,7 @@ import model.Kamiseta;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class KamisetaKudeatu {
     private static File dirObj = new File("Objektuak");

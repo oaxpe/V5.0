@@ -12,14 +12,13 @@ import java.io.Serializable;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Jertsea extends Produktua implements Serializable {
     private String taila;
     
     public Jertsea () {
-//        super();
-//        setTaila();
+
     }
     
     public Jertsea (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, String taila) {

@@ -23,7 +23,7 @@ import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class prakGehituController implements ActionListener, MouseListener, FocusListener {
     /* Model */

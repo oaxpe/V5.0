@@ -8,7 +8,7 @@ package view;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class DendaInfo extends javax.swing.JFrame {
     

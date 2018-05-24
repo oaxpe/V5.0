@@ -11,7 +11,7 @@ import java.io.Serializable;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Bezeroa extends Pertsona implements Serializable {
     /* ATRIBUTOAK */
@@ -19,8 +19,7 @@ public class Bezeroa extends Pertsona implements Serializable {
     
     /* ERAIKITZAILEAK */
     public Bezeroa () {
-//        super();
-//        setKodBez();
+
     }
     
     public Bezeroa (String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf) {

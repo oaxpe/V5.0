@@ -12,7 +12,7 @@ import java.io.ObjectInputStream;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class GoibururikEzObjectInputStream extends ObjectInputStream{
 

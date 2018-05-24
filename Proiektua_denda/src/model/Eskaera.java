@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Eskaera implements Serializable {
     private String eskZenb; 
@@ -31,10 +31,7 @@ public class Eskaera implements Serializable {
     private int kopurua;    
     
     public Eskaera () {
-//        setHornitzailea();
-//        setData();
-//        setKopurua();
-//        setEskZenb();
+
     }
     
     public Eskaera (String hornitzailea, int kopurua) {

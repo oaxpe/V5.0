@@ -32,7 +32,7 @@ import javax.swing.event.ListSelectionListener;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class hornInfoController implements ActionListener, MouseListener, ListSelectionListener, FocusListener, KeyListener {
     /* Model */

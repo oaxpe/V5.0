@@ -17,7 +17,7 @@ import model.Salmenta;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class SalmentaKudeatu {
     private static File dirObj = new File("Objektuak");

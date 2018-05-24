@@ -22,7 +22,7 @@ import model.Hornitzailea;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class HornitzaileaKudeatu {
     private static File dirObj = new File("Objektuak");

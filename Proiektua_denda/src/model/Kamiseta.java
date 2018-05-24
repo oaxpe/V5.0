@@ -12,16 +12,14 @@ import java.io.Serializable;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Kamiseta extends Produktua implements Serializable {
     private String taila;
     private String sasoia; // uda, negua...
     
     public Kamiseta () {
-//        super();
-//        setTaila();
-//        setSasoia();
+
     }
     
     public Kamiseta (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, String taila, String sasoia) {

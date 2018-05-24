@@ -21,7 +21,7 @@ import javax.swing.table.TableRowSorter;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Controller {
     /* Model */

@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public class Praka extends Produktua implements Serializable {
     private int taila; //38, 40, 42, 44...
@@ -22,11 +22,7 @@ public class Praka extends Produktua implements Serializable {
     
     
     public Praka () {
-//        super();
-//        setTaila();
-////        setSasoia(sasoia);
-//        setLuzeera();
-//        setMota();
+
     }
     
     public Praka (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, int taila, String sasoia, int luzeera, String mota) {

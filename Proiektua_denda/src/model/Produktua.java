@@ -14,7 +14,7 @@ import java.io.Serializable;
 /**
  *
  * @author Oihane Axpe
- * @version 4.0
+ * @version 5.0
  */
 public abstract class Produktua implements Serializable {
     /* ATRIBUTOAK */
@@ -30,12 +30,7 @@ public abstract class Produktua implements Serializable {
     
     /* ERAIKITZAILEAK */
     public Produktua () {
-//        setKodPro();
-//        setMarka();
-//        setPrezioa();
-//        setKolorea();
-//        setSexua();
-//        setKantStock();                
+               
     }
     
     public Produktua (String kodea, String sexua, double prezioa) {
