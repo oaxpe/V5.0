@@ -44,9 +44,9 @@ public class KamisetaKudeatu {
                     + "\nProduktua: KAMISETA");
             kami1.printDatuak();
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }    
     }
     
@@ -70,9 +70,9 @@ public class KamisetaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, dena itxi eta fitxategiari izena aldatu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         try {
             System.gc();
@@ -105,9 +105,9 @@ public class KamisetaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         } 
         finally {
             try {
@@ -140,9 +140,9 @@ public class KamisetaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         } 
         
         if (!bool)
@@ -168,9 +168,9 @@ public class KamisetaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         } 
         if (!bool)
             System.out.println("\tEz dago kamisetarik.");
@@ -197,9 +197,9 @@ public class KamisetaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         } 
         if (!bool)
             System.out.println("\tEz dago eskatzeko produkturik.");
@@ -248,9 +248,9 @@ public class KamisetaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         System.gc();
         try {

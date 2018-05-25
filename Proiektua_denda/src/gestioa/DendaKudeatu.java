@@ -5,18 +5,12 @@
  */
 package gestioa;
 
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import model.DBKonexioa;
 import model.Denda;
 
 /**
@@ -24,87 +18,94 @@ import model.Denda;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class DendaKudeatu {
-    private static File dirObj = new File("Objektuak");
-    private static File fDend = new File(dirObj+"\\denda.obj");
-    private static File fDendTemp = new File(dirObj+"\\dendaTemp.obj");
-    
+public class DendaKudeatu {    
     /* Denda berri bat gehitu */
-    public static void dendaGehitu(Denda dend1) {
-        if (!dirObj.exists()) {
-            dirObj.mkdir();
-        }
+    public static void dendaGehitu(Denda d) {
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps;
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fDend, true)); 
-            geoos.writeObject(dend1); // objektua fitxategian idatzi
-            geoos.flush();
-            geoos.close();
-            System.out.println("Denda erregistratuta geratu da.");
-            System.out.println("\nDatu hauek dituen bezeroa gorde da.");
-            System.out.println();
-            dend1.printDatuak();
-        } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
-        } catch (IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
-        }    
+            String sqlInsert = "INSERT INTO denda VALUES (?, ?, ?, ?, ?, ?, ?)";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
+            /* Objektuko datuak, ps-n gehitu */
+            ps.setString(1, d.getKodDend());
+            ps.setString(2, d.getIzena());
+            ps.setString(3, d.getHelbidea());
+            ps.setString(4, d.getHerria());
+            ps.setInt(5, d.getKodPostala());
+            ps.setString(6, d.getTelefonoa());
+            ps.setString(7, d.getEmail());
+
+            ps.executeUpdate(); /* Aldaketak gorde */
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+        } finally {
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+        }
     }
  
     /* Denda zehatz baten datu guztiak ezabatu */ 
     public static void dendaEzabatu(String kodea) {
         boolean ezabatuta = false;
-        GoibururikEzObjectOutputStream geoos = null;
-        try {    
-            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fDendTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fDend));
-            
-            while (true) { // fitxategiko objektuak irakurri
-                Denda dend = (Denda) geois.readObject(); // objektua irakurri              
-                if (!dend.getKodDend().toUpperCase().equals(kodea.toUpperCase())) { // kodea konparatu
-                    geoos.writeObject(dend); // objektua fitxategi berrian idatzi
-                    geoos.flush();
-                } 
-                else {
-                    ezabatuta = true;
-                }
-            } 
-        } catch (EOFException ex) { 
-            // fitxategiaren bukaerara heltzen denean, errorea omititu
-        } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
-        } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
-        }
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps = null;
         try {
-            geoos.close();
-            System.gc();
-            Files.move(Paths.get(fDendTemp.getAbsolutePath()), Paths.get(fDend.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ex) {
-            Logger.getLogger(BezeroaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+            String sqlDelete = "DELETE FROM denda WHERE dendKode = ?";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlDelete); // INSERT-a preparatu
+            ps.setString(1, kodea);
+            ps.executeUpdate();
+            ezabatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
         }
-        if (ezabatuta)
-            System.out.println(kodea+" zenbakidun bezeroa ezabatu da.");
-        else
-            System.out.println(kodea+" zenbakia duen bezerorik ez dago erregistratuta.");
+        finally {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (ezabatuta)
+                System.out.println(kodea+" zenbakidun denda ezabatu da.");
+            else
+                System.out.println(kodea+" zenbakia duen dendarik ez dago erregistratuta.");
+        }
+        
+        
     }
     
     /* Dendaren inguruko informazioa erakusten du. */
     public static ArrayList<Denda> dendGuztiakErakutsi() {
         ArrayList<Denda> dendaGuzt = new ArrayList<Denda>();
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        Statement stmt = null;
         try {
-            FileInputStream fis = new FileInputStream(fDend);
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
-            while (true) {
-                Denda denda = (Denda) geois.readObject(); // objektua irakurri   
-                dendaGuzt.add(denda);
+            stmt = (Statement) konexioa.getDBKonexioa().createStatement();
+            String sqlSelect = "SELECT dendKode, dendIzena, dendHelbidea, dendHerria, dendPK, dendTlf, dendEmail FROM denda ORDER BY dendKode";
+            ResultSet rs = stmt.executeQuery(sqlSelect);
+            
+            while(rs.next()){
+                Denda dend = new Denda(); // objektu hutsa sortu
+                dend.setKodDend(rs.getString("dendKode"));
+                dend.setIzena(rs.getString("dendIzena"));
+                dend.setHelbidea(rs.getString("dendHelbidea"));
+                dend.setHerria(rs.getString("dendHerria"));
+                dend.setKodPostala(rs.getInt("dendPK"));
+                dend.setTelefonoa(rs.getString("dendTlf"));
+                dend.setEmail(rs.getString("dendEmail"));
+                dendaGuzt.add(dend);
+                dend.printDatuak();
             }
-        } catch (EOFException ex) { 
-            // fitxategiaren bukaerara heltzen denean, errorea omititu
-        } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
-        } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
         } 
+        finally {
+            try {
+                stmt.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+        }
         return dendaGuzt;
     }
 }

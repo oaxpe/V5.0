@@ -16,7 +16,7 @@ import java.io.Serializable;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Denda implements Serializable { 
+public class Denda /*implements Serializable*/ { 
     /* ATRIBUTOAK */
     private String kodDend;
     private String izena;
@@ -74,96 +74,56 @@ public class Denda implements Serializable {
         this.kodDend = Metodoak.kodeakAldatuEtaGorde("Denda"); // Bezeroaren kodea automatikoki hartu kodeak.txt fitxategitik 
     }
     
+    public void setKodDend(String kodea) {
+        this.kodDend = kodea;
+    }
     
     public String getIzena() {
         return izena;
     }
 
-    public void setIzena() {
-        try {
-            System.out.print("Sartu izena: ");
-            this.izena=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }      
+    public void setIzena(String izena) {
+        this.izena = izena;
     }
 
     public String getHelbidea() {
         return helbidea;
     }
 
-    public void setHelbidea() {
-        try {
-            System.out.print("Sartu helbidea: ");
-            this.helbidea=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setHelbidea(String helb) {
+        this.helbidea=helb;
     }
 
     public String getHerria() {
         return herria;
     }
 
-    public void setHerria() {
-        try {
-            System.out.print("Sartu herria: ");
-            this.herria=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setHerria(String herria) {
+        System.out.print("Sartu herria: ");
+        this.herria=herria;
     }
 
     public int getKodPostala() {
         return kodPostala;
     }
 
-    public void setKodPostala() {
-        try {
-            System.out.print("Sartu posta kodea: ");
-            this.kodPostala=Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
-            setKodPostala();
-        }
+    public void setKodPostala(int pk) {
+        this.kodPostala = pk;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail() {
-        try {
-            do {
-                System.out.print("Sartu email-a: ");
-                this.email=br.readLine().toLowerCase();
-            } while (!Metodoak.emailBalidazioa(email));
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }    
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefonoa() {
         return telefonoa;
     }
 
-    public void setTelefonoa() {
-        try {
-            do {
-                System.out.print("Sartu telefono zenbakia: ");
-                this.telefonoa=br.readLine();
-            } while (!Metodoak.tlfBalidazioa(telefonoa));
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
-        }     
+    public void setTelefonoa(String tlf) {
+        this.telefonoa = tlf;
     }
 }

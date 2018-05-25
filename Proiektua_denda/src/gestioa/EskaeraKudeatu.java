@@ -43,9 +43,9 @@ public class EskaeraKudeatu implements Serializable {
             System.out.println("\nDatu hauek dituen eskaera gorde da.");
             esk1.printDatuak();      
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
         } catch (IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }   
     }
     
@@ -70,9 +70,9 @@ public class EskaeraKudeatu implements Serializable {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         if (ezabatuta) {
             System.out.println("Eskaera ezabatu da.");
@@ -104,9 +104,9 @@ public class EskaeraKudeatu implements Serializable {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }    
         return eskGuzt;
     }

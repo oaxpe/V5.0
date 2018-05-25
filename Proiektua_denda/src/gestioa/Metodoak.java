@@ -28,10 +28,10 @@ import java.util.regex.Pattern;
  * @version 5.0
  */
 public class Metodoak {
-    public static String printGorriz(String textua) {
-        String ANSI_RED = "\u001B[31m";
+    public static String printUrdinez(String textua) {
+        String ANSI_BLUE = "\u001B[34m";
         String ANSI_RESET = "\u001B[0m";
-        return (ANSI_RED+textua+ANSI_RESET);
+        return (ANSI_BLUE+textua+ANSI_RESET);
     }
    
     /* Email-a ondo estrukturatuta dagoen konprobatzen duen metodoa.
@@ -44,7 +44,7 @@ public class Metodoak {
         
         Matcher balidazioa = p.matcher(mail);
         if (!balidazioa.find()) { // email-ak expresio erregularra betetzen duen konprobatzen du
-            System.out.println(printGorriz("\tSartutako email-a ez da egokia. Saiatu berriz."));
+            System.out.println(printUrdinez("\tSartutako email-a ez da egokia. Saiatu berriz."));
             return false;
         }
         return true;
@@ -53,7 +53,7 @@ public class Metodoak {
     /* NAN zenbakia egokia den edo ez konprobatzen duen metodoa.*/
     public static boolean nanBalidazioa(String nan) {
         if (nan.length() != 9) {
-            System.out.println(printGorriz("\tSartutako nan zenbakia ez da egokia."));
+            System.out.println(printUrdinez("\tSartutako nan zenbakia ez da egokia."));
             return false;
         }
         else {
@@ -72,7 +72,7 @@ public class Metodoak {
             int zenbInt = Integer.parseInt(zenb); //String-a int bihurtu (zenbakiekin eragiketak egiteko)
             int hondarra = zenbInt%23; // zatiketaren hondarra kalkulatu
             if ((Character.toUpperCase(nan.charAt(8)))!=nanLetrak[hondarra]) { // azkenengo karakterea arry-ean dagoen konprobatu
-                System.out.println(printGorriz("Sartutako nan zenbakia ez da egokia."));
+                System.out.println(printUrdinez("Sartutako nan zenbakia ez da egokia."));
                 return false;
             }
             return true;
@@ -87,7 +87,7 @@ public class Metodoak {
         
         Matcher balidazioa = p.matcher(telefonoa);
         if (!balidazioa.find()) {// email-ak expresio erregularra betetzen duen konprobatzen du
-            System.out.println(printGorriz("\tSartutako telefono zenbakia ez da egokia. Saiatu berriz."));
+            System.out.println(printUrdinez("\tSartutako telefono zenbakia ez da egokia. Saiatu berriz."));
             return false;
         }
         return true;

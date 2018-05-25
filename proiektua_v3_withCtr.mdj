@@ -11939,7 +11939,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": -1432,
-											"top": -1008,
+											"top": -960,
 											"width": 0,
 											"height": 13,
 											"autoResize": false,
@@ -11964,7 +11964,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 1093,
-											"top": 335,
+											"top": 359,
 											"width": 238.81787109375,
 											"height": 13,
 											"autoResize": false,
@@ -11990,7 +11990,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 1093,
-											"top": 350,
+											"top": 374,
 											"width": 238.81787109375,
 											"height": 13,
 											"autoResize": false,
@@ -12016,7 +12016,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": -1432,
-											"top": -1008,
+											"top": -960,
 											"width": 0,
 											"height": 13,
 											"autoResize": false,
@@ -12036,7 +12036,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1088,
-									"top": 328,
+									"top": 352,
 									"width": 248.81787109375,
 									"height": 40,
 									"autoResize": false,
@@ -12062,95 +12062,6 @@
 									"model": {
 										"$ref": "AAAAAAFhWS4EBx1drao="
 									},
-									"subViews": [
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFjjxkNFNxA2WI=",
-											"_parent": {
-												"$ref": "AAAAAAFhWS4rwx3peaw="
-											},
-											"model": {
-												"$ref": "AAAAAAFjjxkMbdwuH9k="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 1093,
-											"top": 373,
-											"width": 238.81787109375,
-											"height": 13,
-											"autoResize": false,
-											"underline": true,
-											"text": "-dirObj: File",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5,
-											"wordWrap": false
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFjjxqKp92CtPE=",
-											"_parent": {
-												"$ref": "AAAAAAFhWS4rwx3peaw="
-											},
-											"model": {
-												"$ref": "AAAAAAFjjxqKBN1wqx8="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 1093,
-											"top": 388,
-											"width": 238.81787109375,
-											"height": 13,
-											"autoResize": false,
-											"underline": true,
-											"text": "-fDend: File",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5,
-											"wordWrap": false
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFjjxrT/OBc+zw=",
-											"_parent": {
-												"$ref": "AAAAAAFhWS4rwx3peaw="
-											},
-											"model": {
-												"$ref": "AAAAAAFjjxrTbuBK0O4="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 1093,
-											"top": 403,
-											"width": 238.81787109375,
-											"height": 13,
-											"autoResize": false,
-											"underline": true,
-											"text": "+fDendTemp",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5,
-											"wordWrap": false
-										}
-									],
 									"visible": true,
 									"enabled": true,
 									"lineColor": "#000000",
@@ -12161,9 +12072,9 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1088,
-									"top": 368,
+									"top": 392,
 									"width": 248.81787109375,
-									"height": 53,
+									"height": 10,
 									"autoResize": false
 								},
 								{
@@ -12195,7 +12106,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 1093,
-											"top": 426,
+											"top": 407,
 											"width": 238.81787109375,
 											"height": 13,
 											"autoResize": false,
@@ -12224,7 +12135,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 1093,
-											"top": 441,
+											"top": 422,
 											"width": 238.81787109375,
 											"height": 13,
 											"autoResize": false,
@@ -12253,7 +12164,7 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 1093,
-											"top": 456,
+											"top": 437,
 											"width": 238.81787109375,
 											"height": 13,
 											"autoResize": false,
@@ -12274,7 +12185,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1088,
-									"top": 421,
+									"top": 402,
 									"width": 248.81787109375,
 									"height": 53,
 									"autoResize": false
@@ -12298,7 +12209,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": -940,
-									"top": -312,
+									"top": -288,
 									"width": 10,
 									"height": 10,
 									"autoResize": false
@@ -12322,7 +12233,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": -940,
-									"top": -312,
+									"top": -288,
 									"width": 10,
 									"height": 10,
 									"autoResize": false
@@ -12338,9 +12249,9 @@
 							"containerChangeable": true,
 							"containerExtending": false,
 							"left": 1088,
-							"top": 328,
+							"top": 352,
 							"width": 248.81787109375,
-							"height": 146,
+							"height": 105,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
@@ -13300,8 +13211,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1023,
-									"top": 382,
+									"left": 1024,
+									"top": 384,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -13334,8 +13245,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 1023,
-									"top": 367,
+									"left": 1024,
+									"top": 369,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -13369,7 +13280,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1024,
-									"top": 411,
+									"top": 414,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -13403,7 +13314,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 986,
-									"top": 383,
+									"top": 384,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -13436,8 +13347,8 @@
 									"showShadow": true,
 									"containerChangeable": false,
 									"containerExtending": false,
-									"left": 988,
-									"top": 370,
+									"left": 989,
+									"top": 371,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -13471,7 +13382,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 967,
-									"top": 388,
+									"top": 389,
 									"width": 19.5126953125,
 									"height": 13,
 									"autoResize": false,
@@ -13506,7 +13417,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1060,
-									"top": 381,
+									"top": 384,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -13540,7 +13451,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1058,
-									"top": 368,
+									"top": 370,
 									"width": 0,
 									"height": 13,
 									"autoResize": false,
@@ -13574,7 +13485,7 @@
 									"containerChangeable": false,
 									"containerExtending": false,
 									"left": 1062,
-									"top": 386,
+									"top": 389,
 									"width": 19.5126953125,
 									"height": 13,
 									"autoResize": false,
@@ -13655,7 +13566,7 @@
 								"$ref": "AAAAAAFgXJ5woL3dLD4="
 							},
 							"lineStyle": 1,
-							"points": "961:405;1087:402",
+							"points": "961:406;1087:405",
 							"stereotypeDisplay": "label",
 							"showVisibility": true,
 							"showProperty": true,
@@ -37020,62 +36931,6 @@
 							},
 							"name": "DendaKudeatu",
 							"visibility": "public",
-							"attributes": [
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAFjjxkMbdwuH9k=",
-									"_parent": {
-										"$ref": "AAAAAAFhWS4EBx1drao="
-									},
-									"name": "dirObj",
-									"visibility": "private",
-									"isStatic": true,
-									"isLeaf": false,
-									"type": "File",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"isDerived": false,
-									"aggregation": "none",
-									"isID": false
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAFjjxqKBN1wqx8=",
-									"_parent": {
-										"$ref": "AAAAAAFhWS4EBx1drao="
-									},
-									"name": "fDend",
-									"visibility": "private",
-									"isStatic": true,
-									"isLeaf": false,
-									"type": "File",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"isDerived": false,
-									"aggregation": "none",
-									"isID": false
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAFjjxrTbuBK0O4=",
-									"_parent": {
-										"$ref": "AAAAAAFhWS4EBx1drao="
-									},
-									"name": "fDendTemp",
-									"visibility": "public",
-									"isStatic": true,
-									"isLeaf": false,
-									"type": "",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"isDerived": false,
-									"aggregation": "none",
-									"isID": false
-								}
-							],
 							"operations": [
 								{
 									"_type": "UMLOperation",
@@ -39220,41 +39075,6 @@
 								"$ref": "AAAAAAFjj97hc/0mUyU="
 							},
 							"name": "bezGehituController",
-							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hdP0ouTY=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hc/0nxwg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hc/0nxwg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hdP0pXvQ=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hc/0nxwg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hc/0nxwg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hdP0q2hg=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hc/0nxwg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hc/0nxwg="
-									},
-									"visibility": "public"
-								}
-							],
 							"documentation": "To change this license header, choose License Headers in Project Properties.\nTo change this template file, choose Tools | Templates\nand open the template in the editor.\n@author Oihane Axpe\n@version 4.0",
 							"visibility": "public",
 							"attributes": [
@@ -39442,61 +39262,6 @@
 							},
 							"name": "bezInfoController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hd/1O/ww=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hd/1PNGI=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hd/1QTj8=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hd/1RLXo=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hd/1SJws=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hdv1N2jM="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hd/1T5Nk=",
@@ -41016,39 +40781,6 @@
 							"name": "dendaGehituController",
 							"ownedElements": [
 								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hgf3SM0c=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hgf3RUbE="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hgf3RUbE="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hgf3TNa4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hgf3RUbE="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hgf3RUbE="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hgf3Upzo=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hgf3RUbE="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hgf3RUbE="
-									},
-									"visibility": "public"
-								},
-								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hgf3VgfE=",
 									"_parent": {
@@ -41327,61 +41059,6 @@
 							},
 							"name": "dendaInfoController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hhP37T0U=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hhP38VZU=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hhP391o8=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hhP3+DQs=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hhP3/Of4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hhP36lJ4="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hhP4AbuE=",
@@ -41837,39 +41514,6 @@
 							"name": "eskGehituController",
 							"ownedElements": [
 								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hiP49z4M=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hiP48UjQ="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hiP48UjQ="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hiP4+DI4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hiP48UjQ="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hiP48UjQ="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hiP4/Xao=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hiP48UjQ="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hiP48UjQ="
-									},
-									"visibility": "public"
-								},
-								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hiP5Apuo=",
 									"_parent": {
@@ -42148,61 +41792,6 @@
 							},
 							"name": "eskInfoController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hi/5mYfc=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hi/5ny88=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hi/5ovb8=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hi/5pFzI=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hi/5q3No=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hi/5lnpg="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hi/5rKxE=",
@@ -42658,39 +42247,6 @@
 							"name": "hornGehituController",
 							"ownedElements": [
 								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hkP6ot+k=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hkP6nutg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hkP6nutg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hkP6pgmE=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hkP6nutg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hkP6nutg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hkP6qgQg=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hkP6nutg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hkP6nutg="
-									},
-									"visibility": "public"
-								},
-								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj+8mWpkRXtg=",
 									"_parent": {
@@ -42941,61 +42497,6 @@
 							},
 							"name": "hornInfoController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hlf7Pxa8=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hlf7QgBY=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hlf7R2XQ=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hlf7StKo=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hlf7T1ws=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hlP7OOJg="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hlf7Uuoo=",
@@ -43469,39 +42970,6 @@
 							"name": "jertsGehituController",
 							"ownedElements": [
 								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hmP8Sm8E=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hmP8Riv8="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hmP8Riv8="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hmP8TseI=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hmP8Riv8="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hmP8Riv8="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hmP8UQA8=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hmP8Riv8="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hmP8Riv8="
-									},
-									"visibility": "public"
-								},
-								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hmP8VoEg=",
 									"_parent": {
@@ -43736,39 +43204,6 @@
 							"name": "kamiGehituController",
 							"ownedElements": [
 								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hm/87RU4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hm/861tc="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hm/861tc="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hm/88IHU=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hm/861tc="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hm/861tc="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hm/890qg=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hm/861tc="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hm/861tc="
-									},
-									"visibility": "public"
-								},
-								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hm/8+crQ=",
 									"_parent": {
@@ -44001,41 +43436,6 @@
 								"$ref": "AAAAAAFjj97hc/0mUyU="
 							},
 							"name": "langGehituController",
-							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hnf9kPDg=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hnf9jhQ0="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hnf9jhQ0="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hnf9lflE=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hnf9jhQ0="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hnf9jhQ0="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hnf9mZHs=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hnf9jhQ0="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hnf9jhQ0="
-									},
-									"visibility": "public"
-								}
-							],
 							"documentation": "To change this license header, choose License Headers in Project Properties.\nTo change this template file, choose Tools | Templates\nand open the template in the editor.\n@author Oihane Axpe\n@version 4.0",
 							"visibility": "public",
 							"attributes": [
@@ -44223,61 +43623,6 @@
 							},
 							"name": "langInfoController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hn/+Kmg8=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hn/+LvRY=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hn/+M6ko=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hn/+NgMI=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hn/+O2NU=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hn/+Ju/I="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hn/+PX5s=",
@@ -44686,30 +44031,6 @@
 								"$ref": "AAAAAAFjj97hc/0mUyU="
 							},
 							"name": "menuNagController",
-							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97ho//MokE=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97ho//L/Xw="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97ho//L/Xw="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97ho//NyE4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97ho//L/Xw="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97ho//L/Xw="
-									},
-									"visibility": "public"
-								}
-							],
 							"documentation": "To change this license header, choose License Headers in Project Properties.\nTo change this template file, choose Tools | Templates\nand open the template in the editor.\n@author Oihane Axpe\n@version 4.0",
 							"visibility": "public",
 							"attributes": [
@@ -45242,39 +44563,6 @@
 							"name": "prakGehituController",
 							"ownedElements": [
 								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hpgAAV7w=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hpv///kQ="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hpv///kQ="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hpgABqSE=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hpv///kQ="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hpv///kQ="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hpgACVPc=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hpv///kQ="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hpv///kQ="
-									},
-									"visibility": "public"
-								},
-								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hpgAD4b8=",
 									"_parent": {
@@ -45508,72 +44796,6 @@
 							},
 							"name": "prodAukController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hqAApSfM=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hqAAqoMs=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hqAArTok=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hqAAs7b4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hqAAt3OM=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hqAAu6Uw=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hqAAoxEA="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hqQAvt2I=",
@@ -47202,39 +46424,6 @@
 							"name": "prodInbEskController",
 							"ownedElements": [
 								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hrwCVB94=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hrwCUgVY="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hrwCUgVY="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hrwCWsS4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hrwCUgVY="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hrwCUgVY="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hrwCX5p8=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hrwCUgVY="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hrwCUgVY="
-									},
-									"visibility": "public"
-								},
-								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hrwCYrKU=",
 									"_parent": {
@@ -47869,39 +47058,6 @@
 							},
 							"name": "prodKontsultatuController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hsgC/b2k=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hsgC+Y3I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hsgC+Y3I="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hsgDAcYM=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hsgC+Y3I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hsgC+Y3I="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97hsgDBdrM=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97hsgC+Y3I="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97hsgC+Y3I="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97hsgDCvnk=",
@@ -48651,39 +47807,6 @@
 							},
 							"name": "prodSalduController",
 							"ownedElements": [
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97htQDwSdQ=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97htQDvHUg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97htQDvHUg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97htQDxzX4=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97htQDvHUg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97htQDvHUg="
-									},
-									"visibility": "public"
-								},
-								{
-									"_type": "UMLInterfaceRealization",
-									"_id": "AAAAAAFjj97htQDy41M=",
-									"_parent": {
-										"$ref": "AAAAAAFjj97htQDvHUg="
-									},
-									"source": {
-										"$ref": "AAAAAAFjj97htQDvHUg="
-									},
-									"visibility": "public"
-								},
 								{
 									"_type": "UMLAssociation",
 									"_id": "AAAAAAFjj97htQDzYL4=",

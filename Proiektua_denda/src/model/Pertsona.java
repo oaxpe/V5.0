@@ -85,7 +85,7 @@ public abstract class Pertsona implements Serializable {
             this.izena=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }      
     }
 
@@ -99,7 +99,7 @@ public abstract class Pertsona implements Serializable {
             this.abizena1=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }       
     }
     
@@ -113,7 +113,7 @@ public abstract class Pertsona implements Serializable {
             this.abizena2=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
     
@@ -129,7 +129,7 @@ public abstract class Pertsona implements Serializable {
             } while (!Metodoak.nanBalidazioa(nan));                
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }         
     }
 
@@ -143,7 +143,7 @@ public abstract class Pertsona implements Serializable {
             this.jaiotzeData = br.readLine(); // sartutako data, uuu/hh/ee formatuan bueltatuko du
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -157,7 +157,7 @@ public abstract class Pertsona implements Serializable {
             this.sexua=br.readLine(); 
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -171,7 +171,7 @@ public abstract class Pertsona implements Serializable {
             this.herria=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }  
     }
 
@@ -187,7 +187,7 @@ public abstract class Pertsona implements Serializable {
             } while (!Metodoak.tlfBalidazioa(telefonoa));  
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 }

@@ -83,10 +83,10 @@ public class Praka extends Produktua implements Serializable {
             this.taila = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
+            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
             setTaila();
         }
     }
@@ -109,10 +109,10 @@ public class Praka extends Produktua implements Serializable {
             this.luzeera = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printGorriz("Zenbaki bat sartu behar zenuen."));
+            System.out.println(Metodoak.printUrdinez("Zenbaki bat sartu behar zenuen."));
         }
     }
     
@@ -126,7 +126,7 @@ public class Praka extends Produktua implements Serializable {
             this.mota = br.readLine(); 
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }  
 }

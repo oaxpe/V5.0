@@ -87,7 +87,7 @@ public abstract class Produktua implements Serializable {
             this.kodPro=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -101,7 +101,7 @@ public abstract class Produktua implements Serializable {
             this.marka=br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }   
     }
 
@@ -115,10 +115,10 @@ public abstract class Produktua implements Serializable {
             this.prezioa = Double.parseDouble(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printGorriz("\tZenbaki dezimala bat sartu behar zenuen."));
+            System.out.println(Metodoak.printUrdinez("\tZenbaki dezimala bat sartu behar zenuen."));
             setPrezioa();
         }
     }
@@ -133,7 +133,7 @@ public abstract class Produktua implements Serializable {
             this.kolorea = br.readLine(); 
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -147,7 +147,7 @@ public abstract class Produktua implements Serializable {
             this.sexua=br.readLine(); 
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     } 
 
@@ -161,10 +161,10 @@ public abstract class Produktua implements Serializable {
             this.kantStock = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
+            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
             setKantStock();
         }
     }
@@ -193,11 +193,11 @@ public abstract class Produktua implements Serializable {
             this.deskontua = Integer.parseInt(br.readLine());
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
+            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
             setDeskontua();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 

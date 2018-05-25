@@ -49,9 +49,9 @@ public class LangileaKudeatu {
             System.out.println("\nEremua: Langilea");
             lang1.printDatuak();
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }    
     }
     
@@ -76,9 +76,9 @@ public class LangileaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         try {
             geoos.close();
@@ -110,9 +110,9 @@ public class LangileaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         } 
         return langGuzt;
     }
@@ -179,9 +179,9 @@ public class LangileaKudeatu {
             // fitxategiaren bukaerara heltzen denean, errorea omititu
             System.gc();
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         
         try {

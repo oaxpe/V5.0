@@ -65,7 +65,7 @@ public class Kamiseta extends Produktua implements Serializable {
             this.taila = br.readLine().toUpperCase();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -79,7 +79,7 @@ public class Kamiseta extends Produktua implements Serializable {
             this.sasoia = br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 }

@@ -80,7 +80,7 @@ public class Hornitzailea implements Serializable {
             this.izena = br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -94,7 +94,7 @@ public class Hornitzailea implements Serializable {
             this.herria = br.readLine();
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -110,7 +110,7 @@ public class Hornitzailea implements Serializable {
             } while (!Metodoak.tlfBalidazioa(telefonoa));
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
     }
 
@@ -126,7 +126,7 @@ public class Hornitzailea implements Serializable {
             } while (!Metodoak.emailBalidazioa(email));
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }    
     }
 }

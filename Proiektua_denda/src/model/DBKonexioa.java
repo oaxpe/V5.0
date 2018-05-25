@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.sql.Connection;
+import com.mysql.jdbc.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -16,26 +16,22 @@ import java.sql.SQLException;
  */
 public class DBKonexioa {
     /* ATRIBUTUAK */
-    private String db = "dendaProiektua"; // datu basearen izena
-    private String url = "jdbc:mysql://localhost:3306/"+db+"?useSSL=false&requireSSL=false&verifyServerCertificate=false";
+    private String db = "dendaproiektua"; // datu basearen izena
+    private String url = "jdbc:mysql://localhost:3306/"+db;//+"?useSSL=false&requireSSL=false&verifyServerCertificate=false";
     private String usr = "root"; // datu baseko erabiltzailea
-    private String pwd = "Asdf134"; // datu baseko erabiltzailearen pasahitza
+    private String pwd = ""; // datu baseko erabiltzailearen pasahitza
     private Connection konexioa = null;
     
     /* ERAIKITZAILEA */
-    public void DBKonexioa() {
+    public DBKonexioa() {
         try {
-            this.konexioa = DriverManager.getConnection(url, usr, pwd);
+            this.konexioa = (Connection) DriverManager.getConnection(url, usr, pwd);
+            System.out.println(db + " datu basera konektatuta");
+            
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
-        
-        if (konexioa != null) {
-            System.out.println(db + " datu basera konektatuta");
-        }
-        else {
             System.out.println(db + " datu basera ez da konektatu");
-        }  
+        }
     }
 
     /* Datu basera konexioa bueltatzen du */
@@ -44,9 +40,10 @@ public class DBKonexioa {
     }
 
     /* Datu basetik deskonektatu egiten da  */
-    public void deskonektatu(Connection con) {
+    public void deskonektatu() {
         try {
             this.konexioa.close();
+            System.out.println("Datu basetik deskonektatu da.");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }

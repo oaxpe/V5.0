@@ -41,9 +41,9 @@ public class HornitzaileaKudeatu {
             System.out.println("\nDatu hauek dituen hornitzailea gorde da.");
             horn1.printDatuak();      
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
         } catch (IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }   
     }
     
@@ -69,9 +69,9 @@ public class HornitzaileaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         if (ezabatuta) {
             System.out.println("Hornitzailea ezabatu da.");
@@ -103,9 +103,9 @@ public class HornitzaileaKudeatu {
         } catch (EOFException ex) { 
             // fitxategiaren bukaerara heltzen denean, errorea omititu
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));;
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         return hornGuzt;
     }
@@ -154,15 +154,15 @@ public class HornitzaileaKudeatu {
             // fitxategiaren bukaerara heltzen denean, errorea omititu
             System.gc();
         } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printGorriz("Fitxategia ez du aurkitzen!"));
+            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
         } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
         }
         
         try {
             Files.move(Paths.get(fHornTemp.getAbsolutePath()), Paths.get(fHorn.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException ex) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak jasotzerakoan"));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
             fHornTemp.delete();
         }
     }

@@ -87,10 +87,10 @@ public class Salmenta implements Serializable {
             this.kopurua = Integer.parseInt(br.readLine());
         }
         catch (IOException gaizki) {
-            System.out.println(Metodoak.printGorriz("Arazoak daude datuak sartzerakoan."));
+            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
         }
         catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printGorriz("\tZenbaki bat sartu behar zenuen."));
+            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
             setKopurua();
         }
     }
