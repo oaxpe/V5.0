@@ -6,20 +6,19 @@
 package model;
 
 import gestioa.Metodoak;
-import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Bezeroa extends Pertsona implements Serializable {
+public class Bezeroa extends Pertsona /* implements Serializable */ {
     /* ATRIBUTOAK */
     private String kodBez;
     
     /* ERAIKITZAILEAK */
     public Bezeroa () {
-
+        super();
     }
     
     public Bezeroa (String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf) {
@@ -54,6 +53,10 @@ public class Bezeroa extends Pertsona implements Serializable {
 
     public void setKodBez() {
         this.kodBez = Metodoak.kodeakAldatuEtaGorde("Bezeroa"); // Bezeroaren kodea automatikoki hartu kodeak.txt fitxategitik 
+    }
+    
+    public void setKodBez(String kodea) {
+        this.kodBez = kodea;
     }
     
 }

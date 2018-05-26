@@ -67,7 +67,12 @@ public class bezGehituController implements ActionListener, MouseListener, Focus
                 Bezeroa bez = new Bezeroa(viewBezeroaGehitu.jTextFieldIzena.getText(), viewBezeroaGehitu.jTextFieldAbizena1.getText(), 
                         viewBezeroaGehitu.jTextFieldAbizena2.getText(), viewBezeroaGehitu.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaGehitu.jDateChooserJaioData.getDate()), 
                         sexuaRB, viewBezeroaGehitu.jTextFieldHerria.getText(), viewBezeroaGehitu.jTextFieldTlf.getText());
-                BezeroaKudeatu.bezeroaGehitu(bez);
+                boolean gehitu = BezeroaKudeatu.bezeroaGehitu(bez); /* booleano bat bueltatuko du, gehitu bada edo ez jakiteko */
+                    if (gehitu) 
+                        JOptionPane.showMessageDialog(null, "Bezeroa erregistratu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da bezerorik erregistratu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+                        
                 resetBezeroaGehitu();
                 ctr.enableComponents(viewBezeroaGehitu.jPanelBezDatuak, false);
             }

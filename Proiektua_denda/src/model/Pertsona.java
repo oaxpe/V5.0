@@ -9,14 +9,13 @@ import gestioa.Metodoak;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 5.0
  */
-public abstract class Pertsona implements Serializable {
+public abstract class Pertsona /* implements Serializable */ {
     /* ATRIBUTOAK */
     protected String izena;
     protected String abizena1;
@@ -30,14 +29,7 @@ public abstract class Pertsona implements Serializable {
     
     /* ERAIKITZAILEAK */
     public Pertsona () {
-//        setIzena();
-//        setAbizena1();
-//        setAbizena2();
-//        setNan();
-//        setJaiotzeData();
-//        setSexua();
-//        setHerria();
-//        setTelefonoa();
+        
     }
     
     public Pertsona (String izena, String abizena1, String abizena2) {
@@ -79,115 +71,63 @@ public abstract class Pertsona implements Serializable {
         return izena;
     }
 
-    public void setIzena() {
-        try {
-            System.out.print("Sartu izena: ");
-            this.izena=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }      
+    public void setIzena(String izena) {
+        this.izena = izena;    
     }
 
     public String getAbizena1() {
         return abizena1;
     }
 
-    public void setAbizena1() {
-        try {
-            System.out.print("Sartu lehenengo abizena: ");
-            this.abizena1=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }       
+    public void setAbizena1(String abiz1) {
+        this.abizena1 = abiz1;   
     }
     
     public String getAbizena2() {
         return abizena2;
     }
 
-    public void setAbizena2() {
-        try {
-            System.out.print("Sartu bigarren abizena: ");
-            this.abizena2=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setAbizena2(String abiz2) {
+        this.abizena2 = abiz2;
     }
     
     public String getNan() {
         return nan;
     }
 
-    public void setNan() {
-        try {
-            do {
-                System.out.print("Sartu NAN zenbakia: ");
-                this.nan=br.readLine().toUpperCase();
-            } while (!Metodoak.nanBalidazioa(nan));                
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }         
+    public void setNan(String nan) {
+        this.nan = nan;    
     }
 
     public String getJaiotzeData() {
         return jaiotzeData;
     }
 
-    public void setJaiotzeData() {
-        try {
-            System.out.print("Sartu jaiotze data (uuuu/hh/ee): ");
-            this.jaiotzeData = br.readLine(); // sartutako data, uuu/hh/ee formatuan bueltatuko du
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setJaiotzeData(String jaioData) {
+        this.jaiotzeData = jaioData;
     }
 
     public String getSexua() {
         return sexua;
     }
 
-    public void setSexua() {
-        try {
-            System.out.print("Emakumea edo gizona?: ");
-            this.sexua=br.readLine(); 
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setSexua(String sexua) {
+        this.sexua = sexua;
     }
 
     public String getHerria() {
         return herria;
     }
 
-    public void setHerria() {
-        try {
-            System.out.print("Sartu herria: ");
-            this.herria=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }  
+    public void setHerria(String herria) {
+        this.herria = herria;
     }
 
     public String getTelefonoa() {
         return telefonoa;
     }
 
-    public void setTelefonoa() {
-        try {
-            do {
-                System.out.print("Sartu telefono zenbakia: ");
-                this.telefonoa=br.readLine();
-            } while (!Metodoak.tlfBalidazioa(telefonoa));  
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setTelefonoa(String tlf) {
+        this.telefonoa = tlf;
     }
 }

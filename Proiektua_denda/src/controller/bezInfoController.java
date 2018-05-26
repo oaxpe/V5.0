@@ -79,7 +79,11 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                 int konf = JOptionPane.showConfirmDialog(viewBezeroaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
-                    BezeroaKudeatu.bezeroaEzabatu(nan);
+                    boolean ezabatuta = BezeroaKudeatu.bezeroaEzabatu(nan);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, "Bezeroa ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da bezerorik ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
                 }
                 bezDatuakErakutsiTaula(viewBezeroaInfo.jTableBezeroaInfo, BezeroaKudeatu.bezeroGuztiakErakutsi());
             }
