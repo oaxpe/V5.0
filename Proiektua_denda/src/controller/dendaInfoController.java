@@ -42,15 +42,19 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
     private MenuNagusia viewMenuNagusia; 
     private DendaInfo viewDendaInfo;
     private DendaGehitu viewDendaGehitu;
+    private LangileaInfo viewLangileaInfo;
+    private LangileaGehitu viewLangileaGehitu;
     
     private Color urdina = new Color(0,0,153);
     private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
-    public dendaInfoController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
+    public dendaInfoController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu, MenuNagusia viewMenuNag) {
         this.denda = denda;       
         this.viewDendaInfo = viewDendInfo;
         this.viewDendaGehitu = viewDendGehitu;
+        this.viewLangileaInfo = viewLangInfo;
+        this.viewLangileaGehitu = viewLangGehitu;
         this.viewMenuNagusia = viewMenuNag;
         dendInfoEstiloa();
     }
@@ -79,7 +83,15 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                 int konf = JOptionPane.showConfirmDialog(null, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako bezeroaren nan zenbakia lortu
-                    DendaKudeatu.dendaEzabatu(kodea);
+                    boolean ezabatuta = DendaKudeatu.dendaEzabatu(kodea);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, "Denda ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da dendarik ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+                    viewLangileaGehitu.jComboBoxDenda.removeAllItems();
+                    ctr.dendaIzenaKargatu(viewLangileaGehitu.jComboBoxDenda);
+                    viewLangileaInfo.jComboBoxDenda.removeAllItems();
+                    ctr.dendaIzenaKargatu(viewLangileaInfo.jComboBoxDenda);
                 }
                 dendDatuakErakutsiTaula(viewDendaInfo.jTableDendaInfo, DendaKudeatu.dendGuztiakErakutsi());
             }

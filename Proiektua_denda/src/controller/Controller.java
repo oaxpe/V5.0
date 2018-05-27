@@ -107,8 +107,8 @@ public class Controller {
     private void botoiakEntzuten() { 
         menuNagController menuNagCtr = new menuNagController(viewDendaInfo, viewBezeroaInfo, viewLangileaInfo, viewProduktuaAukeratu, 
             viewHornitzaileaInfo, viewEskaeraInfo, viewMenuNagusia, viewProdInbEsk, viewProdKontsultatu, viewProdSaldu);
-        dendaInfoController dendInfoCtr = new dendaInfoController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
-        dendaGehituController dendGehituCtr = new dendaGehituController(denda, viewDendaInfo, viewDendaGehitu, viewMenuNagusia);
+        dendaInfoController dendInfoCtr = new dendaInfoController(denda, viewDendaInfo, viewDendaGehitu, viewLangileaInfo, viewLangileaGehitu, viewMenuNagusia);
+        dendaGehituController dendGehituCtr = new dendaGehituController(denda, viewDendaInfo, viewDendaGehitu, viewLangileaInfo, viewLangileaGehitu);
         bezInfoController bezInfoCtr = new bezInfoController(bezeroa, viewBezeroaInfo, viewBezeroaGehitu, viewMenuNagusia);
         bezGehituController bezGehituCtr = new bezGehituController(bezeroa, viewBezeroaInfo, viewBezeroaGehitu);
         langInfoController langInfoCtr = new langInfoController(langilea, viewLangileaInfo, viewLangileaGehitu, viewMenuNagusia);
@@ -482,6 +482,7 @@ public class Controller {
         viewLangileaInfo.jTextFieldTlf.addFocusListener(langInfoCtr);
         viewLangileaInfo.jTextFieldSoldata.addFocusListener(langInfoCtr);
         viewLangileaInfo.jComboBoxEremua.addFocusListener(langInfoCtr);
+        viewLangileaInfo.jComboBoxDenda.addFocusListener(langInfoCtr);
         
         // LangileaGehitu
         viewLangileaGehitu.jTextFieldIzena.addFocusListener(langGehituCtr);
@@ -495,6 +496,7 @@ public class Controller {
         viewLangileaGehitu.jTextFieldTlf.addFocusListener(langGehituCtr);
         viewLangileaGehitu.jTextFieldSoldata.addFocusListener(langGehituCtr);
         viewLangileaGehitu.jComboBoxEremua.addFocusListener(langGehituCtr);
+        viewLangileaGehitu.jComboBoxDenda.addFocusListener(langGehituCtr);
         
         // ProduktuaAukeratu
         /* JERTSEA */
@@ -615,6 +617,8 @@ public class Controller {
         sexuaKargatu(viewPrakaGehitu.jComboBoxSexua);
         tailaKargatuInt(viewPrakaGehitu.jComboBoxTaila);
         motaKargatu(viewPrakaGehitu.jComboBoxMota);
+        dendaIzenaKargatu(viewLangileaGehitu.jComboBoxDenda);
+        dendaIzenaKargatu(viewLangileaInfo.jComboBoxDenda);
     }
     
     public void hornitzaileaKargatu(JComboBox comboBox) {
@@ -674,6 +678,18 @@ public class Controller {
         comboBox.addItem("--- Aukeratu ---");
         for (String i : eremua) {
             comboBox.addItem(i);
+        }
+    }
+    
+    public void dendaIzenaKargatu(JComboBox comboBox) {
+        ArrayList<Denda> dendGuzt = DendaKudeatu.dendGuztiakErakutsi(); // denda objetua gorde
+        ArrayList<String> alDendaIzenak = new ArrayList(); // denda izena bakarrik gordeko da
+        for (Denda dend : dendGuzt) { // izena alDendaIzenak-en gorde
+            alDendaIzenak.add(dend.getIzena());
+        }
+        comboBox.addItem("--- Aukeratu ---");
+        for (int i = 0; i < alDendaIzenak.size(); i++) { // izenak comboBox-ean gorde
+            comboBox.addItem(alDendaIzenak.get(i));
         }
     }
     

@@ -8447,7 +8447,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+printGorriz(textua: String): String",
+											"text": "+printUrdinez(textua: String): String",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -11962,7 +11962,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+dendaGehitu(dend1: Denda): void",
+											"text": "+dendaGehitu(dend1: Denda): boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -11991,7 +11991,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+dendaEzabatu(kodea: String): void",
+											"text": "+dendaEzabatu(kodea: String): boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -22350,10 +22350,11 @@
 											"_parent": {
 												"$ref": "AAAAAAFjWXW0gMiO37o="
 											},
+											"name": "boolean",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "void",
+											"type": "boolean",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -22397,11 +22398,11 @@
 											"_parent": {
 												"$ref": "AAAAAAFjWhE5CTUNMLA="
 											},
-											"name": "void",
+											"name": "boolean",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "void",
+											"type": "boolean",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -23325,7 +23326,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFhPloPWMC6pZI="
 									},
-									"name": "printGorriz",
+									"name": "printUrdinez",
 									"visibility": "public",
 									"isStatic": true,
 									"isLeaf": false,

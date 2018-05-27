@@ -20,7 +20,8 @@ import model.Denda;
  */
 public class DendaKudeatu {    
     /* Denda berri bat gehitu */
-    public static void dendaGehitu(Denda d) {
+    public static boolean dendaGehitu(Denda d) {
+        boolean gordeta = false;
         DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
         PreparedStatement ps;
         try {
@@ -36,15 +37,17 @@ public class DendaKudeatu {
             ps.setString(7, d.getEmail());
 
             ps.executeUpdate(); /* Aldaketak gorde */
+            gordeta = true;
         } catch (SQLException ex) {
             System.out.println(Metodoak.printUrdinez(ex.getMessage()));
         } finally {
             konexioa.deskonektatu(); // datu basetik deskonektatu
+            return gordeta; // objektua datu basean gorde den edo ez bueltatuko du
         }
     }
  
     /* Denda zehatz baten datu guztiak ezabatu */ 
-    public static void dendaEzabatu(String kodea) {
+    public static boolean dendaEzabatu(String kodea) {
         boolean ezabatuta = false;
         DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
         PreparedStatement ps = null;
@@ -68,9 +71,8 @@ public class DendaKudeatu {
                 System.out.println(kodea+" zenbakidun denda ezabatu da.");
             else
                 System.out.println(kodea+" zenbakia duen dendarik ez dago erregistratuta.");
-        }
-        
-        
+            return ezabatuta;
+        }      
     }
     
     /* Dendaren inguruko informazioa erakusten du. */
@@ -93,7 +95,6 @@ public class DendaKudeatu {
                 dend.setTelefonoa(rs.getString("dendTlf"));
                 dend.setEmail(rs.getString("dendEmail"));
                 dendaGuzt.add(dend);
-                dend.printDatuak();
             }
         } catch (SQLException ex) {
             System.out.println(Metodoak.printUrdinez(ex.getMessage()));

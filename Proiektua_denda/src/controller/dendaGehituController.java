@@ -32,15 +32,19 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
     /* Bistak */
     private DendaInfo viewDendaInfo;
     private DendaGehitu viewDendaGehitu;
+    private LangileaInfo viewLangileaInfo;
+    private LangileaGehitu viewLangileaGehitu;
     
     private Color urdina = new Color(0,0,153);
     private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
-    public dendaGehituController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, MenuNagusia viewMenuNag) {
+    public dendaGehituController(Denda denda, DendaInfo viewDendInfo, DendaGehitu viewDendGehitu, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu) {
         this.denda = denda;
         this.viewDendaInfo = viewDendInfo;
         this.viewDendaGehitu = viewDendGehitu;
+        this.viewLangileaInfo = viewLangInfo;
+        this.viewLangileaGehitu = viewLangGehitu;
         dendGehituEstiloa();
     }
 
@@ -62,8 +66,15 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
                     Denda d = new Denda(viewDendaGehitu.jTextFieldIzena.getText(), viewDendaGehitu.jTextFieldHelbidea.getText(), 
                         viewDendaGehitu.jTextFieldHerria.getText(), Integer.parseInt(viewDendaGehitu.jTextFieldPostKod.getText()), 
                         viewDendaGehitu.jTextFieldTlf.getText(), viewDendaGehitu.jTextFieldEmail.getText());
-                    d.printDatuak();
-                    DendaKudeatu.dendaGehitu(d);
+                    boolean gehitu = DendaKudeatu.dendaGehitu(d); /* booleano bat bueltatuko du, gehitu bada edo ez jakiteko */
+                    if (gehitu) 
+                        JOptionPane.showMessageDialog(null, "Denda erregistratu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da dendarik erregistratu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+                    viewLangileaGehitu.jComboBoxDenda.removeAllItems();
+                    ctr.dendaIzenaKargatu(viewLangileaGehitu.jComboBoxDenda);
+                    viewLangileaInfo.jComboBoxDenda.removeAllItems();
+                    ctr.dendaIzenaKargatu(viewLangileaInfo.jComboBoxDenda);
                 }
                 catch (Exception ex) {
                     // fitxategia ez bada existitzen, errorea ematen  du.
