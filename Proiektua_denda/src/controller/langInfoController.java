@@ -76,10 +76,14 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         else if (comando == viewLangileaInfo.jButtonEzabatu) {
             int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
             if (aukLerroa != -1) {
-                int konf = JOptionPane.showConfirmDialog(viewLangileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
+                int konf = JOptionPane.showConfirmDialog(null, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
-                    LangileaKudeatu.langileaEzabatu(nan);
+                    boolean ezabatuta = LangileaKudeatu.langileaEzabatu(nan);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, "Langilea ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da langilerik ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente                    
                 }
                 langDatuakErakutsiTaula(viewLangileaInfo.jTableLangileaInfo, LangileaKudeatu.langileGuztiakErakutsi());
             }
@@ -130,7 +134,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                             viewLangileaInfo.jTextFieldAbizena1.getText(), viewLangileaInfo.jTextFieldAbizena2.getText(), 
                             viewLangileaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewLangileaInfo.jDateChooserJaioData.getDate()), 
                             sexuaRB, viewLangileaInfo.jTextFieldHerria.getText(), viewLangileaInfo.jTextFieldTlf.getText(), 
-                            Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString());
+                            Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString(), 
+                            viewLangileaInfo.jComboBoxDenda.getSelectedItem().toString());
                     LangileaKudeatu.langileaGehitu(lang);
 
                     langDatuakErakutsiTaula(viewLangileaInfo.jTableLangileaInfo, LangileaKudeatu.langileGuztiakErakutsi());
@@ -234,8 +239,10 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
         else if (comando == viewLangileaInfo.jTextFieldSoldata)
             viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
-         else if (comando == viewLangileaInfo.jComboBoxEremua)
+        else if (comando == viewLangileaInfo.jComboBoxEremua)
             viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(urdina, 1));
+        else if (comando == viewLangileaInfo.jComboBoxDenda)
+            viewLangileaInfo.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(urdina, 1));
     }
 
     @Override
@@ -260,6 +267,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewLangileaInfo.jComboBoxEremua)
             viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewLangileaInfo.jComboBoxDenda)
+            viewLangileaInfo.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
     
     @Override
@@ -295,6 +304,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaInfo.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewLangileaInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
         
         viewLangileaInfo.jTextFieldKodeLang.setOpaque(false);
@@ -309,6 +319,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldTlf.setOpaque(false);
         viewLangileaInfo.jTextFieldSoldata.setOpaque(false);
         viewLangileaInfo.jComboBoxEremua.setOpaque(false);
+        viewLangileaInfo.jComboBoxDenda.setOpaque(false);
         
         viewLangileaInfo.jPanelOsoa.setBackground(Color.WHITE);
         viewLangileaInfo.jPanelGoiburua.setOpaque(false);
@@ -352,6 +363,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         model.addColumn("Telefono");
         model.addColumn("Soldata");
         model.addColumn("Eremua");
+        model.addColumn("Denda");
         
         for (int i=0; i<langGuzt.size(); i++) {
             Langilea lang = langGuzt.get(i);
@@ -368,6 +380,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             model.setValueAt(lang.getTelefonoa(), i, 8);
             model.setValueAt(lang.getSoldata(), i, 9);
             model.setValueAt(lang.getEremua(), i, 10);
+            model.setValueAt(lang.getDendIzena(), i, 11);
         }
     }
 
@@ -390,6 +403,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldTlf.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 8)));
         viewLangileaInfo.jTextFieldSoldata.setText(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 9)));
         viewLangileaInfo.jComboBoxEremua.setSelectedItem(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 10)));
+        viewLangileaInfo.jComboBoxDenda.setSelectedItem(String.valueOf(viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 11)));
     }
     
     private void resetLangileaInfo() {
@@ -404,7 +418,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldHerria.setText(null);
         viewLangileaInfo.jTextFieldTlf.setText(null);
         viewLangileaInfo.jTextFieldSoldata.setText(null);
-        viewLangileaInfo.jComboBoxEremua.setSelectedItem(null);      
+        viewLangileaInfo.jComboBoxEremua.setSelectedItem(null); 
+        viewLangileaInfo.jComboBoxDenda.setSelectedItem(null);
     }
 
     private boolean balidazioaLangInfo() {
@@ -470,6 +485,10 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
         }
+        if (viewLangileaInfo.jComboBoxDenda.getSelectedIndex() == 0) {
+            viewLangileaInfo.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
         return bool;
     }
    
@@ -483,6 +502,7 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
         viewLangileaInfo.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaInfo.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaInfo.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         
         viewLangileaInfo.jTextFieldTlf.setToolTipText(null);
         viewLangileaInfo.jTextFieldNan.setToolTipText(null);

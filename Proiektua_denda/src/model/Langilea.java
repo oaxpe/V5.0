@@ -7,7 +7,6 @@ package model;
 
 import gestioa.Metodoak;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 
@@ -21,34 +20,35 @@ public class Langilea extends Pertsona implements Serializable {
     private String kodLan;
     private double soldata;
     private String eremua; // saltzailea edo garbitzailea den gordetzen du.
+    private String dendIzena; // Langileak lan egingo duen dendaren izena
     
     /* ERAIKITZAILEAK */
     public Langilea () {
-//        super();
-//        setKodLan();
-//        setSoldata();
-//        setEremua();
+        super();
     }
     
-    public Langilea (String izena, String abizena1, String abizena2) {
+    public Langilea (String izena, String abizena1, String abizena2, String dendIzena) {
         super(izena, abizena1, abizena2);
         setKodLan();
+        this.dendIzena = dendIzena;
         this.soldata=1300;
         this.eremua="Saltzailea";
     }
     
-    public Langilea (String kodLan, String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua) {
+    public Langilea (String kodLan, String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua, String dendIzena) {
         super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
         this.kodLan = kodLan;
         this.soldata = soldata;
         this.eremua = eremua;
+        this.dendIzena = dendIzena;
     }
 
-    public Langilea (String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua) {
+    public Langilea (String izena, String abizena1, String abizena2, String nan, String jaiotzeData, String sexua, String herria, String tlf, double soldata, String eremua, String dendIzena) {
         super(izena, abizena1, abizena2, nan, jaiotzeData, sexua, herria, tlf);
         setKodLan();
         this.soldata = soldata;
         this.eremua = eremua;
+        this.dendIzena = dendIzena;
     }
     
     /* METODOAK */
@@ -74,18 +74,8 @@ public class Langilea extends Pertsona implements Serializable {
         return soldata;
     }
 
-    public void setSoldata() {
-        try {
-            System.out.print("Sartu soldata: ");
-            this.soldata=Double.parseDouble(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki dezimala bat sartu behar zenuen."));
-            setSoldata();
-        }
+    public void setSoldata(Double soldata) {
+        this.soldata = soldata;
     }
 
     public String getKodLan() {
@@ -95,18 +85,24 @@ public class Langilea extends Pertsona implements Serializable {
     public void setKodLan() {
         this.kodLan = Metodoak.kodeakAldatuEtaGorde("Langilea"); // Langilearen kodea automatikoki hartu kodeak.txt fitxategitik
     }
+    
+    public void setKodLan(String kodea) {
+        this.kodLan = kodea;
+    }
 
     public String getEremua() {
         return eremua;
     }
 
-    public void setEremua() {
-        try {
-            System.out.print("Sartu langilearen eremua (saltzailea edo garbitzailea): ");
-            this.eremua=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setEremua(String eremua) {
+        this.eremua = eremua;
+    }
+
+    public String getDendIzena() {
+        return dendIzena;
+    }
+
+    public void setDendIzena(String dendIzena) {
+        this.dendIzena = dendIzena;
     }
 }

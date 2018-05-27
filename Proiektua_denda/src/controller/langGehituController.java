@@ -68,8 +68,14 @@ public class langGehituController implements ActionListener, MouseListener, Focu
                 Langilea lang = new Langilea(viewLangileaGehitu.jTextFieldIzena.getText(), viewLangileaGehitu.jTextFieldAbizena1.getText(), 
                         viewLangileaGehitu.jTextFieldAbizena2.getText(), viewLangileaGehitu.jTextFieldNan.getText(),  Metodoak.dataGorde(viewLangileaGehitu.jDateChooserJaioData.getDate()), 
                         sexuaRB, viewLangileaGehitu.jTextFieldHerria.getText(), viewLangileaGehitu.jTextFieldTlf.getText(), 
-                        Double.parseDouble(viewLangileaGehitu.jTextFieldSoldata.getText()), viewLangileaGehitu.jComboBoxEremua.getSelectedItem().toString());
-                LangileaKudeatu.langileaGehitu(lang);
+                        Double.parseDouble(viewLangileaGehitu.jTextFieldSoldata.getText()), viewLangileaGehitu.jComboBoxEremua.getSelectedItem().toString(), 
+                        viewLangileaGehitu.jComboBoxDenda.getSelectedItem().toString());
+                boolean gehitu = LangileaKudeatu.langileaGehitu(lang); /* booleano bat bueltatuko du, gehitu bada edo ez jakiteko */
+                if (gehitu) 
+                    JOptionPane.showMessageDialog(null, "Langilea erregistratu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                else
+                    JOptionPane.showMessageDialog(null, "Ez da langilerik erregistratu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+
                 resetLangileaGehitu();
                 ctr.enableComponents(viewLangileaGehitu.jPanelLangDatuak, false);
             }   
@@ -153,6 +159,8 @@ public class langGehituController implements ActionListener, MouseListener, Focu
             viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));
          else if (comando == viewLangileaGehitu.jComboBoxEremua)
             viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(urdina, 1));
+         else if (comando == viewLangileaGehitu.jComboBoxDenda)
+             viewLangileaGehitu.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(urdina, 1));
     }
 
     @Override
@@ -175,6 +183,8 @@ public class langGehituController implements ActionListener, MouseListener, Focu
             viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         else if (comando == viewLangileaGehitu.jComboBoxEremua)
             viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewLangileaGehitu.jComboBoxDenda)
+             viewLangileaGehitu.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
         
     /* METODOAK */
@@ -192,6 +202,7 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
         viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaGehitu.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
         viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
         
@@ -223,6 +234,7 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         viewLangileaGehitu.jTextFieldTlf.setText(null);
         viewLangileaGehitu.jTextFieldSoldata.setText(null);
         viewLangileaGehitu.jComboBoxEremua.setSelectedIndex(0);
+        viewLangileaGehitu.jComboBoxDenda.setSelectedIndex(0);
 
         viewLangileaGehitu.jTextFieldIzena.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaGehitu.jTextFieldAbizena1.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -232,6 +244,7 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         viewLangileaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewLangileaGehitu.jTextFieldSoldata.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY)); 
         viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewLangileaGehitu.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewLangileaGehitu.jRadioButtonEmak.setForeground(Color.BLACK);
         viewLangileaGehitu.jRadioButtonGiz.setForeground(Color.BLACK);
     }
@@ -297,6 +310,10 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         }
         if (viewLangileaGehitu.jComboBoxEremua.getSelectedIndex()==0) {
             viewLangileaGehitu.jComboBoxEremua.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewLangileaGehitu.jComboBoxDenda.getSelectedIndex()==0) {
+            viewLangileaGehitu.jComboBoxDenda.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
         }
         return bool;
