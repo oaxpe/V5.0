@@ -5,18 +5,15 @@
  */
 package model;
 
-import gestioa.Metodoak;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 5.0
  */
-public abstract class Produktua implements Serializable {
+public abstract class Produktua {
     /* ATRIBUTOAK */
     protected String kodPro; // arropak daukan erreferentzia. Adib:  231532-499
     protected String marka;
@@ -81,92 +78,44 @@ public abstract class Produktua implements Serializable {
         return kodPro;
     }
 
-    public void setKodPro() {
-        try {
-            System.out.print("Sartu produktuaren kodea (erreferentzia): ");
-            this.kodPro=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setKodPro(String kodea) {
+        this.kodPro = kodea;
     }
 
     public String getMarka() {
         return marka;
     }
 
-    public void setMarka() {
-        try {
-            System.out.print("Sartu marka: ");
-            this.marka=br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }   
+    public void setMarka(String marka) {
+        this.marka = marka;
     }
 
     public double getPrezioa() {
         return prezioa;
     }
 
-    public void setPrezioa() {
-        try {
-            System.out.print("Sartu prezioa: ");
-            this.prezioa = Double.parseDouble(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki dezimala bat sartu behar zenuen."));
-            setPrezioa();
-        }
+    public void setPrezioa(Double prezioa) {
+        this.prezioa = prezioa;
     }
 
     public String getKolorea() {
         return kolorea;
     }
 
-    public void setKolorea() {
-        try {
-           System.out.print("Sartu kolorea: ");
-            this.kolorea = br.readLine(); 
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setKolorea(String kolorea) {
+        this.kolorea = kolorea;
     }
 
     public String getSexua() {
         return sexua;
     }
 
-    public void setSexua() {
-        try {
-            System.out.print("Emakumea, gizona edo unisex?: ");
-            this.sexua=br.readLine(); 
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setSexua(String sexua) {
+        this.sexua = sexua;
     } 
 
     public int getKantStock() {
         return kantStock;
-    }
-
-    public void setKantStock() {
-        try {
-            System.out.print("Sartu Kantitatea: ");
-            this.kantStock = Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
-            setKantStock();
-        }
     }
     
     public void setKantStock(int kantitatea) {
@@ -185,20 +134,6 @@ public abstract class Produktua implements Serializable {
     
     public int getDeskontua() {
         return deskontua;
-    }
-
-    public void setDeskontua() {
-        try {
-            System.out.print("Sartu deskontua: ");
-            this.deskontua = Integer.parseInt(br.readLine());
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
-            setDeskontua();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
     }
 
     public void setDeskontua(int deskontua) {

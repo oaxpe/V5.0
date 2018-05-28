@@ -89,7 +89,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                    JertseaKudeatu.jertseaEzabatu(kodea, taila);
+                    boolean ezabatuta = JertseaKudeatu.jertseaEzabatu(kodea, taila);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, "Jertsea ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da jertserik ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente                    
                 }
                 jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
             }
@@ -161,7 +165,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                    KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
+                    boolean ezabatuta = KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, "Kamiseta ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da kamisetarik ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente                  
                 }
                 kamiDatuakErakutsiTaula(viewProduktuaAukeratu.jTableKamiInfo, KamisetaKudeatu.kamisetaGuztErakutsi());
             }
@@ -233,7 +241,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
                 if (konf == 0) { // bai
                     String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
                     int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                    PrakaKudeatu.prakaEzabatu(kodea, taila);
+                    boolean ezabatuta = PrakaKudeatu.prakaEzabatu(kodea, taila);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, "Praka ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da prakarik ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente      
                 }
                 prakDatuakErakutsiTaula(viewProduktuaAukeratu.jTablePrakInfo, PrakaKudeatu.prakaGutztErakutsi());
             }

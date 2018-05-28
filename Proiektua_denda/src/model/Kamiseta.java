@@ -14,7 +14,7 @@ import java.io.Serializable;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Kamiseta extends Produktua implements Serializable {
+public class Kamiseta extends Produktua {
     private String taila;
     private String sasoia; // uda, negua...
     
@@ -59,27 +59,15 @@ public class Kamiseta extends Produktua implements Serializable {
         return taila;
     }
 
-    public void setTaila() {
-        try {
-            System.out.print("Sartu taila (XS,S,M,L,XL,XXL): ");
-            this.taila = br.readLine().toUpperCase();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setTaila(String taila) {
+        this.taila = taila;
     }
 
     public String getSasoia() {
         return sasoia;
     }
 
-    public void setSasoia() {
-        try {
-            System.out.print("Sartu sasoia (uda, negua...): ");
-            this.sasoia = br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setSasoia(String sasoia) {
+        this.sasoia = sasoia;
     }
 }

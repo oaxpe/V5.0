@@ -119,9 +119,9 @@ public class menuNagController implements ActionListener, MouseListener{
             viewProdInbEsk.jLabelProdKud.setText("PRODUKTUEN INBENTARIOA");
             viewProdInbEsk.setTitle("Produktuen inbentarioa");
             /* Produktuen taulak bete */
-            jertsDatuakErakutsiTaula(viewProdInbEsk.jTableJertsea, JertseaKudeatu.jertseaInbentarioa());
-            kamiDatuakErakutsiTaula(viewProdInbEsk.jTableKamiseta, KamisetaKudeatu.kamisetaInbentarioa());
-            prakDatuakErakutsiTaula(viewProdInbEsk.jTablePraka, PrakaKudeatu.prakaEskatzeko());
+            jertsDatuakErakutsiTaula(viewProdInbEsk.jTableJertsea, JertseaKudeatu.jertsGuztErakutsi());
+            kamiDatuakErakutsiTaula(viewProdInbEsk.jTableKamiseta, KamisetaKudeatu.kamisetaGuztErakutsi());
+            prakDatuakErakutsiTaula(viewProdInbEsk.jTablePraka, PrakaKudeatu.prakaGutztErakutsi());
         }
         else if (comando == viewMenuNagusia.jButtonEskatzeko) {
             viewProdInbEsk.setVisible(true);
@@ -314,7 +314,7 @@ public class menuNagController implements ActionListener, MouseListener{
         }
     }
 
-    private void jertsDatuakErakutsiTaula(JTable jTableJertsea, ArrayList<Jertsea> jertseaInbentarioa) {
+    private void jertsDatuakErakutsiTaula(JTable jTableJertsea, ArrayList<Jertsea> jertseak) {
         DefaultTableModel model = new DefaultTableModel() {
             /* Datuak taulan ez editatzeko */
             @Override
@@ -331,8 +331,8 @@ public class menuNagController implements ActionListener, MouseListener{
         model.addColumn("STOCK kantitatea");
         model.addColumn("TAILA");
         
-        for (int i=0; i<jertseaInbentarioa.size(); i++) {
-            Jertsea jerts = jertseaInbentarioa.get(i);
+        for (int i=0; i < jertseak.size(); i++) {
+            Jertsea jerts = jertseak.get(i);
             Array[] os = null;
             model.addRow(os);
             model.setValueAt(jerts.getKodPro(), i, 0);
@@ -360,7 +360,7 @@ public class menuNagController implements ActionListener, MouseListener{
         model.addColumn("STOCK kantitatea");
         model.addColumn("TAILA");
         
-        for (int i=0; i<kamisetak.size(); i++) {
+        for (int i=0; i < kamisetak.size(); i++) {
             Kamiseta kami = kamisetak.get(i);
             Array[] os = null;
             model.addRow(os);
@@ -389,7 +389,7 @@ public class menuNagController implements ActionListener, MouseListener{
         model.addColumn("STOCK kantitatea");
         model.addColumn("TAILA");
         
-        for (int i=0; i<prakak.size(); i++) {
+        for (int i=0; i < prakak.size(); i++) {
             Praka prak = prakak.get(i);
             Array[] os = null;
             model.addRow(os);

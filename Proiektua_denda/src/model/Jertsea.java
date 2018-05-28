@@ -5,20 +5,16 @@
  */
 package model;
 
-import gestioa.Metodoak;
-import java.io.IOException;
-import java.io.Serializable;
-
 /**
  *
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Jertsea extends Produktua implements Serializable {
+public class Jertsea extends Produktua {
     private String taila;
     
     public Jertsea () {
-
+        super();
     }
     
     public Jertsea (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, String taila) {
@@ -55,18 +51,8 @@ public class Jertsea extends Produktua implements Serializable {
         return taila;
     }
 
-    public void setTaila() {
-        try {
-            System.out.print("Sartu taila (XS,S,M,L,XL,XXL): ");
-            this.taila = br.readLine().toUpperCase();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki dezimala bat sartu behar zenuen."));
-            setTaila();
-        }
+    public void setTaila(String taila) {
+        this.taila = taila;
     }
     
 }

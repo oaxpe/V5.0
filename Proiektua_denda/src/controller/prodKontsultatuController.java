@@ -118,11 +118,9 @@ public class prodKontsultatuController implements ActionListener, MouseListener,
     public void mouseClicked(MouseEvent me) {
         Object comando = me.getSource();
         /* Produktu mota aukeratzen denean, Taila ComboBox-ean kargatuko da (motaren arabera) */
-        if (comando == viewProdKontsultatu.jRadioButtonJerts || comando == viewProdKontsultatu.jRadioButtonKami) {
+        if (comando == viewProdKontsultatu.jRadioButtonJerts || comando == viewProdKontsultatu.jRadioButtonKami || comando == viewProdKontsultatu.jRadioButtonPrak) {
             ctr.enableComponents(viewProdKontsultatu.jPanelDatuak, true);
-        }
-        else if (comando == viewProdKontsultatu.jRadioButtonPrak) {
-            ctr.enableComponents(viewProdKontsultatu.jPanelDatuak, true);
+            viewProdKontsultatu.jTextFieldKodeProd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         }
     } 
 
@@ -219,6 +217,8 @@ public class prodKontsultatuController implements ActionListener, MouseListener,
         viewProdKontsultatu.jRadioButtonKami.setSelected(false);
         viewProdKontsultatu.jRadioButtonPrak.setSelected(false);
         viewProdKontsultatu.jTextFieldKodeProd.setText(null);
+        
+        viewProdKontsultatu.jTextFieldKodeProd.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
     
     /* Saldu nahi den produktua aukeratzeko kanpoak hutsik ezin dira geratu. */

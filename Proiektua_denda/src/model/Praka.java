@@ -5,16 +5,12 @@
  */
 package model;
 
-import gestioa.Metodoak;
-import java.io.IOException;
-import java.io.Serializable;
-
 /**
  *
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Praka extends Produktua implements Serializable {
+public class Praka extends Produktua {
     private int taila; //38, 40, 42, 44...
     private String sasoia; // uda, negua...
     private int luzeera;
@@ -77,18 +73,8 @@ public class Praka extends Produktua implements Serializable {
         return taila;
     }
 
-    public void setTaila() {
-        try {
-            System.out.print("Sartu taila (38,40,42,44,46): ");
-            this.taila = Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
-            setTaila();
-        }
+    public void setTaila(int taila) {
+        this.taila = taila;
     }
 
     public String getSasoia() {
@@ -103,30 +89,15 @@ public class Praka extends Produktua implements Serializable {
         return luzeera;
     }
 
-    public void setLuzeera() {
-        try {
-            System.out.print("Sartu luzeera: ");
-            this.luzeera = Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("Zenbaki bat sartu behar zenuen."));
-        }
+    public void setLuzeera(int luzeera) {
+        this.luzeera = luzeera;
     }
     
     public String getMota() {
         return mota;
     }
 
-    public void setMota() {
-        try {
-           System.out.print("Sartu mota: ");
-            this.mota = br.readLine(); 
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setMota(String mota) {
+        this.mota = mota;
     }  
 }

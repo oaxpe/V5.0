@@ -62,7 +62,12 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
                         viewPrakaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewPrakaGehitu.jTextFieldStock.getText()), 
                         Integer.parseInt(viewPrakaGehitu.jComboBoxTaila.getSelectedItem().toString()), viewPrakaGehitu.jComboBoxSasoia.getSelectedItem().toString(), 
                         Integer.parseInt(viewPrakaGehitu.jTextFieldLuzeera.getText()), viewPrakaGehitu.jComboBoxMota.getSelectedItem().toString());
-                PrakaKudeatu.prakaGehitu(prak);
+                boolean gehitu = PrakaKudeatu.prakaGehitu(prak); /* booleano bat bueltatuko du, gehitu bada edo ez jakiteko */
+                if (gehitu) 
+                    JOptionPane.showMessageDialog(null, "Praka erregistratu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                else
+                    JOptionPane.showMessageDialog(null, "Ez da prakarik erregistratu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+
                 resetPrakaGehitu();
                 ctr.enableComponents(viewPrakaGehitu.jPanelPrakDatuak, false);
             }   

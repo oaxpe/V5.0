@@ -61,7 +61,12 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
                         Double.parseDouble(viewKamisetaGehitu.jTextFieldPrezioa.getText()), viewKamisetaGehitu.jTextFieldKolorea.getText(), 
                         viewKamisetaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewKamisetaGehitu.jTextFieldStock.getText()), 
                         viewKamisetaGehitu.jComboBoxTaila.getSelectedItem().toString(), viewKamisetaGehitu.jComboBoxSasoia.getSelectedItem().toString());
-                KamisetaKudeatu.kamisetaGehitu(kami);
+                boolean gehitu = KamisetaKudeatu.kamisetaGehitu(kami); /* booleano bat bueltatuko du, gehitu bada edo ez jakiteko */
+                if (gehitu) 
+                    JOptionPane.showMessageDialog(null, "Kamiseta erregistratu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                else
+                    JOptionPane.showMessageDialog(null, "Ez da kamisetarik erregistratu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+                
                 resetKamisetaGehitu();
                 ctr.enableComponents(viewKamisetaGehitu.jPanelKamiDatuak, false);
             }   

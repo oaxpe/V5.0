@@ -61,7 +61,12 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
                         Double.parseDouble(viewJertseaGehitu.jTextFieldPrezioa.getText()), viewJertseaGehitu.jTextFieldKolorea.getText(), 
                         viewJertseaGehitu.jComboBoxSexua.getSelectedItem().toString(), Integer.parseInt(viewJertseaGehitu.jTextFieldStock.getText()),
                         viewJertseaGehitu.jComboBoxTaila.getSelectedItem().toString());
-                JertseaKudeatu.jertsGehitu(jerts);
+                boolean gehitu = JertseaKudeatu.jertsGehitu(jerts); /* booleano bat bueltatuko du, gehitu bada edo ez jakiteko */
+                if (gehitu) 
+                    JOptionPane.showMessageDialog(null, "Jertsea erregistratu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                else
+                    JOptionPane.showMessageDialog(null, "Ez da jertserik erregistratu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+                
                 resetJertseaGehitu();
                 ctr.enableComponents(viewJertseaGehitu.jPanelJertsDatuak, false);
             }   
