@@ -54,7 +54,7 @@ public class PrakaKudeatu {
             
             gordeta = true;
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         } finally {
             konexioa.deskonektatu(); // datu basetik deskonektatu
             return gordeta; // objektua datu basean gorde den edo ez bueltatuko du
@@ -90,13 +90,13 @@ public class PrakaKudeatu {
             ps.executeUpdate();
             ezabatuta = true;
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         }
         finally {
             try {
                 ps.close();
             } catch (SQLException ex) {
-                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
             if (ezabatuta)
@@ -134,13 +134,13 @@ public class PrakaKudeatu {
                 prak.printProd(); // objektuaren datuak erakutsi
             }
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         } 
         finally {
             try {
                 stmt.close();
             } catch (SQLException ex) {
-                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
             return prakGuzt;
@@ -178,13 +178,13 @@ public class PrakaKudeatu {
                 prak.printProd(); // objektuaren datuak erakutsi
             }
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         } 
         finally {
             try {
                 ps.close();
             } catch (SQLException ex) {
-                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
             return prakKonts;
@@ -221,13 +221,13 @@ public class PrakaKudeatu {
                 prak.printProd(); // objektuaren datuak erakutsi
             }
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         } 
         finally {
             try {
                 stmt.close();
             } catch (SQLException ex) {
-                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
             return prakEsk;

@@ -49,7 +49,7 @@ public class BezeroaKudeatu {
             
             gordeta = true;
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         } finally {
             konexioa.deskonektatu(); // datu basetik deskonektatu
             return gordeta; // objektua datu basean gorde den edo ez bueltatuko du
@@ -75,13 +75,13 @@ public class BezeroaKudeatu {
             ps.executeUpdate();
             ezabatuta = true;
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         }
         finally {
             try {
                 ps.close();
             } catch (SQLException ex) {
-                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
             if (ezabatuta)
@@ -120,13 +120,13 @@ public class BezeroaKudeatu {
                 bez.printPerts(); // objektuaren datuak erakutsi
             }
         } catch (SQLException ex) {
-            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         } 
         finally {
             try {
                 stmt.close();
             } catch (SQLException ex) {
-                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
         }
@@ -136,69 +136,37 @@ public class BezeroaKudeatu {
     /* Bezeroaren datuak aldatu (erabiltzaileak bere dni-a sartu beharko du) */
 //    public static void bezeroDatuakAldatu(String nan, int aukera) {
 //        boolean aldatuta = true;
+//        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+//        PreparedStatement psBez, psPerts;
 //        try {
-//            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fBezTemp, true)); // fitx berrian idazten joateko
-//            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fBez));
-//            while (true) {
-//                Bezeroa bez = (Bezeroa) geois.readObject(); // objektua irakurri   
-//                Bezeroa b = new Bezeroa(bez.getKodBez(), bez.getIzena(), bez.getAbizena1(), bez.getAbizena2(), bez.getNan(), bez.getJaiotzeData(), bez.getSexua(), bez.getHerria(), bez.getTelefonoa());
-//                if (!b.getNan().equals(nan.toUpperCase())) { // kodea konparatu
-//                    aldatuta=false;
-//                }
-//                else {
-//                    switch (aukera) {
-//                        case 1:
-//                            b.setIzena();
-//                            break;
-//                        case 2:
-//                            b.setAbizena1();
-//                            break;
-//                        case 3:
-//                            b.setAbizena2();
-//                            break;
-//                        case 4:
-//                            b.setNan();
-//                            break;
-//                        case 5:
-//                            b.setJaiotzeData();
-//                            break;
-//                        case 6:
-//                            b.setSexua();
-//                            break;
-//                        case 7:
-//                            b.setHerria();
-//                            break;
-//                        case 8:
-//                            b.setTelefonoa();
-//                            break;
-//                        default:
-//                            aldatuta = false;
-//                            System.out.println("Ez da aldaketarik egingo.");
-//                            break;
-//                    }
-//                }
-//                geoos.writeObject(b); // objektua fitxategian idatzi
-//                geoos.flush();
-//                if (aldatuta) {                   
-//                    System.out.println("\nAldatutako datua gorde da.");
-//                    System.out.println("\nBezeroaren datuak honako hauek dira: ");
-//                    b.printDatuak();
-//                }
-//            }
-//        } catch (EOFException ex) { 
-//            // fitxategiaren bukaerara heltzen denean, errorea omititu
-//            System.gc();
-//        } catch (FileNotFoundException ex) {
-//            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
-//        } catch (ClassNotFoundException | IOException ex) {
-//            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
-//        }
-//        
-//        try {
-//            Files.move(Paths.get(fBezTemp.getAbsolutePath()), Paths.get(fBez.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException ex) {
-//            Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
-//            fBezTemp.delete();
+//            /* PERTSONA taulan datuak gorde */
+//            String sqlInsert = "UPDATE pertsona  INTO pertsona VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+//            psPerts = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
+//            /* Objektuko datuak, ps-n gehitu */
+//            psPerts.setString(1, bez1.getIzena());
+//            psPerts.setString(2, bez1.getAbizena1());
+//            psPerts.setString(3, bez1.getAbizena2());
+//            psPerts.setString(4, bez1.getNan());
+//            psPerts.setString(5, bez1.getJaiotzeData());
+//            psPerts.setString(6, bez1.getSexua());
+//            psPerts.setString(7, bez1.getHerria());
+//            psPerts.setString(8, bez1.getTelefonoa());
+//            psPerts.executeUpdate();/* Aldaketak gorde */
+//            
+//            /* BEZEROA taulan datuak gorde */
+//            sqlInsert = "INSERT INTO bezeroa VALUES (?, ?)";
+//            psBez = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
+//            /* Objektuko datuak, ps-n gehitu */
+//            psBez.setString(1, bez1.getKodBez());
+//            psBez.setString(2, bez1.getNan());
+//            psBez.executeUpdate(); /* Aldaketak gorde */
+//            
+//            aldatuta = true;
+//        } catch (SQLException ex) {
+//            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+//        } finally {
+//            konexioa.deskonektatu(); // datu basetik deskonektatu
+//            return aldatuta; // objektua datu basean gorde den edo ez bueltatuko du
 //        }
 //    }
 }
