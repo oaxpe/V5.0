@@ -28,10 +28,18 @@ import java.util.regex.Pattern;
  * @version 5.0
  */
 public class Metodoak {
+    /* Mezuak urdinez kontsolan inprimitzeko (db-ra konektatzen denean adibidez) */
     public static String printUrdinez(String textua) {
         String ANSI_BLUE = "\u001B[34m";
         String ANSI_RESET = "\u001B[0m";
-        return (ANSI_BLUE+textua+ANSI_RESET);
+        return (ANSI_BLUE + textua + ANSI_RESET);
+    }
+    
+    /* Errore mezuak larroxaz inprimatzeko */
+    public static String printErrMezuak(String textua) {
+        String ANSI_PURPLE = "\u001B[35m";
+        String ANSI_RESET = "\u001B[0m";
+        return (ANSI_PURPLE + textua + ANSI_RESET);
     }
    
     /* Email-a ondo estrukturatuta dagoen konprobatzen duen metodoa.

@@ -6,6 +6,7 @@
 package model;
 
 import com.mysql.jdbc.Connection;
+import gestioa.Metodoak;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -26,10 +27,10 @@ public class DBKonexioa {
     public DBKonexioa() {
         try {
             this.konexioa = (Connection) DriverManager.getConnection(url, usr, pwd);
-            System.out.println(db + " datu basera konektatuta");
+            System.out.println(Metodoak.printUrdinez(db + " datu basera konektatuta"));
             
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
             System.out.println(db + " datu basera ez da konektatu");
         }
     }
@@ -43,9 +44,9 @@ public class DBKonexioa {
     public void deskonektatu() {
         try {
             this.konexioa.close();
-            System.out.println("Datu basetik deskonektatu da.");
+            System.out.println(Metodoak.printUrdinez("Datu basetik deskonektatu da."));
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
         }
     }
 }
