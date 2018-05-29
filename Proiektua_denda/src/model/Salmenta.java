@@ -6,9 +6,6 @@
 package model;
 
 import gestioa.Metodoak;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -56,8 +53,6 @@ public class Salmenta implements Serializable {
     }
     
     /* GETTER and SETTER */
-    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-
     public String getData() {
         return data;
     }
@@ -81,18 +76,8 @@ public class Salmenta implements Serializable {
         return kopurua;
     }
 
-    public void setKopurua() {
-        try {
-            System.out.print("Sartu kopurua: ");
-            this.kopurua = Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
-            setKopurua();
-        }
+    public void setKopurua(int kop) {
+        this.kopurua = kop;
     }
 
     public String getSalmZenb() {
@@ -101,6 +86,10 @@ public class Salmenta implements Serializable {
 
     public void setSalmZenb() {
         this.salmZenb = Metodoak.kodeakAldatuEtaGorde("Salmenta"); // Salmenta zenbakia automatikoki hartu kodeak.txt fitxategitik
+    }
+    
+    public void setSalmZenb(String salmZenb) {
+        this.salmZenb = salmZenb;
     }
 
     public String getKodProd() {

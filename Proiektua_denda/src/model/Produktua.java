@@ -5,9 +5,6 @@
  */
 package model;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  *
  * @author Oihane Axpe
@@ -71,9 +68,7 @@ public abstract class Produktua {
     }
    
 
-    /* GETTER and SETTER */
-    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-    
+    /* GETTER and SETTER */   
     public String getKodPro() {
         return kodPro;
     }

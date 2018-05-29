@@ -5,10 +5,6 @@
  */
 package model;
 
-import gestioa.Metodoak;
-import java.io.IOException;
-import java.io.Serializable;
-
 /**
  *
  * @author Oihane Axpe

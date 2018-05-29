@@ -6,8 +6,6 @@
 package model;
 
 import gestioa.Metodoak;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 
 /**
  *
@@ -62,8 +60,6 @@ public class Denda /*implements Serializable*/ {
     }
      
     /* GETTER and SETTER */
-    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-
     public String getKodDend() {
         return kodDend;
     }
