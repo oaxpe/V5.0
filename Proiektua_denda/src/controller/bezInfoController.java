@@ -21,6 +21,7 @@ import java.awt.event.MouseListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -322,7 +323,13 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
         
         /* Kodeak ezin dira aldatu */
         viewBezeroaInfo.jTextFieldKodeBez.setEditable(false);
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewBezeroaInfo.jButtonAldatu);
+        ctr.botoiFormatoa(viewBezeroaInfo.jButtonEzabatu);
+        ctr.botoiFormatoa(viewBezeroaInfo.jButtonGehitu);
     }
+
 
     public void bezDatuakErakutsiTaula(JTable taula, ArrayList<Bezeroa> bezGuzt) { // bezGehituController-ean ere erabiltzen da
         DefaultTableModel model = new DefaultTableModel() {

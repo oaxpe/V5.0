@@ -8,9 +8,12 @@ package controller;
 import model.*; // model-eko guztia importatu.
 import view.*; // bista guztiak importatu
 import gestioa.*;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -715,5 +718,13 @@ public class Controller {
 	} catch (NumberFormatException nfe){
             return false;
 	}
+    }
+    
+    /* xxxInfo-ko botoien formatua definitzen da */
+    public void botoiFormatoa (JButton botoia) {
+        Color urdina = new Color(0,0,153);
+        botoia.setBorderPainted(true); // botoien ertzak margotuta
+        botoia.setForeground(urdina); // botoiaren textuaren kolorea
+        botoia.setBackground(Color.WHITE); // botoiaren fondo kolorea
     }
 }

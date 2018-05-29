@@ -300,6 +300,11 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
         
         /* Kodeak ezin dira aldatu */
         viewHornitzaileaInfo.jTextFieldKodeHor.setEditable(false);
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewHornitzaileaInfo.jButtonAldatu);
+        ctr.botoiFormatoa(viewHornitzaileaInfo.jButtonEzabatu);
+        ctr.botoiFormatoa(viewHornitzaileaInfo.jButtonGehitu);
     }
 
     public void hornDatuakErakutsiTaula(JTable taula, ArrayList<Hornitzailea> hornGuzt) {

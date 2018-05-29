@@ -286,6 +286,11 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
 
         /* Kodeak ezin dira aldatu */
         viewEskaeraInfo.jTextFieldKodeEsk.setEditable(false);  
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewEskaeraInfo.jButtonAldatu);
+        ctr.botoiFormatoa(viewEskaeraInfo.jButtonEzabatu);
+        ctr.botoiFormatoa(viewEskaeraInfo.jButtonGehitu);
     }
     
     public void eskDatuakErakutsiTaula(JTable taula, ArrayList<Eskaera> eskGuzt) {

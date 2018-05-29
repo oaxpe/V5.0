@@ -655,6 +655,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         
         viewProduktuaAukeratu.jButtonAldaketaEzabatuJerts.setToolTipText("Ezeztatu");
         viewProduktuaAukeratu.jButtonAldaketaGordeJerts.setToolTipText("Gorde");
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonAldatuJerts);
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonEzabatuJerts);
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonGehituJerts);
 
         /* Kamiseta */
         viewProduktuaAukeratu.jTextFieldKodeKami.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -675,6 +680,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         
         viewProduktuaAukeratu.jButtonAldaketaEzabatuKami.setToolTipText("Ezeztatu");
         viewProduktuaAukeratu.jButtonAldaketaGordeKami.setToolTipText("Gorde");
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonAldatuKami);
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonEzabatuKami);
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonGehituKami);
         
         /* Praka */
         viewProduktuaAukeratu.jTextFieldKodePrak.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
@@ -698,6 +708,11 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
         
         viewProduktuaAukeratu.jButtonAldaketaEzabatuPrak.setToolTipText("Ezeztatu");
         viewProduktuaAukeratu.jButtonAldaketaGordePrak.setToolTipText("Gorde");
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonAldatuPrak);
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonEzabatuPrak);
+        ctr.botoiFormatoa(viewProduktuaAukeratu.jButtonGehituPrak);
 
         /* Fondo txuria jarri */
         viewProduktuaAukeratu.jPanelOsoa.setBackground(Color.WHITE);

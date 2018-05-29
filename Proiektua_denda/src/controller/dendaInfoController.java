@@ -325,6 +325,11 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
         
         /* Kodeak ezin dira aldatu */
         viewDendaInfo.jTextFieldKodeDend.setEditable(false);  
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewDendaInfo.jButtonAldatu);
+        ctr.botoiFormatoa(viewDendaInfo.jButtonEzabatu);
+        ctr.botoiFormatoa(viewDendaInfo.jButtonGehitu);
     }
 
     public void dendDatuakErakutsiTaula(JTable taula, ArrayList<Denda> dendGuzt) {

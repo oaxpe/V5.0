@@ -341,6 +341,11 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
 
         /* Kodeak ezin dira aldatu */
         viewLangileaInfo.jTextFieldKodeLang.setEditable(false);
+        
+        /* Aldatu, Ezabatu eta Gehitu botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewLangileaInfo.jButtonAldatu);
+        ctr.botoiFormatoa(viewLangileaInfo.jButtonEzabatu);
+        ctr.botoiFormatoa(viewLangileaInfo.jButtonGehitu);
     }
  
     public void langDatuakErakutsiTaula(JTable taula, ArrayList<Langilea> langGuzt) {

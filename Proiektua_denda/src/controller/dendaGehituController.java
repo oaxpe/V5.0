@@ -191,7 +191,7 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         viewDendaGehitu.jTextFieldPostKod.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewDendaGehitu.jTextFieldTlf.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewDendaGehitu.jTextFieldEmail.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
-        
+    
         viewDendaGehitu.jTextFieldIzena.setOpaque(false);
         viewDendaGehitu.jTextFieldHelbidea.setOpaque(false);
         viewDendaGehitu.jTextFieldHerria.setOpaque(false);
