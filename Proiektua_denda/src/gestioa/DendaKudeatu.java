@@ -20,7 +20,7 @@ import model.Denda;
  */
 public class DendaKudeatu {    
     /* Denda berri bat gehitu */
-    public static boolean dendaGehitu(Denda d) {
+    public static boolean dendaGehitu(Denda dend1) {
         boolean gordeta = false;
         DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
         PreparedStatement ps;
@@ -28,13 +28,13 @@ public class DendaKudeatu {
             String sqlInsert = "INSERT INTO denda VALUES (?, ?, ?, ?, ?, ?, ?)";
             ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
             /* Objektuko datuak, ps-n gehitu */
-            ps.setString(1, d.getKodDend());
-            ps.setString(2, d.getIzena());
-            ps.setString(3, d.getHelbidea());
-            ps.setString(4, d.getHerria());
-            ps.setInt(5, d.getKodPostala());
-            ps.setString(6, d.getTelefonoa());
-            ps.setString(7, d.getEmail());
+            ps.setString(1, dend1.getKodDend());
+            ps.setString(2, dend1.getIzena());
+            ps.setString(3, dend1.getHelbidea());
+            ps.setString(4, dend1.getHerria());
+            ps.setInt(5, dend1.getKodPostala());
+            ps.setString(6, dend1.getTelefonoa());
+            ps.setString(7, dend1.getEmail());
 
             ps.executeUpdate(); /* Aldaketak gorde */
             gordeta = true;
@@ -108,5 +108,40 @@ public class DendaKudeatu {
             konexioa.deskonektatu(); // datu basetik deskonektatu
         }
         return dendaGuzt;
+    }
+    
+    /* Dendaren datuak aldatzeko metodoa. Boolean bat bueltatuko du, objektua aldatu den edo ez jakiteko */
+    public static boolean dendaDatuakAldatu(Denda dend1) {
+        boolean aldatuta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps = null;        
+        try {
+            String sqlDelete = "UPDATE denda SET dendIzena = ?, dendHelbidea = ?, dendHerria = ?, dendPK = ?, dendTlf = ?, dendEmail = ? WHERE dendKode = ? ";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlDelete); // INSERT-a preparatu
+            ps.setString(1, dend1.getIzena());
+            ps.setString(2, dend1.getHelbidea());
+            ps.setString(3, dend1.getHerria());
+            ps.setInt(4, dend1.getKodPostala());
+            ps.setString(5, dend1.getTelefonoa());
+            ps.setString(6, dend1.getEmail());
+            ps.setString(7, dend1.getKodDend());
+            ps.executeUpdate();
+            aldatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (aldatuta)
+                System.out.println(dend1.getKodDend()+" kodea duen dendaren datuak aldatu dira.");
+            else
+                System.out.println(dend1.getKodDend()+" kodea duen dendarik ez dago erregistratuta.");
+            return aldatuta;
+        }
     }
 }

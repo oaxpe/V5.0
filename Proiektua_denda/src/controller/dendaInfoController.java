@@ -88,6 +88,7 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                         JOptionPane.showMessageDialog(null, "Denda ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
                     else
                         JOptionPane.showMessageDialog(null, "Ez da dendarik ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+                    /* LangileaInfo eta LangileaGehitu bistetako dendaren izenak aktualizatu */
                     viewLangileaGehitu.jComboBoxDenda.removeAllItems();
                     ctr.dendaIzenaKargatu(viewLangileaGehitu.jComboBoxDenda);
                     viewLangileaInfo.jComboBoxDenda.removeAllItems();
@@ -127,17 +128,26 @@ public class dendaInfoController implements ActionListener, MouseListener, ListS
                 if (balidazioaDendaInfo()) {
                     int aukLerroa = viewDendaInfo.jTableDendaInfo.getSelectedRow();
                     String kodea = (String) viewDendaInfo.jTableDendaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako bezeroaren nan zenbakia lortu
-                    DendaKudeatu.dendaEzabatu(kodea);
                     Denda d = new Denda(viewDendaInfo.jTextFieldKodeDend.getText(), viewDendaInfo.jTextFieldIzena.getText(), 
                             viewDendaInfo.jTextFieldHelbidea.getText(), viewDendaInfo.jTextFieldHerria.getText(), 
                             Integer.parseInt(viewDendaInfo.jTextFieldPostKod.getText()), 
                             viewDendaInfo.jTextFieldTlf.getText(), viewDendaInfo.jTextFieldEmail.getText());
-                    DendaKudeatu.dendaGehitu(d);
+                    boolean aldatuta = DendaKudeatu.dendaDatuakAldatu(d);
+                    if (aldatuta) 
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen dendaren datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, kodea + "duen dendaren datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+
                     dendDatuakErakutsiTaula(viewDendaInfo.jTableDendaInfo, DendaKudeatu.dendGuztiakErakutsi());
                     ctr.enableComponents(viewDendaInfo.jPanelDendDatuak, false);
                     ctr.enableComponents(viewDendaInfo.jPanelOina, true);
                     viewDendaInfo.jButtonAldaketaGorde.setEnabled(false);
                     viewDendaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                    /* LangileaInfo eta LangileaGehitu bistetako dendaren izenak aktualizatu */
+                    viewLangileaGehitu.jComboBoxDenda.removeAllItems();
+                    ctr.dendaIzenaKargatu(viewLangileaGehitu.jComboBoxDenda);
+                    viewLangileaInfo.jComboBoxDenda.removeAllItems();
+                    ctr.dendaIzenaKargatu(viewLangileaInfo.jComboBoxDenda);
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
