@@ -130,17 +130,19 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
             if (konf == 0) { // bai
                 if (balidazioaJertsInfo()) {
                     int aukLerroa = viewProduktuaAukeratu.jTableJertsInfo.getSelectedRow(); // aukeratutako lerroa
-                    /* Jertsea ezabatu */
                     String kodea = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-                    String taila = (String) viewProduktuaAukeratu.jTableJertsInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                    JertseaKudeatu.jertseaEzabatu(kodea, taila);
 
-                    /* Jertsea gorde */
+                    /* Jertsearen datuak jaso */
                     Jertsea jerts = new Jertsea(viewProduktuaAukeratu.jTextFieldKodeJerts.getText(), viewProduktuaAukeratu.jTextFieldMarkaJerts.getText(), 
                             Double.parseDouble(viewProduktuaAukeratu.jTextFieldPrezioaJerts.getText()), viewProduktuaAukeratu.jTextFieldKoloreaJerts.getText(), 
                             viewProduktuaAukeratu.jComboBoxSexuaJerts.getSelectedItem().toString(), Integer.parseInt(viewProduktuaAukeratu.jTextFieldStockJerts.getText()), 
                             viewProduktuaAukeratu.jComboBoxTailaJerts.getSelectedItem().toString());
-                    JertseaKudeatu.jertsGehitu(jerts);
+                    /* Jertsearen datuak aldatu */
+                    boolean aldatuta = JertseaKudeatu.jertseaDatuakAldatu(jerts);
+                    if (aldatuta) 
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen jertsearen datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen jertsearen datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
                     
                     jertsDatuakErakutsiTaula(viewProduktuaAukeratu.jTableJertsInfo, JertseaKudeatu.jertsGuztErakutsi());
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelJertsInfo, false);
@@ -206,17 +208,20 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
             if (konf == 0) { // bai
                 if (balidazioaKamiInfo()) {
                     int aukLerroa = viewProduktuaAukeratu.jTableKamiInfo.getSelectedRow(); // aukeratutako lerroa
-                    /* Kamiseta ezabatu */
                     String kodea = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-                    String taila = (String) viewProduktuaAukeratu.jTableKamiInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                    KamisetaKudeatu.kamisetaEzabatu(kodea, taila);
 
-                    /* Kamiseta gorde */
+                    /* Kamisetaren datuak jaso */
                     Kamiseta kami = new Kamiseta(viewProduktuaAukeratu.jTextFieldKodeKami.getText(), viewProduktuaAukeratu.jTextFieldMarkaKami.getText(), 
                             Double.parseDouble(viewProduktuaAukeratu.jTextFieldPrezioaKami.getText()), viewProduktuaAukeratu.jTextFieldKoloreaKami.getText(), 
                             viewProduktuaAukeratu.jComboBoxSexuaKami.getSelectedItem().toString(), Integer.parseInt(viewProduktuaAukeratu.jTextFieldStockKami.getText()), 
                             viewProduktuaAukeratu.jComboBoxTailaKami.getSelectedItem().toString(), viewProduktuaAukeratu.jComboBoxSasoiaKami.getSelectedItem().toString());
-                    KamisetaKudeatu.kamisetaGehitu(kami);
+                    
+                    /* Kamisetaren datuak aldatu */
+                    boolean aldatuta = KamisetaKudeatu.kamisetaDatuakAldatu(kami);
+                    if (aldatuta) 
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen kamisetaren datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen kamisetaren datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente                    
                     
                     kamiDatuakErakutsiTaula(viewProduktuaAukeratu.jTableKamiInfo, KamisetaKudeatu.kamisetaGuztErakutsi());
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelKamiInfo, false);
@@ -282,18 +287,21 @@ public class prodAukController implements ActionListener, MouseListener, Ancesto
             if (konf == 0) { // bai
                 if (balidazioaPrakInfo()) {
                     int aukLerroa = viewProduktuaAukeratu.jTablePrakInfo.getSelectedRow(); // aukeratutako lerroa
-                    /* Praka ezabatu */
                     String kodea = (String) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako produktuaren kodea lortu
-                    int taila = (int) viewProduktuaAukeratu.jTablePrakInfo.getModel().getValueAt(aukLerroa, 6); // aukeratutako produktuaren taila lortu
-                    PrakaKudeatu.prakaEzabatu(kodea, taila);
 
-                    /* Praka gorde */
+                    /* Prakaren datuak jaso */
                     Praka prak = new Praka(viewProduktuaAukeratu.jTextFieldKodePrak.getText(), viewProduktuaAukeratu.jTextFieldMarkaPrak.getText(), 
                             Double.parseDouble(viewProduktuaAukeratu.jTextFieldPrezioaPrak.getText()), viewProduktuaAukeratu.jTextFieldKoloreaPrak.getText(), 
                             viewProduktuaAukeratu.jComboBoxSexuaPrak.getSelectedItem().toString(), Integer.parseInt(viewProduktuaAukeratu.jTextFieldStockPrak.getText()), 
                             Integer.parseInt(viewProduktuaAukeratu.jComboBoxTailaPrak.getSelectedItem().toString()), viewProduktuaAukeratu.jComboBoxSasoiaPrak.getSelectedItem().toString(),
                             Integer.parseInt(viewProduktuaAukeratu.jTextFieldLuzeeraPrak.getText()), viewProduktuaAukeratu.jComboBoxMotaPrak.getSelectedItem().toString());
-                    PrakaKudeatu.prakaGehitu(prak);
+                    
+                    /* Prakaren datuak aldatu */
+                    boolean aldatuta = PrakaKudeatu.prakaDatuakAldatu(prak);
+                    if (aldatuta) 
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen prakaren datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen prakaren datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente   
                     
                     prakDatuakErakutsiTaula(viewProduktuaAukeratu.jTablePrakInfo, PrakaKudeatu.prakaGutztErakutsi());
                     ctr.enableComponents(viewProduktuaAukeratu.jPanelPrakInfo, false);

@@ -141,6 +141,61 @@ public class JertseaKudeatu {
         }
     }
     
+    /* Jertsearen datuak aldatzen dituen metodoa. Booleano bat itzuliko du, datuak aldatu diren edo ez jakiteko */
+    public static boolean jertseaDatuakAldatu(Jertsea jerts1) {
+        boolean aldatuta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps = null, psProd = null, psJerts = null;
+        ResultSet rs = null;
+        try {
+            /* Produktuaren/Jertsearen id zenbakia lortu */
+            String sqlSelect = "SELECT produktua_prodId FROM jertsea WHERE produktua_prodId = (SELECT prodId FROM produktua WHERE prodKode = ?) AND jertsTaila = ? ";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlSelect);
+            ps.setString(1, jerts1.getKodPro());
+            ps.setString(2, jerts1.getTaila());
+            rs = ps.executeQuery();
+            rs.next();
+            String id = rs.getString("produktua_prodId"); /* Aldatu nahi den produktuaren ID-a gordetzen da */
+            
+            /* PRODUKTUA taulako datuak aldatu */
+            String sqlUpdate = "UPDATE produktua SET prodMarka = ?, prodPrezioa = ?, prodKolorea = ?, prodSexua = ?, prodKantStock = ? WHERE prodId = ? ";
+            psProd = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psProd.setString(1, jerts1.getMarka());
+            psProd.setDouble(2, jerts1.getPrezioa());
+            psProd.setString(3, jerts1.getKolorea());
+            psProd.setString(4, jerts1.getSexua());
+            psProd.setInt(5, jerts1.getKantStock());
+            psProd.setString(6, id);
+            psProd.executeUpdate();
+
+            /* JERTSEA taulako datuak aldatu */
+            sqlUpdate = "UPDATE jertsea SET jertsTaila = ? WHERE produktua_prodId = ? ";
+            psJerts = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psJerts.setString(1, jerts1.getTaila());
+            psJerts.setString(2, id);
+            psJerts.executeUpdate();
+            
+            aldatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                ps.close();
+                psProd.close();
+                psJerts.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (aldatuta)
+                System.out.println(jerts1.getKodPro()+" kodea duen jertsearen datuak aldatu dira.");
+            else
+                System.out.println(jerts1.getKodPro()+" kodea duen jertsearen datuak ez dira aldatu.");
+            return aldatuta;
+        }
+    }
+    
     /* Jertse baten kodea, ArrayList-ean dagoen kontsultatu, dendan dagoen jakiteko. */
     public static ArrayList<Jertsea> jertseaKontsultatu(String kodea) {
         ArrayList<Jertsea> jertsKonts = new ArrayList<Jertsea>();

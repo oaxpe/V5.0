@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.DBKonexioa;
+import model.Kamiseta;
 import model.Praka;
 
 /**
@@ -144,6 +145,64 @@ public class PrakaKudeatu {
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
             return prakGuzt;
+        }
+    }
+    
+    /* Praken datuak aldatzen dituen metodoa. Booleano bat itzuliko du, datuak aldatu diren edo ez jakiteko */
+    public static boolean prakaDatuakAldatu(Praka prak1) {
+        boolean aldatuta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps = null, psProd = null, psPrak = null;
+        ResultSet rs = null;
+        try {
+            /* Produktuaren/Kamisetaren id zenbakia lortu */
+            String sqlSelect = "SELECT produktua_prodId FROM praka WHERE produktua_prodId = (SELECT prodId FROM produktua WHERE prodKode = ?) AND prakTaila = ? ";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlSelect);
+            ps.setString(1, prak1.getKodPro());
+            ps.setInt(2, prak1.getTaila());
+            rs = ps.executeQuery();
+            rs.next();
+            String id = rs.getString("produktua_prodId"); /* Aldatu nahi den produktuaren ID-a gordetzen da */
+            
+            /* PRODUKTUA taulako datuak aldatu */
+            String sqlUpdate = "UPDATE produktua SET prodMarka = ?, prodPrezioa = ?, prodKolorea = ?, prodSexua = ?, prodKantStock = ? WHERE prodId = ? ";
+            psProd = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psProd.setString(1, prak1.getMarka());
+            psProd.setDouble(2, prak1.getPrezioa());
+            psProd.setString(3, prak1.getKolorea());
+            psProd.setString(4, prak1.getSexua());
+            psProd.setInt(5, prak1.getKantStock());
+            psProd.setString(6, id);
+            psProd.executeUpdate();
+
+            /* KAMISETA taulako datuak aldatu */
+            sqlUpdate = "UPDATE praka SET prakTaila = ?, prakSasoia = ?, prakLuzeera = ?, prakMota = ? WHERE produktua_prodId = ? ";
+            psPrak = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psPrak.setInt(1, prak1.getTaila());
+            psPrak.setString(2, prak1.getSasoia());
+            psPrak.setInt(3, prak1.getLuzeera());
+            psPrak.setString(4, prak1.getMota());
+            psPrak.setString(5, id);
+            psPrak.executeUpdate();
+            
+            aldatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                ps.close();
+                psProd.close();
+                psPrak.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (aldatuta)
+                System.out.println(prak1.getKodPro()+" kodea duen kamisetaren datuak aldatu dira.");
+            else
+                System.out.println(prak1.getKodPro()+" kodea duen kamisetaren datuak ez dira aldatu.");
+            return aldatuta;
         }
     }
     

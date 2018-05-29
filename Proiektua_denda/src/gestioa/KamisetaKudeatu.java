@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.DBKonexioa;
+import model.Jertsea;
 import model.Kamiseta;
 
 /**
@@ -140,6 +141,62 @@ public class KamisetaKudeatu {
             }
             konexioa.deskonektatu(); // datu basetik deskonektatu
             return kamiGuzt;
+        }
+    }
+    
+    /* Kamisetaren datuak aldatzen dituen metodoa. Booleano bat itzuliko du, datuak aldatu diren edo ez jakiteko */
+    public static boolean kamisetaDatuakAldatu(Kamiseta kami1) {
+        boolean aldatuta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps = null, psProd = null, psKami = null;
+        ResultSet rs = null;
+        try {
+            /* Produktuaren/Kamisetaren id zenbakia lortu */
+            String sqlSelect = "SELECT produktua_prodId FROM kamiseta WHERE produktua_prodId = (SELECT prodId FROM produktua WHERE prodKode = ?) AND kamiTaila = ? ";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlSelect);
+            ps.setString(1, kami1.getKodPro());
+            ps.setString(2, kami1.getTaila());
+            rs = ps.executeQuery();
+            rs.next();
+            String id = rs.getString("produktua_prodId"); /* Aldatu nahi den produktuaren ID-a gordetzen da */
+            
+            /* PRODUKTUA taulako datuak aldatu */
+            String sqlUpdate = "UPDATE produktua SET prodMarka = ?, prodPrezioa = ?, prodKolorea = ?, prodSexua = ?, prodKantStock = ? WHERE prodId = ? ";
+            psProd = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psProd.setString(1, kami1.getMarka());
+            psProd.setDouble(2, kami1.getPrezioa());
+            psProd.setString(3, kami1.getKolorea());
+            psProd.setString(4, kami1.getSexua());
+            psProd.setInt(5, kami1.getKantStock());
+            psProd.setString(6, id);
+            psProd.executeUpdate();
+
+            /* KAMISETA taulako datuak aldatu */
+            sqlUpdate = "UPDATE kamiseta SET kamiTaila = ?, kamiSasoia = ? WHERE produktua_prodId = ? ";
+            psKami = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psKami.setString(1, kami1.getTaila());
+            psKami.setString(2, kami1.getSasoia());
+            psKami.setString(3, id);
+            psKami.executeUpdate();
+            
+            aldatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                ps.close();
+                psProd.close();
+                psKami.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (aldatuta)
+                System.out.println(kami1.getKodPro()+" kodea duen kamisetaren datuak aldatu dira.");
+            else
+                System.out.println(kami1.getKodPro()+" kodea duen kamisetaren datuak ez dira aldatu.");
+            return aldatuta;
         }
     }
     
