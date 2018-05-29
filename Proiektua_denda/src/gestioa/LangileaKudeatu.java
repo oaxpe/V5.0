@@ -148,78 +148,51 @@ public class LangileaKudeatu {
         return langGuzt;
     }
     
-    /* Langilearen datuak aldatu (erabiltzaileak bere dni-a sartu beharko du) */
-//    public static void langileaDatuakAldatu(String nan, int aukera) {
-//        boolean aldatuta = true;
-//        try {
-//            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fLangTemp, true)); // fitx berrian idazten joateko
-//            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fLang));
-//            while (true) {
-//                Langilea lang = (Langilea) geois.readObject(); // objektua irakurri   
-//                Langilea l = new Langilea(lang.getKodLan(), lang.getIzena(), lang.getAbizena1(), lang.getAbizena2(), lang.getNan(), lang.getJaiotzeData(), lang.getSexua(), lang.getHerria(), lang.getTelefonoa(), lang.getSoldata(), lang.getEremua());
-//                if (!l.getNan().equals(nan.toUpperCase())) { // kodea konparatu
-//                    aldatuta=false;
-//                }
-//                else {
-//                    switch (aukera) {
-//                        case 1:
-//                            l.setIzena();
-//                            break;
-//                        case 2:
-//                            l.setAbizena1();
-//                            break;
-//                        case 3:
-//                            l.setAbizena2();
-//                            break;
-//                        case 4:
-//                            l.setNan();
-//                            break;
-//                        case 5:
-//                            l.setJaiotzeData();
-//                            break;
-//                        case 6:
-//                            l.setSexua();
-//                            break;
-//                        case 7:
-//                            l.setHerria();
-//                            break;
-//                        case 8:
-//                            l.setTelefonoa();
-//                            break;
-//                        case 9:
-//                            l.setSoldata();
-//                            break;
-//                        case 10:
-//                            l.setEremua();
-//                            break;
-//                        default:
-//                            aldatuta = false;
-//                            System.out.println("Ez da aldaketarik egingo.");
-//                            break;
-//                    }
-//                }
-//                geoos.writeObject(l); // objektua fitxategian idatzi
-//                geoos.flush();
-//                if (aldatuta) {                   
-//                    System.out.println("\nAldatutako datua gorde da.");
-//                    System.out.println("\nBezeroaren datuak honako hauek dira: ");
-//                    l.printDatuak();
-//                }
-//            }
-//        } catch (EOFException ex) { 
-//            // fitxategiaren bukaerara heltzen denean, errorea omititu
-//            System.gc();
-//        } catch (FileNotFoundException ex) {
-//            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
-//        } catch (ClassNotFoundException | IOException ex) {
-//            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
-//        }
-//        
-//        try {
-//            Files.move(Paths.get(fLangTemp.getAbsolutePath()), Paths.get(fLang.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException ex) {
-//            Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
-//            fLangTemp.delete();
-//        }
-//    }
+    /* Langilearen datuak aldatu, nan zenbakiaren arabera */
+    public static boolean langileaDatuakAldatu(Langilea lang1) {
+        boolean aldatuta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement psPerts = null, psLang = null;
+        try {
+            /* PERTSONA taulako datuak aldatu */
+            String sqlUpdate = "UPDATE pertsona SET pertsIzena = ?, pertsAbiz1 = ?, pertsAbiz2 = ?, pertsJaioData = ?, pertsSexua = ?, pertsHerria = ?, pertsTlf = ? WHERE pertsNan = ? ";
+            psPerts = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psPerts.setString(1, lang1.getIzena());
+            psPerts.setString(2, lang1.getAbizena1());
+            psPerts.setString(3, lang1.getAbizena2());
+            psPerts.setString(4, lang1.getJaiotzeData());
+            psPerts.setString(5, lang1.getSexua());
+            psPerts.setString(6, lang1.getHerria());
+            psPerts.setString(7, lang1.getTelefonoa());
+            psPerts.setString(8, lang1.getNan());
+            psPerts.executeUpdate();
+
+            /* LANGILEA taulako datuak aldatu */
+            sqlUpdate = "UPDATE langilea SET langSoldata = ?, langEremua = ?, denda_dendKode = (SELECT dendKode FROM denda WHERE dendIzena = ?) WHERE pertsona_pertsNan = ? ";
+            psLang = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psLang.setDouble(1, lang1.getSoldata());
+            psLang.setString(2, lang1.getEremua());
+            psLang.setString(3, lang1.getDendIzena());
+            psLang.setString(4, lang1.getNan());
+            psLang.executeUpdate();
+            
+            aldatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                psPerts.close();
+                psLang.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (aldatuta)
+                System.out.println(lang1.getNan()+" nan zenbakia duen langilearen datuak aldatu dira.");
+            else
+                System.out.println(lang1.getNan()+" nan zenbakia duen langilerik ez dago erregistratuta.");
+            return aldatuta;
+        }
+    }
 }

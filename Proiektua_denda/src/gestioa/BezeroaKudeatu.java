@@ -134,39 +134,40 @@ public class BezeroaKudeatu {
     }
     
     /* Bezeroaren datuak aldatu (erabiltzaileak bere dni-a sartu beharko du) */
-//    public static void bezeroDatuakAldatu(String nan, int aukera) {
-//        boolean aldatuta = true;
-//        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
-//        PreparedStatement psBez, psPerts;
-//        try {
-//            /* PERTSONA taulan datuak gorde */
-//            String sqlInsert = "UPDATE pertsona  INTO pertsona VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-//            psPerts = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
-//            /* Objektuko datuak, ps-n gehitu */
-//            psPerts.setString(1, bez1.getIzena());
-//            psPerts.setString(2, bez1.getAbizena1());
-//            psPerts.setString(3, bez1.getAbizena2());
-//            psPerts.setString(4, bez1.getNan());
-//            psPerts.setString(5, bez1.getJaiotzeData());
-//            psPerts.setString(6, bez1.getSexua());
-//            psPerts.setString(7, bez1.getHerria());
-//            psPerts.setString(8, bez1.getTelefonoa());
-//            psPerts.executeUpdate();/* Aldaketak gorde */
-//            
-//            /* BEZEROA taulan datuak gorde */
-//            sqlInsert = "INSERT INTO bezeroa VALUES (?, ?)";
-//            psBez = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
-//            /* Objektuko datuak, ps-n gehitu */
-//            psBez.setString(1, bez1.getKodBez());
-//            psBez.setString(2, bez1.getNan());
-//            psBez.executeUpdate(); /* Aldaketak gorde */
-//            
-//            aldatuta = true;
-//        } catch (SQLException ex) {
-//            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
-//        } finally {
-//            konexioa.deskonektatu(); // datu basetik deskonektatu
-//            return aldatuta; // objektua datu basean gorde den edo ez bueltatuko du
-//        }
-//    }
+    public static boolean bezeroDatuakAldatu(Bezeroa bez1) {
+        boolean aldatuta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement psPerts = null;
+        try {
+            /* PERTSONA taulako datuak aldatu (bezeroa taulakoak ez dira inoiz aldatuko) */
+            String sqlUpdate = "UPDATE pertsona SET pertsIzena = ?, pertsAbiz1 = ?, pertsAbiz2 = ?, pertsJaioData = ?, pertsSexua = ?, pertsHerria = ?, pertsTlf = ? WHERE pertsNan = ? ";
+            psPerts = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psPerts.setString(1, bez1.getIzena());
+            psPerts.setString(2, bez1.getAbizena1());
+            psPerts.setString(3, bez1.getAbizena2());
+            psPerts.setString(4, bez1.getJaiotzeData());
+            psPerts.setString(5, bez1.getSexua());
+            psPerts.setString(6, bez1.getHerria());
+            psPerts.setString(7, bez1.getTelefonoa());
+            psPerts.setString(8, bez1.getNan());
+            psPerts.executeUpdate();
+
+            aldatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                psPerts.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (aldatuta)
+                System.out.println(bez1.getNan()+" nan zenbakia duen bezeroaren datuak aldatu dira.");
+            else
+                System.out.println(bez1.getNan()+" nan zenbakia duen bezerorik ez dago erregistratuta.");
+            return aldatuta;
+        }
+    }
 }

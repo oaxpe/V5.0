@@ -6,16 +6,13 @@
 package model;
 
 import gestioa.Metodoak;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Langilea extends Pertsona implements Serializable {
+public class Langilea extends Pertsona {
     /* ATRIBUTOAK */
     private String kodLan;
     private double soldata;
@@ -67,9 +64,7 @@ public class Langilea extends Pertsona implements Serializable {
         System.out.printf("    %1$-10s\n", this.eremua);
     }
     
-    /* GETTER and SETTER */
-    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-    
+    /* GETTER and SETTER */    
     public double getSoldata() {
         return soldata;
     }

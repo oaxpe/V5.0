@@ -5,11 +5,6 @@
  */
 package model;
 
-import gestioa.Metodoak;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 /**
  *
  * @author Oihane Axpe
@@ -64,9 +59,7 @@ public abstract class Pertsona /* implements Serializable */ {
     }
 
     
-    /* GETTER and SETTER */
-    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-    
+    /* GETTER and SETTER */    
     public String getIzena() {
         return izena;
     }

@@ -118,11 +118,8 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
             if (konf == 0) { // bai
                 int aukLerroa = viewLangileaInfo.jTableLangileaInfo.getSelectedRow(); // aukeratutako lerroa
                 if (balidazioaLangInfo()) {
-                    /* Langilea ezabatu */
                     String nan = (String) viewLangileaInfo.jTableLangileaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako langilearen nan zenbakia lortu
-                    LangileaKudeatu.langileaEzabatu(nan);
-
-                    /* Langilea gorde */
+                    /* Langilearen datuak jaso */
                     String sexuaRB = ""; // RadioButton-aren balioa gorde
                     if (viewLangileaInfo.jRadioButtonEmak.isSelected()) {
                         sexuaRB = viewLangileaInfo.jRadioButtonEmak.getText();
@@ -136,7 +133,12 @@ public class langInfoController implements ActionListener, MouseListener, ListSe
                             sexuaRB, viewLangileaInfo.jTextFieldHerria.getText(), viewLangileaInfo.jTextFieldTlf.getText(), 
                             Double.parseDouble(viewLangileaInfo.jTextFieldSoldata.getText()), viewLangileaInfo.jComboBoxEremua.getSelectedItem().toString(), 
                             viewLangileaInfo.jComboBoxDenda.getSelectedItem().toString());
-                    LangileaKudeatu.langileaGehitu(lang);
+                    /* Langilearen datuak aldatu */
+                    boolean aldatuta = LangileaKudeatu.langileaDatuakAldatu(lang);
+                    if (aldatuta) 
+                        JOptionPane.showMessageDialog(null, nan + " nan zenbakia duen langilearen datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, nan + " nan zenbakia duen langilearen datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
 
                     langDatuakErakutsiTaula(viewLangileaInfo.jTableLangileaInfo, LangileaKudeatu.langileGuztiakErakutsi());
                     ctr.enableComponents(viewLangileaInfo.jPanelLangDatuak, false);

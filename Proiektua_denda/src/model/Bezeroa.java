@@ -12,7 +12,7 @@ import gestioa.Metodoak;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Bezeroa extends Pertsona /* implements Serializable */ {
+public class Bezeroa extends Pertsona {
     /* ATRIBUTOAK */
     private String kodBez;
     

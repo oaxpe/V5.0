@@ -120,8 +120,7 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                     /* Bezeroa ezabatu */
                     int aukLerroa = viewBezeroaInfo.jTableBezeroaInfo.getSelectedRow();
                     String nan = (String) viewBezeroaInfo.jTableBezeroaInfo.getModel().getValueAt(aukLerroa, 4); // aukeratutako bezeroaren nan zenbakia lortu
-                    BezeroaKudeatu.bezeroaEzabatu(nan);
-                    /* Bezeroa gehitu */
+                    /* Bezeroaren datuak jaso */
                     String sexuaRB = ""; // RadioButton-aren balioa gorde
                     if (viewBezeroaInfo.jRadioButtonEmak.isSelected()) {
                         sexuaRB = viewBezeroaInfo.jRadioButtonEmak.getText();
@@ -133,8 +132,12 @@ public class bezInfoController implements ActionListener, MouseListener, ListSel
                             viewBezeroaInfo.jTextFieldAbizena1.getText(), viewBezeroaInfo.jTextFieldAbizena2.getText(), 
                             viewBezeroaInfo.jTextFieldNan.getText(), Metodoak.dataGorde(viewBezeroaInfo.jDateChooserJaioData.getDate()), 
                             sexuaRB, viewBezeroaInfo.jTextFieldHerria.getText(), viewBezeroaInfo.jTextFieldTlf.getText());
-                    BezeroaKudeatu.bezeroaGehitu(bez);
-
+                    /* Bezeroa aldatu */
+                    boolean aldatuta = BezeroaKudeatu.bezeroDatuakAldatu(bez);
+                    if (aldatuta) 
+                        JOptionPane.showMessageDialog(null, nan + " nan zenbakia duen bezeroaren datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, nan + " nan zenbakia duen bezeroaren datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
                     bezDatuakErakutsiTaula(viewBezeroaInfo.jTableBezeroaInfo, BezeroaKudeatu.bezeroGuztiakErakutsi());
                     ctr.enableComponents(viewBezeroaInfo.jPanelBezDatuak, false);
                     ctr.enableComponents(viewBezeroaInfo.jPanelOina, true);

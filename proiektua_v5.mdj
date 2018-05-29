@@ -10448,7 +10448,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+bezeroaDatuakAldatu(nan: String, aukera: int): void",
+											"text": "+bezeroaDatuakAldatu(bez1: Bezeroa): boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -11318,7 +11318,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
-											"text": "+langileaDatuakAldatu(nan: String, aukera: int): void",
+											"text": "+langileaDatuakAldatu(lang1: Langilea): boolean",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -11491,7 +11491,7 @@
 											"containerExtending": false,
 											"left": 997,
 											"top": 63,
-											"width": 256.93408203125,
+											"width": 262.01220703125,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -11517,7 +11517,7 @@
 											"containerExtending": false,
 											"left": 997,
 											"top": 78,
-											"width": 256.93408203125,
+											"width": 262.01220703125,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
@@ -11563,7 +11563,7 @@
 									"containerExtending": false,
 									"left": 992,
 									"top": 56,
-									"width": 266.93408203125,
+									"width": 272.01220703125,
 									"height": 40,
 									"autoResize": false,
 									"stereotypeLabel": {
@@ -11599,7 +11599,7 @@
 									"containerExtending": false,
 									"left": 992,
 									"top": 96,
-									"width": 266.93408203125,
+									"width": 272.01220703125,
 									"height": 10,
 									"autoResize": false
 								},
@@ -11633,7 +11633,7 @@
 											"containerExtending": false,
 											"left": 997,
 											"top": 111,
-											"width": 256.93408203125,
+											"width": 262.01220703125,
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
@@ -11662,7 +11662,7 @@
 											"containerExtending": false,
 											"left": 997,
 											"top": 126,
-											"width": 256.93408203125,
+											"width": 262.01220703125,
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
@@ -11691,7 +11691,7 @@
 											"containerExtending": false,
 											"left": 997,
 											"top": 141,
-											"width": 256.93408203125,
+											"width": 262.01220703125,
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
@@ -11720,7 +11720,7 @@
 											"containerExtending": false,
 											"left": 997,
 											"top": 156,
-											"width": 256.93408203125,
+											"width": 262.01220703125,
 											"height": 13,
 											"autoResize": false,
 											"underline": true,
@@ -11805,7 +11805,7 @@
 							"containerExtending": false,
 							"left": 992,
 							"top": 56,
-							"width": 266.93408203125,
+							"width": 272.01220703125,
 							"height": 118,
 							"autoResize": false,
 							"stereotypeDisplay": "label",
@@ -22217,11 +22217,11 @@
 											"_parent": {
 												"$ref": "AAAAAAFhY1BfKlHQdNQ="
 											},
-											"name": "void",
+											"name": "boolean",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "void",
+											"type": "boolean",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -22233,27 +22233,13 @@
 											"_parent": {
 												"$ref": "AAAAAAFhY1BfKlHQdNQ="
 											},
-											"name": "nan",
+											"name": "lang1",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "String",
-											"isReadOnly": false,
-											"isOrdered": false,
-											"isUnique": false,
-											"direction": "in"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAFikT3FDpCxrBI=",
-											"_parent": {
-												"$ref": "AAAAAAFhY1BfKlHQdNQ="
+											"type": {
+												"$ref": "AAAAAAFgXJ3c/7aKvlY="
 											},
-											"name": "aukera",
-											"visibility": "public",
-											"isStatic": false,
-											"isLeaf": false,
-											"type": "int",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -22426,11 +22412,11 @@
 											"_parent": {
 												"$ref": "AAAAAAFhY0/GSE+yGQ0="
 											},
-											"name": "void",
+											"name": "boolean",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "void",
+											"type": "boolean",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
@@ -22442,27 +22428,13 @@
 											"_parent": {
 												"$ref": "AAAAAAFhY0/GSE+yGQ0="
 											},
-											"name": "nan",
+											"name": "bez1",
 											"visibility": "public",
 											"isStatic": false,
 											"isLeaf": false,
-											"type": "String",
-											"isReadOnly": false,
-											"isOrdered": false,
-											"isUnique": false,
-											"direction": "in"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAFhqvn0c099vUw=",
-											"_parent": {
-												"$ref": "AAAAAAFhY0/GSE+yGQ0="
+											"type": {
+												"$ref": "AAAAAAFgXJ3crrZV5q4="
 											},
-											"name": "aukera",
-											"visibility": "public",
-											"isStatic": false,
-											"isLeaf": false,
-											"type": "int",
 											"isReadOnly": false,
 											"isOrdered": false,
 											"isUnique": false,
