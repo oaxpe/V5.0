@@ -53,7 +53,7 @@ public class DendaKudeatu {
         PreparedStatement ps = null;
         try {
             String sqlDelete = "DELETE FROM denda WHERE dendKode = ?";
-            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlDelete); // INSERT-a preparatu
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlDelete); // DELETE-a preparatu
             ps.setString(1, kodea);
             ps.executeUpdate();
             ezabatuta = true;
@@ -116,8 +116,8 @@ public class DendaKudeatu {
         DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
         PreparedStatement ps = null;        
         try {
-            String sqlDelete = "UPDATE denda SET dendIzena = ?, dendHelbidea = ?, dendHerria = ?, dendPK = ?, dendTlf = ?, dendEmail = ? WHERE dendKode = ? ";
-            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlDelete); // INSERT-a preparatu
+            String sqlUpdate = "UPDATE denda SET dendIzena = ?, dendHelbidea = ?, dendHerria = ?, dendPK = ?, dendTlf = ?, dendEmail = ? WHERE dendKode = ? ";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
             ps.setString(1, dend1.getIzena());
             ps.setString(2, dend1.getHelbidea());
             ps.setString(3, dend1.getHerria());
