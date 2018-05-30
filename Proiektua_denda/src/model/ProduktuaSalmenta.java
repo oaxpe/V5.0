@@ -5,11 +5,6 @@
  */
 package model;
 
-import gestioa.Metodoak;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 /**
  *
  * @author Oihane Axpe
@@ -17,13 +12,24 @@ import java.io.InputStreamReader;
  */
 public class ProduktuaSalmenta {
     /* ATRIBUTUAK */
-    private String prodKodea; 
-    private int kopurua;
-    private double prezioa;
+    private String prodKodea; // produktuaren kodea gordeko du
+    private String salmKode; // salmentaren kodea gordeko du
+    private int kantitatea; // saltzen den produktu kantitatea
+    private String prodTaila;
+    private double prodPrezioa; // prezio unitarioa
     
+    /* ERAIKITZAILEA */
+    public ProduktuaSalmenta() {
+        
+    }
+    
+    public ProduktuaSalmenta(String prodKodea, int kantitatea, String prodTaila) {
+        this.prodKodea = prodKodea;
+        this.kantitatea = kantitatea;
+        this.prodTaila = prodTaila;
+    }
     
     /* GETTER and SETTER */
-    BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
     public String getProdKodea() {
         return prodKodea;
     }
@@ -32,41 +38,35 @@ public class ProduktuaSalmenta {
         this.prodKodea = prodKodea;
     }
 
-    public int getKopurua() {
-        return kopurua;
+    public String getSalmKode() {
+        return salmKode;
     }
 
-    public void setKopurua() {
-        try {
-            System.out.print("Sartu kopurua: ");
-            this.kopurua = Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
-            setKopurua();
-        }
+    public void setSalmKode(String salmKode) {
+        this.salmKode = salmKode;
     }
 
-    public double getPrezioa() {
-        return prezioa;
+    public int getKantitatea() {
+        return kantitatea;
     }
 
-    public void setPrezioa() {
-        try {
-            System.out.print("Sartu prezioa: ");
-            this.kopurua = Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
-            setKopurua();
-        }
+    public void setKantitatea(int kantitatea) {
+        this.kantitatea = kantitatea;
     }
-    
-    
+
+    public String getProdTaila() {
+        return prodTaila;
+    }
+
+    public void setProdTaila(String prodTaila) {
+        this.prodTaila = prodTaila;
+    }
+
+    public double getProdPrezioa() {
+        return prodPrezioa;
+    }
+
+    public void setProdPrezioa(double prodPrezioa) {
+        this.prodPrezioa = prodPrezioa;
+    }
 }

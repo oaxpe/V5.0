@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.DBKonexioa;
-import model.Kamiseta;
 import model.Praka;
 
 /**
@@ -129,8 +128,8 @@ public class PrakaKudeatu {
                 prak.setKantStock(rs.getInt("prodKantStock"));
                 prak.setTaila(rs.getInt("prakTaila"));
                 prak.setSasoia(rs.getString("prakSasoia"));
-                prak.setTaila(rs.getInt("prakLuzeera"));
-                prak.setSasoia(rs.getString("prakMota"));
+                prak.setLuzeera(rs.getInt("prakLuzeera"));
+                prak.setMota(rs.getString("prakMota"));
                 prakGuzt.add(prak);
                 prak.printProd(); // objektuaren datuak erakutsi
             }
@@ -212,8 +211,8 @@ public class PrakaKudeatu {
         DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
         PreparedStatement ps = null;
         try {
-            String sqlSelect = "SELECT prodKode, prodMarka, prodPrezioa, prodKolorea, prodSexua, prodKantStock, jertsTaila "
-                                + "FROM produktua JOIN jertsea ON prodId = produktua_prodId "
+            String sqlSelect = "SELECT prodKode, prodMarka, prodPrezioa, prodKolorea, prodSexua, prodKantStock, prakTaila, prakSasoia, prakLuzeera, prakMota "
+                                + "FROM produktua JOIN praka ON prodId = produktua_prodId "
                                 + "WHERE prodKode = ?"
                                 + "ORDER BY prodKode";
             ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlSelect);
@@ -231,8 +230,8 @@ public class PrakaKudeatu {
                 prak.setKantStock(rs.getInt("prodKantStock"));
                 prak.setTaila(rs.getInt("prakTaila"));
                 prak.setSasoia(rs.getString("prakSasoia"));
-                prak.setTaila(rs.getInt("prakLuzeera"));
-                prak.setSasoia(rs.getString("prakMota"));
+                prak.setLuzeera(rs.getInt("prakLuzeera"));
+                prak.setMota(rs.getString("prakMota"));
                 prakKonts.add(prak);
                 prak.printProd(); // objektuaren datuak erakutsi
             }
@@ -294,60 +293,70 @@ public class PrakaKudeatu {
     }
     
     /* PRAKAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */ 
-//    public static boolean prodSaldu(String kodea, int taila, int kantitatea) {
-//        boolean bool = false;
-//        System.out.println(""
-//                + "-----------------------------------------\n"
-//                + "|         Produktuaren salmenta         |\n"
-//                + "-----------------------------------------");
-//        try {
-//            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fPrakTemp, true)); // fitx berrian idazten joateko
-//            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fPrak));
-//            while (true) {
-//                Praka prak = (Praka) geois.readObject(); // objektua irakurri 
-//                if (!prak.getKodPro().equals(kodea.toUpperCase())) { // kodea konparatu
-//                    geoos.writeObject(prak); // objektua fitxategi berrian idatzi
-//                    geoos.flush();
-//                } 
-//                else {
-//                    if (!(prak.getTaila()==taila)) {
-//                        geoos.writeObject(prak); // objektua fitxategi berrian idatzi
-//                        geoos.flush();
-//                    }
-//                    else {
-//                        if (prak.isEskuragai()) {
-//                            if (prak.getKodPro().equals(kodea) && prak.getKantStock()>=kantitatea) {
-//                                prak.setKantStock(prak.getKantStock()-kantitatea); // salduko den prod kantitatea stock-etik kendu
-//                                geoos.writeObject(prak); // objektua fitxategi berrian idatzi
-//                                geoos.flush();
-//                                bool = true;
-//                                System.out.println(""
-//                                    + "\tKodea\t-\tPrezioa \n\n"
-//                                    + "\t"+prak.getKodPro()+"\t-\t"+prak.getPrezioa()+"  (x"+kantitatea+")\n"
-//                                    + "  --------------------------------------\n"
-//                                    + "\tORDAINTZEKOA \n\tGUZTIRA: \t\t"+prak.getPrezioa()*kantitatea+"€");
-//                            }
-//                            prak.getPrezioa();
-//                        }
-//                    }
-//                }
-//            }
-//        } catch (EOFException ex) { 
-//            // fitxategiaren bukaerara heltzen denean, errorea omititu
-//        } catch (FileNotFoundException ex) {
-//            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
-//        } catch (ClassNotFoundException | IOException ex) {
-//            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
-//        } 
-//        System.gc();
-//        try {
-//            Files.move(Paths.get(fPrakTemp.getAbsolutePath()), Paths.get(fPrak.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException ex) {
-//            Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        
-//        if (!bool)
-//                System.out.println("\tProduktu hori ez dago dendan.");
-//        return bool;
-//    }
+    public static boolean prodSaldu(String kodea, int taila, int kantitatea) {
+        boolean salduta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        System.out.println(""
+                + "-----------------------------------------\n"
+                + "|         Produktuaren salmenta         |\n"
+                + "-----------------------------------------");
+        PreparedStatement psProduktua, ps;
+        ResultSet rs;
+        String id = null;
+        try {
+            Statement stmt = (Statement) konexioa.getDBKonexioa().createStatement();
+            String sqlSelect = "SELECT prodKode, prodMarka, prodPrezioa, prodKolorea, prodSexua, prodKantStock, prakTaila, prakSasoia, prakLuzeera, prakMota "
+                                + "FROM produktua JOIN praka ON prodId = produktua_prodId "
+                                + "WHERE prodKode = '"+kodea+"' AND prakTaila = '"+taila+"' "
+                                + "ORDER BY prodKode";
+            rs = stmt.executeQuery(sqlSelect);
+            System.out.println("PRAKAK:");
+            System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s    %5$-10s    %6$-10s\n", "Kodea", "Marka", "Kolorea", "Sexua", "Prezioa", "Tailak");
+            Praka prak = null;
+            while(rs.next()){
+                prak = new Praka(); // objektu hutsa sortu
+                prak.setKodPro(rs.getString("prodKode"));
+                prak.setMarka(rs.getString("prodMarka"));
+                prak.setPrezioa(rs.getDouble("prodPrezioa"));
+                prak.setKolorea(rs.getString("prodKolorea"));
+                prak.setSexua(rs.getString("prodSexua"));
+                prak.setKantStock(rs.getInt("prodKantStock"));
+                prak.setTaila(rs.getInt("prakTaila"));
+                prak.setSasoia(rs.getString("prakSasoia"));
+                prak.setLuzeera(rs.getInt("prakLuzeera"));
+                prak.setMota(rs.getString("prakMota"));
+            }
+            
+            /* Produktuaren/Jertsearen id zenbakia lortu */
+            sqlSelect = "SELECT produktua_prodId FROM jertsea WHERE produktua_prodId = (SELECT prodId FROM produktua WHERE prodKode = ?) AND jertsTaila = ? ";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlSelect);
+            ps.setString(1, prak.getKodPro());
+            ps.setInt(2, prak.getTaila());
+            rs = ps.executeQuery();
+            rs.next();
+            id = rs.getString("produktua_prodId"); /* Ezabatu nahi den produktuaren ID-a gordetzen da */
+            
+            if (prak.isEskuragai()) {
+                /* PRODUKTUA TAULA ALDATU */
+                String sqlUpdate = "UPDATE produktua SET prodKantStock = ? WHERE prodId = ? ";
+                psProduktua = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+                psProduktua.setInt(1, prak.getKantStock()-kantitatea); // saldutakoak stock-etik kendu
+                psProduktua.setString(2, id);
+                psProduktua.executeUpdate();
+                
+                salduta = true;
+                System.out.println(""
+                    + "\tKodea\t-\tPrezioa \n\n"
+                    + "\t"+prak.getKodPro()+"\t-\t"+prak.getPrezioa()+"  (x"+kantitatea+")\n"
+                    + "  --------------------------------------\n"
+                    + "\tORDAINTZEKOA \n\tGUZTIRA: \t\t"+prak.getPrezioa()*kantitatea+"€");
+            }
+                prak.getPrezioa();
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        } finally {
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            return salduta; // objektua datu basean gorde den edo ez bueltatuko du
+        } 
+    }
 }

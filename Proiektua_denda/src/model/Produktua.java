@@ -27,6 +27,10 @@ public abstract class Produktua {
                
     }
     
+    public Produktua(String kodea) {
+        this.kodPro = kodea;
+    }
+    
     public Produktua (String kodea, String sexua, double prezioa) {
         this.kodPro=kodea;
         this.sexua=sexua;

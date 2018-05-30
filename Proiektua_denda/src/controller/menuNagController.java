@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
 import model.Jertsea;
 import model.Kamiseta;
 import model.Praka;
+import model.Salmenta;
 
 /**
  *

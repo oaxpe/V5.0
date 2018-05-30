@@ -79,40 +79,41 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
             ctr.enableComponents(viewProdSaldu.jPanelDatuak, false);
 
         }
-        else if (comando == viewProdSaldu.jButtonSaldu) {
+        else if (comando == viewProdSaldu.jButtonListaraGehitu) {
             if (balidazioaProdSaldu()) { // kanpo guztiak beteta dauden konprobatzen du
                 /* datuak kontsultatu eta kargatu taulan */
                 if (viewProdSaldu.jRadioButtonJerts.isSelected()) {
-                    if (!JertseaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString())) {
+                    boolean jertsSalduta = JertseaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()));
+                    if (!jertsSalduta) {
                         JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
                         resetAukerak();
                     }
                     else {
-                        JertseaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString());
-                        SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
+                        Salmenta salm1 = new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString());
+                        SalmentaKudeatu.salmentaGehitu(salm1);
                         taulaHustu(viewProdSaldu.jTableProdInfo);
                         lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
-                    }    
+                    }
                 }
                 else if (viewProdSaldu.jRadioButtonKami.isSelected()) {
-                    if (!KamisetaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString())) {
+                    boolean kamiSalduta = KamisetaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()));
+                    if (!kamiSalduta) {
                         JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
                         resetAukerak();
                     }
                     else {
-                        KamisetaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString());
                         SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
                         taulaHustu(viewProdSaldu.jTableProdInfo);
                         lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
                     }    
                 }
                 else if (viewProdSaldu.jRadioButtonPrak.isSelected()) {
-                    if (!PrakaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), Integer.parseInt(viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()))) {
+                    boolean prakSalduta = PrakaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()));
+                    if (!prakSalduta) {
                         JOptionPane.showMessageDialog(null, "Ezin da saldu. \nProduktu hori ez dago dendan", "EZ DA EXISTITZEN", JOptionPane.ERROR_MESSAGE);
                         resetAukerak();
                     }
                     else {
-                        PrakaKudeatu.prodSaldu(viewProdSaldu.jTextFieldKodeProd.getText(), Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), Integer.parseInt(viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
                         SalmentaKudeatu.salmentaGehitu(new Salmenta(Integer.parseInt(viewProdSaldu.jTextFieldKantitatea.getText()), viewProdSaldu.jTextFieldKodeProd.getText(), viewProdSaldu.jComboBoxTaila.getSelectedItem().toString()));
                         taulaHustu(viewProdSaldu.jTableProdInfo);
                         lerroaGehituTaulan(viewProdSaldu.jTableProdInfo, SalmentaKudeatu.salmentaGuztiakErakutsi());
@@ -158,8 +159,8 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
             viewProdSaldu.jButtonIrten.setBackground(new Color (0,0,51));
             viewProdSaldu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
-        else if (comando == viewProdSaldu.jButtonSaldu) 
-            viewProdSaldu.jButtonSaldu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProdSaldu.jButtonListaraGehitu) 
+            viewProdSaldu.jButtonListaraGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
         else if (comando == viewProdSaldu.jButtonEzeztatu)
             viewProdSaldu.jButtonEzeztatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
@@ -172,8 +173,8 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
             viewProdSaldu.jButtonIrten.setBackground(urdina);
             viewProdSaldu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         }
-        else if (comando == viewProdSaldu.jButtonSaldu) 
-            viewProdSaldu.jButtonSaldu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProdSaldu.jButtonListaraGehitu) 
+            viewProdSaldu.jButtonListaraGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         else if (comando == viewProdSaldu.jButtonEzeztatu)
             viewProdSaldu.jButtonEzeztatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
@@ -224,7 +225,7 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
         viewProdSaldu.jRadioButtonPrak.setOpaque(false);
         
         /* Laguntza botoietan - xaguarekin gainean jartzean agertuko den mezuak definitu */
-        viewProdSaldu.jButtonSaldu.setToolTipText("Produktua saldu");
+        viewProdSaldu.jButtonListaraGehitu.setToolTipText("Produktua saldu");
         viewProdSaldu.jButtonEzeztatu.setToolTipText("Ezeztatu");
         
         /* Tauletako estiloa */
@@ -330,9 +331,9 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
             model.addRow(os);
             model.setValueAt(salm.getSalmZenb(), i, 0);
             model.setValueAt(salm.getData(), i, 1);
-            model.setValueAt(salm.getKodProd(), i, 2);
-            model.setValueAt(salm.getTailaProd(), i, 3);
-            model.setValueAt(salm.getKopurua(), i, 4);        
+            model.setValueAt(salm.getProdKodea(), i, 2);
+            model.setValueAt(salm.getProdTaila(), i, 3);
+            model.setValueAt(salm.getSalmProdKantitatea(), i, 4);        
         }
     }
 }

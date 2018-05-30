@@ -6,7 +6,6 @@
 package model;
 
 import gestioa.Metodoak;
-import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -21,35 +20,40 @@ import java.util.logging.Logger;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Salmenta implements Serializable {
+public class Salmenta {
     private String salmZenb; 
     private String data;
-    private int kopurua;
-    private String kodProd;
-    private String tailaProd;
+    private double prezTotala;
+    private int salmProdKantitatea;
+    private String prodKodea;
+    private String prodTaila;
     
     public Salmenta () {
-
+        
     }
     
-    public Salmenta (int kop, String kodea, String taila) {
+    public Salmenta (int salmProdKantitatea, String prodKodea, String taila) {
         setSalmZenb();
         setData();
-        this.kopurua = kop;
-        this.kodProd = kodea;
-        this.tailaProd = taila;
+        this.salmProdKantitatea = salmProdKantitatea;
+        this.prodKodea = prodKodea;
+        this.prodTaila = taila;
+    }
+    
+    public Salmenta (double prezioTotala) {
+        setSalmZenb();
+        setData();
+        this.prezTotala = prezioTotala;
     }
     
     /* METODOAK */
     public void printDatuak() {
-        System.out.println("Salmenta zenbakia: "+salmZenb);
-        System.out.println("Data: "+this.data);
-        System.out.println("Produktuaren kodea: "+kodProd);
-        System.out.println("Produktuaren taila: "+tailaProd);
-        System.out.println("Kopurua: "+this.kopurua);
+        System.out.println("Salmenta zenbakia: " + this.salmZenb);
+        System.out.println("Data: " + this.data);
+        System.out.println("Salmetaren prezio totala: " + this.prezTotala);
     }
     public void printSalmenta() {
-        System.out.printf("\t%1$-15s    %2$-15s    %3$-15s    %4$-10s    %5$-10s\n", this.salmZenb, this.data, this.kopurua, this.tailaProd, this.kopurua);
+        System.out.printf("\t%1$-15s    %2$-15s    %3$-15s\n", this.salmZenb, this.data, this.prezTotala);
     }
     
     /* GETTER and SETTER */
@@ -71,15 +75,11 @@ public class Salmenta implements Serializable {
         }
         this.data = Metodoak.dataGorde(fetx); // sartutako data, uuuu/hh/ee formatuan bueltatuko du
     }
-
-    public int getKopurua() {
-        return kopurua;
+    
+    public void setData(String data) {
+        this.data = data;
     }
-
-    public void setKopurua(int kop) {
-        this.kopurua = kop;
-    }
-
+    
     public String getSalmZenb() {
         return salmZenb;
     }
@@ -88,23 +88,39 @@ public class Salmenta implements Serializable {
         this.salmZenb = Metodoak.kodeakAldatuEtaGorde("Salmenta"); // Salmenta zenbakia automatikoki hartu kodeak.txt fitxategitik
     }
     
-    public void setSalmZenb(String salmZenb) {
-        this.salmZenb = salmZenb;
+    public void setSalmZenb (String kodea) {
+        this.salmZenb = kodea;
     }
 
-    public String getKodProd() {
-        return kodProd;
+    public double getPrezTotala() {
+        return prezTotala;
     }
 
-    public void setKodProd(String kodProd) {
-        this.kodProd = kodProd;
+    public void setPrezTotala(double prezTotala) {
+        this.prezTotala = prezTotala;
     }
 
-    public String getTailaProd() {
-        return tailaProd;
+    public int getSalmProdKantitatea() {
+        return salmProdKantitatea;
     }
 
-    public void setTailaProd(String tailaProd) {
-        this.tailaProd = tailaProd;
+    public void setSalmProdKantitatea(int salmProdKantitatea) {
+        this.salmProdKantitatea = salmProdKantitatea;
+    }
+
+    public String getProdKodea() {
+        return prodKodea;
+    }
+
+    public void setProdKodea(String prodKodea) {
+        this.prodKodea = prodKodea;
+    }
+
+    public String getProdTaila() {
+        return prodTaila;
+    }
+
+    public void setProdTaila(String prodTaila) {
+        this.prodTaila = prodTaila;
     }
 }

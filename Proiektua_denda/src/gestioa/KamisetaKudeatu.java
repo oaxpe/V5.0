@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import model.DBKonexioa;
-import model.Jertsea;
 import model.Kamiseta;
 
 /**
@@ -284,61 +283,68 @@ public class KamisetaKudeatu {
     }
        
     /* KAMISETAK saltzeko metodoa. Erabiltzaileak kodea, taila eta kantitatea sartuko ditu. */
-//    public static boolean prodSaldu(String kodea, int kantitatea, String taila) {
-//        boolean bool = false;
-//        System.out.println(""
-//                + "-----------------------------------------\n"
-//                + "|         Produktuaren salmenta         |\n"
-//                + "-----------------------------------------");
-//        try {
-//            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fKamiTemp, true)); // fitx berrian idazten joateko
-//            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fKami));
-//            while (true) {
-//                Kamiseta kami = (Kamiseta) geois.readObject(); // objektua irakurri   
-//                if (!kami.getKodPro().toLowerCase().equals(kodea.toLowerCase())) { // kodea konparatu
-//                    geoos.writeObject(kami); // objektua fitxategi berrian idatzi
-//                    geoos.flush();
-//                } 
-//                else {
-//                    if (!kami.getTaila().toLowerCase().equals(taila.toLowerCase())) {
-//                        geoos.writeObject(kami); // objektua fitxategi berrian idatzi
-//                        geoos.flush();
-//                    }
-//                    else {
-//                        if (kami.isEskuragai()) {
-//                            if (kami.getKodPro().toLowerCase().equals(kodea.toLowerCase()) && kami.getKantStock()>=kantitatea) {
-//                                kami.setKantStock(kami.getKantStock()-kantitatea); // salduko den prod kantitatea stock-etik kendu
-//                                geoos.writeObject(kami); // objektua fitxategi berrian idatzi
-//                                geoos.flush();
-//                                bool = true;
-//                                System.out.println(""
-//                                    + "\tKodea\t-\tPrezioa \n\n"
-//                                    + "\t"+kami.getKodPro()+"\t-\t"+kami.getPrezioa()+"  (x"+kantitatea+")\n"
-//                                    + "  --------------------------------------\n"
-//                                    + "\tORDAINTZEKOA \n\tGUZTIRA: \t\t"+kami.getPrezioa()*kantitatea+"€");
-//                            }
-//                            kami.getPrezioa();
-//                        }
-//                    }
-//                }
-//            }
-//        } catch (EOFException ex) { 
-//            // fitxategiaren bukaerara heltzen denean, errorea omititu
-//        } catch (FileNotFoundException ex) {
-//            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));
-//        } catch (ClassNotFoundException | IOException ex) {
-//            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
-//        }
-//        System.gc();
-//        try {
-//            Files.move(Paths.get(fKamiTemp.getAbsolutePath()), Paths.get(fKami.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-//        } catch (IOException ex) {
-//            Logger.getLogger(PrakaKudeatu.class.getName()).log(Level.SEVERE, null, ex);
-//            fKamiTemp.delete();
-//        }
-//        
-//        if (!bool)
-//                System.out.println("\tProduktu hori ez dago dendan.");
-//        return bool;
-//    }
+    public static boolean prodSaldu(String kodea, String taila, int kantitatea) {
+        boolean salduta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        System.out.println(""
+                + "-----------------------------------------\n"
+                + "|         Produktuaren salmenta         |\n"
+                + "-----------------------------------------");
+        PreparedStatement psProduktua, ps;
+        ResultSet rs;
+        String id = null;
+        try {
+            Statement stmt = (Statement) konexioa.getDBKonexioa().createStatement();
+            String sqlSelect = "SELECT prodKode, prodMarka, prodPrezioa, prodKolorea, prodSexua, prodKantStock, kamiTaila, kamiSasoia "
+                                + "FROM produktua JOIN kamiseta ON prodId = produktua_prodId "
+                                + "WHERE prodKode = '"+kodea+"' AND kamiTaila = '"+taila+"' "
+                                + "ORDER BY prodKode";
+            rs = stmt.executeQuery(sqlSelect);
+            System.out.println("KAMISETAK:");
+            System.out.printf("\t%1$-15s    %2$-10s    %3$-10s    %4$-15s    %5$-10s    %6$-10s    %7$-10s\n", "Kodea", "Marka", "Kolorea", "Sexua", "Prezioa", "Tailak", "Sasoia");
+            Kamiseta kami = null;
+            while(rs.next()){
+                kami = new Kamiseta(); // objektu hutsa sortu
+                kami.setKodPro(rs.getString("prodKode"));
+                kami.setMarka(rs.getString("prodMarka"));
+                kami.setPrezioa(rs.getDouble("prodPrezioa"));
+                kami.setKolorea(rs.getString("prodKolorea"));
+                kami.setSexua(rs.getString("prodSexua"));
+                kami.setKantStock(rs.getInt("prodKantStock"));
+                kami.setTaila(rs.getString("kamiTaila"));
+                kami.setSasoia(rs.getString("kamiSasoia"));
+            }
+            
+            /* Produktuaren/Jertsearen id zenbakia lortu */
+            sqlSelect = "SELECT produktua_prodId FROM kamiseta WHERE produktua_prodId = (SELECT prodId FROM produktua WHERE prodKode = ?) AND kamiTaila = ? ";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlSelect);
+            ps.setString(1, kami.getKodPro());
+            ps.setString(2, kami.getTaila());
+            rs = ps.executeQuery();
+            rs.next();
+            id = rs.getString("produktua_prodId"); /* Ezabatu nahi den produktuaren ID-a gordetzen da */
+            
+            if (kami.isEskuragai()) {
+                /* PRODUKTUA TAULA ALDATU */
+                String sqlUpdate = "UPDATE produktua SET prodKantStock = ? WHERE prodId = ? ";
+                psProduktua = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+                psProduktua.setInt(1, kami.getKantStock()-kantitatea); // saldutakoak stock-etik kendu
+                psProduktua.setString(2, id);
+                psProduktua.executeUpdate();
+                
+                salduta = true;
+                System.out.println(""
+                    + "\tKodea\t-\tPrezioa \n\n"
+                    + "\t"+kami.getKodPro()+"\t-\t"+kami.getPrezioa()+"  (x"+kantitatea+")\n"
+                    + "  --------------------------------------\n"
+                    + "\tORDAINTZEKOA \n\tGUZTIRA: \t\t"+kami.getPrezioa()*kantitatea+"€");
+                kami.getPrezioa();
+            }  
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        } finally {
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            return salduta; // objektua datu basean gorde den edo ez bueltatuko du
+        } 
+    }
 }

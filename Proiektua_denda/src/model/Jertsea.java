@@ -17,6 +17,11 @@ public class Jertsea extends Produktua {
         super();
     }
     
+    public Jertsea (String kodea, String taila) {
+        super(kodea);
+        this.taila = taila;
+    }
+    
     public Jertsea (String kodea, String marka, double prezioa, String kolorea, String sexua, int kantStock, String taila) {
         super(kodea, marka, prezioa, kolorea, sexua, kantStock);
         this.taila=taila;
