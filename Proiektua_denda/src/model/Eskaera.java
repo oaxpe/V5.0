@@ -7,9 +7,7 @@ package model;
 
 import gestioa.Metodoak;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,11 +22,11 @@ import java.util.logging.Logger;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Eskaera implements Serializable {
+public class Eskaera /* implements Serializable*/ {
     private String eskZenb; 
     private String hornitzailea;
     private String data;
-    private int kopurua;    
+    private int kopurua;
     
     public Eskaera () {
 
@@ -68,14 +66,8 @@ public class Eskaera implements Serializable {
         return hornitzailea;
     }
 
-    public void setHornitzailea() {
-        try {
-            System.out.print("Sartu Hornitzailea: ");
-            this.hornitzailea = br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setHornitzailea(String horn) {
+        this.hornitzailea = horn;
     }
 
     public String getData() {
@@ -96,23 +88,17 @@ public class Eskaera implements Serializable {
         }
         this.data = Metodoak.dataGorde(fetx); // sartutako data, uuuu/hh/ee formatuan bueltatuko du
     }
+    
+    public void setData(String data) {
+        this.data = data;
+    }
 
     public int getKopurua() {
         return kopurua;
     }
 
-    public void setKopurua() {
-        try {
-            System.out.print("Sartu kopurua: ");
-            this.kopurua = Integer.parseInt(br.readLine());
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
-        catch (NumberFormatException datuOkerrak) {
-            System.out.println(Metodoak.printUrdinez("\tZenbaki bat sartu behar zenuen."));
-            setKopurua();
-        }
+    public void setKopurua(int kop) {
+        this.kopurua = kop;
     }
 
     public String getEskZenb() {
@@ -121,5 +107,9 @@ public class Eskaera implements Serializable {
 
     public void setEskZenb() {
         this.eskZenb = Metodoak.kodeakAldatuEtaGorde("Eskaera"); // Eskaera zenbakia automatikoki hartu kodeak.txt fitxategitik
+    }
+    
+    public void setEskZenb(String kodea) {
+        this.eskZenb = kodea;
     }
 }

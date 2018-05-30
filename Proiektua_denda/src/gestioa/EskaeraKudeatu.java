@@ -5,6 +5,8 @@
  */
 package gestioa;
 
+import com.mysql.jdbc.PreparedStatement;
+import com.mysql.jdbc.Statement;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,9 +17,12 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import model.DBKonexioa;
 import model.Eskaera;
 
 /**
@@ -32,21 +37,23 @@ public class EskaeraKudeatu implements Serializable {
     
     /* Eskaera berri bat gehitu/gestionatu */
     public static void eskaeraGehitu(Eskaera esk1) {
-        if (!dirObj.exists()) {
-            dirObj.mkdir();
-        }
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps;
         try {
-            GoibururikEzObjectOutputStream geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fEsk, true));
-            geoos.writeObject(esk1); // objektua fitxategian idatzi
-            geoos.flush();
-            geoos.close();
-            System.out.println("\nDatu hauek dituen eskaera gorde da.");
-            esk1.printDatuak();      
-        } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
-        } catch (IOException ex) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
-        }   
+            String sqlInsert = "INSERT INTO eskaera VALUES (?, ?, ?, ?)";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
+            /* Objektuko datuak, ps-n gehitu */
+            ps.setString(1, esk1.getEskZenb());
+            ps.setString(2, esk1.getHornitzailea());
+            ps.setString(3, esk1.getData());
+            ps.setInt(4, esk1.getKopurua());
+
+            ps.executeUpdate(); /* Aldaketak gorde */
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+        } finally {
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+        }
     }
     
     /* Eskaera zehatz bat ezabatu */
@@ -91,23 +98,33 @@ public class EskaeraKudeatu implements Serializable {
     /* Eskaeren inguruko informazioa erakusten du. */
     public static ArrayList<Eskaera> eskaeraGuztiakErakutsi() {
         ArrayList<Eskaera> eskGuzt = new ArrayList<Eskaera>();
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        Statement stmt = null;
         try {
-            FileInputStream fis = new FileInputStream(fEsk);
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(fis);
-            System.out.println("ESKAERAK: ");
-            System.out.printf("\t%1$-15s    %2$-15s    %3$-10s    %4$-15s\n", "Eskaera zenb", "Hornitzailea", "Kopurua", "Data");
-            while (true) {
-                Eskaera esk = (Eskaera) geois.readObject(); // objektua irakurri              
-                esk.printEskaera(); // objektuaren datuak erakutsi
+            stmt = (Statement) konexioa.getDBKonexioa().createStatement();
+            String sqlSelect = "SELECT eskKode, eskHornitzailea, eskData, eskKopurua FROM eskaera ORDER BY eskKode";
+            ResultSet rs = stmt.executeQuery(sqlSelect);
+            
+            while(rs.next()){
+                Eskaera esk = new Eskaera(); // objektu hutsa sortu
+                esk.setEskZenb(rs.getString("eskKode"));
+                esk.setHornitzailea(rs.getString("eskHornitzailea"));
+                esk.setData(rs.getString("eskData"));
+                esk.setKopurua(rs.getInt("eskKopurua"));
                 eskGuzt.add(esk);
+                esk.printDatuak();
             }
-        } catch (EOFException ex) { 
-            // fitxategiaren bukaerara heltzen denean, errorea omititu
-        } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
-        } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
-        }    
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+        } 
+        finally {
+            try {
+                stmt.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printUrdinez(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+        }
         return eskGuzt;
     }
 }
