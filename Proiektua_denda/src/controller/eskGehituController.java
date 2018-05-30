@@ -55,11 +55,14 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         /* EskaeraGehitu-ko aukerak */
         if (comando == viewEskaeraGehitu.jButtonBerriaGehitu) {
             ctr.enableComponents(viewEskaeraGehitu.jPanelEskDatuak, true);
+            viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
+            ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
         }
         else if (comando == viewEskaeraGehitu.jButtonGorde){
             if (balidazioaEskGehitu()) {
                 Eskaera esk = new Eskaera (viewEskaeraGehitu.jComboBoxHornitzailea.getSelectedItem().toString(), 
-                        Integer.parseInt(viewEskaeraGehitu.jTextFieldKopurua.getText()));
+                        Integer.parseInt(viewEskaeraGehitu.jTextFieldKopurua.getText()), 
+                        viewEskaeraGehitu.jTextFieldProdKode.getText(), viewEskaeraGehitu.jComboBoxProdTaila.getSelectedItem().toString());
                 EskaeraKudeatu.eskaeraGehitu(esk);
                 resetEskaeraGehitu();
                 ctr.enableComponents(viewEskaeraGehitu.jPanelEskDatuak, false);
@@ -80,7 +83,17 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
     
     @Override
     public void mouseClicked(MouseEvent me) {
-        
+        Object comando = me.getSource();
+        /* Produktu mota aukeratzen denean, Taila ComboBox-ean kargatuko da (motaren arabera) */
+        if (comando == viewEskaeraGehitu.jRadioButtonJerts || comando == viewEskaeraGehitu.jRadioButtonKami) {
+            viewEskaeraGehitu.jComboBoxProdTaila.removeAllItems();
+            ctr.tailaKargatuString(viewEskaeraGehitu.jComboBoxProdTaila);
+        }
+        else if (comando == viewEskaeraGehitu.jRadioButtonPrak) {
+            ctr.enableComponents(viewEskaeraGehitu.jComboBoxProdTaila, true);
+            viewEskaeraGehitu.jComboBoxProdTaila.removeAllItems();
+            ctr.tailaKargatuInt(viewEskaeraGehitu.jComboBoxProdTaila);
+        }
     } 
 
     @Override
@@ -131,6 +144,10 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
             viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));   
         else if (comando == viewEskaeraGehitu.jComboBoxHornitzailea) 
             viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(urdina, 1)); 
+        else if (comando == viewEskaeraGehitu.jComboBoxProdTaila)
+            viewEskaeraGehitu.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(urdina, 1)); 
+        else if (comando == viewEskaeraGehitu.jTextFieldProdKode)
+            viewEskaeraGehitu.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));   
     }
 
     @Override
@@ -141,6 +158,10 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
             viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));   
         else if (comando == viewEskaeraGehitu.jComboBoxHornitzailea) 
             viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewEskaeraGehitu.jComboBoxProdTaila)
+            viewEskaeraGehitu.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0)); 
+        else if (comando == viewEskaeraGehitu.jTextFieldProdKode)
+            viewEskaeraGehitu.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));   
     }
         
     /* METODOAK */       
@@ -151,22 +172,35 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         viewEskaeraGehitu.jButtonIrten.setBackground(urdina);
         viewEskaeraGehitu.jButtonIrten.setForeground(Color.WHITE);
         viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewEskaeraGehitu.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraGehitu.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
        
         viewEskaeraGehitu.jTextFieldKopurua.setOpaque(false);
         viewEskaeraGehitu.jComboBoxHornitzailea.setOpaque(false);
+        viewEskaeraGehitu.jTextFieldProdKode.setOpaque(false);
+        viewEskaeraGehitu.jComboBoxProdTaila.setOpaque(false);
+        viewEskaeraGehitu.jRadioButtonKami.setOpaque(false);
+        viewEskaeraGehitu.jRadioButtonJerts.setOpaque(false);
+        viewEskaeraGehitu.jRadioButtonPrak.setOpaque(false);
         viewEskaeraGehitu.jButtonBerriaGehitu.setBackground(Color.WHITE);
 
         viewEskaeraGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewEskaeraGehitu.jPanelGoiburua.setOpaque(false);
         viewEskaeraGehitu.jPanelEskDatuak.setOpaque(false);
+        
+        viewEskaeraGehitu.jComboBoxProdTaila.addItem("--- Aukeratu ---"); // comboBox-a hasieratu
     }
     
     private void resetEskaeraGehitu() {
         viewEskaeraGehitu.jComboBoxHornitzailea.setSelectedIndex(0);
+        viewEskaeraGehitu.jTextFieldProdKode.setText(null);
+        viewEskaeraGehitu.jComboBoxProdTaila.setSelectedIndex(0);
         viewEskaeraGehitu.jTextFieldKopurua.setText(null);
         
         viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewEskaeraGehitu.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraGehitu.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
     }
    
@@ -175,7 +209,15 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         if (viewEskaeraGehitu.jComboBoxHornitzailea.getSelectedIndex() == 0) {
             viewEskaeraGehitu.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
             bool = false;
-        }     
+        } 
+        if (viewEskaeraGehitu.jTextFieldProdKode.getText().isEmpty()) {
+            viewEskaeraGehitu.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
+        if (viewEskaeraGehitu.jComboBoxProdTaila.getSelectedIndex() == 0) {
+            viewEskaeraGehitu.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        } 
         if (viewEskaeraGehitu.jTextFieldKopurua.getText().isEmpty()) {
             viewEskaeraGehitu.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
             viewEskaeraGehitu.jTextFieldKopurua.setToolTipText(null);

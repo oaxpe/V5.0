@@ -6,8 +6,6 @@
 package model;
 
 import gestioa.Metodoak;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,23 +25,29 @@ public class Eskaera /* implements Serializable*/ {
     private String hornitzailea;
     private String data;
     private int kopurua;
+    private String prodKodea;
+    private String prodTaila;
     
     public Eskaera () {
 
     }
     
-    public Eskaera (String hornitzailea, int kopurua) {
+    public Eskaera (String hornitzailea, int kopurua, String prodKodea, String prodTaila) {
         this.hornitzailea = hornitzailea;
         this.kopurua = kopurua;
+        this.prodKodea = prodKodea;
+        this.prodTaila = prodTaila;
         setData();
         setEskZenb();
     }
     
-    public Eskaera (String kodea, String hornitzailea, String data, int kopurua) {
+    public Eskaera (String kodea, String hornitzailea, String data, int kopurua, String prodKode, String prodTaila) {
         this.eskZenb = kodea; 
         this.hornitzailea = hornitzailea;
         this.data = data;
         this.kopurua = kopurua;
+        this.prodKodea = prodKode;
+        this.prodTaila = prodTaila;
     }
     
     /* METODOAK */
@@ -60,8 +64,6 @@ public class Eskaera /* implements Serializable*/ {
 
     
     /* GETTER and SETTER */
-    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-
     public String getHornitzailea() {
         return hornitzailea;
     }
@@ -111,5 +113,21 @@ public class Eskaera /* implements Serializable*/ {
     
     public void setEskZenb(String kodea) {
         this.eskZenb = kodea;
+    }
+
+    public String getProdKodea() {
+        return prodKodea;
+    }
+
+    public void setProdKodea(String prodKodea) {
+        this.prodKodea = prodKodea;
+    }
+
+    public String getProdTaila() {
+        return prodTaila;
+    }
+
+    public void setProdTaila(String prodTaila) {
+        this.prodTaila = prodTaila;
     }
 }

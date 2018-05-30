@@ -79,7 +79,13 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
                 int konf = JOptionPane.showConfirmDialog(null, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-                    EskaeraKudeatu.eskaeraEzabatu(kodea);
+                    boolean ezabatuta = EskaeraKudeatu.eskaeraEzabatu(kodea);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, kodea + " eskaera ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da " + kodea + " eskaera ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
+                    
+                    
                 }                
                 eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
             }
@@ -116,25 +122,23 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
                     int aukLerroa = viewEskaeraInfo.jTableEskaeraInfo.getSelectedRow(); // aukeratutako lerroa
                     /* Eskaera ezabatu */
                     String kodea = (String) viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-                    EskaeraKudeatu.eskaeraEzabatu(kodea);
-
                     /* Eskaera gorde */
                     Eskaera esk = new Eskaera(viewEskaeraInfo.jTextFieldKodeEsk.getText(), viewEskaeraInfo.jComboBoxHornitzailea.getSelectedItem().toString(), 
-                            Metodoak.dataGorde(viewEskaeraInfo.jDateChooserData.getDate()), Integer.parseInt(viewEskaeraInfo.jTextFieldKopurua.getText()));
-                    EskaeraKudeatu.eskaeraGehitu(esk);
-                    ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
+                            Metodoak.dataGorde(viewEskaeraInfo.jDateChooserData.getDate()), Integer.parseInt(viewEskaeraInfo.jTextFieldKopurua.getText()), 
+                            viewEskaeraInfo.jTextFieldProdKode.getText(), viewEskaeraInfo.jComboBoxProdTaila.getSelectedItem().toString());
                     
-                    /* Hornitzaileak aktualizatu */
-                    viewEskaeraInfo.jComboBoxHornitzailea.removeAllItems();
-                    ctr.hornitzaileaKargatu(viewEskaeraInfo.jComboBoxHornitzailea);
-                    viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                    ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
-                    
-                    eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
-                    ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
-                    ctr.enableComponents(viewEskaeraInfo.jPanelOina, true);
-                    viewEskaeraInfo.jButtonAldaketaGorde.setEnabled(false);
-                    viewEskaeraInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                    boolean aldatuta = EskaeraKudeatu.eskaeraDatuakAldatu(esk);
+                    if (aldatuta) {
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen eskaeraren datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                        ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
+                        eskDatuakErakutsiTaula(viewEskaeraInfo.jTableEskaeraInfo, EskaeraKudeatu.eskaeraGuztiakErakutsi());
+                        ctr.enableComponents(viewEskaeraInfo.jPanelEskDatuak, false);
+                        ctr.enableComponents(viewEskaeraInfo.jPanelOina, true);
+                        viewEskaeraInfo.jButtonAldaketaGorde.setEnabled(false);
+                        viewEskaeraInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                    }  
+                    else
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen bezeroaren datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente
@@ -221,7 +225,11 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         else if (comando == viewEskaeraInfo.jTextFieldKopurua)
             viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));   
         else if (comando == viewEskaeraInfo.jComboBoxHornitzailea) 
-            viewEskaeraInfo.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(urdina, 1));
+            viewEskaeraInfo.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(urdina, 1)); 
+        else if (comando == viewEskaeraInfo.jComboBoxProdTaila)
+            viewEskaeraInfo.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(urdina, 1)); 
+        else if (comando == viewEskaeraInfo.jTextFieldProdKode)
+            viewEskaeraInfo.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, urdina));   
     }
 
     @Override
@@ -234,6 +242,10 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
             viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));  
         else if (comando == viewEskaeraInfo.jComboBoxHornitzailea) 
             viewEskaeraInfo.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        else if (comando == viewEskaeraInfo.jComboBoxProdTaila)
+            viewEskaeraInfo.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0)); 
+        else if (comando == viewEskaeraInfo.jTextFieldProdKode)
+            viewEskaeraInfo.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));  
     }
     
     @Override
@@ -262,6 +274,9 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         viewEskaeraInfo.jButtonIrten.setForeground(Color.WHITE);
         viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraInfo.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
+        viewEskaeraInfo.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraInfo.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewEskaeraInfo.jTextFieldBilatu.setBorder(BorderFactory.createMatteBorder(0, 0, 2, 0, urdina));
 
         viewEskaeraInfo.jTextFieldKodeEsk.setOpaque(false);
@@ -291,6 +306,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         ctr.botoiFormatoa(viewEskaeraInfo.jButtonAldatu);
         ctr.botoiFormatoa(viewEskaeraInfo.jButtonEzabatu);
         ctr.botoiFormatoa(viewEskaeraInfo.jButtonGehitu);
+        ctr.tailaGuztKargatu(viewEskaeraInfo.jComboBoxProdTaila);
     }
     
     public void eskDatuakErakutsiTaula(JTable taula, ArrayList<Eskaera> eskGuzt) {
@@ -305,8 +321,10 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         taula.getTableHeader().setForeground(Color.WHITE);
         taula.setModel(model);
         model.addColumn("KODEA");
-        model.addColumn("HORNITZAILEA");
         model.addColumn("DATA");
+        model.addColumn("HORNITZAILEA");
+        model.addColumn("PROD. KODEA");
+        model.addColumn("PROD. TAILA");
         model.addColumn("KOPURUA");
         
         for (int i=0; i<eskGuzt.size(); i++) {
@@ -314,17 +332,21 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
             Array[] os = null;
             model.addRow(os);
             model.setValueAt(esk.getEskZenb(), i, 0);
-            model.setValueAt(esk.getHornitzailea(), i, 1);
-            model.setValueAt(esk.getData(), i, 2);
-            model.setValueAt(esk.getKopurua(), i, 3);
+            model.setValueAt(esk.getData(), i, 1);
+            model.setValueAt(esk.getHornitzailea(), i, 2);
+            model.setValueAt(esk.getProdKodea(), i, 3);
+            model.setValueAt(esk.getProdTaila(), i, 4);
+            model.setValueAt(esk.getKopurua(), i, 5);
         }
     }
     
     private void aukEskDatuakBete(int aukLerroa) { 
         viewEskaeraInfo.jTextFieldKodeEsk.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 0)));
-        viewEskaeraInfo.jComboBoxHornitzailea.setSelectedItem(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1)));
-        viewEskaeraInfo.jDateChooserData.setDate(Metodoak.dataErakutsi(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2))));
-        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewEskaeraInfo.jDateChooserData.setDate(Metodoak.dataErakutsi(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 1))));
+        viewEskaeraInfo.jComboBoxHornitzailea.setSelectedItem(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 2)));
+        viewEskaeraInfo.jTextFieldProdKode.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 3)));
+        viewEskaeraInfo.jComboBoxProdTaila.setSelectedItem(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 4)));
+        viewEskaeraInfo.jTextFieldKopurua.setText(String.valueOf(viewEskaeraInfo.jTableEskaeraInfo.getModel().getValueAt(aukLerroa, 5)));
     }
     
     private void resetEskInfo() {
@@ -332,6 +354,8 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         viewEskaeraInfo.jComboBoxHornitzailea.setSelectedItem(null);
         viewEskaeraInfo.jDateChooserData.setDate(null);
         viewEskaeraInfo.jTextFieldKopurua.setText(null); 
+        viewEskaeraInfo.jComboBoxProdTaila.setSelectedItem(null);
+        viewEskaeraInfo.jTextFieldProdKode.setText(null);        
     }
     
     private boolean balidazioaEskInfo() {
@@ -353,6 +377,14 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         }
         else 
             viewEskaeraGehitu.jTextFieldKopurua.setToolTipText(null);
+        if (viewEskaeraInfo.jComboBoxProdTaila.getSelectedIndex() == 0) {
+            viewEskaeraInfo.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.RED, 1));
+            bool = false;
+        }
+        if (viewEskaeraInfo.jTextFieldProdKode.getText().isEmpty()) {
+            viewEskaeraInfo.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.RED));
+            bool = false;
+        }
         return bool;
     }
       
@@ -360,5 +392,7 @@ public class eskInfoController implements ActionListener, MouseListener, ListSel
         viewEskaeraInfo.jTextFieldKodeEsk.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
         viewEskaeraInfo.jComboBoxHornitzailea.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
         viewEskaeraInfo.jTextFieldKopurua.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraInfo.jTextFieldProdKode.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.GRAY));
+        viewEskaeraInfo.jComboBoxProdTaila.setBorder(BorderFactory.createLineBorder(Color.GRAY, 0));
     }
 }

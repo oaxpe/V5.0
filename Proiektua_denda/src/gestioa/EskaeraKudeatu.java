@@ -30,68 +30,59 @@ import model.Eskaera;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class EskaeraKudeatu implements Serializable {
-    private static File dirObj = new File("Objektuak");
-    private static File fEsk = new File(dirObj+"\\eskaera.obj");
-    private static File fEskTemp = new File(dirObj+"\\eskTemp.obj");
-    
+public class EskaeraKudeatu {    
     /* Eskaera berri bat gehitu/gestionatu */
-    public static void eskaeraGehitu(Eskaera esk1) {
+    public static boolean eskaeraGehitu(Eskaera esk1) {
+        boolean gehituta = false;
         DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
         PreparedStatement ps;
         try {
-            String sqlInsert = "INSERT INTO eskaera VALUES (?, ?, ?, ?)";
+            String sqlInsert = "INSERT INTO eskaera VALUES (?, ?, ?, ?, (SELECT hornKode FROM hornitzailea WHERE hornIzena = ?), (SELECT prodId FROM produktua WHERE prodKode = ?))";
             ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
             /* Objektuko datuak, ps-n gehitu */
             ps.setString(1, esk1.getEskZenb());
-            ps.setString(2, esk1.getHornitzailea());
-            ps.setString(3, esk1.getData());
-            ps.setInt(4, esk1.getKopurua());
+            ps.setString(2, esk1.getData());
+            ps.setInt(3, esk1.getKopurua());
+            ps.setString(4, esk1.getProdTaila());
+            ps.setString(5, esk1.getHornitzailea());
+            ps.setString(6, esk1.getProdKodea());
 
             ps.executeUpdate(); /* Aldaketak gorde */
+            gehituta = true;
         } catch (SQLException ex) {
             System.out.println(Metodoak.printUrdinez(ex.getMessage()));
         } finally {
             konexioa.deskonektatu(); // datu basetik deskonektatu
+            return gehituta;
         }
     }
     
     /* Eskaera zehatz bat ezabatu */
-    public static void eskaeraEzabatu(String kodea) {
+    public static boolean eskaeraEzabatu(String kodea) {
         boolean ezabatuta = false;
-        GoibururikEzObjectOutputStream geoos = null;
-        try {            
-            geoos = new GoibururikEzObjectOutputStream(new FileOutputStream(fEskTemp, true));
-            GoibururikEzObjectInputStream geois = new GoibururikEzObjectInputStream(new FileInputStream(fEsk));
-            
-            while (true) { // fitxategiko objektuak irakurri
-                Eskaera esk = (Eskaera) geois.readObject(); // objektua irakurri              
-                if (!esk.getEskZenb().toUpperCase().equals(kodea.toUpperCase())) { // kodea konparatu
-                    geoos.writeObject(esk); // objektua fitxategi berrian idatzi
-                    geoos.flush();
-                } 
-                else {
-                    ezabatuta = true;
-                }
-            }  
-        } catch (EOFException ex) { 
-            // fitxategiaren bukaerara heltzen denean, errorea omititu
-        } catch (FileNotFoundException ex) {
-            System.out.println(Metodoak.printUrdinez("Fitxategia ez du aurkitzen!"));;
-        } catch (ClassNotFoundException | IOException ex) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak jasotzerakoan"));
-        }
-        if (ezabatuta) {
-            System.out.println("Eskaera ezabatu da.");
-        }
-        else
-            System.out.println(kodea+" kodea duen eskaera ez dago erregistratuta.");
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement ps = null;
         try {
-            geoos.close();
-            System.gc();
-            Files.move(Paths.get(fEskTemp.getAbsolutePath()), Paths.get(fEsk.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException ex) {
-            Logger.getLogger(EskaeraKudeatu.class.getName()).log(Level.SEVERE, null, ex);
+            /* ESKAERA taulatik ezabatu */
+            String sqlDelete = "DELETE FROM eskaera WHERE eskKode = ?";
+            ps = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlDelete); // INSERT-a preparatu
+            ps.setString(1, kodea);
+            ps.executeUpdate();
+            
+            ezabatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                ps.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (ezabatuta)
+                System.out.println(kodea+" kodedun eskaera ezabatu da.");
+            return ezabatuta;
         }
     }
     
@@ -102,15 +93,21 @@ public class EskaeraKudeatu implements Serializable {
         Statement stmt = null;
         try {
             stmt = (Statement) konexioa.getDBKonexioa().createStatement();
-            String sqlSelect = "SELECT eskKode, eskHornitzailea, eskData, eskKopurua FROM eskaera ORDER BY eskKode";
+            String sqlSelect = "SELECT eskKode, eskData, eskKop, hornIzena, prodKode, eskProdTaila "
+                                + "FROM (produktua JOIN eskaera ON produktua.prodId = eskaera.produktua_prodId) "
+                                + "JOIN hornitzailea ON eskaera.hornitzailea_hornKode = hornitzailea.hornKode "
+                                + "ORDER BY eskKode";
             ResultSet rs = stmt.executeQuery(sqlSelect);
             
             while(rs.next()){
                 Eskaera esk = new Eskaera(); // objektu hutsa sortu
                 esk.setEskZenb(rs.getString("eskKode"));
-                esk.setHornitzailea(rs.getString("eskHornitzailea"));
                 esk.setData(rs.getString("eskData"));
-                esk.setKopurua(rs.getInt("eskKopurua"));
+                esk.setKopurua(rs.getInt("eskKop"));
+                esk.setHornitzailea(rs.getString("hornIzena"));
+                esk.setProdKodea(rs.getString("prodKode"));
+                esk.setProdTaila(rs.getString("eskProdTaila"));
+                
                 eskGuzt.add(esk);
                 esk.printDatuak();
             }
@@ -126,6 +123,41 @@ public class EskaeraKudeatu implements Serializable {
             konexioa.deskonektatu(); // datu basetik deskonektatu
         }
         return eskGuzt;
+    }
+
+    public static boolean eskaeraDatuakAldatu(Eskaera esk) {
+        boolean aldatuta = false;
+        DBKonexioa konexioa = new DBKonexioa(); // datu basera konektatu
+        PreparedStatement psEsk = null;
+        try {           
+            /* ESKAERA taulako datuak aldatu (bezeroa taulakoak ez dira inoiz aldatuko) */
+            String sqlUpdate = "UPDATE eskaera SET eskData = ?, eskKop = ?, eskProdTaila = ?, hornitzailea_hornKode = (SELECT hornKode FROM hornitzailea WHERE hornIzena = ?) "
+                    + "WHERE eskKode = ? ";
+            psEsk = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlUpdate); // UPDATE-a preparatu
+            psEsk.setString(1, esk.getData());
+            psEsk.setInt(2, esk.getKopurua());
+            psEsk.setString(3, esk.getProdTaila());
+            psEsk.setString(4, esk.getHornitzailea());
+            psEsk.setString(5, esk.getEskZenb());
+            psEsk.executeUpdate();
+
+            aldatuta = true;
+        } catch (SQLException ex) {
+            System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+        }
+        finally {
+            try {
+                psEsk.close();
+            } catch (SQLException ex) {
+                System.out.println(Metodoak.printErrMezuak(ex.getMessage()));
+            }
+            konexioa.deskonektatu(); // datu basetik deskonektatu
+            if (aldatuta)
+                System.out.println(esk.getEskZenb()+" kodea duen eskaeraren datuak aldatu dira.");
+            else
+                System.out.println(esk.getEskZenb()+" kodea duen eskaerarik ez dago erregistratuta.");
+            return aldatuta;
+        }
     }
 }
 

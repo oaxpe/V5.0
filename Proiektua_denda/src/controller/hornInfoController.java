@@ -80,9 +80,12 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
                 int konf = JOptionPane.showConfirmDialog(viewHornitzaileaInfo.jDialogEzabatuKonfirm, "Ezabatu nahi duzu?", "Aukeratu", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); // ventana emergente
                 if (konf == 0) { // bai
                     String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-                    HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
-                    viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                    ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
+                    /* Hornitzailea ezabatu */
+                    boolean ezabatuta = HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
+                    if (ezabatuta) 
+                        JOptionPane.showMessageDialog(null, kodea + " hornitzailea ezabatu da", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                    else
+                        JOptionPane.showMessageDialog(null, "Ez da "+ kodea + " hornitzailea ezabatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente
                 }                
                 hornDatuakErakutsiTaula(viewHornitzaileaInfo.jTableHornitzaileaInfo, HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
             }
@@ -117,25 +120,26 @@ public class hornInfoController implements ActionListener, MouseListener, ListSe
             if (konf == 0) { // bai
                 if (balidazioaHornInfo()) {
                     int aukLerroa = viewHornitzaileaInfo.jTableHornitzaileaInfo.getSelectedRow(); // aukeratutako lerroa
-                    /* Hornitzailea ezabatu */
                     String kodea = (String) viewHornitzaileaInfo.jTableHornitzaileaInfo.getModel().getValueAt(aukLerroa, 0); // aukeratutako langilearen nan zenbakia lortu
-                    HornitzaileaKudeatu.hornitzaileaEzabatu(kodea);
 
-                    /* Hornitzailea gorde */
+                    /* Hornitzailea jaso */
                     Hornitzailea horn = new Hornitzailea(viewHornitzaileaInfo.jTextFieldKodeHor.getText(), viewHornitzaileaInfo.jTextFieldIzena.getText(), 
                             viewHornitzaileaInfo.jTextFieldHerria.getText(), viewHornitzaileaInfo.jTextFieldTlf.getText(), viewHornitzaileaInfo.jTextFieldEmail.getText());
-                    HornitzaileaKudeatu.hornitzaileaGehitu(horn);
-                    ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
                     
-                    /* Hornitzaileak aktualizatu */
-                    viewEskaeraGehitu.jComboBoxHornitzailea.removeAllItems();
-                    ctr.hornitzaileaKargatu(viewEskaeraGehitu.jComboBoxHornitzailea);
-                    
-                    hornDatuakErakutsiTaula(viewHornitzaileaInfo.jTableHornitzaileaInfo, HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
-                    ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
-                    ctr.enableComponents(viewHornitzaileaInfo.jPanelOina, true);
-                    viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
-                    viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                    /* Hornitzailearen datuak aldatu */
+                    boolean aldatuta = HornitzaileaKudeatu.hornitzaileDatuakAldatu(horn);
+                    System.out.println(aldatuta);
+                    if (aldatuta) {
+                        JOptionPane.showMessageDialog(null, kodea + " kodea duen hornitzailearen datuak aldatu dira", "EGINDA!", JOptionPane.PLAIN_MESSAGE); // ventana emergente
+                        ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
+                        hornDatuakErakutsiTaula(viewHornitzaileaInfo.jTableHornitzaileaInfo, HornitzaileaKudeatu.hornitzaileGuztiakErakutsi());
+                        ctr.enableComponents(viewHornitzaileaInfo.jPanelHornDatuak, false);
+                        ctr.enableComponents(viewHornitzaileaInfo.jPanelOina, true);
+                        viewHornitzaileaInfo.jButtonAldaketaGorde.setEnabled(false);
+                        viewHornitzaileaInfo.jButtonAldaketaEzabatu.setEnabled(false);
+                    }
+                    else
+                        JOptionPane.showMessageDialog(null, kodea + "duen hornitzailearen datuak ez dira aldatu", "KONTUZ!", JOptionPane.ERROR); // ventana emergente  
                 }
                 else
                     JOptionPane.showMessageDialog(null, "Zerbait gaizki dago", "KONTUZ!", JOptionPane.ERROR_MESSAGE); // ventana emergente

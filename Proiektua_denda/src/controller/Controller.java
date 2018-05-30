@@ -387,6 +387,9 @@ public class Controller {
         viewEskaeraGehitu.jButtonBerriaGehitu.addMouseListener(eskGehituCtr);
         viewEskaeraGehitu.jButtonGorde.addMouseListener(eskGehituCtr);
         viewEskaeraGehitu.jButtonReset.addMouseListener(eskGehituCtr);
+        viewEskaeraGehitu.jRadioButtonJerts.addMouseListener(eskGehituCtr);
+        viewEskaeraGehitu.jRadioButtonKami.addMouseListener(eskGehituCtr);
+        viewEskaeraGehitu.jRadioButtonPrak.addMouseListener(eskGehituCtr);
         
         // Produktua Inbentario Eskatzekoak
         viewProdInbEsk.jButtonIrten.addMouseListener(prodInbEskCtr);
@@ -582,10 +585,14 @@ public class Controller {
         viewEskaeraInfo.jComboBoxHornitzailea.addFocusListener(eskInfoCtr);
         viewEskaeraInfo.jDateChooserData.addFocusListener(eskInfoCtr);
         viewEskaeraInfo.jTextFieldKopurua.addFocusListener(eskInfoCtr);
+        viewEskaeraInfo.jTextFieldProdKode.addFocusListener(eskInfoCtr);
+        viewEskaeraInfo.jComboBoxProdTaila.addFocusListener(eskInfoCtr);
         
         // EskaeraGehitu
         viewEskaeraGehitu.jTextFieldKopurua.addFocusListener(eskGehituCtr);
         viewEskaeraGehitu.jComboBoxHornitzailea.addFocusListener(eskGehituCtr);
+        viewEskaeraGehitu.jTextFieldProdKode.addFocusListener(eskGehituCtr);
+        viewEskaeraGehitu.jComboBoxProdTaila.addFocusListener(eskGehituCtr);
         
         // ProdKontsultatu
         viewProdKontsultatu.jTextFieldKodeProd.addFocusListener(prodKontsCtr);
@@ -726,5 +733,17 @@ public class Controller {
         botoia.setBorderPainted(true); // botoien ertzak margotuta
         botoia.setForeground(urdina); // botoiaren textuaren kolorea
         botoia.setBackground(Color.WHITE); // botoiaren fondo kolorea
+    }
+
+    void tailaGuztKargatu(JComboBox comboBox) {
+        comboBox.addItem("--- Aukeratu ---");
+        int[] taila = ProduktuaKudeatu.tailaKontrolatuZenb();
+        for (int i : taila) {
+            comboBox.addItem(String.valueOf(i));
+        }
+        String[] taila2 = ProduktuaKudeatu.tailaKontrolatuString();
+        for (String i : taila2) {
+            comboBox.addItem(i);
+        }
     }
 }

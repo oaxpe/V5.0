@@ -52,6 +52,7 @@ public class EskaeraGehitu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupProd = new javax.swing.ButtonGroup();
         jPanelOsoa = new javax.swing.JPanel();
         jPanelEskDatuak = new javax.swing.JPanel();
         jLabelHornitzailea = new javax.swing.JLabel();
@@ -60,6 +61,14 @@ public class EskaeraGehitu extends javax.swing.JFrame {
         jTextFieldKopurua = new javax.swing.JTextField();
         jButtonReset = new javax.swing.JButton();
         jButtonGorde = new javax.swing.JButton();
+        jLabelProdTaila = new javax.swing.JLabel();
+        jComboBoxProdTaila = new javax.swing.JComboBox();
+        jLabelProdKode = new javax.swing.JLabel();
+        jTextFieldProdKode = new javax.swing.JTextField();
+        jLabelProduktua = new javax.swing.JLabel();
+        jRadioButtonKami = new javax.swing.JRadioButton();
+        jRadioButtonJerts = new javax.swing.JRadioButton();
+        jRadioButtonPrak = new javax.swing.JRadioButton();
         jButtonIrten = new javax.swing.JButton();
         jPanelGoiburua = new javax.swing.JPanel();
         jButtonBerriaGehitu = new javax.swing.JButton();
@@ -85,6 +94,28 @@ public class EskaeraGehitu extends javax.swing.JFrame {
         jButtonGorde.setFont(new java.awt.Font("Calibri Light", 1, 14)); // NOI18N
         jButtonGorde.setText("Gorde");
 
+        jLabelProdTaila.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelProdTaila.setText("Prod. taila:");
+
+        jComboBoxProdTaila.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabelProdKode.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelProdKode.setText("Prod. kodea:");
+
+        jTextFieldProdKode.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabelProduktua.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
+        jLabelProduktua.setText("PRODUKTUA:");
+
+        buttonGroupProd.add(jRadioButtonKami);
+        jRadioButtonKami.setText("Kamiseta");
+
+        buttonGroupProd.add(jRadioButtonJerts);
+        jRadioButtonJerts.setText("Jertsea");
+
+        buttonGroupProd.add(jRadioButtonPrak);
+        jRadioButtonPrak.setText("Praka");
+
         javax.swing.GroupLayout jPanelEskDatuakLayout = new javax.swing.GroupLayout(jPanelEskDatuak);
         jPanelEskDatuak.setLayout(jPanelEskDatuakLayout);
         jPanelEskDatuakLayout.setHorizontalGroup(
@@ -93,32 +124,60 @@ public class EskaeraGehitu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
-                        .addComponent(jButtonReset)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButtonGorde)
-                        .addGap(0, 144, Short.MAX_VALUE))
-                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
                         .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelHornitzailea)
-                            .addComponent(jLabelKopurua))
+                            .addComponent(jLabelKopurua)
+                            .addComponent(jLabelProdTaila)
+                            .addComponent(jLabelProdKode))
                         .addGap(25, 25, 25)
                         .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldProdKode)
+                            .addComponent(jComboBoxProdTaila, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jTextFieldKopurua)
-                            .addComponent(jComboBoxHornitzailea, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jComboBoxHornitzailea, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
+                        .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
+                                .addComponent(jButtonReset)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonGorde))
+                            .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
+                                .addComponent(jLabelProduktua, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jRadioButtonKami)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButtonJerts)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jRadioButtonPrak)))
+                        .addGap(0, 16, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanelEskDatuakLayout.setVerticalGroup(
             jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelEskDatuakLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(11, 11, 11)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonKami)
+                    .addComponent(jRadioButtonJerts)
+                    .addComponent(jRadioButtonPrak)
+                    .addComponent(jLabelProduktua, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelHornitzailea)
                     .addComponent(jComboBoxHornitzailea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelProdKode)
+                    .addComponent(jTextFieldProdKode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelProdTaila)
+                    .addComponent(jComboBoxProdTaila, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelKopurua)
                     .addComponent(jTextFieldKopurua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelEskDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonReset)
                     .addComponent(jButtonGorde)))
@@ -182,11 +241,11 @@ public class EskaeraGehitu extends javax.swing.JFrame {
             .addGroup(jPanelOsoaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelGoiburua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanelOsoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonIrten)
                     .addComponent(jPanelEskDatuak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,7 +256,9 @@ public class EskaeraGehitu extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelOsoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelOsoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -254,19 +315,28 @@ public class EskaeraGehitu extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroupProd;
     public javax.swing.JButton jButtonBerriaGehitu;
     public javax.swing.JButton jButtonGorde;
     public javax.swing.JButton jButtonIrten;
     public javax.swing.JButton jButtonReset;
     public javax.swing.JComboBox jComboBoxHornitzailea;
+    public javax.swing.JComboBox jComboBoxProdTaila;
     private javax.swing.JLabel jLabelBerriaGehitu;
     private javax.swing.JLabel jLabelEskGehitu;
     private javax.swing.JLabel jLabelHornitzailea;
     private javax.swing.JLabel jLabelKopurua;
+    private javax.swing.JLabel jLabelProdKode;
+    private javax.swing.JLabel jLabelProdTaila;
+    private javax.swing.JLabel jLabelProduktua;
     public javax.swing.JPanel jPanelEskDatuak;
     public javax.swing.JPanel jPanelGoiburua;
     public javax.swing.JPanel jPanelOsoa;
+    public javax.swing.JRadioButton jRadioButtonJerts;
+    public javax.swing.JRadioButton jRadioButtonKami;
+    public javax.swing.JRadioButton jRadioButtonPrak;
     public javax.swing.JTextField jTextFieldKopurua;
+    public javax.swing.JTextField jTextFieldProdKode;
     // End of variables declaration//GEN-END:variables
 }
 

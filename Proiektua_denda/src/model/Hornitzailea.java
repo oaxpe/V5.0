@@ -6,17 +6,13 @@
 package model;
 
 import gestioa.Metodoak;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Serializable;
 
 /**
  *
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Hornitzailea implements Serializable {
+public class Hornitzailea {
     /* ATRIBUTOAK */
     private String kodHor;
     private String izena;
@@ -60,8 +56,6 @@ public class Hornitzailea implements Serializable {
     
     
     /* GETTER and SETTER */
-    transient BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-
     public String getKodHor() {
         return kodHor;
     }
@@ -70,63 +64,39 @@ public class Hornitzailea implements Serializable {
         this.kodHor  = Metodoak.kodeakAldatuEtaGorde("Hornitzailea"); // Eskaera zenbakia automatikoki hartu kodeak.txt fitxategitik 
     }
     
+    public void setKodHor(String kodea) {
+        this.kodHor  = kodea; 
+    }
+    
     public String getIzena() {
         return izena;
     }
 
-    public void setIzena() {
-        try {
-            System.out.print("Sartu izena: ");
-            this.izena = br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setIzena(String izena) {
+        this.izena = izena;
     }
 
     public String getHerria() {
         return herria;
     }
 
-    public void setHerria() {
-        try {
-            System.out.print("Sartu herria: ");
-            this.herria = br.readLine();
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setHerria(String herria) {
+        this.herria = herria;
     }
 
     public String getTelefonoa() {
         return telefonoa;
     }
 
-    public void setTelefonoa() {
-        try {
-            do {
-                System.out.print("Sartu telefonoa: ");
-                this.telefonoa = br.readLine();
-            } while (!Metodoak.tlfBalidazioa(telefonoa));
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }
+    public void setTelefonoa(String tlf) {
+        this.telefonoa = tlf;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail() {
-        try {
-            do {
-                System.out.print("Sartu email-a: ");
-                this.email=br.readLine().toLowerCase();
-            } while (!Metodoak.emailBalidazioa(email));
-        }
-        catch (IOException gaizki) {
-            System.out.println(Metodoak.printUrdinez("Arazoak daude datuak sartzerakoan."));
-        }    
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
