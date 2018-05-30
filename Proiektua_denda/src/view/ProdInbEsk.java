@@ -42,11 +42,11 @@ public class ProdInbEsk extends javax.swing.JFrame {
         jTextFieldBilatuJerts = new javax.swing.JTextField();
         jLabelBilatuJerts = new javax.swing.JLabel();
         jLabelKamiseta = new javax.swing.JLabel();
-        jTextFieldBilatuKami = new javax.swing.JTextField();
-        jLabelBilatuKami = new javax.swing.JLabel();
         jLabelPraka = new javax.swing.JLabel();
         jTextFieldBilatuPrak = new javax.swing.JTextField();
         jLabelBilatuPrak = new javax.swing.JLabel();
+        jTextFieldBilatuKami = new javax.swing.JTextField();
+        jLabelBilatuKami = new javax.swing.JLabel();
         jPanelGoiburua = new javax.swing.JPanel();
         jLabelProdKud = new javax.swing.JLabel();
         jPanelOina = new javax.swing.JPanel();
@@ -117,10 +117,6 @@ public class ProdInbEsk extends javax.swing.JFrame {
         jLabelKamiseta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabelKamiseta.setText("KAMISETA");
 
-        jTextFieldBilatuKami.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
-        jLabelBilatuKami.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
-
         jLabelPraka.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabelPraka.setText("PRAKA");
 
@@ -128,29 +124,24 @@ public class ProdInbEsk extends javax.swing.JFrame {
 
         jLabelBilatuPrak.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
 
+        jTextFieldBilatuKami.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabelBilatuKami.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/bilaketaLupa.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanelProdTaulaLayout = new javax.swing.GroupLayout(jPanelProdTaula);
         jPanelProdTaula.setLayout(jPanelProdTaulaLayout);
         jPanelProdTaulaLayout.setHorizontalGroup(
             jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdTaulaLayout.createSequentialGroup()
-                        .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
-                                .addComponent(jLabelKamiseta)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdTaulaLayout.createSequentialGroup()
-                                .addGap(0, 53, Short.MAX_VALUE)
-                                .addComponent(jLabelBilatuKami)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldBilatuKami, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdTaulaLayout.createSequentialGroup()
+                    .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdTaulaLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelJertsea)
+                                    .addComponent(jLabelPraka))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdTaulaLayout.createSequentialGroup()
                                         .addComponent(jLabelBilatuJerts)
@@ -161,47 +152,49 @@ public class ProdInbEsk extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jTextFieldBilatuPrak, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
-                                .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabelJertsea)
-                                    .addComponent(jLabelPraka))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 538, Short.MAX_VALUE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                .addComponent(jLabelKamiseta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabelBilatuKami)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldBilatuKami, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jScrollPane3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProdTaulaLayout.createSequentialGroup()
+                                .addGap(0, 53, Short.MAX_VALUE)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jScrollPane5)))
                 .addContainerGap())
         );
         jPanelProdTaulaLayout.setVerticalGroup(
             jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabelKamiseta)
+                    .addComponent(jTextFieldBilatuKami, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelBilatuKami))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
-                        .addComponent(jLabelKamiseta)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldBilatuKami, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelBilatuKami))))
-                .addGap(43, 43, 43)
+                    .addComponent(jLabelJertsea)
+                    .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTextFieldBilatuJerts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelBilatuJerts)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
-                        .addComponent(jLabelJertsea)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldBilatuJerts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelBilatuJerts))))
-                .addGap(25, 25, 25)
-                .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelProdTaulaLayout.createSequentialGroup()
-                        .addComponent(jLabelPraka)
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldBilatuPrak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelBilatuPrak))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelPraka)
+                    .addGroup(jPanelProdTaulaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jTextFieldBilatuPrak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelBilatuPrak)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jLabelProdKud.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
