@@ -34,6 +34,7 @@ public class langGehituController implements ActionListener, MouseListener, Focu
     private LangileaGehitu viewLangileaGehitu;
     
     private Color urdina = new Color(0,0,153);
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public langGehituController(Langilea lang, LangileaInfo viewLangInfo, LangileaGehitu viewLangGehitu) {
@@ -220,6 +221,10 @@ public class langGehituController implements ActionListener, MouseListener, Focu
         viewLangileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewLangileaGehitu.jPanelGoiburua.setOpaque(false);
         viewLangileaGehitu.jPanelLangDatuak.setOpaque(false);
+        
+        /* Reset eta Gorde botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewLangileaGehitu.jButtonReset);
+        ctr.botoiFormatoa(viewLangileaGehitu.jButtonGorde);
     }
  
     private void resetLangileaGehitu() {

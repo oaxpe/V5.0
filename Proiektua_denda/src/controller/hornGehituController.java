@@ -35,6 +35,7 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
     private EskaeraGehitu viewEskaeraGehitu;
     
     private Color urdina = new Color(0,0,153);
+    private Controller ctr = new Controller(); // Controller klasean dauden metodoak erabili ahal izateko
     
     /* ERAIKITZAILEA */   
     public hornGehituController(Hornitzailea horn, HornitzaileaInfo viewHornInfo, HornitzaileaGehitu viewHornGehitu, EskaeraGehitu viewEskGehitu) {
@@ -176,6 +177,10 @@ public class hornGehituController implements ActionListener, MouseListener, Focu
         viewHornitzaileaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewHornitzaileaGehitu.jPanelGoiburua.setOpaque(false);
         viewHornitzaileaGehitu.jPanelHornDatuak.setOpaque(false);
+        
+        /* Reset eta Gorde botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewHornitzaileaGehitu.jButtonReset);
+        ctr.botoiFormatoa(viewHornitzaileaGehitu.jButtonGorde);
     }
  
     private void resetHornitzaileaGehitu() {

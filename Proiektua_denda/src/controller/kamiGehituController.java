@@ -199,6 +199,10 @@ public class kamiGehituController implements ActionListener, MouseListener, Focu
         viewKamisetaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewKamisetaGehitu.jPanelGoiburua.setOpaque(false);
         viewKamisetaGehitu.jPanelKamiDatuak.setOpaque(false);
+        
+        /* Reset eta Gorde botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewKamisetaGehitu.jButtonReset);
+        ctr.botoiFormatoa(viewKamisetaGehitu.jButtonGorde);
     }
 
     private void resetKamisetaGehitu() {

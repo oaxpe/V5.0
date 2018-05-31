@@ -203,6 +203,10 @@ public class dendaGehituController implements ActionListener, MouseListener, Foc
         viewDendaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewDendaGehitu.jPanelGoiburua.setOpaque(false);
         viewDendaGehitu.jPanelDendDatuak.setOpaque(false);
+        
+        /* Reset eta Gorde botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewDendaGehitu.jButtonReset);
+        ctr.botoiFormatoa(viewDendaGehitu.jButtonGorde);
     }
 
     private void resetDendaGehitu() {

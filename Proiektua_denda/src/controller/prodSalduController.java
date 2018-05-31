@@ -79,7 +79,7 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
             ctr.enableComponents(viewProdSaldu.jPanelDatuak, false);
 
         }
-        else if (comando == viewProdSaldu.jButtonListaraGehitu) {
+        else if (comando == viewProdSaldu.jButtonSaldu) {
             if (balidazioaProdSaldu()) { // kanpo guztiak beteta dauden konprobatzen du
                 /* datuak kontsultatu eta kargatu taulan */
                 if (viewProdSaldu.jRadioButtonJerts.isSelected()) {
@@ -159,8 +159,8 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
             viewProdSaldu.jButtonIrten.setBackground(new Color (0,0,51));
             viewProdSaldu.jButtonIrten.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
-        else if (comando == viewProdSaldu.jButtonListaraGehitu) 
-            viewProdSaldu.jButtonListaraGehitu.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        else if (comando == viewProdSaldu.jButtonSaldu) 
+            viewProdSaldu.jButtonSaldu.setCursor(new Cursor(Cursor.HAND_CURSOR));
         else if (comando == viewProdSaldu.jButtonEzeztatu)
             viewProdSaldu.jButtonEzeztatu.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
@@ -173,8 +173,8 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
             viewProdSaldu.jButtonIrten.setBackground(urdina);
             viewProdSaldu.jButtonIrten.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         }
-        else if (comando == viewProdSaldu.jButtonListaraGehitu) 
-            viewProdSaldu.jButtonListaraGehitu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+        else if (comando == viewProdSaldu.jButtonSaldu) 
+            viewProdSaldu.jButtonSaldu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
         else if (comando == viewProdSaldu.jButtonEzeztatu)
             viewProdSaldu.jButtonEzeztatu.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }
@@ -225,7 +225,7 @@ public class prodSalduController implements ActionListener, MouseListener, Focus
         viewProdSaldu.jRadioButtonPrak.setOpaque(false);
         
         /* Laguntza botoietan - xaguarekin gainean jartzean agertuko den mezuak definitu */
-        viewProdSaldu.jButtonListaraGehitu.setToolTipText("Produktua saldu");
+        viewProdSaldu.jButtonSaldu.setToolTipText("Produktua saldu");
         viewProdSaldu.jButtonEzeztatu.setToolTipText("Ezeztatu");
         
         /* Tauletako estiloa */

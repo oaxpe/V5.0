@@ -260,7 +260,7 @@ public class Controller {
         
         // ProduktuaSaldu
         viewProdSaldu.jButtonIrten.addActionListener(prodSalduCtr);
-        viewProdSaldu.jButtonListaraGehitu.addActionListener(prodSalduCtr);
+        viewProdSaldu.jButtonSaldu.addActionListener(prodSalduCtr);
         viewProdSaldu.jButtonEzeztatu.addActionListener(prodSalduCtr);  
          
         /* AncestorListener */
@@ -407,7 +407,7 @@ public class Controller {
         viewProdSaldu.jRadioButtonJerts.addMouseListener(prodSalduCtr);
         viewProdSaldu.jRadioButtonKami.addMouseListener(prodSalduCtr);
         viewProdSaldu.jRadioButtonPrak.addMouseListener(prodSalduCtr);
-        viewProdSaldu.jButtonListaraGehitu.addMouseListener(prodSalduCtr);
+        viewProdSaldu.jButtonSaldu.addMouseListener(prodSalduCtr);
         viewProdSaldu.jButtonEzeztatu.addMouseListener(prodSalduCtr);
         viewProdSaldu.jButtonIrten.addMouseListener(prodSalduCtr);
         

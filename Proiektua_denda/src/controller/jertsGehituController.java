@@ -194,6 +194,10 @@ public class jertsGehituController implements ActionListener, MouseListener, Foc
         viewJertseaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewJertseaGehitu.jPanelGoiburua.setOpaque(false);
         viewJertseaGehitu.jPanelJertsDatuak.setOpaque(false);
+        
+        /* Reset eta Gorde botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewJertseaGehitu.jButtonReset);
+        ctr.botoiFormatoa(viewJertseaGehitu.jButtonGorde);
     }
  
     private void resetJertseaGehitu() {

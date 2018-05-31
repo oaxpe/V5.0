@@ -190,6 +190,9 @@ public class eskGehituController implements ActionListener, MouseListener, Focus
         viewEskaeraGehitu.jPanelEskDatuak.setOpaque(false);
         
         viewEskaeraGehitu.jComboBoxProdTaila.addItem("--- Aukeratu ---"); // comboBox-a hasieratu
+        /* Reset eta Gorde botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewEskaeraGehitu.jButtonReset);
+        ctr.botoiFormatoa(viewEskaeraGehitu.jButtonGorde);
     }
     
     private void resetEskaeraGehitu() {

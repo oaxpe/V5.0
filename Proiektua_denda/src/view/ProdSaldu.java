@@ -41,7 +41,7 @@ public class ProdSaldu extends javax.swing.JFrame {
         jSeparatorAukerak = new javax.swing.JSeparator();
         jPanelDatuak = new javax.swing.JPanel();
         jButtonEzeztatu = new javax.swing.JButton();
-        jButtonListaraGehitu = new javax.swing.JButton();
+        jButtonSaldu = new javax.swing.JButton();
         jTextFieldKodeProd = new javax.swing.JTextField();
         jLabelKodDend = new javax.swing.JLabel();
         jLabelTaila = new javax.swing.JLabel();
@@ -102,8 +102,9 @@ public class ProdSaldu extends javax.swing.JFrame {
         jButtonEzeztatu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/ezabatu.png"))); // NOI18N
         jButtonEzeztatu.setText("Ezabatu");
 
-        jButtonListaraGehitu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/listaraGehitu.png"))); // NOI18N
-        jButtonListaraGehitu.setText("Listara gehitu");
+        jButtonSaldu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/argazkiak/listaraGehitu.png"))); // NOI18N
+        jButtonSaldu.setText("Saldu");
+        jButtonSaldu.setActionCommand("Saldu");
 
         jTextFieldKodeProd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
@@ -139,7 +140,7 @@ public class ProdSaldu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanelDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButtonEzeztatu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonListaraGehitu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonSaldu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39))
         );
         jPanelDatuakLayout.setVerticalGroup(
@@ -149,7 +150,7 @@ public class ProdSaldu extends javax.swing.JFrame {
                 .addGroup(jPanelDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelKodDend)
                     .addComponent(jTextFieldKodeProd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonListaraGehitu))
+                    .addComponent(jButtonSaldu))
                 .addGap(18, 18, 18)
                 .addGroup(jPanelDatuakLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelTaila)
@@ -365,7 +366,7 @@ public class ProdSaldu extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroupProdAuk;
     public javax.swing.JButton jButtonEzeztatu;
     public javax.swing.JButton jButtonIrten;
-    public javax.swing.JButton jButtonListaraGehitu;
+    public javax.swing.JButton jButtonSaldu;
     public javax.swing.JComboBox<String> jComboBoxTaila;
     private javax.swing.JLabel jLabelKantitatea;
     private javax.swing.JLabel jLabelKodDend;

@@ -211,6 +211,10 @@ public class prakGehituController implements ActionListener, MouseListener, Focu
         viewPrakaGehitu.jPanelOsoa.setBackground(Color.WHITE);
         viewPrakaGehitu.jPanelGoiburua.setOpaque(false);
         viewPrakaGehitu.jPanelPrakDatuak.setOpaque(false);
+        
+        /* Reset eta Gorde botoien formatoa definitzen duen metodoa */
+        ctr.botoiFormatoa(viewPrakaGehitu.jButtonReset);
+        ctr.botoiFormatoa(viewPrakaGehitu.jButtonGorde);
     }
 
     private void resetPrakaGehitu() {
