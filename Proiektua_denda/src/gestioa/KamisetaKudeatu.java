@@ -26,7 +26,8 @@ public class KamisetaKudeatu {
         PreparedStatement psKami, psProd;
         try {
             /* PRODUKTUA taulan datuak gorde */
-            String sqlInsert = "INSERT INTO produktua (prodKode, prodMarka, prodPrezioa, prodKolorea, prodSexua, prodKantStock) VALUES (?, ?, ?, ?, ?, ?)";
+            String sqlInsert = "INSERT INTO produktua (prodKode, prodMarka, prodPrezioa, prodKolorea, prodSexua, prodKantStock) "
+                    + "VALUES (?, ?, ?, ?, ?, ?)";
             psProd = (PreparedStatement) konexioa.getDBKonexioa().prepareStatement(sqlInsert); // INSERT-a preparatu
             /* Objektuko datuak, ps-n gehitu */
             psProd.setString(1, kami1.getKodPro());

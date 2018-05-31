@@ -159,7 +159,7 @@ public class Metodoak {
         return dataFormatua; 
     }
     
-    
+    /* Datak jTextField-etan formatu egokiz adierazteko erabiltzen da */
     public static Date dataErakutsi(String s) {
         Date data  = null;
         DateFormat dataFormatua = new SimpleDateFormat("yyyy/MM/dd");//.format(data.getTime()); // formatu zehatz baten jarri            

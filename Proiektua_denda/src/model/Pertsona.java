@@ -10,7 +10,7 @@ package model;
  * @author Oihane Axpe
  * @version 5.0
  */
-public abstract class Pertsona /* implements Serializable */ {
+public abstract class Pertsona {
     /* ATRIBUTOAK */
     protected String izena;
     protected String abizena1;

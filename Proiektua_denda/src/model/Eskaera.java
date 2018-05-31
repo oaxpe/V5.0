@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Eskaera /* implements Serializable*/ {
+public class Eskaera {
     private String eskZenb; 
     private String hornitzailea;
     private String data;

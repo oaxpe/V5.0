@@ -12,7 +12,7 @@ import gestioa.Metodoak;
  * @author Oihane Axpe
  * @version 5.0
  */
-public class Denda /*implements Serializable*/ { 
+public class Denda { 
     /* ATRIBUTOAK */
     private String kodDend;
     private String izena;
